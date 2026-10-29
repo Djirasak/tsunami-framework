@@ -1,0 +1,94 @@
+// Input: one look for every text-like control. `.input` styles a control on
+// its own; inside `.field` the bare input / select / textarea get it too.
+@use "sass:selector";
+
+// Every selector that draws the control box (kept in one list, no copies).
+$controls: ".input, .field > input:not([type='checkbox'], [type='radio'], [type='range']), .field > select, .field > textarea";
+
+@function states($suffix) {
+  @return selector.append($controls, $suffix);
+}
+
+@layer components {
+  :where(#{$controls}) {
+    width: 100%;
+    min-width: 0;
+    height: 2rem;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-base);
+  }
+
+  :where(#{$controls})::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+
+  :where(textarea.input, .field > textarea) {
+    height: auto;
+    min-height: 5rem;
+    padding: var(--space-2) var(--space-3);
+    line-height: var(--leading);
+    resize: vertical;
+  }
+
+  :where(#{states(":focus-visible")}) {
+    border-color: var(--accent);
+    outline-offset: 0;
+  }
+
+  :where(#{states("[aria-invalid='true']")}) {
+    border-color: var(--danger-fg);
+  }
+
+  :where(#{states(":disabled")}) {
+    background: var(--subtle);
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
+  // Sizes match .btn heights so an input and a button line up.
+  :where(#{states("[data-size='sm']")}) {
+    height: 1.625rem;
+    padding: 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  :where(#{states("[data-size='lg']")}) {
+    height: 2.5rem;
+    padding: 0 var(--space-4);
+  }
+
+  :where(#{states("[data-variant='ghost']")}) {
+    border-color: transparent;
+    background: transparent;
+  }
+
+  :where(#{states("[data-variant='ghost']:focus-visible")}) {
+    border-color: var(--accent);
+  }
+
+  // File: the picker button sits flush inside the box, divided by a line.
+  :where(#{states("[type='file']")}) {
+    padding-left: 0;
+    color: var(--muted);
+    line-height: calc(2rem - 2px);
+    cursor: pointer;
+  }
+
+  :where(#{states("[type='file']")})::file-selector-button {
+    height: 100%;
+    margin: 0 var(--space-3) 0 0;
+    padding: 0 var(--space-3);
+    border: 0;
+    border-right: 1px solid var(--line);
+    background: var(--subtle);
+    color: var(--fg);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}

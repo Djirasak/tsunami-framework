@@ -1,14 +1,17 @@
-// Input group: one bordered box around an input with leading/trailing spans.
+// Input group: one bordered box (same look as .input) around an input with
+// leading/trailing spans in DOM order: text, an icon, a unit or a count.
 @layer components {
   :where(.input-group) {
     display: flex;
     align-items: center;
     gap: var(--space-2);
+    min-width: 0;
     height: 2rem;
     padding: 0 var(--space-3);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     background: var(--surface);
+    font-size: var(--text-base);
   }
 
   :where(.input-group:has(input:focus-visible)) {
@@ -24,17 +27,55 @@
     border: 0;
     outline: 0;
     background: none;
+    color: var(--fg);
+  }
+
+  :where(.input-group > input)::placeholder {
+    color: var(--muted);
+    opacity: 1;
   }
 
   :where(.input-group > span) {
     display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
     color: var(--muted);
     font-size: var(--text-sm);
     white-space: nowrap;
   }
 
+  :where(.input-group:has([aria-invalid="true"])) {
+    border-color: var(--danger-fg);
+  }
+
+  :where(.input-group:has(input:disabled)) {
+    background: var(--subtle);
+    cursor: not-allowed;
+  }
+
+  :where(.input-group > input:disabled) {
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
   :where(.input-group[data-variant="ghost"]) {
     border-color: transparent;
     background: transparent;
+  }
+
+  :where(.input-group[data-variant="ghost"]:has(input:focus-visible)) {
+    border-color: var(--accent);
+  }
+
+  // Sizes match .input and .btn.
+  :where(.input-group[data-size="sm"]) {
+    height: 1.625rem;
+    padding: 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  :where(.input-group[data-size="lg"]) {
+    height: 2.5rem;
+    padding: 0 var(--space-4);
   }
 }

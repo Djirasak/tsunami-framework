@@ -331,9 +331,688 @@
           <header class="page-header">
             <div>
               <h1>Input</h1>
-              <p>ช่องกรอกข้อมูล input, file และ textarea</p>
+              <p>
+                ช่องกรอกข้อมูล input, file และ textarea ใช้
+                <code>.input</code> เมื่อวางเดี่ยว หรือวางใน
+                <code>.field</code> ได้เลยโดยไม่ต้องใส่ class
+              </p>
             </div>
           </header>
+          <section>
+            <h2>ช่องเดี่ยว Standalone input</h2>
+            <p>
+              นอก <code>.field</code> ใส่ <code>class="input"</code> และ
+              <code>aria-label</code> เพราะไม่มีป้ายให้เห็น ใน
+              <code>.field</code> ช่องจะได้หน้าตาเดียวกันโดยไม่ต้องใส่ class
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <input
+                      class="input"
+                      type="email"
+                      placeholder="อีเมลลูกค้า Customer email"
+                      aria-label="อีเมลลูกค้า Customer email"
+                    />
+                    <div class="field">
+                      <label for="in-sku">รหัสสินค้า SKU</label>
+                      <input id="in-sku" type="text" value="TS-001-BLK" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;input class="input" type="email" placeholder="อีเมลลูกค้า Customer email" aria-label="อีเมลลูกค้า Customer email" /&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="in-sku"&gt;รหัสสินค้า SKU&lt;/label&gt;
+    &lt;input id="in-sku" type="text" value="TS-001-BLK" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ขนาด sm, default และ lg Sizes</h2>
+            <p>
+              <code>data-size</code> ใช้ได้ทั้งบน <code>.input</code> และช่องใน
+              <code>.field</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <input
+                      class="input"
+                      data-size="sm"
+                      type="text"
+                      placeholder="เล็ก Small"
+                      aria-label="Small input"
+                    />
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="ปกติ Default"
+                      aria-label="Default input"
+                    />
+                    <input
+                      class="input"
+                      data-size="lg"
+                      type="text"
+                      placeholder="ใหญ่ Large"
+                      aria-label="Large input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;input class="input" data-size="sm" type="text" placeholder="เล็ก Small" aria-label="Small input" /&gt;
+  &lt;input class="input" type="text" placeholder="ปกติ Default" aria-label="Default input" /&gt;
+  &lt;input class="input" data-size="lg" type="text" placeholder="ใหญ่ Large" aria-label="Large input" /&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แต่ละขนาดคู่กับปุ่มขนาดเดียวกัน Each size beside the button of the
+              same size
+            </h2>
+            <p>
+              ความสูงของ input เท่ากับ <code>.btn</code> ขนาดเดียวกัน (26, 32,
+              40px) จึงวางคู่กันในแถวได้พอดี
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <input
+                        class="input"
+                        data-size="sm"
+                        type="text"
+                        placeholder="โค้ดส่วนลด Discount code"
+                        aria-label="Discount code"
+                        style="width: 14rem"
+                      />
+                      <button type="button" class="btn" data-size="sm">
+                        ใช้โค้ด Apply
+                      </button>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="โค้ดส่วนลด Discount code"
+                        aria-label="Discount code"
+                        style="width: 14rem"
+                      />
+                      <button type="button" class="btn">ใช้โค้ด Apply</button>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <input
+                        class="input"
+                        data-size="lg"
+                        type="text"
+                        placeholder="โค้ดส่วนลด Discount code"
+                        aria-label="Discount code"
+                        style="width: 14rem"
+                      />
+                      <button type="button" class="btn" data-size="lg">
+                        ใช้โค้ด Apply
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;input class="input" data-size="sm" type="text" placeholder="โค้ดส่วนลด Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;ใช้โค้ด Apply&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;input class="input" type="text" placeholder="โค้ดส่วนลด Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn"&gt;ใช้โค้ด Apply&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;input class="input" data-size="lg" type="text" placeholder="โค้ดส่วนลด Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn" data-size="lg"&gt;ใช้โค้ด Apply&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ปิดใช้งาน Disabled</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <input
+                      class="input"
+                      type="email"
+                      value="somjai@example.com"
+                      aria-label="อีเมล Email"
+                      disabled
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;input class="input" type="email" value="somjai@example.com" aria-label="อีเมล Email" disabled /&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>เลือกไฟล์ File</h2>
+            <p>
+              ปุ่มเลือกไฟล์ของเบราว์เซอร์ถูกวาดชิดในกรอบ ใช้
+              <code>accept</code> และ <code>multiple</code> ตามปกติ
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <input
+                      class="input"
+                      type="file"
+                      accept="image/*"
+                      aria-label="อัปโหลดรูปสินค้า Upload product image"
+                    />
+                    <div class="field">
+                      <label for="in-csv"
+                        >นำเข้าสินค้า Import products (CSV)</label
+                      >
+                      <input
+                        id="in-csv"
+                        type="file"
+                        accept=".csv"
+                        aria-describedby="in-csv-hint"
+                      />
+                      <small id="in-csv-hint">ไม่เกิน 5 MB Up to 5 MB</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;input class="input" type="file" accept="image/*" aria-label="อัปโหลดรูปสินค้า Upload product image" /&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="in-csv"&gt;นำเข้าสินค้า Import products (CSV)&lt;/label&gt;
+    &lt;input id="in-csv" type="file" accept=".csv" aria-describedby="in-csv-hint" /&gt;
+    &lt;small id="in-csv-hint"&gt;ไม่เกิน 5 MB Up to 5 MB&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              มีไอคอนและข้อความข้างช่อง With an icon and text beside the field
+            </h2>
+            <p>
+              ใช้ <code>.input-group</code>:
+              <code>&lt;span&gt;</code> ที่อยู่ก่อนหรือหลัง input
+              จะอยู่ด้านหน้าหรือท้ายตามลำดับใน HTML ดูเพิ่มที่หน้า
+              <a href="input-group.html">Input group</a>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <div class="input-group">
+                      <span
+                        ><i class="icon icon-search" aria-hidden="true"></i
+                      ></span>
+                      <input
+                        type="search"
+                        placeholder="ค้นหาคำสั่งซื้อ Search orders"
+                        aria-label="ค้นหาคำสั่งซื้อ Search orders"
+                      />
+                      <span>12 รายการ results</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;div class="input-group"&gt;
+    &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input type="search" placeholder="ค้นหาคำสั่งซื้อ Search orders" aria-label="ค้นหาคำสั่งซื้อ Search orders" /&gt;
+    &lt;span&gt;12 รายการ results&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Ghost สำหรับช่องค้นหาในหัวการ์ด Ghost, for a search field in a
+              card header
+            </h2>
+            <p>
+              <code>data-variant="ghost"</code> ไม่มีกรอบและพื้น
+              จึงกลืนไปกับหัวการ์ด กรอบสี accent ขึ้นเมื่อโฟกัส
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <header>
+                      <div class="input-group" data-variant="ghost">
+                        <span
+                          ><i class="icon icon-search" aria-hidden="true"></i
+                        ></span>
+                        <input
+                          type="search"
+                          placeholder="ค้นหาจากชื่อสินค้า Search by product title"
+                          aria-label="ค้นหาจากชื่อสินค้า Search by product title"
+                        />
+                      </div>
+                    </header>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">สินค้า Product</th>
+                          <th scope="col">ราคา Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>เสื้อยืด T-shirt</td>
+                          <td>฿390</td>
+                        </tr>
+                        <tr>
+                          <td>กระเป๋าผ้า Tote bag</td>
+                          <td>฿250</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;div class="input-group" data-variant="ghost"&gt;
+      &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;input type="search" placeholder="ค้นหาจากชื่อสินค้า Search by product title" aria-label="ค้นหาจากชื่อสินค้า Search by product title" /&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th scope="col"&gt;สินค้า Product&lt;/th&gt;&lt;th scope="col"&gt;ราคา Price&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;เสื้อยืด T-shirt&lt;/td&gt;&lt;td&gt;฿390&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;กระเป๋าผ้า Tote bag&lt;/td&gt;&lt;td&gt;฿250&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ช่องข้อความหลายบรรทัด Textarea</h2>
+            <p>
+              <code>&lt;textarea class="input"&gt;</code> สูงอย่างน้อย 5rem
+              ผู้ใช้ลากขยายแนวตั้งได้ ใช้ <code>rows</code> กำหนดความสูงเริ่มต้น
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <textarea
+                      class="input"
+                      placeholder="พิมพ์ข้อความถึงลูกค้า Type your message here"
+                      aria-label="ข้อความ Message"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;textarea class="input" placeholder="พิมพ์ข้อความถึงลูกค้า Type your message here" aria-label="ข้อความ Message"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>.<wbr />input</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      บน input / select / textarea ที่อยู่นอก
+                      <code>.field</code> ช่องใน
+                      <code>.field</code> ได้หน้าตาเดียวกันโดยไม่ต้องใส่
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, <code>lg</code> (ไม่มี = default 32px)
+                    </td>
+                    <td>
+                      ความสูง 26 / 32 / 40px เท่ากับ
+                      <code>.btn</code> ขนาดเดียวกัน
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td><code>ghost</code> (ไม่มี = มีกรอบ)</td>
+                    <td>ไม่มีกรอบและพื้น ขอบ accent เมื่อโฟกัส</td>
+                  </tr>
+                  <tr>
+                    <td><code>type="file"</code></td>
+                    <td></td>
+                    <td>ปุ่มเลือกไฟล์ชิดซ้ายในกรอบ</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>textarea.<wbr />input</code>
+                    </td>
+                    <td></td>
+                    <td>สูงอย่างน้อย 5rem ลากขยายแนวตั้ง</td>
+                  </tr>
+                  <tr>
+                    <td><code>placeholder</code></td>
+                    <td></td>
+                    <td>ข้อความตัวอย่างสีเทา ไม่ใช้แทน label</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td></td>
+                    <td>จำเป็นเมื่อไม่มี <code>&lt;label&gt;</code> ให้เห็น</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>ขอบสี danger</td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td></td>
+                    <td>พื้น subtle ตัวอักษรเทา เคอร์เซอร์ not-allowed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
         </main>
       </div>
     </div>
