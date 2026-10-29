@@ -1,26 +1,52 @@
-// Page header: title block on the left, actions on the right.
+// Page header: breadcrumb (nav) on its own row, then an optional back button,
+// the title (h1, hgroup or a div) and the actions (last div) on the right.
 @layer components {
   :where(.page-header) {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-3) var(--space-4);
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
   }
 
-  :where(.page-header > :first-child) {
+  :where(.page-header > nav) {
+    flex-basis: 100%;
+  }
+
+  :where(.page-header > .btn) {
+    flex: none;
+  }
+
+  :where(.page-header > :is(h1, hgroup, div:first-child, nav + div)) {
+    flex: 1 1 16rem;
+    min-width: 0;
+  }
+
+  :where(.page-header > :is(hgroup, div:first-child, nav + div)) {
     display: grid;
-    flex: 1 1 20rem;
     gap: var(--space-1);
+  }
+
+  // Badges sit on the title's line.
+  :where(.page-header h1) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-2);
+  }
+
+  :where(.page-header h1 > .badge) {
+    font-size: var(--text-sm);
   }
 
   :where(.page-header p) {
     color: var(--muted);
   }
 
-  :where(.page-header > :last-child:not(:first-child)) {
+  :where(.page-header > div:last-child:not(:first-child, nav + div)) {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--space-2);
+    margin-left: auto;
   }
 }
