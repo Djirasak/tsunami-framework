@@ -87,7 +87,7 @@ for (const pre of document.querySelectorAll(
   );
   box.lastChild.dataset.variant = "ghost";
   box.lastChild.dataset.size = "icon-sm";
-  box.lastChild.setAttribute("aria-label", "คัดลอกโค้ด Copy code");
+  box.lastChild.setAttribute("aria-label", "Copy code");
 }
 
 document.addEventListener("click", async (e) => {
@@ -100,10 +100,10 @@ document.addEventListener("click", async (e) => {
   }
   btn.dataset.copied = "";
   btn.firstChild.className = "icon icon-check";
-  btn.setAttribute("aria-label", "คัดลอกแล้ว Copied");
+  btn.setAttribute("aria-label", "Copied");
   setTimeout(() => {
     delete btn.dataset.copied;
     btn.firstChild.className = "icon icon-copy";
-    btn.setAttribute("aria-label", "คัดลอกโค้ด Copy code");
+    btn.setAttribute("aria-label", "Copy code");
   }, 1500);
 });

@@ -7,10 +7,10 @@
 // data-tags, data-url (JSON lookup), data-empty. See demo/select.html.
 const ROOT = ".select:not(select)";
 const MSG = {
-  empty: "ไม่พบผลลัพธ์ No results",
-  busy: "กำลังค้นหา… Searching…",
-  more: "กำลังโหลดเพิ่ม… Loading more…",
-  error: "โหลดผลลัพธ์ไม่ได้ Could not load results",
+  empty: "No results",
+  busy: "Searching…",
+  more: "Loading more…",
+  error: "Could not load results",
 };
 const S = new WeakMap();
 let uid = 0;
@@ -54,7 +54,7 @@ function build(root) {
         type: "text",
         autocomplete: "off",
         form: "",
-        placeholder: d.search || "ค้นหา Search",
+        placeholder: d.search || "Search",
       });
       input.setAttribute("aria-label", input.placeholder);
       const icon = h("i", { class: "icon icon-search", "aria-hidden": "true" });
@@ -117,7 +117,7 @@ function paint(root) {
       const x = h("button", {
         type: "button",
         tabindex: "-1",
-        "aria-label": `ลบ Remove ${label(o)}`,
+        "aria-label": `Remove ${label(o)}`,
       });
       x.append(h("i", { class: "icon icon-x", "aria-hidden": "true" }));
       x.option = o;
@@ -515,7 +515,7 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault();
     typed = (typing ? typed : "") + k.toLowerCase();
     typedAt = e.timeStamp;
-    // Matches the start of any word, so "b" finds "กระเป๋า Bags".
+    // Matches the start of any word, so "b" finds "Tote bags".
     const hit = items.find((el) =>
       ` ${el.textContent.toLowerCase()}`.includes(` ${typed}`),
     );

@@ -39,7 +39,7 @@ grid.addEventListener("click", async (e) => {
     return; // Clipboard blocked: nothing to copy to.
   }
   btn.dataset.copied = "";
-  count.textContent = `คัดลอก flag-${btn.dataset.code} แล้ว Copied`;
+  count.textContent = `Copied flag-${btn.dataset.code}`;
   setTimeout(() => {
     delete btn.dataset.copied;
     filter();

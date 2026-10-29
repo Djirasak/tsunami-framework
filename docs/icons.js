@@ -35,7 +35,7 @@ grid.addEventListener("click", async (e) => {
       `<i class="icon icon-${btn.dataset.name}" aria-hidden="true"></i>`,
     );
     btn.dataset.copied = "";
-    count.textContent = `คัดลอก icon-${btn.dataset.name} แล้ว Copied`;
+    count.textContent = `Copied icon-${btn.dataset.name}`;
     setTimeout(() => {
       delete btn.dataset.copied;
       filter();
