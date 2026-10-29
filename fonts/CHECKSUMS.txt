@@ -3,3 +3,5 @@
 2507802626a6cb16e4a7410bbb809380b957333582156a3907431b4fe57afab4  GoogleSans-latin-ext.woff2  https://fonts.gstatic.com/s/googlesans/v71/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjwUvaYr.woff2
 7b4dce329fabb8a5c9bec1e881a5f6b9abb9dcf917a469f001cdd764236f193c  GoogleSans-thai.woff2  https://fonts.gstatic.com/s/googlesans/v71/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPiYUvaYr.woff2
 2b75ef20f13d83a7514aee452c4782c20cdc9ff2dee17600f44d37a06d4fb958  GoogleSans-OFL.txt  https://raw.githubusercontent.com/google/fonts/main/ofl/googlesans/OFL.txt
+de27f927dc059bf5ff32935121126b5a9bf8608796e4529c023ff9806edf4010  lucide.woff2  https://github.com/lucide-icons/lucide/releases/download/1.61.0/lucide-font-1.61.0.zip (lucide-font/lucide.woff2)
+b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57  Lucide-LICENSE.txt  https://raw.githubusercontent.com/lucide-icons/lucide/1.61.0/LICENSE

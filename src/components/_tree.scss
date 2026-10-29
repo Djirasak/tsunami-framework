@@ -41,12 +41,10 @@
   }
 
   :where(.tree summary)::before {
-    content: "";
-    width: 0.875rem;
-    height: 0.875rem;
+    @include icon.glyph(chevron-right);
     flex-shrink: 0;
-    background: var(--muted);
-    mask: icon.svg(chevron-right) center / contain no-repeat;
+    color: var(--muted);
+    font-size: 0.875rem;
     transition: rotate 0.15s;
   }
 

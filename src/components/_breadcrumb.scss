@@ -20,11 +20,8 @@
   }
 
   :where(.breadcrumb li + li)::before {
-    content: "";
-    width: 0.875rem;
-    height: 0.875rem;
-    background: currentColor;
-    mask: icon.svg(chevron-right) center / contain no-repeat;
+    @include icon.glyph(chevron-right);
+    font-size: 0.875rem;
   }
 
   :where(.breadcrumb a) {
