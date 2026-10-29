@@ -1,5 +1,8 @@
-// Tooltip: data-tooltip="text" on a focusable element; data-side="right|bottom".
-// Pseudo-elements: not for <input> or <img>. Keep an aria-label for icon-only buttons.
+// Tooltip: data-tooltip="text" on any element that can hold content. No JS.
+// data-side="top|bottom|left|right" (default top), data-align="start|center|end" (default center).
+// Drawn as ::after, so not on <input>, <select>, <textarea> or <img>: put it on a wrapper.
+// Shows on hover and on keyboard focus (of the element or a control inside it).
+// Keep an aria-label on icon-only buttons: a screen reader does not read the tooltip.
 @layer components {
   :where([data-tooltip]) {
     position: relative;
@@ -12,13 +15,20 @@
     left: 50%;
     z-index: 20;
     translate: -50% 0;
+    max-width: 20rem;
+    overflow: hidden;
     padding: 0.125rem var(--space-2);
     border-radius: var(--radius-sm);
     background: var(--fg);
     color: var(--bg);
+    font-family: var(--font-sans);
     font-size: var(--text-sm);
     font-weight: 400;
     line-height: 1.5;
+    text-align: left;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    text-transform: none;
     white-space: nowrap;
     pointer-events: none;
     // Hidden tooltips must not widen the page (scroll overflow).
@@ -29,7 +39,7 @@
       display 0.15s allow-discrete;
   }
 
-  :where([data-tooltip]:is(:hover, :focus-visible))::after {
+  :where([data-tooltip]:is(:hover, :focus-visible, :has(:focus-visible)))::after {
     display: block;
     opacity: 1;
 
@@ -38,15 +48,63 @@
     }
   }
 
+  // A word with a tooltip: dotted underline so it reads as "more here".
+  :where(abbr[data-tooltip]) {
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    cursor: help;
+  }
+
+  // Sides.
   :where([data-tooltip][data-side="bottom"])::after {
     top: calc(100% + var(--space-1));
     bottom: auto;
   }
 
-  :where([data-tooltip][data-side="right"])::after {
+  :where([data-tooltip]:is([data-side="left"], [data-side="right"]))::after {
     top: 50%;
     bottom: auto;
-    left: calc(100% + var(--space-1));
     translate: 0 -50%;
+  }
+
+  :where([data-tooltip][data-side="left"])::after {
+    right: calc(100% + var(--space-1));
+    left: auto;
+  }
+
+  :where([data-tooltip][data-side="right"])::after {
+    left: calc(100% + var(--space-1));
+  }
+
+  // Alignment above or below: start and end line up with the element's edges.
+  :where(
+    [data-tooltip][data-align="start"]:not([data-side="left"], [data-side="right"])
+  )::after {
+    left: 0;
+    translate: 0 0;
+  }
+
+  :where(
+    [data-tooltip][data-align="end"]:not([data-side="left"], [data-side="right"])
+  )::after {
+    right: 0;
+    left: auto;
+    translate: 0 0;
+  }
+
+  // Alignment left or right: start is the top edge, end the bottom edge.
+  :where(
+    [data-tooltip][data-align="start"]:is([data-side="left"], [data-side="right"])
+  )::after {
+    top: 0;
+    translate: 0 0;
+  }
+
+  :where(
+    [data-tooltip][data-align="end"]:is([data-side="left"], [data-side="right"])
+  )::after {
+    top: auto;
+    bottom: 0;
+    translate: 0 0;
   }
 }

@@ -331,10 +331,23 @@
           <header class="page-header">
             <div>
               <h1>Tooltip</h1>
-              <p>คำอธิบายสั้นเมื่อ hover หรือ focus ทำด้วย CSS ล้วน</p>
+              <p>
+                ข้อความสั้นหนึ่งบรรทัดเมื่อชี้เมาส์หรือโฟกัสด้วยคีย์บอร์ด ใช้
+                attribute เดียว ไม่ต้องใช้ JS. One line of text on hover or
+                keyboard focus, from one attribute.
+              </p>
             </div>
           </header>
           <section>
+            <h2>
+              Tooltip คือ attribute เดียว ไม่ต้องใช้ script A tooltip is one
+              attribute and needs no script
+            </h2>
+            <p>
+              <code>data-<wbr />tooltip</code> แสดงข้อความเหนือ element
+              เมื่อชี้เมาส์ หรือเมื่อโฟกัสด้วยคีย์บอร์ด. The text is plain text
+              taken from the attribute.
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -364,35 +377,13 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="stack" data-direction="row" data-gap="sm">
-                    <button
-                      type="button"
-                      class="btn"
-                      data-size="icon"
-                      data-tooltip="ทำสำเนา Duplicate"
-                      aria-label="Duplicate"
-                    >
-                      <i class="icon icon-copy" aria-hidden="true"></i>
-                    </button>
-                    <button
-                      type="button"
-                      class="btn"
-                      data-size="icon"
-                      data-tooltip="ด้านล่าง Below"
-                      data-side="bottom"
-                      aria-label="More"
-                    >
-                      <i class="icon icon-ellipsis" aria-hidden="true"></i>
-                    </button>
-                    <button
-                      type="button"
-                      class="btn"
-                      data-tooltip="ด้านขวา Right"
-                      data-side="right"
-                    >
-                      วางเมาส์ Hover me
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    class="btn"
+                    data-tooltip="เพิ่มลงคอลเลกชัน Add to collection"
+                  >
+                    ชี้เมาส์ Hover
+                  </button>
                 </div>
               </div>
               <div
@@ -402,12 +393,555 @@
                 tabindex="0"
                 hidden
               >
+                <pre><code>&lt;button type="button" class="btn" data-tooltip="เพิ่มลงคอลเลกชัน Add to collection"&gt;ชี้เมาส์ Hover&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-side วางไว้ด้านบน ล่าง ซ้าย หรือขวา data-side puts it above,
+              below, left or right
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="ด้านบน ค่าเริ่มต้น Above, the default"
+                      data-side="top"
+                    >
+                      บน Top
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="ด้านล่าง Below"
+                      data-side="bottom"
+                    >
+                      ล่าง Bottom
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="ทางซ้าย Left"
+                      data-side="left"
+                    >
+                      ซ้าย Left
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="ทางขวา Right"
+                      data-side="right"
+                    >
+                      ขวา Right
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" data-size="icon" data-tooltip="ทำสำเนา Duplicate" aria-label="Duplicate"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-  &lt;button type="button" class="btn" data-size="icon" data-tooltip="ด้านล่าง Below" data-side="bottom" aria-label="More"&gt;&lt;i class="icon icon-ellipsis" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-  &lt;button type="button" class="btn" data-tooltip="ด้านขวา Right" data-side="right"&gt;วางเมาส์ Hover me&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="ด้านบน ค่าเริ่มต้น Above, the default" data-side="top"&gt;บน Top&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="ด้านล่าง Below" data-side="bottom"&gt;ล่าง Bottom&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="ทางซ้าย Left" data-side="left"&gt;ซ้าย Left&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="ทางขวา Right" data-side="right"&gt;ขวา Right&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-align จัดชิดต้น กึ่งกลาง หรือท้ายของ element data-align lines
+              it up with the start, the centre or the end
+            </h2>
+            <p>
+              ด้านซ้ายหรือขวา: <code>start</code> คือขอบบน
+              <code>end</code> คือขอบล่าง. On the left or right side, start is
+              the top edge and end the bottom edge.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="ชิดขอบต้น Lined up with the start"
+                      data-align="start"
+                    >
+                      ต้น Start
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="กึ่งกลาง ค่าเริ่มต้น Centred, the default"
+                      data-align="center"
+                    >
+                      กลาง Center
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="ชิดขอบท้าย Lined up with the end"
+                      data-align="end"
+                    >
+                      ท้าย End
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-tooltip="ชิดขอบต้น Lined up with the start" data-align="start"&gt;ต้น Start&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="กึ่งกลาง ค่าเริ่มต้น Centred, the default" data-align="center"&gt;กลาง Center&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="ชิดขอบท้าย Lined up with the end" data-align="end"&gt;ท้าย End&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ปุ่มไอคอนยังต้องมี aria-label: tooltip ไม่ใช่ชื่อของปุ่ม An icon
+              button keeps its aria-label: the tooltip is not its name
+            </h2>
+            <p>
+              screen reader ไม่อ่าน tooltip. A screen reader does not read the
+              tooltip, so the button is named by <code>aria-<wbr />label</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="ทำสำเนา Copy"
+                      data-tooltip="ทำสำเนา Copy"
+                    >
+                      <i class="icon icon-copy" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="ดาวน์โหลด Download"
+                      data-tooltip="ดาวน์โหลด Download"
+                    >
+                      <i class="icon icon-download" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      data-variant="danger"
+                      aria-label="ลบ Delete"
+                      data-tooltip="ลบ Delete"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="ทำสำเนา Copy" data-tooltip="ทำสำเนา Copy"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="ดาวน์โหลด Download" data-tooltip="ดาวน์โหลด Download"&gt;&lt;i class="icon icon-download" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon" data-variant="danger" aria-label="ลบ Delete" data-tooltip="ลบ Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ใช้ได้กับทุก element ที่มีเนื้อหา: badge ไอคอน หรือคำ It works on
+              any element that can hold content: a badge, an icon, a word
+            </h2>
+            <p>
+              <code>&lt;abbr data-<wbr />tooltip&gt;</code> ได้เส้นใต้แบบจุด. An
+              <code>abbr</code> gets a dotted underline. Give an element that is
+              not focusable <code>tabindex=<wbr />"0"</code> when keyboard users
+              need the text too.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span
+                      class="badge"
+                      data-variant="ok"
+                      data-tooltip="ชำระเมื่อ 3 ต.ค. 2569 Paid on Oct 3, 2026"
+                      >ชำระแล้ว Paid</span
+                    >
+                    <span
+                      data-tooltip="ยืนยันด้วย 3D Secure Verified by 3D Secure"
+                      ><i class="icon icon-shield-check" aria-hidden="true"></i
+                    ></span>
+                    <abbr
+                      data-tooltip="รายได้ประจำต่อเดือน Monthly recurring revenue"
+                      tabindex="0"
+                      >MRR</abbr
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="badge" data-variant="ok" data-tooltip="ชำระเมื่อ 3 ต.ค. 2569 Paid on Oct 3, 2026"&gt;ชำระแล้ว Paid&lt;/span&gt;
+  &lt;span data-tooltip="ยืนยันด้วย 3D Secure Verified by 3D Secure"&gt;&lt;i class="icon icon-shield-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;abbr data-tooltip="รายได้ประจำต่อเดือน Monthly recurring revenue" tabindex="0"&gt;MRR&lt;/abbr&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ช่องกรอกวาด tooltip เองไม่ได้ จึงใส่ attribute ที่ตัวห่อ A field
+              cannot draw a tooltip itself, so the attribute goes on a wrapper
+            </h2>
+            <p>
+              <code>input</code>, <code>select</code>, <code>textarea</code> และ
+              <code>img</code> ไม่มี <code>::after</code>. The wrapper shows the
+              tooltip on hover and while the field inside it has keyboard focus.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="field"
+                    data-tooltip="ตัวอักษรและตัวเลขเท่านั้น Letters and numbers only"
+                    data-align="start"
+                    style="max-width: 16rem"
+                  >
+                    <label for="tt-coupon">โค้ดส่วนลด Coupon code</label>
+                    <input id="tt-coupon" type="text" placeholder="SALE2026" />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" data-tooltip="ตัวอักษรและตัวเลขเท่านั้น Letters and numbers only" data-align="start" style="max-width: 16rem"&gt;
+  &lt;label for="tt-coupon"&gt;โค้ดส่วนลด Coupon code&lt;/label&gt;
+  &lt;input id="tt-coupon" type="text" placeholder="SALE2026"&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ข้อความยาวอยู่บรรทัดเดียวและถูกตัดที่ 320px Long text stays on one
+              line and is cut off at 320px
+            </h2>
+            <p>
+              เกิน 20rem (320px) จะแสดง … Longer text ends in an ellipsis. Use a
+              popover for anything longer.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    data-tooltip="การชำระเงินนี้ผ่านเกตเวย์ในครั้งแรกและโอนเข้าบัญชีในวันทำการถัดไป This payment was captured on the first attempt and settled the next business day"
+                    data-align="start"
+                  >
+                    ข้อความยาว Long text
+                  </button>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" data-tooltip="การชำระเงินนี้ผ่านเกตเวย์ในครั้งแรกและโอนเข้าบัญชีในวันทำการถัดไป This payment was captured on the first attempt and settled the next business day" data-align="start"&gt;ข้อความยาว Long text&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>สิ่งที่ tooltip ไม่ทำ What a tooltip does not do</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ข้อจำกัด Limit</th>
+                    <th scope="col">ควรทำ What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      แสดงเมื่อชี้เมาส์และโฟกัสด้วยคีย์บอร์ดเท่านั้น
+                      จอสัมผัสไม่มี hover. It shows on hover and keyboard focus
+                      only; a touch screen has no hover.
+                    </td>
+                    <td>
+                      อย่าใส่ข้อมูลที่ไม่มีที่อื่นบนหน้า. Never put information
+                      only in a tooltip.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      screen reader ไม่อ่าน. A screen reader does not read it.
+                    </td>
+                    <td>
+                      ตั้งชื่อปุ่มไอคอนด้วย <code>aria-<wbr />label</code>. Name
+                      an icon button with <code>aria-<wbr />label</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      ข้อความธรรมดาบรรทัดเดียว ตัดที่ 320px
+                      ใส่ลิงก์หรือปุ่มไม่ได้. One line of plain text, cut off at
+                      320px; no links, buttons or formatting.
+                    </td>
+                    <td>
+                      ใช้ popover สำหรับข้อความยาวหรือสิ่งที่ต้องคลิก. Use a
+                      popover.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>input</code>, <code>select</code>,
+                      <code>textarea</code>, <code>img</code> วาดไม่ได้. These
+                      cannot draw one.
+                    </td>
+                    <td>
+                      ใส่ <code>data-<wbr />tooltip</code> ที่ตัวห่อ. Put it on
+                      a wrapper.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      element ที่ใช้ <code>::after</code> อยู่แล้วใช้ไม่ได้. An
+                      element that already uses <code>::after</code> cannot have
+                      one.
+                    </td>
+                    <td>ใส่ที่ตัวห่อ. Put it on a wrapper.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      พื้นที่ที่เลื่อนได้ตัด tooltip ที่ขอบ. A scrolling area
+                      cuts it off at its edge.
+                    </td>
+                    <td>
+                      เลือก <code>data-<wbr />side</code> ที่ชี้เข้าในพื้นที่.
+                      Choose a side that points into the area.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      ใกล้ขอบขวาของหน้า tooltip ล้นออกนอกจอ. Near the right edge
+                      it reaches past the window.
+                    </td>
+                    <td>
+                      ใส่ <code>data-<wbr />align=<wbr />"end"</code>. Give that
+                      element <code>data-<wbr />align=<wbr />"end"</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      ไม่สลับด้านเองเมื่อไม่พอที่. It never flips to another
+                      side.
+                    </td>
+                    <td>
+                      เลือก <code>data-<wbr />side</code> และ
+                      <code>data-<wbr />align</code> ตามตำแหน่ง. Choose them for
+                      where the element sits.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
           <section>
@@ -423,17 +957,69 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>data-tooltip</code></td>
-                    <td><code>text</code></td>
                     <td>
-                      ข้อความ ใช้ไม่ได้กับ <code>input</code> และ
-                      <code>img</code>
+                      <code>data-<wbr />tooltip</code>
+                    </td>
+                    <td>text</td>
+                    <td>
+                      ข้อความ tooltip บรรทัดเดียว. The text, plain, one line. On
+                      any element that can hold content.
                     </td>
                   </tr>
                   <tr>
-                    <td><code>data-side</code></td>
-                    <td><code>bottom, right</code></td>
-                    <td>ค่าเริ่มต้นอยู่ด้านบน</td>
+                    <td>
+                      <code>data-<wbr />side</code>
+                    </td>
+                    <td>
+                      none or <code>top</code> (default), <code>bottom</code>,
+                      <code>left</code>, <code>right</code>
+                    </td>
+                    <td>
+                      ด้านที่แสดง. The side of the element the tooltip is on.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />align</code>
+                    </td>
+                    <td>
+                      none or <code>center</code> (default), <code>start</code>,
+                      <code>end</code>
+                    </td>
+                    <td>
+                      จัดแนวกับ element. Above or below: left edge, centre,
+                      right edge. Left or right: top edge, centre, bottom edge.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>aria-<wbr />label</code>
+                    </td>
+                    <td>text</td>
+                    <td>
+                      ชื่อของปุ่มไอคอน (จำเป็น). Names an icon-only button; the
+                      tooltip does not.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>tabindex=<wbr />"0"</code>
+                    </td>
+                    <td>on a non-focusable element</td>
+                    <td>
+                      ให้คีย์บอร์ดเห็น tooltip. Lets keyboard users focus it and
+                      see the tooltip.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>abbr[<wbr />data-<wbr />tooltip]</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      คำย่อ: เส้นใต้แบบจุด. A word or abbreviation with a dotted
+                      underline.
+                    </td>
                   </tr>
                 </tbody>
               </table>
