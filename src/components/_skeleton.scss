@@ -1,0 +1,23 @@
+// Skeleton: grey placeholder blocks while content loads. Set width/height where it sits.
+@layer components {
+  :where(.skeleton) {
+    display: block;
+    height: 1em;
+    border-radius: var(--radius-sm);
+    background: var(--neutral-bg);
+    animation: tsunami-pulse 1.5s ease-in-out infinite;
+  }
+
+  :where(.skeleton[data-variant="circle"]) {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+  }
+
+  @keyframes tsunami-pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
