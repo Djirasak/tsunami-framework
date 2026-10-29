@@ -1,0 +1,36 @@
+// Flag: <span class="flag flag-th" role="img" aria-label="Thailand"></span>
+// 4:3 SVGs from flag-icons in flags/ (paths relative to dist/).
+@use "../icons/flags";
+
+@layer components {
+  :where(.flag) {
+    display: inline-block;
+    flex-shrink: 0;
+    height: 1rem;
+    aspect-ratio: 4 / 3;
+    vertical-align: -0.2em;
+    border-radius: 2px;
+    background: center / cover no-repeat;
+    // A hairline keeps white flags visible on white.
+    outline: 1px solid var(--line);
+    outline-offset: -1px;
+  }
+
+  :where(.flag[data-size="sm"]) {
+    height: 0.75rem;
+  }
+
+  :where(.flag[data-size="lg"]) {
+    height: 1.5rem;
+  }
+
+  :where(.flag[data-size="xl"]) {
+    height: 2rem;
+  }
+
+  @each $code in flags.$codes {
+    :where(.flag-#{$code}) {
+      background-image: url("../flags/#{$code}.svg");
+    }
+  }
+}
