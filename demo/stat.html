@@ -332,14 +332,25 @@
             <div>
               <h1>Stat</h1>
               <p>
-                แถบตัวเลขหลายช่องในกล่องเดียว ใช้
-                <code>&lt;dl&gt;</code> และขึ้นบรรทัดใหม่บนจอแคบ
+                ตัวเลขหนึ่งค่า: ป้าย ค่า และการเปลี่ยนแปลง วางเดี่ยว ในการ์ด
+                หรือเรียงเป็นกลุ่มด้วย <code>.stat-group</code>
               </p>
             </div>
           </header>
           <section>
+            <h2>
+              ป้าย ค่า และการเปลี่ยนแปลง A label, a value and an optional change
+            </h2>
+            <p>
+              <code>span</code> ตัวแรกคือป้าย <code>strong</code> คือค่า และ
+              <code>span[data-trend]</code> บอกว่าเปลี่ยนไปอย่างไร
+              (ใส่หรือไม่ก็ได้)
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="Example">
+              <div
+                role="tablist"
+                aria-label="ป้าย ค่า และการเปลี่ยนแปลง A label, a value and an optional change"
+              >
                 <button
                   type="button"
                   role="tab"
@@ -367,6 +378,984 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
+                  <div class="stat" style="max-width: 14rem">
+                    <span>คำสั่งซื้อใหม่ New orders</span>
+                    <strong>128</strong>
+                    <span data-trend="up"
+                      ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                      >12.5%</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stat" style="max-width: 14rem"&gt;
+  &lt;span&gt;คำสั่งซื้อใหม่ New orders&lt;/span&gt;
+  &lt;strong&gt;128&lt;/strong&gt;
+  &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.5%&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ตัวเลขเดียวในการ์ด One stat in a card</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ตัวเลขเดียวในการ์ด One stat in a card"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card" style="max-width: 20rem">
+                    <div class="stat">
+                      <span>รายได้สุทธิ Net revenue</span>
+                      <strong>฿48,210.00</strong>
+                      <span data-trend="up"
+                        ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                        >4.2%</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card" style="max-width: 20rem"&gt;
+  &lt;div class="stat"&gt;
+    &lt;span&gt;รายได้สุทธิ Net revenue&lt;/span&gt;
+    &lt;strong&gt;฿48,210.00&lt;/strong&gt;
+    &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;4.2%&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ลิงก์ไปยังรายการเบื้องหลังตัวเลข และปุ่มข้อมูลที่ป้าย A link to
+              the records and an info button on the label
+            </h2>
+            <p>
+              ทั้ง stat เป็น <code>a</code> ได้ ค่าจะเป็นสี accent
+              ส่วนคำอธิบายใช้ <code>button</code> ในป้ายเปิด
+              <code>.popover</code> (วาง popover ไว้นอกลิงก์)
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ลิงก์ไปยังรายการเบื้องหลังตัวเลข และปุ่มข้อมูลที่ป้าย A link to the records and an info button on the label"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card" style="max-width: 20rem">
+                    <div class="stat">
+                      <span
+                        >ยอดขายรวม Total sales<button
+                          type="button"
+                          popovertarget="stat-info"
+                          aria-label="เกี่ยวกับยอดขายรวม About total sales"
+                        >
+                          <i
+                            class="icon icon-info"
+                            aria-hidden="true"
+                          ></i></button
+                      ></span>
+                      <strong><a href="#">฿145,202.38</a></strong>
+                      <span data-trend="up"
+                        ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                        >40.1%</span
+                      >
+                    </div>
+                    <div class="popover" id="stat-info" popover>
+                      <p>
+                        ยอดขายจากทุกคำสั่งซื้อก่อนหักการคืนสินค้า Total sales
+                        from all orders before returns.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card" style="max-width: 20rem"&gt;
+  &lt;div class="stat"&gt;
+    &lt;span&gt;ยอดขายรวม Total sales&lt;button type="button" popovertarget="stat-info" aria-label="เกี่ยวกับยอดขายรวม About total sales"&gt;&lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+    &lt;strong&gt;&lt;a href="#"&gt;฿145,202.38&lt;/a&gt;&lt;/strong&gt;
+    &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;40.1%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="popover" id="stat-info" popover&gt;
+    &lt;p&gt;ยอดขายจากทุกคำสั่งซื้อก่อนหักการคืนสินค้า Total sales from all orders before returns.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-trend: up สีเขียว down สีแดง ไม่ใส่ค่าสีเทา Trend colours
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-trend: up สีเขียว down สีแดง ไม่ใส่ค่าสีเทา Trend colours"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <div class="stat-group">
+                      <div class="stat">
+                        <span>ขึ้น Rising</span>
+                        <strong>128</strong>
+                        <span data-trend="up"
+                          ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                          >12.5%</span
+                        >
+                      </div>
+                      <div class="stat">
+                        <span>ลง Falling</span>
+                        <strong>96</strong>
+                        <span data-trend="down"
+                          ><i
+                            class="icon icon-arrow-down"
+                            aria-hidden="true"
+                          ></i
+                          >25.0%</span
+                        >
+                      </div>
+                      <div class="stat">
+                        <span>เท่าเดิม Unchanged</span>
+                        <strong>40</strong>
+                        <span data-trend>0.0%</span>
+                      </div>
+                      <div class="stat">
+                        <span>ไม่มีค่าเทียบ No comparison</span>
+                        <strong>7</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;div class="stat-group"&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;ขึ้น Rising&lt;/span&gt;
+      &lt;strong&gt;128&lt;/strong&gt;
+      &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.5%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;ลง Falling&lt;/span&gt;
+      &lt;strong&gt;96&lt;/strong&gt;
+      &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;25.0%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;เท่าเดิม Unchanged&lt;/span&gt;
+      &lt;strong&gt;40&lt;/strong&gt;
+      &lt;span data-trend&gt;0.0%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;ไม่มีค่าเทียบ No comparison&lt;/span&gt;
+      &lt;strong&gt;7&lt;/strong&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-reverse: เมื่อขึ้นคือข่าวร้าย When a rise is bad news</h2>
+            <p>
+              ใส่ <code>data-reverse</code> ที่ stat เพื่อสลับสี: ขึ้นเป็นสีแดง
+              ลงเป็นสีเขียว
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-reverse: เมื่อขึ้นคือข่าวร้าย When a rise is bad news"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card" style="max-width: 28rem">
+                    <div class="stat-group">
+                      <div class="stat" data-reverse>
+                        <span>คืนสินค้า Returns</span>
+                        <strong>14</strong>
+                        <span data-trend="up"
+                          ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                          >40.0%</span
+                        >
+                      </div>
+                      <div class="stat" data-reverse>
+                        <span>เวลาจัดส่ง Time to fulfill</span>
+                        <strong>0.9 วัน</strong>
+                        <span data-trend="down"
+                          ><i
+                            class="icon icon-arrow-down"
+                            aria-hidden="true"
+                          ></i
+                          >18.0%</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card" style="max-width: 28rem"&gt;
+  &lt;div class="stat-group"&gt;
+    &lt;div class="stat" data-reverse&gt;
+      &lt;span&gt;คืนสินค้า Returns&lt;/span&gt;
+      &lt;strong&gt;14&lt;/strong&gt;
+      &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;40.0%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stat" data-reverse&gt;
+      &lt;span&gt;เวลาจัดส่ง Time to fulfill&lt;/span&gt;
+      &lt;strong&gt;0.9 วัน&lt;/strong&gt;
+      &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;18.0%&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>aria-busy="true" แสดงวงหมุนแทนค่าระหว่างโหลด Loading</h2>
+            <p>
+              ใส่ <code>.loader</code> ไว้ใน stat แล้วสลับ
+              <code>aria-busy</code> ระหว่างดึงข้อมูล
+              ค่าและการเปลี่ยนแปลงจะถูกซ่อน
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label='aria-busy="true" แสดงวงหมุนแทนค่าระหว่างโหลด Loading'
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div class="card" style="max-width: 28rem">
+                      <div class="stat-group" id="stat-loading">
+                        <div class="stat" aria-busy="true">
+                          <span>คำสั่งซื้อใหม่ New orders</span>
+                          <strong>128</strong>
+                          <span data-trend="up"
+                            ><i
+                              class="icon icon-arrow-up"
+                              aria-hidden="true"
+                            ></i
+                            >12.5%</span
+                          >
+                          <span
+                            class="loader"
+                            role="status"
+                            aria-label="กำลังโหลด Loading"
+                          ></span>
+                        </div>
+                        <div class="stat" aria-busy="true">
+                          <span>สินค้าที่สั่ง Items ordered</span>
+                          <strong>342</strong>
+                          <span data-trend="up"
+                            ><i
+                              class="icon icon-arrow-up"
+                              aria-hidden="true"
+                            ></i
+                            >8.1%</span
+                          >
+                          <span
+                            class="loader"
+                            role="status"
+                            aria-label="กำลังโหลด Loading"
+                          ></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="stat-busy-btn"
+                      >
+                        สลับการโหลด Toggle loading
+                      </button>
+                    </div>
+                  </div>
+                  <script>
+                    const busyBtn = document.getElementById("stat-busy-btn");
+                    busyBtn.addEventListener("click", () => {
+                      const group = document.getElementById("stat-loading");
+                      for (const s of group.children) {
+                        const busy = s.getAttribute("aria-busy") === "true";
+                        s.setAttribute("aria-busy", String(!busy));
+                      }
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div class="card" style="max-width: 28rem"&gt;
+    &lt;div class="stat-group" id="stat-loading"&gt;
+      &lt;div class="stat" aria-busy="true"&gt;
+        &lt;span&gt;คำสั่งซื้อใหม่ New orders&lt;/span&gt;
+        &lt;strong&gt;128&lt;/strong&gt;
+        &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.5%&lt;/span&gt;
+        &lt;span class="loader" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="stat" aria-busy="true"&gt;
+        &lt;span&gt;สินค้าที่สั่ง Items ordered&lt;/span&gt;
+        &lt;strong&gt;342&lt;/strong&gt;
+        &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;8.1%&lt;/span&gt;
+        &lt;span class="loader" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="stat-busy-btn"&gt;สลับการโหลด Toggle loading&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const busyBtn = document.getElementById("stat-busy-btn");
+  busyBtn.addEventListener("click", () =&gt; {
+    const group = document.getElementById("stat-loading");
+    for (const s of group.children) {
+      const busy = s.getAttribute("aria-busy") === "true";
+      s.setAttribute("aria-busy", String(!busy));
+    }
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ตัวเลือกข้างกลุ่มอยู่นอกกลุ่ม A control beside the group stays
+              outside it
+            </h2>
+            <p>
+              ปุ่มเลือกช่วงเวลาอยู่ในการ์ด
+              <code>data-direction="row"</code> ข้าง
+              <code>.stat-group</code> ไม่ใช่ข้างใน เพราะกลุ่มตัดส่วนที่ล้นออก
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ตัวเลือกข้างกลุ่มอยู่นอกกลุ่ม A control beside the group stays outside it"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card" data-direction="row">
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="sm"
+                        popovertarget="stat-period"
+                      >
+                        30 วัน 30 days
+                        <i
+                          class="icon icon-chevron-down"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <div class="dropdown" id="stat-period" popover>
+                        <button
+                          type="button"
+                          popovertarget="stat-period"
+                          popovertargetaction="hide"
+                        >
+                          วันนี้ Today
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="stat-period"
+                          popovertargetaction="hide"
+                        >
+                          7 วัน 7 days
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="stat-period"
+                          popovertargetaction="hide"
+                        >
+                          30 วัน 30 days
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="stat-period"
+                          popovertargetaction="hide"
+                        >
+                          90 วัน 90 days
+                        </button>
+                      </div>
+                    </div>
+                    <div class="stat-group">
+                      <div class="stat">
+                        <span>คำสั่งซื้อใหม่ New orders</span>
+                        <strong>128</strong>
+                        <span data-trend="up"
+                          ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                          >12.5%</span
+                        >
+                      </div>
+                      <div class="stat">
+                        <span>สินค้าที่สั่ง Items ordered</span>
+                        <strong>342</strong>
+                        <span data-trend="up"
+                          ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                          >8.1%</span
+                        >
+                      </div>
+                      <div class="stat" data-reverse>
+                        <span>คืนสินค้า Returns</span>
+                        <strong>6</strong>
+                        <span data-trend="down"
+                          ><i
+                            class="icon icon-arrow-down"
+                            aria-hidden="true"
+                          ></i
+                          >25.0%</span
+                        >
+                      </div>
+                      <div class="stat">
+                        <span>จัดส่งแล้ว Fulfilled</span>
+                        <strong>117</strong>
+                        <span data-trend="up"
+                          ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                          >9.3%</span
+                        >
+                      </div>
+                      <div class="stat">
+                        <span>เวลาจัดส่ง Time to fulfill</span>
+                        <strong>1.4 วัน</strong>
+                      </div>
+                      <div class="stat">
+                        <span>ถึงลูกค้าแล้ว Delivered</span>
+                        <strong>102</strong>
+                        <span data-trend="up"
+                          ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                          >3.0%</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card" data-direction="row"&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="sm" popovertarget="stat-period"&gt;
+      30 วัน 30 days
+      &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="dropdown" id="stat-period" popover&gt;
+      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;วันนี้ Today&lt;/button&gt;
+      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;7 วัน 7 days&lt;/button&gt;
+      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;30 วัน 30 days&lt;/button&gt;
+      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;90 วัน 90 days&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="stat-group"&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;คำสั่งซื้อใหม่ New orders&lt;/span&gt;
+      &lt;strong&gt;128&lt;/strong&gt;
+      &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.5%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;สินค้าที่สั่ง Items ordered&lt;/span&gt;
+      &lt;strong&gt;342&lt;/strong&gt;
+      &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;8.1%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stat" data-reverse&gt;
+      &lt;span&gt;คืนสินค้า Returns&lt;/span&gt;
+      &lt;strong&gt;6&lt;/strong&gt;
+      &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;25.0%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;จัดส่งแล้ว Fulfilled&lt;/span&gt;
+      &lt;strong&gt;117&lt;/strong&gt;
+      &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;9.3%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;เวลาจัดส่ง Time to fulfill&lt;/span&gt;
+      &lt;strong&gt;1.4 วัน&lt;/strong&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+      &lt;span&gt;ถึงลูกค้าแล้ว Delivered&lt;/span&gt;
+      &lt;strong&gt;102&lt;/strong&gt;
+      &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;3.0%&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ตัวเลขเล็กที่เป็นลิงก์ข้างชื่อหน้า Linked small stats beside a
+              page title
+            </h2>
+            <p>
+              <code>data-size="sm"</code> เป็นกล่องเล็กจัดกลาง ตัวหนึ่งเป็น
+              <code>data-variant="danger"</code> อีกตัวยังโหลดอยู่
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ตัวเลขเล็กที่เป็นลิงก์ข้างชื่อหน้า Linked small stats beside a page title"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <header class="page-header">
+                    <h1>คำสั่งซื้อ Orders</h1>
+                    <div>
+                      <a
+                        href="#"
+                        class="stat"
+                        data-size="sm"
+                        data-variant="danger"
+                      >
+                        <span>ถูกปฏิเสธ Rejected</span>
+                        <strong>24</strong>
+                      </a>
+                      <a href="#" class="stat" data-size="sm">
+                        <span>พักไว้ On hold</span>
+                        <strong>2</strong>
+                      </a>
+                      <a href="#" class="stat" data-size="sm">
+                        <span>รอจัดส่ง Unfulfilled</span>
+                        <strong>6</strong>
+                      </a>
+                      <a href="#" class="stat" data-size="sm" aria-busy="true">
+                        <span>กำลังดำเนินการ Processing</span>
+                        <strong>0</strong>
+                        <span
+                          class="loader"
+                          role="status"
+                          aria-label="กำลังโหลด Loading"
+                        ></span>
+                      </a>
+                      <a href="#" class="btn" data-variant="primary"
+                        >สร้างคำสั่งซื้อ Create order</a
+                      >
+                    </div>
+                  </header>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;header class="page-header"&gt;
+  &lt;h1&gt;คำสั่งซื้อ Orders&lt;/h1&gt;
+  &lt;div&gt;
+    &lt;a href="#" class="stat" data-size="sm" data-variant="danger"&gt;
+      &lt;span&gt;ถูกปฏิเสธ Rejected&lt;/span&gt;
+      &lt;strong&gt;24&lt;/strong&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="stat" data-size="sm"&gt;
+      &lt;span&gt;พักไว้ On hold&lt;/span&gt;
+      &lt;strong&gt;2&lt;/strong&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="stat" data-size="sm"&gt;
+      &lt;span&gt;รอจัดส่ง Unfulfilled&lt;/span&gt;
+      &lt;strong&gt;6&lt;/strong&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="stat" data-size="sm" aria-busy="true"&gt;
+      &lt;span&gt;กำลังดำเนินการ Processing&lt;/span&gt;
+      &lt;strong&gt;0&lt;/strong&gt;
+      &lt;span class="loader" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="btn" data-variant="primary"&gt;สร้างคำสั่งซื้อ Create order&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ตัวเลขที่เลือกว่ากราฟแสดงอะไร Stats that pick what a chart shows
+            </h2>
+            <p>
+              stat เป็น <code>button</code> ตัวที่เลือกอยู่
+              <code>aria-pressed="true"</code> และ
+              <code>data-even</code> ที่กลุ่มทำให้ทุกช่องกว้างเท่ากัน
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ตัวเลขที่เลือกว่ากราฟแสดงอะไร Stats that pick what a chart shows"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <div class="stat-group" data-even id="stat-pick">
+                      <button type="button" class="stat" aria-pressed="false">
+                        <span>ผู้เข้าชมใหม่ New sessions</span>
+                        <strong>4,812</strong>
+                        <span data-trend="up"
+                          ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                          >12.4%</span
+                        >
+                      </button>
+                      <button type="button" class="stat" aria-pressed="false">
+                        <span>คำสั่งซื้อ Orders</span>
+                        <strong>238</strong>
+                        <span data-trend="down"
+                          ><i
+                            class="icon icon-arrow-down"
+                            aria-hidden="true"
+                          ></i
+                          >3.2%</span
+                        >
+                      </button>
+                      <button type="button" class="stat" aria-pressed="true">
+                        <span>ยอดขาย Sales</span>
+                        <strong>฿214,026</strong>
+                        <span data-trend="down"
+                          ><i
+                            class="icon icon-arrow-down"
+                            aria-hidden="true"
+                          ></i
+                          >5.7%</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <script>
+                    document
+                      .getElementById("stat-pick")
+                      .addEventListener("click", (e) => {
+                        const picked = e.target.closest(".stat");
+                        if (!picked) return;
+                        for (const s of e.currentTarget.children) {
+                          s.setAttribute("aria-pressed", String(s === picked));
+                        }
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;div class="stat-group" data-even id="stat-pick"&gt;
+    &lt;button type="button" class="stat" aria-pressed="false"&gt;
+      &lt;span&gt;ผู้เข้าชมใหม่ New sessions&lt;/span&gt;
+      &lt;strong&gt;4,812&lt;/strong&gt;
+      &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.4%&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="stat" aria-pressed="false"&gt;
+      &lt;span&gt;คำสั่งซื้อ Orders&lt;/span&gt;
+      &lt;strong&gt;238&lt;/strong&gt;
+      &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;3.2%&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button type="button" class="stat" aria-pressed="true"&gt;
+      &lt;span&gt;ยอดขาย Sales&lt;/span&gt;
+      &lt;strong&gt;฿214,026&lt;/strong&gt;
+      &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;5.7%&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("stat-pick").addEventListener("click", (e) =&gt; {
+    const picked = e.target.closest(".stat");
+    if (!picked) return;
+    for (const s of e.currentTarget.children) {
+      s.setAttribute("aria-pressed", String(s === picked));
+    }
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>กล่องหลายช่องแบบเดิม Legacy multi-cell box</h2>
+            <p>
+              <code>dl.stat</code> ยังใช้ได้: แต่ละ <code>div</code> มี
+              <code>dt</code> ป้ายและ <code>dd</code> ค่า สำหรับงานใหม่ใช้
+              <code>.card &gt; .stat-group</code> แทน
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="กล่องหลายช่องแบบเดิม Legacy multi-cell box"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
                   <dl class="stat">
                     <div>
                       <dt>รายได้ Revenue</dt>
@@ -374,27 +1363,17 @@
                       <dd data-variant="ok">+12.4% จากเดือนก่อน</dd>
                     </div>
                     <div>
-                      <dt>คำสั่งซื้อ Orders</dt>
-                      <dd>1,284</dd>
-                      <dd>+3.1%</dd>
-                    </div>
-                    <div>
                       <dt>คืนสินค้า Refunds</dt>
                       <dd>18</dd>
                       <dd data-variant="danger">+2 รายการ</dd>
-                    </div>
-                    <div>
-                      <dt>ลูกค้าใหม่ New customers</dt>
-                      <dd>342</dd>
-                      <dd>เท่าเดิม Flat</dd>
                     </div>
                   </dl>
                 </div>
               </div>
               <div
                 role="tabpanel"
-                id="ex1-c"
-                aria-labelledby="ex1-tc"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
                 tabindex="0"
                 hidden
               >
@@ -405,19 +1384,9 @@
     &lt;dd data-variant="ok"&gt;+12.4% จากเดือนก่อน&lt;/dd&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;dt&gt;คำสั่งซื้อ Orders&lt;/dt&gt;
-    &lt;dd&gt;1,284&lt;/dd&gt;
-    &lt;dd&gt;+3.1%&lt;/dd&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
     &lt;dt&gt;คืนสินค้า Refunds&lt;/dt&gt;
     &lt;dd&gt;18&lt;/dd&gt;
     &lt;dd data-variant="danger"&gt;+2 รายการ&lt;/dd&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;dt&gt;ลูกค้าใหม่ New customers&lt;/dt&gt;
-    &lt;dd&gt;342&lt;/dd&gt;
-    &lt;dd&gt;เท่าเดิม Flat&lt;/dd&gt;
   &lt;/div&gt;
 &lt;/dl&gt;</code></pre>
               </div>
@@ -426,30 +1395,116 @@
           <section>
             <h2>Attributes</h2>
             <div class="card">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Attribute / element</th>
-                    <th scope="col">Values</th>
-                    <th scope="col">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>&gt; div</code></td>
-                    <td></td>
-                    <td>
-                      หนึ่งช่อง: <code>dt</code> ป้าย, <code>dd</code> ตัวเลข,
-                      <code>dd</code> ตัวที่สองเป็นรายละเอียด
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><code>dd[data-variant]</code></td>
-                    <td><code>ok, danger</code></td>
-                    <td>สีของรายละเอียดตามสถานะ</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="scroll-area" tabindex="0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Attribute / element</th>
+                      <th scope="col">Values</th>
+                      <th scope="col">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>.stat</code></td>
+                      <td>
+                        <code>div</code>, <code>a</code>, <code>button</code>
+                      </td>
+                      <td>
+                        ตัวเลขหนึ่งค่า; <code>a</code> เมื่อทั้งช่องเป็นลิงก์
+                        (ค่าสี accent),
+                        <code>button</code> เมื่อใช้เลือกสิ่งที่แสดง
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; span:first-child</code></td>
+                      <td></td>
+                      <td>
+                        ป้ายสีเทา 12px ตัดด้วย … เมื่อไม่พอ; ใส่
+                        <code>button</code> ไอคอนต่อท้ายเพื่อเปิดคำอธิบายได้
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; strong</code></td>
+                      <td></td>
+                      <td>ค่า 24px ตัวเลขกว้างเท่ากัน</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; span[data-trend]</code></td>
+                      <td>
+                        <code>up</code>, <code>down</code>, ไม่ใส่ค่า = เทา
+                      </td>
+                      <td>
+                        การเปลี่ยนแปลง ชิดขวาบนแถวเดียวกับค่า up = สี ok, down =
+                        สี danger; ใส่ไอคอนนำหน้า
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; .loader</code></td>
+                      <td></td>
+                      <td>
+                        วงหมุน แสดงแทนค่าเมื่อ
+                        <code>aria-busy="true"</code> (ซ่อนเมื่อไม่โหลด)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>aria-busy</code></td>
+                      <td><code>true</code>; ไม่ใส่ = แสดงค่า (default)</td>
+                      <td>
+                        ซ่อนค่าและการเปลี่ยนแปลง แสดง <code>.loader</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>aria-pressed</code></td>
+                      <td><code>true</code>, <code>false</code></td>
+                      <td>
+                        บน <code>button.stat</code>:
+                        ตัวที่เลือกอยู่มีพื้นเทาเข้ม
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>data-reverse</code></td>
+                      <td>(boolean)</td>
+                      <td>
+                        สลับสี: ขึ้นเป็น danger ลงเป็น ok
+                        สำหรับตัวเลขที่ขึ้นแล้วแย่
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>data-variant</code></td>
+                      <td><code>danger</code>; ไม่ใส่ = ปกติ (default)</td>
+                      <td>ป้ายและค่าเป็นสีแดง สำหรับจำนวนที่เป็นปัญหา</td>
+                    </tr>
+                    <tr>
+                      <td><code>data-size</code></td>
+                      <td><code>sm</code>; ไม่ใส่ = ปกติ (default)</td>
+                      <td>กล่องเล็กมีขอบ จัดกลาง สำหรับวางข้างชื่อหน้า</td>
+                    </tr>
+                    <tr>
+                      <td><code>.stat-group</code></td>
+                      <td><code>div</code></td>
+                      <td>
+                        แถวของ stat คั่นด้วยเส้น ขึ้นบรรทัดใหม่บนจอแคบ ใส่ใน
+                        <code>.card</code> จะชิดขอบ
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>.stat-group[data-even]</code></td>
+                      <td>(boolean)</td>
+                      <td>ทุกช่องกว้างเท่ากัน แต่ไม่แคบกว่าข้อความ</td>
+                    </tr>
+                    <tr>
+                      <td><code>dl.stat</code></td>
+                      <td><code>div &gt; dt + dd + dd</code></td>
+                      <td>
+                        แบบเดิม: กล่องหลายช่องในกรอบเดียว;
+                        <code>dd[data-variant]</code> = <code>ok</code>,
+                        <code>danger</code>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         </main>
