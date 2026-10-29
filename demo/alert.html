@@ -315,12 +315,18 @@
             <div>
               <h1>Alert</h1>
               <p>
-                ข้อความแจ้งเตือนในหน้า ค่าเริ่มต้นเป็นกลาง
-                สถานะใช้พื้นอ่อนตัวอักษรเข้ม
+                ข้อความแจ้งเตือนในหน้า: ไอคอน หัวข้อ เนื้อความ และปุ่ม
+                ค่าเริ่มต้นเป็นกลาง สถานะใช้พื้นอ่อนตัวอักษรเข้ม
               </p>
             </div>
           </header>
           <section>
+            <h2>สถานะ Status</h2>
+            <p>
+              ค่าเริ่มต้นสำหรับข้อมูลทั่วไป ใช้
+              <code>data-variant</code> เมื่อข้อความมีสถานะ ใช้
+              <code>role="alert"</code> เฉพาะข้อผิดพลาดที่ต้องแจ้งทันที
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -350,30 +356,43 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="stack">
+                  <div class="stack" data-gap="sm">
                     <div class="alert" role="status">
+                      <i class="icon icon-terminal" aria-hidden="true"></i>
+                      <strong>ได้รับคำสั่งซื้อ Order received</strong>
+                      <p>คำสั่งซื้อ #1042 รอยืนยันการชำระเงิน</p>
+                    </div>
+                    <div class="alert" data-variant="info" role="status">
                       <i class="icon icon-info" aria-hidden="true"></i>
-                      <div>
-                        <strong>ปิดปรับปรุงระบบ Maintenance</strong>
-                        <p>คืนนี้ 23:00-23:30 น. Tonight 23:00-23:30.</p>
-                      </div>
+                      <strong>อัปเดตค่าจัดส่ง Shipping rates updated</strong>
+                      <p>
+                        อัตราขนส่งใหม่ใช้กับคำสั่งซื้อตั้งแต่วันนี้ New carrier
+                        rates apply from today.
+                      </p>
                     </div>
                     <div class="alert" data-variant="ok" role="status">
-                      <i class="icon icon-check" aria-hidden="true"></i>
-                      <div>
-                        <strong>บันทึกแล้ว Saved</strong>
-                        <p>อัปเดตสินค้า 24 รายการ 24 products updated.</p>
-                      </div>
+                      <i class="icon icon-circle-check" aria-hidden="true"></i>
+                      <strong>ชำระเงินแล้ว Payment captured</strong>
+                      <p>รับชำระ ฿2,480.00 แล้ว พร้อมจัดส่ง Ready to fulfil.</p>
                     </div>
-                    <div class="alert" data-variant="danger" role="alert">
+                    <div class="alert" data-variant="warning" role="status">
                       <i
                         class="icon icon-triangle-alert"
                         aria-hidden="true"
                       ></i>
-                      <div>
-                        <strong>ชำระเงินไม่สำเร็จ Payment failed</strong>
-                        <p>บัตรหมดอายุ อัปเดตบัตรเพื่อดำเนินการต่อ</p>
-                      </div>
+                      <strong>สินค้าใกล้หมด Low stock</strong>
+                      <p>
+                        3 ตัวเลือกสินค้าต่ำกว่าจุดสั่งซื้อ 3 variants are below
+                        their reorder point.
+                      </p>
+                    </div>
+                    <div class="alert" data-variant="danger" role="alert">
+                      <i class="icon icon-circle-alert" aria-hidden="true"></i>
+                      <strong>ชำระเงินไม่สำเร็จ Payment failed</strong>
+                      <p>
+                        บัตรถูกปฏิเสธ ขอให้ลูกค้าใช้วิธีอื่น The card was
+                        declined.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -385,28 +404,218 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="stack"&gt;
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
   &lt;div class="alert" role="status"&gt;
+    &lt;i class="icon icon-terminal" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;ได้รับคำสั่งซื้อ Order received&lt;/strong&gt;
+    &lt;p&gt;คำสั่งซื้อ #1042 รอยืนยันการชำระเงิน&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="alert" data-variant="info" role="status"&gt;
     &lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;div&gt;
-      &lt;strong&gt;ปิดปรับปรุงระบบ Maintenance&lt;/strong&gt;
-      &lt;p&gt;คืนนี้ 23:00-23:30 น. Tonight 23:00-23:30.&lt;/p&gt;
-    &lt;/div&gt;
+    &lt;strong&gt;อัปเดตค่าจัดส่ง Shipping rates updated&lt;/strong&gt;
+    &lt;p&gt;อัตราขนส่งใหม่ใช้กับคำสั่งซื้อตั้งแต่วันนี้ New carrier rates apply from today.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="alert" data-variant="ok" role="status"&gt;
-    &lt;i class="icon icon-check" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;div&gt;
-      &lt;strong&gt;บันทึกแล้ว Saved&lt;/strong&gt;
-      &lt;p&gt;อัปเดตสินค้า 24 รายการ 24 products updated.&lt;/p&gt;
-    &lt;/div&gt;
+    &lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;ชำระเงินแล้ว Payment captured&lt;/strong&gt;
+    &lt;p&gt;รับชำระ ฿2,480.00 แล้ว พร้อมจัดส่ง Ready to fulfil.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="alert" data-variant="warning" role="status"&gt;
+    &lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;สินค้าใกล้หมด Low stock&lt;/strong&gt;
+    &lt;p&gt;3 ตัวเลือกสินค้าต่ำกว่าจุดสั่งซื้อ 3 variants are below their reorder point.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="alert" data-variant="danger" role="alert"&gt;
-    &lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;div&gt;
-      &lt;strong&gt;ชำระเงินไม่สำเร็จ Payment failed&lt;/strong&gt;
-      &lt;p&gt;บัตรหมดอายุ อัปเดตบัตรเพื่อดำเนินการต่อ&lt;/p&gt;
-    &lt;/div&gt;
+    &lt;i class="icon icon-circle-alert" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;ชำระเงินไม่สำเร็จ Payment failed&lt;/strong&gt;
+    &lt;p&gt;บัตรถูกปฏิเสธ ขอให้ลูกค้าใช้วิธีอื่น The card was declined.&lt;/p&gt;
   &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>พร้อมปุ่ม With actions</h2>
+            <p>
+              ใส่ปุ่มใน <code>&lt;footer&gt;</code> ใต้เนื้อความ ใช้ปุ่มขนาดเล็ก
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="alert" data-variant="warning" role="status">
+                    <i class="icon icon-triangle-alert" aria-hidden="true"></i>
+                    <strong
+                      >แพ็กเกจหมดอายุในอีก 3 วัน Subscription ends in 3
+                      days</strong
+                    >
+                    <p>
+                      ต่ออายุเพื่อให้ระบบจัดส่งอัตโนมัติทำงานต่อ Renew to keep
+                      fulfilment automations running.
+                    </p>
+                    <footer>
+                      <button type="button" class="btn" data-size="sm">
+                        ต่ออายุ Renew
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="sm"
+                      >
+                        เตือนภายหลัง Remind me later
+                      </button>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="alert" data-variant="warning" role="status"&gt;
+  &lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;strong&gt;แพ็กเกจหมดอายุในอีก 3 วัน Subscription ends in 3 days&lt;/strong&gt;
+  &lt;p&gt;ต่ออายุเพื่อให้ระบบจัดส่งอัตโนมัติทำงานต่อ Renew to keep fulfilment automations running.&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;ต่ออายุ Renew&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="sm"&gt;เตือนภายหลัง Remind me later&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>หัวข้ออย่างเดียว Title only</h2>
+            <p>ข้อความสั้นที่ไม่ต้องอธิบายเพิ่ม</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="alert" data-variant="ok" role="status">
+                    <i class="icon icon-circle-check" aria-hidden="true"></i>
+                    <strong>บันทึกแล้ว Changes saved</strong>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="alert" data-variant="ok" role="status"&gt;
+  &lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;strong&gt;บันทึกแล้ว Changes saved&lt;/strong&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ไม่มีไอคอน Without icon</h2>
+            <p>ไม่ใส่ไอคอน ข้อความจะเต็มความกว้าง</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="alert" data-variant="info" role="note">
+                    <strong>ปิดปรับปรุงระบบ Scheduled maintenance</strong>
+                    <p>
+                      Admin API อ่านได้อย่างเดียววันอาทิตย์ 02:00-04:00 น.
+                      Read-only on Sunday 02:00-04:00.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="alert" data-variant="info" role="note"&gt;
+  &lt;strong&gt;ปิดปรับปรุงระบบ Scheduled maintenance&lt;/strong&gt;
+  &lt;p&gt;Admin API อ่านได้อย่างเดียววันอาทิตย์ 02:00-04:00 น. Read-only on Sunday 02:00-04:00.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
@@ -424,14 +633,54 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td><code>.alert</code></td>
+                    <td></td>
+                    <td>
+                      กล่องแจ้งเตือน: grid สองคอลัมน์ ไอคอนอยู่ซ้าย
+                      ลูกอื่นทั้งหมดอยู่คอลัมน์ขวา
+                    </td>
+                  </tr>
+                  <tr>
                     <td><code>data-variant</code></td>
-                    <td><code>ok, danger</code></td>
-                    <td>ค่าเริ่มต้นเป็นกลาง</td>
+                    <td>
+                      <code>ok</code>, <code>warning</code>, <code>info</code>,
+                      <code>danger</code> (ไม่ใส่ = กลาง)
+                    </td>
+                    <td>
+                      สีพื้นอ่อนและตัวอักษรตามสถานะ ค่าเริ่มต้นพื้น surface ขอบ
+                      1px
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; .icon</code></td>
+                    <td></td>
+                    <td>ไม่บังคับ ไอคอนตัวแรก ถ้าไม่มี ข้อความเต็มความกว้าง</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; strong, &gt; h2, h3, h4</code></td>
+                    <td></td>
+                    <td>หัวข้อ ตัวหนา 14px</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; p, &gt; section</code></td>
+                    <td></td>
+                    <td>เนื้อความ</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer</code></td>
+                    <td></td>
+                    <td>แถวปุ่ม ห่างจากเนื้อความ 8px</td>
                   </tr>
                   <tr>
                     <td><code>role</code></td>
-                    <td><code>status, alert</code></td>
-                    <td><code>alert</code> สำหรับข้อผิดพลาดที่ต้องแจ้งทันที</td>
+                    <td>
+                      <code>status</code>, <code>alert</code>, <code>note</code>
+                    </td>
+                    <td>
+                      <code>status</code> แจ้งทั่วไป
+                      <code>alert</code> ข้อผิดพลาดที่ต้องประกาศทันที
+                      <code>note</code> ข้อความคงที่ในหน้า
+                    </td>
                   </tr>
                 </tbody>
               </table>

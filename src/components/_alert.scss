@@ -1,23 +1,43 @@
-// Alert: icon + text block. Neutral by default, soft status variants.
+// Alert: optional icon, then a title (h2-h4 or strong), a <p>/<section> body and a <footer> of actions.
+// Neutral by default; status variants use the soft status colours.
 @layer components {
   :where(.alert) {
-    display: flex;
-    gap: var(--space-3);
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-1) var(--space-3);
     padding: var(--space-3) var(--space-4);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     background: var(--surface);
   }
 
+  // Without an icon the text takes the whole width.
+  :where(.alert:not(:has(> .icon))) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  // Everything but the icon sits in the last column.
+  :where(.alert > :not(.icon)) {
+    grid-column: -2;
+  }
+
   :where(.alert > .icon) {
     margin-top: 0.2em;
   }
 
-  :where(.alert strong) {
+  :where(.alert > :is(h2, h3, h4), .alert strong) {
+    font-size: var(--text-base);
     font-weight: 600;
   }
 
-  @each $v in (ok, danger) {
+  :where(.alert > footer) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  @each $v in (ok, danger, warning, info) {
     :where(.alert[data-variant="#{$v}"]) {
       border-color: transparent;
       background: var(--#{$v}-bg);
