@@ -116,9 +116,11 @@
   font-size: 0.6875rem;
 }
 
-/* Token and attribute names stay on one line. */
-.docs-main .table td:first-child code {
-  white-space: nowrap;
+/* Token and attribute names stay on one line where there is room. */
+@media (width >= 48rem) {
+  .docs-main .table td:first-child code {
+    white-space: nowrap;
+  }
 }
 
 /* Home */
