@@ -332,14 +332,21 @@
             <div>
               <h1>Item</h1>
               <p>
-                แถวเดียวที่มี figure (ไอคอนหรือ avatar), section (หัวข้อ +
-                คำอธิบาย) และ aside (action)
+                หนึ่งแถว: <code>figure</code> (ไอคอน รูป avatar)
+                <code>section</code> (ชื่อและคำอธิบาย) และ
+                <code>aside</code> (ปุ่มหรือข้อมูลท้ายแถว)
               </p>
             </div>
           </header>
           <section>
+            <h2>การใช้งาน Usage</h2>
+            <p>
+              <code>article.item</code> สำหรับข้อมูล หรือ
+              <code>a.item</code> เมื่อทั้งแถวเป็นลิงก์ ทุกส่วนนอกจาก
+              <code>section</code> ใส่หรือไม่ใส่ก็ได้
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="Example">
+              <div role="tablist" aria-label="การใช้งาน Usage">
                 <button
                   type="button"
                   role="tab"
@@ -367,46 +374,19 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="item-group">
-                    <a class="item" href="#" data-variant="outline">
-                      <figure>
-                        <i class="icon icon-file" aria-hidden="true"></i>
-                      </figure>
-                      <section>
-                        <h3>ใบแจ้งหนี้ Invoice #1042</h3>
-                        <p>ออกเมื่อ 12 ต.ค. 2026</p>
-                      </section>
-                      <aside>
-                        <i
-                          class="icon icon-chevron-right"
-                          aria-hidden="true"
-                        ></i>
-                      </aside>
-                    </a>
-                    <article class="item" data-variant="ok">
-                      <figure>
-                        <i class="icon icon-check" aria-hidden="true"></i>
-                      </figure>
-                      <section>
-                        <h3>ชำระเงินแล้ว Paid</h3>
-                        <p>Payment received from สมชาย ใจดี</p>
-                      </section>
-                    </article>
-                    <article class="item" data-variant="muted" data-size="sm">
-                      <figure>
-                        <span class="avatar" data-size="sm">SK</span>
-                      </figure>
-                      <section>
-                        <h3>Suda Kaewmanee</h3>
-                        <p>suda@example.com</p>
-                      </section>
-                      <aside>
-                        <button type="button" class="btn" data-size="sm">
-                          แก้ไข Edit
-                        </button>
-                      </aside>
-                    </article>
-                  </div>
+                  <article class="item" data-variant="outline">
+                    <section>
+                      <h3>ส่งแบบปกติ Standard shipping</h3>
+                      <p>
+                        ถึงภายใน 3-5 วันทำการ Delivered in 3 to 5 business days.
+                      </p>
+                    </section>
+                    <aside>
+                      <button type="button" class="btn" data-size="sm">
+                        แก้ไข Edit
+                      </button>
+                    </aside>
+                  </article>
                 </div>
               </div>
               <div
@@ -416,70 +396,561 @@
                 tabindex="0"
                 hidden
               >
+                <pre><code>&lt;article class="item" data-variant="outline"&gt;
+  &lt;section&gt;
+    &lt;h3&gt;ส่งแบบปกติ Standard shipping&lt;/h3&gt;
+    &lt;p&gt;ถึงภายใน 3-5 วันทำการ Delivered in 3 to 5 business days.&lt;/p&gt;
+  &lt;/section&gt;
+  &lt;aside&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/button&gt;
+  &lt;/aside&gt;
+&lt;/article&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>สถานะ ok, warning, info และ danger Status variants</h2>
+            <p>
+              พื้นสีอ่อนตามสถานะ ไอคอนใน
+              <code>figure</code> เป็นสีเข้มของสถานะนั้น
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="สถานะ ok, warning, info และ danger Status variants"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="item-group">
+                    <article class="item" data-variant="ok">
+                      <figure>
+                        <i
+                          class="icon icon-circle-check"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>รับชำระเงินแล้ว Payment captured</h3>
+                        <p>ตัดบัตรที่ลงท้าย 4417 จำนวน ฿1,250.00</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="warning">
+                      <figure>
+                        <i
+                          class="icon icon-triangle-alert"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>สินค้าใกล้หมด Low stock</h3>
+                        <p>นาฬิกา Timeless Watch เหลือ 3 ชิ้น</p>
+                      </section>
+                      <aside>
+                        <button type="button" class="btn" data-size="sm">
+                          เติมสต็อก Restock
+                        </button>
+                      </aside>
+                    </article>
+                    <article class="item" data-variant="info">
+                      <figure>
+                        <i class="icon icon-info" aria-hidden="true"></i>
+                      </figure>
+                      <section>
+                        <h3>คำสั่งซื้อถูกพักไว้ Order on hold</h3>
+                        <p>
+                          รอลูกค้ายืนยันที่อยู่ Waiting for the customer to
+                          confirm the address.
+                        </p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="danger">
+                      <figure>
+                        <i
+                          class="icon icon-circle-alert"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>ชำระเงินไม่สำเร็จ Payment failed</h3>
+                        <p>บัตรถูกปฏิเสธ The card was declined.</p>
+                      </section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
                 <pre><code>&lt;div class="item-group"&gt;
-  &lt;a class="item" href="#" data-variant="outline"&gt;
-    &lt;figure&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
-    &lt;section&gt;
-      &lt;h3&gt;ใบแจ้งหนี้ Invoice #1042&lt;/h3&gt;
-      &lt;p&gt;ออกเมื่อ 12 ต.ค. 2026&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;aside&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/aside&gt;
-  &lt;/a&gt;
   &lt;article class="item" data-variant="ok"&gt;
-    &lt;figure&gt;&lt;i class="icon icon-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
     &lt;section&gt;
-      &lt;h3&gt;ชำระเงินแล้ว Paid&lt;/h3&gt;
-      &lt;p&gt;Payment received from สมชาย ใจดี&lt;/p&gt;
+      &lt;h3&gt;รับชำระเงินแล้ว Payment captured&lt;/h3&gt;
+      &lt;p&gt;ตัดบัตรที่ลงท้าย 4417 จำนวน ฿1,250.00&lt;/p&gt;
     &lt;/section&gt;
   &lt;/article&gt;
-  &lt;article class="item" data-variant="muted" data-size="sm"&gt;
-    &lt;figure&gt;&lt;span class="avatar" data-size="sm"&gt;SK&lt;/span&gt;&lt;/figure&gt;
+  &lt;article class="item" data-variant="warning"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
     &lt;section&gt;
-      &lt;h3&gt;Suda Kaewmanee&lt;/h3&gt;
-      &lt;p&gt;suda@example.com&lt;/p&gt;
+      &lt;h3&gt;สินค้าใกล้หมด Low stock&lt;/h3&gt;
+      &lt;p&gt;นาฬิกา Timeless Watch เหลือ 3 ชิ้น&lt;/p&gt;
     &lt;/section&gt;
-    &lt;aside&gt;&lt;button type="button" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/button&gt;&lt;/aside&gt;
+    &lt;aside&gt;
+      &lt;button type="button" class="btn" data-size="sm"&gt;เติมสต็อก Restock&lt;/button&gt;
+    &lt;/aside&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="info"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;คำสั่งซื้อถูกพักไว้ Order on hold&lt;/h3&gt;
+      &lt;p&gt;รอลูกค้ายืนยันที่อยู่ Waiting for the customer to confirm the address.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="danger"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-circle-alert" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;ชำระเงินไม่สำเร็จ Payment failed&lt;/h3&gt;
+      &lt;p&gt;บัตรถูกปฏิเสธ The card was declined.&lt;/p&gt;
+    &lt;/section&gt;
   &lt;/article&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
+            <h2>ปกติ เส้นขอบ และพื้นเทา Default, outline and muted</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ปกติ เส้นขอบ และพื้นเทา Default, outline and muted"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="item-group">
+                    <article class="item">
+                      <section>
+                        <h3>ปกติ Default</h3>
+                        <p>ไม่มีขอบ ไม่มีพื้น No border and no fill.</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="outline">
+                      <section>
+                        <h3>เส้นขอบ Outline</h3>
+                        <p>มีเส้นขอบรอบแถว A border around the item.</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="muted">
+                      <section>
+                        <h3>พื้นเทา Muted</h3>
+                        <p>พื้นสีอ่อน ไม่มีขอบ A soft fill and no border.</p>
+                      </section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item-group"&gt;
+  &lt;article class="item"&gt;
+    &lt;section&gt;
+      &lt;h3&gt;ปกติ Default&lt;/h3&gt;
+      &lt;p&gt;ไม่มีขอบ ไม่มีพื้น No border and no fill.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline"&gt;
+    &lt;section&gt;
+      &lt;h3&gt;เส้นขอบ Outline&lt;/h3&gt;
+      &lt;p&gt;มีเส้นขอบรอบแถว A border around the item.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="muted"&gt;
+    &lt;section&gt;
+      &lt;h3&gt;พื้นเทา Muted&lt;/h3&gt;
+      &lt;p&gt;พื้นสีอ่อน ไม่มีขอบ A soft fill and no border.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ขนาด ปกติ sm และ xs Sizes: default, sm and xs</h2>
+            <p>
+              <code>xs</code> วางชื่อและคำอธิบายในบรรทัดเดียวกัน
+              เหมาะกับรายการแน่น ๆ
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ขนาด ปกติ sm และ xs Sizes: default, sm and xs"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="item-group">
+                    <article class="item" data-variant="outline">
+                      <figure><span class="avatar">สจ</span></figure>
+                      <section>
+                        <h3>สมชาย ใจดี</h3>
+                        <p>12 คำสั่งซื้อ 12 orders</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="outline" data-size="sm">
+                      <figure>
+                        <span class="avatar" data-size="sm">SK</span>
+                      </figure>
+                      <section>
+                        <h3>Suda Kaewmanee</h3>
+                        <p>4 คำสั่งซื้อ 4 orders</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="outline" data-size="xs">
+                      <figure>
+                        <span class="avatar" data-size="sm">วศ</span>
+                      </figure>
+                      <section>
+                        <h3>วิชัย ศรีสุข</h3>
+                        <p>1 คำสั่งซื้อ 1 order</p>
+                      </section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item-group"&gt;
+  &lt;article class="item" data-variant="outline"&gt;
+    &lt;figure&gt;&lt;span class="avatar"&gt;สจ&lt;/span&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;สมชาย ใจดี&lt;/h3&gt;
+      &lt;p&gt;12 คำสั่งซื้อ 12 orders&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-size="sm"&gt;
+    &lt;figure&gt;&lt;span class="avatar" data-size="sm"&gt;SK&lt;/span&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Suda Kaewmanee&lt;/h3&gt;
+      &lt;p&gt;4 คำสั่งซื้อ 4 orders&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-size="xs"&gt;
+    &lt;figure&gt;&lt;span class="avatar" data-size="sm"&gt;วศ&lt;/span&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;วิชัย ศรีสุข&lt;/h3&gt;
+      &lt;p&gt;1 คำสั่งซื้อ 1 order&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              รายการลิงก์คั่นด้วยเส้น A list of links with lines between them
+            </h2>
+            <p>
+              ใส่ <code>hr</code> ระหว่าง item ในกลุ่ม
+              แล้วระยะห่างจะมาจากเส้นแทน
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="รายการลิงก์คั่นด้วยเส้น A list of links with lines between them"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav class="item-group" aria-label="งานที่ต้องทำ To do">
+                    <a href="#" class="item">
+                      <figure>
+                        <i class="icon icon-truck" aria-hidden="true"></i>
+                      </figure>
+                      <section>
+                        <h3>
+                          6 คำสั่งซื้อรอจัดส่ง 6 unfulfilled orders to ship
+                        </h3>
+                      </section>
+                      <aside>
+                        <i
+                          class="icon icon-chevron-right"
+                          aria-hidden="true"
+                        ></i>
+                      </aside>
+                    </a>
+                    <hr />
+                    <a href="#" class="item">
+                      <figure>
+                        <i
+                          class="icon icon-shopping-bag"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>2 คำสั่งซื้อถูกพักไว้ 2 orders on hold</h3>
+                      </section>
+                      <aside>
+                        <i
+                          class="icon icon-chevron-right"
+                          aria-hidden="true"
+                        ></i>
+                      </aside>
+                    </a>
+                    <hr />
+                    <a href="#" class="item">
+                      <figure>
+                        <i
+                          class="icon icon-circle-alert"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>
+                          1 การแจ้งเตือนสต็อกต่ำ 1 low stock alert needs review
+                        </h3>
+                      </section>
+                      <aside>
+                        <i
+                          class="icon icon-chevron-right"
+                          aria-hidden="true"
+                        ></i>
+                      </aside>
+                    </a>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="item-group" aria-label="งานที่ต้องทำ To do"&gt;
+  &lt;a href="#" class="item"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;&lt;h3&gt;6 คำสั่งซื้อรอจัดส่ง 6 unfulfilled orders to ship&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/aside&gt;
+  &lt;/a&gt;
+  &lt;hr /&gt;
+  &lt;a href="#" class="item"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;&lt;h3&gt;2 คำสั่งซื้อถูกพักไว้ 2 orders on hold&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/aside&gt;
+  &lt;/a&gt;
+  &lt;hr /&gt;
+  &lt;a href="#" class="item"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-circle-alert" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;&lt;h3&gt;1 การแจ้งเตือนสต็อกต่ำ 1 low stock alert needs review&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/aside&gt;
+  &lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>Attributes</h2>
             <div class="card">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Attribute / element</th>
-                    <th scope="col">Values</th>
-                    <th scope="col">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>data-variant</code></td>
-                    <td><code>outline, muted, ok, danger</code></td>
-                    <td>ขอบ, พื้นเทา หรือพื้นสถานะแบบ soft</td>
-                  </tr>
-                  <tr>
-                    <td><code>data-size</code></td>
-                    <td><code>sm</code></td>
-                    <td>padding และ figure เล็กลง</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <code>&gt; figure / &gt; section / &gt; aside</code>
-                    </td>
-                    <td></td>
-                    <td>ไอคอนด้านหน้า, ข้อความ, action ด้านท้าย</td>
-                  </tr>
-                  <tr>
-                    <td><code>.item-group</code></td>
-                    <td></td>
-                    <td>ครอบหลาย item ใส่ <code>&lt;hr&gt;</code> คั่นได้</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="scroll-area" tabindex="0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Attribute / element</th>
+                      <th scope="col">Values</th>
+                      <th scope="col">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>.item</code></td>
+                      <td>
+                        <code>article</code>, <code>a</code>, <code>div</code>
+                      </td>
+                      <td>
+                        หนึ่งแถว flex: figure, section, aside;
+                        <code>a.item</code> มีพื้นเทาเมื่อ hover
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; figure</code></td>
+                      <td></td>
+                      <td>
+                        กล่อง 32px สำหรับไอคอน;
+                        <code>img</code> ข้างในจะกลมเต็มกล่อง;
+                        <code>.avatar</code> ใช้ขนาดของตัวเอง (ใส่
+                        <code>data-size="sm"</code> กับ item sm/xs)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; section</code></td>
+                      <td></td>
+                      <td>ข้อความ ยืดเต็มพื้นที่ที่เหลือ</td>
+                    </tr>
+                    <tr>
+                      <td><code>section h3</code></td>
+                      <td></td>
+                      <td>ชื่อ 14px น้ำหนัก 500</td>
+                    </tr>
+                    <tr>
+                      <td><code>section p</code></td>
+                      <td></td>
+                      <td>คำอธิบาย 12px สีเทา</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; aside</code></td>
+                      <td></td>
+                      <td>ปุ่ม ไอคอน หรือข้อมูลท้ายแถว สีเทา ไม่หด</td>
+                    </tr>
+                    <tr>
+                      <td><code>data-variant</code></td>
+                      <td>
+                        ไม่ใส่ = ปกติ (default), <code>outline</code>,
+                        <code>muted</code>, <code>ok</code>,
+                        <code>warning</code>, <code>info</code>,
+                        <code>danger</code>
+                      </td>
+                      <td>
+                        outline มีเส้นขอบพื้นขาว, muted พื้นเทา,
+                        สถานะใช้พื้นอ่อนและไอคอนสีสถานะ
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>data-size</code></td>
+                      <td>
+                        ไม่ใส่ = ปกติ (default), <code>sm</code>,
+                        <code>xs</code>
+                      </td>
+                      <td>
+                        sm: padding และ figure 24px; xs: figure 20px
+                        ชื่อและคำอธิบายอยู่บรรทัดเดียว
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>.item-group</code></td>
+                      <td>
+                        <code>div</code>, <code>nav</code>, <code>ul</code>
+                      </td>
+                      <td>รวมหลาย item ห่างกัน 4px</td>
+                    </tr>
+                    <tr>
+                      <td><code>.item-group &gt; hr</code></td>
+                      <td></td>
+                      <td>เส้นคั่นระหว่าง item (กลุ่มที่มี hr จะไม่มี gap)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         </main>

@@ -1,4 +1,4 @@
-// Item: one row with figure (icon/avatar), section (h3 + p) and aside (action).
+// Item: one row with figure (icon/avatar/image), section (h3 + p) and aside (action).
 @layer components {
   :where(.item) {
     display: flex;
@@ -16,15 +16,37 @@
     text-decoration: none;
   }
 
+  :where(a.item:focus-visible) {
+    outline-offset: -2px;
+  }
+
   :where(.item > figure) {
     display: grid;
     flex-shrink: 0;
     place-items: center;
     width: 2rem;
     height: 2rem;
+    overflow: hidden;
     border-radius: var(--radius-md);
     background: var(--subtle);
     color: var(--muted);
+  }
+
+  // An image fills the figure; an avatar brings its own size (data-size="sm" for small items).
+  :where(.item > figure:has(> :is(img, .avatar))) {
+    border-radius: 50%;
+    background: none;
+  }
+
+  :where(.item > figure:has(> .avatar)) {
+    width: auto;
+    height: auto;
+  }
+
+  :where(.item > figure > img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   :where(.item > section) {
@@ -59,7 +81,8 @@
     background: var(--subtle);
   }
 
-  @each $v in (ok, danger) {
+  // Status: soft fill, figure icon in the status colour.
+  @each $v in (ok, warning, danger, info) {
     :where(.item[data-variant="#{$v}"]) {
       background: var(--#{$v}-bg);
     }
@@ -68,15 +91,38 @@
       background: none;
       color: var(--#{$v}-fg);
     }
+
+    :where(.item[data-variant="#{$v}"] p) {
+      color: var(--fg);
+    }
   }
 
   :where(.item[data-size="sm"]) {
+    gap: var(--space-2);
     padding: var(--space-2) var(--space-3);
   }
 
-  :where(.item[data-size="sm"] > figure) {
+  :where(.item[data-size="sm"] > figure:not(:has(> .avatar))) {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  :where(.item[data-size="xs"]) {
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+  }
+
+  :where(.item[data-size="xs"] > figure:not(:has(> .avatar))) {
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: var(--text-sm);
+  }
+
+  :where(.item[data-size="xs"] > section) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--space-2);
   }
 
   :where(.item-group) {
@@ -84,7 +130,12 @@
     gap: var(--space-1);
   }
 
+  // Lines between items: no gap, the hr does the spacing.
+  :where(.item-group:has(> hr)) {
+    gap: 0;
+  }
+
   :where(.item-group > hr) {
-    margin: 0 var(--space-4);
+    margin: var(--space-1) var(--space-4);
   }
 }
