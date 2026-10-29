@@ -17,6 +17,10 @@
   --danger-fg: #f08a8a;
   --neutral-bg: #1e292f;
   --neutral-fg: #a9b8be;
+  --warning-bg: #33270f;
+  --warning-fg: #f0c060;
+  --info-bg: #12263a;
+  --info-fg: #7fb8ea;
   --overlay: rgb(0 0 0 / 0.6);
 }
 
@@ -37,6 +41,10 @@
     --danger-fg: #b42323;
     --neutral-bg: #eceff1;
     --neutral-fg: #4a585e;
+    --warning-bg: #fdf3dc;
+    --warning-fg: #8a5a00;
+    --info-bg: #e3f0fb;
+    --info-fg: #1f5f99;
     --overlay: rgb(18 25 29 / 0.4);
 
     --font-sans:
@@ -46,7 +54,6 @@
     --text-base: 0.875rem;
     --text-lg: 1rem;
     --text-xl: 1.5rem;
-    --text-display: clamp(1.75rem, 1rem + 2.5vw, 2.75rem);
     --leading: 1.55;
 
     --radius-sm: 4px;

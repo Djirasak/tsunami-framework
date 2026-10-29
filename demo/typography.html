@@ -46,7 +46,7 @@
           <a
             href="typography.html"
             data-label="Typography"
-            data-keywords="Foundations typography --font-sans --font-mono --text-sm -base -lg -xl --text-display --leading"
+            data-keywords="Foundations typography --font-sans --font-mono --text-sm -base -lg -xl --leading"
             aria-current="page"
             >Typography</a
           >
@@ -149,11 +149,17 @@
             data-keywords="Forms field label small aria-invalid checkbox"
             >Field</a
           >
+          <a href="input.html" data-label="Input" data-keywords="Forms input"
+            >Input</a
+          >
           <a
             href="input-group.html"
             data-label="Input group"
             data-keywords="Forms input-group data-variant span"
             >Input group</a
+          >
+          <a href="select.html" data-label="Select" data-keywords="Forms select"
+            >Select</a
           >
           <a
             href="save-bar.html"
@@ -314,7 +320,7 @@
               <div>
                 <p
                   style="
-                    font-size: var(--text-display);
+                    font-size: clamp(1.75rem, 1rem + 2.5vw, 2.75rem);
                     font-weight: 600;
                     line-height: 1.2;
                   "
@@ -376,11 +382,6 @@
                     <td><code>--text-sm / -base / -lg / -xl</code></td>
                     <td><code>12 / 14 / 16 / 24px</code></td>
                     <td>ขนาดตัวอักษร</td>
-                  </tr>
-                  <tr>
-                    <td><code>--text-display</code></td>
-                    <td><code>clamp(28px, ..., 44px)</code></td>
-                    <td>หัวข้อใหญ่ในหน้าแรก</td>
                   </tr>
                   <tr>
                     <td><code>--leading</code></td>

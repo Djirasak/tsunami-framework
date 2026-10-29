@@ -123,7 +123,7 @@ kbd {
 }
 
 .docs-hero h1 {
-  font-size: var(--text-display);
+  font-size: clamp(1.75rem, 1rem + 2.5vw, 2.75rem);
   letter-spacing: -0.02em;
 }
 
