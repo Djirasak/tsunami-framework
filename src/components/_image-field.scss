@@ -1,0 +1,94 @@
+// Image field: shows an image with change/clear buttons over a hidden file input.
+// Behaviour in js/image-field.js; the form sends the file.
+@layer components {
+  :where(.image-field) {
+    position: relative;
+    display: grid;
+    justify-self: start;
+    place-items: center;
+    width: 6rem;
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--subtle);
+  }
+
+  // Absolute so the image's own size never stretches the box.
+  :where(.image-field > img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+  }
+
+  :where(.image-field[data-fit="contain"]) {
+    aspect-ratio: 2;
+    background: var(--surface);
+  }
+
+  :where(.image-field[data-fit="contain"] > img) {
+    padding: var(--space-3);
+    object-fit: contain;
+  }
+
+  // The placeholder icon shows only while there is no image.
+  :where(.image-field > .icon) {
+    display: none;
+    color: var(--muted);
+    font-size: 1.5rem;
+  }
+
+  :where(.image-field[data-empty] > img, .image-field > img:not([src])) {
+    display: none;
+  }
+
+  :where(.image-field[data-empty] > .icon) {
+    display: block;
+  }
+
+  // Buttons sit in the top corner; drawn on hover, focus, an empty field and touch screens.
+  :where(.image-field > [data-change], .image-field > [data-clear]) {
+    position: absolute;
+    top: var(--space-1);
+    opacity: 0;
+  }
+
+  :where(.image-field > [data-change]) {
+    right: calc(var(--space-1) * 2 + 1.375rem);
+  }
+
+  :where(.image-field > [data-clear]) {
+    right: var(--space-1);
+  }
+
+  :where(.image-field[data-empty] > [data-change]) {
+    right: var(--space-1);
+  }
+
+  :where(
+    .image-field:is(:hover, :focus-within, [data-empty])
+      > :is([data-change], [data-clear])
+  ) {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    :where(.image-field > :is([data-change], [data-clear])) {
+      opacity: 1;
+    }
+  }
+
+  :where(.image-field[data-empty] > [data-clear]) {
+    display: none;
+  }
+
+  :where(.image-field > input) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

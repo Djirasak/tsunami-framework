@@ -49,3 +49,6 @@
 @use "components/popover";
 @use "components/dropdown";
 @use "components/tooltip";
+
+// Composites that place other components (buttons with tooltips) inside them.
+@use "components/image-field";
