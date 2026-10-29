@@ -15,6 +15,13 @@
     border-radius: 50%;
   }
 
+  // Reduced motion: keep pulsing, slower.
+  @media (prefers-reduced-motion: reduce) {
+    :where(.skeleton) {
+      animation-duration: 2.5s;
+    }
+  }
+
   @keyframes tsunami-pulse {
     50% {
       opacity: 0.5;
