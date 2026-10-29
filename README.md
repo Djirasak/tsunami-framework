@@ -1,0 +1,122 @@
+<div align="center">
+
+<img src="demo/favicon.svg" width="72" height="72" alt="tsunami logo">
+
+# tsunami 津波
+
+A small, quiet CSS framework for back-office UIs.
+Semantic HTML + `data-*` attributes. No runtime dependencies.
+
+</div>
+
+## Why
+
+- **Native first.** `dialog`, `popover`, `details`, `button`. JS only where HTML can't do the job.
+- **Zero specificity.** Every selector sits in `@layer components` inside `:where()`, so your CSS always wins.
+- **Light / dark.** Tokens are CSS custom properties, so the theme switches at runtime with no flash.
+- **Thai + Latin.** Self-hosted Google Sans (OFL), tabular numbers in tables.
+- **Quiet look.** 1px borders, no shadows, no gradients. Accent only for links, the primary button and focus.
+
+## Install
+
+```html
+<link rel="stylesheet" href="dist/tsunami.min.css" />
+<script>
+  try {
+    const t = localStorage.getItem("tsunami-theme");
+    if (t) document.documentElement.dataset.theme = t;
+  } catch {}
+</script>
+<script type="module" src="dist/tsunami.min.js"></script>
+```
+
+Keep `fonts/` next to `dist/` (font URLs are `../fonts/...`). The inline script prevents a theme flash.
+
+## Use
+
+The class names the component; `data-*` sets variant and size.
+
+```html
+<button class="btn" data-variant="primary" data-size="sm">Save</button>
+
+<span class="badge" data-variant="ok">Paid</span>
+
+<article class="card">
+  <header><h2>Recent orders</h2></header>
+  <div>...</div>
+</article>
+
+<i class="icon icon-plus" aria-hidden="true"></i>
+```
+
+## Components
+
+| Group       | Components                                                                                        |
+| ----------- | ------------------------------------------------------------------------------------------------- |
+| Foundations | Colors, Typography (`.prose`), Icons (Lucide)                                                     |
+| Layout      | Stack, Card, Item, Page header, Stat, Table, Timeline, Journey, Accordion, Scroll area, Workspace |
+| Actions     | Button, Dropdown, Theme switcher                                                                  |
+| Forms       | Field, Input, Input group, Select, Save bar                                                       |
+| Feedback    | Alert, Badge, Empty, Loader, Skeleton, Progress                                                   |
+| Media       | Avatar                                                                                            |
+| Navigation  | Breadcrumb, Link, Pagination, Sidebar, Subnav, Tabs, Tree                                         |
+| Overlays    | Dialog, Drawer, Popover, Tooltip                                                                  |
+
+Every component has a docs page with live examples, a Code tab and an attributes table.
+
+## Develop
+
+Requires [Bun](https://bun.sh) `>=1.4.3`.
+
+```sh
+bun install --frozen-lockfile
+bun run build      # dist/tsunami.min.css + dist/tsunami.min.js
+bun run dev        # sass --watch -> dist/tsunami.css
+bun run serve      # docs at http://localhost:5477
+bun run lint       # eslint src/js
+bun run audit      # bun audit
+```
+
+Docs are plain HTML in `demo/`; there is no build step for them.
+
+## Structure
+
+```
+src/
+  index.scss            entry (layer order is declared in _tokens)
+  _tokens.scss          35 semantic tokens, light + dark
+  _base.scss            @font-face + element reset
+  components/_*.scss    one partial per component
+  icons/_lucide.scss    icon name -> codepoint (generated)
+  js/                   one ES module per behavior
+demo/                   docs site (plain HTML)
+fonts/                  Google Sans + Lucide (woff2, licenses, CHECKSUMS.txt)
+scripts/                serve.ts, stamp-version.ts, lucide.ts
+```
+
+## Tokens
+
+```
+bg  surface  subtle  fg  muted  line  accent  on-accent  overlay
+ok-bg/fg  danger-bg/fg  warning-bg/fg  info-bg/fg  neutral-bg/fg
+```
+
+Components only reference these. Dark values live in one `dark-tokens` mixin.
+
+## JavaScript
+
+Vanilla ES modules, event delegation on `document`, no init functions. CSS works without JS wherever possible.
+
+| Module                                     | Purpose                                                      |
+| ------------------------------------------ | ------------------------------------------------------------ |
+| `theme`                                    | light / dark / system, `tsunami.theme.get/set`               |
+| `tabs`, `tree`, `sidebar`                  | roving focus, closable tabs, tree filter, collapsed sidebar  |
+| `select`                                   | styled select over a native `<select>`, remote options, tags |
+| `table`                                    | sorting and row selection                                    |
+| `save-bar`, `slider`, `pressed`, `journey` | form dirty state, range fill, toggle groups, journey lines   |
+
+## Licenses
+
+- Code: personal project.
+- Google Sans: SIL OFL 1.1 (`fonts/GoogleSans-OFL.txt`).
+- Lucide icons: ISC (`fonts/Lucide-LICENSE.txt`).
