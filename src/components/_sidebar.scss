@@ -4,6 +4,8 @@
 // data-collapsed="true": a column of icons; a link's <span> label then
 // shows as a tooltip. Add popover + id to open it as a drawer below 48rem.
 // Behaviour (collapse commands, API) in js/sidebar.js.
+@use "motion";
+
 @mixin nav-links {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -100,7 +102,7 @@
     border-right: 1px solid var(--line);
     background: var(--subtle);
     color: var(--fg);
-    transition: width 0.15s;
+    transition: width motion.$slow motion.$ease;
   }
 
   // Children keep their own height; a long nav must not squash the search box.
@@ -229,6 +231,42 @@
 
   :where(.sidebar[popover])::backdrop {
     background: var(--overlay);
+  }
+
+  // The drawer slides in from the left; its backdrop fades.
+  @media (width < 48rem) {
+    :where(.sidebar[popover]) {
+      transition:
+        translate motion.$slow motion.$ease,
+        overlay motion.$slow allow-discrete,
+        display motion.$slow allow-discrete;
+    }
+
+    :where(.sidebar[popover]:not(:popover-open)) {
+      translate: -100% 0;
+    }
+
+    :where(.sidebar[popover]:popover-open) {
+      @starting-style {
+        translate: -100% 0;
+      }
+    }
+
+    :where(.sidebar[popover])::backdrop {
+      opacity: 0;
+      transition:
+        opacity motion.$slow motion.$ease,
+        overlay motion.$slow allow-discrete,
+        display motion.$slow allow-discrete;
+    }
+
+    :where(.sidebar[popover]:popover-open)::backdrop {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
   }
 
   @media (width >= 48rem) {
