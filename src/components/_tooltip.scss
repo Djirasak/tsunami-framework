@@ -3,6 +3,8 @@
 // Drawn as ::after, so not on <input>, <select>, <textarea> or <img>: put it on a wrapper.
 // Shows on hover and on keyboard focus (of the element or a control inside it).
 // Keep an aria-label on icon-only buttons: a screen reader does not read the tooltip.
+@use "motion";
+
 @layer components {
   :where([data-tooltip]) {
     position: relative;
@@ -33,10 +35,17 @@
     pointer-events: none;
     // Hidden tooltips must not widen the page (scroll overflow).
     display: none;
+    // Shown: fades, grows from 95% and slides 0.5rem away from the element.
+    // transform (not translate) so the alignment translate below stays put.
+    --tip-from: 0, 0.5rem;
     opacity: 0;
+    scale: 0.95;
+    transform: translate(var(--tip-from));
     transition:
-      opacity 0.15s,
-      display 0.15s allow-discrete;
+      opacity motion.$base motion.$ease,
+      scale motion.$base motion.$ease,
+      transform motion.$base motion.$ease,
+      display motion.$base allow-discrete;
   }
 
   :where(
@@ -44,10 +53,26 @@
   )::after {
     display: block;
     opacity: 1;
+    scale: 1;
+    transform: none;
 
     @starting-style {
       opacity: 0;
+      scale: 0.95;
+      transform: translate(var(--tip-from));
     }
+  }
+
+  :where([data-tooltip][data-side="bottom"])::after {
+    --tip-from: 0, -0.5rem;
+  }
+
+  :where([data-tooltip][data-side="left"])::after {
+    --tip-from: 0.5rem, 0;
+  }
+
+  :where([data-tooltip][data-side="right"])::after {
+    --tip-from: -0.5rem, 0;
   }
 
   // A word with a tooltip: dotted underline so it reads as "more here".
