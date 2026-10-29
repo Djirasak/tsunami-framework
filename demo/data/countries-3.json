@@ -1,0 +1,71 @@
+{
+  "results": [
+    {
+      "id": "ro",
+      "text": "Romania โรมาเนีย"
+    },
+    {
+      "id": "sa",
+      "text": "Saudi Arabia ซาอุดีอาระเบีย"
+    },
+    {
+      "id": "sg",
+      "text": "Singapore สิงคโปร์"
+    },
+    {
+      "id": "za",
+      "text": "South Africa แอฟริกาใต้"
+    },
+    {
+      "id": "kr",
+      "text": "South Korea เกาหลีใต้"
+    },
+    {
+      "id": "es",
+      "text": "Spain สเปน"
+    },
+    {
+      "id": "lk",
+      "text": "Sri Lanka ศรีลังกา"
+    },
+    {
+      "id": "se",
+      "text": "Sweden สวีเดน"
+    },
+    {
+      "id": "ch",
+      "text": "Switzerland สวิตเซอร์แลนด์"
+    },
+    {
+      "id": "tw",
+      "text": "Taiwan ไต้หวัน"
+    },
+    {
+      "id": "th",
+      "text": "Thailand ไทย"
+    },
+    {
+      "id": "tr",
+      "text": "Türkiye ตุรกี"
+    },
+    {
+      "id": "ae",
+      "text": "United Arab Emirates สหรัฐอาหรับเอมิเรตส์"
+    },
+    {
+      "id": "gb",
+      "text": "United Kingdom สหราชอาณาจักร"
+    },
+    {
+      "id": "us",
+      "text": "United States สหรัฐอเมริกา"
+    },
+    {
+      "id": "vn",
+      "text": "Vietnam เวียดนาม"
+    }
+  ],
+  "pagination": {
+    "more": false
+  }
+}

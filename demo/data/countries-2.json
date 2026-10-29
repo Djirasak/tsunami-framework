@@ -1,0 +1,87 @@
+{
+  "results": [
+    {
+      "id": "hu",
+      "text": "Hungary ฮังการี"
+    },
+    {
+      "id": "in",
+      "text": "India อินเดีย"
+    },
+    {
+      "id": "id",
+      "text": "Indonesia อินโดนีเซีย"
+    },
+    {
+      "id": "ie",
+      "text": "Ireland ไอร์แลนด์"
+    },
+    {
+      "id": "il",
+      "text": "Israel อิสราเอล"
+    },
+    {
+      "id": "it",
+      "text": "Italy อิตาลี"
+    },
+    {
+      "id": "jp",
+      "text": "Japan ญี่ปุ่น"
+    },
+    {
+      "id": "la",
+      "text": "Laos ลาว"
+    },
+    {
+      "id": "my",
+      "text": "Malaysia มาเลเซีย"
+    },
+    {
+      "id": "mx",
+      "text": "Mexico เม็กซิโก"
+    },
+    {
+      "id": "mm",
+      "text": "Myanmar เมียนมา"
+    },
+    {
+      "id": "nl",
+      "text": "Netherlands เนเธอร์แลนด์"
+    },
+    {
+      "id": "nz",
+      "text": "New Zealand นิวซีแลนด์"
+    },
+    {
+      "id": "no",
+      "text": "Norway นอร์เวย์"
+    },
+    {
+      "id": "pk",
+      "text": "Pakistan ปากีสถาน"
+    },
+    {
+      "id": "pe",
+      "text": "Peru เปรู"
+    },
+    {
+      "id": "ph",
+      "text": "Philippines ฟิลิปปินส์"
+    },
+    {
+      "id": "pl",
+      "text": "Poland โปแลนด์"
+    },
+    {
+      "id": "pt",
+      "text": "Portugal โปรตุเกส"
+    },
+    {
+      "id": "qa",
+      "text": "Qatar กาตาร์"
+    }
+  ],
+  "pagination": {
+    "more": true
+  }
+}

@@ -328,9 +328,1665 @@
           <header class="page-header">
             <div>
               <h1>Select</h1>
-              <p>เลือกจากรายการ native select และแบบมีรายการที่จัดรูปแบบเอง</p>
+              <p>
+                เลือกจากรายการ native select และแบบมีรายการที่จัดรูปแบบเอง โดย
+                select จริงยังเป็นตัวส่งค่า
+              </p>
             </div>
           </header>
+          <section>
+            <h2>ขนาด Sizes: sm, default และ lg</h2>
+            <p>
+              select แบบ native ใส่ class <code>select</code> อย่างเดียว
+              ไม่ต้องใช้สคริปต์ ความสูงเท่ากับปุ่ม
+              <code>.btn</code> ขนาดเดียวกัน
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <select
+                      class="select"
+                      data-size="sm"
+                      aria-label="ขนาดเล็ก Small"
+                    >
+                      <option>เล็ก Small</option>
+                      <option>กลาง Medium</option>
+                    </select>
+                    <button type="button" class="btn" data-size="sm">
+                      ปุ่ม sm
+                    </button>
+                  </div>
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <select class="select" aria-label="ขนาดปกติ Default">
+                      <option>ปกติ Default</option>
+                      <option>กลาง Medium</option>
+                    </select>
+                    <button type="button" class="btn">ปุ่ม default</button>
+                  </div>
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <select
+                      class="select"
+                      data-size="lg"
+                      aria-label="ขนาดใหญ่ Large"
+                    >
+                      <option>ใหญ่ Large</option>
+                      <option>กลาง Medium</option>
+                    </select>
+                    <button type="button" class="btn" data-size="lg">
+                      ปุ่ม lg
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;select class="select" data-size="sm" aria-label="ขนาดเล็ก Small"&gt;
+    &lt;option&gt;เล็ก Small&lt;/option&gt;
+    &lt;option&gt;กลาง Medium&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;button type="button" class="btn" data-size="sm"&gt;ปุ่ม sm&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;select class="select" aria-label="ขนาดปกติ Default"&gt;
+    &lt;option&gt;ปกติ Default&lt;/option&gt;
+    &lt;option&gt;กลาง Medium&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;button type="button" class="btn"&gt;ปุ่ม default&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;select class="select" data-size="lg" aria-label="ขนาดใหญ่ Large"&gt;
+    &lt;option&gt;ใหญ่ Large&lt;/option&gt;
+    &lt;option&gt;กลาง Medium&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;button type="button" class="btn" data-size="lg"&gt;ปุ่ม lg&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Select แบบรายการจัดรูปแบบ Select with a styled list</h2>
+            <p>
+              ห่อ <code>&lt;select&gt;</code> จริงด้วย
+              <code>&lt;div class="select"&gt;</code>
+              สคริปต์จะวาดปุ่มและรายการให้ และเลือกตัวเลือกใน select เดิมตาม
+              ฟอร์มจึงส่งค่าได้ตามปกติ ถ้าไม่มีสคริปต์จะเห็น select แบบ native
+              ตัวเลือก <code>value=""</code> ที่มี
+              <code>hidden</code> คือข้อความตอนยังไม่ได้เลือก
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="select" style="width: 180px">
+                    <select name="theme" aria-label="ธีม Theme">
+                      <option value="" hidden>ธีม Theme</option>
+                      <option value="light">สว่าง Light</option>
+                      <option value="dark">มืด Dark</option>
+                      <option value="system">ตามระบบ System</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" style="width: 180px"&gt;
+  &lt;select name="theme" aria-label="ธีม Theme"&gt;
+    &lt;option value="" hidden&gt;ธีม Theme&lt;/option&gt;
+    &lt;option value="light"&gt;สว่าง Light&lt;/option&gt;
+    &lt;option value="dark"&gt;มืด Dark&lt;/option&gt;
+    &lt;option value="system"&gt;ตามระบบ System&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ขนาดของ select แบบรายการจัดรูปแบบ Sizes of a select with a styled
+              list
+            </h2>
+            <p>
+              <code>data-size</code> บน wrapper ใช้ค่าเดียวกับ select แบบ native
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <div class="select" data-size="sm" style="width: 180px">
+                      <select name="size-sm" aria-label="ขนาดเล็ก Small">
+                        <option value="" hidden>เล็ก Small</option>
+                        <option value="light">สว่าง Light</option>
+                        <option value="dark">มืด Dark</option>
+                      </select>
+                    </div>
+                    <div class="select" style="width: 180px">
+                      <select name="size-default" aria-label="ขนาดปกติ Default">
+                        <option value="" hidden>ปกติ Default</option>
+                        <option value="light">สว่าง Light</option>
+                        <option value="dark">มืด Dark</option>
+                      </select>
+                    </div>
+                    <div class="select" data-size="lg" style="width: 180px">
+                      <select name="size-lg" aria-label="ขนาดใหญ่ Large">
+                        <option value="" hidden>ใหญ่ Large</option>
+                        <option value="light">สว่าง Light</option>
+                        <option value="dark">มืด Dark</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;div class="select" data-size="sm" style="width: 180px"&gt;
+    &lt;select name="size-sm" aria-label="ขนาดเล็ก Small"&gt;
+      &lt;option value="" hidden&gt;เล็ก Small&lt;/option&gt;
+      &lt;option value="light"&gt;สว่าง Light&lt;/option&gt;
+      &lt;option value="dark"&gt;มืด Dark&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div class="select" style="width: 180px"&gt;
+    &lt;select name="size-default" aria-label="ขนาดปกติ Default"&gt;
+      &lt;option value="" hidden&gt;ปกติ Default&lt;/option&gt;
+      &lt;option value="light"&gt;สว่าง Light&lt;/option&gt;
+      &lt;option value="dark"&gt;มืด Dark&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div class="select" data-size="lg" style="width: 180px"&gt;
+    &lt;select name="size-lg" aria-label="ขนาดใหญ่ Large"&gt;
+      &lt;option value="" hidden&gt;ใหญ่ Large&lt;/option&gt;
+      &lt;option value="light"&gt;สว่าง Light&lt;/option&gt;
+      &lt;option value="dark"&gt;มืด Dark&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              รายการแบ่งกลุ่มมีหัวข้อ Select with a styled list and group
+              headings
+            </h2>
+            <p>
+              ใช้ <code>&lt;optgroup label&gt;</code> ตามปกติ แต่ละกลุ่มกลายเป็น
+              <code>role="group"</code> ที่มีหัวข้อ
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="select" style="width: 220px">
+                    <select
+                      name="product-type"
+                      aria-label="ประเภทสินค้า Product type"
+                    >
+                      <option value="" hidden>เลือกประเภท Select a type</option>
+                      <optgroup label="เสื้อผ้า Clothing">
+                        <option value="tshirt">เสื้อยืด T-shirts</option>
+                        <option value="shirt">เสื้อเชิ้ต Shirts</option>
+                        <option value="pants">กางเกง Pants</option>
+                      </optgroup>
+                      <optgroup label="เครื่องประดับ Accessories">
+                        <option value="bag">กระเป๋า Bags</option>
+                        <option value="watch">นาฬิกา Watches</option>
+                        <option value="hat">หมวก Hats</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" style="width: 220px"&gt;
+  &lt;select name="product-type" aria-label="ประเภทสินค้า Product type"&gt;
+    &lt;option value="" hidden&gt;เลือกประเภท Select a type&lt;/option&gt;
+    &lt;optgroup label="เสื้อผ้า Clothing"&gt;
+      &lt;option value="tshirt"&gt;เสื้อยืด T-shirts&lt;/option&gt;
+      &lt;option value="shirt"&gt;เสื้อเชิ้ต Shirts&lt;/option&gt;
+      &lt;option value="pants"&gt;กางเกง Pants&lt;/option&gt;
+    &lt;/optgroup&gt;
+    &lt;optgroup label="เครื่องประดับ Accessories"&gt;
+      &lt;option value="bag"&gt;กระเป๋า Bags&lt;/option&gt;
+      &lt;option value="watch"&gt;นาฬิกา Watches&lt;/option&gt;
+      &lt;option value="hat"&gt;หมวก Hats&lt;/option&gt;
+    &lt;/optgroup&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ตัวเลือกมีหัวเรื่องและคำอธิบาย Options with a title and a line of
+              text under it
+            </h2>
+            <p>
+              <code>data-text</code> บน option เป็นบรรทัดคำอธิบาย
+              <code>data-badge</code> เพิ่ม badge ท้ายหัวเรื่อง
+              ช่องค้นหาก็ค้นในคำอธิบายด้วย ปุ่มแสดงแค่หัวเรื่อง
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field docs-narrow">
+                    <label for="sel-3ds">โหมด 3DS Mode</label>
+                    <div class="select">
+                      <select id="sel-3ds" name="three_ds_mode">
+                        <option value="" hidden>เลือกโหมด Select a mode</option>
+                        <option
+                          value="off"
+                          data-text="ชำระเงินโดยไม่ยืนยัน 3DS Transactions skip 3DS."
+                        >
+                          ปิด Off
+                        </option>
+                        <option
+                          value="smart"
+                          data-badge="แนะนำ Recommended"
+                          data-text="ข้าม 3DS ในตลาดที่ไม่นิยม และเพิ่ม 3DS กับคำสั่งซื้อเสี่ยงสูง"
+                          selected
+                        >
+                          อัจฉริยะ Smart
+                        </option>
+                        <option
+                          value="always"
+                          data-text="ทุกรายการพยายามยืนยัน 3DS Every transaction tries 3DS."
+                        >
+                          เปิดตลอด Always on
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field docs-narrow"&gt;
+  &lt;label for="sel-3ds"&gt;โหมด 3DS Mode&lt;/label&gt;
+  &lt;div class="select"&gt;
+    &lt;select id="sel-3ds" name="three_ds_mode"&gt;
+      &lt;option value="" hidden&gt;เลือกโหมด Select a mode&lt;/option&gt;
+      &lt;option value="off" data-text="ชำระเงินโดยไม่ยืนยัน 3DS Transactions skip 3DS."&gt;ปิด Off&lt;/option&gt;
+      &lt;option value="smart" data-badge="แนะนำ Recommended" data-text="ข้าม 3DS ในตลาดที่ไม่นิยม และเพิ่ม 3DS กับคำสั่งซื้อเสี่ยงสูง" selected&gt;อัจฉริยะ Smart&lt;/option&gt;
+      &lt;option value="always" data-text="ทุกรายการพยายามยืนยัน 3DS Every transaction tries 3DS."&gt;เปิดตลอด Always on&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ตัวเลือกมีอวาตาร์ หัวเรื่อง และคำอธิบาย Options with an avatar, a
+              title and text; a disabled option
+            </h2>
+            <p>
+              <code>data-avatar</code> รับตัวอักษรย่อหรือ URL รูป ตัวเลือกที่มี
+              <code>disabled</code> จะจางและเลือกไม่ได้ (<code
+                >aria-disabled="true"</code
+              >
+              ในรายการ)
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field docs-narrow">
+                    <label for="sel-tax">บริการภาษี Tax service</label>
+                    <div class="select">
+                      <select id="sel-tax" name="tax_service">
+                        <option value="" hidden>
+                          เลือกบริการภาษี Select a tax service
+                        </option>
+                        <option
+                          value="next-tax"
+                          data-avatar="NT"
+                          data-text="ใช้งานอยู่ Active"
+                          selected
+                        >
+                          Next Tax
+                        </option>
+                        <option
+                          value="avalara"
+                          data-avatar="AV"
+                          data-text="ไม่พร้อมใช้งาน Unavailable"
+                          disabled
+                        >
+                          Avalara
+                        </option>
+                        <option
+                          value="taxjar"
+                          data-avatar="TJ"
+                          data-text="ไม่พร้อมใช้งาน Unavailable"
+                          disabled
+                        >
+                          TaxJar
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field docs-narrow"&gt;
+  &lt;label for="sel-tax"&gt;บริการภาษี Tax service&lt;/label&gt;
+  &lt;div class="select"&gt;
+    &lt;select id="sel-tax" name="tax_service"&gt;
+      &lt;option value="" hidden&gt;เลือกบริการภาษี Select a tax service&lt;/option&gt;
+      &lt;option value="next-tax" data-avatar="NT" data-text="ใช้งานอยู่ Active" selected&gt;Next Tax&lt;/option&gt;
+      &lt;option value="avalara" data-avatar="AV" data-text="ไม่พร้อมใช้งาน Unavailable" disabled&gt;Avalara&lt;/option&gt;
+      &lt;option value="taxjar" data-avatar="TJ" data-text="ไม่พร้อมใช้งาน Unavailable" disabled&gt;TaxJar&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>มีช่องค้นหาในรายการ Select with a search field in its list</h2>
+            <p>
+              <code>data-search</code> เพิ่มช่องค้นหาบนรายการ ค่าของ attribute
+              เป็น placeholder ข้อความเมื่อไม่พบใช้ <code>data-empty</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="select"
+                    data-search="ค้นหาขนส่ง Search carriers"
+                    data-empty="ไม่พบขนส่ง No carriers found"
+                    style="width: 240px"
+                  >
+                    <select name="carrier" aria-label="ขนส่ง Carrier">
+                      <option value="" hidden>
+                        เลือกขนส่ง Select a carrier
+                      </option>
+                      <option value="thaipost">
+                        ไปรษณีย์ไทย Thailand Post
+                      </option>
+                      <option value="kerry">Kerry Express</option>
+                      <option value="flash">Flash Express</option>
+                      <option value="jt">J&amp;T Express</option>
+                      <option value="dhl">DHL eCommerce</option>
+                      <option value="lalamove">Lalamove</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" data-search="ค้นหาขนส่ง Search carriers" data-empty="ไม่พบขนส่ง No carriers found" style="width: 240px"&gt;
+  &lt;select name="carrier" aria-label="ขนส่ง Carrier"&gt;
+    &lt;option value="" hidden&gt;เลือกขนส่ง Select a carrier&lt;/option&gt;
+    &lt;option value="thaipost"&gt;ไปรษณีย์ไทย Thailand Post&lt;/option&gt;
+    &lt;option value="kerry"&gt;Kerry Express&lt;/option&gt;
+    &lt;option value="flash"&gt;Flash Express&lt;/option&gt;
+    &lt;option value="jt"&gt;J&amp;amp;T Express&lt;/option&gt;
+    &lt;option value="dhl"&gt;DHL eCommerce&lt;/option&gt;
+    &lt;option value="lalamove"&gt;Lalamove&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              เลือกได้หลายค่า พิมพ์เพื่อกรอง Select with more than one choice:
+              type to filter the list
+            </h2>
+            <p>
+              ใส่ <code>multiple</code> ที่ select
+              ช่องควบคุมจะเป็นชิปของค่าที่เลือกพร้อมช่องพิมพ์กรองรายการ
+              <kbd>Backspace</kbd> ในช่องว่างลบชิปตัวสุดท้าย
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="select"
+                    data-placeholder="เลือกหมวดหมู่ Select categories"
+                    style="width: 280px"
+                  >
+                    <select
+                      name="category"
+                      multiple
+                      aria-label="หมวดหมู่ Categories"
+                    >
+                      <option value="bedding">เครื่องนอน Bedding</option>
+                      <option value="furniture">เฟอร์นิเจอร์ Furniture</option>
+                      <option value="lighting">โคมไฟ Lighting</option>
+                      <option value="stationery">
+                        เครื่องเขียน Stationery
+                      </option>
+                      <option value="watches">นาฬิกา Watches</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" data-placeholder="เลือกหมวดหมู่ Select categories" style="width: 280px"&gt;
+  &lt;select name="category" multiple aria-label="หมวดหมู่ Categories"&gt;
+    &lt;option value="bedding"&gt;เครื่องนอน Bedding&lt;/option&gt;
+    &lt;option value="furniture"&gt;เฟอร์นิเจอร์ Furniture&lt;/option&gt;
+    &lt;option value="lighting"&gt;โคมไฟ Lighting&lt;/option&gt;
+    &lt;option value="stationery"&gt;เครื่องเขียน Stationery&lt;/option&gt;
+    &lt;option value="watches"&gt;นาฬิกา Watches&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              พิมพ์ค่าเดียวในช่อง พร้อมปุ่มบนรายการ One choice typed in the
+              control, with an action above the list
+            </h2>
+            <p>
+              <code>data-input</code> ทำให้ช่องควบคุมเป็นช่องพิมพ์สำหรับค่าเดียว
+              <code>&lt;header&gt;</code> ใน wrapper ถูกย้ายไปไว้บนรายการ
+              (ไม่มีสคริปต์จะอยู่เหนือ select)
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="select"
+                    data-input
+                    data-placeholder="ค้นหาหรือสร้างลูกค้า Search or create a customer"
+                    style="width: 300px"
+                  >
+                    <header>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        onclick="tsunami.select.close(this)"
+                      >
+                        <i class="icon icon-plus" aria-hidden="true"></i
+                        >สร้างลูกค้าใหม่ Create new customer
+                      </button>
+                    </header>
+                    <select name="customer" aria-label="ลูกค้า Customer">
+                      <option value="" hidden></option>
+                      <option value="maya" data-text="maya.okafor@example.com">
+                        Maya Okafor
+                      </option>
+                      <option
+                        value="somchai"
+                        data-text="somchai.j@example.co.th"
+                      >
+                        สมชาย ใจดี Somchai Jaidee
+                      </option>
+                      <option
+                        value="daniel"
+                        data-text="daniel.brandt@example.com"
+                      >
+                        Daniel Brandt
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" data-input data-placeholder="ค้นหาหรือสร้างลูกค้า Search or create a customer" style="width: 300px"&gt;
+  &lt;header&gt;
+    &lt;button type="button" class="btn" data-size="sm" onclick="tsunami.select.close(this)"&gt;
+      &lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;สร้างลูกค้าใหม่ Create new customer
+    &lt;/button&gt;
+  &lt;/header&gt;
+  &lt;select name="customer" aria-label="ลูกค้า Customer"&gt;
+    &lt;option value="" hidden&gt;&lt;/option&gt;
+    &lt;option value="maya" data-text="maya.okafor@example.com"&gt;Maya Okafor&lt;/option&gt;
+    &lt;option value="somchai" data-text="somchai.j@example.co.th"&gt;สมชาย ใจดี Somchai Jaidee&lt;/option&gt;
+    &lt;option value="daniel" data-text="daniel.brandt@example.com"&gt;Daniel Brandt&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ตัวเลือกจากเซิร์ฟเวอร์ Remote options: data-url loads the options
+              from the server
+            </h2>
+            <p>
+              <code>data-url</code> บน wrapper คือที่อยู่สำหรับค้นหา
+              ตัวเลือกที่ได้จะถูกใส่เป็น <code>&lt;option&gt;</code> ใน select
+              จริง จึงส่งฟอร์มได้ตามปกติ ถ้าไม่มีช่องพิมพ์
+              สคริปต์จะเพิ่มช่องค้นหาในรายการให้
+            </p>
+            <p>
+              คำขอแต่ละครั้งส่ง <code>q</code> (ข้อความที่พิมพ์ ไม่ส่งถ้าว่าง)
+              และ <code>page</code> (เริ่มที่ 1) ถ้า URL มี
+              <code>{page}</code> จะถูกแทนด้วยเลขหน้าด้วย จึงใช้ไฟล์ JSON แบบ
+              static ได้ เช่น <code>data/countries-{page}.json</code>
+            </p>
+            <pre><code>GET data/countries-{page}.json?q=fra&amp;page=1
+
+{
+  "results": [{ "id": "fr", "text": "France ฝรั่งเศส" }],
+  "pagination": { "more": false }
+}</code></pre>
+            <p>
+              หน้าเว็บกรองผลลัพธ์ซ้ำด้วยข้อความ (มีคำที่พิมพ์อยู่ใน
+              <code>text</code>) เซิร์ฟเวอร์ที่ไม่สนใจ <code>q</code> อย่างไฟล์
+              static ก็ยังได้รายการที่ถูกต้อง
+              เซิร์ฟเวอร์จริงควรตอบเฉพาะรายการที่ <code>text</code> มีคำนั้น
+            </p>
+          </section>
+          <section>
+            <h2>
+              หลายค่าจากเซิร์ฟเวอร์ เริ่มด้วย France Remote options with several
+              choices: France is the starting choice, written into the page
+            </h2>
+            <p>
+              ค่าเริ่มต้นเขียนไว้ในหน้าเป็น
+              <code>&lt;option selected&gt;</code> ไม่มีคำขอจนกว่าจะเปิดรายการ
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="select"
+                    data-url="data/countries.json"
+                    data-placeholder="เลือกประเทศ Select countries"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <select
+                      name="countries"
+                      multiple
+                      aria-label="ประเทศ Countries"
+                    >
+                      <option value="fr" selected>France ฝรั่งเศส</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" data-url="data/countries.json" data-placeholder="เลือกประเทศ Select countries" style="width: 100%; max-width: 320px"&gt;
+  &lt;select name="countries" multiple aria-label="ประเทศ Countries"&gt;
+    &lt;option value="fr" selected&gt;France ฝรั่งเศส&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ค่าเดียวจากเซิร์ฟเวอร์ เลื่อนจนสุดเพื่อโหลดหน้าถัดไป Remote
+              options with one choice: scroll to the end and the next page loads
+            </h2>
+            <p>
+              select ค่าเดียวต้องมี
+              <code>&lt;option value=""&gt;</code> ไว้เป็นค่าว่าง เมื่อตอบกลับมี
+              <code>"more": true</code> และเลื่อนรายการใกล้สุด (50px)
+              จะขอหน้าถัดไป
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tp"
+                  aria-selected="true"
+                  aria-controls="ex11-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tc"
+                  aria-selected="false"
+                  aria-controls="ex11-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-p"
+                aria-labelledby="ex11-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="select"
+                    data-url="data/countries-{page}.json"
+                    data-search="ค้นหาประเทศ Search countries"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <select name="country" aria-label="ประเทศ Country">
+                      <option value="" hidden>
+                        เลือกประเทศ Select a country
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-c"
+                aria-labelledby="ex11-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" data-url="data/countries-{page}.json" data-search="ค้นหาประเทศ Search countries" style="width: 100%; max-width: 320px"&gt;
+  &lt;select name="country" aria-label="ประเทศ Country"&gt;
+    &lt;option value="" hidden&gt;เลือกประเทศ Select a country&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ตัวเลือกจากเซิร์ฟเวอร์ทำงานอย่างไร What a select with remote
+              options does, case by case
+            </h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="เมื่อ When"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">เมื่อ When</th>
+                    <th scope="col">สิ่งที่เกิดขึ้น What happens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>โหลดหน้า The page loads</td>
+                    <td>
+                      ไม่มีคำขอ ตัวเลือกที่เขียนในหน้าเป็นค่าเริ่มต้น No
+                      request; options in the markup are the starting choice.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>เปิดรายการ The list opens</td>
+                    <td>
+                      ขอหน้า 1 โดยไม่มี <code>q</code> รายการขึ้น Searching…
+                      จนกว่าจะได้คำตอบ One request for page 1.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>พิมพ์ A key is typed</td>
+                    <td>
+                      ยกเลิกคำขอเดิม (<code>AbortController</code>)
+                      แล้วส่งใหม่พร้อม <code>q</code> และ
+                      <code>page=1</code> ระหว่างรอ
+                      รายการที่มีอยู่ถูกกรองบนหน้าทันที
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      คำตอบเก่ามาหลังคำตอบใหม่ An older reply arrives late
+                    </td>
+                    <td>ไม่สนใจ เพราะคำขอนั้นถูกยกเลิกแล้ว</td>
+                  </tr>
+                  <tr>
+                    <td>คำตอบมี <code>"more": true</code></td>
+                    <td>
+                      listbox ได้ <code>data-more</code> และมีบรรทัด Loading
+                      more… ใต้รายการ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>เลื่อนรายการใกล้สุด 50px Scrolled near the end</td>
+                    <td>
+                      ขอหน้าถัดไปด้วย <code>q</code> เดิม ต่อท้ายรายการ
+                      ไม่ขอซ้ำระหว่างรอ (<code>aria-busy</code>)
+                      ถ้ารายการยังสั้นจนเลื่อนไม่ได้ จะขอหน้าถัดไปเอง
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ไม่มีผลลัพธ์ No results</td>
+                    <td>
+                      แสดง No results หรือข้อความใน <code>data-empty</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>คำขอล้มเหลวหรือไม่ใช่ JSON The request fails</td>
+                    <td>
+                      ล้างรายการ listbox ได้
+                      <code>data-error</code> แสดงข้อความผิดพลาด และเขียน error
+                      ลง console พิมพ์ครั้งต่อไปจะลองใหม่
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>เลือกตัวเลือก An option is chosen</td>
+                    <td>
+                      เหมือน select ทั่วไป: option ใน select จริงถูกเลือก ส่ง
+                      <code>input</code>/<code>change</code> และ
+                      <code>tsunami:select:change</code>
+                      แบบหลายค่าจะล้างช่องพิมพ์และขอหน้า 1 ใหม่
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      ค่าที่เลือกไม่อยู่ในคำตอบ A chosen option is not in the
+                      reply
+                    </td>
+                    <td>
+                      ยังอยู่ใน select จริงแบบ
+                      <code>hidden</code> จึงยังถูกเลือกและถูกส่งกับฟอร์ม
+                      แต่ไม่แสดงในรายการ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      ค่าที่เลือกอยู่ในคำตอบ A chosen option is in the reply
+                    </td>
+                    <td>
+                      แสดงครั้งเดียว ตามลำดับของเซิร์ฟเวอร์ พร้อมเครื่องหมายถูก
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ปิดรายการ The list closes</td>
+                    <td>
+                      ยกเลิกคำขอที่ค้าง ล้างช่องค้นหา เปิดใหม่จะขอใหม่ ไม่มี
+                      cache
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แท็ก Tags: data-tags lets the user create an option by typing it
+            </h2>
+            <p>
+              <code>data-tags</code> เสนอข้อความที่พิมพ์เป็นตัวเลือกใหม่
+              (ค่าคือข้อความนั้น) พิมพ์คำที่ไม่มีในรายการแล้วกด
+              <kbd>Enter</kbd> ตัวเลือกที่สร้างจะเป็น
+              <code>&lt;option data-tag&gt;</code> ใน select จริง
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tp"
+                  aria-selected="true"
+                  aria-controls="ex12-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tc"
+                  aria-selected="false"
+                  aria-controls="ex12-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-p"
+                aria-labelledby="ex12-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="select"
+                    data-tags
+                    data-placeholder="เพิ่มแท็ก Add tags"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <select name="tags" multiple aria-label="แท็ก Tags">
+                      <option value="summer" selected>summer</option>
+                      <option value="sale">sale</option>
+                      <option value="new-arrival">new-arrival</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-c"
+                aria-labelledby="ex12-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" data-tags data-placeholder="เพิ่มแท็ก Add tags" style="width: 100%; max-width: 320px"&gt;
+  &lt;select name="tags" multiple aria-label="แท็ก Tags"&gt;
+    &lt;option value="summer" selected&gt;summer&lt;/option&gt;
+    &lt;option value="sale"&gt;sale&lt;/option&gt;
+    &lt;option value="new-arrival"&gt;new-arrival&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แท็กกับตัวเลือกจากเซิร์ฟเวอร์ Tags with remote options: choose a
+              country from the server or create a new name
+            </h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex13-tp"
+                  aria-selected="true"
+                  aria-controls="ex13-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex13-tc"
+                  aria-selected="false"
+                  aria-controls="ex13-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex13-p"
+                aria-labelledby="ex13-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="select"
+                    data-url="data/countries.json"
+                    data-tags
+                    data-placeholder="เลือกหรือพิมพ์ประเทศ Country or new name"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <select
+                      name="origin"
+                      multiple
+                      aria-label="แหล่งผลิต Origin"
+                    ></select>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex13-c"
+                aria-labelledby="ex13-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="select" data-url="data/countries.json" data-tags data-placeholder="เลือกหรือพิมพ์ประเทศ Country or new name" style="width: 100%; max-width: 320px"&gt;
+  &lt;select name="origin" multiple aria-label="แหล่งผลิต Origin"&gt;&lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>แท็กทำงานอย่างไร What a select with tags does, case by case</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="เมื่อ When"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">เมื่อ When</th>
+                    <th scope="col">สิ่งที่เกิดขึ้น What happens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      พิมพ์ข้อความที่ไม่ตรงกับตัวเลือกใด Text names no option
+                    </td>
+                    <td>
+                      ข้อความถูกเสนอเป็นตัวเลือกแรก (ไอคอนบวก) และเป็นตัวที่
+                      active <kbd>Enter</kbd> จึงสร้างได้ทันที
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      พิมพ์ตรงกับตัวเลือก ไม่สนตัวพิมพ์ Text names an option,
+                      any case
+                    </td>
+                    <td>ไม่เสนอแท็ก "SALE" เจอ "sale"</td>
+                  </tr>
+                  <tr>
+                    <td>มีแต่ช่องว่าง Only spaces</td>
+                    <td>ไม่เสนอแท็ก ช่องว่างหน้าหลังถูกตัดออก</td>
+                  </tr>
+                  <tr>
+                    <td>เลือกแท็กที่เสนอ The offered tag is chosen</td>
+                    <td>
+                      สร้าง <code>&lt;option data-tag selected&gt;</code> ใน
+                      select จริง ค่าและป้ายคือข้อความที่พิมพ์
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ข้อความเปลี่ยนก่อนเลือก The text changes first</td>
+                    <td>แท็กที่เสนอเดิมหายไป และเสนอข้อความใหม่แทน</td>
+                  </tr>
+                  <tr>
+                    <td>ลบแท็กที่สร้างไว้ A created tag is removed</td>
+                    <td>
+                      ยังอยู่ในรายการจนกว่าจะพิมพ์ครั้งถัดไป แล้วจึงถูกลบจาก
+                      select
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>มี <code>data-url</code> ด้วย</td>
+                    <td>
+                      แท็กแสดงเหนือผลลัพธ์จากเซิร์ฟเวอร์
+                      ยกเว้นมีผลลัพธ์ชื่อเดียวกัน (เมื่อคำตอบมาถึง)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              ทุกฟังก์ชันรับ element ใดก็ได้ใน wrapper (หรือ wrapper เอง)
+              เป็นอาร์กิวเมนต์แรก select แบบ native ที่ใช้แค่ class
+              <code>select</code> ไม่มี API นี้
+            </p>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Function"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.select.open(el)</code></td>
+                    <td><code>el</code>: Element</td>
+                    <td>เปิดรายการ (ไม่ทำอะไรถ้า select ถูก disabled)</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.select.close(el, focus)</code></td>
+                    <td>
+                      <code>el</code>: Element, <code>focus</code>: boolean
+                      (default false)
+                    </td>
+                    <td>
+                      ปิดรายการ ถ้า
+                      <code>focus</code> เป็นจริงจะย้ายโฟกัสกลับช่องควบคุม
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.select.value(el)</code></td>
+                    <td><code>el</code>: Element</td>
+                    <td>
+                      คืนค่า: string สำหรับค่าเดียว, array ของ string สำหรับ
+                      <code>multiple</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.select.value(el, v)</code></td>
+                    <td><code>v</code>: string หรือ string[]</td>
+                    <td>
+                      เลือกตัวเลือกที่มีอยู่ใน select ตามค่า ส่ง event
+                      เมื่อค่าเปลี่ยน
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.select.refresh(el)</code></td>
+                    <td><code>el</code>: Element</td>
+                    <td>
+                      วาดช่องควบคุมใหม่หลังจากเพิ่ม/ลบ/แก้ option ด้วยโค้ด (การ
+                      dispatch <code>change</code> บน select ก็วาดใหม่เช่นกัน)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Event"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:select:change</code></td>
+                    <td>wrapper, bubbles</td>
+                    <td>
+                      <code>{ value, selected: [{ value, label }] }</code>
+                      ส่งเมื่อค่าเปลี่ยนจากคลิก คีย์บอร์ด หรือ
+                      <code>value()</code> ไม่ส่งเมื่อเลือกค่าเดิมซ้ำ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input</code>, <code>change</code></td>
+                    <td>select จริง, bubbles</td>
+                    <td>
+                      ส่งพร้อมกัน ฟอร์มและ Save bar จึงทำงานเหมือนผู้ใช้เลือกใน
+                      select เอง
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami:select:open</code></td>
+                    <td>wrapper, bubbles</td>
+                    <td>ไม่มี detail ส่งเมื่อรายการเปิด</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami:select:close</code></td>
+                    <td>wrapper, bubbles</td>
+                    <td>ไม่มี detail ส่งเมื่อรายการปิด</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Key"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>↓</kbd> <kbd>↑</kbd></td>
+                    <td>
+                      ช่องที่ปิดอยู่: เปิดรายการ ในรายการ: เลื่อนตัวเลือกที่
+                      active
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Home</kbd> <kbd>End</kbd></td>
+                    <td>
+                      ไปตัวเลือกแรก/สุดท้าย (บนปุ่ม)
+                      ในช่องพิมพ์จะเลื่อนเคอร์เซอร์ตามปกติ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Enter</kbd>, <kbd>Space</kbd></td>
+                    <td>
+                      บนปุ่มที่ปิด: เปิด ในรายการ: เลือกตัวที่ active (Space
+                      ใช้ได้บนปุ่มเท่านั้น)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>ตัวอักษร Letters</td>
+                    <td>
+                      บนปุ่ม: เปิดรายการและไปตัวเลือกที่ขึ้นต้นด้วยตัวที่พิมพ์
+                      (type-ahead) ถ้ามีช่องค้นหา ตัวอักษรจะไปอยู่ในช่องค้นหา
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Backspace</kbd></td>
+                    <td>หลายค่า ช่องพิมพ์ว่าง: ลบชิปตัวสุดท้าย</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Escape</kbd></td>
+                    <td>ปิดรายการและคืนโฟกัสให้ช่องควบคุม</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Tab</kbd></td>
+                    <td>ออกจากช่องและปิดรายการ</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attribute / element"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>select.select</code></td>
+                    <td></td>
+                    <td>select แบบ native จัดรูปแบบ ไม่ต้องใช้สคริปต์</td>
+                  </tr>
+                  <tr>
+                    <td><code>div.select</code></td>
+                    <td></td>
+                    <td>
+                      wrapper ของ <code>&lt;select&gt;</code> ลูกโดยตรง
+                      สคริปต์วาดช่องควบคุมและรายการ ไม่มีสคริปต์จะแสดง select
+                      เดิม
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, <code>lg</code> (ไม่ใส่ = default 2rem)
+                    </td>
+                    <td>
+                      ความสูง ใช้ได้ทั้งบน <code>select.select</code> และ
+                      <code>div.select</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-placeholder</code></td>
+                    <td>
+                      ข้อความ (default: ข้อความของ
+                      <code>option[value=""]</code>)
+                    </td>
+                    <td>
+                      ข้อความตอนยังไม่ได้เลือก ใช้เป็น placeholder
+                      ของช่องพิมพ์ด้วย
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-search</code></td>
+                    <td>
+                      มี/ไม่มี, ค่าเป็น placeholder (default "ค้นหา Search")
+                    </td>
+                    <td>เพิ่มช่องค้นหาบนรายการ (ช่องควบคุมแบบปุ่ม)</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-input</code></td>
+                    <td>มี/ไม่มี (default ไม่มี)</td>
+                    <td>
+                      ช่องควบคุมเป็นช่องพิมพ์สำหรับค่าเดียว
+                      <code>multiple</code> ใช้ช่องพิมพ์เสมอ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-tags</code></td>
+                    <td>มี/ไม่มี (default ไม่มี)</td>
+                    <td>เสนอข้อความที่พิมพ์เป็นตัวเลือกใหม่</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-url</code></td>
+                    <td>URL, รองรับ <code>{page}</code></td>
+                    <td>
+                      ที่อยู่สำหรับโหลดตัวเลือก JSON ด้วย
+                      <code>?q=&amp;page=</code> ต้องมีช่องพิมพ์
+                      (เพิ่มให้อัตโนมัติ)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-empty</code></td>
+                    <td>ข้อความ (default "ไม่พบผลลัพธ์ No results")</td>
+                    <td>ข้อความเมื่อค้นหาไม่พบ</td>
+                  </tr>
+                  <tr>
+                    <td><code>&lt;header&gt;</code> ใน wrapper</td>
+                    <td></td>
+                    <td>
+                      ย้ายไปไว้บนรายการ สำหรับปุ่มคำสั่ง เช่น สร้างลูกค้าใหม่
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&lt;select multiple&gt;</code></td>
+                    <td></td>
+                    <td>
+                      เลือกหลายค่า ช่องควบคุมเป็นชิปและช่องพิมพ์ listbox มี
+                      <code>aria-multiselectable</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&lt;optgroup label&gt;</code></td>
+                    <td></td>
+                    <td>
+                      กลุ่มที่มีหัวข้อ (<code>role="group"</code> +
+                      <code>&lt;strong&gt;</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>option[value=""]</code></td>
+                    <td>ใส่ <code>hidden</code> เพื่อไม่ให้อยู่ในรายการ</td>
+                    <td>
+                      ค่าว่าง = ยังไม่ได้เลือก จำเป็นสำหรับ select
+                      ค่าเดียวที่ใช้ <code>data-url</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>option[selected]</code></td>
+                    <td></td>
+                    <td>ค่าเริ่มต้น</td>
+                  </tr>
+                  <tr>
+                    <td><code>option[disabled]</code></td>
+                    <td></td>
+                    <td>
+                      เลือกไม่ได้ แสดงจางพร้อม <code>aria-disabled="true"</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>option[hidden]</code></td>
+                    <td></td>
+                    <td>ไม่แสดงในรายการ แต่ยังถูกเลือกและส่งค่าได้</td>
+                  </tr>
+                  <tr>
+                    <td><code>option[data-label]</code></td>
+                    <td>ข้อความ (default: ข้อความของ option)</td>
+                    <td>ชื่อที่แสดงบนปุ่ม/ชิป และใช้ค้นหา</td>
+                  </tr>
+                  <tr>
+                    <td><code>option[data-text]</code></td>
+                    <td>ข้อความ</td>
+                    <td>บรรทัดคำอธิบายใต้หัวเรื่อง ค้นหาได้</td>
+                  </tr>
+                  <tr>
+                    <td><code>option[data-avatar]</code></td>
+                    <td>ตัวย่อ หรือ URL รูป</td>
+                    <td>อวาตาร์ขนาด sm หน้าตัวเลือก</td>
+                  </tr>
+                  <tr>
+                    <td><code>option[data-badge]</code></td>
+                    <td>ข้อความ</td>
+                    <td>badge ท้ายหัวเรื่อง</td>
+                  </tr>
+                  <tr>
+                    <td><code>option[data-tag]</code></td>
+                    <td>ตั้งโดยสคริปต์</td>
+                    <td>
+                      ตัวเลือกที่สร้างจากข้อความที่พิมพ์
+                      (<code>data-tags</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-ready</code></td>
+                    <td>ตั้งโดยสคริปต์</td>
+                    <td>
+                      บน wrapper เมื่อวาดช่องควบคุมแล้ว select
+                      จริงถูกซ่อนแบบมองไม่เห็น (ยังส่งค่าและ validate ได้)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-has-value</code></td>
+                    <td>ตั้งโดยสคริปต์</td>
+                    <td>บน wrapper ขณะมีค่าที่เลือก</td>
+                  </tr>
+                  <tr>
+                    <td><code>role="combobox"</code></td>
+                    <td>ตั้งโดยสคริปต์</td>
+                    <td>
+                      ปุ่มหรือช่องพิมพ์ มี <code>aria-expanded</code>,
+                      <code>aria-controls</code>,
+                      <code>aria-activedescendant</code> ป้ายมาจาก
+                      <code>&lt;label for&gt;</code> หรือ
+                      <code>aria-label</code> ของ select
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>[popover]</code> &gt; <code>role="listbox"</code>
+                    </td>
+                    <td>ตั้งโดยสคริปต์</td>
+                    <td>
+                      รายการแบบ <code>popover="manual"</code> วางใต้ช่องควบคุม
+                      (กลับขึ้นบนถ้าที่ไม่พอ) <code>role="option"</code> มี
+                      <code>aria-selected</code> และ <code>data-active</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>aria-busy</code>, <code>data-more</code>,
+                      <code>data-error</code>
+                    </td>
+                    <td>ตั้งโดยสคริปต์</td>
+                    <td>
+                      บน listbox เมื่อใช้ <code>data-url</code>: กำลังโหลด,
+                      มีหน้าถัดไป, โหลดล้มเหลว
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
         </main>
       </div>
     </div>

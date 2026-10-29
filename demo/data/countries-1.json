@@ -1,0 +1,87 @@
+{
+  "results": [
+    {
+      "id": "ar",
+      "text": "Argentina อาร์เจนตินา"
+    },
+    {
+      "id": "au",
+      "text": "Australia ออสเตรเลีย"
+    },
+    {
+      "id": "at",
+      "text": "Austria ออสเตรีย"
+    },
+    {
+      "id": "bd",
+      "text": "Bangladesh บังกลาเทศ"
+    },
+    {
+      "id": "be",
+      "text": "Belgium เบลเยียม"
+    },
+    {
+      "id": "br",
+      "text": "Brazil บราซิล"
+    },
+    {
+      "id": "bn",
+      "text": "Brunei บรูไน"
+    },
+    {
+      "id": "kh",
+      "text": "Cambodia กัมพูชา"
+    },
+    {
+      "id": "ca",
+      "text": "Canada แคนาดา"
+    },
+    {
+      "id": "cl",
+      "text": "Chile ชิลี"
+    },
+    {
+      "id": "cn",
+      "text": "China จีน"
+    },
+    {
+      "id": "co",
+      "text": "Colombia โคลอมเบีย"
+    },
+    {
+      "id": "cz",
+      "text": "Czechia เช็กเกีย"
+    },
+    {
+      "id": "dk",
+      "text": "Denmark เดนมาร์ก"
+    },
+    {
+      "id": "eg",
+      "text": "Egypt อียิปต์"
+    },
+    {
+      "id": "fi",
+      "text": "Finland ฟินแลนด์"
+    },
+    {
+      "id": "fr",
+      "text": "France ฝรั่งเศส"
+    },
+    {
+      "id": "de",
+      "text": "Germany เยอรมนี"
+    },
+    {
+      "id": "gr",
+      "text": "Greece กรีซ"
+    },
+    {
+      "id": "hk",
+      "text": "Hong Kong ฮ่องกง"
+    }
+  ],
+  "pagination": {
+    "more": true
+  }
+}
