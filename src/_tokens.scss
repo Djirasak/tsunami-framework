@@ -1,0 +1,72 @@
+// Design tokens. Colors live only here, as custom properties.
+@layer tokens, base, components;
+
+@mixin dark-tokens {
+  color-scheme: dark;
+  --bg: #0d1316;
+  --surface: #12191d;
+  --subtle: #182126;
+  --fg: #e7eef0;
+  --muted: #8b9ba2;
+  --line: #25333a;
+  --accent: #6cc0d3;
+  --on-accent: #0d1316;
+  --ok-bg: #12301f;
+  --ok-fg: #6fd3a0;
+  --danger-bg: #3a1717;
+  --danger-fg: #f08a8a;
+  --neutral-bg: #1e292f;
+  --neutral-fg: #a9b8be;
+}
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+    --bg: #fcfcfc;
+    --surface: #fff;
+    --subtle: #f4f6f7;
+    --fg: #12191d;
+    --muted: #5f6e75;
+    --line: #e3e8ea;
+    --accent: #2b7f93;
+    --on-accent: #fff;
+    --ok-bg: #e4f5ec;
+    --ok-fg: #17724a;
+    --danger-bg: #fde8e8;
+    --danger-fg: #b42323;
+    --neutral-bg: #eceff1;
+    --neutral-fg: #4a585e;
+
+    --font-sans:
+      "Inter", "Noto Sans Thai", system-ui, -apple-system, "Segoe UI",
+      sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --text-sm: 0.75rem;
+    --text-base: 0.875rem;
+    --text-lg: 1rem;
+    --text-xl: 1.5rem;
+    --text-display: clamp(1.75rem, 1rem + 2.5vw, 2.75rem);
+    --leading: 1.55;
+
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 10px;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      @include dark-tokens;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    @include dark-tokens;
+  }
+}

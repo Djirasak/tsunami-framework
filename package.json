@@ -1,0 +1,22 @@
+{
+  "name": "tsunami",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "bun": ">=1.4.3"
+  },
+  "scripts": {
+    "dev": "sass --watch --no-source-map src/index.scss dist/tsunami.css",
+    "build": "sass --style=compressed --no-source-map src/index.scss dist/tsunami.min.css && bun build src/js/index.js --minify --outfile dist/tsunami.min.js && bun scripts/stamp-version.ts",
+    "lint": "eslint src/js",
+    "serve": "bun scripts/serve.ts",
+    "audit": "bun audit"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.13.0",
+    "globals": "17.13.0",
+    "sass": "1.106.1"
+  }
+}
