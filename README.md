@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="docs/favicon.svg" width="72" height="72" alt="tsunami logo">
+<img src="docs/favicon.svg" width="72" height="72" alt="Tsunami logo">
 
-# tsunami 津波
+# Tsunami 津波
 
 A small, quiet CSS framework for back-office UIs.
 Semantic HTML + `data-*` attributes. No runtime dependencies.
