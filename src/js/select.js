@@ -246,6 +246,7 @@ function place(root) {
   pop.style.minWidth = `${r.width}px`;
   const below = innerHeight - r.bottom;
   const up = below < pop.offsetHeight + 8 && r.top > below;
+  pop.dataset.side = up ? "top" : "bottom";
   pop.style.top = `${up ? r.top - pop.offsetHeight - 4 : r.bottom + 4}px`;
   pop.style.left = `${Math.max(8, Math.min(r.left, innerWidth - pop.offsetWidth - 8))}px`;
 }
