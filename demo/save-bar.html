@@ -330,11 +330,18 @@
               <h1>Save bar</h1>
               <p>
                 แถบติดด้านล่างที่แสดงเมื่อฟอร์มถูกแก้ไข
-                และซ่อนเมื่อค่ากลับเป็นค่าเดิม ลองแก้ฟอร์มด้านล่างดู
+                และซ่อนเมื่อค่ากลับเป็นค่าเดิม ลองแก้ฟอร์มในตัวอย่างดู
               </p>
             </div>
           </header>
           <section>
+            <h2>แถบบันทึก The bar</h2>
+            <p>
+              ข้อความทางซ้าย ปุ่มทางขวา ปุ่ม Discard เป็น
+              <code>type="reset"</code> คืนค่าเดิมแบบ native ส่วน Save เป็น
+              <code>type="submit"</code> ทั้งคู่ชี้ฟอร์มด้วย
+              <code>form="id"</code> จึงวางนอกฟอร์มได้
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -364,43 +371,17 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <form id="sb-form" class="stack docs-narrow">
-                    <div class="field">
-                      <label for="sb-title">ชื่อสินค้า Product title</label>
-                      <input
-                        id="sb-title"
-                        type="text"
-                        value="เสื้อยืด T-shirt"
-                      />
-                    </div>
-                    <label class="field"
-                      ><input type="checkbox" /> แสดงในหน้าร้าน Visible in
-                      store</label
-                    >
-                  </form>
                   <div
                     class="save-bar"
-                    data-form="sb-form"
                     role="region"
-                    aria-label="Unsaved changes"
-                    hidden
+                    aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"
                   >
                     <p>มีการแก้ไขที่ยังไม่บันทึก Unsaved changes</p>
                     <div>
-                      <button
-                        type="reset"
-                        form="sb-form"
-                        class="btn"
-                        data-variant="ghost"
-                      >
+                      <button type="button" class="btn" data-variant="ghost">
                         ยกเลิก Discard
                       </button>
-                      <button
-                        type="submit"
-                        form="sb-form"
-                        class="btn"
-                        data-variant="primary"
-                      >
+                      <button type="button" class="btn" data-variant="primary">
                         บันทึก Save
                       </button>
                     </div>
@@ -414,22 +395,954 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;form id="sb-form" class="stack docs-narrow"&gt;
-  &lt;div class="field"&gt;
-    &lt;label for="sb-title"&gt;ชื่อสินค้า Product title&lt;/label&gt;
-    &lt;input id="sb-title" type="text" value="เสื้อยืด T-shirt"&gt;
-  &lt;/div&gt;
-  &lt;label class="field"&gt;&lt;input type="checkbox"&gt; แสดงในหน้าร้าน Visible in store&lt;/label&gt;
-&lt;/form&gt;
-&lt;div class="save-bar" data-form="sb-form" role="region" aria-label="Unsaved changes" hidden&gt;
+                <pre><code>&lt;div class="save-bar" role="region" aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"&gt;
   &lt;p&gt;มีการแก้ไขที่ยังไม่บันทึก Unsaved changes&lt;/p&gt;
   &lt;div&gt;
-    &lt;button type="reset" form="sb-form" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
-    &lt;button type="submit" form="sb-form" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
+          </section>
+          <section>
+            <h2>
+              แถบบอกชื่อฟอร์มด้วย data-form The bar names its form with
+              data-form
+            </h2>
+            <p>
+              <code>data-form</code> คือ id ของฟอร์มที่แถบติดตาม
+              วางแถบหลังฟอร์มและเริ่มด้วย
+              <code>hidden</code> ตัวอย่างในหน้านี้ใช้
+              <code>method="dialog"</code> เพื่อไม่ให้หน้าโหลดใหม่ตอนกดบันทึก
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form
+                      id="sb-form"
+                      class="stack docs-narrow"
+                      method="dialog"
+                    >
+                      <div class="field">
+                        <label for="sb-title">ชื่อสินค้า Product title</label>
+                        <input
+                          id="sb-title"
+                          name="title"
+                          type="text"
+                          value="เสื้อยืด T-shirt"
+                        />
+                      </div>
+                      <div class="field">
+                        <input id="sb-visible" name="visible" type="checkbox" />
+                        <label for="sb-visible"
+                          >แสดงในหน้าร้าน Visible in store</label
+                        >
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-form"
+                      role="region"
+                      aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"
+                      hidden
+                    >
+                      <p>มีการแก้ไขที่ยังไม่บันทึก Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-form"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          ยกเลิก Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-form"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          บันทึก Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;form id="sb-form" class="stack docs-narrow" method="dialog"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sb-title"&gt;ชื่อสินค้า Product title&lt;/label&gt;
+    &lt;input id="sb-title" name="title" type="text" value="เสื้อยืด T-shirt" /&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="sb-visible" name="visible" type="checkbox" /&gt;
+    &lt;label for="sb-visible"&gt;แสดงในหน้าร้าน Visible in store&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-form" role="region" aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes" hidden&gt;
+    &lt;p&gt;มีการแก้ไขที่ยังไม่บันทึก Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-form" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-form" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แสดงเมื่อแก้ ซ่อนเมื่อแก้กลับ และติดด้านล่าง Shows on change,
+              hides when undone, stays at the bottom
+            </h2>
+            <p>
+              แถบใช้
+              <code>position: sticky; bottom: 0</code>
+              จึงติดขอบล่างของกล่องที่เลื่อนได้ (หรือของหน้าจอ)
+              แก้ชื่อแล้วแถบจะขึ้น พิมพ์กลับเป็น "กระเป๋าผ้า Tote bag"
+              แถบจะหายไป
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="scroll-area"
+                    tabindex="0"
+                    aria-label="ฟอร์มสินค้า Product form"
+                    style="height: 18rem"
+                  >
+                    <form id="sb-scroll" class="stack" method="dialog">
+                      <div class="field">
+                        <label for="sb-scroll-title"
+                          >ชื่อสินค้า Product title</label
+                        >
+                        <input
+                          id="sb-scroll-title"
+                          name="title"
+                          type="text"
+                          value="กระเป๋าผ้า Tote bag"
+                          aria-describedby="sb-scroll-hint"
+                        />
+                        <small id="sb-scroll-hint"
+                          >แก้ข้อความนี้ แล้วพิมพ์กลับเป็นค่าเดิม Change it,
+                          then type it back</small
+                        >
+                      </div>
+                      <div class="field">
+                        <label for="sb-scroll-meta"
+                          >คำอธิบาย SEO Meta description</label
+                        >
+                        <textarea
+                          id="sb-scroll-meta"
+                          name="meta"
+                          rows="12"
+                        ></textarea>
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-scroll"
+                      role="region"
+                      aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"
+                      hidden
+                    >
+                      <p>มีการแก้ไขที่ยังไม่บันทึก Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-scroll"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          ยกเลิก Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-scroll"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          บันทึก Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="scroll-area" tabindex="0" aria-label="ฟอร์มสินค้า Product form" style="height: 18rem"&gt;
+  &lt;form id="sb-scroll" class="stack" method="dialog"&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-scroll-title"&gt;ชื่อสินค้า Product title&lt;/label&gt;
+      &lt;input id="sb-scroll-title" name="title" type="text" value="กระเป๋าผ้า Tote bag" aria-describedby="sb-scroll-hint" /&gt;
+      &lt;small id="sb-scroll-hint"&gt;แก้ข้อความนี้ แล้วพิมพ์กลับเป็นค่าเดิม Change it, then type it back&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-scroll-meta"&gt;คำอธิบาย SEO Meta description&lt;/label&gt;
+      &lt;textarea id="sb-scroll-meta" name="meta" rows="12"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-scroll" role="region" aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes" hidden&gt;
+    &lt;p&gt;มีการแก้ไขที่ยังไม่บันทึก Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-scroll" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-scroll" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>เทียบทุกชนิดของช่อง Every kind of field is compared</h2>
+            <p>
+              checkbox, radio และ switch เทียบว่าติ๊กหรือไม่ select
+              เทียบตัวเลือก (รวม multiple) file เทียบไฟล์ที่เลือก
+              ช่องอื่นเทียบค่า (รวม slider) ค่าเดิมคือค่าที่เขียนใน HTML
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form id="sb-kinds" class="field-group" method="dialog">
+                      <div>
+                        <div class="field">
+                          <input
+                            id="sb-kinds-public"
+                            name="public"
+                            type="checkbox"
+                            role="switch"
+                            checked
+                          />
+                          <label for="sb-kinds-public">เผยแพร่ Is public</label>
+                        </div>
+                        <div class="field">
+                          <input id="sb-kinds-tax" name="tax" type="checkbox" />
+                          <label for="sb-kinds-tax">รวม VAT Includes VAT</label>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="field">
+                          <label for="sb-kinds-status">สถานะ Status</label>
+                          <select id="sb-kinds-status" name="status">
+                            <option>ฉบับร่าง Draft</option>
+                            <option selected>ขายอยู่ Active</option>
+                            <option>เก็บถาวร Archived</option>
+                          </select>
+                        </div>
+                        <div class="field">
+                          <label for="sb-kinds-colour">สี Colour</label>
+                          <select id="sb-kinds-colour" name="colour">
+                            <option value="blue" selected>น้ำเงิน Blue</option>
+                            <option value="white">ขาว White</option>
+                            <option value="grey">เทา Grey</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="field">
+                          <label for="sb-kinds-file"
+                            >ตารางไซซ์ Size chart</label
+                          >
+                          <input id="sb-kinds-file" name="chart" type="file" />
+                        </div>
+                        <div class="field">
+                          <label for="sb-kinds-stock"
+                            >สต็อกขั้นต่ำ Min stock:
+                            <output for="sb-kinds-stock">10</output></label
+                          >
+                          <input
+                            id="sb-kinds-stock"
+                            name="stock"
+                            class="slider"
+                            type="range"
+                            min="0"
+                            max="50"
+                            value="10"
+                          />
+                        </div>
+                      </div>
+                      <fieldset class="field-group" data-gap="sm">
+                        <legend>การจัดส่ง Shipping</legend>
+                        <div class="field">
+                          <input
+                            id="sb-kinds-std"
+                            name="ship"
+                            type="radio"
+                            value="std"
+                            checked
+                          />
+                          <label for="sb-kinds-std">ส่งธรรมดา Standard</label>
+                        </div>
+                        <div class="field">
+                          <input
+                            id="sb-kinds-exp"
+                            name="ship"
+                            type="radio"
+                            value="exp"
+                          />
+                          <label for="sb-kinds-exp">ส่งด่วน Express</label>
+                        </div>
+                      </fieldset>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-kinds"
+                      role="region"
+                      aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"
+                      hidden
+                    >
+                      <p>มีการแก้ไขที่ยังไม่บันทึก Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-kinds"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          ยกเลิก Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-kinds"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          บันทึก Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;form id="sb-kinds" class="field-group" method="dialog"&gt;
+  &lt;div&gt;
+    &lt;div class="field"&gt;
+      &lt;input id="sb-kinds-public" name="public" type="checkbox" role="switch" checked /&gt;
+      &lt;label for="sb-kinds-public"&gt;เผยแพร่ Is public&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;input id="sb-kinds-tax" name="tax" type="checkbox" /&gt;
+      &lt;label for="sb-kinds-tax"&gt;รวม VAT Includes VAT&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-kinds-status"&gt;สถานะ Status&lt;/label&gt;
+      &lt;select id="sb-kinds-status" name="status"&gt;
+        &lt;option&gt;ฉบับร่าง Draft&lt;/option&gt;
+        &lt;option selected&gt;ขายอยู่ Active&lt;/option&gt;
+        &lt;option&gt;เก็บถาวร Archived&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-kinds-colour"&gt;สี Colour&lt;/label&gt;
+      &lt;select id="sb-kinds-colour" name="colour"&gt;
+        &lt;option value="blue" selected&gt;น้ำเงิน Blue&lt;/option&gt;
+        &lt;option value="white"&gt;ขาว White&lt;/option&gt;
+        &lt;option value="grey"&gt;เทา Grey&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-kinds-file"&gt;ตารางไซซ์ Size chart&lt;/label&gt;
+      &lt;input id="sb-kinds-file" name="chart" type="file" /&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-kinds-stock"&gt;สต็อกขั้นต่ำ Min stock: &lt;output for="sb-kinds-stock"&gt;10&lt;/output&gt;&lt;/label&gt;
+      &lt;input id="sb-kinds-stock" name="stock" class="slider" type="range" min="0" max="50" value="10" /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;fieldset class="field-group" data-gap="sm"&gt;
+    &lt;legend&gt;การจัดส่ง Shipping&lt;/legend&gt;
+    &lt;div class="field"&gt;
+      &lt;input id="sb-kinds-std" name="ship" type="radio" value="std" checked /&gt;
+      &lt;label for="sb-kinds-std"&gt;ส่งธรรมดา Standard&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;input id="sb-kinds-exp" name="ship" type="radio" value="exp" /&gt;
+      &lt;label for="sb-kinds-exp"&gt;ส่งด่วน Express&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-kinds" role="region" aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes" hidden&gt;
+    &lt;p&gt;มีการแก้ไขที่ยังไม่บันทึก Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-kinds" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-kinds" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แถบที่ไม่ใส่ hidden แสดงตลอด A bar written without hidden stays up
+            </h2>
+            <p>
+              ใช้กับรายการใหม่ที่ยังไม่เคยบันทึก หรือหลังบันทึกไม่สำเร็จ script
+              ยังตั้ง <code>data-dirty</code> ให้แต่ไม่ซ่อนแถบ
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form id="sb-new" class="stack docs-narrow" method="dialog">
+                      <div class="field">
+                        <label for="sb-new-title"
+                          >ชื่อสินค้า Product title</label
+                        >
+                        <input
+                          id="sb-new-title"
+                          name="title"
+                          type="text"
+                          placeholder="สินค้าใหม่ New product"
+                        />
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-new"
+                      role="region"
+                      aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"
+                    >
+                      <p>มีการแก้ไขที่ยังไม่บันทึก Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-new"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          ยกเลิก Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-new"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          บันทึก Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;form id="sb-new" class="stack docs-narrow" method="dialog"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sb-new-title"&gt;ชื่อสินค้า Product title&lt;/label&gt;
+    &lt;input id="sb-new-title" name="title" type="text" placeholder="สินค้าใหม่ New product" /&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-new" role="region" aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"&gt;
+    &lt;p&gt;มีการแก้ไขที่ยังไม่บันทึก Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-new" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-new" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-warn-on-leave ถามก่อนออกจากหน้า Asks before leaving with
+              unsaved changes
+            </h2>
+            <p>
+              แก้ช่องนี้ แล้วรีโหลดหรือกดลิงก์ เบราว์เซอร์จะถามก่อน
+              (beforeunload) ปุ่ม Discard, Save และลิงก์ในแถบจะไม่ถาม
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form
+                      id="sb-warn"
+                      class="stack docs-narrow"
+                      method="dialog"
+                    >
+                      <div class="field">
+                        <label for="sb-warn-title"
+                          >ชื่อสินค้า Product title</label
+                        >
+                        <input
+                          id="sb-warn-title"
+                          name="title"
+                          type="text"
+                          value="นาฬิกา Timeless Watch"
+                        />
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-warn"
+                      data-warn-on-leave
+                      role="region"
+                      aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"
+                      hidden
+                    >
+                      <p>มีการแก้ไขที่ยังไม่บันทึก Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-warn"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          ยกเลิก Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-warn"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          บันทึก Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;form id="sb-warn" class="stack docs-narrow" method="dialog"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sb-warn-title"&gt;ชื่อสินค้า Product title&lt;/label&gt;
+    &lt;input id="sb-warn-title" name="title" type="text" value="นาฬิกา Timeless Watch" /&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-warn" data-warn-on-leave role="region" aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes" hidden&gt;
+    &lt;p&gt;มีการแก้ไขที่ยังไม่บันทึก Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-warn" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-warn" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ฟัง dirty/clean และเรียก markClean() หลังบันทึก Events and
+              markClean() after saving without a page load
+            </h2>
+            <p>
+              ฟอร์มได้รับ <code>tsunami:dirty</code> เมื่อเริ่มต่างจากค่าเดิม
+              และ <code>tsunami:clean</code> เมื่อกลับมาเหมือนเดิม
+              หลังบันทึกด้วย fetch ให้เรียก
+              <code>tsunami.saveBar.markClean(form)</code>
+              เพื่อให้ค่าปัจจุบันเป็นค่าที่บันทึกแล้ว
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <form id="sb-events" method="dialog">
+                      <div class="field">
+                        <label for="sb-events-title"
+                          >ชื่อสินค้า Product title</label
+                        >
+                        <input
+                          id="sb-events-title"
+                          name="title"
+                          type="text"
+                          value="โคมไฟ Bollard Lamp"
+                        />
+                      </div>
+                    </form>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="sb-events-clean"
+                      >
+                        markClean()
+                      </button>
+                      <small id="sb-events-result" aria-live="polite"
+                        >ยังไม่มีการแก้ไข No changes</small
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="save-bar"
+                    data-form="sb-events"
+                    role="region"
+                    aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes"
+                    hidden
+                  >
+                    <p>มีการแก้ไขที่ยังไม่บันทึก Unsaved changes</p>
+                    <div>
+                      <button
+                        type="reset"
+                        form="sb-events"
+                        class="btn"
+                        data-variant="ghost"
+                      >
+                        ยกเลิก Discard
+                      </button>
+                      <button
+                        type="submit"
+                        form="sb-events"
+                        class="btn"
+                        data-variant="primary"
+                      >
+                        บันทึก Save
+                      </button>
+                    </div>
+                  </div>
+                  <script>
+                    {
+                      const form = document.getElementById("sb-events");
+                      const result =
+                        document.getElementById("sb-events-result");
+                      form.addEventListener("tsunami:dirty", () => {
+                        result.textContent = "dirty: มีการแก้ไขที่ยังไม่บันทึก";
+                      });
+                      form.addEventListener("tsunami:clean", () => {
+                        result.textContent = "clean: ตรงกับค่าที่บันทึกแล้ว";
+                      });
+                      document
+                        .getElementById("sb-events-clean")
+                        .addEventListener("click", () => {
+                          window.tsunami.saveBar.markClean(form);
+                        });
+                    }
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;form id="sb-events" method="dialog"&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-events-title"&gt;ชื่อสินค้า Product title&lt;/label&gt;
+      &lt;input id="sb-events-title" name="title" type="text" value="โคมไฟ Bollard Lamp" /&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="sb-events-clean"&gt;markClean()&lt;/button&gt;
+    &lt;small id="sb-events-result" aria-live="polite"&gt;ยังไม่มีการแก้ไข No changes&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;div class="save-bar" data-form="sb-events" role="region" aria-label="การแก้ไขที่ยังไม่บันทึก Unsaved changes" hidden&gt;
+    &lt;p&gt;มีการแก้ไขที่ยังไม่บันทึก Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-events" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-events" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;script&gt;
+  {
+    const form = document.getElementById("sb-events");
+    const result = document.getElementById("sb-events-result");
+    form.addEventListener("tsunami:dirty", () =&gt; {
+      result.textContent = "dirty: มีการแก้ไขที่ยังไม่บันทึก";
+    });
+    form.addEventListener("tsunami:clean", () =&gt; {
+      result.textContent = "clean: ตรงกับค่าที่บันทึกแล้ว";
+    });
+    document.getElementById("sb-events-clean").addEventListener("click", () =&gt; {
+      window.tsunami.saveBar.markClean(form);
+    });
+  }
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              <code>js/save-bar.js</code>
+              ทำงานกับแถบและฟอร์มที่เพิ่มเข้ามาภายหลังด้วย ไม่ต้องเรียก init
+            </p>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code
+                        >tsunami.<wbr />saveBar.<wbr />check(<wbr />target)</code
+                      >
+                    </td>
+                    <td><code>target</code>: .save-bar หรือ form</td>
+                    <td>
+                      เทียบฟอร์มตอนนี้ แสดง/ซ่อนแถบ ตั้ง data-dirty และส่ง event
+                      ถ้าสถานะเปลี่ยน คืนค่า <code>true</code> ถ้ามีการแก้
+                      เรียกหลัง script เปลี่ยนค่าช่องโดยไม่ส่ง input/change
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code
+                        >tsunami.<wbr />saveBar.<wbr />markClean(<wbr />target)</code
+                      >
+                    </td>
+                    <td><code>target</code>: .save-bar หรือ form</td>
+                    <td>
+                      ให้ค่าปัจจุบันเป็นค่าที่บันทึกแล้ว (อัปเดต defaultValue /
+                      defaultChecked / defaultSelected จึงใช้กับปุ่ม reset
+                      ได้ต่อ) แล้วซ่อนแถบ
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:dirty</code></td>
+                    <td>form (bubbles)</td>
+                    <td>
+                      <code>{ form, bars }</code>
+                      ส่งเมื่อฟอร์มเริ่มต่างจากค่าที่บันทึก
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami:clean</code></td>
+                    <td>form (bubbles)</td>
+                    <td>
+                      <code>{ form, bars }</code>
+                      ส่งเมื่อกลับมาตรงกับค่าที่บันทึก ทั้งจากการแก้กลับ reset,
+                      submit หรือ markClean()
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              เทียบอย่างไร: checkbox/radio เทียบ <code>checked</code> กับ
+              <code>defaultChecked</code>, select เทียบ
+              <code>selected</code> กับ <code>defaultSelected</code>, file
+              เทียบไฟล์ที่เลือก, input type=hidden เทียบกับค่าตอนที่ script
+              เห็นฟอร์มครั้งแรก, ช่องอื่นเทียบ <code>value</code> กับ
+              <code>defaultValue</code> จำนวนช่องที่เปลี่ยน (เพิ่ม/ลบแถว)
+              ก็นับเป็นการแก้ โดย script ที่เพิ่มแถวต้องส่ง event input บนฟอร์ม
+              ไม่เทียบ: ปุ่ม, fieldset, output, ช่องใน dialog, ช่องค้นหาของ
+              select และ <code>[data-save-bar-ignore]</code> หลัง submit
+              ค่าจะถือว่าบันทึกแล้ว
+            </p>
           </section>
           <section>
             <h2>Attributes</h2>
@@ -444,19 +1357,91 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td>
+                      <code>.<wbr />save-bar</code>
+                    </td>
+                    <td></td>
+                    <td>แถบ sticky ติดด้านล่าง ขอบบน 1px</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />save-bar &gt; p</code>
+                    </td>
+                    <td></td>
+                    <td>ข้อความสีเทาทางซ้าย</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />save-bar &gt; div</code>
+                    </td>
+                    <td></td>
+                    <td>กลุ่มปุ่มทางขวา</td>
+                  </tr>
+                  <tr>
                     <td><code>data-form</code></td>
-                    <td><code>form id</code></td>
-                    <td>ฟอร์มที่ติดตาม ถ้าไม่ใส่จะแสดงตลอด</td>
+                    <td>id ของ form</td>
+                    <td>ฟอร์มที่แถบติดตาม ถ้าไม่ใส่ script จะไม่แตะแถบ</td>
                   </tr>
                   <tr>
                     <td><code>hidden</code></td>
-                    <td></td>
-                    <td>เริ่มแบบซ่อน JS จะสลับให้</td>
+                    <td>มี / ไม่มี</td>
+                    <td>
+                      ใส่เพื่อเริ่มแบบซ่อนแล้วให้ script สลับ
+                      ถ้าไม่ใส่แถบแสดงตลอด
+                    </td>
                   </tr>
                   <tr>
-                    <td><code>button[type=reset][form]</code></td>
+                    <td><code>data-warn-on-leave</code></td>
+                    <td>มี / ไม่มี (default ไม่มี)</td>
+                    <td>
+                      ถามก่อนออกจากหน้าเมื่อมีการแก้ (beforeunload) ปุ่ม Discard
+                      / Save และลิงก์ในแถบไม่ถาม
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-dirty</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td>
+                      script ตั้งให้: ฟอร์มมีการแก้ที่ยังไม่บันทึกหรือไม่
+                      ใช้เขียน CSS หรืออ่านจาก script
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>role="region" + aria-label</code></td>
                     <td></td>
-                    <td>ปุ่ม Discard คืนค่าเดิมแบบ native</td>
+                    <td>ให้ screen reader หาแถบเจอ</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>button[type=reset]<wbr />[form]</code>
+                    </td>
+                    <td></td>
+                    <td>ปุ่ม Discard คืนค่าเดิมแบบ native แถบซ่อนเอง</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>button[type=submit]<wbr />[form]</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      ปุ่ม Save ส่งฟอร์มจากนอกฟอร์ม หลัง submit
+                      ค่าถือว่าบันทึกแล้ว
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>a[href=""]</code></td>
+                    <td></td>
+                    <td>
+                      ทางเลือกของ Discard: โหลดหน้าใหม่เพื่อคืนค่าที่บันทึก
+                      ไม่ถามก่อนออก
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-save-bar-ignore</code></td>
+                    <td></td>
+                    <td>
+                      บนช่องในฟอร์ม: ไม่นำมาเทียบ (เช่นช่องกรองที่ไม่ได้บันทึก)
+                    </td>
                   </tr>
                 </tbody>
               </table>
