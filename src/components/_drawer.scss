@@ -1,6 +1,8 @@
 // Drawer: <dialog class="drawer"> that slides in from an edge.
 // data-side="bottom" (default, also no data-side), "top", "left", "right".
 // Children: header, div (scrolls), footer. Slide-in/out is CSS only; reduced motion turns it off.
+@use "motion";
+
 @layer components {
   :where(.drawer) {
     --drawer-from: 0 100%;
@@ -110,40 +112,40 @@
     justify-content: normal;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    :where(.drawer) {
-      transition:
-        translate 0.2s ease-out,
-        overlay 0.2s allow-discrete,
-        display 0.2s allow-discrete;
-    }
+  // Open and close: the panel slides from its edge and fades, the backdrop fades.
+  :where(.drawer) {
+    transition:
+      translate motion.$drawer motion.$ease-drawer,
+      opacity motion.$drawer motion.$ease-drawer,
+      overlay motion.$drawer allow-discrete,
+      display motion.$drawer allow-discrete;
+  }
 
-    :where(.drawer:not([open])) {
+  :where(.drawer:not([open])) {
+    opacity: 0;
+    translate: var(--drawer-from);
+  }
+
+  :where(.drawer[open]) {
+    @starting-style {
+      opacity: 0;
       translate: var(--drawer-from);
     }
+  }
 
-    :where(.drawer[open]) {
-      translate: 0 0;
+  :where(.drawer)::backdrop {
+    opacity: 0;
+    transition:
+      opacity motion.$drawer motion.$ease-drawer,
+      overlay motion.$drawer allow-discrete,
+      display motion.$drawer allow-discrete;
+  }
 
-      @starting-style {
-        translate: var(--drawer-from);
-      }
-    }
+  :where(.drawer[open])::backdrop {
+    opacity: 1;
 
-    :where(.drawer)::backdrop {
+    @starting-style {
       opacity: 0;
-      transition:
-        opacity 0.2s,
-        overlay 0.2s allow-discrete,
-        display 0.2s allow-discrete;
-    }
-
-    :where(.drawer[open])::backdrop {
-      opacity: 1;
-
-      @starting-style {
-        opacity: 0;
-      }
     }
   }
 }
