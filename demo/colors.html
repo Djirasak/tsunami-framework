@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Colors | tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="index.html">tsunami <span>津波</span></a>
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a href="index.html">Overview</a>
+          <h2>Foundations</h2>
+          <a href="colors.html" aria-current="page">Colors</a>
+          <a href="typography.html">Typography</a>
+          <a href="icons.html">Icons</a>
+          <h2>Layout</h2>
+          <a href="stack.html">Stack</a>
+          <a href="card.html">Card</a>
+          <a href="item.html">Item</a>
+          <a href="page-header.html">Page header</a>
+          <a href="stat.html">Stat</a>
+          <a href="table.html">Table</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="journey.html">Journey</a>
+          <a href="accordion.html">Accordion</a>
+          <a href="scroll-area.html">Scroll area</a>
+          <a href="workspace.html">Workspace</a>
+          <h2>Actions</h2>
+          <a href="btn.html">Button</a>
+          <a href="dropdown.html">Dropdown</a>
+          <a href="theme-switcher.html">Theme switcher</a>
+          <h2>Forms</h2>
+          <a href="field.html">Field</a>
+          <a href="input-group.html">Input group</a>
+          <a href="save-bar.html">Save bar</a>
+          <h2>Feedback</h2>
+          <a href="alert.html">Alert</a>
+          <a href="badge.html">Badge</a>
+          <a href="empty.html">Empty state</a>
+          <a href="loader.html">Loader</a>
+          <a href="progress.html">Progress</a>
+          <h2>Media</h2>
+          <a href="avatar.html">Avatar</a>
+          <h2>Navigation</h2>
+          <a href="breadcrumb.html">Breadcrumb</a>
+          <a href="link.html">Link</a>
+          <a href="pagination.html">Pagination</a>
+          <a href="sidebar.html">Sidebar</a>
+          <a href="subnav.html">Subnav</a>
+          <a href="tabs.html">Tabs</a>
+          <a href="tree.html">Tree</a>
+          <h2>Overlays</h2>
+          <a href="dialog.html">Dialog</a>
+          <a href="drawer.html">Drawer</a>
+          <a href="popover.html">Popover</a>
+          <a href="tooltip.html">Tooltip</a>
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Colors</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Colors</h1>
+              <p>
+                Semantic tokens เป็น CSS custom properties
+                และเปลี่ยนค่าเองตามธีม component อ้างอิงเฉพาะ token เหล่านี้
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Swatches</h2>
+            <div class="docs-swatches">
+              <div style="--c: var(--bg)"><code>--bg</code></div>
+              <div style="--c: var(--surface)"><code>--surface</code></div>
+              <div style="--c: var(--subtle)"><code>--subtle</code></div>
+              <div style="--c: var(--fg)"><code>--fg</code></div>
+              <div style="--c: var(--muted)"><code>--muted</code></div>
+              <div style="--c: var(--line)"><code>--line</code></div>
+              <div style="--c: var(--accent)"><code>--accent</code></div>
+              <div style="--c: var(--on-accent)"><code>--on-accent</code></div>
+              <div style="--c: var(--ok-bg)"><code>--ok-bg</code></div>
+              <div style="--c: var(--ok-fg)"><code>--ok-fg</code></div>
+              <div style="--c: var(--danger-bg)"><code>--danger-bg</code></div>
+              <div style="--c: var(--danger-fg)"><code>--danger-fg</code></div>
+              <div style="--c: var(--neutral-bg)">
+                <code>--neutral-bg</code>
+              </div>
+              <div style="--c: var(--neutral-fg)">
+                <code>--neutral-fg</code>
+              </div>
+              <div style="--c: var(--overlay)"><code>--overlay</code></div>
+            </div>
+          </section>
+          <section>
+            <h2>Tokens</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Token</th>
+                    <th scope="col">Light / Dark</th>
+                    <th scope="col">ใช้กับ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>--bg</code></td>
+                    <td><code>#fcfcfc / #0d1316</code></td>
+                    <td>พื้นหลังหน้า</td>
+                  </tr>
+                  <tr>
+                    <td><code>--surface</code></td>
+                    <td><code>#fff / #12191d</code></td>
+                    <td>การ์ด, input, overlay</td>
+                  </tr>
+                  <tr>
+                    <td><code>--subtle</code></td>
+                    <td><code>#f4f6f7 / #182126</code></td>
+                    <td>sidebar, hover, code</td>
+                  </tr>
+                  <tr>
+                    <td><code>--fg</code></td>
+                    <td><code>#12191d / #e7eef0</code></td>
+                    <td>ข้อความหลัก</td>
+                  </tr>
+                  <tr>
+                    <td><code>--muted</code></td>
+                    <td><code>#5f6e75 / #8b9ba2</code></td>
+                    <td>ข้อความรอง, ป้าย</td>
+                  </tr>
+                  <tr>
+                    <td><code>--line</code></td>
+                    <td><code>#e3e8ea / #25333a</code></td>
+                    <td>เส้นขอบ 1px</td>
+                  </tr>
+                  <tr>
+                    <td><code>--accent</code></td>
+                    <td><code>#2b7f93 / #6cc0d3</code></td>
+                    <td>ลิงก์และปุ่ม primary เท่านั้น</td>
+                  </tr>
+                  <tr>
+                    <td><code>--on-accent</code></td>
+                    <td><code>#fff / #0d1316</code></td>
+                    <td>ข้อความบน accent</td>
+                  </tr>
+                  <tr>
+                    <td><code>--ok-bg</code></td>
+                    <td><code>#e4f5ec / #12301f</code></td>
+                    <td>พื้นสถานะสำเร็จ</td>
+                  </tr>
+                  <tr>
+                    <td><code>--ok-fg</code></td>
+                    <td><code>#17724a / #6fd3a0</code></td>
+                    <td>ข้อความสถานะสำเร็จ</td>
+                  </tr>
+                  <tr>
+                    <td><code>--danger-bg</code></td>
+                    <td><code>#fde8e8 / #3a1717</code></td>
+                    <td>พื้นสถานะผิดพลาด</td>
+                  </tr>
+                  <tr>
+                    <td><code>--danger-fg</code></td>
+                    <td><code>#b42323 / #f08a8a</code></td>
+                    <td>ข้อความสถานะผิดพลาด</td>
+                  </tr>
+                  <tr>
+                    <td><code>--neutral-bg</code></td>
+                    <td><code>#eceff1 / #1e292f</code></td>
+                    <td>พื้น badge, รายการที่ active</td>
+                  </tr>
+                  <tr>
+                    <td><code>--neutral-fg</code></td>
+                    <td><code>#4a585e / #a9b8be</code></td>
+                    <td>ข้อความ badge</td>
+                  </tr>
+                  <tr>
+                    <td><code>--overlay</code></td>
+                    <td><code>rgb(18 25 29 / 0.4) / rgb(0 0 0 / 0.6)</code></td>
+                    <td>backdrop ของ dialog และ drawer</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

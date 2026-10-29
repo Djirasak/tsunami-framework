@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dialog | tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="index.html">tsunami <span>津波</span></a>
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a href="index.html">Overview</a>
+          <h2>Foundations</h2>
+          <a href="colors.html">Colors</a>
+          <a href="typography.html">Typography</a>
+          <a href="icons.html">Icons</a>
+          <h2>Layout</h2>
+          <a href="stack.html">Stack</a>
+          <a href="card.html">Card</a>
+          <a href="item.html">Item</a>
+          <a href="page-header.html">Page header</a>
+          <a href="stat.html">Stat</a>
+          <a href="table.html">Table</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="journey.html">Journey</a>
+          <a href="accordion.html">Accordion</a>
+          <a href="scroll-area.html">Scroll area</a>
+          <a href="workspace.html">Workspace</a>
+          <h2>Actions</h2>
+          <a href="btn.html">Button</a>
+          <a href="dropdown.html">Dropdown</a>
+          <a href="theme-switcher.html">Theme switcher</a>
+          <h2>Forms</h2>
+          <a href="field.html">Field</a>
+          <a href="input-group.html">Input group</a>
+          <a href="save-bar.html">Save bar</a>
+          <h2>Feedback</h2>
+          <a href="alert.html">Alert</a>
+          <a href="badge.html">Badge</a>
+          <a href="empty.html">Empty state</a>
+          <a href="loader.html">Loader</a>
+          <a href="progress.html">Progress</a>
+          <h2>Media</h2>
+          <a href="avatar.html">Avatar</a>
+          <h2>Navigation</h2>
+          <a href="breadcrumb.html">Breadcrumb</a>
+          <a href="link.html">Link</a>
+          <a href="pagination.html">Pagination</a>
+          <a href="sidebar.html">Sidebar</a>
+          <a href="subnav.html">Subnav</a>
+          <a href="tabs.html">Tabs</a>
+          <a href="tree.html">Tree</a>
+          <h2>Overlays</h2>
+          <a href="dialog.html" aria-current="page">Dialog</a>
+          <a href="drawer.html">Drawer</a>
+          <a href="popover.html">Popover</a>
+          <a href="tooltip.html">Tooltip</a>
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Dialog</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Dialog</h1>
+              <p>
+                <code>&lt;dialog&gt;</code> แบบ native เปิดด้วย
+                <code>commandfor</code> ไม่ต้องใช้ JS
+              </p>
+            </div>
+          </header>
+          <section>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="dlg-delete"
+                    command="show-modal"
+                  >
+                    ลบสินค้า Delete product
+                  </button>
+                  <dialog
+                    class="dialog"
+                    id="dlg-delete"
+                    aria-labelledby="dlg-delete-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="dlg-delete-title">
+                        ลบสินค้านี้? Delete this product?
+                      </h2>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="dlg-delete"
+                        command="close"
+                        aria-label="ปิด Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <div>
+                      <p>
+                        สินค้าและประวัติสต็อกจะถูกลบถาวร The product and its
+                        stock history are removed permanently.
+                      </p>
+                    </div>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-delete"
+                        command="close"
+                      >
+                        ยกเลิก Cancel
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="danger"
+                        commandfor="dlg-delete"
+                        command="close"
+                      >
+                        ลบ Delete
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="dlg-delete" command="show-modal"&gt;ลบสินค้า Delete product&lt;/button&gt;
+&lt;dialog class="dialog" id="dlg-delete" aria-labelledby="dlg-delete-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-delete-title"&gt;ลบสินค้านี้? Delete this product?&lt;/h2&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-delete" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;div&gt;
+    &lt;p&gt;สินค้าและประวัติสต็อกจะถูกลบถาวร The product and its stock history are removed permanently.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-delete" command="close"&gt;ยกเลิก Cancel&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="danger" commandfor="dlg-delete" command="close"&gt;ลบ Delete&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>commandfor + command</code></td>
+                    <td><code>show-modal, close</code></td>
+                    <td>บนปุ่ม เปิดหรือปิด dialog</td>
+                  </tr>
+                  <tr>
+                    <td><code>closedby</code></td>
+                    <td><code>any</code></td>
+                    <td>ปิดด้วย Esc หรือคลิกนอกกรอบ</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; header / &gt; div / &gt; footer</code></td>
+                    <td></td>
+                    <td>ส่วนต่างๆ คั่นด้วยเส้น</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

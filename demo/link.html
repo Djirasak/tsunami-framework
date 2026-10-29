@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Link | tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="index.html">tsunami <span>津波</span></a>
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a href="index.html">Overview</a>
+          <h2>Foundations</h2>
+          <a href="colors.html">Colors</a>
+          <a href="typography.html">Typography</a>
+          <a href="icons.html">Icons</a>
+          <h2>Layout</h2>
+          <a href="stack.html">Stack</a>
+          <a href="card.html">Card</a>
+          <a href="item.html">Item</a>
+          <a href="page-header.html">Page header</a>
+          <a href="stat.html">Stat</a>
+          <a href="table.html">Table</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="journey.html">Journey</a>
+          <a href="accordion.html">Accordion</a>
+          <a href="scroll-area.html">Scroll area</a>
+          <a href="workspace.html">Workspace</a>
+          <h2>Actions</h2>
+          <a href="btn.html">Button</a>
+          <a href="dropdown.html">Dropdown</a>
+          <a href="theme-switcher.html">Theme switcher</a>
+          <h2>Forms</h2>
+          <a href="field.html">Field</a>
+          <a href="input-group.html">Input group</a>
+          <a href="save-bar.html">Save bar</a>
+          <h2>Feedback</h2>
+          <a href="alert.html">Alert</a>
+          <a href="badge.html">Badge</a>
+          <a href="empty.html">Empty state</a>
+          <a href="loader.html">Loader</a>
+          <a href="progress.html">Progress</a>
+          <h2>Media</h2>
+          <a href="avatar.html">Avatar</a>
+          <h2>Navigation</h2>
+          <a href="breadcrumb.html">Breadcrumb</a>
+          <a href="link.html" aria-current="page">Link</a>
+          <a href="pagination.html">Pagination</a>
+          <a href="sidebar.html">Sidebar</a>
+          <a href="subnav.html">Subnav</a>
+          <a href="tabs.html">Tabs</a>
+          <a href="tree.html">Tree</a>
+          <h2>Overlays</h2>
+          <a href="dialog.html">Dialog</a>
+          <a href="drawer.html">Drawer</a>
+          <a href="popover.html">Popover</a>
+          <a href="tooltip.html">Tooltip</a>
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Link</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Link</h1>
+              <p>
+                ลิงก์ใช้สี accent โดยค่าเริ่มต้น ใช้
+                <code>.link</code> เมื่อต้องการแบบเบาลง
+              </p>
+            </div>
+          </header>
+          <section>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <p>
+                      อ่าน
+                      <a href="#">นโยบายการคืนสินค้า return policy</a>
+                      ก่อนสั่งซื้อ
+                    </p>
+                    <p>
+                      <a class="link" data-variant="muted" href="#"
+                        >ดูประวัติ View history</a
+                      >
+                    </p>
+                    <p>
+                      <a class="link" href="#"
+                        >เอกสาร API docs<i
+                          class="icon icon-external-link"
+                          aria-hidden="true"
+                        ></i
+                      ></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;p&gt;อ่าน &lt;a href="#"&gt;นโยบายการคืนสินค้า return policy&lt;/a&gt; ก่อนสั่งซื้อ&lt;/p&gt;
+  &lt;p&gt;&lt;a class="link" data-variant="muted" href="#"&gt;ดูประวัติ View history&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a class="link" href="#"&gt;เอกสาร API docs&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td><code>muted</code></td>
+                    <td>สีเทา เปลี่ยนเป็นสีข้อความเมื่อ hover</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

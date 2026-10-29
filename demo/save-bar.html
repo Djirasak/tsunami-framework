@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Save bar | tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="index.html">tsunami <span>津波</span></a>
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a href="index.html">Overview</a>
+          <h2>Foundations</h2>
+          <a href="colors.html">Colors</a>
+          <a href="typography.html">Typography</a>
+          <a href="icons.html">Icons</a>
+          <h2>Layout</h2>
+          <a href="stack.html">Stack</a>
+          <a href="card.html">Card</a>
+          <a href="item.html">Item</a>
+          <a href="page-header.html">Page header</a>
+          <a href="stat.html">Stat</a>
+          <a href="table.html">Table</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="journey.html">Journey</a>
+          <a href="accordion.html">Accordion</a>
+          <a href="scroll-area.html">Scroll area</a>
+          <a href="workspace.html">Workspace</a>
+          <h2>Actions</h2>
+          <a href="btn.html">Button</a>
+          <a href="dropdown.html">Dropdown</a>
+          <a href="theme-switcher.html">Theme switcher</a>
+          <h2>Forms</h2>
+          <a href="field.html">Field</a>
+          <a href="input-group.html">Input group</a>
+          <a href="save-bar.html" aria-current="page">Save bar</a>
+          <h2>Feedback</h2>
+          <a href="alert.html">Alert</a>
+          <a href="badge.html">Badge</a>
+          <a href="empty.html">Empty state</a>
+          <a href="loader.html">Loader</a>
+          <a href="progress.html">Progress</a>
+          <h2>Media</h2>
+          <a href="avatar.html">Avatar</a>
+          <h2>Navigation</h2>
+          <a href="breadcrumb.html">Breadcrumb</a>
+          <a href="link.html">Link</a>
+          <a href="pagination.html">Pagination</a>
+          <a href="sidebar.html">Sidebar</a>
+          <a href="subnav.html">Subnav</a>
+          <a href="tabs.html">Tabs</a>
+          <a href="tree.html">Tree</a>
+          <h2>Overlays</h2>
+          <a href="dialog.html">Dialog</a>
+          <a href="drawer.html">Drawer</a>
+          <a href="popover.html">Popover</a>
+          <a href="tooltip.html">Tooltip</a>
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Save bar</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Save bar</h1>
+              <p>
+                แถบติดด้านล่างที่แสดงเมื่อฟอร์มถูกแก้ไข
+                และซ่อนเมื่อค่ากลับเป็นค่าเดิม ลองแก้ฟอร์มด้านล่างดู
+              </p>
+            </div>
+          </header>
+          <section>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form id="sb-form" class="stack docs-narrow">
+                    <div class="field">
+                      <label for="sb-title">ชื่อสินค้า Product title</label>
+                      <input
+                        id="sb-title"
+                        type="text"
+                        value="เสื้อยืด T-shirt"
+                      />
+                    </div>
+                    <label class="field"
+                      ><input type="checkbox" /> แสดงในหน้าร้าน Visible in
+                      store</label
+                    >
+                  </form>
+                  <div
+                    class="save-bar"
+                    data-form="sb-form"
+                    role="region"
+                    aria-label="Unsaved changes"
+                    hidden
+                  >
+                    <p>มีการแก้ไขที่ยังไม่บันทึก Unsaved changes</p>
+                    <div>
+                      <button
+                        type="reset"
+                        form="sb-form"
+                        class="btn"
+                        data-variant="ghost"
+                      >
+                        ยกเลิก Discard
+                      </button>
+                      <button
+                        type="submit"
+                        form="sb-form"
+                        class="btn"
+                        data-variant="primary"
+                      >
+                        บันทึก Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form id="sb-form" class="stack docs-narrow"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sb-title"&gt;ชื่อสินค้า Product title&lt;/label&gt;
+    &lt;input id="sb-title" type="text" value="เสื้อยืด T-shirt"&gt;
+  &lt;/div&gt;
+  &lt;label class="field"&gt;&lt;input type="checkbox"&gt; แสดงในหน้าร้าน Visible in store&lt;/label&gt;
+&lt;/form&gt;
+&lt;div class="save-bar" data-form="sb-form" role="region" aria-label="Unsaved changes" hidden&gt;
+  &lt;p&gt;มีการแก้ไขที่ยังไม่บันทึก Unsaved changes&lt;/p&gt;
+  &lt;div&gt;
+    &lt;button type="reset" form="sb-form" class="btn" data-variant="ghost"&gt;ยกเลิก Discard&lt;/button&gt;
+    &lt;button type="submit" form="sb-form" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>data-form</code></td>
+                    <td><code>form id</code></td>
+                    <td>ฟอร์มที่ติดตาม ถ้าไม่ใส่จะแสดงตลอด</td>
+                  </tr>
+                  <tr>
+                    <td><code>hidden</code></td>
+                    <td></td>
+                    <td>เริ่มแบบซ่อน JS จะสลับให้</td>
+                  </tr>
+                  <tr>
+                    <td><code>button[type=reset][form]</code></td>
+                    <td></td>
+                    <td>ปุ่ม Discard คืนค่าเดิมแบบ native</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Typography | tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="index.html">tsunami <span>津波</span></a>
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a href="index.html">Overview</a>
+          <h2>Foundations</h2>
+          <a href="colors.html">Colors</a>
+          <a href="typography.html" aria-current="page">Typography</a>
+          <a href="icons.html">Icons</a>
+          <h2>Layout</h2>
+          <a href="stack.html">Stack</a>
+          <a href="card.html">Card</a>
+          <a href="item.html">Item</a>
+          <a href="page-header.html">Page header</a>
+          <a href="stat.html">Stat</a>
+          <a href="table.html">Table</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="journey.html">Journey</a>
+          <a href="accordion.html">Accordion</a>
+          <a href="scroll-area.html">Scroll area</a>
+          <a href="workspace.html">Workspace</a>
+          <h2>Actions</h2>
+          <a href="btn.html">Button</a>
+          <a href="dropdown.html">Dropdown</a>
+          <a href="theme-switcher.html">Theme switcher</a>
+          <h2>Forms</h2>
+          <a href="field.html">Field</a>
+          <a href="input-group.html">Input group</a>
+          <a href="save-bar.html">Save bar</a>
+          <h2>Feedback</h2>
+          <a href="alert.html">Alert</a>
+          <a href="badge.html">Badge</a>
+          <a href="empty.html">Empty state</a>
+          <a href="loader.html">Loader</a>
+          <a href="progress.html">Progress</a>
+          <h2>Media</h2>
+          <a href="avatar.html">Avatar</a>
+          <h2>Navigation</h2>
+          <a href="breadcrumb.html">Breadcrumb</a>
+          <a href="link.html">Link</a>
+          <a href="pagination.html">Pagination</a>
+          <a href="sidebar.html">Sidebar</a>
+          <a href="subnav.html">Subnav</a>
+          <a href="tabs.html">Tabs</a>
+          <a href="tree.html">Tree</a>
+          <h2>Overlays</h2>
+          <a href="dialog.html">Dialog</a>
+          <a href="drawer.html">Drawer</a>
+          <a href="popover.html">Popover</a>
+          <a href="tooltip.html">Tooltip</a>
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Typography</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Typography</h1>
+              <p>
+                Google Sans ตัวเดียวทั้งไทยและ Latin ขนาดฐาน 14px line-height
+                1.55 น้ำหนัก 400-600
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Scale</h2>
+            <div class="card">
+              <div>
+                <p
+                  style="
+                    font-size: var(--text-display);
+                    font-weight: 600;
+                    line-height: 1.2;
+                  "
+                >
+                  ภาพรวม Overview
+                </p>
+              </div>
+              <div>
+                <p style="font-size: var(--text-xl); font-weight: 600">
+                  ชื่อหน้า Page title 24
+                </p>
+              </div>
+              <div>
+                <p style="font-size: var(--text-lg)">หัวข้อย่อย Section 16</p>
+              </div>
+              <div>
+                <p>
+                  เนื้อหา Body 14: ร้านค้าออนไลน์ของคุณมีคำสั่งซื้อใหม่ 1,284
+                  รายการในเดือนนี้
+                </p>
+              </div>
+              <div>
+                <p style="font-size: var(--text-sm); color: var(--muted)">
+                  ป้ายกำกับ Label 12
+                </p>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ไทย + Latin</h2>
+            <p class="docs-lead">
+              การจัดส่งสินค้าภายในวันเดียวกัน Same-day delivery
+              สำหรับคำสั่งซื้อก่อน 14:00 น. ราคา ฿1,250.00 รวม VAT 7%
+            </p>
+          </section>
+          <section>
+            <h2>Tokens</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Token</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>--font-sans</code></td>
+                    <td><code>Google Sans, system-ui</code></td>
+                    <td>ฟอนต์หลัก</td>
+                  </tr>
+                  <tr>
+                    <td><code>--font-mono</code></td>
+                    <td><code>ui-monospace, Menlo, Consolas</code></td>
+                    <td>code และ kbd</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-sm / -base / -lg / -xl</code></td>
+                    <td><code>12 / 14 / 16 / 24px</code></td>
+                    <td>ขนาดตัวอักษร</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-display</code></td>
+                    <td><code>clamp(28px, ..., 44px)</code></td>
+                    <td>หัวข้อใหญ่ในหน้าแรก</td>
+                  </tr>
+                  <tr>
+                    <td><code>--leading</code></td>
+                    <td><code>1.55</code></td>
+                    <td>line-height ฐาน</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

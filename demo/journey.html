@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Journey | tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="index.html">tsunami <span>津波</span></a>
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a href="index.html">Overview</a>
+          <h2>Foundations</h2>
+          <a href="colors.html">Colors</a>
+          <a href="typography.html">Typography</a>
+          <a href="icons.html">Icons</a>
+          <h2>Layout</h2>
+          <a href="stack.html">Stack</a>
+          <a href="card.html">Card</a>
+          <a href="item.html">Item</a>
+          <a href="page-header.html">Page header</a>
+          <a href="stat.html">Stat</a>
+          <a href="table.html">Table</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="journey.html" aria-current="page">Journey</a>
+          <a href="accordion.html">Accordion</a>
+          <a href="scroll-area.html">Scroll area</a>
+          <a href="workspace.html">Workspace</a>
+          <h2>Actions</h2>
+          <a href="btn.html">Button</a>
+          <a href="dropdown.html">Dropdown</a>
+          <a href="theme-switcher.html">Theme switcher</a>
+          <h2>Forms</h2>
+          <a href="field.html">Field</a>
+          <a href="input-group.html">Input group</a>
+          <a href="save-bar.html">Save bar</a>
+          <h2>Feedback</h2>
+          <a href="alert.html">Alert</a>
+          <a href="badge.html">Badge</a>
+          <a href="empty.html">Empty state</a>
+          <a href="loader.html">Loader</a>
+          <a href="progress.html">Progress</a>
+          <h2>Media</h2>
+          <a href="avatar.html">Avatar</a>
+          <h2>Navigation</h2>
+          <a href="breadcrumb.html">Breadcrumb</a>
+          <a href="link.html">Link</a>
+          <a href="pagination.html">Pagination</a>
+          <a href="sidebar.html">Sidebar</a>
+          <a href="subnav.html">Subnav</a>
+          <a href="tabs.html">Tabs</a>
+          <a href="tree.html">Tree</a>
+          <h2>Overlays</h2>
+          <a href="dialog.html">Dialog</a>
+          <a href="drawer.html">Drawer</a>
+          <a href="popover.html">Popover</a>
+          <a href="tooltip.html">Tooltip</a>
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Journey</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Journey</h1>
+              <p>
+                เส้นทางผู้ใช้หลายขั้น แต่ละขั้นเป็น fieldset ของ radio
+                เลือกหน้าได้ด้วยคีย์บอร์ดแบบ native
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>แนวนอน Columns</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="แนวนอน Columns">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="journey"
+                    role="group"
+                    aria-label="เส้นทางการซื้อ Checkout journey"
+                  >
+                    <fieldset>
+                      <legend>ขั้นที่ 1 Landing</legend>
+                      <label
+                        ><input type="radio" name="j1-s1" checked /><span
+                          >หน้าแรก Home</span
+                        ><data value="1800">1,800</data></label
+                      >
+                      <label
+                        ><input type="radio" name="j1-s1" /><span
+                          >โปรโมชั่น Sale</span
+                        ><data value="920">920</data></label
+                      >
+                    </fieldset>
+                    <fieldset>
+                      <legend>ขั้นที่ 2 Product</legend>
+                      <label
+                        ><input type="radio" name="j1-s2" checked /><span
+                          >เสื้อยืด T-shirt</span
+                        ><data value="640">640</data></label
+                      >
+                      <label
+                        ><input type="radio" name="j1-s2" /><span
+                          >กระเป๋า Tote bag</span
+                        ><data value="410">410</data></label
+                      >
+                    </fieldset>
+                    <fieldset>
+                      <legend>ขั้นที่ 3 Checkout</legend>
+                      <label
+                        ><input type="radio" name="j1-s3" checked /><span
+                          >ชำระเงิน Payment</span
+                        ><data value="212">212</data></label
+                      >
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="journey" role="group" aria-label="เส้นทางการซื้อ Checkout journey"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;ขั้นที่ 1 Landing&lt;/legend&gt;
+    &lt;label&gt;&lt;input type="radio" name="j1-s1" checked&gt;&lt;span&gt;หน้าแรก Home&lt;/span&gt;&lt;data value="1800"&gt;1,800&lt;/data&gt;&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="j1-s1"&gt;&lt;span&gt;โปรโมชั่น Sale&lt;/span&gt;&lt;data value="920"&gt;920&lt;/data&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;ขั้นที่ 2 Product&lt;/legend&gt;
+    &lt;label&gt;&lt;input type="radio" name="j1-s2" checked&gt;&lt;span&gt;เสื้อยืด T-shirt&lt;/span&gt;&lt;data value="640"&gt;640&lt;/data&gt;&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="j1-s2"&gt;&lt;span&gt;กระเป๋า Tote bag&lt;/span&gt;&lt;data value="410"&gt;410&lt;/data&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;ขั้นที่ 3 Checkout&lt;/legend&gt;
+    &lt;label&gt;&lt;input type="radio" name="j1-s3" checked&gt;&lt;span&gt;ชำระเงิน Payment&lt;/span&gt;&lt;data value="212"&gt;212&lt;/data&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>แนวตั้ง Vertical</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="แนวตั้ง Vertical">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="journey"
+                    data-orientation="vertical"
+                    role="group"
+                    aria-label="Upsell journey"
+                  >
+                    <fieldset>
+                      <legend>ขั้นที่ 1</legend>
+                      <label
+                        ><input type="radio" name="j2-s1" checked /><span
+                          >ตะกร้า Cart</span
+                        ><data value="530">530</data></label
+                      >
+                    </fieldset>
+                    <fieldset>
+                      <legend>ขั้นที่ 2</legend>
+                      <label
+                        ><input type="radio" name="j2-s2" checked /><span
+                          >ห่อของขวัญ Gift wrap</span
+                        ><data value="88">88</data></label
+                      >
+                      <label
+                        ><input type="radio" name="j2-s2" /><span
+                          >ข้าม Skipped</span
+                        ><data value="442">442</data></label
+                      >
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="journey" data-orientation="vertical" role="group" aria-label="Upsell journey"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;ขั้นที่ 1&lt;/legend&gt;
+    &lt;label&gt;&lt;input type="radio" name="j2-s1" checked&gt;&lt;span&gt;ตะกร้า Cart&lt;/span&gt;&lt;data value="530"&gt;530&lt;/data&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;ขั้นที่ 2&lt;/legend&gt;
+    &lt;label&gt;&lt;input type="radio" name="j2-s2" checked&gt;&lt;span&gt;ห่อของขวัญ Gift wrap&lt;/span&gt;&lt;data value="88"&gt;88&lt;/data&gt;&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="j2-s2"&gt;&lt;span&gt;ข้าม Skipped&lt;/span&gt;&lt;data value="442"&gt;442&lt;/data&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>data-orientation</code></td>
+                    <td><code>vertical</code></td>
+                    <td>เรียงขั้นจากบนลงล่าง</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; fieldset</code></td>
+                    <td></td>
+                    <td>
+                      หนึ่งขั้น: <code>legend</code> ชื่อขั้น และ radio
+                      หนึ่งกลุ่ม (name เดียวกัน)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>label &gt; data</code></td>
+                    <td></td>
+                    <td>ตัวเลข session ชิดขวา</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
