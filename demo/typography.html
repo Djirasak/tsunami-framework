@@ -316,51 +316,848 @@
               <h1>Typography</h1>
               <p>
                 Google Sans ตัวเดียวทั้งไทยและ Latin ขนาดฐาน 14px line-height
-                1.55 น้ำหนัก 400-600
+                1.55 ใส่ <code>.prose</code> รอบเนื้อหายาวเพื่อให้มีระยะห่าง
+                list และ quote
               </p>
             </div>
           </header>
           <section>
-            <h2>Scale</h2>
-            <div class="card">
-              <div>
-                <p
-                  style="
-                    font-size: clamp(1.75rem, 1rem + 2.5vw, 2.75rem);
-                    font-weight: 600;
-                    line-height: 1.2;
-                  "
+            <h2>หัวข้อ h1 ถึง h6 Headings: h1 to h6</h2>
+            <p>
+              Base style ล้าง margin ของทุก element ไว้ ใส่
+              <code>class="prose"</code> ที่กล่องครอบเพื่อให้ heading, ย่อหน้า
+              และ list มีระยะห่างของบทความ
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="หัวข้อ h1 ถึง h6 Headings: h1 to h6"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
                 >
-                  ภาพรวม Overview
-                </p>
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
               </div>
-              <div>
-                <p style="font-size: var(--text-xl); font-weight: 600">
-                  ชื่อหน้า Page title 24
-                </p>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <h1>หัวข้อ 1 Heading 1</h1>
+                    <h2>หัวข้อ 2 Heading 2</h2>
+                    <h3>หัวข้อ 3 Heading 3</h3>
+                    <h4>หัวข้อ 4 Heading 4</h4>
+                    <h5>หัวข้อ 5 Heading 5</h5>
+                    <h6>หัวข้อ 6 Heading 6</h6>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p style="font-size: var(--text-lg)">หัวข้อย่อย Section 16</p>
-              </div>
-              <div>
-                <p>
-                  เนื้อหา Body 14: ร้านค้าออนไลน์ของคุณมีคำสั่งซื้อใหม่ 1,284
-                  รายการในเดือนนี้
-                </p>
-              </div>
-              <div>
-                <p style="font-size: var(--text-sm); color: var(--muted)">
-                  ป้ายกำกับ Label 12
-                </p>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;h1&gt;หัวข้อ 1 Heading 1&lt;/h1&gt;
+  &lt;h2&gt;หัวข้อ 2 Heading 2&lt;/h2&gt;
+  &lt;h3&gt;หัวข้อ 3 Heading 3&lt;/h3&gt;
+  &lt;h4&gt;หัวข้อ 4 Heading 4&lt;/h4&gt;
+  &lt;h5&gt;หัวข้อ 5 Heading 5&lt;/h5&gt;
+  &lt;h6&gt;หัวข้อ 6 Heading 6&lt;/h6&gt;
+&lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ไทย + Latin</h2>
-            <p class="docs-lead">
-              การจัดส่งสินค้าภายในวันเดียวกัน Same-day delivery
-              สำหรับคำสั่งซื้อก่อน 14:00 น. ราคา ฿1,250.00 รวม VAT 7%
+            <h2>
+              ย่อหน้า lead, ปกติ, muted และ small Paragraphs: lead, default,
+              muted and small
+            </h2>
+            <p>
+              ใส่ <code>data-variant="lead"</code> หรือ <code>"muted"</code> ที่
+              <code>&lt;p&gt;</code> ข้อความเล็กใช้ <code>&lt;small&gt;</code>
             </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ย่อหน้า lead, ปกติ, muted และ small Paragraphs: lead, default, muted and small"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <p data-variant="lead">
+                      ย่อหน้านำ Lead paragraph.
+                      หนึ่งหรือสองประโยคที่เปิดหน้าและบอกว่าหน้านี้มีไว้ทำอะไร
+                    </p>
+                    <p>
+                      ย่อหน้า Paragraph. คำสั่งซื้อเปลี่ยนจาก Pending เป็น
+                      Processing เมื่อรับชำระเงินแล้ว และเป็น Fulfilled
+                      เมื่อจัดส่งสินค้าครบทุกรายการ
+                    </p>
+                    <p data-variant="muted">
+                      ย่อหน้ารอง Muted paragraph.
+                      รายละเอียดเสริมของข้อความด้านบน
+                    </p>
+                    <p>
+                      <small
+                        >ข้อความเล็ก Small text. แก้ไขล่าสุด 2 ต.ค. 2026 เวลา
+                        02:39 น.</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;p data-variant="lead"&gt;ย่อหน้านำ Lead paragraph. หนึ่งหรือสองประโยคที่เปิดหน้าและบอกว่าหน้านี้มีไว้ทำอะไร&lt;/p&gt;
+  &lt;p&gt;ย่อหน้า Paragraph. คำสั่งซื้อเปลี่ยนจาก Pending เป็น Processing เมื่อรับชำระเงินแล้ว และเป็น Fulfilled เมื่อจัดส่งสินค้าครบทุกรายการ&lt;/p&gt;
+  &lt;p data-variant="muted"&gt;ย่อหน้ารอง Muted paragraph. รายละเอียดเสริมของข้อความด้านบน&lt;/p&gt;
+  &lt;p&gt;&lt;small&gt;ข้อความเล็ก Small text. แก้ไขล่าสุด 2 ต.ค. 2026 เวลา 02:39 น.&lt;/small&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ข้อความในบรรทัด Inline text: strong, emphasis, link, mark,
+              deleted, inserted, abbreviation, code, key, subscript and
+              superscript
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ข้อความในบรรทัด Inline text: strong, emphasis, link, mark, deleted, inserted, abbreviation, code, key, subscript and superscript"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <p>
+                      <strong>ตัวหนา Strong</strong> ใช้กับข้อความที่สำคัญที่สุด
+                    </p>
+                    <p><em>ตัวเอียง Emphasis</em> เน้นคำ</p>
+                    <p><a href="#">ลิงก์ Link</a> ไปยังหน้าอื่น</p>
+                    <p><mark>ไฮไลต์ Mark</mark> ใช้กับคำที่ค้นเจอ</p>
+                    <p><del>฿1,290</del> <ins>฿990</ins> แสดงการเปลี่ยนแปลง</p>
+                    <p>
+                      <abbr title="Stock keeping unit">SKU</abbr> คือคำย่อ
+                      ชี้เพื่อดูความหมาย
+                    </p>
+                    <p>
+                      <code>order_status</code> ใช้กับชื่อ field ค่า หรือคำสั่ง
+                    </p>
+                    <p>กด <kbd>Ctrl</kbd> <kbd>K</kbd> เพื่อค้นหา</p>
+                    <p>ตัวห้อย H<sub>2</sub>O และตัวยก m<sup>2</sup></p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;p&gt;&lt;strong&gt;ตัวหนา Strong&lt;/strong&gt; ใช้กับข้อความที่สำคัญที่สุด&lt;/p&gt;
+  &lt;p&gt;&lt;em&gt;ตัวเอียง Emphasis&lt;/em&gt; เน้นคำ&lt;/p&gt;
+  &lt;p&gt;&lt;a href="#"&gt;ลิงก์ Link&lt;/a&gt; ไปยังหน้าอื่น&lt;/p&gt;
+  &lt;p&gt;&lt;mark&gt;ไฮไลต์ Mark&lt;/mark&gt; ใช้กับคำที่ค้นเจอ&lt;/p&gt;
+  &lt;p&gt;&lt;del&gt;฿1,290&lt;/del&gt; &lt;ins&gt;฿990&lt;/ins&gt; แสดงการเปลี่ยนแปลง&lt;/p&gt;
+  &lt;p&gt;&lt;abbr title="Stock keeping unit"&gt;SKU&lt;/abbr&gt; คือคำย่อ ชี้เพื่อดูความหมาย&lt;/p&gt;
+  &lt;p&gt;&lt;code&gt;order_status&lt;/code&gt; ใช้กับชื่อ field ค่า หรือคำสั่ง&lt;/p&gt;
+  &lt;p&gt;กด &lt;kbd&gt;Ctrl&lt;/kbd&gt; &lt;kbd&gt;K&lt;/kbd&gt; เพื่อค้นหา&lt;/p&gt;
+  &lt;p&gt;ตัวห้อย H&lt;sub&gt;2&lt;/sub&gt;O และตัวยก m&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ปุ่มคีย์บอร์ด Keyboard keys</h2>
+            <p>
+              ใช้ <code>class="kbd"</code> นอก <code>.prose</code> ใน
+              <code>.prose</code> ใช้ <code>&lt;kbd&gt;</code> เฉย ๆ ได้
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="ปุ่มคีย์บอร์ด Keyboard keys">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <kbd class="kbd">⌘</kbd>
+                      <kbd class="kbd">⇧</kbd>
+                      <kbd class="kbd">⌥</kbd>
+                      <kbd class="kbd">⌃</kbd>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <kbd class="kbd">Ctrl</kbd>
+                      <span>+</span>
+                      <kbd class="kbd">B</kbd>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;kbd class="kbd"&gt;⌘&lt;/kbd&gt;
+    &lt;kbd class="kbd"&gt;⇧&lt;/kbd&gt;
+    &lt;kbd class="kbd"&gt;⌥&lt;/kbd&gt;
+    &lt;kbd class="kbd"&gt;⌃&lt;/kbd&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;kbd class="kbd"&gt;Ctrl&lt;/kbd&gt;
+    &lt;span&gt;+&lt;/span&gt;
+    &lt;kbd class="kbd"&gt;B&lt;/kbd&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              รายการแบบไม่มีลำดับ ซ้อนกันได้ Unordered list, with a nested list
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="รายการแบบไม่มีลำดับ ซ้อนกันได้ Unordered list, with a nested list"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <ul>
+                      <li>สินค้า Products</li>
+                      <li>
+                        คำสั่งซื้อ Orders
+                        <ul>
+                          <li>ตะกร้าค้าง Open carts</li>
+                          <li>คืนสินค้า Returns</li>
+                        </ul>
+                      </li>
+                      <li>ลูกค้า Customers</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;สินค้า Products&lt;/li&gt;
+    &lt;li&gt;คำสั่งซื้อ Orders
+      &lt;ul&gt;
+        &lt;li&gt;ตะกร้าค้าง Open carts&lt;/li&gt;
+        &lt;li&gt;คืนสินค้า Returns&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;ลูกค้า Customers&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>รายการแบบมีลำดับ Ordered list</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="รายการแบบมีลำดับ Ordered list">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <ol>
+                      <li>สร้างสินค้า Create the product.</li>
+                      <li>เพิ่มตัวเลือก Add its variants.</li>
+                      <li>ตั้งเป็นสาธารณะ Set it to public.</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;สร้างสินค้า Create the product.&lt;/li&gt;
+    &lt;li&gt;เพิ่มตัวเลือก Add its variants.&lt;/li&gt;
+    &lt;li&gt;ตั้งเป็นสาธารณะ Set it to public.&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>รายการคำและค่า Description list: terms and their values</h2>
+            <p>
+              <code>&lt;dt&gt;</code> เป็นป้ายสีเทาอยู่ซ้าย
+              <code>&lt;dd&gt;</code> เป็นค่าอยู่ขวา
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="รายการคำและค่า Description list: terms and their values"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <dl>
+                      <dt>วิธีจัดส่ง Method</dt>
+                      <dd>Express</dd>
+                      <dt>ช่องทาง Source</dt>
+                      <dd>Checkout Flow</dd>
+                      <dt>วันที่ Date</dt>
+                      <dd>3 ก.ย. 2026 เวลา 00:35 น.</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;วิธีจัดส่ง Method&lt;/dt&gt;
+    &lt;dd&gt;Express&lt;/dd&gt;
+    &lt;dt&gt;ช่องทาง Source&lt;/dt&gt;
+    &lt;dd&gt;Checkout Flow&lt;/dd&gt;
+    &lt;dt&gt;วันที่ Date&lt;/dt&gt;
+    &lt;dd&gt;3 ก.ย. 2026 เวลา 00:35 น.&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>คำพูดอ้างอิง Blockquote</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="คำพูดอ้างอิง Blockquote">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <blockquote>
+                      <p>
+                        แจ้งสิ่งที่เราควรรู้ก่อนจัดส่งคำสั่งซื้อของคุณ Tell us
+                        anything we should know when delivering your order.
+                      </p>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;แจ้งสิ่งที่เราควรรู้ก่อนจัดส่งคำสั่งซื้อของคุณ Tell us anything we should know when delivering your order.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>บล็อกโค้ด Code block</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="บล็อกโค้ด Code block">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <pre><code>&lt;script src="https://payments.example.com/js/v1/payment.js?env_key=YOUR_ENV_KEY"&gt;&lt;/script&gt;</code></pre>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;pre&gt;&lt;code&gt;&amp;lt;script src="https://payments.example.com/js/v1/payment.js?env_key=YOUR_ENV_KEY"&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>เส้นคั่น Horizontal line</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="เส้นคั่น Horizontal line">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <p>ข้อความเหนือเส้น Text above the line.</p>
+                    <hr />
+                    <p>ข้อความใต้เส้น Text below the line.</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;p&gt;ข้อความเหนือเส้น Text above the line.&lt;/p&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;ข้อความใต้เส้น Text below the line.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>บทความเต็ม A full article</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="บทความเต็ม A full article">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tp"
+                  aria-selected="true"
+                  aria-controls="ex11-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tc"
+                  aria-selected="false"
+                  aria-controls="ex11-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-p"
+                aria-labelledby="ex11-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <article class="prose">
+                    <h1>ประกันการจัดส่ง Shipping protection</h1>
+                    <p data-variant="lead">
+                      คุ้มครองคำสั่งซื้อที่สูญหาย ถูกขโมย
+                      หรือเสียหายระหว่างทางไปหาลูกค้า
+                    </p>
+                    <h2>ทำงานอย่างไร How it works</h2>
+                    <p>
+                      ลูกค้าเพิ่มประกันตอน checkout ราคา ฿39 ถ้าพัสดุไม่ถึง
+                      ลูกค้าเปิดเคลมได้จาก<a href="#">หน้าสถานะคำสั่งซื้อ</a>
+                      แล้วเลือกคืนเงินหรือส่งใหม่
+                    </p>
+                    <h3>คุ้มครองอะไรบ้าง What is covered</h3>
+                    <ul>
+                      <li>พัสดุที่ขึ้นว่าส่งแล้วแต่ไม่ถึงมือ</li>
+                      <li>สินค้าเสียหายระหว่างขนส่ง</li>
+                      <li>พัสดุที่ขนส่งทำหาย</li>
+                    </ul>
+                    <blockquote>
+                      <p>เปิดเคลมได้ภายใน 30 วันหลังวันจัดส่ง</p>
+                    </blockquote>
+                    <h3>ตั้งค่า Setting it up</h3>
+                    <ol>
+                      <li>
+                        เปิด <strong>ตั้งค่า Settings</strong> แล้วไปที่
+                        <strong>การจัดส่ง Shipping</strong>
+                      </li>
+                      <li>เปิดประกันและกำหนดราคา</li>
+                      <li>
+                        บันทึก ระบบจะสร้างสินค้า
+                        <code>shipping-protection</code> ให้
+                      </li>
+                    </ol>
+                  </article>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-c"
+                aria-labelledby="ex11-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;article class="prose"&gt;
+  &lt;h1&gt;ประกันการจัดส่ง Shipping protection&lt;/h1&gt;
+  &lt;p data-variant="lead"&gt;คุ้มครองคำสั่งซื้อที่สูญหาย ถูกขโมย หรือเสียหายระหว่างทางไปหาลูกค้า&lt;/p&gt;
+  &lt;h2&gt;ทำงานอย่างไร How it works&lt;/h2&gt;
+  &lt;p&gt;ลูกค้าเพิ่มประกันตอน checkout ราคา ฿39 ถ้าพัสดุไม่ถึง ลูกค้าเปิดเคลมได้จาก&lt;a href="#"&gt;หน้าสถานะคำสั่งซื้อ&lt;/a&gt; แล้วเลือกคืนเงินหรือส่งใหม่&lt;/p&gt;
+  &lt;h3&gt;คุ้มครองอะไรบ้าง What is covered&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;พัสดุที่ขึ้นว่าส่งแล้วแต่ไม่ถึงมือ&lt;/li&gt;
+    &lt;li&gt;สินค้าเสียหายระหว่างขนส่ง&lt;/li&gt;
+    &lt;li&gt;พัสดุที่ขนส่งทำหาย&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;เปิดเคลมได้ภายใน 30 วันหลังวันจัดส่ง&lt;/p&gt;
+  &lt;/blockquote&gt;
+  &lt;h3&gt;ตั้งค่า Setting it up&lt;/h3&gt;
+  &lt;ol&gt;
+    &lt;li&gt;เปิด &lt;strong&gt;ตั้งค่า Settings&lt;/strong&gt; แล้วไปที่ &lt;strong&gt;การจัดส่ง Shipping&lt;/strong&gt;&lt;/li&gt;
+    &lt;li&gt;เปิดประกันและกำหนดราคา&lt;/li&gt;
+    &lt;li&gt;บันทึก ระบบจะสร้างสินค้า &lt;code&gt;shipping-protection&lt;/code&gt; ให้&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/article&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.prose</code></td>
+                    <td><code>class</code></td>
+                    <td>
+                      กล่องครอบเนื้อหายาว ให้ระยะห่างระหว่าง block, heading
+                      h1-h6, list marker, quote, pre, hr
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>p[data-variant]</code></td>
+                    <td>
+                      <code>lead</code>, <code>muted</code> (ไม่ใส่ = ปกติ
+                      default)
+                    </td>
+                    <td>lead: 16px สีเทา, muted: สีเทา ใช้ใน .prose</td>
+                  </tr>
+                  <tr>
+                    <td><code>small</code></td>
+                    <td></td>
+                    <td>12px สีเทา ใน .prose</td>
+                  </tr>
+                  <tr>
+                    <td><code>ul, ol, li</code></td>
+                    <td></td>
+                    <td>marker disc / circle (ซ้อน) / decimal สี --muted</td>
+                  </tr>
+                  <tr>
+                    <td><code>dl > dt, dd</code></td>
+                    <td></td>
+                    <td>สองคอลัมน์: dt ป้ายสีเทา, dd ค่า</td>
+                  </tr>
+                  <tr>
+                    <td><code>blockquote</code></td>
+                    <td></td>
+                    <td>เส้นซ้าย 2px --line ข้อความสีเทา</td>
+                  </tr>
+                  <tr>
+                    <td><code>pre > code</code></td>
+                    <td></td>
+                    <td>บล็อกโค้ด พื้น --subtle เลื่อนแนวนอนได้</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code
+                        >code, mark, del, ins, abbr[title], sub, sup, a,
+                        strong</code
+                      >
+                    </td>
+                    <td></td>
+                    <td>
+                      รูปแบบในบรรทัดใน .prose (ลิงก์ขีดเส้นใต้, mark พื้น
+                      --warning-bg)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>hr</code></td>
+                    <td></td>
+                    <td>เส้น 1px --line ระยะ 24px บนล่างใน .prose</td>
+                  </tr>
+                  <tr>
+                    <td><code>.kbd</code></td>
+                    <td><code>class</code></td>
+                    <td>
+                      ปุ่มคีย์บอร์ดใช้ได้ทุกที่ ใน .prose ใช้
+                      <code>&lt;kbd&gt;</code> เฉย ๆ
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
           <section>
             <h2>Tokens</h2>
@@ -376,23 +1173,53 @@
                 <tbody>
                   <tr>
                     <td><code>--font-sans</code></td>
-                    <td><code>Google Sans, system-ui</code></td>
-                    <td>ฟอนต์หลัก</td>
+                    <td>
+                      <code
+                        >"Google Sans", system-ui, -apple-system, "Segoe UI",
+                        sans-serif</code
+                      >
+                    </td>
+                    <td>ฟอนต์หลัก ไทยและ Latin (ไม่เปลี่ยนตามธีม)</td>
                   </tr>
                   <tr>
                     <td><code>--font-mono</code></td>
-                    <td><code>ui-monospace, Menlo, Consolas</code></td>
-                    <td>code และ kbd</td>
+                    <td>
+                      <code
+                        >ui-monospace, "SF Mono", Menlo, Consolas,
+                        monospace</code
+                      >
+                    </td>
+                    <td>code, kbd, pre</td>
                   </tr>
                   <tr>
-                    <td><code>--text-sm / -base / -lg / -xl</code></td>
-                    <td><code>12 / 14 / 16 / 24px</code></td>
-                    <td>ขนาดตัวอักษร</td>
+                    <td><code>--text-sm</code></td>
+                    <td><code>0.75rem (12px)</code></td>
+                    <td>label, small, h5, h6, kbd</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-base</code></td>
+                    <td><code>0.875rem (14px)</code></td>
+                    <td>เนื้อหา, h3, h4</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-lg</code></td>
+                    <td><code>1rem (16px)</code></td>
+                    <td>h2, lead</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-xl</code></td>
+                    <td><code>1.5rem (24px)</code></td>
+                    <td>h1, ชื่อหน้า</td>
                   </tr>
                   <tr>
                     <td><code>--leading</code></td>
                     <td><code>1.55</code></td>
-                    <td>line-height ฐาน</td>
+                    <td>line-height ฐาน heading ใช้ 1.25</td>
+                  </tr>
+                  <tr>
+                    <td><code>--fg / --muted</code></td>
+                    <td><code>#12191d / #e7eef0, #5f6e75 / #8b9ba2</code></td>
+                    <td>สีข้อความหลัก / รอง (Light / Dark)</td>
                   </tr>
                 </tbody>
               </table>
