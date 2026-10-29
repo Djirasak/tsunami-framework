@@ -87,7 +87,6 @@
 
 .docs-preview {
   padding: var(--space-5);
-  overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface);
@@ -129,6 +128,14 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   font-size: 0.6875rem;
+}
+
+/* Previews scroll sideways on phones; on wide screens they must not clip
+   overlays such as tooltips that stick out of the box. */
+@media (width < 48rem) {
+  .docs-preview {
+    overflow-x: auto;
+  }
 }
 
 /* Token and attribute names stay on one line where there is room. */
