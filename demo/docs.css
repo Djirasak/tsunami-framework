@@ -96,7 +96,9 @@
   max-width: 24rem;
 }
 
-pre {
+/* Docs code blocks only; .prose pre keeps its own style. */
+.docs-main > section > pre,
+[role="tabpanel"] > pre {
   padding: var(--space-4);
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -107,11 +109,16 @@ pre {
   tab-size: 2;
 }
 
-kbd {
+.docs .input-group kbd {
   padding: 0 0.25rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   font-size: 0.6875rem;
+}
+
+/* Token and attribute names stay on one line. */
+.docs-main .table td:first-child code {
+  white-space: nowrap;
 }
 
 /* Home */
