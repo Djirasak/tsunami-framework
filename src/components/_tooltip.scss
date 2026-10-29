@@ -21,12 +21,21 @@
     line-height: 1.5;
     white-space: nowrap;
     pointer-events: none;
+    // Hidden tooltips must not widen the page (scroll overflow).
+    display: none;
     opacity: 0;
-    transition: opacity 0.15s;
+    transition:
+      opacity 0.15s,
+      display 0.15s allow-discrete;
   }
 
   :where([data-tooltip]:is(:hover, :focus-visible))::after {
+    display: block;
     opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
   }
 
   :where([data-tooltip][data-side="bottom"])::after {
