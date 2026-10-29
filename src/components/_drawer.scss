@@ -1,13 +1,18 @@
-// Drawer: <dialog class="drawer"> pinned to the end edge; data-side="left" for the start.
+// Drawer: <dialog class="drawer"> that slides in from an edge.
+// data-side="bottom" (default, also no data-side), "top", "left", "right".
+// Children: header, div (scrolls), footer. Slide-in/out is CSS only; reduced motion turns it off.
 @layer components {
   :where(.drawer) {
-    width: min(24rem, 100%);
-    height: 100dvh;
-    max-height: none;
-    margin: 0 0 0 auto;
+    --drawer-from: 0 100%;
+    inset: auto 0 0;
+    width: 100%;
+    max-width: none;
+    max-height: 85dvh;
+    margin: 0;
     padding: 0;
     border: 0;
-    border-left: 1px solid var(--line);
+    border-top: 1px solid var(--line);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     background: var(--surface);
     color: var(--fg);
   }
@@ -17,10 +22,30 @@
     flex-direction: column;
   }
 
+  :where(.drawer[data-side="top"]) {
+    --drawer-from: 0 -100%;
+    inset: 0 0 auto;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+
+  :where(.drawer:is([data-side="left"], [data-side="right"])) {
+    inset: 0 0 0 auto;
+    width: min(24rem, 100%);
+    height: 100dvh;
+    max-height: none;
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    border-radius: 0;
+    --drawer-from: 100% 0;
+  }
+
   :where(.drawer[data-side="left"]) {
-    margin: 0 auto 0 0;
+    inset: 0 auto 0 0;
     border-left: 0;
     border-right: 1px solid var(--line);
+    --drawer-from: -100% 0;
   }
 
   :where(.drawer)::backdrop {
@@ -28,7 +53,13 @@
   }
 
   :where(.drawer > *) {
+    flex: none;
     padding: var(--space-4) var(--space-5);
+  }
+
+  // Top and bottom drawers keep their content in a centred 32rem column.
+  :where(.drawer:not([data-side="left"], [data-side="right"]) > *) {
+    padding-inline: max(var(--space-5), calc((100% - 32rem) * 0.5));
   }
 
   :where(.drawer > * + *) {
@@ -36,19 +67,83 @@
   }
 
   :where(.drawer > header) {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
+    gap: var(--space-1) var(--space-3);
   }
 
-  :where(.drawer > :not(header, footer)) {
-    flex: 1;
+  :where(.drawer > header > *) {
+    grid-column: 1;
+  }
+
+  :where(.drawer > header > :is(button, .btn)) {
+    grid-column: 2;
+    grid-row: 1;
+    margin: calc(var(--space-1) * -1) calc(var(--space-2) * -1) 0 0;
+  }
+
+  :where(.drawer > header h2) {
+    font-size: var(--text-lg);
+  }
+
+  :where(.drawer > header p) {
+    color: var(--muted);
+  }
+
+  :where(.drawer > div) {
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
   }
 
   :where(.drawer > footer) {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     gap: var(--space-2);
+  }
+
+  // Top and bottom drawers: buttons fill the column, the main one first.
+  :where(.drawer:not([data-side="left"], [data-side="right"]) > footer) {
+    display: grid;
+    justify-content: normal;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :where(.drawer) {
+      transition:
+        translate 0.2s ease-out,
+        overlay 0.2s allow-discrete,
+        display 0.2s allow-discrete;
+    }
+
+    :where(.drawer:not([open])) {
+      translate: var(--drawer-from);
+    }
+
+    :where(.drawer[open]) {
+      translate: 0 0;
+
+      @starting-style {
+        translate: var(--drawer-from);
+      }
+    }
+
+    :where(.drawer)::backdrop {
+      opacity: 0;
+      transition:
+        opacity 0.2s,
+        overlay 0.2s allow-discrete,
+        display 0.2s allow-discrete;
+    }
+
+    :where(.drawer[open])::backdrop {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
   }
 }

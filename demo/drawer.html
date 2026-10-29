@@ -332,12 +332,24 @@
             <div>
               <h1>Drawer</h1>
               <p>
-                <code>&lt;dialog&gt;</code> ที่เลื่อนออกจากขอบจอ
-                เหมาะกับฟอร์มหรือรายละเอียดยาว
+                <code>&lt;dialog class=<wbr />"drawer"&gt;</code>
+                ที่เลื่อนเข้ามาจากขอบจอ เปิดปิดเหมือน dialog. A native dialog
+                that slides in from an edge of the window.
               </p>
             </div>
           </header>
           <section>
+            <h2>
+              data-side="right" เลื่อนเข้าจากขอบขวา data-side="right" slides in
+              from the right edge
+            </h2>
+            <p>
+              ส่วนประกอบเหมือน dialog: <code>&lt;header&gt;</code>,
+              <code>&lt;div&gt;</code> (เลื่อนได้), <code>&lt;footer&gt;</code>.
+              Open and close it like a dialog, with <code>commandfor</code> and
+              <code>command</code>. A side drawer is the full height of the
+              window and 24rem wide.
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -373,12 +385,13 @@
                     commandfor="drw-filter"
                     command="show-modal"
                   >
-                    <i class="icon icon-settings" aria-hidden="true"></i>ตัวกรอง
-                    Filters
+                    <i class="icon icon-list-filter" aria-hidden="true"></i
+                    >ตัวกรอง Filters
                   </button>
                   <dialog
                     class="drawer"
                     id="drw-filter"
+                    data-side="right"
                     aria-labelledby="drw-filter-title"
                     closedby="any"
                   >
@@ -398,16 +411,21 @@
                     </header>
                     <div class="stack">
                       <div class="field">
-                        <label for="drw-status">สถานะ Status</label>
-                        <select id="drw-status">
+                        <label for="drw-public">แสดงในร้าน Is public</label>
+                        <select id="drw-public">
                           <option>ทั้งหมด All</option>
-                          <option>ชำระแล้ว Paid</option>
+                          <option>ใช่ Yes</option>
+                          <option>ไม่ No</option>
                         </select>
                       </div>
-                      <label class="field"
-                        ><input type="checkbox" /> เฉพาะคำสั่งซื้อใหม่ New
-                        orders only</label
-                      >
+                      <div class="field">
+                        <label for="drw-gift">บัตรของขวัญ Is gift card</label>
+                        <select id="drw-gift">
+                          <option>ทั้งหมด All</option>
+                          <option>ใช่ Yes</option>
+                          <option>ไม่ No</option>
+                        </select>
+                      </div>
                     </div>
                     <footer>
                       <button
@@ -425,7 +443,7 @@
                         commandfor="drw-filter"
                         command="close"
                       >
-                        ใช้ตัวกรอง Apply
+                        ค้นหา Search
                       </button>
                     </footer>
                   </dialog>
@@ -438,29 +456,609 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn" commandfor="drw-filter" command="show-modal"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;ตัวกรอง Filters&lt;/button&gt;
-&lt;dialog class="drawer" id="drw-filter" aria-labelledby="drw-filter-title" closedby="any"&gt;
+                <pre><code>&lt;button type="button" class="btn" commandfor="drw-filter" command="show-modal"&gt;&lt;i class="icon icon-list-filter" aria-hidden="true"&gt;&lt;/i&gt;ตัวกรอง Filters&lt;/button&gt;
+&lt;dialog class="drawer" id="drw-filter" data-side="right" aria-labelledby="drw-filter-title" closedby="any"&gt;
   &lt;header&gt;
     &lt;h2 id="drw-filter-title"&gt;ตัวกรอง Filters&lt;/h2&gt;
     &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="drw-filter" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
   &lt;/header&gt;
   &lt;div class="stack"&gt;
     &lt;div class="field"&gt;
-      &lt;label for="drw-status"&gt;สถานะ Status&lt;/label&gt;
-      &lt;select id="drw-status"&gt;
+      &lt;label for="drw-public"&gt;แสดงในร้าน Is public&lt;/label&gt;
+      &lt;select id="drw-public"&gt;
         &lt;option&gt;ทั้งหมด All&lt;/option&gt;
-        &lt;option&gt;ชำระแล้ว Paid&lt;/option&gt;
+        &lt;option&gt;ใช่ Yes&lt;/option&gt;
+        &lt;option&gt;ไม่ No&lt;/option&gt;
       &lt;/select&gt;
     &lt;/div&gt;
-    &lt;label class="field"&gt;&lt;input type="checkbox"&gt; เฉพาะคำสั่งซื้อใหม่ New orders only&lt;/label&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="drw-gift"&gt;บัตรของขวัญ Is gift card&lt;/label&gt;
+      &lt;select id="drw-gift"&gt;
+        &lt;option&gt;ทั้งหมด All&lt;/option&gt;
+        &lt;option&gt;ใช่ Yes&lt;/option&gt;
+        &lt;option&gt;ไม่ No&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
   &lt;footer&gt;
     &lt;button type="button" class="btn" commandfor="drw-filter" command="close"&gt;ยกเลิก Cancel&lt;/button&gt;
-    &lt;button type="button" class="btn" data-variant="primary" commandfor="drw-filter" command="close"&gt;ใช้ตัวกรอง Apply&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary" commandfor="drw-filter" command="close"&gt;ค้นหา Search&lt;/button&gt;
   &lt;/footer&gt;
 &lt;/dialog&gt;</code></pre>
               </div>
             </div>
+          </section>
+          <section>
+            <h2>
+              data-side="left" เลื่อนเข้าจากขอบซ้าย data-side="left" slides in
+              from the left edge
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="drw-menu"
+                    command="show-modal"
+                  >
+                    <i class="icon icon-menu" aria-hidden="true"></i>เมนู Menu
+                  </button>
+                  <dialog
+                    class="drawer"
+                    id="drw-menu"
+                    data-side="left"
+                    aria-labelledby="drw-menu-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="drw-menu-title">เมนู Menu</h2>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="drw-menu"
+                        command="close"
+                        aria-label="ปิด Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <div>
+                      <nav class="item-group" aria-label="ร้านค้า Store">
+                        <a class="item" data-size="sm" href="#"
+                          ><figure>
+                            <i class="icon icon-house" aria-hidden="true"></i>
+                          </figure>
+                          <section><h3>หน้าหลัก Home</h3></section></a
+                        >
+                        <a class="item" data-size="sm" href="#"
+                          ><figure>
+                            <i class="icon icon-package" aria-hidden="true"></i>
+                          </figure>
+                          <section><h3>สินค้า Products</h3></section></a
+                        >
+                        <a class="item" data-size="sm" href="#"
+                          ><figure>
+                            <i
+                              class="icon icon-shopping-bag"
+                              aria-hidden="true"
+                            ></i>
+                          </figure>
+                          <section><h3>คำสั่งซื้อ Orders</h3></section></a
+                        >
+                        <a class="item" data-size="sm" href="#"
+                          ><figure>
+                            <i class="icon icon-user" aria-hidden="true"></i>
+                          </figure>
+                          <section><h3>ลูกค้า Customers</h3></section></a
+                        >
+                      </nav>
+                    </div>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="drw-menu" command="show-modal"&gt;&lt;i class="icon icon-menu" aria-hidden="true"&gt;&lt;/i&gt;เมนู Menu&lt;/button&gt;
+&lt;dialog class="drawer" id="drw-menu" data-side="left" aria-labelledby="drw-menu-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="drw-menu-title"&gt;เมนู Menu&lt;/h2&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="drw-menu" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;div&gt;
+    &lt;nav class="item-group" aria-label="ร้านค้า Store"&gt;
+      &lt;a class="item" data-size="sm" href="#"&gt;&lt;figure&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;หน้าหลัก Home&lt;/h3&gt;&lt;/section&gt;&lt;/a&gt;
+      &lt;a class="item" data-size="sm" href="#"&gt;&lt;figure&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;สินค้า Products&lt;/h3&gt;&lt;/section&gt;&lt;/a&gt;
+      &lt;a class="item" data-size="sm" href="#"&gt;&lt;figure&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;คำสั่งซื้อ Orders&lt;/h3&gt;&lt;/section&gt;&lt;/a&gt;
+      &lt;a class="item" data-size="sm" href="#"&gt;&lt;figure&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;ลูกค้า Customers&lt;/h3&gt;&lt;/section&gt;&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-side="bottom" หรือไม่ใส่ data-side เลื่อนขึ้นจากขอบล่าง
+              data-side="bottom", or no data-side, slides up from the bottom
+              edge
+            </h2>
+            <p>
+              ค่าเริ่มต้นคือขอบล่าง (เหมือน Tsugi). The default edge is the
+              bottom. Top and bottom drawers are the full width of the window,
+              at most 85% of its height, and keep their content in a centred
+              32rem column; their footer buttons fill that column, the main one
+              first.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="drw-delete"
+                    command="show-modal"
+                  >
+                    ลบสินค้า Delete products
+                  </button>
+                  <dialog
+                    class="drawer"
+                    id="drw-delete"
+                    aria-labelledby="drw-delete-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="drw-delete-title">
+                        ลบสินค้า 3 รายการ? Delete 3 products?
+                      </h2>
+                      <p>
+                        สินค้าจะถูกนำออกจากทุกหมวดหมู่และแคมเปญ They are removed
+                        from every category and campaign. This cannot be undone.
+                      </p>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="danger"
+                        commandfor="drw-delete"
+                        command="close"
+                      >
+                        ลบสินค้า Delete products
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="drw-delete"
+                        command="close"
+                      >
+                        ยกเลิก Cancel
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="drw-delete" command="show-modal"&gt;ลบสินค้า Delete products&lt;/button&gt;
+&lt;dialog class="drawer" id="drw-delete" aria-labelledby="drw-delete-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="drw-delete-title"&gt;ลบสินค้า 3 รายการ? Delete 3 products?&lt;/h2&gt;
+    &lt;p&gt;สินค้าจะถูกนำออกจากทุกหมวดหมู่และแคมเปญ They are removed from every category and campaign. This cannot be undone.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" data-variant="danger" commandfor="drw-delete" command="close"&gt;ลบสินค้า Delete products&lt;/button&gt;
+    &lt;button type="button" class="btn" commandfor="drw-delete" command="close"&gt;ยกเลิก Cancel&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-side="top" เลื่อนลงจากขอบบน data-side="top" slides down from
+              the top edge
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="drw-notice"
+                    command="show-modal"
+                  >
+                    ประกาศ Announcement
+                  </button>
+                  <dialog
+                    class="drawer"
+                    id="drw-notice"
+                    data-side="top"
+                    aria-labelledby="drw-notice-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="drw-notice-title">
+                        ปิดปรับปรุงระบบ Scheduled maintenance
+                      </h2>
+                      <p>
+                        ระบบชำระเงินหยุดวันอาทิตย์ 02:00–02:30 น. Payments are
+                        paused on Sunday from 2:00 to 2:30 a.m.; orders placed
+                        then are captured afterwards.
+                      </p>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="primary"
+                        commandfor="drw-notice"
+                        command="close"
+                      >
+                        รับทราบ Got it
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="drw-notice" command="show-modal"&gt;ประกาศ Announcement&lt;/button&gt;
+&lt;dialog class="drawer" id="drw-notice" data-side="top" aria-labelledby="drw-notice-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="drw-notice-title"&gt;ปิดปรับปรุงระบบ Scheduled maintenance&lt;/h2&gt;
+    &lt;p&gt;ระบบชำระเงินหยุดวันอาทิตย์ 02:00–02:30 น. Payments are paused on Sunday from 2:00 to 2:30 a.m.; orders placed then are captured afterwards.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" data-variant="primary" commandfor="drw-notice" command="close"&gt;รับทราบ Got it&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              close() รับค่า และหน้าอ่านค่าจาก event close close() takes a
+              value, and the page reads it from the close event
+            </h2>
+            <p>
+              ปุ่ม <code>command=<wbr />"close"</code> ที่มี
+              <code>value</code> ส่งค่านั้นเป็น
+              <code>returnValue</code> เหมือนเรียก
+              <code>drawer.<wbr />close(<wbr />"csv")</code> ใน JS. Read
+              <code>returnValue</code> in the <code>close</code> event, then
+              clear it: the browser keeps it for the next opening. Escape or a
+              backdrop click leaves it empty. The slide-out runs before the
+              dialog is gone; with reduced motion it closes at once.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="drw-export"
+                        command="show-modal"
+                      >
+                        ส่งออกคำสั่งซื้อ Export orders
+                      </button>
+                    </div>
+                    <p id="drw-export-result">
+                      ยังไม่ได้เลือก Nothing chosen yet.
+                    </p>
+                  </div>
+                  <dialog
+                    class="drawer"
+                    id="drw-export"
+                    aria-labelledby="drw-export-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="drw-export-title">
+                        ส่งออกคำสั่งซื้อ Export orders
+                      </h2>
+                      <p>เลือกรูปแบบไฟล์ Choose the file format.</p>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="primary"
+                        commandfor="drw-export"
+                        command="close"
+                        value="csv"
+                      >
+                        CSV
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="drw-export"
+                        command="close"
+                        value="xlsx"
+                      >
+                        Excel
+                      </button>
+                    </footer>
+                  </dialog>
+                  <script type="module">
+                    const drawer = document.getElementById("drw-export");
+                    drawer.addEventListener("close", () => {
+                      document.getElementById("drw-export-result").textContent =
+                        drawer.returnValue === ""
+                          ? "ปิดโดยไม่เลือก Closed without a choice."
+                          : `เลือก Chosen: ${drawer.returnValue}`;
+                      drawer.returnValue = "";
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div&gt;&lt;button type="button" class="btn" commandfor="drw-export" command="show-modal"&gt;ส่งออกคำสั่งซื้อ Export orders&lt;/button&gt;&lt;/div&gt;
+  &lt;p id="drw-export-result"&gt;ยังไม่ได้เลือก Nothing chosen yet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;dialog class="drawer" id="drw-export" aria-labelledby="drw-export-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="drw-export-title"&gt;ส่งออกคำสั่งซื้อ Export orders&lt;/h2&gt;
+    &lt;p&gt;เลือกรูปแบบไฟล์ Choose the file format.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" data-variant="primary" commandfor="drw-export" command="close" value="csv"&gt;CSV&lt;/button&gt;
+    &lt;button type="button" class="btn" commandfor="drw-export" command="close" value="xlsx"&gt;Excel&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;
+&lt;script type="module"&gt;
+  const drawer = document.getElementById("drw-export");
+  drawer.addEventListener("close", () =&gt; {
+    document.getElementById("drw-export-result").textContent =
+      drawer.returnValue === "" ? "ปิดโดยไม่เลือก Closed without a choice." : `เลือก Chosen: ${drawer.returnValue}`;
+    drawer.returnValue = "";
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <h3>Methods and properties (native)</h3>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Member</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>showModal(<wbr />)</code>
+                    </td>
+                    <td>method</td>
+                    <td>
+                      เปิด drawer บนพื้นหลังมืด. Opens the drawer over the
+                      dimmed page; what
+                      <code>command=<wbr />"show-<wbr />modal"</code> calls.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>close(<wbr />returnValue?)</code>
+                    </td>
+                    <td>method</td>
+                    <td>
+                      ปิด drawer พร้อมเลื่อนออก. Closes it with its slide-out;
+                      the optional string becomes <code>returnValue</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>returnValue</code></td>
+                    <td>property</td>
+                    <td>
+                      ค่าจาก <code>close(<wbr />value)</code> หรือ
+                      <code>value</code> ของปุ่ม. Empty after Escape; not reset
+                      on open.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events (native)</h3>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>close</code></td>
+                    <td>none</td>
+                    <td>
+                      ส่งเมื่อ drawer ปิด. Sent once the drawer has closed. Read
+                      <code>returnValue</code> here.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>cancel</code></td>
+                    <td>none</td>
+                    <td>
+                      ก่อนปิดด้วย Esc หรือคลิกพื้นหลัง.
+                      <code>preventDefault(<wbr />)</code> keeps it open.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>Esc</kbd></td>
+                    <td>
+                      ปิด drawer พร้อมเลื่อนออก. Closes the drawer, with its
+                      slide-out.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Tab</kbd></td>
+                    <td>
+                      วนอยู่ใน drawer. Moves between the controls of the drawer
+                      only.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              ไม่มี JS: การเลื่อนเข้าออกใช้ CSS transition กับ
+              <code>@starting-style</code>. No script: the slide uses CSS
+              transitions, turned off by <code>prefers-reduced-motion</code>. A
+              browser without discrete transitions shows and hides it at once.
+            </p>
           </section>
           <section>
             <h2>Attributes</h2>
@@ -475,14 +1073,87 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>data-side</code></td>
-                    <td><code>left</code></td>
-                    <td>เปิดจากด้านซ้าย (ค่าเริ่มต้นด้านขวา)</td>
+                    <td>
+                      <code>class=<wbr />"drawer"</code>
+                    </td>
+                    <td>on <code>&lt;dialog&gt;</code></td>
+                    <td>สไตล์ drawer. The component.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />side</code>
+                    </td>
+                    <td>
+                      none or <code>bottom</code> (default), <code>top</code>,
+                      <code>left</code>, <code>right</code>
+                    </td>
+                    <td>
+                      ขอบที่ drawer เลื่อนเข้ามา. The edge it slides in from.
+                      Left and right: full height, 24rem wide. Top and bottom:
+                      full width, up to 85% of the height.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>aria-<wbr />labelledby</code>
+                    </td>
+                    <td>id of the <code>&lt;h2&gt;</code></td>
+                    <td>ชื่อ drawer (จำเป็น). Names the drawer. Required.</td>
+                  </tr>
+                  <tr>
+                    <td><code>closedby</code></td>
+                    <td>
+                      <code>any</code>, <code>closerequest</code> (default),
+                      <code>none</code>
+                    </td>
+                    <td>
+                      <code>any</code>: Esc และคลิกพื้นหลังปิดได้. Same as the
+                      dialog.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>commandfor + command</code></td>
-                    <td><code>show-modal, close</code></td>
-                    <td>เหมือน dialog</td>
+                    <td>
+                      drawer id + <code>show-<wbr />modal</code>,
+                      <code>close</code>
+                    </td>
+                    <td>
+                      บนปุ่ม เปิดหรือปิด drawer. On a button: opens or closes
+                      the drawer.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>value</code></td>
+                    <td>
+                      text, on a <code>command=<wbr />"close"</code> button
+                    </td>
+                    <td>
+                      กลายเป็น <code>returnValue</code>. Becomes the drawer's
+                      <code>returnValue</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; header</code></td>
+                    <td>
+                      <code>h2</code>, <code>p</code>, close <code>button</code>
+                    </td>
+                    <td>
+                      หัวเรื่อง คำอธิบาย ปุ่มปิด. The close button sits at the
+                      end of the first row.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; div</code></td>
+                    <td>any content</td>
+                    <td>เนื้อหา เลื่อนได้. Fills the height and scrolls.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer</code></td>
+                    <td>buttons</td>
+                    <td>
+                      ปุ่ม. Side drawers: at the end. Top and bottom drawers:
+                      stacked, full width.
+                    </td>
                   </tr>
                 </tbody>
               </table>
