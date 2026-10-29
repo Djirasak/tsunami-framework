@@ -6,6 +6,8 @@
     --step: minmax(13rem, 1fr);
     --gap: var(--space-6);
     --indent: 1.5rem;
+    --journey-color: var(--accent);
+    --journey-ink: var(--on-accent);
     position: relative;
     container-type: inline-size;
     overflow-x: auto;
@@ -33,7 +35,7 @@
     z-index: 0;
     overflow: visible;
     fill: none;
-    stroke: var(--accent);
+    stroke: var(--journey-color);
     stroke-width: 1.5;
     pointer-events: none;
   }
@@ -103,11 +105,11 @@
     background: var(--line);
   }
 
-  // A picked page is filled with the accent; its counts and path follow it.
+  // A picked page is filled with --journey-color (the accent by default); its counts and path follow it.
   :where(.journey button[aria-pressed="true"]) {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: var(--on-accent);
+    border-color: var(--journey-color);
+    background: var(--journey-color);
+    color: var(--journey-ink);
   }
 
   :where(.journey button:focus-visible) {

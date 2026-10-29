@@ -1167,6 +1167,122 @@
             </div>
           </section>
           <section>
+            <h2>Change the colour</h2>
+            <p>
+              The picked pages and the lines use
+              <code>--journey-color</code> (the accent by default), with
+              <code>--journey-ink</code> for the text on top. Set them on one
+              journey with a style attribute or a class. Use a token such as
+              <code>var(--ok-fg)</code> so the colour follows light and dark.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Change the colour">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="journey"
+                    role="group"
+                    aria-label="Green journey"
+                    style="
+                      --journey-color: var(--ok-fg);
+                      --journey-ink: var(--bg);
+                    "
+                  >
+                    <ol>
+                      <li>
+                        <header>
+                          <span>Step 1</span><strong>1,000 sessions</strong
+                          ><small>entered</small>
+                        </header>
+                        <ul>
+                          <li>
+                            <button type="button" aria-pressed="true">
+                              <span>Home</span><data value="700">700</data>
+                            </button>
+                          </li>
+                          <li>
+                            <button type="button" aria-pressed="false">
+                              <span>Sale</span><data value="300">300</data>
+                            </button>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <header>
+                          <span>Step 2</span><strong>600 reached</strong
+                          ><small>400 dropped off (40.0%)</small>
+                        </header>
+                        <ul>
+                          <li>
+                            <button type="button" aria-pressed="true">
+                              <span>T-shirt</span><data value="420">420</data>
+                            </button>
+                          </li>
+                          <li>
+                            <button type="button" aria-pressed="false">
+                              <span>Search</span><data value="180">180</data>
+                            </button>
+                          </li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="journey" role="group" aria-label="Green journey" style="--journey-color: var(--ok-fg); --journey-ink: var(--bg)"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;
+      &lt;header&gt;&lt;span&gt;Step 1&lt;/span&gt;&lt;strong&gt;1,000 sessions&lt;/strong&gt;&lt;small&gt;entered&lt;/small&gt;&lt;/header&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true"&gt;&lt;span&gt;Home&lt;/span&gt;&lt;data value="700"&gt;700&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="false"&gt;&lt;span&gt;Sale&lt;/span&gt;&lt;data value="300"&gt;300&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;header&gt;&lt;span&gt;Step 2&lt;/span&gt;&lt;strong&gt;600 reached&lt;/strong&gt;&lt;small&gt;400 dropped off (40.0%)&lt;/small&gt;&lt;/header&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true"&gt;&lt;span&gt;T-shirt&lt;/span&gt;&lt;data value="420"&gt;420&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="false"&gt;&lt;span&gt;Search&lt;/span&gt;&lt;data value="180"&gt;180&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>API</h2>
             <p>
               <code>journey.js</code> works on every <code>.journey</code> on
@@ -1303,6 +1419,19 @@
                     <td><code>data-view</code></td>
                     <td><code>picked</code>; none = all pages (default)</td>
                     <td>Shows only the picked page or outcome in each step</td>
+                  </tr>
+                  <tr>
+                    <td><code>--journey-color</code></td>
+                    <td>colour; default <code>var(--accent)</code></td>
+                    <td>
+                      Fill of picked pages and colour of the lines. Set on
+                      <code>.journey</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>--journey-ink</code></td>
+                    <td>colour; default <code>var(--on-accent)</code></td>
+                    <td>Text colour on picked pages</td>
                   </tr>
                   <tr>
                     <td><code>&gt; ol &gt; li</code></td>
