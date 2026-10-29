@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,20 +343,20 @@
             <div>
               <h1>Page header</h1>
               <p>
-                หัวของหน้า: breadcrumb แถวบน ปุ่มย้อนกลับ ชื่อหน้า
-                และปุ่มการทำงานทางขวา
+                The top of a page: a breadcrumb on top, a back button, the page
+                title and actions on the right.
               </p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน Usage</h2>
+            <h2>Usage</h2>
             <p>
-              ชื่อ <code>h1</code> ทางซ้าย และ
-              <code>div</code> ตัวสุดท้ายเป็นกลุ่มปุ่มชิดขวา
-              บนจอแคบปุ่มจะขึ้นบรรทัดใหม่
+              An <code>h1</code> title on the left, and the last
+              <code>div</code> as a button group on the right. On narrow screens
+              the buttons wrap to a new line.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="การใช้งาน Usage">
+              <div role="tablist" aria-label="Usage">
                 <button
                   type="button"
                   role="tab"
@@ -389,11 +385,11 @@
               >
                 <div class="docs-preview">
                   <header class="page-header">
-                    <h1>คำสั่งซื้อ Orders</h1>
+                    <h1>Orders</h1>
                     <div>
-                      <a href="#" class="btn">ส่งออก Export</a>
+                      <a href="#" class="btn">Export</a>
                       <a href="#" class="btn" data-variant="primary"
-                        >สร้างคำสั่งซื้อ New order</a
+                        >New order</a
                       >
                     </div>
                   </header>
@@ -407,19 +403,19 @@
                 hidden
               >
                 <pre><code>&lt;header class="page-header"&gt;
-  &lt;h1&gt;คำสั่งซื้อ Orders&lt;/h1&gt;
+  &lt;h1&gt;Orders&lt;/h1&gt;
   &lt;div&gt;
-    &lt;a href="#" class="btn"&gt;ส่งออก Export&lt;/a&gt;
-    &lt;a href="#" class="btn" data-variant="primary"&gt;สร้างคำสั่งซื้อ New order&lt;/a&gt;
+    &lt;a href="#" class="btn"&gt;Export&lt;/a&gt;
+    &lt;a href="#" class="btn" data-variant="primary"&gt;New order&lt;/a&gt;
   &lt;/div&gt;
 &lt;/header&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ชื่ออย่างเดียว Title only</h2>
+            <h2>Title only</h2>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="ชื่ออย่างเดียว Title only">
+              <div role="tablist" aria-label="Title only">
                 <button
                   type="button"
                   role="tab"
@@ -448,7 +444,7 @@
               >
                 <div class="docs-preview">
                   <header class="page-header">
-                    <h1>ภาพรวม Overview</h1>
+                    <h1>Overview</h1>
                   </header>
                 </div>
               </div>
@@ -460,21 +456,21 @@
                 hidden
               >
                 <pre><code>&lt;header class="page-header"&gt;
-  &lt;h1&gt;ภาพรวม Overview&lt;/h1&gt;
+  &lt;h1&gt;Overview&lt;/h1&gt;
 &lt;/header&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>มี breadcrumb เหนือชื่อ With a breadcrumb above the title</h2>
+            <h2>With a breadcrumb above the title</h2>
             <p>
-              <code>nav.breadcrumb</code>
-              ที่เป็นลูกโดยตรงจะอยู่แถวของตัวเองเต็มความกว้าง
+              A direct-child <code>nav.breadcrumb</code> gets its own full-width
+              row.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="มี breadcrumb เหนือชื่อ With a breadcrumb above the title"
+                aria-label="With a breadcrumb above the title"
               >
                 <button
                   type="button"
@@ -506,16 +502,16 @@
                   <header class="page-header">
                     <nav class="breadcrumb" aria-label="Breadcrumb">
                       <ol>
-                        <li><a href="#">แดชบอร์ด Dashboard</a></li>
+                        <li><a href="#">Dashboard</a></li>
                         <li>
-                          <span aria-current="page">สินค้า Products</span>
+                          <span aria-current="page">Products</span>
                         </li>
                       </ol>
                     </nav>
-                    <h1>สินค้า Products</h1>
+                    <h1>Products</h1>
                     <div>
                       <a href="#" class="btn" data-variant="primary"
-                        >เพิ่มสินค้า New product</a
+                        >New product</a
                       >
                     </div>
                   </header>
@@ -531,32 +527,27 @@
                 <pre><code>&lt;header class="page-header"&gt;
   &lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
     &lt;ol&gt;
-      &lt;li&gt;&lt;a href="#"&gt;แดชบอร์ด Dashboard&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;span aria-current="page"&gt;สินค้า Products&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span aria-current="page"&gt;Products&lt;/span&gt;&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/nav&gt;
-  &lt;h1&gt;สินค้า Products&lt;/h1&gt;
+  &lt;h1&gt;Products&lt;/h1&gt;
   &lt;div&gt;
-    &lt;a href="#" class="btn" data-variant="primary"&gt;เพิ่มสินค้า New product&lt;/a&gt;
+    &lt;a href="#" class="btn" data-variant="primary"&gt;New product&lt;/a&gt;
   &lt;/div&gt;
 &lt;/header&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              มีปุ่มย้อนกลับ สำหรับหน้าที่อยู่ใต้รายการหนึ่งชั้น With a back
-              button
-            </h2>
+            <h2>With a back button</h2>
             <p>
-              ปุ่ม <code>.btn</code> ที่เป็นลูกโดยตรงวางหน้าชื่อ ใส่
-              <code>aria-label</code> บอกว่ากลับไปที่ไหน
+              For a page one level below a list. A direct-child
+              <code>.btn</code> sits before the title. Give it an
+              <code>aria-label</code> that says where it goes back to.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="มีปุ่มย้อนกลับ สำหรับหน้าที่อยู่ใต้รายการหนึ่งชั้น With a back button"
-              >
+              <div role="tablist" aria-label="With a back button">
                 <button
                   type="button"
                   role="tab"
@@ -587,12 +578,10 @@
                   <header class="page-header">
                     <nav class="breadcrumb" aria-label="Breadcrumb">
                       <ol>
-                        <li><a href="#">แดชบอร์ด Dashboard</a></li>
-                        <li><a href="#">สินค้า Products</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Products</a></li>
                         <li>
-                          <span aria-current="page"
-                            >เสื้อยืดคอกลม Crew tee</span
-                          >
+                          <span aria-current="page">Crew tee</span>
                         </li>
                       </ol>
                     </nav>
@@ -600,16 +589,14 @@
                       href="#"
                       class="btn"
                       data-size="icon"
-                      aria-label="กลับไปหน้าสินค้า Back to products"
+                      aria-label="Back to products"
                       ><i class="icon icon-arrow-left" aria-hidden="true"></i
                     ></a>
-                    <h1>เสื้อยืดคอกลม Crew tee</h1>
+                    <h1>Crew tee</h1>
                     <div>
-                      <a href="#" class="btn" data-variant="ghost"
-                        >ดูหน้าร้าน View</a
-                      >
+                      <a href="#" class="btn" data-variant="ghost">View</a>
                       <button type="button" class="btn" popovertarget="ph-more">
-                        เพิ่มเติม More actions
+                        More actions
                         <i
                           class="icon icon-chevron-down"
                           aria-hidden="true"
@@ -621,7 +608,7 @@
                           popovertarget="ph-more"
                           popovertargetaction="hide"
                         >
-                          ดูประวัติการแก้ไข View revisions
+                          View revisions
                         </button>
                         <hr />
                         <button
@@ -630,7 +617,7 @@
                           popovertarget="ph-more"
                           popovertargetaction="hide"
                         >
-                          ลบ Delete
+                          Delete
                         </button>
                       </div>
                     </div>
@@ -647,23 +634,23 @@
                 <pre><code>&lt;header class="page-header"&gt;
   &lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
     &lt;ol&gt;
-      &lt;li&gt;&lt;a href="#"&gt;แดชบอร์ด Dashboard&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;สินค้า Products&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;span aria-current="page"&gt;เสื้อยืดคอกลม Crew tee&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span aria-current="page"&gt;Crew tee&lt;/span&gt;&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/nav&gt;
-  &lt;a href="#" class="btn" data-size="icon" aria-label="กลับไปหน้าสินค้า Back to products"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;h1&gt;เสื้อยืดคอกลม Crew tee&lt;/h1&gt;
+  &lt;a href="#" class="btn" data-size="icon" aria-label="Back to products"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;h1&gt;Crew tee&lt;/h1&gt;
   &lt;div&gt;
-    &lt;a href="#" class="btn" data-variant="ghost"&gt;ดูหน้าร้าน View&lt;/a&gt;
+    &lt;a href="#" class="btn" data-variant="ghost"&gt;View&lt;/a&gt;
     &lt;button type="button" class="btn" popovertarget="ph-more"&gt;
-      เพิ่มเติม More actions
+      More actions
       &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;/button&gt;
     &lt;div class="dropdown" id="ph-more" popover&gt;
-      &lt;button type="button" popovertarget="ph-more" popovertargetaction="hide"&gt;ดูประวัติการแก้ไข View revisions&lt;/button&gt;
+      &lt;button type="button" popovertarget="ph-more" popovertargetaction="hide"&gt;View revisions&lt;/button&gt;
       &lt;hr /&gt;
-      &lt;button type="button" data-variant="danger" popovertarget="ph-more" popovertargetaction="hide"&gt;ลบ Delete&lt;/button&gt;
+      &lt;button type="button" data-variant="danger" popovertarget="ph-more" popovertargetaction="hide"&gt;Delete&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/header&gt;</code></pre>
@@ -671,18 +658,16 @@
             </div>
           </section>
           <section>
-            <h2>
-              Badge ในชื่อ และบรรทัดรองใน hgroup Badges inside the title, and a
-              line under it
-            </h2>
+            <h2>Badges inside the title, and a line under it</h2>
             <p>
-              ใส่ <code>.badge</code> ใน <code>h1</code> ได้เลย และใช้
-              <code>hgroup</code> เมื่อมี <code>p</code> ใต้ชื่อ
+              Put <code>.badge</code> elements right inside the <code>h1</code>.
+              Use an <code>hgroup</code> when a <code>p</code> goes under the
+              title.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="Badge ในชื่อ และบรรทัดรองใน hgroup Badges inside the title, and a line under it"
+                aria-label="Badges inside the title, and a line under it"
               >
                 <button
                   type="button"
@@ -714,8 +699,8 @@
                   <header class="page-header">
                     <nav class="breadcrumb" aria-label="Breadcrumb">
                       <ol>
-                        <li><a href="#">แดชบอร์ด Dashboard</a></li>
-                        <li><a href="#">คำสั่งซื้อ Orders</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Orders</a></li>
                         <li><span aria-current="page">#110963</span></li>
                       </ol>
                     </nav>
@@ -723,32 +708,24 @@
                       href="#"
                       class="btn"
                       data-size="icon"
-                      aria-label="กลับไปหน้าคำสั่งซื้อ Back to orders"
+                      aria-label="Back to orders"
                       ><i class="icon icon-arrow-left" aria-hidden="true"></i
                     ></a>
                     <hgroup>
                       <h1>
-                        คำสั่งซื้อ #110963
-                        <span class="badge" data-variant="warning"
-                          >เปิดอยู่ Open</span
-                        >
-                        <span class="badge"
-                          >จัดส่งบางส่วน Partially fulfilled</span
-                        >
-                        <span class="badge" data-variant="ok"
-                          >ชำระแล้ว Paid</span
-                        >
+                        Order #110963
+                        <span class="badge" data-variant="warning">Open</span>
+                        <span class="badge">Partially fulfilled</span>
+                        <span class="badge" data-variant="ok">Paid</span>
                       </h1>
                       <p>
-                        <a href="#">สมชาย ใจดี</a> &bull; somchai@example.com
-                        &bull; 081 234 5678
+                        <a href="#">Emma Wilson</a> &bull;
+                        emma.wilson@example.com &bull; (555) 234-5678
                       </p>
                     </hgroup>
                     <div>
-                      <a href="#" class="btn" data-variant="ghost"
-                        >คืนเงิน Refund</a
-                      >
-                      <a href="#" class="btn">แก้ไข Edit</a>
+                      <a href="#" class="btn" data-variant="ghost">Refund</a>
+                      <a href="#" class="btn">Edit</a>
                     </div>
                   </header>
                 </div>
@@ -763,40 +740,38 @@
                 <pre><code>&lt;header class="page-header"&gt;
   &lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
     &lt;ol&gt;
-      &lt;li&gt;&lt;a href="#"&gt;แดชบอร์ด Dashboard&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;คำสั่งซื้อ Orders&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Orders&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;span aria-current="page"&gt;#110963&lt;/span&gt;&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/nav&gt;
-  &lt;a href="#" class="btn" data-size="icon" aria-label="กลับไปหน้าคำสั่งซื้อ Back to orders"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;a href="#" class="btn" data-size="icon" aria-label="Back to orders"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
   &lt;hgroup&gt;
     &lt;h1&gt;
-      คำสั่งซื้อ #110963
-      &lt;span class="badge" data-variant="warning"&gt;เปิดอยู่ Open&lt;/span&gt;
-      &lt;span class="badge"&gt;จัดส่งบางส่วน Partially fulfilled&lt;/span&gt;
-      &lt;span class="badge" data-variant="ok"&gt;ชำระแล้ว Paid&lt;/span&gt;
+      Order #110963
+      &lt;span class="badge" data-variant="warning"&gt;Open&lt;/span&gt;
+      &lt;span class="badge"&gt;Partially fulfilled&lt;/span&gt;
+      &lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;
     &lt;/h1&gt;
-    &lt;p&gt;&lt;a href="#"&gt;สมชาย ใจดี&lt;/a&gt; &amp;bull; somchai@example.com &amp;bull; 081 234 5678&lt;/p&gt;
+    &lt;p&gt;&lt;a href="#"&gt;Emma Wilson&lt;/a&gt; &amp;bull; emma.wilson@example.com &amp;bull; (555) 234-5678&lt;/p&gt;
   &lt;/hgroup&gt;
   &lt;div&gt;
-    &lt;a href="#" class="btn" data-variant="ghost"&gt;คืนเงิน Refund&lt;/a&gt;
-    &lt;a href="#" class="btn"&gt;แก้ไข Edit&lt;/a&gt;
+    &lt;a href="#" class="btn" data-variant="ghost"&gt;Refund&lt;/a&gt;
+    &lt;a href="#" class="btn"&gt;Edit&lt;/a&gt;
   &lt;/div&gt;
 &lt;/header&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ชื่อพร้อมคำอธิบายในกล่องเดียว Title block in a div</h2>
+            <h2>Title block in a div</h2>
             <p>
-              รูปแบบเดิมที่ใช้ในหน้าเอกสารนี้: <code>div</code> แรกรวม
-              breadcrumb, ชื่อ และคำอธิบาย <code>div</code> สุดท้ายเป็นปุ่ม
+              The older pattern these docs pages use: the first
+              <code>div</code> holds the breadcrumb, title and description. The
+              last <code>div</code> holds the buttons.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="ชื่อพร้อมคำอธิบายในกล่องเดียว Title block in a div"
-              >
+              <div role="tablist" aria-label="Title block in a div">
                 <button
                   type="button"
                   role="tab"
@@ -826,15 +801,13 @@
                 <div class="docs-preview">
                   <header class="page-header">
                     <div>
-                      <h1>เสื้อยืดคอกลม Crew tee</h1>
-                      <p>SKU TS-001, คงเหลือ 128 ชิ้น</p>
+                      <h1>Crew tee</h1>
+                      <p>SKU TS-001, 128 in stock</p>
                     </div>
                     <div>
-                      <button type="button" class="btn">
-                        ทำสำเนา Duplicate
-                      </button>
+                      <button type="button" class="btn">Duplicate</button>
                       <button type="button" class="btn" data-variant="primary">
-                        บันทึก Save
+                        Save
                       </button>
                     </div>
                   </header>
@@ -849,12 +822,12 @@
               >
                 <pre><code>&lt;header class="page-header"&gt;
   &lt;div&gt;
-    &lt;h1&gt;เสื้อยืดคอกลม Crew tee&lt;/h1&gt;
-    &lt;p&gt;SKU TS-001, คงเหลือ 128 ชิ้น&lt;/p&gt;
+    &lt;h1&gt;Crew tee&lt;/h1&gt;
+    &lt;p&gt;SKU TS-001, 128 in stock&lt;/p&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;button type="button" class="btn"&gt;ทำสำเนา Duplicate&lt;/button&gt;
-    &lt;button type="button" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;button type="button" class="btn"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
   &lt;/div&gt;
 &lt;/header&gt;</code></pre>
               </div>
@@ -876,19 +849,19 @@
                     <tr>
                       <td><code>.page-header</code></td>
                       <td><code>header</code></td>
-                      <td>แถว flex ที่ขึ้นบรรทัดใหม่ได้ จัดกลางแนวตั้ง</td>
+                      <td>Wrapping flex row, centered vertically</td>
                     </tr>
                     <tr>
                       <td><code>&gt; nav</code></td>
                       <td><code>nav.breadcrumb</code></td>
-                      <td>breadcrumb แถวบนสุด เต็มความกว้าง</td>
+                      <td>Breadcrumb on the top row, full width</td>
                     </tr>
                     <tr>
                       <td><code>&gt; .btn</code></td>
                       <td></td>
                       <td>
-                        ปุ่มย้อนกลับหน้าชื่อ ไม่ยืดไม่หด (ใช้
-                        <code>data-size="icon"</code> และ
+                        Back button before the title. Does not grow or shrink
+                        (use <code>data-size="icon"</code> and
                         <code>aria-label</code>)
                       </td>
                     </tr>
@@ -896,34 +869,35 @@
                       <td><code>&gt; h1</code></td>
                       <td></td>
                       <td>
-                        ชื่อหน้า ยืดเต็มพื้นที่;
-                        <code>.badge</code> ข้างในวางต่อท้ายชื่อ
+                        Page title. Fills the space; a
+                        <code>.badge</code> inside follows the title
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; hgroup</code></td>
                       <td></td>
                       <td>
-                        ชื่อ <code>h1</code> พร้อม <code>p</code> สีเทาใต้ชื่อ
+                        An <code>h1</code> title with a gray
+                        <code>p</code> under it
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; div:first-child</code></td>
                       <td></td>
-                      <td>กล่องชื่อแบบเดิม: breadcrumb, h1, p เรียงลง</td>
+                      <td>Older title block: breadcrumb, h1 and p stacked</td>
                     </tr>
                     <tr>
                       <td><code>&gt; div:last-child</code></td>
                       <td></td>
                       <td>
-                        กลุ่มปุ่มการทำงาน ชิดขวา
-                        (ถ้าไม่ใช่ลูกตัวแรกหรือกล่องชื่อหลัง nav)
+                        Action buttons on the right (unless it is the first
+                        child or the title block after a nav)
                       </td>
                     </tr>
                     <tr>
                       <td><code>p</code></td>
                       <td></td>
-                      <td>ข้อความรองสีเทา</td>
+                      <td>Gray secondary text</td>
                     </tr>
                   </tbody>
                 </table>

@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,25 +343,23 @@
             <div>
               <h1>Table</h1>
               <p>
-                ตารางเงียบ ๆ: หัวสีเทาเล็ก เส้นคั่นแถว ตัวเลขกว้างเท่ากัน
-                เรียงคอลัมน์และเลือกแถวได้ด้วย <code>table.js</code>
+                A quiet table: small gray headers, row dividers and tabular
+                numbers. Sort columns and select rows with
+                <code>table.js</code>.
               </p>
             </div>
           </header>
           <section>
-            <h2>
-              ตัวเลขกว้างเท่ากัน พร้อม caption และแถวรวม Numbers, a caption and
-              a total row
-            </h2>
+            <h2>Numbers, a caption and a total row</h2>
             <p>
-              ทุกตัวเลขในตารางใช้ tabular figures ให้หลักตรงกัน ใส่
-              <code>data-align="end"</code> ที่คอลัมน์เงิน และใช้
-              <code>tfoot</code> สำหรับแถวรวม
+              Every number in the table uses tabular figures so the digits line
+              up. Put <code>data-align="end"</code> on money columns and use
+              <code>tfoot</code> for the total row.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ตัวเลขกว้างเท่ากัน พร้อม caption และแถวรวม Numbers, a caption and a total row"
+                aria-label="Numbers, a caption and a total row"
               >
                 <button
                   type="button"
@@ -397,46 +391,46 @@
                   <div class="scroll-area" tabindex="0">
                     <table class="table">
                       <caption>
-                        ใบแจ้งหนี้ มีนาคม 2026 Invoices for March 2026
+                        Invoices for March 2026
                       </caption>
                       <thead>
                         <tr>
-                          <th scope="col">ใบแจ้งหนี้ Invoice</th>
-                          <th scope="col">สถานะ Status</th>
-                          <th scope="col">วิธีชำระ Method</th>
-                          <th scope="col" data-align="end">ยอด Amount</th>
+                          <th scope="col">Invoice</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Method</th>
+                          <th scope="col" data-align="end">Amount</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <th scope="row">INV001</th>
-                          <td>ชำระแล้ว Paid</td>
-                          <td>บัตรเครดิต Credit card</td>
-                          <td data-align="end">฿250.00</td>
+                          <td>Paid</td>
+                          <td>Credit card</td>
+                          <td data-align="end">$25.00</td>
                         </tr>
                         <tr>
                           <th scope="row">INV002</th>
-                          <td>รอชำระ Pending</td>
-                          <td>พร้อมเพย์ PromptPay</td>
-                          <td data-align="end">฿150.00</td>
+                          <td>Pending</td>
+                          <td>PayPal</td>
+                          <td data-align="end">$15.00</td>
                         </tr>
                         <tr>
                           <th scope="row">INV003</th>
-                          <td>ค้างชำระ Unpaid</td>
-                          <td>โอนเงิน Bank transfer</td>
-                          <td data-align="end">฿350.00</td>
+                          <td>Unpaid</td>
+                          <td>Bank transfer</td>
+                          <td data-align="end">$35.00</td>
                         </tr>
                         <tr>
                           <th scope="row">INV004</th>
-                          <td>ชำระแล้ว Paid</td>
-                          <td>พร้อมเพย์ PromptPay</td>
-                          <td data-align="end">฿1,450.00</td>
+                          <td>Paid</td>
+                          <td>PayPal</td>
+                          <td data-align="end">$145.00</td>
                         </tr>
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th scope="row" colspan="3">รวม Total</th>
-                          <td data-align="end">฿2,200.00</td>
+                          <th scope="row" colspan="3">Total</th>
+                          <td data-align="end">$220.00</td>
                         </tr>
                       </tfoot>
                     </table>
@@ -452,23 +446,23 @@
               >
                 <pre><code>&lt;div class="scroll-area" tabindex="0"&gt;
   &lt;table class="table"&gt;
-    &lt;caption&gt;ใบแจ้งหนี้ มีนาคม 2026 Invoices for March 2026&lt;/caption&gt;
+    &lt;caption&gt;Invoices for March 2026&lt;/caption&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th scope="col"&gt;ใบแจ้งหนี้ Invoice&lt;/th&gt;
-        &lt;th scope="col"&gt;สถานะ Status&lt;/th&gt;
-        &lt;th scope="col"&gt;วิธีชำระ Method&lt;/th&gt;
-        &lt;th scope="col" data-align="end"&gt;ยอด Amount&lt;/th&gt;
+        &lt;th scope="col"&gt;Invoice&lt;/th&gt;
+        &lt;th scope="col"&gt;Status&lt;/th&gt;
+        &lt;th scope="col"&gt;Method&lt;/th&gt;
+        &lt;th scope="col" data-align="end"&gt;Amount&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;th scope="row"&gt;INV001&lt;/th&gt;&lt;td&gt;ชำระแล้ว Paid&lt;/td&gt;&lt;td&gt;บัตรเครดิต Credit card&lt;/td&gt;&lt;td data-align="end"&gt;฿250.00&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;th scope="row"&gt;INV002&lt;/th&gt;&lt;td&gt;รอชำระ Pending&lt;/td&gt;&lt;td&gt;พร้อมเพย์ PromptPay&lt;/td&gt;&lt;td data-align="end"&gt;฿150.00&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;th scope="row"&gt;INV003&lt;/th&gt;&lt;td&gt;ค้างชำระ Unpaid&lt;/td&gt;&lt;td&gt;โอนเงิน Bank transfer&lt;/td&gt;&lt;td data-align="end"&gt;฿350.00&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;th scope="row"&gt;INV004&lt;/th&gt;&lt;td&gt;ชำระแล้ว Paid&lt;/td&gt;&lt;td&gt;พร้อมเพย์ PromptPay&lt;/td&gt;&lt;td data-align="end"&gt;฿1,450.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope="row"&gt;INV001&lt;/th&gt;&lt;td&gt;Paid&lt;/td&gt;&lt;td&gt;Credit card&lt;/td&gt;&lt;td data-align="end"&gt;$25.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope="row"&gt;INV002&lt;/th&gt;&lt;td&gt;Pending&lt;/td&gt;&lt;td&gt;PayPal&lt;/td&gt;&lt;td data-align="end"&gt;$15.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope="row"&gt;INV003&lt;/th&gt;&lt;td&gt;Unpaid&lt;/td&gt;&lt;td&gt;Bank transfer&lt;/td&gt;&lt;td data-align="end"&gt;$35.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope="row"&gt;INV004&lt;/th&gt;&lt;td&gt;Paid&lt;/td&gt;&lt;td&gt;PayPal&lt;/td&gt;&lt;td data-align="end"&gt;$145.00&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
     &lt;tfoot&gt;
-      &lt;tr&gt;&lt;th scope="row" colspan="3"&gt;รวม Total&lt;/th&gt;&lt;td data-align="end"&gt;฿2,200.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope="row" colspan="3"&gt;Total&lt;/th&gt;&lt;td data-align="end"&gt;$220.00&lt;/td&gt;&lt;/tr&gt;
     &lt;/tfoot&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
@@ -476,16 +470,17 @@
             </div>
           </section>
           <section>
-            <h2>เรียงคอลัมน์ได้ Sortable columns</h2>
+            <h2>Sortable columns</h2>
             <p>
-              ใส่ <code>aria-sort</code> ที่ <code>th</code> และ
-              <code>button</code> ข้างใน คลิกแล้วสลับน้อยไปมาก/มากไปน้อย ตัวเลข
-              วันที่ และข้อความเรียงตามชนิดของมัน (<code>data-sort-value</code>
-              ที่ cell ใช้แทนข้อความ เช่นวันที่ ISO) ถ้าเรียงฝั่ง server ใช้
-              <code>a</code> แทน <code>button</code>
+              Add <code>aria-sort</code> to the <code>th</code> and a
+              <code>button</code> inside it. A click toggles ascending and
+              descending. Numbers, dates and text each sort by their own type (a
+              <code>data-sort-value</code> on a cell is used in place of its
+              text, such as an ISO date). For server-side sorting, use an
+              <code>a</code> instead of a <code>button</code>.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="เรียงคอลัมน์ได้ Sortable columns">
+              <div role="tablist" aria-label="Sortable columns">
                 <button
                   type="button"
                   role="tab"
@@ -518,64 +513,58 @@
                       <thead>
                         <tr>
                           <th scope="col" aria-sort="none">
-                            <button type="button">สินค้า Product</button>
+                            <button type="button">Product</button>
                           </th>
                           <th scope="col" aria-sort="none">
-                            <button type="button">เพิ่มเมื่อ Added</button>
+                            <button type="button">Added</button>
                           </th>
-                          <th scope="col">สถานะ Status</th>
+                          <th scope="col">Status</th>
                           <th
                             scope="col"
                             data-align="end"
                             aria-sort="descending"
                           >
-                            <button type="button">ขายได้ Sold</button>
+                            <button type="button">Sold</button>
                           </th>
                           <th scope="col" data-align="end" aria-sort="none">
-                            <button type="button">ราคา Price</button>
+                            <button type="button">Price</button>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>นาฬิกา Timeless Watch</td>
-                          <td data-sort-value="2026-03-02">2 มี.ค. 2026</td>
+                          <td>Timeless Watch</td>
+                          <td data-sort-value="2026-03-02">Mar 2, 2026</td>
                           <td>
-                            <span class="badge" data-variant="ok"
-                              >แสดง Public</span
-                            >
+                            <span class="badge" data-variant="ok">Public</span>
                           </td>
                           <td data-align="end">1,204</td>
-                          <td data-align="end">฿4,990.00</td>
+                          <td data-align="end">$149.00</td>
                         </tr>
                         <tr>
-                          <td>เสื้อยืด Crew tee</td>
-                          <td data-sort-value="2026-08-15">15 ส.ค. 2026</td>
+                          <td>Crew tee</td>
+                          <td data-sort-value="2026-08-15">Aug 15, 2026</td>
                           <td>
-                            <span class="badge" data-variant="ok"
-                              >แสดง Public</span
-                            >
+                            <span class="badge" data-variant="ok">Public</span>
                           </td>
                           <td data-align="end">312</td>
-                          <td data-align="end">฿390.00</td>
+                          <td data-align="end">$24.00</td>
                         </tr>
                         <tr>
-                          <td>ปากกา Magic Pen</td>
-                          <td data-sort-value="2025-11-30">30 พ.ย. 2025</td>
-                          <td><span class="badge">ซ่อน Private</span></td>
+                          <td>Magic Pen</td>
+                          <td data-sort-value="2025-11-30">Nov 30, 2025</td>
+                          <td><span class="badge">Private</span></td>
                           <td data-align="end">48</td>
-                          <td data-align="end">฿120.00</td>
+                          <td data-align="end">$9.00</td>
                         </tr>
                         <tr>
-                          <td>กระเป๋า Canvas bag</td>
-                          <td data-sort-value="2026-01-09">9 ม.ค. 2026</td>
+                          <td>Canvas bag</td>
+                          <td data-sort-value="2026-01-09">Jan 9, 2026</td>
                           <td>
-                            <span class="badge" data-variant="ok"
-                              >แสดง Public</span
-                            >
+                            <span class="badge" data-variant="ok">Public</span>
                           </td>
                           <td data-align="end">-</td>
-                          <td data-align="end">฿1,250.00</td>
+                          <td data-align="end">$38.00</td>
                         </tr>
                       </tbody>
                     </table>
@@ -593,18 +582,18 @@
   &lt;table class="table" id="sort-demo"&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;สินค้า Product&lt;/button&gt;&lt;/th&gt;
-        &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;เพิ่มเมื่อ Added&lt;/button&gt;&lt;/th&gt;
-        &lt;th scope="col"&gt;สถานะ Status&lt;/th&gt;
-        &lt;th scope="col" data-align="end" aria-sort="descending"&gt;&lt;button type="button"&gt;ขายได้ Sold&lt;/button&gt;&lt;/th&gt;
-        &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;ราคา Price&lt;/button&gt;&lt;/th&gt;
+        &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Product&lt;/button&gt;&lt;/th&gt;
+        &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Added&lt;/button&gt;&lt;/th&gt;
+        &lt;th scope="col"&gt;Status&lt;/th&gt;
+        &lt;th scope="col" data-align="end" aria-sort="descending"&gt;&lt;button type="button"&gt;Sold&lt;/button&gt;&lt;/th&gt;
+        &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;Price&lt;/button&gt;&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;td&gt;นาฬิกา Timeless Watch&lt;/td&gt;&lt;td data-sort-value="2026-03-02"&gt;2 มี.ค. 2026&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;แสดง Public&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;1,204&lt;/td&gt;&lt;td data-align="end"&gt;฿4,990.00&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;td&gt;เสื้อยืด Crew tee&lt;/td&gt;&lt;td data-sort-value="2026-08-15"&gt;15 ส.ค. 2026&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;แสดง Public&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;312&lt;/td&gt;&lt;td data-align="end"&gt;฿390.00&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;td&gt;ปากกา Magic Pen&lt;/td&gt;&lt;td data-sort-value="2025-11-30"&gt;30 พ.ย. 2025&lt;/td&gt;&lt;td&gt;&lt;span class="badge"&gt;ซ่อน Private&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;48&lt;/td&gt;&lt;td data-align="end"&gt;฿120.00&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;td&gt;กระเป๋า Canvas bag&lt;/td&gt;&lt;td data-sort-value="2026-01-09"&gt;9 ม.ค. 2026&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;แสดง Public&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;-&lt;/td&gt;&lt;td data-align="end"&gt;฿1,250.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Timeless Watch&lt;/td&gt;&lt;td data-sort-value="2026-03-02"&gt;Mar 2, 2026&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Public&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;1,204&lt;/td&gt;&lt;td data-align="end"&gt;$149.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Crew tee&lt;/td&gt;&lt;td data-sort-value="2026-08-15"&gt;Aug 15, 2026&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Public&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;312&lt;/td&gt;&lt;td data-align="end"&gt;$24.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Magic Pen&lt;/td&gt;&lt;td data-sort-value="2025-11-30"&gt;Nov 30, 2025&lt;/td&gt;&lt;td&gt;&lt;span class="badge"&gt;Private&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;48&lt;/td&gt;&lt;td data-align="end"&gt;$9.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Canvas bag&lt;/td&gt;&lt;td data-sort-value="2026-01-09"&gt;Jan 9, 2026&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Public&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;-&lt;/td&gt;&lt;td data-align="end"&gt;$38.00&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
@@ -612,18 +601,16 @@
             </div>
           </section>
           <section>
-            <h2>
-              รูปและลิงก์ในคอลัมน์แรก ปุ่มในคอลัมน์สุดท้าย A picture and a link
-              first, an action last
-            </h2>
+            <h2>A picture and a link first, an action last</h2>
             <p>
-              ใส่ <code>.avatar</code> หรือ <code>img</code> เป็นลูกตัวแรกของ
-              cell แล้วตามด้วยลิงก์ ปุ่มชิดขวาด้วย <code>data-align="end"</code>
+              Make an <code>.avatar</code> or <code>img</code> the first child
+              of the cell, followed by a link. Align the action right with
+              <code>data-align="end"</code>.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="รูปและลิงก์ในคอลัมน์แรก ปุ่มในคอลัมน์สุดท้าย A picture and a link first, an action last"
+                aria-label="A picture and a link first, an action last"
               >
                 <button
                   type="button"
@@ -656,50 +643,48 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col">ลูกค้า Customer</th>
-                          <th scope="col">อีเมล Email</th>
-                          <th scope="col" data-align="end">
-                            คำสั่งซื้อ Orders
-                          </th>
+                          <th scope="col">Customer</th>
+                          <th scope="col">Email</th>
+                          <th scope="col" data-align="end">Orders</th>
                           <th
                             scope="col"
                             data-align="end"
-                            aria-label="การทำงาน Actions"
+                            aria-label="Actions"
                           ></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>
-                            <span class="avatar">สจ</span
-                            ><a href="#">สมชาย ใจดี</a>
+                            <span class="avatar">EW</span
+                            ><a href="#">Emma Wilson</a>
                           </td>
-                          <td>somchai@example.com</td>
+                          <td>emma@example.com</td>
                           <td data-align="end">12</td>
                           <td data-align="end">
-                            <a href="#" class="btn" data-size="sm">ดู View</a>
+                            <a href="#" class="btn" data-size="sm">View</a>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="avatar">SK</span
-                            ><a href="#">Suda Kaewmanee</a>
+                            <span class="avatar">OB</span
+                            ><a href="#">Olivia Brown</a>
                           </td>
-                          <td>suda@example.com</td>
+                          <td>olivia@example.com</td>
                           <td data-align="end">4</td>
                           <td data-align="end">
-                            <a href="#" class="btn" data-size="sm">ดู View</a>
+                            <a href="#" class="btn" data-size="sm">View</a>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="avatar">วศ</span
-                            ><a href="#">วิชัย ศรีสุข</a>
+                            <span class="avatar">JC</span
+                            ><a href="#">James Carter</a>
                           </td>
-                          <td>wichai@example.com</td>
+                          <td>james@example.com</td>
                           <td data-align="end">1</td>
                           <td data-align="end">
-                            <a href="#" class="btn" data-size="sm">ดู View</a>
+                            <a href="#" class="btn" data-size="sm">View</a>
                           </td>
                         </tr>
                       </tbody>
@@ -718,16 +703,16 @@
   &lt;table class="table"&gt;
     &lt;thead&gt;
       &lt;tr&gt;
-        &lt;th scope="col"&gt;ลูกค้า Customer&lt;/th&gt;
-        &lt;th scope="col"&gt;อีเมล Email&lt;/th&gt;
-        &lt;th scope="col" data-align="end"&gt;คำสั่งซื้อ Orders&lt;/th&gt;
-        &lt;th scope="col" data-align="end" aria-label="การทำงาน Actions"&gt;&lt;/th&gt;
+        &lt;th scope="col"&gt;Customer&lt;/th&gt;
+        &lt;th scope="col"&gt;Email&lt;/th&gt;
+        &lt;th scope="col" data-align="end"&gt;Orders&lt;/th&gt;
+        &lt;th scope="col" data-align="end" aria-label="Actions"&gt;&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;td&gt;&lt;span class="avatar"&gt;สจ&lt;/span&gt;&lt;a href="#"&gt;สมชาย ใจดี&lt;/a&gt;&lt;/td&gt;&lt;td&gt;somchai@example.com&lt;/td&gt;&lt;td data-align="end"&gt;12&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;ดู View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;td&gt;&lt;span class="avatar"&gt;SK&lt;/span&gt;&lt;a href="#"&gt;Suda Kaewmanee&lt;/a&gt;&lt;/td&gt;&lt;td&gt;suda@example.com&lt;/td&gt;&lt;td data-align="end"&gt;4&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;ดู View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;td&gt;&lt;span class="avatar"&gt;วศ&lt;/span&gt;&lt;a href="#"&gt;วิชัย ศรีสุข&lt;/a&gt;&lt;/td&gt;&lt;td&gt;wichai@example.com&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;ดู View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;&lt;span class="avatar"&gt;EW&lt;/span&gt;&lt;a href="#"&gt;Emma Wilson&lt;/a&gt;&lt;/td&gt;&lt;td&gt;emma@example.com&lt;/td&gt;&lt;td data-align="end"&gt;12&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;&lt;span class="avatar"&gt;OB&lt;/span&gt;&lt;a href="#"&gt;Olivia Brown&lt;/a&gt;&lt;/td&gt;&lt;td&gt;olivia@example.com&lt;/td&gt;&lt;td data-align="end"&gt;4&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;&lt;span class="avatar"&gt;JC&lt;/span&gt;&lt;a href="#"&gt;James Carter&lt;/a&gt;&lt;/td&gt;&lt;td&gt;james@example.com&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
@@ -735,16 +720,16 @@
             </div>
           </section>
           <section>
-            <h2>ตัดชื่อยาวด้วย data-truncate Truncate a long name</h2>
+            <h2>Truncate a long name with data-truncate</h2>
             <p>
-              cell ที่มี
-              <code>data-truncate</code> ใช้พื้นที่ที่เหลือและตัดข้อความด้วย …
-              (ไม่แคบกว่า 8rem) ใส่ข้อความเต็มใน <code>title</code>
+              A cell with <code>data-truncate</code> takes the remaining space
+              and cuts its text off with … (never narrower than 8rem). Put the
+              full text in <code>title</code>.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ตัดชื่อยาวด้วย data-truncate Truncate a long name"
+                aria-label="Truncate a long name with data-truncate"
               >
                 <button
                   type="button"
@@ -782,43 +767,38 @@
                       <thead>
                         <tr>
                           <th scope="col">Webhook</th>
-                          <th scope="col">สถานะ Status</th>
+                          <th scope="col">Status</th>
                           <th
                             scope="col"
                             data-align="end"
-                            aria-label="การทำงาน Actions"
+                            aria-label="Actions"
                           ></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td data-truncate>
-                            <a href="#" title="ซิงก์คำสั่งซื้อ Order sync"
-                              >ซิงก์คำสั่งซื้อ Order sync</a
-                            >
+                            <a href="#" title="Order sync">Order sync</a>
                           </td>
                           <td>
-                            <span class="badge" data-variant="ok"
-                              >ทำงาน Active</span
-                            >
+                            <span class="badge" data-variant="ok">Active</span>
                           </td>
                           <td data-align="end">
-                            <a href="#" class="btn" data-size="sm">ดู View</a>
+                            <a href="#" class="btn" data-size="sm">View</a>
                           </td>
                         </tr>
                         <tr>
                           <td data-truncate>
                             <a
                               href="#"
-                              title="อีเมลเตือนตะกร้าค้าง แคมเปญปลายปี เวอร์ชันสอง Abandoned cart emails for the year-end campaign, second version"
-                              >อีเมลเตือนตะกร้าค้าง แคมเปญปลายปี เวอร์ชันสอง
-                              Abandoned cart emails for the year-end campaign,
+                              title="Abandoned cart emails for the year-end campaign, second version"
+                              >Abandoned cart emails for the year-end campaign,
                               second version</a
                             >
                           </td>
-                          <td><span class="badge">ปิด Inactive</span></td>
+                          <td><span class="badge">Inactive</span></td>
                           <td data-align="end">
-                            <a href="#" class="btn" data-size="sm">ดู View</a>
+                            <a href="#" class="btn" data-size="sm">View</a>
                           </td>
                         </tr>
                       </tbody>
@@ -838,13 +818,13 @@
     &lt;thead&gt;
       &lt;tr&gt;
         &lt;th scope="col"&gt;Webhook&lt;/th&gt;
-        &lt;th scope="col"&gt;สถานะ Status&lt;/th&gt;
-        &lt;th scope="col" data-align="end" aria-label="การทำงาน Actions"&gt;&lt;/th&gt;
+        &lt;th scope="col"&gt;Status&lt;/th&gt;
+        &lt;th scope="col" data-align="end" aria-label="Actions"&gt;&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;td data-truncate&gt;&lt;a href="#" title="ซิงก์คำสั่งซื้อ Order sync"&gt;ซิงก์คำสั่งซื้อ Order sync&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;ทำงาน Active&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;ดู View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;td data-truncate&gt;&lt;a href="#" title="อีเมลเตือนตะกร้าค้าง แคมเปญปลายปี เวอร์ชันสอง Abandoned cart emails for the year-end campaign, second version"&gt;อีเมลเตือนตะกร้าค้าง แคมเปญปลายปี เวอร์ชันสอง Abandoned cart emails for the year-end campaign, second version&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge"&gt;ปิด Inactive&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;ดู View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td data-truncate&gt;&lt;a href="#" title="Order sync"&gt;Order sync&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Active&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td data-truncate&gt;&lt;a href="#" title="Abandoned cart emails for the year-end campaign, second version"&gt;Abandoned cart emails for the year-end campaign, second version&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;span class="badge"&gt;Inactive&lt;/span&gt;&lt;/td&gt;&lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;View&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
@@ -852,18 +832,16 @@
             </div>
           </section>
           <section>
-            <h2>เลือกแถวได้ Rows that can be selected</h2>
+            <h2>Selectable rows</h2>
             <p>
-              checkbox ใน cell แรกของแถว ตัวใน <code>thead</code> เลือกทั้งหมด
-              แถวที่เลือกมีพื้นเทา (ใช้ได้แม้ไม่มี JS) JS ตั้ง
-              <code>aria-selected</code> ทำให้ตัวเลือกทั้งหมดเป็น indeterminate
-              และส่ง <code>tsunami:select</code>
+              A checkbox goes in the first cell of each row, and the one in
+              <code>thead</code> selects all. Selected rows get a gray fill
+              (this works without JS). JS sets <code>aria-selected</code>, makes
+              the select-all checkbox indeterminate and fires
+              <code>tsunami:select</code>.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="เลือกแถวได้ Rows that can be selected"
-              >
+              <div role="tablist" aria-label="Selectable rows">
                 <button
                   type="button"
                   role="tab"
@@ -899,12 +877,12 @@
                             <th scope="col">
                               <input
                                 type="checkbox"
-                                aria-label="เลือกทุกคำสั่งซื้อ Select all orders"
+                                aria-label="Select all orders"
                               />
                             </th>
-                            <th scope="col">คำสั่งซื้อ Order</th>
-                            <th scope="col">ลูกค้า Customer</th>
-                            <th scope="col" data-align="end">ยอดรวม Total</th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col" data-align="end">Total</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -912,48 +890,46 @@
                             <td>
                               <input
                                 type="checkbox"
-                                aria-label="เลือก #110963 Select order 110963"
+                                aria-label="Select order 110963"
                                 checked
                               />
                             </td>
                             <td>#110963</td>
-                            <td>สมชาย ใจดี</td>
-                            <td data-align="end">฿2,599.00</td>
+                            <td>Emma Wilson</td>
+                            <td data-align="end">$79.00</td>
                           </tr>
                           <tr>
                             <td>
                               <input
                                 type="checkbox"
-                                aria-label="เลือก #110962 Select order 110962"
+                                aria-label="Select order 110962"
                               />
                             </td>
                             <td>#110962</td>
-                            <td>Suda Kaewmanee</td>
-                            <td data-align="end">฿840.00</td>
+                            <td>Olivia Brown</td>
+                            <td data-align="end">$26.00</td>
                           </tr>
                           <tr>
                             <td>
                               <input
                                 type="checkbox"
-                                aria-label="เลือก #110961 Select order 110961"
+                                aria-label="Select order 110961"
                               />
                             </td>
                             <td>#110961</td>
-                            <td>วิชัย ศรีสุข</td>
-                            <td data-align="end">฿12,045.50</td>
+                            <td>James Carter</td>
+                            <td data-align="end">$364.50</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
-                    <p id="select-count" aria-live="polite">
-                      เลือกแล้ว 1 รายการ 1 selected
-                    </p>
+                    <p id="select-count" aria-live="polite">1 selected</p>
                     <script>
                       document
                         .getElementById("select-demo")
                         .addEventListener("tsunami:select", (e) => {
                           document.getElementById("select-count").textContent =
-                            `เลือกแล้ว ${e.detail.count} รายการ ${e.detail.count} selected`;
+                            `${e.detail.count} selected`;
                         });
                     </script>
                   </div>
@@ -971,23 +947,23 @@
     &lt;table class="table" id="select-demo"&gt;
       &lt;thead&gt;
         &lt;tr&gt;
-          &lt;th scope="col"&gt;&lt;input type="checkbox" aria-label="เลือกทุกคำสั่งซื้อ Select all orders" /&gt;&lt;/th&gt;
-          &lt;th scope="col"&gt;คำสั่งซื้อ Order&lt;/th&gt;
-          &lt;th scope="col"&gt;ลูกค้า Customer&lt;/th&gt;
-          &lt;th scope="col" data-align="end"&gt;ยอดรวม Total&lt;/th&gt;
+          &lt;th scope="col"&gt;&lt;input type="checkbox" aria-label="Select all orders" /&gt;&lt;/th&gt;
+          &lt;th scope="col"&gt;Order&lt;/th&gt;
+          &lt;th scope="col"&gt;Customer&lt;/th&gt;
+          &lt;th scope="col" data-align="end"&gt;Total&lt;/th&gt;
         &lt;/tr&gt;
       &lt;/thead&gt;
       &lt;tbody&gt;
-        &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="เลือก #110963 Select order 110963" checked /&gt;&lt;/td&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;สมชาย ใจดี&lt;/td&gt;&lt;td data-align="end"&gt;฿2,599.00&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="เลือก #110962 Select order 110962" /&gt;&lt;/td&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Suda Kaewmanee&lt;/td&gt;&lt;td data-align="end"&gt;฿840.00&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="เลือก #110961 Select order 110961" /&gt;&lt;/td&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;วิชัย ศรีสุข&lt;/td&gt;&lt;td data-align="end"&gt;฿12,045.50&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="Select order 110963" checked /&gt;&lt;/td&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Emma Wilson&lt;/td&gt;&lt;td data-align="end"&gt;$79.00&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="Select order 110962" /&gt;&lt;/td&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Olivia Brown&lt;/td&gt;&lt;td data-align="end"&gt;$26.00&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="Select order 110961" /&gt;&lt;/td&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;James Carter&lt;/td&gt;&lt;td data-align="end"&gt;$364.50&lt;/td&gt;&lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
   &lt;/div&gt;
-  &lt;p id="select-count" aria-live="polite"&gt;เลือกแล้ว 1 รายการ 1 selected&lt;/p&gt;
+  &lt;p id="select-count" aria-live="polite"&gt;1 selected&lt;/p&gt;
   &lt;script&gt;
     document.getElementById("select-demo").addEventListener("tsunami:select", (e) =&gt; {
-      document.getElementById("select-count").textContent = `เลือกแล้ว ${e.detail.count} รายการ ${e.detail.count} selected`;
+      document.getElementById("select-count").textContent = `${e.detail.count} selected`;
     });
   &lt;/script&gt;
 &lt;/div&gt;</code></pre>
@@ -995,17 +971,14 @@
             </div>
           </section>
           <section>
-            <h2>ในการ์ด ชิดขอบ In a card, edge to edge</h2>
+            <h2>In a card, edge to edge</h2>
             <p>
-              ตารางที่เป็นลูกโดยตรงของ <code>.card</code> (หรืออยู่ใน
-              <code>.scroll-area</code>) ชิดขอบการ์ด cell แรกและสุดท้ายตรงกับ
-              padding การ์ด
+              A table that is a direct child of a <code>.card</code> (or inside
+              a <code>.scroll-area</code>) runs to the card's edges. The first
+              and last cells line up with the card padding.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="ในการ์ด ชิดขอบ In a card, edge to edge"
-              >
+              <div role="tablist" aria-label="In a card, edge to edge">
                 <button
                   type="button"
                   role="tab"
@@ -1038,57 +1011,53 @@
                       <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">คำสั่งซื้อ Order</th>
-                            <th scope="col">ลูกค้า Customer</th>
-                            <th scope="col">สถานะ Status</th>
-                            <th scope="col">ชำระด้วย Payment</th>
-                            <th scope="col" data-align="end">ยอดรวม Total</th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Payment</th>
+                            <th scope="col" data-align="end">Total</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>#110963</td>
-                            <td>สมชาย ใจดี</td>
+                            <td>Emma Wilson</td>
                             <td>
-                              <span class="badge" data-variant="ok"
-                                >ชำระแล้ว Paid</span
-                              >
+                              <span class="badge" data-variant="ok">Paid</span>
                             </td>
                             <td>Visa •••• 4417</td>
-                            <td data-align="end">฿2,599.00</td>
+                            <td data-align="end">$79.00</td>
                           </tr>
                           <tr>
                             <td>#110962</td>
-                            <td>Suda Kaewmanee</td>
+                            <td>Olivia Brown</td>
                             <td>
                               <span class="badge" data-variant="warning"
-                                >รอชำระ Pending</span
+                                >Pending</span
                               >
                             </td>
-                            <td>PromptPay</td>
-                            <td data-align="end">฿840.00</td>
+                            <td>PayPal</td>
+                            <td data-align="end">$26.00</td>
                           </tr>
                           <tr>
                             <td>#110961</td>
-                            <td>วิชัย ศรีสุข</td>
+                            <td>James Carter</td>
                             <td>
-                              <span class="badge" data-variant="ok"
-                                >ชำระแล้ว Paid</span
-                              >
+                              <span class="badge" data-variant="ok">Paid</span>
                             </td>
                             <td>Mastercard •••• 8034</td>
-                            <td data-align="end">฿12,045.50</td>
+                            <td data-align="end">$364.50</td>
                           </tr>
                           <tr>
                             <td>#110960</td>
                             <td>Mark Jensen</td>
                             <td>
                               <span class="badge" data-variant="danger"
-                                >คืนเงิน Refunded</span
+                                >Refunded</span
                               >
                             </td>
-                            <td>TrueMoney</td>
-                            <td data-align="end">฿427.50</td>
+                            <td>Apple Pay</td>
+                            <td data-align="end">$13.50</td>
                           </tr>
                         </tbody>
                       </table>
@@ -1108,18 +1077,18 @@
     &lt;table class="table"&gt;
       &lt;thead&gt;
         &lt;tr&gt;
-          &lt;th scope="col"&gt;คำสั่งซื้อ Order&lt;/th&gt;
-          &lt;th scope="col"&gt;ลูกค้า Customer&lt;/th&gt;
-          &lt;th scope="col"&gt;สถานะ Status&lt;/th&gt;
-          &lt;th scope="col"&gt;ชำระด้วย Payment&lt;/th&gt;
-          &lt;th scope="col" data-align="end"&gt;ยอดรวม Total&lt;/th&gt;
+          &lt;th scope="col"&gt;Order&lt;/th&gt;
+          &lt;th scope="col"&gt;Customer&lt;/th&gt;
+          &lt;th scope="col"&gt;Status&lt;/th&gt;
+          &lt;th scope="col"&gt;Payment&lt;/th&gt;
+          &lt;th scope="col" data-align="end"&gt;Total&lt;/th&gt;
         &lt;/tr&gt;
       &lt;/thead&gt;
       &lt;tbody&gt;
-        &lt;tr&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;สมชาย ใจดี&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;ชำระแล้ว Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Visa •••• 4417&lt;/td&gt;&lt;td data-align="end"&gt;฿2,599.00&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Suda Kaewmanee&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="warning"&gt;รอชำระ Pending&lt;/span&gt;&lt;/td&gt;&lt;td&gt;PromptPay&lt;/td&gt;&lt;td data-align="end"&gt;฿840.00&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;วิชัย ศรีสุข&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;ชำระแล้ว Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Mastercard •••• 8034&lt;/td&gt;&lt;td data-align="end"&gt;฿12,045.50&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;#110960&lt;/td&gt;&lt;td&gt;Mark Jensen&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="danger"&gt;คืนเงิน Refunded&lt;/span&gt;&lt;/td&gt;&lt;td&gt;TrueMoney&lt;/td&gt;&lt;td data-align="end"&gt;฿427.50&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Emma Wilson&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Visa •••• 4417&lt;/td&gt;&lt;td data-align="end"&gt;$79.00&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Olivia Brown&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;&lt;/td&gt;&lt;td&gt;PayPal&lt;/td&gt;&lt;td data-align="end"&gt;$26.00&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;James Carter&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Mastercard •••• 8034&lt;/td&gt;&lt;td data-align="end"&gt;$364.50&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;#110960&lt;/td&gt;&lt;td&gt;Mark Jensen&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="danger"&gt;Refunded&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apple Pay&lt;/td&gt;&lt;td data-align="end"&gt;$13.50&lt;/td&gt;&lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
   &lt;/div&gt;
@@ -1144,50 +1113,57 @@
                       <td><code>.table</code></td>
                       <td><code>table</code></td>
                       <td>
-                        เต็มความกว้าง ตัวเลขกว้างเท่ากัน หัวสีเทาเล็ก
-                        เส้นคั่นแถว แถวมีพื้นเทาเมื่อ hover
+                        Full width, tabular numbers, small gray headers and row
+                        dividers. Rows get a gray fill on hover
                       </td>
                     </tr>
                     <tr>
                       <td><code>caption</code></td>
                       <td></td>
-                      <td>คำอธิบายตาราง สีเทาเล็ก ชิดซ้ายเหนือหัว</td>
+                      <td>
+                        Table description. Small, gray, left-aligned above the
+                        headers
+                      </td>
                     </tr>
                     <tr>
                       <td><code>thead th</code></td>
                       <td></td>
-                      <td>หัวคอลัมน์ 12px สีเทา ไม่ตัวหนา ไม่ขึ้นบรรทัดใหม่</td>
+                      <td>Column header. 12px, gray, not bold, no wrapping</td>
                     </tr>
                     <tr>
                       <td><code>tbody th[scope="row"]</code></td>
                       <td></td>
-                      <td>cell ที่บอกชื่อแถว สีเข้มน้ำหนัก 500</td>
+                      <td>Cell that names the row. Dark, weight 500</td>
                     </tr>
                     <tr>
                       <td><code>tfoot</code></td>
                       <td></td>
-                      <td>แถวรวม: เส้นบน ตัวหนา</td>
+                      <td>Total row: top border, bold</td>
                     </tr>
                     <tr>
                       <td><code>data-align</code></td>
-                      <td><code>end</code>; ไม่ใส่ = ชิดซ้าย (default)</td>
+                      <td><code>end</code>; omit for left-aligned (default)</td>
                       <td>
-                        บน <code>th</code>/<code>td</code>: ชิดขวา
-                        สำหรับเงินและตัวเลข
+                        On <code>th</code>/<code>td</code>: right-aligned, for
+                        money and numbers
                       </td>
                     </tr>
                     <tr>
                       <td><code>data-truncate</code></td>
                       <td>(boolean)</td>
                       <td>
-                        บน <code>td</code>: ใช้พื้นที่ที่เหลือ ตัดด้วย …
-                        ไม่แคบกว่า 8rem; ใส่ข้อความเต็มใน <code>title</code>
+                        On <code>td</code>: takes the remaining space, cut off
+                        with …, never narrower than 8rem; put the full text in
+                        <code>title</code>
                       </td>
                     </tr>
                     <tr>
                       <td><code>td &gt; .avatar / img:first-child</code></td>
                       <td></td>
-                      <td>รูปหน้าข้อความใน cell (img 32px มุมมน)</td>
+                      <td>
+                        Picture before the text in a cell (img is 32px with
+                        rounded corners)
+                      </td>
                     </tr>
                     <tr>
                       <td><code>th[aria-sort]</code></td>
@@ -1196,30 +1172,32 @@
                         <code>descending</code>
                       </td>
                       <td>
-                        คอลัมน์เรียงได้ ไอคอนตามทิศทาง JS ตั้งค่าเองเมื่อคลิก
+                        Sortable column with a direction icon. JS sets it on
+                        click
                       </td>
                     </tr>
                     <tr>
                       <td><code>th[aria-sort] &gt; button</code></td>
                       <td></td>
                       <td>
-                        ปุ่มเรียง คลิกสลับ ascending/descending (ใช้
-                        <code>a</code> ถ้าเรียงฝั่ง server)
+                        Sort button. A click toggles ascending/descending (use
+                        <code>a</code> for server-side sorting)
                       </td>
                     </tr>
                     <tr>
                       <td><code>th[data-sort-type]</code></td>
                       <td>
                         <code>number</code>, <code>date</code>,
-                        <code>text</code>; ไม่ใส่ = ตรวจเอง (default)
+                        <code>text</code>; omit to detect (default)
                       </td>
-                      <td>บังคับชนิดการเรียงของคอลัมน์</td>
+                      <td>Forces the column's sort type</td>
                     </tr>
                     <tr>
                       <td><code>td[data-sort-value]</code></td>
-                      <td>ค่าใดก็ได้</td>
+                      <td>Any value</td>
                       <td>
-                        ค่าที่ใช้เรียงแทนข้อความ เช่น <code>2026-03-02</code>
+                        Value to sort by instead of the text, such as
+                        <code>2026-03-02</code>
                       </td>
                     </tr>
                     <tr>
@@ -1228,7 +1206,7 @@
                       </td>
                       <td></td>
                       <td>
-                        checkbox เลือกแถว แถวที่เลือกมีพื้นเทา (CSS
+                        Row checkbox. Selected rows get a gray fill (CSS
                         <code>:has</code>)
                       </td>
                     </tr>
@@ -1238,14 +1216,14 @@
                       </td>
                       <td></td>
                       <td>
-                        ใน <code>thead</code>: เลือกทั้งหมด เป็น indeterminate
-                        เมื่อเลือกบางแถว
+                        In <code>thead</code>: selects all. Indeterminate when
+                        some rows are selected
                       </td>
                     </tr>
                     <tr>
                       <td><code>tr[aria-selected]</code></td>
                       <td><code>true</code>, <code>false</code></td>
-                      <td>JS ตั้งตาม checkbox ของแถว</td>
+                      <td>Set by JS from the row's checkbox</td>
                     </tr>
                     <tr>
                       <td>
@@ -1255,12 +1233,15 @@
                         >
                       </td>
                       <td></td>
-                      <td>ตารางชิดขอบการ์ด</td>
+                      <td>Table runs to the card's edges</td>
                     </tr>
                     <tr>
                       <td><code>.scroll-area &gt; .table</code></td>
                       <td></td>
-                      <td>ห่อตารางที่กว้างให้เลื่อนแนวนอนได้บนจอแคบ</td>
+                      <td>
+                        Wraps a wide table so it scrolls horizontally on narrow
+                        screens
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1270,9 +1251,9 @@
           <section>
             <h2>API</h2>
             <p>
-              <code>src/js/table.js</code> ทำงานผ่าน event delegation บน
-              <code>document</code> ใช้กับตารางที่เพิ่มทีหลังได้ทันที
-              ฟังก์ชันอยู่ที่ <code>window.tsunami.table</code>
+              <code>src/js/table.js</code> uses event delegation on
+              <code>document</code>, so it works on tables added later right
+              away. The functions live at <code>window.tsunami.table</code>.
             </p>
             <div class="card">
               <div class="scroll-area" tabindex="0">
@@ -1289,56 +1270,60 @@
                       <td><code>sort(table, columnIndex, direction)</code></td>
                       <td>
                         <code>table</code>: element, <code>columnIndex</code>:
-                        เลข cell ในหัว, <code>direction</code>:
-                        <code>"ascending"</code> (default) หรือ
+                        index of the header cell, <code>direction</code>:
+                        <code>"ascending"</code> (default) or
                         <code>"descending"</code>
                       </td>
                       <td>
-                        เรียงแถวใน <code>tbody</code> ตั้ง
-                        <code>aria-sort</code> คืน <code>false</code> ถ้า event
-                        ถูกยกเลิก
+                        Sorts the rows in <code>tbody</code> and sets
+                        <code>aria-sort</code>. Returns <code>false</code> if
+                        the event was canceled
                       </td>
                     </tr>
                     <tr>
                       <td><code>select(table, rows, checked)</code></td>
                       <td>
-                        <code>rows</code>: รายการ <code>tr</code>,
+                        <code>rows</code>: a list of <code>tr</code>,
                         <code>checked</code>: boolean (default
                         <code>true</code>)
                       </td>
                       <td>
-                        เลือก/ยกเลิกแถว แล้วส่ง <code>tsunami:select</code>
+                        Selects or deselects rows, then fires
+                        <code>tsunami:select</code>
                       </td>
                     </tr>
                     <tr>
                       <td><code>selected(table)</code></td>
                       <td><code>table</code>: element</td>
-                      <td>คืน array ของ <code>tr</code> ที่เลือกอยู่</td>
+                      <td>
+                        Returns an array of the selected
+                        <code>tr</code> elements
+                      </td>
                     </tr>
                     <tr>
                       <td><code>sync(table)</code></td>
                       <td><code>table</code>: element</td>
                       <td>
-                        ตั้ง <code>aria-selected</code> และสถานะ checkbox
-                        เลือกทั้งหมดใหม่ หลังแก้ checkbox เอง
-                        (ทำให้อัตโนมัติตอนโหลดหน้า)
+                        Resets <code>aria-selected</code> and the select-all
+                        checkbox state after you change checkboxes yourself
+                        (runs on page load automatically)
                       </td>
                     </tr>
                     <tr>
                       <td><code>tsunami:sort</code></td>
                       <td><code>{ column, direction, header }</code></td>
                       <td>
-                        ส่งจาก <code>table</code> ก่อนเรียง bubbles และ
-                        cancelable: <code>preventDefault()</code> เพื่อเรียงเอง
-                        (เช่นดึงจาก server)
+                        Fired on the <code>table</code> before sorting. Bubbles
+                        and is cancelable: call <code>preventDefault()</code> to
+                        sort yourself (such as fetching from the server)
                       </td>
                     </tr>
                     <tr>
                       <td><code>tsunami:select</code></td>
                       <td><code>{ rows, count }</code></td>
                       <td>
-                        ส่งจาก <code>table</code> ทุกครั้งที่การเลือกเปลี่ยน
-                        bubbles
+                        Fired on the <code>table</code> whenever the selection
+                        changes. Bubbles
                       </td>
                     </tr>
                   </tbody>

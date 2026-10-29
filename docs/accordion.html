@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,22 +343,22 @@
             <div>
               <h1>Accordion</h1>
               <p>
-                รายการพับได้จาก <code>&lt;details&gt;</code> ของ browser
-                ไม่ต้องใช้ JS
+                Collapsible items built on the browser's
+                <code>&lt;details&gt;</code>. No JS needed.
               </p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน Usage</h2>
+            <h2>Usage</h2>
             <p>
-              แต่ละรายการคือ <code>&lt;details&gt;</code> ที่มี
-              <code>&lt;summary&gt;</code> (มีลูกศรให้เอง) ใส่
-              <code>name</code> เดียวกันทุกอันเพื่อให้เปิดได้ทีละอัน
-              เปิดอันใหม่แล้วอันเดิมปิดเอง และใส่
-              <code>open</code> ให้อันที่ต้องเปิดไว้ก่อน
+              Each item is a <code>&lt;details&gt;</code> with a
+              <code>&lt;summary&gt;</code>, which gets its own arrow. Give them
+              all the same <code>name</code> so only one opens at a time:
+              opening one closes the other. Add <code>open</code> to the item
+              that starts open.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="การใช้งาน Usage">
+              <div role="tablist" aria-label="Usage">
                 <button
                   type="button"
                   role="tab"
@@ -392,21 +388,16 @@
                 <div class="docs-preview">
                   <div class="accordion">
                     <details name="faq" open>
-                      <summary>จัดส่งกี่วัน How long is shipping?</summary>
-                      <p>
-                        2-3 วันทำการในกรุงเทพฯ 2-3 business days in Bangkok.
-                      </p>
+                      <summary>How long is shipping?</summary>
+                      <p>2-3 business days within the US.</p>
                     </details>
                     <details name="faq">
-                      <summary>คืนสินค้าได้ไหม Can I return items?</summary>
-                      <p>คืนได้ภายใน 30 วัน Within 30 days of delivery.</p>
+                      <summary>Can I return items?</summary>
+                      <p>Yes, within 30 days of delivery.</p>
                     </details>
                     <details name="faq">
-                      <summary>ชำระเงินแบบไหนได้บ้าง Payment methods</summary>
-                      <p>
-                        บัตรเครดิต, PromptPay และโอนผ่านธนาคาร Card, PromptPay
-                        and bank transfer.
-                      </p>
+                      <summary>Which payment methods do you accept?</summary>
+                      <p>Card, PayPal and bank transfer.</p>
                     </details>
                   </div>
                 </div>
@@ -420,29 +411,28 @@
               >
                 <pre><code>&lt;div class="accordion"&gt;
   &lt;details name="faq" open&gt;
-    &lt;summary&gt;จัดส่งกี่วัน How long is shipping?&lt;/summary&gt;
-    &lt;p&gt;2-3 วันทำการในกรุงเทพฯ 2-3 business days in Bangkok.&lt;/p&gt;
+    &lt;summary&gt;How long is shipping?&lt;/summary&gt;
+    &lt;p&gt;2-3 business days within the US.&lt;/p&gt;
   &lt;/details&gt;
   &lt;details name="faq"&gt;
-    &lt;summary&gt;คืนสินค้าได้ไหม Can I return items?&lt;/summary&gt;
-    &lt;p&gt;คืนได้ภายใน 30 วัน Within 30 days of delivery.&lt;/p&gt;
+    &lt;summary&gt;Can I return items?&lt;/summary&gt;
+    &lt;p&gt;Yes, within 30 days of delivery.&lt;/p&gt;
   &lt;/details&gt;
   &lt;details name="faq"&gt;
-    &lt;summary&gt;ชำระเงินแบบไหนได้บ้าง Payment methods&lt;/summary&gt;
-    &lt;p&gt;บัตรเครดิต, PromptPay และโอนผ่านธนาคาร Card, PromptPay and bank transfer.&lt;/p&gt;
+    &lt;summary&gt;Which payment methods do you accept?&lt;/summary&gt;
+    &lt;p&gt;Card, PayPal and bank transfer.&lt;/p&gt;
   &lt;/details&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>เปิดได้หลายอัน Several open at once</h2>
-            <p>ไม่ใส่ <code>name</code> แต่ละรายการเปิดปิดแยกกัน</p>
+            <h2>Several open at once</h2>
+            <p>
+              Without <code>name</code>, each item opens and closes on its own.
+            </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="เปิดได้หลายอัน Several open at once"
-              >
+              <div role="tablist" aria-label="Several open at once">
                 <button
                   type="button"
                   role="tab"
@@ -472,18 +462,16 @@
                 <div class="docs-preview">
                   <div class="accordion">
                     <details open>
-                      <summary>ข้อมูลสินค้า Product details</summary>
-                      <p>เสื้อยืดคอตตอน 100% Cotton T-shirt, ฿390.00</p>
+                      <summary>Product details</summary>
+                      <p>100% cotton T-shirt, $24.00</p>
                     </details>
                     <details open>
-                      <summary>การจัดส่ง Shipping</summary>
-                      <p>
-                        ส่งฟรีเมื่อซื้อครบ ฿1,000 Free shipping over ฿1,000.
-                      </p>
+                      <summary>Shipping</summary>
+                      <p>Free shipping on orders over $50.</p>
                     </details>
                     <details>
-                      <summary>วิธีดูแล Care</summary>
-                      <p>ซักเครื่องน้ำเย็น Machine wash cold.</p>
+                      <summary>Care</summary>
+                      <p>Machine wash cold.</p>
                     </details>
                   </div>
                 </div>
@@ -497,34 +485,31 @@
               >
                 <pre><code>&lt;div class="accordion"&gt;
   &lt;details open&gt;
-    &lt;summary&gt;ข้อมูลสินค้า Product details&lt;/summary&gt;
-    &lt;p&gt;เสื้อยืดคอตตอน 100% Cotton T-shirt, ฿390.00&lt;/p&gt;
+    &lt;summary&gt;Product details&lt;/summary&gt;
+    &lt;p&gt;100% cotton T-shirt, $24.00&lt;/p&gt;
   &lt;/details&gt;
   &lt;details open&gt;
-    &lt;summary&gt;การจัดส่ง Shipping&lt;/summary&gt;
-    &lt;p&gt;ส่งฟรีเมื่อซื้อครบ ฿1,000 Free shipping over ฿1,000.&lt;/p&gt;
+    &lt;summary&gt;Shipping&lt;/summary&gt;
+    &lt;p&gt;Free shipping on orders over $50.&lt;/p&gt;
   &lt;/details&gt;
   &lt;details&gt;
-    &lt;summary&gt;วิธีดูแล Care&lt;/summary&gt;
-    &lt;p&gt;ซักเครื่องน้ำเย็น Machine wash cold.&lt;/p&gt;
+    &lt;summary&gt;Care&lt;/summary&gt;
+    &lt;p&gt;Machine wash cold.&lt;/p&gt;
   &lt;/details&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>รายการที่ปิดใช้งาน A disabled item</h2>
+            <h2>A disabled item</h2>
             <p>
-              ใส่ <code>aria-disabled="true"</code> ที่
-              <code>&lt;details&gt;</code> และ <code>tabindex="-1"</code> ที่
-              <code>&lt;summary&gt;</code> รายการจะเป็นสีเทา คลิกและ Tab
-              ไปไม่ได้
+              Add <code>aria-disabled="true"</code> to the
+              <code>&lt;details&gt;</code> and <code>tabindex="-1"</code> to the
+              <code>&lt;summary&gt;</code>. The item turns grey and cannot be
+              clicked or reached with Tab.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="รายการที่ปิดใช้งาน A disabled item"
-              >
+              <div role="tablist" aria-label="A disabled item">
                 <button
                   type="button"
                   role="tab"
@@ -554,15 +539,14 @@
                 <div class="docs-preview">
                   <div class="accordion">
                     <details name="pay">
-                      <summary>บัตรเครดิต Credit card</summary>
+                      <summary>Credit card</summary>
                       <p>Visa, Mastercard, JCB</p>
                     </details>
                     <details name="pay" aria-disabled="true">
                       <summary tabindex="-1">
-                        เก็บเงินปลายทาง Cash on delivery (ยังไม่เปิด Not
-                        available)
+                        Cash on delivery (not available)
                       </summary>
-                      <p>ยังไม่รองรับ Not supported yet.</p>
+                      <p>Not supported yet.</p>
                     </details>
                   </div>
                 </div>
@@ -576,32 +560,29 @@
               >
                 <pre><code>&lt;div class="accordion"&gt;
   &lt;details name="pay"&gt;
-    &lt;summary&gt;บัตรเครดิต Credit card&lt;/summary&gt;
+    &lt;summary&gt;Credit card&lt;/summary&gt;
     &lt;p&gt;Visa, Mastercard, JCB&lt;/p&gt;
   &lt;/details&gt;
   &lt;details name="pay" aria-disabled="true"&gt;
-    &lt;summary tabindex="-1"&gt;เก็บเงินปลายทาง Cash on delivery (ยังไม่เปิด Not available)&lt;/summary&gt;
-    &lt;p&gt;ยังไม่รองรับ Not supported yet.&lt;/p&gt;
+    &lt;summary tabindex="-1"&gt;Cash on delivery (not available)&lt;/summary&gt;
+    &lt;p&gt;Not supported yet.&lt;/p&gt;
   &lt;/details&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ฟังเหตุการณ์ toggle Listen for toggle</h2>
+            <h2>Listen for toggle</h2>
             <p>
-              <code>toggle</code> เป็นเหตุการณ์ของ browser ส่งจาก
-              <code>&lt;details&gt;</code> ทุกครั้งที่เปิดหรือปิด ไม่ bubble
-              จึงต้องฟังแบบ capture ที่ตัวกล่อง (หรือฟังที่ details แต่ละอัน)
-              อ่านสถานะจาก <code>event.newState</code> หรือ
-              <code>details.open</code> เปิดหรือปิดด้วยโค้ดโดยตั้ง
-              <code>details.open = true</code>
+              <code>toggle</code> is a browser event that a
+              <code>&lt;details&gt;</code> fires each time it opens or closes.
+              It does not bubble, so listen in the capture phase on the
+              container (or on each details). Read the state from
+              <code>event.newState</code> or <code>details.open</code>. To open
+              or close one in code, set <code>details.open = true</code>.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="ฟังเหตุการณ์ toggle Listen for toggle"
-              >
+              <div role="tablist" aria-label="Listen for toggle">
                 <button
                   type="button"
                   role="tab"
@@ -632,17 +613,15 @@
                   <div class="stack" data-gap="sm">
                     <div class="accordion" id="acc-events">
                       <details name="ship">
-                        <summary>Kerry Express</summary>
-                        <p>1-2 วัน ฿45.00</p>
+                        <summary>UPS Ground</summary>
+                        <p>1-2 days, $9.00</p>
                       </details>
                       <details name="ship">
-                        <summary>ไปรษณีย์ไทย Thailand Post</summary>
-                        <p>2-4 วัน ฿35.00</p>
+                        <summary>USPS</summary>
+                        <p>2-4 days, $6.00</p>
                       </details>
                     </div>
-                    <p id="acc-events-output">
-                      ยังไม่มีการเปิด Nothing opened yet
-                    </p>
+                    <p id="acc-events-output">Nothing opened yet</p>
                     <div>
                       <button
                         type="button"
@@ -650,7 +629,7 @@
                         data-size="sm"
                         id="acc-events-open"
                       >
-                        เปิดอันแรกด้วยโค้ด Open the first
+                        Open the first in code
                       </button>
                     </div>
                   </div>
@@ -665,8 +644,8 @@
                           "details[open] > summary",
                         );
                         output.textContent = open
-                          ? `เปิดอยู่ Open: ${open.textContent}`
-                          : "ปิดทั้งหมด All closed";
+                          ? `Open: ${open.textContent}`
+                          : "All closed";
                       },
                       { capture: true },
                     );
@@ -688,17 +667,19 @@
                 <pre><code>&lt;div class="stack" data-gap="sm"&gt;
   &lt;div class="accordion" id="acc-events"&gt;
     &lt;details name="ship"&gt;
-      &lt;summary&gt;Kerry Express&lt;/summary&gt;
-      &lt;p&gt;1-2 วัน ฿45.00&lt;/p&gt;
+      &lt;summary&gt;UPS Ground&lt;/summary&gt;
+      &lt;p&gt;1-2 days, $9.00&lt;/p&gt;
     &lt;/details&gt;
     &lt;details name="ship"&gt;
-      &lt;summary&gt;ไปรษณีย์ไทย Thailand Post&lt;/summary&gt;
-      &lt;p&gt;2-4 วัน ฿35.00&lt;/p&gt;
+      &lt;summary&gt;USPS&lt;/summary&gt;
+      &lt;p&gt;2-4 days, $6.00&lt;/p&gt;
     &lt;/details&gt;
   &lt;/div&gt;
-  &lt;p id="acc-events-output"&gt;ยังไม่มีการเปิด Nothing opened yet&lt;/p&gt;
+  &lt;p id="acc-events-output"&gt;Nothing opened yet&lt;/p&gt;
   &lt;div&gt;
-    &lt;button type="button" class="btn" data-size="sm" id="acc-events-open"&gt;เปิดอันแรกด้วยโค้ด Open the first&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="acc-events-open"&gt;
+      Open the first in code
+    &lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script type="module"&gt;
@@ -709,7 +690,7 @@
     "toggle",
     () =&gt; {
       const open = accordion.querySelector("details[open] &gt; summary");
-      output.textContent = open ? `เปิดอยู่ Open: ${open.textContent}` : "ปิดทั้งหมด All closed";
+      output.textContent = open ? `Open: ${open.textContent}` : "All closed";
     },
     { capture: true },
   );
@@ -723,8 +704,8 @@
           <section>
             <h2>API</h2>
             <p>
-              Accordion ไม่มี JS ของตัวเอง ใช้ property และเหตุการณ์ของ
-              <code>&lt;details&gt;</code> ได้เลย
+              Accordion has no JS of its own. Use the properties and events of
+              <code>&lt;details&gt;</code> directly.
             </p>
             <div class="card">
               <table class="table">
@@ -739,7 +720,9 @@
                   <tr>
                     <td><code>details.open</code></td>
                     <td><code>true</code>, <code>false</code></td>
-                    <td>อ่านหรือตั้งเพื่อเปิด/ปิดรายการด้วยโค้ด</td>
+                    <td>
+                      Read it, or set it to open or close the item in code
+                    </td>
                   </tr>
                   <tr>
                     <td><code>toggle</code></td>
@@ -748,15 +731,18 @@
                       <code>"open"</code> / <code>"closed"</code>
                     </td>
                     <td>
-                      ส่งจาก <code>details</code> หลังเปิดหรือปิด ไม่ bubble
-                      (ฟังแบบ <code>{ capture: true }</code> ที่
-                      <code>.accordion</code>)
+                      Fired by <code>details</code> after it opens or closes.
+                      Does not bubble (listen with
+                      <code>{ capture: true }</code> on <code>.accordion</code>)
                     </td>
                   </tr>
                   <tr>
                     <td><kbd>Enter</kbd>, <kbd>Space</kbd></td>
                     <td></td>
-                    <td>บน summary: เปิดหรือปิดรายการ (ของ browser เอง)</td>
+                    <td>
+                      On a summary: open or close the item (native browser
+                      behavior)
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -777,48 +763,51 @@
                   <tr>
                     <td><code>.accordion</code></td>
                     <td></td>
-                    <td>กล่องมีกรอบ รายการคั่นด้วยเส้น</td>
+                    <td>Bordered box with a divider between items</td>
                   </tr>
                   <tr>
                     <td><code>&gt; details</code></td>
                     <td></td>
-                    <td>หนึ่งรายการ</td>
+                    <td>One item</td>
                   </tr>
                   <tr>
                     <td><code>details[name]</code></td>
-                    <td>ข้อความ; ไม่ใส่ = เปิดได้หลายอัน (ค่าเริ่มต้น)</td>
+                    <td>Text; none = several can be open (default)</td>
                     <td>
-                      ชื่อเดียวกันทั้งกลุ่ม เปิดได้ทีละอัน (browser
-                      ปิดอันอื่นให้)
+                      Same name across the group: one open at a time (the
+                      browser closes the others)
                     </td>
                   </tr>
                   <tr>
                     <td><code>details[open]</code></td>
-                    <td>มี / ไม่มี; ไม่มี = ปิด (ค่าเริ่มต้น)</td>
+                    <td>Present / absent; absent = closed (default)</td>
                     <td>
-                      รายการเปิดอยู่ browser ใส่และเอาออกเอง
-                      เขียนไว้เพื่อเปิดตั้งแต่ต้น
+                      The item is open. The browser adds and removes it. Set it
+                      in markup to start open.
                     </td>
                   </tr>
                   <tr>
                     <td><code>details[aria-disabled]</code></td>
                     <td><code>true</code></td>
                     <td>
-                      ปิดใช้งาน: summary สีเทา คลิกไม่ได้ ใส่
-                      <code>tabindex="-1"</code> ที่ summary ด้วย
+                      Disabled: the summary is grey and cannot be clicked. Also
+                      add <code>tabindex="-1"</code> to the summary.
                     </td>
                   </tr>
                   <tr>
                     <td><code>summary</code></td>
                     <td></td>
-                    <td>หัวข้อ มีลูกศรด้านขวา หมุนเมื่อเปิด</td>
+                    <td>
+                      Heading with an arrow on the right that turns when open
+                    </td>
                   </tr>
                   <tr>
                     <td><code>details &gt; :not(summary)</code></td>
                     <td></td>
                     <td>
-                      เนื้อหา (<code>p</code>, <code>div</code>,
-                      <code>section</code> ...) สีเทา เยื้องตรงกับหัวข้อ
+                      Content (<code>p</code>, <code>div</code>,
+                      <code>section</code> ...) in grey, indented to line up
+                      with the heading
                     </td>
                   </tr>
                 </tbody>

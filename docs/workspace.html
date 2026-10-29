@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,33 +343,29 @@
             <div>
               <h1>Workspace</h1>
               <p>
-                Layout เต็มหน้าต่างสำหรับงานเดียวที่ต้องใช้พื้นที่ แถบบน แผงข้าง
-                และพื้นที่ทำงานเลื่อนแยกกัน
+                A full-window layout for one task that needs room. The top bar,
+                side panels and work area scroll on their own.
               </p>
             </div>
             <a href="workspace-full" class="btn" data-size="sm" target="_blank"
-              >เปิดเต็มหน้า Open full page</a
+              >Open full page</a
             >
           </header>
           <section>
-            <h2>Workspace คือทั้งหน้า A workspace is the whole page</h2>
+            <h2>A workspace is the whole page</h2>
             <p>
-              <code>.workspace</code> สูงเต็มหน้าต่าง (<code>100dvh</code>)
-              ใช้แทน app shell (sidebar ของแอป) สำหรับงานเดียว เช่นแก้ธีม ลูกคือ
-              <code>&lt;header&gt;</code> แถบบน: ปุ่มกลับ,
-              <code>&lt;h1&gt;</code> ชื่องาน, ปุ่มควบคุม และปุ่มหลักไว้ท้ายสุด,
-              <code>&lt;aside&gt;</code> แผงข้าง และ
-              <code>&lt;main&gt;</code> พื้นที่ทำงาน
-              ในหน้าเอกสารนี้กล่องตัวอย่างถูกจำกัดความสูงไว้ ดูของจริงได้ที่
-              <a href="workspace-full" target="_blank"
-                >เปิดเต็มหน้า Open full page</a
-              >
+              <code>.workspace</code> fills the window height
+              (<code>100dvh</code>). Use it instead of the app shell (the app
+              sidebar) for a single task, such as editing a theme. Its children
+              are a <code>&lt;header&gt;</code> top bar (back button,
+              <code>&lt;h1&gt;</code> task name, controls, and the primary
+              button last), an <code>&lt;aside&gt;</code> side panel and a
+              <code>&lt;main&gt;</code> work area. On this docs page the example
+              box has a capped height. See the real thing:
+              <a href="workspace-full" target="_blank">Open full page</a>
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="Workspace คือทั้งหน้า A workspace is the whole page"
-              >
+              <div role="tablist" aria-label="A workspace is the whole page">
                 <button
                   type="button"
                   role="tab"
@@ -409,7 +401,7 @@
                         data-variant="ghost"
                         data-size="icon"
                         popovertarget="ws-panel"
-                        aria-label="เปิดแผง Open the panel"
+                        aria-label="Open the panel"
                       >
                         <i class="icon icon-panel-left" aria-hidden="true"></i>
                       </button>
@@ -417,13 +409,13 @@
                         href="#"
                         class="btn"
                         data-size="icon"
-                        aria-label="กลับไปหน้าธีม Back to themes"
+                        aria-label="Back to themes"
                       >
                         <i class="icon icon-arrow-left" aria-hidden="true"></i>
                       </a>
-                      <h1>ธีมหน้าร้อน Summer theme</h1>
+                      <h1>Summer theme</h1>
                       <button type="button" class="btn" data-size="sm">
-                        ดูตัวอย่าง Preview
+                        Preview
                       </button>
                       <button
                         type="button"
@@ -431,23 +423,19 @@
                         data-variant="primary"
                         data-size="sm"
                       >
-                        บันทึก Save
+                        Save
                       </button>
                     </header>
-                    <aside
-                      id="ws-panel"
-                      popover
-                      aria-label="ส่วนของหน้า Sections"
-                    >
-                      <nav class="subnav" aria-label="ส่วนของหน้า Sections">
-                        <a href="#" aria-current="page">ตัวอักษร Typography</a>
-                        <a href="#">เมนู Navigation</a>
-                        <a href="#">หน้าแรก Homepage</a>
-                        <a href="#">ท้ายเว็บ Footer</a>
+                    <aside id="ws-panel" popover aria-label="Sections">
+                      <nav class="subnav" aria-label="Sections">
+                        <a href="#" aria-current="page">Typography</a>
+                        <a href="#">Navigation</a>
+                        <a href="#">Homepage</a>
+                        <a href="#">Footer</a>
                       </nav>
                     </aside>
                     <main>
-                      <p>พื้นที่ทำงาน The work area</p>
+                      <p>The work area</p>
                     </main>
                   </div>
                 </div>
@@ -461,43 +449,40 @@
               >
                 <pre><code>&lt;div class="workspace"&gt;
   &lt;header&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-panel" aria-label="เปิดแผง Open the panel"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-panel" aria-label="Open the panel"&gt;
       &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;/button&gt;
-    &lt;a href="#" class="btn" data-size="icon" aria-label="กลับไปหน้าธีม Back to themes"&gt;
+    &lt;a href="#" class="btn" data-size="icon" aria-label="Back to themes"&gt;
       &lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;/a&gt;
-    &lt;h1&gt;ธีมหน้าร้อน Summer theme&lt;/h1&gt;
-    &lt;button type="button" class="btn" data-size="sm"&gt;ดูตัวอย่าง Preview&lt;/button&gt;
-    &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;บันทึก Save&lt;/button&gt;
+    &lt;h1&gt;Summer theme&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;Preview&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;Save&lt;/button&gt;
   &lt;/header&gt;
-  &lt;aside id="ws-panel" popover aria-label="ส่วนของหน้า Sections"&gt;
-    &lt;nav class="subnav" aria-label="ส่วนของหน้า Sections"&gt;
-      &lt;a href="#" aria-current="page"&gt;ตัวอักษร Typography&lt;/a&gt;
-      &lt;a href="#"&gt;เมนู Navigation&lt;/a&gt;
-      &lt;a href="#"&gt;หน้าแรก Homepage&lt;/a&gt;
-      &lt;a href="#"&gt;ท้ายเว็บ Footer&lt;/a&gt;
+  &lt;aside id="ws-panel" popover aria-label="Sections"&gt;
+    &lt;nav class="subnav" aria-label="Sections"&gt;
+      &lt;a href="#" aria-current="page"&gt;Typography&lt;/a&gt;
+      &lt;a href="#"&gt;Navigation&lt;/a&gt;
+      &lt;a href="#"&gt;Homepage&lt;/a&gt;
+      &lt;a href="#"&gt;Footer&lt;/a&gt;
     &lt;/nav&gt;
   &lt;/aside&gt;
   &lt;main&gt;
-    &lt;p&gt;พื้นที่ทำงาน The work area&lt;/p&gt;
+    &lt;p&gt;The work area&lt;/p&gt;
   &lt;/main&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>แผงกว้าง data-panel="wide" A wide panel</h2>
+            <h2>A wide panel</h2>
             <p>
-              แผงข้างกว้าง 20rem เป็นค่าเริ่มต้น
-              <code>data-panel="wide"</code> ทำให้กว้าง 24rem
-              สำหรับแผงที่มีฟอร์มหรือรายการยาว
+              The side panel is 20rem wide by default.
+              <code>data-panel="wide"</code> makes it 24rem, for panels with
+              forms or long lists.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label='แผงกว้าง data-panel="wide" A wide panel'
-              >
+              <div role="tablist" aria-label="A wide panel">
                 <button
                   type="button"
                   role="tab"
@@ -533,29 +518,25 @@
                         data-variant="ghost"
                         data-size="icon"
                         popovertarget="ws-wide-panel"
-                        aria-label="เปิดแผง Open the panel"
+                        aria-label="Open the panel"
                       >
                         <i class="icon icon-panel-left" aria-hidden="true"></i>
                       </button>
-                      <h1>ธีมหน้าร้อน Summer theme</h1>
+                      <h1>Summer theme</h1>
                       <button
                         type="button"
                         class="btn"
                         data-variant="primary"
                         data-size="sm"
                       >
-                        บันทึก Save
+                        Save
                       </button>
                     </header>
-                    <aside
-                      id="ws-wide-panel"
-                      popover
-                      aria-label="ตั้งค่า Settings"
-                    >
-                      <p>แผงกว้าง 24rem A panel 24rem wide</p>
+                    <aside id="ws-wide-panel" popover aria-label="Settings">
+                      <p>A panel 24rem wide</p>
                     </aside>
                     <main>
-                      <p>พื้นที่ทำงาน The work area</p>
+                      <p>The work area</p>
                     </main>
                   </div>
                 </div>
@@ -569,36 +550,35 @@
               >
                 <pre><code>&lt;div class="workspace" data-panel="wide"&gt;
   &lt;header&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-wide-panel" aria-label="เปิดแผง Open the panel"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-wide-panel" aria-label="Open the panel"&gt;
       &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;/button&gt;
-    &lt;h1&gt;ธีมหน้าร้อน Summer theme&lt;/h1&gt;
-    &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;บันทึก Save&lt;/button&gt;
+    &lt;h1&gt;Summer theme&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;Save&lt;/button&gt;
   &lt;/header&gt;
-  &lt;aside id="ws-wide-panel" popover aria-label="ตั้งค่า Settings"&gt;
-    &lt;p&gt;แผงกว้าง 24rem A panel 24rem wide&lt;/p&gt;
+  &lt;aside id="ws-wide-panel" popover aria-label="Settings"&gt;
+    &lt;p&gt;A panel 24rem wide&lt;/p&gt;
   &lt;/aside&gt;
   &lt;main&gt;
-    &lt;p&gt;พื้นที่ทำงาน The work area&lt;/p&gt;
+    &lt;p&gt;The work area&lt;/p&gt;
   &lt;/main&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              แผงท้าย: aside หลัง main An aside after the main is the end panel
-            </h2>
+            <h2>An aside after the main is the end panel</h2>
             <p>
-              <code>&lt;aside&gt;</code> ที่อยู่หลัง
-              <code>&lt;main&gt;</code> คือแผงท้าย กว้างเท่าแผงต้น
-              เส้นอยู่อีกฝั่ง workspace มีแผงต้น แผงท้าย หรือทั้งสองก็ได้
-              เช่นรายการหน้าทางซ้ายและแชตทางขวา
+              An <code>&lt;aside&gt;</code> after the
+              <code>&lt;main&gt;</code> is the end panel. It is as wide as the
+              start panel, with its border on the other side. A workspace can
+              have a start panel, an end panel or both, such as a page list on
+              the left and a chat on the right.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="แผงท้าย: aside หลัง main An aside after the main is the end panel"
+                aria-label="An aside after the main is the end panel"
               >
                 <button
                   type="button"
@@ -635,30 +615,30 @@
                         data-variant="ghost"
                         data-size="icon"
                         popovertarget="ws-end-start"
-                        aria-label="เปิดรายการหน้า Open the pages"
+                        aria-label="Open the pages"
                       >
                         <i class="icon icon-panel-left" aria-hidden="true"></i>
                       </button>
-                      <h1>แคมเปญหน้าร้อน Summer campaign</h1>
+                      <h1>Summer campaign</h1>
                       <button
                         type="button"
                         class="btn"
                         data-variant="ghost"
                         data-size="icon"
                         popovertarget="ws-end-end"
-                        aria-label="เปิดแชต Open the chat"
+                        aria-label="Open the chat"
                       >
                         <i class="icon icon-panel-right" aria-hidden="true"></i>
                       </button>
                     </header>
-                    <aside id="ws-end-start" popover aria-label="หน้า Pages">
-                      <p>แผงต้น The panel at the start</p>
+                    <aside id="ws-end-start" popover aria-label="Pages">
+                      <p>The start panel</p>
                     </aside>
                     <main>
-                      <p>พื้นที่ทำงาน The work area</p>
+                      <p>The work area</p>
                     </main>
-                    <aside id="ws-end-end" popover aria-label="แชต Chat">
-                      <p>แผงท้าย The end panel</p>
+                    <aside id="ws-end-end" popover aria-label="Chat">
+                      <p>The end panel</p>
                     </aside>
                   </div>
                 </div>
@@ -672,39 +652,36 @@
               >
                 <pre><code>&lt;div class="workspace"&gt;
   &lt;header&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-end-start" aria-label="เปิดรายการหน้า Open the pages"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-end-start" aria-label="Open the pages"&gt;
       &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;/button&gt;
-    &lt;h1&gt;แคมเปญหน้าร้อน Summer campaign&lt;/h1&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-end-end" aria-label="เปิดแชต Open the chat"&gt;
+    &lt;h1&gt;Summer campaign&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-end-end" aria-label="Open the chat"&gt;
       &lt;i class="icon icon-panel-right" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;/button&gt;
   &lt;/header&gt;
-  &lt;aside id="ws-end-start" popover aria-label="หน้า Pages"&gt;
-    &lt;p&gt;แผงต้น The panel at the start&lt;/p&gt;
+  &lt;aside id="ws-end-start" popover aria-label="Pages"&gt;
+    &lt;p&gt;The start panel&lt;/p&gt;
   &lt;/aside&gt;
   &lt;main&gt;
-    &lt;p&gt;พื้นที่ทำงาน The work area&lt;/p&gt;
+    &lt;p&gt;The work area&lt;/p&gt;
   &lt;/main&gt;
-  &lt;aside id="ws-end-end" popover aria-label="แชต Chat"&gt;
-    &lt;p&gt;แผงท้าย The end panel&lt;/p&gt;
+  &lt;aside id="ws-end-end" popover aria-label="Chat"&gt;
+    &lt;p&gt;The end panel&lt;/p&gt;
   &lt;/aside&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>แผงท้ายอย่างเดียว Only an end panel</h2>
+            <h2>Only an end panel</h2>
             <p>
-              ไม่มีแผงต้นก็ได้: <code>&lt;main&gt;</code> ตามด้วย
-              <code>&lt;aside&gt;</code>
-              เช่นรายละเอียดคำสั่งซื้อพร้อมแผงลูกค้าทางขวา
+              The start panel is optional: a <code>&lt;main&gt;</code> followed
+              by an <code>&lt;aside&gt;</code>, such as order details with a
+              customer panel on the right.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="แผงท้ายอย่างเดียว Only an end panel"
-              >
+              <div role="tablist" aria-label="Only an end panel">
                 <button
                   type="button"
                   role="tab"
@@ -734,27 +711,23 @@
                 <div class="docs-preview">
                   <div class="workspace">
                     <header>
-                      <h1>คำสั่งซื้อ #1042 Order</h1>
+                      <h1>Order #1042</h1>
                       <button
                         type="button"
                         class="btn"
                         data-variant="ghost"
                         data-size="icon"
                         popovertarget="ws-only-end"
-                        aria-label="เปิดข้อมูลลูกค้า Open the customer"
+                        aria-label="Open the customer"
                       >
                         <i class="icon icon-panel-right" aria-hidden="true"></i>
                       </button>
                     </header>
                     <main>
-                      <p>รายการสินค้า 3 ชิ้น รวม ฿2,450.00</p>
+                      <p>3 items, total $148.00</p>
                     </main>
-                    <aside
-                      id="ws-only-end"
-                      popover
-                      aria-label="ลูกค้า Customer"
-                    >
-                      <p>สมหญิง รักดี · somying@example.com</p>
+                    <aside id="ws-only-end" popover aria-label="Customer">
+                      <p>Emma Wilson · emma.wilson@example.com</p>
                     </aside>
                   </div>
                 </div>
@@ -768,36 +741,33 @@
               >
                 <pre><code>&lt;div class="workspace"&gt;
   &lt;header&gt;
-    &lt;h1&gt;คำสั่งซื้อ #1042 Order&lt;/h1&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-only-end" aria-label="เปิดข้อมูลลูกค้า Open the customer"&gt;
+    &lt;h1&gt;Order #1042&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-only-end" aria-label="Open the customer"&gt;
       &lt;i class="icon icon-panel-right" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;/button&gt;
   &lt;/header&gt;
   &lt;main&gt;
-    &lt;p&gt;รายการสินค้า 3 ชิ้น รวม ฿2,450.00&lt;/p&gt;
+    &lt;p&gt;3 items, total $148.00&lt;/p&gt;
   &lt;/main&gt;
-  &lt;aside id="ws-only-end" popover aria-label="ลูกค้า Customer"&gt;
-    &lt;p&gt;สมหญิง รักดี · somying@example.com&lt;/p&gt;
+  &lt;aside id="ws-only-end" popover aria-label="Customer"&gt;
+    &lt;p&gt;Emma Wilson · emma.wilson@example.com&lt;/p&gt;
   &lt;/aside&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              ต่ำกว่า 768px ปุ่มในแถบบนเปิดแผง Below 768px a button in the bar
-              opens the panel
-            </h2>
+            <h2>Below 768px a button in the bar opens the panel</h2>
             <p>
-              แผงข้างใส่ <code>popover</code> และ
-              <code>id</code> ปุ่มในแถบบนที่มี
-              <code>popovertarget</code> ชี้ไปที่ id
-              นั้นจะเปิดแผงทับพื้นที่ทำงาน กด
-              <kbd>Esc</kbd> หรือคลิกข้างนอกเพื่อปิด แผงท้ายเปิดจากขอบขวา
-              ตั้งแต่ 768px ขึ้นไปแผงเป็นคอลัมน์ปกติและปุ่มที่มี
-              <code>popovertarget</code> ในแถบบนจะซ่อนเอง ไม่ต้องใช้ JS
-              ลองย่อหน้าต่างในตัวอย่างด้านบนหรือ
-              <a href="workspace-full" target="_blank">หน้าเต็ม</a>
+              Give the side panel <code>popover</code> and an <code>id</code>. A
+              button in the top bar whose <code>popovertarget</code> points to
+              that id opens the panel over the work area. Press
+              <kbd>Esc</kbd> or click outside to close it. The end panel opens
+              from the right edge. From 768px up, panels are normal columns and
+              the <code>popovertarget</code> buttons in the top bar hide
+              themselves. No JS needed. Try narrowing the window on the examples
+              above or on the
+              <a href="workspace-full" target="_blank">full page</a>.
             </p>
           </section>
           <section>
@@ -816,54 +786,64 @@
                     <td><code>.workspace</code></td>
                     <td></td>
                     <td>
-                      layout เต็มหน้าต่าง (<code>100dvh</code>) ใช้เป็นลูกของ
-                      <code>body</code> โดยตรง
+                      Full-window layout (<code>100dvh</code>). Use it as a
+                      direct child of <code>body</code>
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-panel</code></td>
-                    <td><code>wide</code>; ไม่ใส่ = 20rem (ค่าเริ่มต้น)</td>
-                    <td>แผงข้างกว้าง 24rem</td>
+                    <td><code>wide</code>; none = 20rem (default)</td>
+                    <td>Makes the side panel 24rem wide</td>
                   </tr>
                   <tr>
                     <td><code>&gt; header</code></td>
                     <td></td>
-                    <td>แถบบนเต็มความกว้าง เรียงลูกเป็นแถว</td>
+                    <td>
+                      Full-width top bar that lays out its children in a row
+                    </td>
                   </tr>
                   <tr>
                     <td><code>header &gt; h1</code></td>
                     <td></td>
                     <td>
-                      ชื่องาน ดันปุ่มที่ตามมาไปชิดขวา ตัดด้วย … เมื่อยาวเกิน
+                      Task name. Pushes the buttons after it to the right.
+                      Truncated with … when too long
                     </td>
                   </tr>
                   <tr>
                     <td><code>header [popovertarget]</code></td>
-                    <td>id ของแผง</td>
-                    <td>ปุ่มเปิดแผงบนจอแคบ ซ่อนเองตั้งแต่ 768px</td>
+                    <td>The panel's id</td>
+                    <td>
+                      Opens the panel on narrow screens. Hidden from 768px
+                    </td>
                   </tr>
                   <tr>
-                    <td><code>&gt; aside</code> (ก่อน <code>main</code>)</td>
+                    <td><code>&gt; aside</code> (before <code>main</code>)</td>
                     <td></td>
-                    <td>แผงต้น เส้นทางขวา เลื่อนแยก</td>
+                    <td>
+                      Start panel with a border on the right. Scrolls on its own
+                    </td>
                   </tr>
                   <tr>
                     <td><code>&gt; main</code></td>
                     <td></td>
-                    <td>พื้นที่ทำงาน เลื่อนแยก</td>
+                    <td>Work area. Scrolls on its own</td>
                   </tr>
                   <tr>
                     <td><code>&gt; main ~ aside</code></td>
                     <td></td>
-                    <td>แผงท้าย เส้นทางซ้าย บนจอแคบเปิดจากขอบขวา</td>
+                    <td>
+                      End panel with a border on the left. Opens from the right
+                      edge on narrow screens
+                    </td>
                   </tr>
                   <tr>
                     <td><code>aside[popover]</code>, <code>id</code></td>
                     <td></td>
                     <td>
-                      ต่ำกว่า 768px แผงซ่อนและเปิดเป็น popover ทับพื้นที่ทำงาน
-                      (มี backdrop) ตั้งแต่ 768px เป็นคอลัมน์ ใส่
-                      <code>aria-label</code> ตั้งชื่อแผง
+                      Below 768px the panel is hidden and opens as a popover
+                      over the work area (with a backdrop). From 768px it is a
+                      column. Add an <code>aria-label</code> to name the panel
                     </td>
                   </tr>
                 </tbody>

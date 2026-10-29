@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,24 +343,22 @@
             <div>
               <h1>Stat</h1>
               <p>
-                ตัวเลขหนึ่งค่า: ป้าย ค่า และการเปลี่ยนแปลง วางเดี่ยว ในการ์ด
-                หรือเรียงเป็นกลุ่มด้วย <code>.stat-group</code>
+                A single figure: a label, a value and a change. Use it alone, in
+                a card, or in a row with <code>.stat-group</code>.
               </p>
             </div>
           </header>
           <section>
-            <h2>
-              ป้าย ค่า และการเปลี่ยนแปลง A label, a value and an optional change
-            </h2>
+            <h2>A label, a value and an optional change</h2>
             <p>
-              <code>span</code> ตัวแรกคือป้าย <code>strong</code> คือค่า และ
-              <code>span[data-trend]</code> บอกว่าเปลี่ยนไปอย่างไร
-              (ใส่หรือไม่ก็ได้)
+              The first <code>span</code> is the label and
+              <code>strong</code> is the value. An optional
+              <code>span[data-trend]</code> shows how it changed.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ป้าย ค่า และการเปลี่ยนแปลง A label, a value and an optional change"
+                aria-label="A label, a value and an optional change"
               >
                 <button
                   type="button"
@@ -394,7 +388,7 @@
               >
                 <div class="docs-preview">
                   <div class="stat" style="max-width: 14rem">
-                    <span>คำสั่งซื้อใหม่ New orders</span>
+                    <span>New orders</span>
                     <strong>128</strong>
                     <span data-trend="up"
                       ><i class="icon icon-arrow-up" aria-hidden="true"></i
@@ -411,7 +405,7 @@
                 hidden
               >
                 <pre><code>&lt;div class="stat" style="max-width: 14rem"&gt;
-  &lt;span&gt;คำสั่งซื้อใหม่ New orders&lt;/span&gt;
+  &lt;span&gt;New orders&lt;/span&gt;
   &lt;strong&gt;128&lt;/strong&gt;
   &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.5%&lt;/span&gt;
 &lt;/div&gt;</code></pre>
@@ -419,12 +413,9 @@
             </div>
           </section>
           <section>
-            <h2>ตัวเลขเดียวในการ์ด One stat in a card</h2>
+            <h2>One stat in a card</h2>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="ตัวเลขเดียวในการ์ด One stat in a card"
-              >
+              <div role="tablist" aria-label="One stat in a card">
                 <button
                   type="button"
                   role="tab"
@@ -454,8 +445,8 @@
                 <div class="docs-preview">
                   <div class="card" style="max-width: 20rem">
                     <div class="stat">
-                      <span>รายได้สุทธิ Net revenue</span>
-                      <strong>฿48,210.00</strong>
+                      <span>Net revenue</span>
+                      <strong>$1,377.43</strong>
                       <span data-trend="up"
                         ><i class="icon icon-arrow-up" aria-hidden="true"></i
                         >4.2%</span
@@ -473,8 +464,8 @@
               >
                 <pre><code>&lt;div class="card" style="max-width: 20rem"&gt;
   &lt;div class="stat"&gt;
-    &lt;span&gt;รายได้สุทธิ Net revenue&lt;/span&gt;
-    &lt;strong&gt;฿48,210.00&lt;/strong&gt;
+    &lt;span&gt;Net revenue&lt;/span&gt;
+    &lt;strong&gt;$1,377.43&lt;/strong&gt;
     &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;4.2%&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -482,19 +473,17 @@
             </div>
           </section>
           <section>
-            <h2>
-              ลิงก์ไปยังรายการเบื้องหลังตัวเลข และปุ่มข้อมูลที่ป้าย A link to
-              the records and an info button on the label
-            </h2>
+            <h2>A link to the records and an info button on the label</h2>
             <p>
-              ทั้ง stat เป็น <code>a</code> ได้ ค่าจะเป็นสี accent
-              ส่วนคำอธิบายใช้ <code>button</code> ในป้ายเปิด
-              <code>.popover</code> (วาง popover ไว้นอกลิงก์)
+              The whole stat can be an <code>a</code>, and the value turns the
+              accent color. For an explanation, a <code>button</code> in the
+              label opens a <code>.popover</code> (place the popover outside the
+              link).
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ลิงก์ไปยังรายการเบื้องหลังตัวเลข และปุ่มข้อมูลที่ป้าย A link to the records and an info button on the label"
+                aria-label="A link to the records and an info button on the label"
               >
                 <button
                   type="button"
@@ -526,27 +515,24 @@
                   <div class="card" style="max-width: 20rem">
                     <div class="stat">
                       <span
-                        >ยอดขายรวม Total sales<button
+                        >Total sales<button
                           type="button"
                           popovertarget="stat-info"
-                          aria-label="เกี่ยวกับยอดขายรวม About total sales"
+                          aria-label="About total sales"
                         >
                           <i
                             class="icon icon-info"
                             aria-hidden="true"
                           ></i></button
                       ></span>
-                      <strong><a href="#">฿145,202.38</a></strong>
+                      <strong><a href="#">$4,148.64</a></strong>
                       <span data-trend="up"
                         ><i class="icon icon-arrow-up" aria-hidden="true"></i
                         >40.1%</span
                       >
                     </div>
                     <div class="popover" id="stat-info" popover>
-                      <p>
-                        ยอดขายจากทุกคำสั่งซื้อก่อนหักการคืนสินค้า Total sales
-                        from all orders before returns.
-                      </p>
+                      <p>Total sales from all orders before returns.</p>
                     </div>
                   </div>
                 </div>
@@ -560,12 +546,12 @@
               >
                 <pre><code>&lt;div class="card" style="max-width: 20rem"&gt;
   &lt;div class="stat"&gt;
-    &lt;span&gt;ยอดขายรวม Total sales&lt;button type="button" popovertarget="stat-info" aria-label="เกี่ยวกับยอดขายรวม About total sales"&gt;&lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
-    &lt;strong&gt;&lt;a href="#"&gt;฿145,202.38&lt;/a&gt;&lt;/strong&gt;
+    &lt;span&gt;Total sales&lt;button type="button" popovertarget="stat-info" aria-label="About total sales"&gt;&lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+    &lt;strong&gt;&lt;a href="#"&gt;$4,148.64&lt;/a&gt;&lt;/strong&gt;
     &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;40.1%&lt;/span&gt;
   &lt;/div&gt;
   &lt;div class="popover" id="stat-info" popover&gt;
-    &lt;p&gt;ยอดขายจากทุกคำสั่งซื้อก่อนหักการคืนสินค้า Total sales from all orders before returns.&lt;/p&gt;
+    &lt;p&gt;Total sales from all orders before returns.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
@@ -573,12 +559,12 @@
           </section>
           <section>
             <h2>
-              data-trend: up สีเขียว down สีแดง ไม่ใส่ค่าสีเทา Trend colours
+              Trend colors: data-trend up is green, down is red, empty is gray
             </h2>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="data-trend: up สีเขียว down สีแดง ไม่ใส่ค่าสีเทา Trend colours"
+                aria-label="Trend colors: data-trend up is green, down is red, empty is gray"
               >
                 <button
                   type="button"
@@ -610,7 +596,7 @@
                   <div class="card">
                     <div class="stat-group">
                       <div class="stat">
-                        <span>ขึ้น Rising</span>
+                        <span>Rising</span>
                         <strong>128</strong>
                         <span data-trend="up"
                           ><i class="icon icon-arrow-up" aria-hidden="true"></i
@@ -618,7 +604,7 @@
                         >
                       </div>
                       <div class="stat">
-                        <span>ลง Falling</span>
+                        <span>Falling</span>
                         <strong>96</strong>
                         <span data-trend="down"
                           ><i
@@ -629,12 +615,12 @@
                         >
                       </div>
                       <div class="stat">
-                        <span>เท่าเดิม Unchanged</span>
+                        <span>Unchanged</span>
                         <strong>40</strong>
                         <span data-trend>0.0%</span>
                       </div>
                       <div class="stat">
-                        <span>ไม่มีค่าเทียบ No comparison</span>
+                        <span>No comparison</span>
                         <strong>7</strong>
                       </div>
                     </div>
@@ -651,22 +637,22 @@
                 <pre><code>&lt;div class="card"&gt;
   &lt;div class="stat-group"&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;ขึ้น Rising&lt;/span&gt;
+      &lt;span&gt;Rising&lt;/span&gt;
       &lt;strong&gt;128&lt;/strong&gt;
       &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.5%&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;ลง Falling&lt;/span&gt;
+      &lt;span&gt;Falling&lt;/span&gt;
       &lt;strong&gt;96&lt;/strong&gt;
       &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;25.0%&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;เท่าเดิม Unchanged&lt;/span&gt;
+      &lt;span&gt;Unchanged&lt;/span&gt;
       &lt;strong&gt;40&lt;/strong&gt;
       &lt;span data-trend&gt;0.0%&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;ไม่มีค่าเทียบ No comparison&lt;/span&gt;
+      &lt;span&gt;No comparison&lt;/span&gt;
       &lt;strong&gt;7&lt;/strong&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -675,15 +661,15 @@
             </div>
           </section>
           <section>
-            <h2>data-reverse: เมื่อขึ้นคือข่าวร้าย When a rise is bad news</h2>
+            <h2>data-reverse: when a rise is bad news</h2>
             <p>
-              ใส่ <code>data-reverse</code> ที่ stat เพื่อสลับสี: ขึ้นเป็นสีแดง
-              ลงเป็นสีเขียว
+              Add <code>data-reverse</code> to a stat to swap the colors: up is
+              red, down is green.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="data-reverse: เมื่อขึ้นคือข่าวร้าย When a rise is bad news"
+                aria-label="data-reverse: when a rise is bad news"
               >
                 <button
                   type="button"
@@ -715,7 +701,7 @@
                   <div class="card" style="max-width: 28rem">
                     <div class="stat-group">
                       <div class="stat" data-reverse>
-                        <span>คืนสินค้า Returns</span>
+                        <span>Returns</span>
                         <strong>14</strong>
                         <span data-trend="up"
                           ><i class="icon icon-arrow-up" aria-hidden="true"></i
@@ -723,8 +709,8 @@
                         >
                       </div>
                       <div class="stat" data-reverse>
-                        <span>เวลาจัดส่ง Time to fulfill</span>
-                        <strong>0.9 วัน</strong>
+                        <span>Time to fulfill</span>
+                        <strong>0.9 days</strong>
                         <span data-trend="down"
                           ><i
                             class="icon icon-arrow-down"
@@ -747,13 +733,13 @@
                 <pre><code>&lt;div class="card" style="max-width: 28rem"&gt;
   &lt;div class="stat-group"&gt;
     &lt;div class="stat" data-reverse&gt;
-      &lt;span&gt;คืนสินค้า Returns&lt;/span&gt;
+      &lt;span&gt;Returns&lt;/span&gt;
       &lt;strong&gt;14&lt;/strong&gt;
       &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;40.0%&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="stat" data-reverse&gt;
-      &lt;span&gt;เวลาจัดส่ง Time to fulfill&lt;/span&gt;
-      &lt;strong&gt;0.9 วัน&lt;/strong&gt;
+      &lt;span&gt;Time to fulfill&lt;/span&gt;
+      &lt;strong&gt;0.9 days&lt;/strong&gt;
       &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;18.0%&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -762,16 +748,18 @@
             </div>
           </section>
           <section>
-            <h2>aria-busy="true" แสดงวงหมุนแทนค่าระหว่างโหลด Loading</h2>
+            <h2>
+              Loading: aria-busy="true" shows a spinner in place of the value
+            </h2>
             <p>
-              ใส่ <code>.loader</code> ไว้ใน stat แล้วสลับ
-              <code>aria-busy</code> ระหว่างดึงข้อมูล
-              ค่าและการเปลี่ยนแปลงจะถูกซ่อน
+              Put a <code>.loader</code> in the stat and toggle
+              <code>aria-busy</code> while fetching data. The value and the
+              change are hidden.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label='aria-busy="true" แสดงวงหมุนแทนค่าระหว่างโหลด Loading'
+                aria-label='Loading: aria-busy="true" shows a spinner in place of the value'
               >
                 <button
                   type="button"
@@ -804,7 +792,7 @@
                     <div class="card" style="max-width: 28rem">
                       <div class="stat-group" id="stat-loading">
                         <div class="stat" aria-busy="true">
-                          <span>คำสั่งซื้อใหม่ New orders</span>
+                          <span>New orders</span>
                           <strong>128</strong>
                           <span data-trend="up"
                             ><i
@@ -816,11 +804,11 @@
                           <span
                             class="loader"
                             role="status"
-                            aria-label="กำลังโหลด Loading"
+                            aria-label="Loading"
                           ></span>
                         </div>
                         <div class="stat" aria-busy="true">
-                          <span>สินค้าที่สั่ง Items ordered</span>
+                          <span>Items ordered</span>
                           <strong>342</strong>
                           <span data-trend="up"
                             ><i
@@ -832,7 +820,7 @@
                           <span
                             class="loader"
                             role="status"
-                            aria-label="กำลังโหลด Loading"
+                            aria-label="Loading"
                           ></span>
                         </div>
                       </div>
@@ -844,7 +832,7 @@
                         data-size="sm"
                         id="stat-busy-btn"
                       >
-                        สลับการโหลด Toggle loading
+                        Toggle loading
                       </button>
                     </div>
                   </div>
@@ -871,21 +859,21 @@
   &lt;div class="card" style="max-width: 28rem"&gt;
     &lt;div class="stat-group" id="stat-loading"&gt;
       &lt;div class="stat" aria-busy="true"&gt;
-        &lt;span&gt;คำสั่งซื้อใหม่ New orders&lt;/span&gt;
+        &lt;span&gt;New orders&lt;/span&gt;
         &lt;strong&gt;128&lt;/strong&gt;
         &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.5%&lt;/span&gt;
-        &lt;span class="loader" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
+        &lt;span class="loader" role="status" aria-label="Loading"&gt;&lt;/span&gt;
       &lt;/div&gt;
       &lt;div class="stat" aria-busy="true"&gt;
-        &lt;span&gt;สินค้าที่สั่ง Items ordered&lt;/span&gt;
+        &lt;span&gt;Items ordered&lt;/span&gt;
         &lt;strong&gt;342&lt;/strong&gt;
         &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;8.1%&lt;/span&gt;
-        &lt;span class="loader" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
+        &lt;span class="loader" role="status" aria-label="Loading"&gt;&lt;/span&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;button type="button" class="btn" data-size="sm" id="stat-busy-btn"&gt;สลับการโหลด Toggle loading&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="stat-busy-btn"&gt;Toggle loading&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
@@ -902,19 +890,17 @@
             </div>
           </section>
           <section>
-            <h2>
-              ตัวเลือกข้างกลุ่มอยู่นอกกลุ่ม A control beside the group stays
-              outside it
-            </h2>
+            <h2>A control beside the group stays outside it</h2>
             <p>
-              ปุ่มเลือกช่วงเวลาอยู่ในการ์ด
-              <code>data-direction="row"</code> ข้าง
-              <code>.stat-group</code> ไม่ใช่ข้างใน เพราะกลุ่มตัดส่วนที่ล้นออก
+              The date range picker sits in a
+              <code>data-direction="row"</code> card next to the
+              <code>.stat-group</code>, not inside it, because the group clips
+              overflow.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ตัวเลือกข้างกลุ่มอยู่นอกกลุ่ม A control beside the group stays outside it"
+                aria-label="A control beside the group stays outside it"
               >
                 <button
                   type="button"
@@ -952,7 +938,7 @@
                         data-size="sm"
                         popovertarget="stat-period"
                       >
-                        30 วัน 30 days
+                        30 days
                         <i
                           class="icon icon-chevron-down"
                           aria-hidden="true"
@@ -964,34 +950,34 @@
                           popovertarget="stat-period"
                           popovertargetaction="hide"
                         >
-                          วันนี้ Today
+                          Today
                         </button>
                         <button
                           type="button"
                           popovertarget="stat-period"
                           popovertargetaction="hide"
                         >
-                          7 วัน 7 days
+                          7 days
                         </button>
                         <button
                           type="button"
                           popovertarget="stat-period"
                           popovertargetaction="hide"
                         >
-                          30 วัน 30 days
+                          30 days
                         </button>
                         <button
                           type="button"
                           popovertarget="stat-period"
                           popovertargetaction="hide"
                         >
-                          90 วัน 90 days
+                          90 days
                         </button>
                       </div>
                     </div>
                     <div class="stat-group">
                       <div class="stat">
-                        <span>คำสั่งซื้อใหม่ New orders</span>
+                        <span>New orders</span>
                         <strong>128</strong>
                         <span data-trend="up"
                           ><i class="icon icon-arrow-up" aria-hidden="true"></i
@@ -999,7 +985,7 @@
                         >
                       </div>
                       <div class="stat">
-                        <span>สินค้าที่สั่ง Items ordered</span>
+                        <span>Items ordered</span>
                         <strong>342</strong>
                         <span data-trend="up"
                           ><i class="icon icon-arrow-up" aria-hidden="true"></i
@@ -1007,7 +993,7 @@
                         >
                       </div>
                       <div class="stat" data-reverse>
-                        <span>คืนสินค้า Returns</span>
+                        <span>Returns</span>
                         <strong>6</strong>
                         <span data-trend="down"
                           ><i
@@ -1018,7 +1004,7 @@
                         >
                       </div>
                       <div class="stat">
-                        <span>จัดส่งแล้ว Fulfilled</span>
+                        <span>Fulfilled</span>
                         <strong>117</strong>
                         <span data-trend="up"
                           ><i class="icon icon-arrow-up" aria-hidden="true"></i
@@ -1026,11 +1012,11 @@
                         >
                       </div>
                       <div class="stat">
-                        <span>เวลาจัดส่ง Time to fulfill</span>
-                        <strong>1.4 วัน</strong>
+                        <span>Time to fulfill</span>
+                        <strong>1.4 days</strong>
                       </div>
                       <div class="stat">
-                        <span>ถึงลูกค้าแล้ว Delivered</span>
+                        <span>Delivered</span>
                         <strong>102</strong>
                         <span data-trend="up"
                           ><i class="icon icon-arrow-up" aria-hidden="true"></i
@@ -1051,43 +1037,43 @@
                 <pre><code>&lt;div class="card" data-direction="row"&gt;
   &lt;div&gt;
     &lt;button type="button" class="btn" data-variant="ghost" data-size="sm" popovertarget="stat-period"&gt;
-      30 วัน 30 days
+      30 days
       &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;/button&gt;
     &lt;div class="dropdown" id="stat-period" popover&gt;
-      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;วันนี้ Today&lt;/button&gt;
-      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;7 วัน 7 days&lt;/button&gt;
-      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;30 วัน 30 days&lt;/button&gt;
-      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;90 วัน 90 days&lt;/button&gt;
+      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;Today&lt;/button&gt;
+      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;7 days&lt;/button&gt;
+      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;30 days&lt;/button&gt;
+      &lt;button type="button" popovertarget="stat-period" popovertargetaction="hide"&gt;90 days&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="stat-group"&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;คำสั่งซื้อใหม่ New orders&lt;/span&gt;
+      &lt;span&gt;New orders&lt;/span&gt;
       &lt;strong&gt;128&lt;/strong&gt;
       &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.5%&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;สินค้าที่สั่ง Items ordered&lt;/span&gt;
+      &lt;span&gt;Items ordered&lt;/span&gt;
       &lt;strong&gt;342&lt;/strong&gt;
       &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;8.1%&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="stat" data-reverse&gt;
-      &lt;span&gt;คืนสินค้า Returns&lt;/span&gt;
+      &lt;span&gt;Returns&lt;/span&gt;
       &lt;strong&gt;6&lt;/strong&gt;
       &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;25.0%&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;จัดส่งแล้ว Fulfilled&lt;/span&gt;
+      &lt;span&gt;Fulfilled&lt;/span&gt;
       &lt;strong&gt;117&lt;/strong&gt;
       &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;9.3%&lt;/span&gt;
     &lt;/div&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;เวลาจัดส่ง Time to fulfill&lt;/span&gt;
-      &lt;strong&gt;1.4 วัน&lt;/strong&gt;
+      &lt;span&gt;Time to fulfill&lt;/span&gt;
+      &lt;strong&gt;1.4 days&lt;/strong&gt;
     &lt;/div&gt;
     &lt;div class="stat"&gt;
-      &lt;span&gt;ถึงลูกค้าแล้ว Delivered&lt;/span&gt;
+      &lt;span&gt;Delivered&lt;/span&gt;
       &lt;strong&gt;102&lt;/strong&gt;
       &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;3.0%&lt;/span&gt;
     &lt;/div&gt;
@@ -1097,18 +1083,16 @@
             </div>
           </section>
           <section>
-            <h2>
-              ตัวเลขเล็กที่เป็นลิงก์ข้างชื่อหน้า Linked small stats beside a
-              page title
-            </h2>
+            <h2>Linked small stats beside a page title</h2>
             <p>
-              <code>data-size="sm"</code> เป็นกล่องเล็กจัดกลาง ตัวหนึ่งเป็น
-              <code>data-variant="danger"</code> อีกตัวยังโหลดอยู่
+              <code>data-size="sm"</code> makes a small centered box. One here
+              is <code>data-variant="danger"</code> and another is still
+              loading.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ตัวเลขเล็กที่เป็นลิงก์ข้างชื่อหน้า Linked small stats beside a page title"
+                aria-label="Linked small stats beside a page title"
               >
                 <button
                   type="button"
@@ -1138,7 +1122,7 @@
               >
                 <div class="docs-preview">
                   <header class="page-header">
-                    <h1>คำสั่งซื้อ Orders</h1>
+                    <h1>Orders</h1>
                     <div>
                       <a
                         href="#"
@@ -1146,28 +1130,28 @@
                         data-size="sm"
                         data-variant="danger"
                       >
-                        <span>ถูกปฏิเสธ Rejected</span>
+                        <span>Rejected</span>
                         <strong>24</strong>
                       </a>
                       <a href="#" class="stat" data-size="sm">
-                        <span>พักไว้ On hold</span>
+                        <span>On hold</span>
                         <strong>2</strong>
                       </a>
                       <a href="#" class="stat" data-size="sm">
-                        <span>รอจัดส่ง Unfulfilled</span>
+                        <span>Unfulfilled</span>
                         <strong>6</strong>
                       </a>
                       <a href="#" class="stat" data-size="sm" aria-busy="true">
-                        <span>กำลังดำเนินการ Processing</span>
+                        <span>Processing</span>
                         <strong>0</strong>
                         <span
                           class="loader"
                           role="status"
-                          aria-label="กำลังโหลด Loading"
+                          aria-label="Loading"
                         ></span>
                       </a>
                       <a href="#" class="btn" data-variant="primary"
-                        >สร้างคำสั่งซื้อ Create order</a
+                        >Create order</a
                       >
                     </div>
                   </header>
@@ -1181,44 +1165,42 @@
                 hidden
               >
                 <pre><code>&lt;header class="page-header"&gt;
-  &lt;h1&gt;คำสั่งซื้อ Orders&lt;/h1&gt;
+  &lt;h1&gt;Orders&lt;/h1&gt;
   &lt;div&gt;
     &lt;a href="#" class="stat" data-size="sm" data-variant="danger"&gt;
-      &lt;span&gt;ถูกปฏิเสธ Rejected&lt;/span&gt;
+      &lt;span&gt;Rejected&lt;/span&gt;
       &lt;strong&gt;24&lt;/strong&gt;
     &lt;/a&gt;
     &lt;a href="#" class="stat" data-size="sm"&gt;
-      &lt;span&gt;พักไว้ On hold&lt;/span&gt;
+      &lt;span&gt;On hold&lt;/span&gt;
       &lt;strong&gt;2&lt;/strong&gt;
     &lt;/a&gt;
     &lt;a href="#" class="stat" data-size="sm"&gt;
-      &lt;span&gt;รอจัดส่ง Unfulfilled&lt;/span&gt;
+      &lt;span&gt;Unfulfilled&lt;/span&gt;
       &lt;strong&gt;6&lt;/strong&gt;
     &lt;/a&gt;
     &lt;a href="#" class="stat" data-size="sm" aria-busy="true"&gt;
-      &lt;span&gt;กำลังดำเนินการ Processing&lt;/span&gt;
+      &lt;span&gt;Processing&lt;/span&gt;
       &lt;strong&gt;0&lt;/strong&gt;
-      &lt;span class="loader" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
+      &lt;span class="loader" role="status" aria-label="Loading"&gt;&lt;/span&gt;
     &lt;/a&gt;
-    &lt;a href="#" class="btn" data-variant="primary"&gt;สร้างคำสั่งซื้อ Create order&lt;/a&gt;
+    &lt;a href="#" class="btn" data-variant="primary"&gt;Create order&lt;/a&gt;
   &lt;/div&gt;
 &lt;/header&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              ตัวเลขที่เลือกว่ากราฟแสดงอะไร Stats that pick what a chart shows
-            </h2>
+            <h2>Stats that pick what a chart shows</h2>
             <p>
-              stat เป็น <code>button</code> ตัวที่เลือกอยู่
-              <code>aria-pressed="true"</code> และ
-              <code>data-even</code> ที่กลุ่มทำให้ทุกช่องกว้างเท่ากัน
+              Each stat is a <code>button</code>, and the selected one has
+              <code>aria-pressed="true"</code>. <code>data-even</code> on the
+              group makes every cell the same width.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ตัวเลขที่เลือกว่ากราฟแสดงอะไร Stats that pick what a chart shows"
+                aria-label="Stats that pick what a chart shows"
               >
                 <button
                   type="button"
@@ -1250,7 +1232,7 @@
                   <div class="card">
                     <div class="stat-group" data-even id="stat-pick">
                       <button type="button" class="stat" aria-pressed="false">
-                        <span>ผู้เข้าชมใหม่ New sessions</span>
+                        <span>New sessions</span>
                         <strong>4,812</strong>
                         <span data-trend="up"
                           ><i class="icon icon-arrow-up" aria-hidden="true"></i
@@ -1258,7 +1240,7 @@
                         >
                       </button>
                       <button type="button" class="stat" aria-pressed="false">
-                        <span>คำสั่งซื้อ Orders</span>
+                        <span>Orders</span>
                         <strong>238</strong>
                         <span data-trend="down"
                           ><i
@@ -1269,8 +1251,8 @@
                         >
                       </button>
                       <button type="button" class="stat" aria-pressed="true">
-                        <span>ยอดขาย Sales</span>
-                        <strong>฿214,026</strong>
+                        <span>Sales</span>
+                        <strong>$6,115</strong>
                         <span data-trend="down"
                           ><i
                             class="icon icon-arrow-down"
@@ -1304,18 +1286,18 @@
                 <pre><code>&lt;div class="card"&gt;
   &lt;div class="stat-group" data-even id="stat-pick"&gt;
     &lt;button type="button" class="stat" aria-pressed="false"&gt;
-      &lt;span&gt;ผู้เข้าชมใหม่ New sessions&lt;/span&gt;
+      &lt;span&gt;New sessions&lt;/span&gt;
       &lt;strong&gt;4,812&lt;/strong&gt;
       &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;12.4%&lt;/span&gt;
     &lt;/button&gt;
     &lt;button type="button" class="stat" aria-pressed="false"&gt;
-      &lt;span&gt;คำสั่งซื้อ Orders&lt;/span&gt;
+      &lt;span&gt;Orders&lt;/span&gt;
       &lt;strong&gt;238&lt;/strong&gt;
       &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;3.2%&lt;/span&gt;
     &lt;/button&gt;
     &lt;button type="button" class="stat" aria-pressed="true"&gt;
-      &lt;span&gt;ยอดขาย Sales&lt;/span&gt;
-      &lt;strong&gt;฿214,026&lt;/strong&gt;
+      &lt;span&gt;Sales&lt;/span&gt;
+      &lt;strong&gt;$6,115&lt;/strong&gt;
       &lt;span data-trend="down"&gt;&lt;i class="icon icon-arrow-down" aria-hidden="true"&gt;&lt;/i&gt;5.7%&lt;/span&gt;
     &lt;/button&gt;
   &lt;/div&gt;
@@ -1333,17 +1315,14 @@
             </div>
           </section>
           <section>
-            <h2>กล่องหลายช่องแบบเดิม Legacy multi-cell box</h2>
+            <h2>Legacy multi-cell box</h2>
             <p>
-              <code>dl.stat</code> ยังใช้ได้: แต่ละ <code>div</code> มี
-              <code>dt</code> ป้ายและ <code>dd</code> ค่า สำหรับงานใหม่ใช้
-              <code>.card &gt; .stat-group</code> แทน
+              <code>dl.stat</code> still works: each <code>div</code> has a
+              <code>dt</code> label and a <code>dd</code> value. For new work,
+              use <code>.card &gt; .stat-group</code> instead.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="กล่องหลายช่องแบบเดิม Legacy multi-cell box"
-              >
+              <div role="tablist" aria-label="Legacy multi-cell box">
                 <button
                   type="button"
                   role="tab"
@@ -1373,14 +1352,14 @@
                 <div class="docs-preview">
                   <dl class="stat">
                     <div>
-                      <dt>รายได้ Revenue</dt>
-                      <dd>฿128,400</dd>
-                      <dd data-variant="ok">+12.4% จากเดือนก่อน</dd>
+                      <dt>Revenue</dt>
+                      <dd>$3,668</dd>
+                      <dd data-variant="ok">+12.4% from last month</dd>
                     </div>
                     <div>
-                      <dt>คืนสินค้า Refunds</dt>
+                      <dt>Refunds</dt>
                       <dd>18</dd>
-                      <dd data-variant="danger">+2 รายการ</dd>
+                      <dd data-variant="danger">+2 items</dd>
                     </div>
                   </dl>
                 </div>
@@ -1394,14 +1373,14 @@
               >
                 <pre><code>&lt;dl class="stat"&gt;
   &lt;div&gt;
-    &lt;dt&gt;รายได้ Revenue&lt;/dt&gt;
-    &lt;dd&gt;฿128,400&lt;/dd&gt;
-    &lt;dd data-variant="ok"&gt;+12.4% จากเดือนก่อน&lt;/dd&gt;
+    &lt;dt&gt;Revenue&lt;/dt&gt;
+    &lt;dd&gt;$3,668&lt;/dd&gt;
+    &lt;dd data-variant="ok"&gt;+12.4% from last month&lt;/dd&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;dt&gt;คืนสินค้า Refunds&lt;/dt&gt;
+    &lt;dt&gt;Refunds&lt;/dt&gt;
     &lt;dd&gt;18&lt;/dd&gt;
-    &lt;dd data-variant="danger"&gt;+2 รายการ&lt;/dd&gt;
+    &lt;dd data-variant="danger"&gt;+2 items&lt;/dd&gt;
   &lt;/div&gt;
 &lt;/dl&gt;</code></pre>
               </div>
@@ -1426,93 +1405,103 @@
                         <code>div</code>, <code>a</code>, <code>button</code>
                       </td>
                       <td>
-                        ตัวเลขหนึ่งค่า; <code>a</code> เมื่อทั้งช่องเป็นลิงก์
-                        (ค่าสี accent),
-                        <code>button</code> เมื่อใช้เลือกสิ่งที่แสดง
+                        A single figure; <code>a</code> when the whole cell is a
+                        link (accent-colored value), <code>button</code> when it
+                        picks what to show
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; span:first-child</code></td>
                       <td></td>
                       <td>
-                        ป้ายสีเทา 12px ตัดด้วย … เมื่อไม่พอ; ใส่
-                        <code>button</code> ไอคอนต่อท้ายเพื่อเปิดคำอธิบายได้
+                        12px gray label, cut off with … when it does not fit; a
+                        trailing icon <code>button</code> can open an
+                        explanation
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; strong</code></td>
                       <td></td>
-                      <td>ค่า 24px ตัวเลขกว้างเท่ากัน</td>
+                      <td>24px value with tabular numbers</td>
                     </tr>
                     <tr>
                       <td><code>&gt; span[data-trend]</code></td>
+                      <td><code>up</code>, <code>down</code>; empty = gray</td>
                       <td>
-                        <code>up</code>, <code>down</code>, ไม่ใส่ค่า = เทา
-                      </td>
-                      <td>
-                        การเปลี่ยนแปลง ชิดขวาบนแถวเดียวกับค่า up = สี ok, down =
-                        สี danger; ใส่ไอคอนนำหน้า
+                        The change, on the right of the value's row. up = ok
+                        color, down = danger color; add a leading icon
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; .loader</code></td>
                       <td></td>
                       <td>
-                        วงหมุน แสดงแทนค่าเมื่อ
-                        <code>aria-busy="true"</code> (ซ่อนเมื่อไม่โหลด)
+                        Spinner shown in place of the value when
+                        <code>aria-busy="true"</code> (hidden otherwise)
                       </td>
                     </tr>
                     <tr>
                       <td><code>aria-busy</code></td>
-                      <td><code>true</code>; ไม่ใส่ = แสดงค่า (default)</td>
                       <td>
-                        ซ่อนค่าและการเปลี่ยนแปลง แสดง <code>.loader</code>
+                        <code>true</code>; omit to show the value (default)
+                      </td>
+                      <td>
+                        Hides the value and the change, shows the
+                        <code>.loader</code>
                       </td>
                     </tr>
                     <tr>
                       <td><code>aria-pressed</code></td>
                       <td><code>true</code>, <code>false</code></td>
                       <td>
-                        บน <code>button.stat</code>:
-                        ตัวที่เลือกอยู่มีพื้นเทาเข้ม
+                        On <code>button.stat</code>: the selected one gets a
+                        darker gray fill
                       </td>
                     </tr>
                     <tr>
                       <td><code>data-reverse</code></td>
                       <td>(boolean)</td>
                       <td>
-                        สลับสี: ขึ้นเป็น danger ลงเป็น ok
-                        สำหรับตัวเลขที่ขึ้นแล้วแย่
+                        Swaps the colors: up is danger, down is ok. For figures
+                        where a rise is bad
                       </td>
                     </tr>
                     <tr>
                       <td><code>data-variant</code></td>
-                      <td><code>danger</code>; ไม่ใส่ = ปกติ (default)</td>
-                      <td>ป้ายและค่าเป็นสีแดง สำหรับจำนวนที่เป็นปัญหา</td>
+                      <td><code>danger</code>; omit for normal (default)</td>
+                      <td>
+                        Red label and value, for counts that signal a problem
+                      </td>
                     </tr>
                     <tr>
                       <td><code>data-size</code></td>
-                      <td><code>sm</code>; ไม่ใส่ = ปกติ (default)</td>
-                      <td>กล่องเล็กมีขอบ จัดกลาง สำหรับวางข้างชื่อหน้า</td>
+                      <td><code>sm</code>; omit for normal (default)</td>
+                      <td>
+                        Small bordered box, centered, for use beside a page
+                        title
+                      </td>
                     </tr>
                     <tr>
                       <td><code>.stat-group</code></td>
                       <td><code>div</code></td>
                       <td>
-                        แถวของ stat คั่นด้วยเส้น ขึ้นบรรทัดใหม่บนจอแคบ ใส่ใน
-                        <code>.card</code> จะชิดขอบ
+                        A row of stats separated by lines. Wraps on narrow
+                        screens. Runs edge to edge inside a <code>.card</code>
                       </td>
                     </tr>
                     <tr>
                       <td><code>.stat-group[data-even]</code></td>
                       <td>(boolean)</td>
-                      <td>ทุกช่องกว้างเท่ากัน แต่ไม่แคบกว่าข้อความ</td>
+                      <td>
+                        Every cell gets the same width, but never narrower than
+                        its text
+                      </td>
                     </tr>
                     <tr>
                       <td><code>dl.stat</code></td>
                       <td><code>div &gt; dt + dd + dd</code></td>
                       <td>
-                        แบบเดิม: กล่องหลายช่องในกรอบเดียว;
+                        Legacy: several cells in one box;
                         <code>dd[data-variant]</code> = <code>ok</code>,
                         <code>danger</code>
                       </td>

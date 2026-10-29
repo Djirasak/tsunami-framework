@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -346,23 +342,24 @@
           <header class="page-header">
             <div>
               <h1>Scroll area</h1>
-              <p>พื้นที่เลื่อนแยกในกล่องที่สูงคงที่ พร้อม scrollbar บาง</p>
+              <p>
+                A scrolling region inside a fixed-height box, with a thin
+                scrollbar.
+              </p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน Usage</h2>
+            <h2>Usage</h2>
             <p>
-              ใส่ <code>.scroll-area</code> ให้กล่องที่กำหนดความสูง (<code
-                >height</code
-              >
-              หรือ <code>max-height</code>) เนื้อหาที่เกินจะเลื่อนในกล่อง
-              และการเลื่อนจะไม่ลามไปทั้งหน้า ใส่
-              <code>tabindex="0"</code> ให้เลื่อนด้วยคีย์บอร์ดได้ และ
-              <code>aria-label</code> ตั้งชื่อ ต้องการกรอบให้วางใน
-              <code>.card</code>
+              Add <code>.scroll-area</code> to a box with a set
+              <code>height</code> or <code>max-height</code>. Overflowing
+              content scrolls inside the box, and the scroll does not spread to
+              the page. Add <code>tabindex="0"</code> for keyboard scrolling and
+              an <code>aria-label</code> for a name. For a frame, put it in a
+              <code>.card</code>.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="การใช้งาน Usage">
+              <div role="tablist" aria-label="Usage">
                 <button
                   type="button"
                   role="tab"
@@ -394,49 +391,49 @@
                     <div
                       class="scroll-area"
                       tabindex="0"
-                      aria-label="ประวัติการซิงก์ Sync history"
+                      aria-label="Sync history"
                       style="height: 12rem"
                     >
                       <ol class="timeline">
                         <li>
-                          ซิงก์สต็อก Stock sync #10
-                          <time datetime="2026-10-29T18:00">29 ต.ค. 18:00</time>
+                          Stock sync #10
+                          <time datetime="2026-10-29T18:00">29 Oct 18:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #9
-                          <time datetime="2026-10-29T17:00">29 ต.ค. 17:00</time>
+                          Stock sync #9
+                          <time datetime="2026-10-29T17:00">29 Oct 17:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #8
-                          <time datetime="2026-10-29T16:00">29 ต.ค. 16:00</time>
+                          Stock sync #8
+                          <time datetime="2026-10-29T16:00">29 Oct 16:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #7
-                          <time datetime="2026-10-29T15:00">29 ต.ค. 15:00</time>
+                          Stock sync #7
+                          <time datetime="2026-10-29T15:00">29 Oct 15:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #6
-                          <time datetime="2026-10-29T14:00">29 ต.ค. 14:00</time>
+                          Stock sync #6
+                          <time datetime="2026-10-29T14:00">29 Oct 14:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #5
-                          <time datetime="2026-10-29T13:00">29 ต.ค. 13:00</time>
+                          Stock sync #5
+                          <time datetime="2026-10-29T13:00">29 Oct 13:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #4
-                          <time datetime="2026-10-29T12:00">29 ต.ค. 12:00</time>
+                          Stock sync #4
+                          <time datetime="2026-10-29T12:00">29 Oct 12:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #3
-                          <time datetime="2026-10-29T11:00">29 ต.ค. 11:00</time>
+                          Stock sync #3
+                          <time datetime="2026-10-29T11:00">29 Oct 11:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #2
-                          <time datetime="2026-10-29T10:00">29 ต.ค. 10:00</time>
+                          Stock sync #2
+                          <time datetime="2026-10-29T10:00">29 Oct 10:00</time>
                         </li>
                         <li>
-                          ซิงก์สต็อก Stock sync #1
-                          <time datetime="2026-10-29T09:00">29 ต.ค. 09:00</time>
+                          Stock sync #1
+                          <time datetime="2026-10-29T09:00">29 Oct 09:00</time>
                         </li>
                       </ol>
                     </div>
@@ -451,18 +448,18 @@
                 hidden
               >
                 <pre><code>&lt;div class="card"&gt;
-  &lt;div class="scroll-area" tabindex="0" aria-label="ประวัติการซิงก์ Sync history" style="height: 12rem"&gt;
+  &lt;div class="scroll-area" tabindex="0" aria-label="Sync history" style="height: 12rem"&gt;
     &lt;ol class="timeline"&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #10 &lt;time datetime="2026-10-29T18:00"&gt;29 ต.ค. 18:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #9 &lt;time datetime="2026-10-29T17:00"&gt;29 ต.ค. 17:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #8 &lt;time datetime="2026-10-29T16:00"&gt;29 ต.ค. 16:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #7 &lt;time datetime="2026-10-29T15:00"&gt;29 ต.ค. 15:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #6 &lt;time datetime="2026-10-29T14:00"&gt;29 ต.ค. 14:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #5 &lt;time datetime="2026-10-29T13:00"&gt;29 ต.ค. 13:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #4 &lt;time datetime="2026-10-29T12:00"&gt;29 ต.ค. 12:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #3 &lt;time datetime="2026-10-29T11:00"&gt;29 ต.ค. 11:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #2 &lt;time datetime="2026-10-29T10:00"&gt;29 ต.ค. 10:00&lt;/time&gt;&lt;/li&gt;
-      &lt;li&gt;ซิงก์สต็อก Stock sync #1 &lt;time datetime="2026-10-29T09:00"&gt;29 ต.ค. 09:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #10 &lt;time datetime="2026-10-29T18:00"&gt;29 Oct 18:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #9 &lt;time datetime="2026-10-29T17:00"&gt;29 Oct 17:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #8 &lt;time datetime="2026-10-29T16:00"&gt;29 Oct 16:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #7 &lt;time datetime="2026-10-29T15:00"&gt;29 Oct 15:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #6 &lt;time datetime="2026-10-29T14:00"&gt;29 Oct 14:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #5 &lt;time datetime="2026-10-29T13:00"&gt;29 Oct 13:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #4 &lt;time datetime="2026-10-29T12:00"&gt;29 Oct 12:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #3 &lt;time datetime="2026-10-29T11:00"&gt;29 Oct 11:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #2 &lt;time datetime="2026-10-29T10:00"&gt;29 Oct 10:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #1 &lt;time datetime="2026-10-29T09:00"&gt;29 Oct 09:00&lt;/time&gt;&lt;/li&gt;
     &lt;/ol&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -470,16 +467,13 @@
             </div>
           </section>
           <section>
-            <h2>เลื่อนแนวนอน Horizontal scrolling</h2>
+            <h2>Horizontal scrolling</h2>
             <p>
-              เนื้อหาที่กว้างกว่ากล่อง เช่นตารางหลายคอลัมน์
-              เลื่อนแนวนอนได้ในกล่องโดยหน้าไม่ล้น
+              Content wider than the box, like a table with many columns,
+              scrolls sideways inside the box without overflowing the page.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="เลื่อนแนวนอน Horizontal scrolling"
-              >
+              <div role="tablist" aria-label="Horizontal scrolling">
                 <button
                   type="button"
                   role="tab"
@@ -508,41 +502,37 @@
               >
                 <div class="docs-preview">
                   <div class="card">
-                    <div
-                      class="scroll-area"
-                      tabindex="0"
-                      aria-label="สินค้า Products"
-                    >
+                    <div class="scroll-area" tabindex="0" aria-label="Products">
                       <table class="table" style="min-width: 64rem">
                         <thead>
                           <tr>
-                            <th scope="col">สินค้า Product</th>
+                            <th scope="col">Product</th>
                             <th scope="col">SKU</th>
-                            <th scope="col">สต็อก Stock</th>
-                            <th scope="col">ราคา Price</th>
-                            <th scope="col">ขายแล้ว Sold</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Sold</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td>เสื้อยืด T-shirt</td>
+                            <td>T-shirt</td>
                             <td>TS-001</td>
                             <td>120</td>
-                            <td>฿390.00</td>
+                            <td>$24.00</td>
                             <td>842</td>
                           </tr>
                           <tr>
-                            <td>กระเป๋า Tote bag</td>
+                            <td>Tote bag</td>
                             <td>TB-014</td>
                             <td>36</td>
-                            <td>฿590.00</td>
+                            <td>$36.00</td>
                             <td>215</td>
                           </tr>
                           <tr>
-                            <td>หมวก Cap</td>
+                            <td>Cap</td>
                             <td>CP-007</td>
                             <td>0</td>
-                            <td>฿290.00</td>
+                            <td>$18.00</td>
                             <td>530</td>
                           </tr>
                         </tbody>
@@ -559,21 +549,21 @@
                 hidden
               >
                 <pre><code>&lt;div class="card"&gt;
-  &lt;div class="scroll-area" tabindex="0" aria-label="สินค้า Products"&gt;
+  &lt;div class="scroll-area" tabindex="0" aria-label="Products"&gt;
     &lt;table class="table" style="min-width: 64rem"&gt;
       &lt;thead&gt;
         &lt;tr&gt;
-          &lt;th scope="col"&gt;สินค้า Product&lt;/th&gt;
+          &lt;th scope="col"&gt;Product&lt;/th&gt;
           &lt;th scope="col"&gt;SKU&lt;/th&gt;
-          &lt;th scope="col"&gt;สต็อก Stock&lt;/th&gt;
-          &lt;th scope="col"&gt;ราคา Price&lt;/th&gt;
-          &lt;th scope="col"&gt;ขายแล้ว Sold&lt;/th&gt;
+          &lt;th scope="col"&gt;Stock&lt;/th&gt;
+          &lt;th scope="col"&gt;Price&lt;/th&gt;
+          &lt;th scope="col"&gt;Sold&lt;/th&gt;
         &lt;/tr&gt;
       &lt;/thead&gt;
       &lt;tbody&gt;
-        &lt;tr&gt;&lt;td&gt;เสื้อยืด T-shirt&lt;/td&gt;&lt;td&gt;TS-001&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;td&gt;฿390.00&lt;/td&gt;&lt;td&gt;842&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;กระเป๋า Tote bag&lt;/td&gt;&lt;td&gt;TB-014&lt;/td&gt;&lt;td&gt;36&lt;/td&gt;&lt;td&gt;฿590.00&lt;/td&gt;&lt;td&gt;215&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;หมวก Cap&lt;/td&gt;&lt;td&gt;CP-007&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;฿290.00&lt;/td&gt;&lt;td&gt;530&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;T-shirt&lt;/td&gt;&lt;td&gt;TS-001&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;td&gt;$24.00&lt;/td&gt;&lt;td&gt;842&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Tote bag&lt;/td&gt;&lt;td&gt;TB-014&lt;/td&gt;&lt;td&gt;36&lt;/td&gt;&lt;td&gt;$36.00&lt;/td&gt;&lt;td&gt;215&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Cap&lt;/td&gt;&lt;td&gt;CP-007&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;$18.00&lt;/td&gt;&lt;td&gt;530&lt;/td&gt;&lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
   &lt;/div&gt;
@@ -597,29 +587,34 @@
                     <td><code>.scroll-area</code></td>
                     <td></td>
                     <td>
-                      เลื่อนได้ทั้งสองแนว scrollbar บางสีเส้น
-                      การเลื่อนไม่ลามไปทั้งหน้า (<code
+                      Scrolls both ways with a thin, border-coloured scrollbar.
+                      The scroll does not spread to the page (<code
                         >overscroll-behavior: contain</code
                       >)
                     </td>
                   </tr>
                   <tr>
                     <td><code>height</code>, <code>max-height</code></td>
-                    <td>ความยาว CSS</td>
+                    <td>CSS length</td>
                     <td>
-                      ต้องกำหนดเอง (จาก CSS ของหน้าหรือ <code>style</code>)
-                      ไม่มีค่าเริ่มต้น
+                      Required. Set it in page CSS or <code>style</code>. No
+                      default.
                     </td>
                   </tr>
                   <tr>
                     <td><code>tabindex</code></td>
                     <td><code>0</code></td>
-                    <td>ให้โฟกัสแล้วเลื่อนด้วยลูกศร/Page Up/Page Down ได้</td>
+                    <td>
+                      Makes it focusable and scrollable with arrows, Page Up and
+                      Page Down
+                    </td>
                   </tr>
                   <tr>
                     <td><code>aria-label</code></td>
-                    <td>ข้อความ</td>
-                    <td>ชื่อพื้นที่สำหรับ screen reader เมื่อโฟกัสได้</td>
+                    <td>Text</td>
+                    <td>
+                      Name of the region for screen readers when it is focusable
+                    </td>
                   </tr>
                 </tbody>
               </table>

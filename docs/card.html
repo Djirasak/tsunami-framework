@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,20 +343,21 @@
             <div>
               <h1>Card</h1>
               <p>
-                กล่องพื้นขาวขอบ 1px ลูกโดยตรงแต่ละตัว (header, section, table,
-                footer) เป็นส่วนหนึ่ง คั่นด้วยเส้น
+                A white box with a 1px border. Each direct child (header,
+                section, table, footer) is a part, separated by a line.
               </p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน Usage</h2>
+            <h2>Usage</h2>
             <p>
-              <code>header</code> มีชื่อ <code>h2</code> คำอธิบาย
-              <code>p</code> และ <code>aside</code> สำหรับปุ่มทางขวา
-              ตามด้วยเนื้อหาใน <code>section</code> และ <code>footer</code>
+              A <code>header</code> holds an <code>h2</code> title, a
+              <code>p</code> subtitle and an <code>aside</code> for buttons on
+              the right. Content follows in <code>section</code> and
+              <code>footer</code>.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="การใช้งาน Usage">
+              <div role="tablist" aria-label="Usage">
                 <button
                   type="button"
                   role="tab"
@@ -390,11 +387,11 @@
                 <div class="docs-preview">
                   <article class="card">
                     <header>
-                      <h2>คำสั่งซื้อ #1042 Order #1042</h2>
-                      <p>สั่งเมื่อ 12 ต.ค. 2026 โดย สมชาย ใจดี</p>
+                      <h2>Order #1042</h2>
+                      <p>Placed Oct 12, 2026 by Emma Wilson</p>
                       <aside>
                         <button type="button" class="btn" data-size="sm">
-                          แก้ไข Edit
+                          Edit
                         </button>
                         <button
                           type="button"
@@ -402,7 +399,7 @@
                           data-variant="primary"
                           data-size="sm"
                         >
-                          จัดส่ง Fulfill
+                          Fulfill
                         </button>
                         <button
                           type="button"
@@ -410,7 +407,7 @@
                           data-size="sm"
                           popovertarget="card-more"
                         >
-                          เพิ่มเติม More
+                          More
                           <i
                             class="icon icon-chevron-down"
                             aria-hidden="true"
@@ -423,7 +420,7 @@
                             popovertargetaction="hide"
                           >
                             <i class="icon icon-copy" aria-hidden="true"></i
-                            >ทำสำเนา Duplicate
+                            >Duplicate
                           </button>
                           <button
                             type="button"
@@ -431,7 +428,7 @@
                             popovertargetaction="hide"
                           >
                             <i class="icon icon-printer" aria-hidden="true"></i
-                            >พิมพ์ใบแพ็ก Print packing slip
+                            >Print packing slip
                           </button>
                           <hr />
                           <button
@@ -441,22 +438,17 @@
                             popovertargetaction="hide"
                           >
                             <i class="icon icon-trash-2" aria-hidden="true"></i
-                            >ลบ Delete
+                            >Delete
                           </button>
                         </div>
                       </aside>
                     </header>
                     <section>
-                      <p>
-                        สินค้า 3 รายการ รวม ฿2,450.00 3 items, ฿2,450.00 in
-                        total.
-                      </p>
+                      <p>3 items, $74.00 in total.</p>
                     </section>
                     <footer>
-                      <p>อัปเดตล่าสุด 5 นาทีที่แล้ว</p>
-                      <button type="button" class="btn">
-                        ดูทั้งหมด View all
-                      </button>
+                      <p>Updated 5 minutes ago</p>
+                      <button type="button" class="btn">View all</button>
                     </footer>
                   </article>
                 </div>
@@ -470,47 +462,45 @@
               >
                 <pre><code>&lt;article class="card"&gt;
   &lt;header&gt;
-    &lt;h2&gt;คำสั่งซื้อ #1042 Order #1042&lt;/h2&gt;
-    &lt;p&gt;สั่งเมื่อ 12 ต.ค. 2026 โดย สมชาย ใจดี&lt;/p&gt;
+    &lt;h2&gt;Order #1042&lt;/h2&gt;
+    &lt;p&gt;Placed Oct 12, 2026 by Emma Wilson&lt;/p&gt;
     &lt;aside&gt;
-      &lt;button type="button" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/button&gt;
-      &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;จัดส่ง Fulfill&lt;/button&gt;
+      &lt;button type="button" class="btn" data-size="sm"&gt;Edit&lt;/button&gt;
+      &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;Fulfill&lt;/button&gt;
       &lt;button type="button" class="btn" data-size="sm" popovertarget="card-more"&gt;
-        เพิ่มเติม More
+        More
         &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;
       &lt;/button&gt;
       &lt;div class="dropdown" id="card-more" popover&gt;
-        &lt;button type="button" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;ทำสำเนา Duplicate&lt;/button&gt;
-        &lt;button type="button" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-printer" aria-hidden="true"&gt;&lt;/i&gt;พิมพ์ใบแพ็ก Print packing slip&lt;/button&gt;
+        &lt;button type="button" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;Duplicate&lt;/button&gt;
+        &lt;button type="button" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-printer" aria-hidden="true"&gt;&lt;/i&gt;Print packing slip&lt;/button&gt;
         &lt;hr /&gt;
-        &lt;button type="button" data-variant="danger" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;ลบ Delete&lt;/button&gt;
+        &lt;button type="button" data-variant="danger" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;Delete&lt;/button&gt;
       &lt;/div&gt;
     &lt;/aside&gt;
   &lt;/header&gt;
   &lt;section&gt;
-    &lt;p&gt;สินค้า 3 รายการ รวม ฿2,450.00 3 items, ฿2,450.00 in total.&lt;/p&gt;
+    &lt;p&gt;3 items, $74.00 in total.&lt;/p&gt;
   &lt;/section&gt;
   &lt;footer&gt;
-    &lt;p&gt;อัปเดตล่าสุด 5 นาทีที่แล้ว&lt;/p&gt;
-    &lt;button type="button" class="btn"&gt;ดูทั้งหมด View all&lt;/button&gt;
+    &lt;p&gt;Updated 5 minutes ago&lt;/p&gt;
+    &lt;button type="button" class="btn"&gt;View all&lt;/button&gt;
   &lt;/footer&gt;
 &lt;/article&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              หัวการ์ดมีชื่อ คำอธิบาย และปุ่ม Header with a title, a subtitle
-              and an action
-            </h2>
+            <h2>Header with a title, a subtitle and an action</h2>
             <p>
-              เส้นใต้ header จะขึ้นเมื่อมีส่วนอื่นตามมา ชื่อ คำอธิบาย
-              และปุ่มอยู่แถวเดียวกัน ปุ่มชิดขวาตรงกลางแนวตั้ง
+              The line under the header shows only when another part follows.
+              The title, subtitle and action share a row, with the action on the
+              right, centered vertically.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="หัวการ์ดมีชื่อ คำอธิบาย และปุ่ม Header with a title, a subtitle and an action"
+                aria-label="Header with a title, a subtitle and an action"
               >
                 <button
                   type="button"
@@ -542,27 +532,24 @@
                   <div class="stack">
                     <section class="card">
                       <header>
-                        <h2>ที่อยู่จัดส่ง Shipping address</h2>
+                        <h2>Shipping address</h2>
                       </header>
                       <section>
-                        <p>99/1 ถ.สุขุมวิท แขวงคลองเตย กรุงเทพฯ 10110</p>
+                        <p>742 Evergreen Terrace, Springfield, OR 97477</p>
                       </section>
                     </section>
                     <section class="card">
                       <header>
-                        <h2>ที่อยู่จัดส่ง Shipping address</h2>
-                        <p>
-                          ที่อยู่ที่คำสั่งซื้อนี้จะถูกส่งไป Where this order is
-                          delivered
-                        </p>
+                        <h2>Shipping address</h2>
+                        <p>Where this order is delivered</p>
                         <aside>
                           <button type="button" class="btn" data-size="sm">
-                            แก้ไข Edit
+                            Edit
                           </button>
                         </aside>
                       </header>
                       <section>
-                        <p>99/1 ถ.สุขุมวิท แขวงคลองเตย กรุงเทพฯ 10110</p>
+                        <p>742 Evergreen Terrace, Springfield, OR 97477</p>
                       </section>
                     </section>
                   </div>
@@ -578,22 +565,22 @@
                 <pre><code>&lt;div class="stack"&gt;
   &lt;section class="card"&gt;
     &lt;header&gt;
-      &lt;h2&gt;ที่อยู่จัดส่ง Shipping address&lt;/h2&gt;
+      &lt;h2&gt;Shipping address&lt;/h2&gt;
     &lt;/header&gt;
     &lt;section&gt;
-      &lt;p&gt;99/1 ถ.สุขุมวิท แขวงคลองเตย กรุงเทพฯ 10110&lt;/p&gt;
+      &lt;p&gt;742 Evergreen Terrace, Springfield, OR 97477&lt;/p&gt;
     &lt;/section&gt;
   &lt;/section&gt;
   &lt;section class="card"&gt;
     &lt;header&gt;
-      &lt;h2&gt;ที่อยู่จัดส่ง Shipping address&lt;/h2&gt;
-      &lt;p&gt;ที่อยู่ที่คำสั่งซื้อนี้จะถูกส่งไป Where this order is delivered&lt;/p&gt;
+      &lt;h2&gt;Shipping address&lt;/h2&gt;
+      &lt;p&gt;Where this order is delivered&lt;/p&gt;
       &lt;aside&gt;
-        &lt;button type="button" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/button&gt;
+        &lt;button type="button" class="btn" data-size="sm"&gt;Edit&lt;/button&gt;
       &lt;/aside&gt;
     &lt;/header&gt;
     &lt;section&gt;
-      &lt;p&gt;99/1 ถ.สุขุมวิท แขวงคลองเตย กรุงเทพฯ 10110&lt;/p&gt;
+      &lt;p&gt;742 Evergreen Terrace, Springfield, OR 97477&lt;/p&gt;
     &lt;/section&gt;
   &lt;/section&gt;
 &lt;/div&gt;</code></pre>
@@ -601,19 +588,17 @@
             </div>
           </section>
           <section>
-            <h2>
-              หัวการ์ดเป็นตัวเลข พร้อมการเปลี่ยนแปลงและลิงก์ Header with a
-              figure, its change and a link
-            </h2>
+            <h2>Header with a figure, its change and a link</h2>
             <p>
-              ใส่ <code>strong</code> ใน header แล้ว
-              <code>h2</code> จะกลายเป็นป้ายสีเทาเล็กเหนือตัวเลข ใน
-              <code>aside</code> ลิงก์อยู่เหนือ <code>span[data-trend]</code>
+              Add a <code>strong</code> to the header and the
+              <code>h2</code> becomes a small gray label above the figure. In
+              the <code>aside</code>, the link sits above the
+              <code>span[data-trend]</code>.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="หัวการ์ดเป็นตัวเลข พร้อมการเปลี่ยนแปลงและลิงก์ Header with a figure, its change and a link"
+                aria-label="Header with a figure, its change and a link"
               >
                 <button
                   type="button"
@@ -644,10 +629,10 @@
                 <div class="docs-preview">
                   <section class="card">
                     <header>
-                      <h2>ยอดขายรวม Total revenue</h2>
-                      <strong>฿145,202.38</strong>
+                      <h2>Total revenue</h2>
+                      <strong>$4,148.64</strong>
                       <aside>
-                        <a href="#">ดูคำสั่งซื้อ View orders</a>
+                        <a href="#">View orders</a>
                         <span data-trend="up"
                           ><i class="icon icon-arrow-up" aria-hidden="true"></i
                           >40.1%</span
@@ -655,10 +640,7 @@
                       </aside>
                     </header>
                     <section>
-                      <p>
-                        เทียบกับ 30 วันก่อนหน้า Compared with the previous 30
-                        days.
-                      </p>
+                      <p>Compared with the previous 30 days.</p>
                     </section>
                   </section>
                 </div>
@@ -672,30 +654,31 @@
               >
                 <pre><code>&lt;section class="card"&gt;
   &lt;header&gt;
-    &lt;h2&gt;ยอดขายรวม Total revenue&lt;/h2&gt;
-    &lt;strong&gt;฿145,202.38&lt;/strong&gt;
+    &lt;h2&gt;Total revenue&lt;/h2&gt;
+    &lt;strong&gt;$4,148.64&lt;/strong&gt;
     &lt;aside&gt;
-      &lt;a href="#"&gt;ดูคำสั่งซื้อ View orders&lt;/a&gt;
+      &lt;a href="#"&gt;View orders&lt;/a&gt;
       &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;40.1%&lt;/span&gt;
     &lt;/aside&gt;
   &lt;/header&gt;
   &lt;section&gt;
-    &lt;p&gt;เทียบกับ 30 วันก่อนหน้า Compared with the previous 30 days.&lt;/p&gt;
+    &lt;p&gt;Compared with the previous 30 days.&lt;/p&gt;
   &lt;/section&gt;
 &lt;/section&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>การ์ดตาราง Table card</h2>
+            <h2>Table card</h2>
             <p>
-              ตารางเป็นลูกโดยตรงของการ์ด (หรืออยู่ใน
-              <code>.scroll-area</code> เมื่อคอลัมน์เยอะ) จะชิดขอบ header
-              ใช้ช่องค้นหาแบบ ghost และตัวกรอง footer
-              มีจำนวนผลลัพธ์ทางซ้ายและเลขหน้าทางขวา
+              A table that is a direct child of the card (or inside a
+              <code>.scroll-area</code> when there are many columns) runs edge
+              to edge. The header uses a ghost search field and filters. The
+              footer has the result count on the left and pagination on the
+              right.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="การ์ดตาราง Table card">
+              <div role="tablist" aria-label="Table card">
                 <button
                   type="button"
                   role="tab"
@@ -731,8 +714,8 @@
                         ></span>
                         <input
                           type="search"
-                          placeholder="ค้นหาชื่อสินค้า Search products"
-                          aria-label="ค้นหาชื่อสินค้า Search products"
+                          placeholder="Search products"
+                          aria-label="Search products"
                         />
                       </div>
                       <aside>
@@ -741,73 +724,69 @@
                           class="btn"
                           data-variant="ghost"
                           data-size="sm"
-                          >ล้าง Clear</a
+                          >Clear</a
                         >
                         <button type="button" class="btn" data-size="sm">
                           <i
                             class="icon icon-list-filter"
                             aria-hidden="true"
                           ></i
-                          >ตัวกรอง Filters
+                          >Filters
                         </button>
                       </aside>
                     </header>
                     <section>
-                      <span class="badge">แสดงหน้าร้าน Public: ใช่ Yes</span>
+                      <span class="badge">Public: Yes</span>
                     </section>
                     <div class="scroll-area" tabindex="0">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">สินค้า Product</th>
+                            <th scope="col">Product</th>
                             <th scope="col" data-align="end" aria-sort="none">
-                              <button type="button">ตัวเลือก Variants</button>
+                              <button type="button">Variants</button>
                             </th>
                             <th
                               scope="col"
                               data-align="end"
                               aria-sort="descending"
                             >
-                              <button type="button">อันดับ Ranking</button>
+                              <button type="button">Ranking</button>
                             </th>
                             <th
                               scope="col"
                               data-align="end"
-                              aria-label="การทำงาน Actions"
+                              aria-label="Actions"
                             ></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <th scope="row">นาฬิกา Timeless Watch</th>
+                            <th scope="row">Timeless Watch</th>
                             <td data-align="end">-</td>
                             <td data-align="end">10</td>
                             <td data-align="end">
-                              <a href="#" class="btn" data-size="sm"
-                                >แก้ไข Edit</a
-                              >
+                              <a href="#" class="btn" data-size="sm">Edit</a>
                             </td>
                           </tr>
                           <tr>
-                            <th scope="row">ปากกา Magic Pen</th>
+                            <th scope="row">Magic Pen</th>
                             <td data-align="end">3</td>
                             <td data-align="end">0</td>
                             <td data-align="end">
-                              <a href="#" class="btn" data-size="sm"
-                                >แก้ไข Edit</a
-                              >
+                              <a href="#" class="btn" data-size="sm">Edit</a>
                             </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                     <footer>
-                      <p>ผลลัพธ์ 67 รายการ 67 results</p>
-                      <nav class="pagination" aria-label="เลขหน้า Pagination">
+                      <p>67 results</p>
+                      <nav class="pagination" aria-label="Pagination">
                         <a href="#" aria-current="page">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a>
-                        <a href="#" aria-label="หน้าถัดไป Next page"
+                        <a href="#" aria-label="Next page"
                           ><i
                             class="icon icon-chevron-right"
                             aria-hidden="true"
@@ -829,49 +808,49 @@
   &lt;header&gt;
     &lt;div class="input-group" data-variant="ghost"&gt;
       &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-      &lt;input type="search" placeholder="ค้นหาชื่อสินค้า Search products" aria-label="ค้นหาชื่อสินค้า Search products" /&gt;
+      &lt;input type="search" placeholder="Search products" aria-label="Search products" /&gt;
     &lt;/div&gt;
     &lt;aside&gt;
-      &lt;a href="#" class="btn" data-variant="ghost" data-size="sm"&gt;ล้าง Clear&lt;/a&gt;
-      &lt;button type="button" class="btn" data-size="sm"&gt;&lt;i class="icon icon-list-filter" aria-hidden="true"&gt;&lt;/i&gt;ตัวกรอง Filters&lt;/button&gt;
+      &lt;a href="#" class="btn" data-variant="ghost" data-size="sm"&gt;Clear&lt;/a&gt;
+      &lt;button type="button" class="btn" data-size="sm"&gt;&lt;i class="icon icon-list-filter" aria-hidden="true"&gt;&lt;/i&gt;Filters&lt;/button&gt;
     &lt;/aside&gt;
   &lt;/header&gt;
   &lt;section&gt;
-    &lt;span class="badge"&gt;แสดงหน้าร้าน Public: ใช่ Yes&lt;/span&gt;
+    &lt;span class="badge"&gt;Public: Yes&lt;/span&gt;
   &lt;/section&gt;
   &lt;div class="scroll-area" tabindex="0"&gt;
     &lt;table class="table"&gt;
       &lt;thead&gt;
         &lt;tr&gt;
-          &lt;th scope="col"&gt;สินค้า Product&lt;/th&gt;
-          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;ตัวเลือก Variants&lt;/button&gt;&lt;/th&gt;
-          &lt;th scope="col" data-align="end" aria-sort="descending"&gt;&lt;button type="button"&gt;อันดับ Ranking&lt;/button&gt;&lt;/th&gt;
-          &lt;th scope="col" data-align="end" aria-label="การทำงาน Actions"&gt;&lt;/th&gt;
+          &lt;th scope="col"&gt;Product&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;Variants&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="descending"&gt;&lt;button type="button"&gt;Ranking&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-label="Actions"&gt;&lt;/th&gt;
         &lt;/tr&gt;
       &lt;/thead&gt;
       &lt;tbody&gt;
         &lt;tr&gt;
-          &lt;th scope="row"&gt;นาฬิกา Timeless Watch&lt;/th&gt;
+          &lt;th scope="row"&gt;Timeless Watch&lt;/th&gt;
           &lt;td data-align="end"&gt;-&lt;/td&gt;
           &lt;td data-align="end"&gt;10&lt;/td&gt;
-          &lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/a&gt;&lt;/td&gt;
+          &lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;Edit&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
-          &lt;th scope="row"&gt;ปากกา Magic Pen&lt;/th&gt;
+          &lt;th scope="row"&gt;Magic Pen&lt;/th&gt;
           &lt;td data-align="end"&gt;3&lt;/td&gt;
           &lt;td data-align="end"&gt;0&lt;/td&gt;
-          &lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/a&gt;&lt;/td&gt;
+          &lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;Edit&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
   &lt;/div&gt;
   &lt;footer&gt;
-    &lt;p&gt;ผลลัพธ์ 67 รายการ 67 results&lt;/p&gt;
-    &lt;nav class="pagination" aria-label="เลขหน้า Pagination"&gt;
+    &lt;p&gt;67 results&lt;/p&gt;
+    &lt;nav class="pagination" aria-label="Pagination"&gt;
       &lt;a href="#" aria-current="page"&gt;1&lt;/a&gt;
       &lt;a href="#"&gt;2&lt;/a&gt;
       &lt;a href="#"&gt;3&lt;/a&gt;
-      &lt;a href="#" aria-label="หน้าถัดไป Next page"&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+      &lt;a href="#" aria-label="Next page"&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
     &lt;/nav&gt;
   &lt;/footer&gt;
 &lt;/section&gt;</code></pre>
@@ -879,13 +858,13 @@
             </div>
           </section>
           <section>
-            <h2>การ์ดตารางที่ยังว่าง Table card, empty</h2>
-            <p>เมื่อยังไม่มีข้อมูล ใส่ <code>.empty</code> แทนตาราง</p>
+            <h2>Empty table card</h2>
+            <p>
+              When there is no data yet, use <code>.empty</code> in place of the
+              table.
+            </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="การ์ดตารางที่ยังว่าง Table card, empty"
-              >
+              <div role="tablist" aria-label="Empty table card">
                 <button
                   type="button"
                   role="tab"
@@ -916,14 +895,11 @@
                   <section class="card">
                     <section class="empty">
                       <i class="icon icon-package" aria-hidden="true"></i>
-                      <h3>ยังไม่มีสินค้า No products yet</h3>
-                      <p>
-                        เพิ่มสินค้าแรกเพื่อเริ่มขาย Add your first product to
-                        start selling.
-                      </p>
+                      <h3>No products yet</h3>
+                      <p>Add your first product to start selling.</p>
                       <div>
                         <a href="#" class="btn" data-variant="primary"
-                          >เพิ่มสินค้า New product</a
+                          >New product</a
                         >
                       </div>
                     </section>
@@ -940,10 +916,10 @@
                 <pre><code>&lt;section class="card"&gt;
   &lt;section class="empty"&gt;
     &lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;h3&gt;ยังไม่มีสินค้า No products yet&lt;/h3&gt;
-    &lt;p&gt;เพิ่มสินค้าแรกเพื่อเริ่มขาย Add your first product to start selling.&lt;/p&gt;
+    &lt;h3&gt;No products yet&lt;/h3&gt;
+    &lt;p&gt;Add your first product to start selling.&lt;/p&gt;
     &lt;div&gt;
-      &lt;a href="#" class="btn" data-variant="primary"&gt;เพิ่มสินค้า New product&lt;/a&gt;
+      &lt;a href="#" class="btn" data-variant="primary"&gt;New product&lt;/a&gt;
     &lt;/div&gt;
   &lt;/section&gt;
 &lt;/section&gt;</code></pre>
@@ -951,16 +927,16 @@
             </div>
           </section>
           <section>
-            <h2>การ์ดที่ต้องดู data-variant="warning"</h2>
+            <h2>Needs attention: data-variant="warning"</h2>
             <p>
-              เส้นบน 2px สีเตือน สำหรับการ์ดที่ต้องการความสนใจ ใช้
-              <code>danger</code>, <code>info</code>,
-              <code>ok</code> ได้เหมือนกัน
+              A 2px warning-colored top border for a card that needs attention.
+              <code>danger</code>, <code>info</code> and <code>ok</code> work
+              the same way.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label='การ์ดที่ต้องดู data-variant="warning"'
+                aria-label='Needs attention: data-variant="warning"'
               >
                 <button
                   type="button"
@@ -995,18 +971,15 @@
                     style="max-width: 28rem"
                   >
                     <header>
-                      <h2>ลูกค้าโต้แย้งการชำระเงิน Payment disputed</h2>
+                      <h2>Payment disputed</h2>
                       <aside>
                         <span class="badge" data-variant="warning"
-                          >ตอบภายใน 4 สัปดาห์</span
+                          >Respond within 4 weeks</span
                         >
                       </aside>
                     </header>
                     <section>
-                      <p>
-                        ผู้ถือบัตรแจ้งว่าไม่ได้รับสินค้า The cardholder claims
-                        the order was not received.
-                      </p>
+                      <p>The cardholder claims the order was not received.</p>
                     </section>
                   </section>
                 </div>
@@ -1020,11 +993,11 @@
               >
                 <pre><code>&lt;section class="card" data-variant="warning" style="max-width: 28rem"&gt;
   &lt;header&gt;
-    &lt;h2&gt;ลูกค้าโต้แย้งการชำระเงิน Payment disputed&lt;/h2&gt;
-    &lt;aside&gt;&lt;span class="badge" data-variant="warning"&gt;ตอบภายใน 4 สัปดาห์&lt;/span&gt;&lt;/aside&gt;
+    &lt;h2&gt;Payment disputed&lt;/h2&gt;
+    &lt;aside&gt;&lt;span class="badge" data-variant="warning"&gt;Respond within 4 weeks&lt;/span&gt;&lt;/aside&gt;
   &lt;/header&gt;
   &lt;section&gt;
-    &lt;p&gt;ผู้ถือบัตรแจ้งว่าไม่ได้รับสินค้า The cardholder claims the order was not received.&lt;/p&gt;
+    &lt;p&gt;The cardholder claims the order was not received.&lt;/p&gt;
   &lt;/section&gt;
 &lt;/section&gt;</code></pre>
               </div>
@@ -1050,62 +1023,63 @@
                         <code>div</code>
                       </td>
                       <td>
-                        กล่องการ์ด ลูกโดยตรงทุกตัวได้ padding และเส้นคั่นด้านบน
+                        The card box. Every direct child gets padding and a
+                        divider above it
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; header</code></td>
                       <td></td>
                       <td>
-                        หัวการ์ด: grid สองคอลัมน์ ข้อความซ้าย
-                        <code>aside</code> ขวา
+                        Card header: a two-column grid, text on the left,
+                        <code>aside</code> on the right
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; header h2 / h3</code></td>
                       <td></td>
-                      <td>ชื่อการ์ด ขนาด 14px ตัวหนา</td>
+                      <td>Card title, 14px bold</td>
                     </tr>
                     <tr>
                       <td><code>&gt; header p</code></td>
                       <td></td>
-                      <td>คำอธิบายสีเทา ใต้ชื่อ</td>
+                      <td>Grey subtitle under the title</td>
                     </tr>
                     <tr>
                       <td><code>&gt; header &gt; aside</code></td>
                       <td></td>
                       <td>
-                        ปุ่มหรือ badge ชิดขวา ครอบสองแถวเมื่อมีชื่อและคำอธิบาย
+                        Buttons or badges on the right. Spans both rows when
+                        there is a title and a subtitle
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; header &gt; strong</code></td>
                       <td></td>
                       <td>
-                        ตัวเลขใหญ่ ทำให้ <code>h2</code> กลายเป็นป้ายสีเทาเล็ก
-                        และ <code>aside</code> เรียงลงแนวตั้งชิดขวา
+                        Large figure. Turns the <code>h2</code> into a small
+                        gray label and stacks the <code>aside</code> vertically
+                        on the right
                       </td>
                     </tr>
                     <tr>
                       <td><code>header [data-trend]</code></td>
+                      <td><code>up</code>, <code>down</code>; empty = gray</td>
                       <td>
-                        <code>up</code>, <code>down</code>, ไม่ใส่ค่า = เทา
-                      </td>
-                      <td>
-                        การเปลี่ยนแปลงของตัวเลข: up = สี ok, down = สี danger
+                        Change in the figure: up = ok color, down = danger color
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; section, &gt; div</code></td>
                       <td></td>
-                      <td>เนื้อหา padding เท่ากันทุกส่วน</td>
+                      <td>Content, with the same padding in every part</td>
                     </tr>
                     <tr>
                       <td><code>&gt; footer</code></td>
                       <td></td>
                       <td>
-                        ปุ่มชิดขวา <code>p</code> ตัวแรกชิดซ้ายสีเทา
-                        (เช่นจำนวนผลลัพธ์)
+                        Buttons on the right. The first <code>p</code> sits on
+                        the left in gray (such as a result count)
                       </td>
                     </tr>
                     <tr>
@@ -1114,35 +1088,39 @@
                       </td>
                       <td></td>
                       <td>
-                        ตารางชิดขอบ cell แรกและสุดท้ายตรงกับ padding การ์ด
+                        Edge-to-edge table. The first and last cells line up
+                        with the card padding
                       </td>
                     </tr>
                     <tr>
                       <td><code>&gt; .empty</code></td>
                       <td></td>
-                      <td>สถานะว่างแทนตาราง</td>
+                      <td>Empty state in place of a table</td>
                     </tr>
                     <tr>
                       <td><code>&gt; .stat, &gt; .stat-group</code></td>
                       <td></td>
-                      <td>ตัวเลขสถิติ ดู <a href="stat">Stat</a></td>
+                      <td>Stat figures. See <a href="stat">Stat</a></td>
                     </tr>
                     <tr>
                       <td><code>data-variant</code></td>
                       <td>
                         <code>warning</code>, <code>danger</code>,
-                        <code>info</code>, <code>ok</code>; ไม่ใส่ = ปกติ
+                        <code>info</code>, <code>ok</code>; omit for normal
                         (default)
                       </td>
-                      <td>เส้นบน 2px สีตามสถานะ สำหรับการ์ดที่ต้องดู</td>
+                      <td>
+                        2px top border in the status color, for a card that
+                        needs attention
+                      </td>
                     </tr>
                     <tr>
                       <td><code>data-direction</code></td>
-                      <td><code>row</code>; ไม่ใส่ = เรียงลง (default)</td>
+                      <td><code>row</code>; omit for stacked (default)</td>
                       <td>
-                        ลูกเรียงแนวนอน คั่นด้วยเส้นตั้ง
-                        ลูกตัวแรกกว้างพอดีเนื้อหา (เช่นปุ่มเลือกช่วงเวลา
-                        ข้างกลุ่ม stat)
+                        Children sit side by side, separated by vertical lines.
+                        The first child is only as wide as its content (such as
+                        a date range picker next to a stat group)
                       </td>
                     </tr>
                   </tbody>

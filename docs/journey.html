@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,26 +343,23 @@
             <div>
               <h1>Journey</h1>
               <p>
-                เส้นทางที่ session ผ่านทีละขั้น
-                เลือกหน้าในแต่ละขั้นแล้วมีเส้นต่อหน้าที่เลือกไปยังขั้นถัดไป
+                The path sessions take, step by step. Pick a page in each step
+                and a line links it to the next step.
               </p>
             </div>
           </header>
           <section>
-            <h2>คอลัมน์ (ค่าเริ่มต้น) Columns by default</h2>
+            <h2>Columns by default</h2>
             <p>
-              ไม่ใส่ <code>data-orientation</code> ขั้นต่าง ๆ เรียงเป็นคอลัมน์
-              ถ้าเกินความกว้างจะเลื่อนแนวนอนได้ แต่ละขั้นคือ
-              <code>&lt;li&gt;</code> ที่มี <code>&lt;header&gt;</code> และ
-              <code>&lt;ul&gt;</code> ของหน้า หน้าคือ
-              <code>&lt;button aria-pressed&gt;</code> คลิกหรือกด Enter/Space
-              เพื่อเลือก
+              Without <code>data-orientation</code>, steps sit side by side as
+              columns and scroll sideways when they overflow. Each step is an
+              <code>&lt;li&gt;</code> with a <code>&lt;header&gt;</code> and a
+              <code>&lt;ul&gt;</code> of pages. A page is a
+              <code>&lt;button aria-pressed&gt;</code>. Click it or press Enter
+              or Space to pick it.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="คอลัมน์ (ค่าเริ่มต้น) Columns by default"
-              >
+              <div role="tablist" aria-label="Columns by default">
                 <button
                   type="button"
                   role="tab"
@@ -394,23 +387,17 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div
-                    class="journey"
-                    role="group"
-                    aria-label="เส้นทางในร้าน Store journey"
-                  >
+                  <div class="journey" role="group" aria-label="Store journey">
                     <ol>
                       <li>
                         <header>
-                          <span>ขั้นที่ 1 Step 1</span
-                          ><strong>2,400 sessions</strong
-                          ><small>เข้ามา entered</small>
+                          <span>Step 1</span><strong>2,400 sessions</strong
+                          ><small>entered</small>
                         </header>
                         <ul>
                           <li>
                             <button type="button" aria-pressed="true" value="/">
-                              <span>หน้าแรก Home</span
-                              ><data value="1800">1,800</data>
+                              <span>Home</span><data value="1800">1,800</data>
                             </button>
                           </li>
                           <li>
@@ -419,17 +406,15 @@
                               aria-pressed="false"
                               value="/sale"
                             >
-                              <span>โปรโมชั่น Sale</span
-                              ><data value="600">600</data>
+                              <span>Sale</span><data value="600">600</data>
                             </button>
                           </li>
                         </ul>
                       </li>
                       <li>
                         <header>
-                          <span>ขั้นที่ 2 Step 2</span
-                          ><strong>900 reached</strong
-                          ><small>ออก 900 (50.0%)</small>
+                          <span>Step 2</span><strong>900 reached</strong
+                          ><small>900 dropped off (50.0%)</small>
                         </header>
                         <ul>
                           <li>
@@ -438,8 +423,7 @@
                               aria-pressed="false"
                               value="/products/tshirt"
                             >
-                              <span>เสื้อยืด T-shirt</span
-                              ><data value="640">640</data>
+                              <span>T-shirt</span><data value="640">640</data>
                             </button>
                           </li>
                           <li>
@@ -448,17 +432,15 @@
                               aria-pressed="true"
                               value="/search"
                             >
-                              <span>ค้นหา Search</span
-                              ><data value="260">260</data>
+                              <span>Search</span><data value="260">260</data>
                             </button>
                           </li>
                         </ul>
                       </li>
                       <li>
                         <header>
-                          <span>ขั้นที่ 3 Step 3</span
-                          ><strong>310 reached</strong
-                          ><small>ออก 330 (51.6%)</small>
+                          <span>Step 3</span><strong>310 reached</strong
+                          ><small>330 dropped off (51.6%)</small>
                         </header>
                         <ul>
                           <li>
@@ -467,8 +449,7 @@
                               aria-pressed="true"
                               value="/cart"
                             >
-                              <span>ตะกร้า Cart</span
-                              ><data value="220">220</data>
+                              <span>Cart</span><data value="220">220</data>
                             </button>
                           </li>
                           <li>
@@ -477,8 +458,7 @@
                               aria-pressed="false"
                               value="/products/tote"
                             >
-                              <span>กระเป๋า Tote bag</span
-                              ><data value="90">90</data>
+                              <span>Tote bag</span><data value="90">90</data>
                             </button>
                           </li>
                         </ul>
@@ -494,27 +474,27 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="journey" role="group" aria-label="เส้นทางในร้าน Store journey"&gt;
+                <pre><code>&lt;div class="journey" role="group" aria-label="Store journey"&gt;
   &lt;ol&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 1 Step 1&lt;/span&gt;&lt;strong&gt;2,400 sessions&lt;/strong&gt;&lt;small&gt;เข้ามา entered&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 1&lt;/span&gt;&lt;strong&gt;2,400 sessions&lt;/strong&gt;&lt;small&gt;entered&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/"&gt;&lt;span&gt;หน้าแรก Home&lt;/span&gt;&lt;data value="1800"&gt;1,800&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="/sale"&gt;&lt;span&gt;โปรโมชั่น Sale&lt;/span&gt;&lt;data value="600"&gt;600&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/"&gt;&lt;span&gt;Home&lt;/span&gt;&lt;data value="1800"&gt;1,800&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="/sale"&gt;&lt;span&gt;Sale&lt;/span&gt;&lt;data value="600"&gt;600&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 2 Step 2&lt;/span&gt;&lt;strong&gt;900 reached&lt;/strong&gt;&lt;small&gt;ออก 900 (50.0%)&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 2&lt;/span&gt;&lt;strong&gt;900 reached&lt;/strong&gt;&lt;small&gt;900 dropped off (50.0%)&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="/products/tshirt"&gt;&lt;span&gt;เสื้อยืด T-shirt&lt;/span&gt;&lt;data value="640"&gt;640&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/search"&gt;&lt;span&gt;ค้นหา Search&lt;/span&gt;&lt;data value="260"&gt;260&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="/products/tshirt"&gt;&lt;span&gt;T-shirt&lt;/span&gt;&lt;data value="640"&gt;640&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/search"&gt;&lt;span&gt;Search&lt;/span&gt;&lt;data value="260"&gt;260&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 3 Step 3&lt;/span&gt;&lt;strong&gt;310 reached&lt;/strong&gt;&lt;small&gt;ออก 330 (51.6%)&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 3&lt;/span&gt;&lt;strong&gt;310 reached&lt;/strong&gt;&lt;small&gt;330 dropped off (51.6%)&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/cart"&gt;&lt;span&gt;ตะกร้า Cart&lt;/span&gt;&lt;data value="220"&gt;220&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="/products/tote"&gt;&lt;span&gt;กระเป๋า Tote bag&lt;/span&gt;&lt;data value="90"&gt;90&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/cart"&gt;&lt;span&gt;Cart&lt;/span&gt;&lt;data value="220"&gt;220&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="/products/tote"&gt;&lt;span&gt;Tote bag&lt;/span&gt;&lt;data value="90"&gt;90&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
@@ -523,18 +503,16 @@
             </div>
           </section>
           <section>
-            <h2>แนวตั้ง data-orientation="vertical" Vertical</h2>
+            <h2>Vertical</h2>
             <p>
-              ขั้นซ้อนลงมาและเยื้องเข้าไปทีละขั้น แต่ละหน้าเต็มแถว
-              เหมาะกับข้อมูลยาว: ชื่อ, path (<code>&lt;small&gt;</code>), จำนวน
-              session และรายได้ (<code>&lt;data&gt;</code>)
-              เส้นลงจากหน้าที่เลือกแล้วเลี้ยวเข้าขั้นถัดไป
+              Steps stack downward, each indented a bit more. Each page takes a
+              full row, which suits longer data: name, path
+              (<code>&lt;small&gt;</code>), sessions and revenue
+              (<code>&lt;data&gt;</code>). The line drops from the picked page
+              and turns into the next step.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label='แนวตั้ง data-orientation="vertical" Vertical'
-              >
+              <div role="tablist" aria-label="Vertical">
                 <button
                   type="button"
                   role="tab"
@@ -566,14 +544,13 @@
                     class="journey"
                     data-orientation="vertical"
                     role="group"
-                    aria-label="เส้นทางชำระเงิน Checkout journey"
+                    aria-label="Checkout journey"
                   >
                     <ol>
                       <li>
                         <header>
-                          <span>ขั้นที่ 1 Step 1</span
-                          ><strong>2,400 sessions</strong
-                          ><small>เข้ามา entered</small>
+                          <span>Step 1</span><strong>2,400 sessions</strong
+                          ><small>entered</small>
                         </header>
                         <ul>
                           <li>
@@ -582,12 +559,9 @@
                               aria-pressed="true"
                               value="/spring-sale"
                             >
-                              <span>ลดหน้าร้อน Summer Sale</span
-                              ><small>/summer-sale</small
+                              <span>Summer Sale</span><small>/summer-sale</small
                               ><data value="1800">1,800 sessions</data
-                              ><data value="279000"
-                                >฿279,000.00 · ฿155.00 RPV</data
-                              >
+                              ><data value="9000">$9,000.00 · $5.00 RPV</data>
                             </button>
                           </li>
                           <li>
@@ -596,21 +570,17 @@
                               aria-pressed="false"
                               value="/checkout"
                             >
-                              <span>ชำระเงิน Checkout</span
-                              ><small>/checkout</small
+                              <span>Checkout</span><small>/checkout</small
                               ><data value="600">600 sessions</data
-                              ><data value="130200"
-                                >฿130,200.00 · ฿217.00 RPV</data
-                              >
+                              ><data value="4200">$4,200.00 · $7.00 RPV</data>
                             </button>
                           </li>
                         </ul>
                       </li>
                       <li>
                         <header>
-                          <span>ขั้นที่ 2 Step 2</span
-                          ><strong>620 reached</strong
-                          ><small>ออก 1,180 (65.6%)</small>
+                          <span>Step 2</span><strong>620 reached</strong
+                          ><small>1,180 dropped off (65.6%)</small>
                         </header>
                         <ul>
                           <li>
@@ -619,36 +589,31 @@
                               aria-pressed="true"
                               value="/checkout"
                             >
-                              <span>ชำระเงิน Checkout</span
-                              ><small>/checkout</small
+                              <span>Checkout</span><small>/checkout</small
                               ><data value="620">620 sessions</data
-                              ><data value="279000"
-                                >฿279,000.00 · ฿450.00 RPV</data
-                              >
+                              ><data value="9300">$9,300.00 · $15.00 RPV</data>
                             </button>
                           </li>
                         </ul>
                       </li>
                       <li>
                         <header>
-                          <span>ขั้นที่ 3 Step 3</span
-                          ><strong>140 reached</strong
-                          ><small>ออก 480 (77.4%)</small>
+                          <span>Step 3</span><strong>140 reached</strong
+                          ><small>480 dropped off (77.4%)</small>
                         </header>
                         <ul>
                           <li data-outcomes>
-                            <span>ห่อของขวัญ Gift wrap</span
-                            ><small>/gift-wrap</small>
+                            <span>Gift wrap</span><small>/gift-wrap</small>
                             <div>
                               <button
                                 type="button"
                                 aria-pressed="true"
                                 value="declined"
                               >
-                                <span>ปฏิเสธ Declined</span
+                                <span>Declined</span
                                 ><data value="96">96 sessions</data
-                                ><data value="148800"
-                                  >฿148,800.00 · ฿1,550.00 RPV</data
+                                ><data value="4800"
+                                  >$4,800.00 · $50.00 RPV</data
                                 >
                               </button>
                               <button
@@ -656,10 +621,10 @@
                                 aria-pressed="false"
                                 value="accepted"
                               >
-                                <span>ยอมรับ Accepted</span
+                                <span>Accepted</span
                                 ><data value="44">44 sessions · 31.4% CVR</data
-                                ><data value="81840"
-                                  >฿81,840.00 · ฿1,860.00 RPV</data
+                                ><data value="2640"
+                                  >$2,640.00 · $60.00 RPV</data
                                 >
                               </button>
                             </div>
@@ -677,29 +642,29 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="journey" data-orientation="vertical" role="group" aria-label="เส้นทางชำระเงิน Checkout journey"&gt;
+                <pre><code>&lt;div class="journey" data-orientation="vertical" role="group" aria-label="Checkout journey"&gt;
   &lt;ol&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 1 Step 1&lt;/span&gt;&lt;strong&gt;2,400 sessions&lt;/strong&gt;&lt;small&gt;เข้ามา entered&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 1&lt;/span&gt;&lt;strong&gt;2,400 sessions&lt;/strong&gt;&lt;small&gt;entered&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/spring-sale"&gt;&lt;span&gt;ลดหน้าร้อน Summer Sale&lt;/span&gt;&lt;small&gt;/summer-sale&lt;/small&gt;&lt;data value="1800"&gt;1,800 sessions&lt;/data&gt;&lt;data value="279000"&gt;฿279,000.00 · ฿155.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="/checkout"&gt;&lt;span&gt;ชำระเงิน Checkout&lt;/span&gt;&lt;small&gt;/checkout&lt;/small&gt;&lt;data value="600"&gt;600 sessions&lt;/data&gt;&lt;data value="130200"&gt;฿130,200.00 · ฿217.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/spring-sale"&gt;&lt;span&gt;Summer Sale&lt;/span&gt;&lt;small&gt;/summer-sale&lt;/small&gt;&lt;data value="1800"&gt;1,800 sessions&lt;/data&gt;&lt;data value="9000"&gt;$9,000.00 · $5.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="/checkout"&gt;&lt;span&gt;Checkout&lt;/span&gt;&lt;small&gt;/checkout&lt;/small&gt;&lt;data value="600"&gt;600 sessions&lt;/data&gt;&lt;data value="4200"&gt;$4,200.00 · $7.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 2 Step 2&lt;/span&gt;&lt;strong&gt;620 reached&lt;/strong&gt;&lt;small&gt;ออก 1,180 (65.6%)&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 2&lt;/span&gt;&lt;strong&gt;620 reached&lt;/strong&gt;&lt;small&gt;1,180 dropped off (65.6%)&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/checkout"&gt;&lt;span&gt;ชำระเงิน Checkout&lt;/span&gt;&lt;small&gt;/checkout&lt;/small&gt;&lt;data value="620"&gt;620 sessions&lt;/data&gt;&lt;data value="279000"&gt;฿279,000.00 · ฿450.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/checkout"&gt;&lt;span&gt;Checkout&lt;/span&gt;&lt;small&gt;/checkout&lt;/small&gt;&lt;data value="620"&gt;620 sessions&lt;/data&gt;&lt;data value="9300"&gt;$9,300.00 · $15.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 3 Step 3&lt;/span&gt;&lt;strong&gt;140 reached&lt;/strong&gt;&lt;small&gt;ออก 480 (77.4%)&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 3&lt;/span&gt;&lt;strong&gt;140 reached&lt;/strong&gt;&lt;small&gt;480 dropped off (77.4%)&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
         &lt;li data-outcomes&gt;
-          &lt;span&gt;ห่อของขวัญ Gift wrap&lt;/span&gt;&lt;small&gt;/gift-wrap&lt;/small&gt;
+          &lt;span&gt;Gift wrap&lt;/span&gt;&lt;small&gt;/gift-wrap&lt;/small&gt;
           &lt;div&gt;
-            &lt;button type="button" aria-pressed="true" value="declined"&gt;&lt;span&gt;ปฏิเสธ Declined&lt;/span&gt;&lt;data value="96"&gt;96 sessions&lt;/data&gt;&lt;data value="148800"&gt;฿148,800.00 · ฿1,550.00 RPV&lt;/data&gt;&lt;/button&gt;
-            &lt;button type="button" aria-pressed="false" value="accepted"&gt;&lt;span&gt;ยอมรับ Accepted&lt;/span&gt;&lt;data value="44"&gt;44 sessions · 31.4% CVR&lt;/data&gt;&lt;data value="81840"&gt;฿81,840.00 · ฿1,860.00 RPV&lt;/data&gt;&lt;/button&gt;
+            &lt;button type="button" aria-pressed="true" value="declined"&gt;&lt;span&gt;Declined&lt;/span&gt;&lt;data value="96"&gt;96 sessions&lt;/data&gt;&lt;data value="4800"&gt;$4,800.00 · $50.00 RPV&lt;/data&gt;&lt;/button&gt;
+            &lt;button type="button" aria-pressed="false" value="accepted"&gt;&lt;span&gt;Accepted&lt;/span&gt;&lt;data value="44"&gt;44 sessions · 31.4% CVR&lt;/data&gt;&lt;data value="2640"&gt;$2,640.00 · $60.00 RPV&lt;/data&gt;&lt;/button&gt;
           &lt;/div&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
@@ -710,19 +675,17 @@
             </div>
           </section>
           <section>
-            <h2>หน้าที่มีผลลัพธ์ data-outcomes Pages with outcomes</h2>
+            <h2>Pages with outcomes</h2>
             <p>
-              หน้าอย่าง upsell ใส่ <code>data-outcomes</code> ที่
-              <code>&lt;li&gt;</code> ของหน้า: ชื่อและ path แสดงครั้งเดียว
-              ตามด้วย <code>&lt;div&gt;</code> ที่มีปุ่มต่อผลลัพธ์ (ปฏิเสธ /
-              ยอมรับ) แต่ละผลลัพธ์เลือกได้เหมือนหน้า
-              และเส้นจะต่อเข้าที่แถวของหน้า ฝั่งยอมรับแสดงอัตราการรับเป็น CVR
+              For a page like an upsell, add <code>data-outcomes</code> to the
+              page's <code>&lt;li&gt;</code>. The name and path show once,
+              followed by a <code>&lt;div&gt;</code> with one button per outcome
+              (Declined / Accepted). Each outcome can be picked like a page, and
+              the line joins at the page's row. The Accepted side shows the take
+              rate as CVR.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="หน้าที่มีผลลัพธ์ data-outcomes Pages with outcomes"
-              >
+              <div role="tablist" aria-label="Pages with outcomes">
                 <button
                   type="button"
                   role="tab"
@@ -750,17 +713,12 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div
-                    class="journey"
-                    role="group"
-                    aria-label="เส้นทาง upsell Upsell journey"
-                  >
+                  <div class="journey" role="group" aria-label="Upsell journey">
                     <ol>
                       <li>
                         <header>
-                          <span>ขั้นที่ 1 Step 1</span
-                          ><strong>530 sessions</strong
-                          ><small>เข้ามา entered</small>
+                          <span>Step 1</span><strong>530 sessions</strong
+                          ><small>entered</small>
                         </header>
                         <ul>
                           <li>
@@ -769,21 +727,19 @@
                               aria-pressed="true"
                               value="/cart"
                             >
-                              <span>ตะกร้า Cart</span
-                              ><data value="530">530</data>
+                              <span>Cart</span><data value="530">530</data>
                             </button>
                           </li>
                         </ul>
                       </li>
                       <li>
                         <header>
-                          <span>ขั้นที่ 2 Step 2</span
-                          ><strong>412 reached</strong
-                          ><small>ออก 118 (22.3%)</small>
+                          <span>Step 2</span><strong>412 reached</strong
+                          ><small>118 dropped off (22.3%)</small>
                         </header>
                         <ul>
                           <li data-outcomes>
-                            <span>ประกันสินค้า Protection plan</span
+                            <span>Protection plan</span
                             ><small>/upsell/protect</small>
                             <div>
                               <button
@@ -791,7 +747,7 @@
                                 aria-pressed="false"
                                 value="declined"
                               >
-                                <span>ปฏิเสธ Declined</span
+                                <span>Declined</span
                                 ><data value="301">301 sessions</data>
                               </button>
                               <button
@@ -799,7 +755,7 @@
                                 aria-pressed="true"
                                 value="accepted"
                               >
-                                <span>ยอมรับ Accepted</span
+                                <span>Accepted</span
                                 ><data value="111">111 · 26.9% CVR</data>
                               </button>
                             </div>
@@ -808,9 +764,8 @@
                       </li>
                       <li>
                         <header>
-                          <span>ขั้นที่ 3 Step 3</span
-                          ><strong>108 reached</strong
-                          ><small>ออก 3 (2.7%)</small>
+                          <span>Step 3</span><strong>108 reached</strong
+                          ><small>3 dropped off (2.7%)</small>
                         </header>
                         <ul>
                           <li>
@@ -819,8 +774,7 @@
                               aria-pressed="true"
                               value="/thank-you"
                             >
-                              <span>ขอบคุณ Thank you</span
-                              ><data value="108">108</data>
+                              <span>Thank you</span><data value="108">108</data>
                             </button>
                           </li>
                         </ul>
@@ -836,30 +790,30 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="journey" role="group" aria-label="เส้นทาง upsell Upsell journey"&gt;
+                <pre><code>&lt;div class="journey" role="group" aria-label="Upsell journey"&gt;
   &lt;ol&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 1 Step 1&lt;/span&gt;&lt;strong&gt;530 sessions&lt;/strong&gt;&lt;small&gt;เข้ามา entered&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 1&lt;/span&gt;&lt;strong&gt;530 sessions&lt;/strong&gt;&lt;small&gt;entered&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/cart"&gt;&lt;span&gt;ตะกร้า Cart&lt;/span&gt;&lt;data value="530"&gt;530&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/cart"&gt;&lt;span&gt;Cart&lt;/span&gt;&lt;data value="530"&gt;530&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 2 Step 2&lt;/span&gt;&lt;strong&gt;412 reached&lt;/strong&gt;&lt;small&gt;ออก 118 (22.3%)&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 2&lt;/span&gt;&lt;strong&gt;412 reached&lt;/strong&gt;&lt;small&gt;118 dropped off (22.3%)&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
         &lt;li data-outcomes&gt;
-          &lt;span&gt;ประกันสินค้า Protection plan&lt;/span&gt;&lt;small&gt;/upsell/protect&lt;/small&gt;
+          &lt;span&gt;Protection plan&lt;/span&gt;&lt;small&gt;/upsell/protect&lt;/small&gt;
           &lt;div&gt;
-            &lt;button type="button" aria-pressed="false" value="declined"&gt;&lt;span&gt;ปฏิเสธ Declined&lt;/span&gt;&lt;data value="301"&gt;301 sessions&lt;/data&gt;&lt;/button&gt;
-            &lt;button type="button" aria-pressed="true" value="accepted"&gt;&lt;span&gt;ยอมรับ Accepted&lt;/span&gt;&lt;data value="111"&gt;111 · 26.9% CVR&lt;/data&gt;&lt;/button&gt;
+            &lt;button type="button" aria-pressed="false" value="declined"&gt;&lt;span&gt;Declined&lt;/span&gt;&lt;data value="301"&gt;301 sessions&lt;/data&gt;&lt;/button&gt;
+            &lt;button type="button" aria-pressed="true" value="accepted"&gt;&lt;span&gt;Accepted&lt;/span&gt;&lt;data value="111"&gt;111 · 26.9% CVR&lt;/data&gt;&lt;/button&gt;
           &lt;/div&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 3 Step 3&lt;/span&gt;&lt;strong&gt;108 reached&lt;/strong&gt;&lt;small&gt;ออก 3 (2.7%)&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 3&lt;/span&gt;&lt;strong&gt;108 reached&lt;/strong&gt;&lt;small&gt;3 dropped off (2.7%)&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/thank-you"&gt;&lt;span&gt;ขอบคุณ Thank you&lt;/span&gt;&lt;data value="108"&gt;108&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;button type="button" aria-pressed="true" value="/thank-you"&gt;&lt;span&gt;Thank you&lt;/span&gt;&lt;data value="108"&gt;108&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
@@ -868,17 +822,15 @@
             </div>
           </section>
           <section>
-            <h2>แสดงเฉพาะหน้าที่เลือก data-view="picked" Picked path only</h2>
+            <h2>Picked path only</h2>
             <p>
-              <code>data-view="picked"</code> ซ่อนหน้าอื่นและผลลัพธ์อื่น
-              เหลือแค่หน้าที่เลือกในแต่ละขั้น หน้าเว็บเป็นคนใส่ attribute นี้เอง
-              เช่นจาก checkbox หรือปุ่มคู่ "ทุกหน้า / เส้นทางที่เลือก"
+              <code>data-view="picked"</code> hides the other pages and
+              outcomes, leaving only the picked page in each step. The page sets
+              this attribute itself, for example from a checkbox or an "All
+              pages / Picked path" toggle.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label='แสดงเฉพาะหน้าที่เลือก data-view="picked" Picked path only'
-              >
+              <div role="tablist" aria-label="Picked path only">
                 <button
                   type="button"
                   role="tab"
@@ -909,68 +861,60 @@
                   <div class="stack" data-gap="sm">
                     <label class="field">
                       <input type="checkbox" id="jn-view" checked />
-                      แสดงเฉพาะเส้นทางที่เลือก Picked path only
+                      Picked path only
                     </label>
                     <div
                       class="journey"
                       data-orientation="vertical"
                       data-view="picked"
                       role="group"
-                      aria-label="เส้นทางที่เลือก Picked path"
+                      aria-label="Picked path"
                       id="jn-picked"
                     >
                       <ol>
                         <li>
                           <header>
-                            <span>ขั้นที่ 1 Step 1</span
-                            ><strong>2,400 sessions</strong
-                            ><small>เข้ามา entered</small>
+                            <span>Step 1</span><strong>2,400 sessions</strong
+                            ><small>entered</small>
                           </header>
                           <ul>
                             <li>
                               <button type="button" aria-pressed="true">
-                                <span>ลดหน้าร้อน Summer Sale</span
+                                <span>Summer Sale</span
                                 ><small>/summer-sale</small
                                 ><data value="1800">1,800 sessions</data
-                                ><data value="279000"
-                                  >฿279,000.00 · ฿155.00 RPV</data
-                                >
+                                ><data value="9000">$9,000.00 · $5.00 RPV</data>
                               </button>
                             </li>
                             <li>
                               <button type="button" aria-pressed="false">
-                                <span>ชำระเงิน Checkout</span
-                                ><small>/checkout</small
+                                <span>Checkout</span><small>/checkout</small
                                 ><data value="600">600 sessions</data
-                                ><data value="130200"
-                                  >฿130,200.00 · ฿217.00 RPV</data
-                                >
+                                ><data value="4200">$4,200.00 · $7.00 RPV</data>
                               </button>
                             </li>
                           </ul>
                         </li>
                         <li>
                           <header>
-                            <span>ขั้นที่ 2 Step 2</span
-                            ><strong>620 reached</strong
-                            ><small>ออก 1,180 (65.6%)</small>
+                            <span>Step 2</span><strong>620 reached</strong
+                            ><small>1,180 dropped off (65.6%)</small>
                           </header>
                           <ul>
                             <li>
                               <button type="button" aria-pressed="true">
-                                <span>ชำระเงิน Checkout</span
-                                ><small>/checkout</small
+                                <span>Checkout</span><small>/checkout</small
                                 ><data value="620">620 sessions</data
-                                ><data value="279000"
-                                  >฿279,000.00 · ฿450.00 RPV</data
+                                ><data value="9300"
+                                  >$9,300.00 · $15.00 RPV</data
                                 >
                               </button>
                             </li>
                             <li>
                               <button type="button" aria-pressed="false">
-                                <span>ตะกร้า Cart</span><small>/cart</small
+                                <span>Cart</span><small>/cart</small
                                 ><data value="410">410 sessions</data
-                                ><data value="0">฿0.00 · ฿0.00 RPV</data>
+                                ><data value="0">$0.00 · $0.00 RPV</data>
                               </button>
                             </li>
                           </ul>
@@ -998,22 +942,22 @@
                 <pre><code>&lt;div class="stack" data-gap="sm"&gt;
   &lt;label class="field"&gt;
     &lt;input type="checkbox" id="jn-view" checked /&gt;
-    แสดงเฉพาะเส้นทางที่เลือก Picked path only
+    Picked path only
   &lt;/label&gt;
-  &lt;div class="journey" data-orientation="vertical" data-view="picked" role="group" aria-label="เส้นทางที่เลือก Picked path" id="jn-picked"&gt;
+  &lt;div class="journey" data-orientation="vertical" data-view="picked" role="group" aria-label="Picked path" id="jn-picked"&gt;
     &lt;ol&gt;
       &lt;li&gt;
-        &lt;header&gt;&lt;span&gt;ขั้นที่ 1 Step 1&lt;/span&gt;&lt;strong&gt;2,400 sessions&lt;/strong&gt;&lt;small&gt;เข้ามา entered&lt;/small&gt;&lt;/header&gt;
+        &lt;header&gt;&lt;span&gt;Step 1&lt;/span&gt;&lt;strong&gt;2,400 sessions&lt;/strong&gt;&lt;small&gt;entered&lt;/small&gt;&lt;/header&gt;
         &lt;ul&gt;
-          &lt;li&gt;&lt;button type="button" aria-pressed="true"&gt;&lt;span&gt;ลดหน้าร้อน Summer Sale&lt;/span&gt;&lt;small&gt;/summer-sale&lt;/small&gt;&lt;data value="1800"&gt;1,800 sessions&lt;/data&gt;&lt;data value="279000"&gt;฿279,000.00 · ฿155.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;button type="button" aria-pressed="false"&gt;&lt;span&gt;ชำระเงิน Checkout&lt;/span&gt;&lt;small&gt;/checkout&lt;/small&gt;&lt;data value="600"&gt;600 sessions&lt;/data&gt;&lt;data value="130200"&gt;฿130,200.00 · ฿217.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;button type="button" aria-pressed="true"&gt;&lt;span&gt;Summer Sale&lt;/span&gt;&lt;small&gt;/summer-sale&lt;/small&gt;&lt;data value="1800"&gt;1,800 sessions&lt;/data&gt;&lt;data value="9000"&gt;$9,000.00 · $5.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;button type="button" aria-pressed="false"&gt;&lt;span&gt;Checkout&lt;/span&gt;&lt;small&gt;/checkout&lt;/small&gt;&lt;data value="600"&gt;600 sessions&lt;/data&gt;&lt;data value="4200"&gt;$4,200.00 · $7.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;
-        &lt;header&gt;&lt;span&gt;ขั้นที่ 2 Step 2&lt;/span&gt;&lt;strong&gt;620 reached&lt;/strong&gt;&lt;small&gt;ออก 1,180 (65.6%)&lt;/small&gt;&lt;/header&gt;
+        &lt;header&gt;&lt;span&gt;Step 2&lt;/span&gt;&lt;strong&gt;620 reached&lt;/strong&gt;&lt;small&gt;1,180 dropped off (65.6%)&lt;/small&gt;&lt;/header&gt;
         &lt;ul&gt;
-          &lt;li&gt;&lt;button type="button" aria-pressed="true"&gt;&lt;span&gt;ชำระเงิน Checkout&lt;/span&gt;&lt;small&gt;/checkout&lt;/small&gt;&lt;data value="620"&gt;620 sessions&lt;/data&gt;&lt;data value="279000"&gt;฿279,000.00 · ฿450.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;button type="button" aria-pressed="false"&gt;&lt;span&gt;ตะกร้า Cart&lt;/span&gt;&lt;small&gt;/cart&lt;/small&gt;&lt;data value="410"&gt;410 sessions&lt;/data&gt;&lt;data value="0"&gt;฿0.00 · ฿0.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;button type="button" aria-pressed="true"&gt;&lt;span&gt;Checkout&lt;/span&gt;&lt;small&gt;/checkout&lt;/small&gt;&lt;data value="620"&gt;620 sessions&lt;/data&gt;&lt;data value="9300"&gt;$9,300.00 · $15.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;button type="button" aria-pressed="false"&gt;&lt;span&gt;Cart&lt;/span&gt;&lt;small&gt;/cart&lt;/small&gt;&lt;data value="410"&gt;410 sessions&lt;/data&gt;&lt;data value="0"&gt;$0.00 · $0.00 RPV&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ol&gt;
@@ -1031,20 +975,17 @@
             </div>
           </section>
           <section>
-            <h2>เติมขั้นถัดไปเมื่อเลือกหน้า Fill later steps on pick</h2>
+            <h2>Fill later steps on pick</h2>
             <p>
-              ทุกครั้งที่เลือกหน้า ปุ่มจะส่งเหตุการณ์
-              <code>tsunami:pick</code> (bubbles) พร้อม
-              <code>detail.step</code> (ลำดับขั้นเริ่มที่ 0) และ
-              <code>detail.value</code> (ค่า <code>value</code> ของปุ่ม
-              หรือชื่อหน้า) หน้าเว็บฟังเหตุการณ์นี้แล้วโหลดขั้นถัดไปมาแทนที่
-              เส้นจะวาดใหม่เองเมื่อขั้นหรือการเลือกเปลี่ยน
+              Each time a page is picked, the button fires
+              <code>tsunami:pick</code> (bubbles) with
+              <code>detail.step</code> (step index from 0) and
+              <code>detail.value</code> (the button's <code>value</code>, or the
+              page name). The page listens for it and loads the next steps in
+              their place. Lines redraw on their own when steps or picks change.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="เติมขั้นถัดไปเมื่อเลือกหน้า Fill later steps on pick"
-              >
+              <div role="tablist" aria-label="Fill later steps on pick">
                 <button
                   type="button"
                   role="tab"
@@ -1075,15 +1016,14 @@
                   <div
                     class="journey"
                     role="group"
-                    aria-label="เลือกหน้า Pick a page"
+                    aria-label="Pick a page"
                     id="jn-fill"
                   >
                     <ol>
                       <li>
                         <header>
-                          <span>ขั้นที่ 1 Step 1</span
-                          ><strong>1,000 sessions</strong
-                          ><small>เข้ามา entered</small>
+                          <span>Step 1</span><strong>1,000 sessions</strong
+                          ><small>entered</small>
                         </header>
                         <ul>
                           <li>
@@ -1092,8 +1032,7 @@
                               aria-pressed="false"
                               value="home"
                             >
-                              <span>หน้าแรก Home</span
-                              ><data value="700">700</data>
+                              <span>Home</span><data value="700">700</data>
                             </button>
                           </li>
                           <li>
@@ -1102,37 +1041,34 @@
                               aria-pressed="false"
                               value="blog"
                             >
-                              <span>บทความ Blog</span
-                              ><data value="300">300</data>
+                              <span>Blog</span><data value="300">300</data>
                             </button>
                           </li>
                         </ul>
                       </li>
                     </ol>
                   </div>
-                  <p id="jn-fill-output">
-                    เลือกหน้าในขั้นที่ 1 Pick a page in step 1
-                  </p>
+                  <p id="jn-fill-output">Pick a page in step 1</p>
                   <script type="module">
                     // Next pages for each picked value; a real page would fetch them.
                     const next = {
                       home: [
-                        ["product", "เสื้อยืด T-shirt", 420],
-                        ["sale", "โปรโมชั่น Sale", 180],
+                        ["product", "T-shirt", 420],
+                        ["sale", "Sale", 180],
                       ],
                       blog: [
-                        ["product", "เสื้อยืด T-shirt", 90],
-                        ["home", "หน้าแรก Home", 60],
+                        ["product", "T-shirt", 90],
+                        ["home", "Home", 60],
                       ],
-                      product: [["cart", "ตะกร้า Cart", 150]],
-                      sale: [["cart", "ตะกร้า Cart", 70]],
-                      cart: [["checkout", "ชำระเงิน Checkout", 120]],
+                      product: [["cart", "Cart", 150]],
+                      sale: [["cart", "Cart", 70]],
+                      cart: [["checkout", "Checkout", 120]],
                     };
                     const journey = document.getElementById("jn-fill");
                     const output = document.getElementById("jn-fill-output");
                     journey.addEventListener("tsunami:pick", (event) => {
                       const { step, value } = event.detail;
-                      output.textContent = `เลือก Picked: ${value} ในขั้นที่ ${step + 1}`;
+                      output.textContent = `Picked: ${value} in step ${step + 1}`;
                       const steps =
                         journey.querySelectorAll(":scope > ol > li");
                       for (const later of [...steps].slice(step + 1))
@@ -1144,7 +1080,7 @@
                         0,
                       );
                       const li = document.createElement("li");
-                      li.innerHTML = `<header><span>ขั้นที่ ${step + 2} Step ${step + 2}</span><strong>${total} reached</strong></header><ul></ul>`;
+                      li.innerHTML = `<header><span>Step ${step + 2}</span><strong>${total} reached</strong></header><ul></ul>`;
                       for (const [key, name, count] of pages) {
                         const item = document.createElement("li");
                         item.innerHTML = `<button type="button" aria-pressed="false"><span></span><data></data></button>`;
@@ -1167,39 +1103,53 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="journey" role="group" aria-label="เลือกหน้า Pick a page" id="jn-fill"&gt;
+                <pre><code>&lt;div class="journey" role="group" aria-label="Pick a page" id="jn-fill"&gt;
   &lt;ol&gt;
     &lt;li&gt;
-      &lt;header&gt;&lt;span&gt;ขั้นที่ 1 Step 1&lt;/span&gt;&lt;strong&gt;1,000 sessions&lt;/strong&gt;&lt;small&gt;เข้ามา entered&lt;/small&gt;&lt;/header&gt;
+      &lt;header&gt;&lt;span&gt;Step 1&lt;/span&gt;&lt;strong&gt;1,000 sessions&lt;/strong&gt;&lt;small&gt;entered&lt;/small&gt;&lt;/header&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="home"&gt;&lt;span&gt;หน้าแรก Home&lt;/span&gt;&lt;data value="700"&gt;700&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;button type="button" aria-pressed="false" value="blog"&gt;&lt;span&gt;บทความ Blog&lt;/span&gt;&lt;data value="300"&gt;300&lt;/data&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li&gt;
+          &lt;button type="button" aria-pressed="false" value="home"&gt;
+            &lt;span&gt;Home&lt;/span&gt;&lt;data value="700"&gt;700&lt;/data&gt;
+          &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;button type="button" aria-pressed="false" value="blog"&gt;
+            &lt;span&gt;Blog&lt;/span&gt;&lt;data value="300"&gt;300&lt;/data&gt;
+          &lt;/button&gt;
+        &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
-&lt;p id="jn-fill-output"&gt;เลือกหน้าในขั้นที่ 1 Pick a page in step 1&lt;/p&gt;
+&lt;p id="jn-fill-output"&gt;Pick a page in step 1&lt;/p&gt;
 &lt;script type="module"&gt;
   // Next pages for each picked value; a real page would fetch them.
   const next = {
-    home: [["product", "เสื้อยืด T-shirt", 420], ["sale", "โปรโมชั่น Sale", 180]],
-    blog: [["product", "เสื้อยืด T-shirt", 90], ["home", "หน้าแรก Home", 60]],
-    product: [["cart", "ตะกร้า Cart", 150]],
-    sale: [["cart", "ตะกร้า Cart", 70]],
-    cart: [["checkout", "ชำระเงิน Checkout", 120]],
+    home: [
+      ["product", "T-shirt", 420],
+      ["sale", "Sale", 180],
+    ],
+    blog: [
+      ["product", "T-shirt", 90],
+      ["home", "Home", 60],
+    ],
+    product: [["cart", "Cart", 150]],
+    sale: [["cart", "Cart", 70]],
+    cart: [["checkout", "Checkout", 120]],
   };
   const journey = document.getElementById("jn-fill");
   const output = document.getElementById("jn-fill-output");
   journey.addEventListener("tsunami:pick", (event) =&gt; {
     const { step, value } = event.detail;
-    output.textContent = `เลือก Picked: ${value} ในขั้นที่ ${step + 1}`;
+    output.textContent = `Picked: ${value} in step ${step + 1}`;
     const steps = journey.querySelectorAll(":scope &gt; ol &gt; li");
     for (const later of [...steps].slice(step + 1)) later.remove();
     const pages = next[value];
     if (!pages) return;
     const total = pages.reduce((sum, page) =&gt; sum + page[2], 0);
     const li = document.createElement("li");
-    li.innerHTML = `&lt;header&gt;&lt;span&gt;ขั้นที่ ${step + 2} Step ${step + 2}&lt;/span&gt;&lt;strong&gt;${total} reached&lt;/strong&gt;&lt;/header&gt;&lt;ul&gt;&lt;/ul&gt;`;
+    li.innerHTML = `&lt;header&gt;&lt;span&gt;Step ${step + 2}&lt;/span&gt;&lt;strong&gt;${total} reached&lt;/strong&gt;&lt;/header&gt;&lt;ul&gt;&lt;/ul&gt;`;
     for (const [key, name, count] of pages) {
       const item = document.createElement("li");
       item.innerHTML = `&lt;button type="button" aria-pressed="false"&gt;&lt;span&gt;&lt;/span&gt;&lt;data&gt;&lt;/data&gt;&lt;/button&gt;`;
@@ -1219,9 +1169,9 @@
           <section>
             <h2>API</h2>
             <p>
-              <code>journey.js</code> ทำงานกับทุก <code>.journey</code> ในหน้า
-              รวมถึงที่เพิ่มทีหลัง ไม่ต้องเรียก init ฟังก์ชันอยู่ที่
-              <code>window.tsunami.journey</code>
+              <code>journey.js</code> works on every <code>.journey</code> on
+              the page, including ones added later. No init call needed. The
+              functions live on <code>window.tsunami.journey</code>.
             </p>
             <div class="card">
               <table class="table">
@@ -1235,30 +1185,33 @@
                 <tbody>
                   <tr>
                     <td><code>pick(button)</code></td>
-                    <td><code>button</code>: ปุ่มหน้าหรือผลลัพธ์ใน journey</td>
                     <td>
-                      เลือกหน้าเหมือนคลิก: ตั้ง
-                      <code>aria-pressed="true"</code>
-                      ล้างการเลือกในขั้นเดียวกันและทุกขั้นถัดไป ส่ง
-                      <code>tsunami:pick</code> แล้ววาดเส้นใหม่
+                      <code>button</code>: a page or outcome button in the
+                      journey
+                    </td>
+                    <td>
+                      Picks the page like a click: sets
+                      <code>aria-pressed="true"</code>, clears picks in the same
+                      step and all later steps, fires
+                      <code>tsunami:pick</code> and redraws the lines
                     </td>
                   </tr>
                   <tr>
                     <td><code>draw(journey)</code></td>
                     <td><code>journey</code>: element <code>.journey</code></td>
                     <td>
-                      วาดเส้นใหม่ทันที (ปกติวาดเองเมื่อขนาด ขั้น
-                      หรือการเลือกเปลี่ยน)
+                      Redraws the lines now (they normally redraw when the size,
+                      steps or picks change)
                     </td>
                   </tr>
                   <tr>
                     <td><code>tsunami:pick</code></td>
                     <td><code>{ step, value }</code></td>
                     <td>
-                      ส่งจากปุ่มหลังเลือกหน้า bubbles ขึ้นไป
-                      <code>step</code> คือลำดับขั้นเริ่มที่ 0,
-                      <code>value</code> คือ <code>value</code> ของปุ่ม
-                      หรือข้อความใน <code>&lt;span&gt;</code> แรกถ้าไม่มี
+                      Fired by the button after a pick, and bubbles.
+                      <code>step</code> is the step index from 0.
+                      <code>value</code> is the button's <code>value</code>, or
+                      the text of its first <code>&lt;span&gt;</code> if none
                     </td>
                   </tr>
                 </tbody>
@@ -1275,24 +1228,27 @@
                 <tbody>
                   <tr>
                     <td><kbd>Tab</kbd></td>
-                    <td>ไปหน้าถัดไป (ของ browser เอง ทุกหน้าโฟกัสได้)</td>
+                    <td>
+                      Move to the next page (native; every page is focusable)
+                    </td>
                   </tr>
                   <tr>
                     <td><kbd>Enter</kbd>, <kbd>Space</kbd></td>
-                    <td>เลือกหน้า (คลิกปุ่มของ browser เอง)</td>
+                    <td>Pick the page (native button click)</td>
                   </tr>
                   <tr>
                     <td><kbd>↓</kbd>, <kbd>↑</kbd></td>
                     <td>
-                      ไปหน้าถัดไป/ก่อนหน้าในขั้นเดียวกัน แบบแนวตั้งไปข้ามขั้นได้
+                      Move to the next or previous page in the step. In vertical
+                      mode it crosses into other steps
                     </td>
                   </tr>
                   <tr>
                     <td><kbd>→</kbd>, <kbd>←</kbd></td>
                     <td>
-                      ไปหน้าที่เลือกไว้ในขั้นถัดไป/ก่อนหน้า
-                      (ถ้าไม่มีไปหน้าแรกของขั้น) สลับทิศเมื่อ
-                      <code>dir="rtl"</code> แบบแนวตั้งไม่ใช้ปุ่มนี้
+                      Move to the picked page in the next or previous step (or
+                      the step's first page if none is picked). Reversed in
+                      <code>dir="rtl"</code>. Not used in vertical mode
                     </td>
                   </tr>
                 </tbody>
@@ -1315,30 +1271,28 @@
                     <td><code>.journey</code></td>
                     <td></td>
                     <td>
-                      กล่องนอกสุด เลื่อนแนวนอนได้เมื่อขั้นเกินความกว้าง ใส่
-                      <code>role="group"</code> และ
-                      <code>aria-label</code> เพื่อตั้งชื่อให้ screen reader
+                      Outer box. Scrolls sideways when the steps overflow. Add
+                      <code>role="group"</code> and an
+                      <code>aria-label</code> to name it for screen readers
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-orientation</code></td>
+                    <td><code>vertical</code>; none = columns (default)</td>
                     <td>
-                      <code>vertical</code>; ไม่ใส่ = คอลัมน์ (ค่าเริ่มต้น)
-                    </td>
-                    <td>
-                      เรียงขั้นจากบนลงล่าง แต่ละขั้นเยื้องเข้าไป 1.5rem (สูงสุด
-                      40%) หน้าเต็มแถว
+                      Stacks steps top to bottom, each indented 1.5rem more (up
+                      to 40%). Pages take a full row
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-view</code></td>
-                    <td><code>picked</code>; ไม่ใส่ = ทุกหน้า (ค่าเริ่มต้น)</td>
-                    <td>แสดงเฉพาะหน้าและผลลัพธ์ที่เลือกในแต่ละขั้น</td>
+                    <td><code>picked</code>; none = all pages (default)</td>
+                    <td>Shows only the picked page or outcome in each step</td>
                   </tr>
                   <tr>
                     <td><code>&gt; ol &gt; li</code></td>
                     <td></td>
-                    <td>หนึ่งขั้น</td>
+                    <td>One step</td>
                   </tr>
                   <tr>
                     <td><code>li &gt; header</code></td>
@@ -1346,62 +1300,63 @@
                       <code>span</code>, <code>strong</code>, <code>small</code>
                     </td>
                     <td>
-                      หัวขั้น: <code>span</code> ชื่อขั้น (สีเทา),
-                      <code>strong</code> จำนวน session,
-                      <code>small</code> จำนวนที่ออก
+                      Step header: <code>span</code> step name (grey),
+                      <code>strong</code> session count,
+                      <code>small</code> drop-off count
                     </td>
                   </tr>
                   <tr>
                     <td><code>li &gt; ul &gt; li</code></td>
                     <td></td>
-                    <td>หนึ่งหน้าในขั้น</td>
+                    <td>One page in the step</td>
                   </tr>
                   <tr>
                     <td><code>button[aria-pressed]</code></td>
                     <td><code>true</code>, <code>false</code></td>
                     <td>
-                      หน้า (หรือผลลัพธ์) เลือกได้ <code>true</code> =
-                      หน้าที่เลือกในขั้นนี้ (กรอบเข้ม) JS ตั้งให้เมื่อคลิก ใส่
-                      <code>value</code> เพื่อส่งไปกับ <code>tsunami:pick</code>
+                      A pickable page (or outcome). <code>true</code> = the
+                      picked page in this step (dark border). JS sets it on
+                      click. Add a <code>value</code> to send with
+                      <code>tsunami:pick</code>
                     </td>
                   </tr>
                   <tr>
                     <td><code>button &gt; span</code></td>
                     <td></td>
-                    <td>ชื่อหน้า ตัดด้วย … เมื่อยาวเกิน</td>
+                    <td>Page name, truncated with … when too long</td>
                   </tr>
                   <tr>
                     <td><code>button &gt; small</code></td>
                     <td></td>
                     <td>
-                      path ของหน้า (ตัวพิมพ์ mono สีเทา) เมื่อมี small
-                      ในแบบคอลัมน์ ตัวเลขจะเรียงใต้ชื่อ
+                      Page path (grey monospace). With a small in column mode,
+                      the numbers go under the name
                     </td>
                   </tr>
                   <tr>
                     <td><code>button &gt; data</code></td>
                     <td><code>value</code></td>
                     <td>
-                      ตัวเลข: อันแรกคือ session (ชิดขวาบรรทัดชื่อ)
-                      อันที่สองคือรายได้ · RPV (สีเทา)
+                      Numbers: the first is sessions (right of the name), the
+                      second is revenue · RPV (grey)
                     </td>
                   </tr>
                   <tr>
                     <td><code>li[data-outcomes]</code></td>
-                    <td>มี / ไม่มี</td>
+                    <td>Present / absent</td>
                     <td>
-                      หน้าที่มีผลลัพธ์ เช่น upsell: <code>span</code> ชื่อ,
-                      <code>small</code> path แล้ว
-                      <code>&lt;div&gt;</code> ของปุ่มผลลัพธ์ (ปฏิเสธ / ยอมรับ +
-                      CVR) เส้นต่อเข้าที่แถวนี้
+                      A page with outcomes, such as an upsell:
+                      <code>span</code> name, <code>small</code> path, then a
+                      <code>&lt;div&gt;</code> of outcome buttons (Declined /
+                      Accepted + CVR). Lines join at this row
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; svg</code></td>
                     <td></td>
                     <td>
-                      เส้นเชื่อมหน้าที่เลือก JS สร้างและวาดให้เอง
-                      (<code>aria-hidden</code>) ไม่ต้องเขียนเอง
+                      Lines linking the picked pages. JS creates and draws it
+                      (<code>aria-hidden</code>). Do not write it yourself
                     </td>
                   </tr>
                 </tbody>
