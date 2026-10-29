@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,18 +343,18 @@
             <div>
               <h1>Input</h1>
               <p>
-                ช่องกรอกข้อมูล input, file และ textarea ใช้
-                <code>.input</code> เมื่อวางเดี่ยว หรือวางใน
-                <code>.field</code> ได้เลยโดยไม่ต้องใส่ class
+                Text, file and textarea inputs. Use <code>.input</code> on its
+                own, or drop the input into a <code>.field</code> with no class.
               </p>
             </div>
           </header>
           <section>
-            <h2>ช่องเดี่ยว Standalone input</h2>
+            <h2>Standalone input</h2>
             <p>
-              นอก <code>.field</code> ใส่ <code>class="input"</code> และ
-              <code>aria-label</code> เพราะไม่มีป้ายให้เห็น ใน
-              <code>.field</code> ช่องจะได้หน้าตาเดียวกันโดยไม่ต้องใส่ class
+              Outside a <code>.field</code>, add <code>class="input"</code> and
+              an <code>aria-label</code>, since there is no visible label.
+              Inside a <code>.field</code> the input gets the same look with no
+              class.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -393,11 +389,11 @@
                     <input
                       class="input"
                       type="email"
-                      placeholder="อีเมลลูกค้า Customer email"
-                      aria-label="อีเมลลูกค้า Customer email"
+                      placeholder="Customer email"
+                      aria-label="Customer email"
                     />
                     <div class="field">
-                      <label for="in-sku">รหัสสินค้า SKU</label>
+                      <label for="in-sku">SKU</label>
                       <input id="in-sku" type="text" value="TS-001-BLK" />
                     </div>
                   </div>
@@ -411,9 +407,9 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
-  &lt;input class="input" type="email" placeholder="อีเมลลูกค้า Customer email" aria-label="อีเมลลูกค้า Customer email" /&gt;
+  &lt;input class="input" type="email" placeholder="Customer email" aria-label="Customer email" /&gt;
   &lt;div class="field"&gt;
-    &lt;label for="in-sku"&gt;รหัสสินค้า SKU&lt;/label&gt;
+    &lt;label for="in-sku"&gt;SKU&lt;/label&gt;
     &lt;input id="in-sku" type="text" value="TS-001-BLK" /&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -421,10 +417,10 @@
             </div>
           </section>
           <section>
-            <h2>ขนาด sm, default และ lg Sizes</h2>
+            <h2>Sizes: sm, default and lg</h2>
             <p>
-              <code>data-size</code> ใช้ได้ทั้งบน <code>.input</code> และช่องใน
-              <code>.field</code>
+              <code>data-size</code> works on <code>.input</code> and on inputs
+              inside a <code>.field</code>.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -460,20 +456,20 @@
                       class="input"
                       data-size="sm"
                       type="text"
-                      placeholder="เล็ก Small"
+                      placeholder="Small"
                       aria-label="Small input"
                     />
                     <input
                       class="input"
                       type="text"
-                      placeholder="ปกติ Default"
+                      placeholder="Default"
                       aria-label="Default input"
                     />
                     <input
                       class="input"
                       data-size="lg"
                       type="text"
-                      placeholder="ใหญ่ Large"
+                      placeholder="Large"
                       aria-label="Large input"
                     />
                   </div>
@@ -487,21 +483,18 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
-  &lt;input class="input" data-size="sm" type="text" placeholder="เล็ก Small" aria-label="Small input" /&gt;
-  &lt;input class="input" type="text" placeholder="ปกติ Default" aria-label="Default input" /&gt;
-  &lt;input class="input" data-size="lg" type="text" placeholder="ใหญ่ Large" aria-label="Large input" /&gt;
+  &lt;input class="input" data-size="sm" type="text" placeholder="Small" aria-label="Small input" /&gt;
+  &lt;input class="input" type="text" placeholder="Default" aria-label="Default input" /&gt;
+  &lt;input class="input" data-size="lg" type="text" placeholder="Large" aria-label="Large input" /&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              แต่ละขนาดคู่กับปุ่มขนาดเดียวกัน Each size beside the button of the
-              same size
-            </h2>
+            <h2>Each size beside a button of the same size</h2>
             <p>
-              ความสูงของ input เท่ากับ <code>.btn</code> ขนาดเดียวกัน (26, 32,
-              40px) จึงวางคู่กันในแถวได้พอดี
+              An input is as tall as a <code>.btn</code> of the same size (26,
+              32, 40px), so they line up in a row.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -538,35 +531,35 @@
                         class="input"
                         data-size="sm"
                         type="text"
-                        placeholder="โค้ดส่วนลด Discount code"
+                        placeholder="Discount code"
                         aria-label="Discount code"
                         style="width: 14rem"
                       />
                       <button type="button" class="btn" data-size="sm">
-                        ใช้โค้ด Apply
+                        Apply
                       </button>
                     </div>
                     <div class="stack" data-direction="row" data-gap="sm">
                       <input
                         class="input"
                         type="text"
-                        placeholder="โค้ดส่วนลด Discount code"
+                        placeholder="Discount code"
                         aria-label="Discount code"
                         style="width: 14rem"
                       />
-                      <button type="button" class="btn">ใช้โค้ด Apply</button>
+                      <button type="button" class="btn">Apply</button>
                     </div>
                     <div class="stack" data-direction="row" data-gap="sm">
                       <input
                         class="input"
                         data-size="lg"
                         type="text"
-                        placeholder="โค้ดส่วนลด Discount code"
+                        placeholder="Discount code"
                         aria-label="Discount code"
                         style="width: 14rem"
                       />
                       <button type="button" class="btn" data-size="lg">
-                        ใช้โค้ด Apply
+                        Apply
                       </button>
                     </div>
                   </div>
@@ -581,23 +574,23 @@
               >
                 <pre><code>&lt;div class="stack"&gt;
   &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-    &lt;input class="input" data-size="sm" type="text" placeholder="โค้ดส่วนลด Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
-    &lt;button type="button" class="btn" data-size="sm"&gt;ใช้โค้ด Apply&lt;/button&gt;
+    &lt;input class="input" data-size="sm" type="text" placeholder="Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;Apply&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-    &lt;input class="input" type="text" placeholder="โค้ดส่วนลด Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
-    &lt;button type="button" class="btn"&gt;ใช้โค้ด Apply&lt;/button&gt;
+    &lt;input class="input" type="text" placeholder="Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn"&gt;Apply&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-    &lt;input class="input" data-size="lg" type="text" placeholder="โค้ดส่วนลด Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
-    &lt;button type="button" class="btn" data-size="lg"&gt;ใช้โค้ด Apply&lt;/button&gt;
+    &lt;input class="input" data-size="lg" type="text" placeholder="Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn" data-size="lg"&gt;Apply&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ปิดใช้งาน Disabled</h2>
+            <h2>Disabled</h2>
 
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -632,8 +625,8 @@
                     <input
                       class="input"
                       type="email"
-                      value="somjai@example.com"
-                      aria-label="อีเมล Email"
+                      value="emma.wilson@example.com"
+                      aria-label="Email"
                       disabled
                     />
                   </div>
@@ -647,16 +640,16 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
-  &lt;input class="input" type="email" value="somjai@example.com" aria-label="อีเมล Email" disabled /&gt;
+  &lt;input class="input" type="email" value="emma.wilson@example.com" aria-label="Email" disabled /&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>เลือกไฟล์ File</h2>
+            <h2>File</h2>
             <p>
-              ปุ่มเลือกไฟล์ของเบราว์เซอร์ถูกวาดชิดในกรอบ ใช้
-              <code>accept</code> และ <code>multiple</code> ตามปกติ
+              The browser's file button sits flush inside the border. Use
+              <code>accept</code> and <code>multiple</code> as usual.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -692,19 +685,17 @@
                       class="input"
                       type="file"
                       accept="image/*"
-                      aria-label="อัปโหลดรูปสินค้า Upload product image"
+                      aria-label="Upload product image"
                     />
                     <div class="field">
-                      <label for="in-csv"
-                        >นำเข้าสินค้า Import products (CSV)</label
-                      >
+                      <label for="in-csv">Import products (CSV)</label>
                       <input
                         id="in-csv"
                         type="file"
                         accept=".csv"
                         aria-describedby="in-csv-hint"
                       />
-                      <small id="in-csv-hint">ไม่เกิน 5 MB Up to 5 MB</small>
+                      <small id="in-csv-hint">Up to 5 MB</small>
                     </div>
                   </div>
                 </div>
@@ -717,25 +708,22 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
-  &lt;input class="input" type="file" accept="image/*" aria-label="อัปโหลดรูปสินค้า Upload product image" /&gt;
+  &lt;input class="input" type="file" accept="image/*" aria-label="Upload product image" /&gt;
   &lt;div class="field"&gt;
-    &lt;label for="in-csv"&gt;นำเข้าสินค้า Import products (CSV)&lt;/label&gt;
+    &lt;label for="in-csv"&gt;Import products (CSV)&lt;/label&gt;
     &lt;input id="in-csv" type="file" accept=".csv" aria-describedby="in-csv-hint" /&gt;
-    &lt;small id="in-csv-hint"&gt;ไม่เกิน 5 MB Up to 5 MB&lt;/small&gt;
+    &lt;small id="in-csv-hint"&gt;Up to 5 MB&lt;/small&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              มีไอคอนและข้อความข้างช่อง With an icon and text beside the field
-            </h2>
+            <h2>With an icon and text beside the input</h2>
             <p>
-              ใช้ <code>.input-group</code>:
-              <code>&lt;span&gt;</code> ที่อยู่ก่อนหรือหลัง input
-              จะอยู่ด้านหน้าหรือท้ายตามลำดับใน HTML ดูเพิ่มที่หน้า
-              <a href="input-group">Input group</a>
+              Use <code>.input-group</code>. A <code>&lt;span&gt;</code> before
+              or after the input sits at the start or end, following the HTML
+              order. See <a href="input-group">Input group</a>.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -773,10 +761,10 @@
                       ></span>
                       <input
                         type="search"
-                        placeholder="ค้นหาคำสั่งซื้อ Search orders"
-                        aria-label="ค้นหาคำสั่งซื้อ Search orders"
+                        placeholder="Search orders"
+                        aria-label="Search orders"
                       />
-                      <span>12 รายการ results</span>
+                      <span>12 results</span>
                     </div>
                   </div>
                 </div>
@@ -791,21 +779,18 @@
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
   &lt;div class="input-group"&gt;
     &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-    &lt;input type="search" placeholder="ค้นหาคำสั่งซื้อ Search orders" aria-label="ค้นหาคำสั่งซื้อ Search orders" /&gt;
-    &lt;span&gt;12 รายการ results&lt;/span&gt;
+    &lt;input type="search" placeholder="Search orders" aria-label="Search orders" /&gt;
+    &lt;span&gt;12 results&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              Ghost สำหรับช่องค้นหาในหัวการ์ด Ghost, for a search field in a
-              card header
-            </h2>
+            <h2>Ghost, for a search field in a card header</h2>
             <p>
-              <code>data-variant="ghost"</code> ไม่มีกรอบและพื้น
-              จึงกลืนไปกับหัวการ์ด กรอบสี accent ขึ้นเมื่อโฟกัส
+              <code>data-variant="ghost"</code> has no border or background, so
+              it blends into the card header. An accent border shows on focus.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -844,26 +829,26 @@
                         ></span>
                         <input
                           type="search"
-                          placeholder="ค้นหาจากชื่อสินค้า Search by product title"
-                          aria-label="ค้นหาจากชื่อสินค้า Search by product title"
+                          placeholder="Search by product title"
+                          aria-label="Search by product title"
                         />
                       </div>
                     </header>
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col">สินค้า Product</th>
-                          <th scope="col">ราคา Price</th>
+                          <th scope="col">Product</th>
+                          <th scope="col">Price</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>เสื้อยืด T-shirt</td>
-                          <td>฿390</td>
+                          <td>T-shirt</td>
+                          <td>$24.00</td>
                         </tr>
                         <tr>
-                          <td>กระเป๋าผ้า Tote bag</td>
-                          <td>฿250</td>
+                          <td>Tote bag</td>
+                          <td>$18.00</td>
                         </tr>
                       </tbody>
                     </table>
@@ -881,16 +866,16 @@
   &lt;header&gt;
     &lt;div class="input-group" data-variant="ghost"&gt;
       &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-      &lt;input type="search" placeholder="ค้นหาจากชื่อสินค้า Search by product title" aria-label="ค้นหาจากชื่อสินค้า Search by product title" /&gt;
+      &lt;input type="search" placeholder="Search by product title" aria-label="Search by product title" /&gt;
     &lt;/div&gt;
   &lt;/header&gt;
   &lt;table class="table"&gt;
     &lt;thead&gt;
-      &lt;tr&gt;&lt;th scope="col"&gt;สินค้า Product&lt;/th&gt;&lt;th scope="col"&gt;ราคา Price&lt;/th&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope="col"&gt;Product&lt;/th&gt;&lt;th scope="col"&gt;Price&lt;/th&gt;&lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;td&gt;เสื้อยืด T-shirt&lt;/td&gt;&lt;td&gt;฿390&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;td&gt;กระเป๋าผ้า Tote bag&lt;/td&gt;&lt;td&gt;฿250&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;T-shirt&lt;/td&gt;&lt;td&gt;$24.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Tote bag&lt;/td&gt;&lt;td&gt;$18.00&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
@@ -898,10 +883,11 @@
             </div>
           </section>
           <section>
-            <h2>ช่องข้อความหลายบรรทัด Textarea</h2>
+            <h2>Textarea</h2>
             <p>
-              <code>&lt;textarea class="input"&gt;</code> สูงอย่างน้อย 5rem
-              ผู้ใช้ลากขยายแนวตั้งได้ ใช้ <code>rows</code> กำหนดความสูงเริ่มต้น
+              <code>&lt;textarea class="input"&gt;</code> is at least 5rem tall
+              and can be resized vertically. Set the starting height with
+              <code>rows</code>.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -935,8 +921,8 @@
                   <div class="stack docs-narrow">
                     <textarea
                       class="input"
-                      placeholder="พิมพ์ข้อความถึงลูกค้า Type your message here"
-                      aria-label="ข้อความ Message"
+                      placeholder="Type your message here"
+                      aria-label="Message"
                     ></textarea>
                   </div>
                 </div>
@@ -949,7 +935,7 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
-  &lt;textarea class="input" placeholder="พิมพ์ข้อความถึงลูกค้า Type your message here" aria-label="ข้อความ Message"&gt;&lt;/textarea&gt;
+  &lt;textarea class="input" placeholder="Type your message here" aria-label="Message"&gt;&lt;/textarea&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
@@ -972,57 +958,60 @@
                     </td>
                     <td></td>
                     <td>
-                      บน input / select / textarea ที่อยู่นอก
-                      <code>.field</code> ช่องใน
-                      <code>.field</code> ได้หน้าตาเดียวกันโดยไม่ต้องใส่
+                      On an input, select or textarea outside a
+                      <code>.field</code>. Inputs inside a
+                      <code>.field</code> get the same look without it.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
                     <td>
-                      <code>sm</code>, <code>lg</code> (ไม่มี = default 32px)
+                      <code>sm</code>, <code>lg</code> (none = default 32px)
                     </td>
                     <td>
-                      ความสูง 26 / 32 / 40px เท่ากับ
-                      <code>.btn</code> ขนาดเดียวกัน
+                      Height 26 / 32 / 40px, matching a
+                      <code>.btn</code> of the same size
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-variant</code></td>
-                    <td><code>ghost</code> (ไม่มี = มีกรอบ)</td>
-                    <td>ไม่มีกรอบและพื้น ขอบ accent เมื่อโฟกัส</td>
+                    <td><code>ghost</code> (none = bordered)</td>
+                    <td>No border or background. Accent border on focus</td>
                   </tr>
                   <tr>
                     <td><code>type="file"</code></td>
                     <td></td>
-                    <td>ปุ่มเลือกไฟล์ชิดซ้ายในกรอบ</td>
+                    <td>File button flush left inside the border</td>
                   </tr>
                   <tr>
                     <td>
                       <code>textarea.<wbr />input</code>
                     </td>
                     <td></td>
-                    <td>สูงอย่างน้อย 5rem ลากขยายแนวตั้ง</td>
+                    <td>At least 5rem tall, resizes vertically</td>
                   </tr>
                   <tr>
                     <td><code>placeholder</code></td>
                     <td></td>
-                    <td>ข้อความตัวอย่างสีเทา ไม่ใช้แทน label</td>
+                    <td>Muted sample text. Not a replacement for a label</td>
                   </tr>
                   <tr>
                     <td><code>aria-label</code></td>
                     <td></td>
-                    <td>จำเป็นเมื่อไม่มี <code>&lt;label&gt;</code> ให้เห็น</td>
+                    <td>
+                      Required when there is no visible
+                      <code>&lt;label&gt;</code>
+                    </td>
                   </tr>
                   <tr>
                     <td><code>aria-invalid</code></td>
                     <td><code>true</code></td>
-                    <td>ขอบสี danger</td>
+                    <td>Danger border</td>
                   </tr>
                   <tr>
                     <td><code>disabled</code></td>
                     <td></td>
-                    <td>พื้น subtle ตัวอักษรเทา เคอร์เซอร์ not-allowed</td>
+                    <td>Subtle background, muted text, cursor not-allowed</td>
                   </tr>
                 </tbody>
               </table>

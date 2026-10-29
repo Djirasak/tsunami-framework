@@ -2,227 +2,227 @@
   "results": [
     {
       "id": "ar",
-      "text": "Argentina อาร์เจนตินา"
+      "text": "Argentina"
     },
     {
       "id": "au",
-      "text": "Australia ออสเตรเลีย"
+      "text": "Australia"
     },
     {
       "id": "at",
-      "text": "Austria ออสเตรีย"
+      "text": "Austria"
     },
     {
       "id": "bd",
-      "text": "Bangladesh บังกลาเทศ"
+      "text": "Bangladesh"
     },
     {
       "id": "be",
-      "text": "Belgium เบลเยียม"
+      "text": "Belgium"
     },
     {
       "id": "br",
-      "text": "Brazil บราซิล"
+      "text": "Brazil"
     },
     {
       "id": "bn",
-      "text": "Brunei บรูไน"
+      "text": "Brunei"
     },
     {
       "id": "kh",
-      "text": "Cambodia กัมพูชา"
+      "text": "Cambodia"
     },
     {
       "id": "ca",
-      "text": "Canada แคนาดา"
+      "text": "Canada"
     },
     {
       "id": "cl",
-      "text": "Chile ชิลี"
+      "text": "Chile"
     },
     {
       "id": "cn",
-      "text": "China จีน"
+      "text": "China"
     },
     {
       "id": "co",
-      "text": "Colombia โคลอมเบีย"
+      "text": "Colombia"
     },
     {
       "id": "cz",
-      "text": "Czechia เช็กเกีย"
+      "text": "Czechia"
     },
     {
       "id": "dk",
-      "text": "Denmark เดนมาร์ก"
+      "text": "Denmark"
     },
     {
       "id": "eg",
-      "text": "Egypt อียิปต์"
+      "text": "Egypt"
     },
     {
       "id": "fi",
-      "text": "Finland ฟินแลนด์"
+      "text": "Finland"
     },
     {
       "id": "fr",
-      "text": "France ฝรั่งเศส"
+      "text": "France"
     },
     {
       "id": "de",
-      "text": "Germany เยอรมนี"
+      "text": "Germany"
     },
     {
       "id": "gr",
-      "text": "Greece กรีซ"
+      "text": "Greece"
     },
     {
       "id": "hk",
-      "text": "Hong Kong ฮ่องกง"
+      "text": "Hong Kong"
     },
     {
       "id": "hu",
-      "text": "Hungary ฮังการี"
+      "text": "Hungary"
     },
     {
       "id": "in",
-      "text": "India อินเดีย"
+      "text": "India"
     },
     {
       "id": "id",
-      "text": "Indonesia อินโดนีเซีย"
+      "text": "Indonesia"
     },
     {
       "id": "ie",
-      "text": "Ireland ไอร์แลนด์"
+      "text": "Ireland"
     },
     {
       "id": "il",
-      "text": "Israel อิสราเอล"
+      "text": "Israel"
     },
     {
       "id": "it",
-      "text": "Italy อิตาลี"
+      "text": "Italy"
     },
     {
       "id": "jp",
-      "text": "Japan ญี่ปุ่น"
+      "text": "Japan"
     },
     {
       "id": "la",
-      "text": "Laos ลาว"
+      "text": "Laos"
     },
     {
       "id": "my",
-      "text": "Malaysia มาเลเซีย"
+      "text": "Malaysia"
     },
     {
       "id": "mx",
-      "text": "Mexico เม็กซิโก"
+      "text": "Mexico"
     },
     {
       "id": "mm",
-      "text": "Myanmar เมียนมา"
+      "text": "Myanmar"
     },
     {
       "id": "nl",
-      "text": "Netherlands เนเธอร์แลนด์"
+      "text": "Netherlands"
     },
     {
       "id": "nz",
-      "text": "New Zealand นิวซีแลนด์"
+      "text": "New Zealand"
     },
     {
       "id": "no",
-      "text": "Norway นอร์เวย์"
+      "text": "Norway"
     },
     {
       "id": "pk",
-      "text": "Pakistan ปากีสถาน"
+      "text": "Pakistan"
     },
     {
       "id": "pe",
-      "text": "Peru เปรู"
+      "text": "Peru"
     },
     {
       "id": "ph",
-      "text": "Philippines ฟิลิปปินส์"
+      "text": "Philippines"
     },
     {
       "id": "pl",
-      "text": "Poland โปแลนด์"
+      "text": "Poland"
     },
     {
       "id": "pt",
-      "text": "Portugal โปรตุเกส"
+      "text": "Portugal"
     },
     {
       "id": "qa",
-      "text": "Qatar กาตาร์"
+      "text": "Qatar"
     },
     {
       "id": "ro",
-      "text": "Romania โรมาเนีย"
+      "text": "Romania"
     },
     {
       "id": "sa",
-      "text": "Saudi Arabia ซาอุดีอาระเบีย"
+      "text": "Saudi Arabia"
     },
     {
       "id": "sg",
-      "text": "Singapore สิงคโปร์"
+      "text": "Singapore"
     },
     {
       "id": "za",
-      "text": "South Africa แอฟริกาใต้"
+      "text": "South Africa"
     },
     {
       "id": "kr",
-      "text": "South Korea เกาหลีใต้"
+      "text": "South Korea"
     },
     {
       "id": "es",
-      "text": "Spain สเปน"
+      "text": "Spain"
     },
     {
       "id": "lk",
-      "text": "Sri Lanka ศรีลังกา"
+      "text": "Sri Lanka"
     },
     {
       "id": "se",
-      "text": "Sweden สวีเดน"
+      "text": "Sweden"
     },
     {
       "id": "ch",
-      "text": "Switzerland สวิตเซอร์แลนด์"
+      "text": "Switzerland"
     },
     {
       "id": "tw",
-      "text": "Taiwan ไต้หวัน"
+      "text": "Taiwan"
     },
     {
       "id": "th",
-      "text": "Thailand ไทย"
+      "text": "Thailand"
     },
     {
       "id": "tr",
-      "text": "Türkiye ตุรกี"
+      "text": "Türkiye"
     },
     {
       "id": "ae",
-      "text": "United Arab Emirates สหรัฐอาหรับเอมิเรตส์"
+      "text": "United Arab Emirates"
     },
     {
       "id": "gb",
-      "text": "United Kingdom สหราชอาณาจักร"
+      "text": "United Kingdom"
     },
     {
       "id": "us",
-      "text": "United States สหรัฐอเมริกา"
+      "text": "United States"
     },
     {
       "id": "vn",
-      "text": "Vietnam เวียดนาม"
+      "text": "Vietnam"
     }
   ],
   "pagination": {

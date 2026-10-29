@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,17 +343,17 @@
             <div>
               <h1>Input group</h1>
               <p>
-                กล่องเดียวที่มี input พร้อมข้อความหรือไอคอนด้านหน้าและท้าย
-                หน้าตาเดียวกับ <a href="input">Input</a>
+                One box holding an input with text or icons at the start and
+                end. It looks the same as <a href="input">Input</a>.
               </p>
             </div>
           </header>
           <section>
-            <h2>ไอคอนและจำนวนผลลัพธ์ Icon and a result count</h2>
+            <h2>Icon and a result count</h2>
             <p>
-              <code>&lt;span&gt;</code> ก่อน input อยู่ด้านหน้า หลัง input
-              อยู่ท้าย ไอคอนใส่ <code>aria-hidden</code> และ input ต้องมี
-              <code>aria-label</code> หรือ label
+              A <code>&lt;span&gt;</code> before the input sits at the start;
+              one after it sits at the end. Give icons <code>aria-hidden</code>.
+              The input needs an <code>aria-label</code> or a label.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -395,10 +391,10 @@
                       ></span>
                       <input
                         type="search"
-                        placeholder="ค้นหาคำสั่งซื้อ Search orders"
-                        aria-label="ค้นหาคำสั่งซื้อ Search orders"
+                        placeholder="Search orders"
+                        aria-label="Search orders"
                       />
-                      <span>12 รายการ</span>
+                      <span>12 results</span>
                     </div>
                   </div>
                 </div>
@@ -413,18 +409,18 @@
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
   &lt;div class="input-group"&gt;
     &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-    &lt;input type="search" placeholder="ค้นหาคำสั่งซื้อ Search orders" aria-label="ค้นหาคำสั่งซื้อ Search orders" /&gt;
-    &lt;span&gt;12 รายการ&lt;/span&gt;
+    &lt;input type="search" placeholder="Search orders" aria-label="Search orders" /&gt;
+    &lt;span&gt;12 results&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>หน่วยหน้าและท้าย Prefix and suffix</h2>
+            <h2>Prefix and suffix</h2>
             <p>
-              เหมาะกับราคา น้ำหนัก เปอร์เซ็นต์ หรือโดเมน วางใน
-              <code>.field</code> พร้อม label ได้
+              Good for prices, weights, percentages or domains. It works inside
+              a <code>.field</code> with a label.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -457,20 +453,20 @@
                 <div class="docs-preview">
                   <div class="stack docs-narrow">
                     <div class="field">
-                      <label for="ig-price">ราคา Price</label>
+                      <label for="ig-price">Price</label>
                       <div class="input-group">
-                        <span>฿</span>
+                        <span>$</span>
                         <input
                           id="ig-price"
                           type="text"
                           inputmode="decimal"
-                          value="1,250.00"
+                          value="129.00"
                         />
-                        <span>THB</span>
+                        <span>USD</span>
                       </div>
                     </div>
                     <div class="field">
-                      <label for="ig-weight">น้ำหนัก Weight</label>
+                      <label for="ig-weight">Weight</label>
                       <div class="input-group">
                         <input
                           id="ig-weight"
@@ -483,10 +479,10 @@
                       </div>
                     </div>
                     <div class="field">
-                      <label for="ig-domain">โดเมนร้าน Store domain</label>
+                      <label for="ig-domain">Store domain</label>
                       <div class="input-group">
                         <span>https://</span>
-                        <input id="ig-domain" type="text" value="somjai" />
+                        <input id="ig-domain" type="text" value="emmawilson" />
                         <span>.tsunami.shop</span>
                       </div>
                     </div>
@@ -502,25 +498,25 @@
               >
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
   &lt;div class="field"&gt;
-    &lt;label for="ig-price"&gt;ราคา Price&lt;/label&gt;
+    &lt;label for="ig-price"&gt;Price&lt;/label&gt;
     &lt;div class="input-group"&gt;
-      &lt;span&gt;฿&lt;/span&gt;
-      &lt;input id="ig-price" type="text" inputmode="decimal" value="1,250.00" /&gt;
-      &lt;span&gt;THB&lt;/span&gt;
+      &lt;span&gt;$&lt;/span&gt;
+      &lt;input id="ig-price" type="text" inputmode="decimal" value="129.00" /&gt;
+      &lt;span&gt;USD&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
-    &lt;label for="ig-weight"&gt;น้ำหนัก Weight&lt;/label&gt;
+    &lt;label for="ig-weight"&gt;Weight&lt;/label&gt;
     &lt;div class="input-group"&gt;
       &lt;input id="ig-weight" type="number" min="0" step="0.1" value="0.5" /&gt;
       &lt;span&gt;kg&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
-    &lt;label for="ig-domain"&gt;โดเมนร้าน Store domain&lt;/label&gt;
+    &lt;label for="ig-domain"&gt;Store domain&lt;/label&gt;
     &lt;div class="input-group"&gt;
       &lt;span&gt;https://&lt;/span&gt;
-      &lt;input id="ig-domain" type="text" value="somjai" /&gt;
+      &lt;input id="ig-domain" type="text" value="emmawilson" /&gt;
       &lt;span&gt;.tsunami.shop&lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -529,10 +525,10 @@
             </div>
           </section>
           <section>
-            <h2>ขนาด Sizes</h2>
+            <h2>Sizes</h2>
             <p>
-              <code>data-size</code> สูงเท่ากับ <code>.input</code> และ
-              <code>.btn</code> ขนาดเดียวกัน
+              Each <code>data-size</code> matches the height of an
+              <code>.input</code> and a <code>.btn</code> of the same size.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -570,7 +566,7 @@
                       ></span>
                       <input
                         type="text"
-                        placeholder="แท็ก Tag"
+                        placeholder="Tag"
                         aria-label="Tag (small)"
                       />
                     </div>
@@ -580,7 +576,7 @@
                       ></span>
                       <input
                         type="text"
-                        placeholder="แท็ก Tag"
+                        placeholder="Tag"
                         aria-label="Tag (default)"
                       />
                     </div>
@@ -590,7 +586,7 @@
                       ></span>
                       <input
                         type="text"
-                        placeholder="แท็ก Tag"
+                        placeholder="Tag"
                         aria-label="Tag (large)"
                       />
                     </div>
@@ -607,22 +603,22 @@
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
   &lt;div class="input-group" data-size="sm"&gt;
     &lt;span&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-    &lt;input type="text" placeholder="แท็ก Tag" aria-label="Tag (small)" /&gt;
+    &lt;input type="text" placeholder="Tag" aria-label="Tag (small)" /&gt;
   &lt;/div&gt;
   &lt;div class="input-group"&gt;
     &lt;span&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-    &lt;input type="text" placeholder="แท็ก Tag" aria-label="Tag (default)" /&gt;
+    &lt;input type="text" placeholder="Tag" aria-label="Tag (default)" /&gt;
   &lt;/div&gt;
   &lt;div class="input-group" data-size="lg"&gt;
     &lt;span&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-    &lt;input type="text" placeholder="แท็ก Tag" aria-label="Tag (large)" /&gt;
+    &lt;input type="text" placeholder="Tag" aria-label="Tag (large)" /&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>Ghost ในหัวการ์ด Ghost in a card header</h2>
+            <h2>Ghost in a card header</h2>
 
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -661,12 +657,12 @@
                         ></span>
                         <input
                           type="search"
-                          placeholder="ค้นหาลูกค้า Search customers"
-                          aria-label="ค้นหาลูกค้า Search customers"
+                          placeholder="Search customers"
+                          aria-label="Search customers"
                         />
                       </div>
                     </header>
-                    <div>สมใจ ใจดี · somjai@example.com</div>
+                    <div>Emma Wilson · emma.wilson@example.com</div>
                   </div>
                 </div>
               </div>
@@ -681,19 +677,19 @@
   &lt;header&gt;
     &lt;div class="input-group" data-variant="ghost"&gt;
       &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-      &lt;input type="search" placeholder="ค้นหาลูกค้า Search customers" aria-label="ค้นหาลูกค้า Search customers" /&gt;
+      &lt;input type="search" placeholder="Search customers" aria-label="Search customers" /&gt;
     &lt;/div&gt;
   &lt;/header&gt;
-  &lt;div&gt;สมใจ ใจดี · somjai@example.com&lt;/div&gt;
+  &lt;div&gt;Emma Wilson · emma.wilson@example.com&lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ไม่ถูกต้องและปิดใช้งาน Invalid and disabled</h2>
+            <h2>Invalid and disabled</h2>
             <p>
-              <code>aria-invalid</code> และ <code>disabled</code> ใส่ที่ input
-              กล่องจะเปลี่ยนตามเอง
+              Put <code>aria-invalid</code> and <code>disabled</code> on the
+              input. The box follows on its own.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -726,7 +722,7 @@
                 <div class="docs-preview">
                   <div class="stack docs-narrow">
                     <div class="field">
-                      <label for="ig-percent">ส่วนลด Discount</label>
+                      <label for="ig-percent">Discount</label>
                       <div class="input-group">
                         <input
                           id="ig-percent"
@@ -738,16 +734,14 @@
                         />
                         <span>%</span>
                       </div>
-                      <small id="ig-percent-error"
-                        >ไม่เกิน 100% Must be 100% or less</small
-                      >
+                      <small id="ig-percent-error">Must be 100% or less</small>
                     </div>
                     <div class="input-group">
-                      <span>฿</span>
+                      <span>$</span>
                       <input
                         type="text"
-                        value="390.00"
-                        aria-label="ราคาเดิม Original price"
+                        value="29.00"
+                        aria-label="Original price"
                         disabled
                       />
                     </div>
@@ -763,16 +757,16 @@
               >
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
   &lt;div class="field"&gt;
-    &lt;label for="ig-percent"&gt;ส่วนลด Discount&lt;/label&gt;
+    &lt;label for="ig-percent"&gt;Discount&lt;/label&gt;
     &lt;div class="input-group"&gt;
       &lt;input id="ig-percent" type="text" inputmode="numeric" value="120" aria-invalid="true" aria-describedby="ig-percent-error" /&gt;
       &lt;span&gt;%&lt;/span&gt;
     &lt;/div&gt;
-    &lt;small id="ig-percent-error"&gt;ไม่เกิน 100% Must be 100% or less&lt;/small&gt;
+    &lt;small id="ig-percent-error"&gt;Must be 100% or less&lt;/small&gt;
   &lt;/div&gt;
   &lt;div class="input-group"&gt;
-    &lt;span&gt;฿&lt;/span&gt;
-    &lt;input type="text" value="390.00" aria-label="ราคาเดิม Original price" disabled /&gt;
+    &lt;span&gt;$&lt;/span&gt;
+    &lt;input type="text" value="29.00" aria-label="Original price" disabled /&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
@@ -796,7 +790,7 @@
                     </td>
                     <td></td>
                     <td>
-                      กล่องที่มีกรอบ ห่อ input หนึ่งตัวกับ span ด้านหน้า/ท้าย
+                      A bordered box around one input and its start/end spans
                     </td>
                   </tr>
                   <tr>
@@ -805,8 +799,8 @@
                     </td>
                     <td></td>
                     <td>
-                      ช่องไม่มีกรอบ ขยายเต็มที่เหลือ ต้องมี label หรือ
-                      aria-label
+                      Borderless input that fills the remaining space. Needs a
+                      label or aria-label
                     </td>
                   </tr>
                   <tr>
@@ -815,36 +809,38 @@
                     </td>
                     <td></td>
                     <td>
-                      ข้อความหรือไอคอนสีเทา ตำแหน่งตามลำดับใน HTML (ก่อน input =
-                      หน้า, หลัง = ท้าย)
+                      Muted text or icon. Placed by HTML order (before the input
+                      = start, after = end)
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
                     <td>
-                      <code>sm</code>, <code>lg</code> (ไม่มี = default 32px)
+                      <code>sm</code>, <code>lg</code> (none = default 32px)
                     </td>
-                    <td>ความสูงเท่ากับ .input / .btn</td>
+                    <td>Same height as .input / .btn</td>
                   </tr>
                   <tr>
                     <td><code>data-variant</code></td>
-                    <td><code>ghost</code> (ไม่มี = มีกรอบ)</td>
-                    <td>ไม่มีกรอบและพื้น ใช้ในหัวการ์ดหรือ toolbar</td>
+                    <td><code>ghost</code> (none = bordered)</td>
+                    <td>
+                      No border or background. For card headers or toolbars
+                    </td>
                   </tr>
                   <tr>
                     <td><code>aria-invalid</code></td>
                     <td><code>true</code></td>
-                    <td>บน input: กรอบกล่องเป็นสี danger</td>
+                    <td>On the input: the box border turns danger</td>
                   </tr>
                   <tr>
                     <td><code>disabled</code></td>
                     <td></td>
-                    <td>บน input: พื้นกล่องเป็น subtle</td>
+                    <td>On the input: the box background turns subtle</td>
                   </tr>
                   <tr>
                     <td><code>aria-hidden</code></td>
                     <td><code>true</code></td>
-                    <td>บนไอคอนตกแต่งใน span</td>
+                    <td>On decorative icons in a span</td>
                   </tr>
                 </tbody>
               </table>

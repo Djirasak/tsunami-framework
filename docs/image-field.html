@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,20 +343,16 @@
             <div>
               <h1>Image field</h1>
               <p>
-                ช่องรูปภาพที่มีปุ่มเปลี่ยนและล้างรูป ฟอร์มเป็นตัวส่งไฟล์ An
-                image with change and clear buttons; the form sends the file.
+                An image with change and clear buttons. The form sends the file.
               </p>
             </div>
           </header>
           <section>
-            <h2>
-              ตัวอย่าง: ชี้ที่รูปเพื่อแสดงปุ่มเปลี่ยนและล้าง Preview: point at
-              the image for the change and clear buttons
-            </h2>
+            <h2>Point at the image to show the change and clear buttons</h2>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ตัวอย่าง: ชี้ที่รูปเพื่อแสดงปุ่มเปลี่ยนและล้าง Preview: point at the image for the change and clear buttons"
+                aria-label="Point at the image to show the change and clear buttons"
               >
                 <button
                   type="button"
@@ -390,12 +382,9 @@
               >
                 <div class="docs-preview">
                   <div class="field">
-                    <label for="if-icon">ไอคอนร้าน Store icon</label>
+                    <label for="if-icon">Store icon</label>
                     <div class="image-field">
-                      <img
-                        src="img/logo-acme.svg"
-                        alt="ไอคอนร้านปัจจุบัน Current store icon"
-                      />
+                      <img src="img/logo-acme.svg" alt="Current store icon" />
                       <i class="icon icon-image" aria-hidden="true"></i>
                       <button
                         type="button"
@@ -403,8 +392,8 @@
                         data-size="icon-xs"
                         id="if-icon"
                         data-change
-                        aria-label="เปลี่ยนไอคอนร้าน Change store icon"
-                        data-tooltip="เปลี่ยน Change"
+                        aria-label="Change store icon"
+                        data-tooltip="Change"
                       >
                         <i class="icon icon-pencil" aria-hidden="true"></i>
                       </button>
@@ -413,17 +402,14 @@
                         class="btn"
                         data-size="icon-xs"
                         data-clear
-                        aria-label="ล้างไอคอนร้าน Clear store icon"
-                        data-tooltip="ล้าง Clear"
+                        aria-label="Clear store icon"
+                        data-tooltip="Clear"
                       >
                         <i class="icon icon-x" aria-hidden="true"></i>
                       </button>
                       <input type="file" name="icon" accept="image/*" />
                     </div>
-                    <small
-                      >แสดงในแท็บเบราว์เซอร์และบุ๊กมาร์ก Shown in browser tabs
-                      and bookmarks.</small
-                    >
+                    <small>Shown in browser tabs and bookmarks.</small>
                   </div>
                 </div>
               </div>
@@ -435,28 +421,28 @@
                 hidden
               >
                 <pre><code>&lt;div class="field"&gt;
-  &lt;label for="if-icon"&gt;ไอคอนร้าน Store icon&lt;/label&gt;
+  &lt;label for="if-icon"&gt;Store icon&lt;/label&gt;
   &lt;div class="image-field"&gt;
-    &lt;img src="img/logo-acme.svg" alt="ไอคอนร้านปัจจุบัน Current store icon"&gt;
+    &lt;img src="img/logo-acme.svg" alt="Current store icon"&gt;
     &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;button type="button" class="btn" data-size="icon-xs" id="if-icon" data-change aria-label="เปลี่ยนไอคอนร้าน Change store icon" data-tooltip="เปลี่ยน Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="ล้างไอคอนร้าน Clear store icon" data-tooltip="ล้าง Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-icon" data-change aria-label="Change store icon" data-tooltip="Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="Clear store icon" data-tooltip="Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
     &lt;input type="file" name="icon" accept="image/*"&gt;
   &lt;/div&gt;
-  &lt;small&gt;แสดงในแท็บเบราว์เซอร์และบุ๊กมาร์ก Shown in browser tabs and bookmarks.&lt;/small&gt;
+  &lt;small&gt;Shown in browser tabs and bookmarks.&lt;/small&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>
-              data-fit=&quot;contain&quot; แสดงรูปทั้งรูปในกล่องกว้าง
-              สำหรับโลโก้ Shows the whole image in a wide box, for a logo
+              data-fit=&quot;contain&quot;: the whole image in a wide box, for a
+              logo
             </h2>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="data-fit=&amp;quot;contain&amp;quot; แสดงรูปทั้งรูปในกล่องกว้าง สำหรับโลโก้ Shows the whole image in a wide box, for a logo"
+                aria-label='data-fit="contain": the whole image in a wide box, for a logo'
               >
                 <button
                   type="button"
@@ -486,16 +472,13 @@
               >
                 <div class="docs-preview">
                   <div class="field">
-                    <label for="if-logo">โลโก้ร้าน Store logo</label>
+                    <label for="if-logo">Store logo</label>
                     <div
                       class="image-field"
                       data-fit="contain"
                       style="width: 18rem"
                     >
-                      <img
-                        src="img/logo-acme.svg"
-                        alt="โลโก้ร้านปัจจุบัน Current store logo"
-                      />
+                      <img src="img/logo-acme.svg" alt="Current store logo" />
                       <i class="icon icon-image" aria-hidden="true"></i>
                       <button
                         type="button"
@@ -503,8 +486,8 @@
                         data-size="icon-xs"
                         id="if-logo"
                         data-change
-                        aria-label="เปลี่ยนโลโก้ Change store logo"
-                        data-tooltip="เปลี่ยน Change"
+                        aria-label="Change store logo"
+                        data-tooltip="Change"
                       >
                         <i class="icon icon-pencil" aria-hidden="true"></i>
                       </button>
@@ -513,8 +496,8 @@
                         class="btn"
                         data-size="icon-xs"
                         data-clear
-                        aria-label="ล้างโลโก้ Clear store logo"
-                        data-tooltip="ล้าง Clear"
+                        aria-label="Clear store logo"
+                        data-tooltip="Clear"
                       >
                         <i class="icon icon-x" aria-hidden="true"></i>
                       </button>
@@ -531,12 +514,12 @@
                 hidden
               >
                 <pre><code>&lt;div class="field"&gt;
-  &lt;label for="if-logo"&gt;โลโก้ร้าน Store logo&lt;/label&gt;
+  &lt;label for="if-logo"&gt;Store logo&lt;/label&gt;
   &lt;div class="image-field" data-fit="contain" style="width: 18rem"&gt;
-    &lt;img src="img/logo-acme.svg" alt="โลโก้ร้านปัจจุบัน Current store logo"&gt;
+    &lt;img src="img/logo-acme.svg" alt="Current store logo"&gt;
     &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;button type="button" class="btn" data-size="icon-xs" id="if-logo" data-change aria-label="เปลี่ยนโลโก้ Change store logo" data-tooltip="เปลี่ยน Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="ล้างโลโก้ Clear store logo" data-tooltip="ล้าง Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-logo" data-change aria-label="Change store logo" data-tooltip="Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="Clear store logo" data-tooltip="Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
     &lt;input type="file" name="logo" accept="image/*"&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -545,13 +528,12 @@
           </section>
           <section>
             <h2>
-              data-empty: ยังไม่มีรูป จึงแสดงไอคอนและปุ่มเลือกเท่านั้น No image
-              yet: the icon and only the change button
+              data-empty: no image yet, so only the icon and change button
             </h2>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="data-empty: ยังไม่มีรูป จึงแสดงไอคอนและปุ่มเลือกเท่านั้น No image yet: the icon and only the change button"
+                aria-label="data-empty: no image yet, so only the icon and change button"
               >
                 <button
                   type="button"
@@ -581,9 +563,9 @@
               >
                 <div class="docs-preview">
                   <div class="field">
-                    <label for="if-empty">รูปหมวดหมู่ Category image</label>
+                    <label for="if-empty">Category image</label>
                     <div class="image-field" data-empty>
-                      <img alt="รูปหมวดหมู่ปัจจุบัน Current category image" />
+                      <img alt="Current category image" />
                       <i class="icon icon-image" aria-hidden="true"></i>
                       <button
                         type="button"
@@ -591,8 +573,8 @@
                         data-size="icon-xs"
                         id="if-empty"
                         data-change
-                        aria-label="เลือกรูปหมวดหมู่ Choose a category image"
-                        data-tooltip="เลือก Choose"
+                        aria-label="Choose a category image"
+                        data-tooltip="Choose"
                       >
                         <i class="icon icon-pencil" aria-hidden="true"></i>
                       </button>
@@ -601,8 +583,8 @@
                         class="btn"
                         data-size="icon-xs"
                         data-clear
-                        aria-label="ล้างรูปหมวดหมู่ Clear category image"
-                        data-tooltip="ล้าง Clear"
+                        aria-label="Clear category image"
+                        data-tooltip="Clear"
                       >
                         <i class="icon icon-x" aria-hidden="true"></i>
                       </button>
@@ -619,12 +601,12 @@
                 hidden
               >
                 <pre><code>&lt;div class="field"&gt;
-  &lt;label for="if-empty"&gt;รูปหมวดหมู่ Category image&lt;/label&gt;
+  &lt;label for="if-empty"&gt;Category image&lt;/label&gt;
   &lt;div class="image-field" data-empty&gt;
-    &lt;img alt="รูปหมวดหมู่ปัจจุบัน Current category image"&gt;
+    &lt;img alt="Current category image"&gt;
     &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;button type="button" class="btn" data-size="icon-xs" id="if-empty" data-change aria-label="เลือกรูปหมวดหมู่ Choose a category image" data-tooltip="เลือก Choose"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="ล้างรูปหมวดหมู่ Clear category image" data-tooltip="ล้าง Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-empty" data-change aria-label="Choose a category image" data-tooltip="Choose"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="Clear category image" data-tooltip="Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
     &lt;input type="file" name="image" accept="image/*"&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -633,14 +615,13 @@
           </section>
           <section>
             <h2>
-              checkbox ในช่องจะถูกติ๊กเมื่อล้างรูป และฟอร์มได้รับ change A
-              checkbox is checked while the image is cleared, and the form hears
-              change
+              A checkbox is ticked while the image is cleared, and the form
+              hears change
             </h2>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="checkbox ในช่องจะถูกติ๊กเมื่อล้างรูป และฟอร์มได้รับ change A checkbox is checked while the image is cleared, and the form hears change"
+                aria-label="A checkbox is ticked while the image is cleared, and the form hears change"
               >
                 <button
                   type="button"
@@ -671,12 +652,9 @@
                 <div class="docs-preview">
                   <form class="stack" data-gap="sm" id="if-form">
                     <div class="field">
-                      <label for="if-form-icon">ไอคอนร้าน Store icon</label>
+                      <label for="if-form-icon">Store icon</label>
                       <div class="image-field">
-                        <img
-                          src="img/logo-acme.svg"
-                          alt="ไอคอนร้านปัจจุบัน Current store icon"
-                        />
+                        <img src="img/logo-acme.svg" alt="Current store icon" />
                         <i class="icon icon-image" aria-hidden="true"></i>
                         <button
                           type="button"
@@ -684,8 +662,8 @@
                           data-size="icon-xs"
                           id="if-form-icon"
                           data-change
-                          aria-label="เปลี่ยนไอคอนร้าน Change store icon"
-                          data-tooltip="เปลี่ยน Change"
+                          aria-label="Change store icon"
+                          data-tooltip="Change"
                         >
                           <i class="icon icon-pencil" aria-hidden="true"></i>
                         </button>
@@ -694,8 +672,8 @@
                           class="btn"
                           data-size="icon-xs"
                           data-clear
-                          aria-label="ล้างไอคอนร้าน Clear store icon"
-                          data-tooltip="ล้าง Clear"
+                          aria-label="Clear store icon"
+                          data-tooltip="Clear"
                         >
                           <i class="icon icon-x" aria-hidden="true"></i>
                         </button>
@@ -703,9 +681,7 @@
                         <input type="checkbox" name="icon-clear" />
                       </div>
                     </div>
-                    <output id="if-result"
-                      >icon-clear: ไม่ได้ส่ง not sent</output
-                    >
+                    <output id="if-result">icon-clear: not sent</output>
                   </form>
                   <script>
                     document
@@ -715,7 +691,7 @@
                           "icon-clear",
                         );
                         document.getElementById("if-result").textContent =
-                          "icon-clear: " + (sent ?? "ไม่ได้ส่ง not sent");
+                          "icon-clear: " + (sent ?? "not sent");
                       });
                   </script>
                 </div>
@@ -729,22 +705,41 @@
               >
                 <pre><code>&lt;form class="stack" data-gap="sm" id="if-form"&gt;
   &lt;div class="field"&gt;
-    &lt;label for="if-form-icon"&gt;ไอคอนร้าน Store icon&lt;/label&gt;
+    &lt;label for="if-form-icon"&gt;Store icon&lt;/label&gt;
     &lt;div class="image-field"&gt;
-      &lt;img src="img/logo-acme.svg" alt="ไอคอนร้านปัจจุบัน Current store icon"&gt;
+      &lt;img src="img/logo-acme.svg" alt="Current store icon" /&gt;
       &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
-      &lt;button type="button" class="btn" data-size="icon-xs" id="if-form-icon" data-change aria-label="เปลี่ยนไอคอนร้าน Change store icon" data-tooltip="เปลี่ยน Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-      &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="ล้างไอคอนร้าน Clear store icon" data-tooltip="ล้าง Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-      &lt;input type="file" name="icon" accept="image/*"&gt;
-      &lt;input type="checkbox" name="icon-clear"&gt;
+      &lt;button
+        type="button"
+        class="btn"
+        data-size="icon-xs"
+        id="if-form-icon"
+        data-change
+        aria-label="Change store icon"
+        data-tooltip="Change"
+      &gt;
+        &lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;button
+        type="button"
+        class="btn"
+        data-size="icon-xs"
+        data-clear
+        aria-label="Clear store icon"
+        data-tooltip="Clear"
+      &gt;
+        &lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;input type="file" name="icon" accept="image/*" /&gt;
+      &lt;input type="checkbox" name="icon-clear" /&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;output id="if-result"&gt;icon-clear: ไม่ได้ส่ง not sent&lt;/output&gt;
+  &lt;output id="if-result"&gt;icon-clear: not sent&lt;/output&gt;
 &lt;/form&gt;
 &lt;script&gt;
   document.getElementById("if-form").addEventListener("change", (event) =&gt; {
     const sent = new FormData(event.currentTarget).get("icon-clear");
-    document.getElementById("if-result").textContent = "icon-clear: " + (sent ?? "ไม่ได้ส่ง not sent");
+    document.getElementById("if-result").textContent = "icon-clear: " + (sent ?? "not sent");
   });
 &lt;/script&gt;</code></pre>
               </div>
@@ -753,9 +748,8 @@
           <section>
             <h2>API</h2>
             <p>
-              ช่องนี้ไม่อัปโหลดเอง ฟอร์มที่มันอยู่เป็นตัวส่งไฟล์ อ่านไฟล์จาก
-              input ได้โดยตรง The field never uploads; the form sends the file.
-              Read it through the input.
+              The field never uploads. Its form sends the file. Read the file
+              from the input.
             </p>
             <div class="card scroll-area">
               <table class="table">
@@ -771,9 +765,9 @@
                     <td><code>input</code>, <code>change</code></td>
                     <td><code>input[type=file]</code>, bubbles</td>
                     <td>
-                      ส่งเมื่อเลือกไฟล์ (โดยเบราว์เซอร์) และเมื่อล้างรูป
-                      หลังล้าง <code>event.target.files</code> ว่าง Sent when a
-                      file is chosen and when the image is cleared.
+                      Fired when a file is chosen (by the browser) and when the
+                      image is cleared. After a clear,
+                      <code>event.target.files</code> is empty.
                     </td>
                   </tr>
                 </tbody>
@@ -791,17 +785,15 @@
                   <tr>
                     <td><code>Tab</code></td>
                     <td>
-                      ไปที่ปุ่มเปลี่ยน แล้วปุ่มล้าง
-                      ปุ่มทั้งสองแสดงเมื่อปุ่มใดปุ่มหนึ่งมี focus Moves to the
-                      change button, then the clear button.
+                      Moves to the change button, then the clear button. Both
+                      show while either has focus.
                     </td>
                   </tr>
                   <tr>
                     <td><code>Enter</code>, <code>Space</code></td>
                     <td>
-                      ปุ่มเปลี่ยนเปิดตัวเลือกไฟล์ ปุ่มล้างล้างรูปแล้วย้าย focus
-                      ไปปุ่มเปลี่ยน Change opens the picker; clear empties the
-                      field and focuses change.
+                      Change opens the file picker. Clear empties the field and
+                      moves focus to change.
                     </td>
                   </tr>
                 </tbody>
@@ -824,78 +816,69 @@
                     <td><code>.image-field</code></td>
                     <td></td>
                     <td>
-                      กล่องสี่เหลี่ยม 96px ล้อม img, ไอคอน, ปุ่ม และ input A
-                      96px square box.
+                      A 96px square box around the img, icon, buttons and
+                      inputs.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-fit</code></td>
                     <td><code>contain</code></td>
                     <td>
-                      แสดงรูปทั้งรูปในกล่อง 2:1 ค่าเริ่มต้น (ไม่ใส่)
-                      รูปเต็มกล่องและถูกครอป Default: the image fills the box
-                      and is cropped.
+                      Shows the whole image in a 2:1 box. By default (unset) the
+                      image fills the box and is cropped.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-empty</code></td>
                     <td>present</td>
                     <td>
-                      ตั้งโดยสคริปต์ขณะไม่มีรูป
-                      เขียนเองได้เพื่อให้ถูกตั้งแต่ก่อนสคริปต์ทำงาน Set by the
-                      script while there is no image.
+                      Set by the script while there is no image. Add it yourself
+                      so it is right before the script runs.
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; img[src]</code></td>
                     <td>URL</td>
                     <td>
-                      รูปเริ่มต้น ไม่มี <code>src</code> = ว่าง The starting
-                      image; without src the field is empty.
+                      The starting image. Without <code>src</code> the field is
+                      empty.
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; .icon</code></td>
                     <td></td>
-                    <td>
-                      ไอคอนที่แสดงเมื่อว่าง เช่น <code>icon-image</code> Shown
-                      while empty.
-                    </td>
+                    <td>Shown while empty, e.g. <code>icon-image</code>.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; [data-change]</code></td>
                     <td>button</td>
-                    <td>
-                      เปิดตัวเลือกไฟล์ ต้องมี Opens the file picker. Required.
-                    </td>
+                    <td>Opens the file picker. Required.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; [data-clear]</code></td>
                     <td>button</td>
                     <td>
-                      ล้างรูป ไม่ใส่ถ้ารูปลบไม่ได้ Clears the image; leave out
-                      if it cannot be removed.
+                      Clears the image. Leave it out if the image cannot be
+                      removed.
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; input[type=file]</code></td>
                     <td><code>name</code>, <code>accept</code></td>
-                    <td>
-                      ส่งไฟล์ไปกับฟอร์ม Sends the chosen file with the form.
-                    </td>
+                    <td>Sends the chosen file with the form.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; input[type=checkbox]</code></td>
                     <td><code>name</code></td>
                     <td>
-                      ไม่บังคับ ติ๊กเมื่อล้างรูป เพื่อบอก server ให้ลบไฟล์
-                      Optional; checked while cleared.
+                      Optional. Ticked while cleared, to tell the server to
+                      delete the file.
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-label</code>, <code>data-tooltip</code></td>
                     <td>text</td>
-                    <td>บนปุ่มไอคอนทั้งสอง On both icon buttons.</td>
+                    <td>On both icon buttons.</td>
                   </tr>
                 </tbody>
               </table>

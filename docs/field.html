@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,18 +343,18 @@
             <div>
               <h1>Field</h1>
               <p>
-                ป้าย ช่องกรอก และคำแนะนำ รวมถึง checkbox, radio, switch และ
-                slider ที่เรียงเป็นแถว
+                Labels, inputs and hints, plus checkbox, radio, switch and
+                slider rows.
               </p>
             </div>
           </header>
           <section>
-            <h2>ฟอร์มที่อยู่จัดส่ง Shipping address form</h2>
+            <h2>Shipping address form</h2>
             <p>
-              ฟอร์มยาวใช้ <code>.field-group</code> (fieldset ไม่มีกรอบ) เรียง
-              field ตามแนวตั้ง ใส่ field ไว้ใน
-              <code>&lt;div&gt;</code> ภายในกลุ่มเพื่อแบ่งเป็นคอลัมน์เท่ากัน
-              ซึ่งจะพับลงเป็นแถวเดียวบนจอแคบ
+              Long forms use <code>.field-group</code> (a borderless fieldset)
+              to stack fields. Wrap fields in a <code>&lt;div&gt;</code> inside
+              the group to split them into equal columns. The columns fold into
+              one on narrow screens.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -391,53 +387,47 @@
                 <div class="docs-preview">
                   <form class="card" method="dialog">
                     <header>
-                      <h2 id="ad-title">
-                        แก้ไขที่อยู่จัดส่ง Edit shipping address
-                      </h2>
+                      <h2 id="ad-title">Edit shipping address</h2>
                     </header>
                     <fieldset class="field-group" aria-labelledby="ad-title">
                       <div class="field">
-                        <label for="ad-country">ประเทศ Country *</label>
+                        <label for="ad-country">Country *</label>
                         <select
                           id="ad-country"
                           aria-describedby="ad-country-hint"
                           autocomplete="country"
                           required
                         >
-                          <option value="TH" selected>ไทย Thailand</option>
-                          <option value="JP">ญี่ปุ่น Japan</option>
-                          <option value="SG">สิงคโปร์ Singapore</option>
+                          <option value="US" selected>United States</option>
+                          <option value="CA">Canada</option>
+                          <option value="GB">United Kingdom</option>
                         </select>
-                        <small id="ad-country-hint"
-                          >ประเทศปลายทาง Destination country</small
-                        >
+                        <small id="ad-country-hint">Destination country</small>
                       </div>
                       <div>
                         <div class="field">
-                          <label for="ad-first">ชื่อ First name *</label>
+                          <label for="ad-first">First name *</label>
                           <input
                             id="ad-first"
                             type="text"
-                            value="สมใจ"
+                            value="Emma"
                             autocomplete="given-name"
                             required
                           />
                         </div>
                         <div class="field">
-                          <label for="ad-last">นามสกุล Last name *</label>
+                          <label for="ad-last">Last name *</label>
                           <input
                             id="ad-last"
                             type="text"
-                            value="ใจดี"
+                            value="Wilson"
                             autocomplete="family-name"
                             required
                           />
                         </div>
                       </div>
                       <div class="field">
-                        <label for="ad-line1"
-                          >ที่อยู่ บรรทัด 1 Address line 1 *</label
-                        >
+                        <label for="ad-line1">Address line 1 *</label>
                         <div class="input-group">
                           <span
                             ><i class="icon icon-map-pin" aria-hidden="true"></i
@@ -445,89 +435,85 @@
                           <input
                             id="ad-line1"
                             type="text"
-                            value="99/1 ถนนสุขุมวิท"
+                            value="742 Congress Ave"
                             autocomplete="address-line1"
                             aria-describedby="ad-line1-hint"
                             required
                           />
                         </div>
                         <small id="ad-line1-hint"
-                          >บ้านเลขที่ ถนน House number and street</small
+                          >House number and street</small
                         >
                       </div>
                       <div class="field">
-                        <label for="ad-line2"
-                          >ที่อยู่ บรรทัด 2 Address line 2</label
-                        >
+                        <label for="ad-line2">Address line 2</label>
                         <input
                           id="ad-line2"
                           type="text"
-                          placeholder="ไม่บังคับ Optional"
+                          placeholder="Optional"
                           autocomplete="address-line2"
                         />
                       </div>
                       <div>
                         <div class="field">
-                          <label for="ad-city">เขต/อำเภอ City *</label>
+                          <label for="ad-city">City *</label>
                           <input
                             id="ad-city"
                             type="text"
-                            value="วัฒนา"
+                            value="Austin"
                             autocomplete="address-level2"
                             required
                           />
                         </div>
                         <div class="field">
-                          <label for="ad-province">จังหวัด Province *</label>
+                          <label for="ad-province">State *</label>
                           <select
                             id="ad-province"
                             autocomplete="address-level1"
                             required
                           >
-                            <option selected>กรุงเทพฯ Bangkok</option>
-                            <option>เชียงใหม่ Chiang Mai</option>
-                            <option>ภูเก็ต Phuket</option>
+                            <option selected>Texas</option>
+                            <option>California</option>
+                            <option>New York</option>
                           </select>
                         </div>
                         <div class="field">
-                          <label for="ad-zip">รหัสไปรษณีย์ ZIP *</label>
+                          <label for="ad-zip">ZIP *</label>
                           <input
                             id="ad-zip"
                             type="text"
                             inputmode="numeric"
-                            value="10110"
+                            value="78701"
                             autocomplete="postal-code"
                             required
                           />
                         </div>
                       </div>
                       <div class="field">
-                        <label for="ad-phone">เบอร์โทร Phone</label>
+                        <label for="ad-phone">Phone</label>
                         <input
                           id="ad-phone"
                           type="tel"
-                          value="+66 81 234 5678"
+                          value="+1 512 555 0142"
                           autocomplete="tel"
                         />
                       </div>
                       <div class="field">
-                        <label for="ad-notes"
-                          >หมายเหตุการจัดส่ง Delivery instructions</label
-                        >
+                        <label for="ad-notes">Delivery instructions</label>
                         <textarea
                           id="ad-notes"
                           rows="3"
                           aria-describedby="ad-notes-hint"
                         ></textarea>
                         <small id="ad-notes-hint"
-                          >เช่น ฝากไว้ที่ป้อมยาม e.g. leave at the gate</small
+                          >e.g. leave at the front desk</small
                         >
                       </div>
                     </fieldset>
                     <footer>
-                      <button type="button" class="btn">ปิด Close</button>
+                      <button type="button" class="btn">Close</button>
                       <button type="submit" class="btn" data-variant="primary">
-                        บันทึก Save
+                        Save
                       </button>
                     </footer>
                   </form>
@@ -541,85 +527,82 @@
                 hidden
               >
                 <pre><code>&lt;form class="card" method="dialog"&gt;
-  &lt;header&gt;&lt;h2 id="ad-title"&gt;แก้ไขที่อยู่จัดส่ง Edit shipping address&lt;/h2&gt;&lt;/header&gt;
+  &lt;header&gt;&lt;h2 id="ad-title"&gt;Edit shipping address&lt;/h2&gt;&lt;/header&gt;
   &lt;fieldset class="field-group" aria-labelledby="ad-title"&gt;
     &lt;div class="field"&gt;
-      &lt;label for="ad-country"&gt;ประเทศ Country *&lt;/label&gt;
+      &lt;label for="ad-country"&gt;Country *&lt;/label&gt;
       &lt;select id="ad-country" aria-describedby="ad-country-hint" autocomplete="country" required&gt;
-        &lt;option value="TH" selected&gt;ไทย Thailand&lt;/option&gt;
-        &lt;option value="JP"&gt;ญี่ปุ่น Japan&lt;/option&gt;
-        &lt;option value="SG"&gt;สิงคโปร์ Singapore&lt;/option&gt;
+        &lt;option value="US" selected&gt;United States&lt;/option&gt;
+        &lt;option value="CA"&gt;Canada&lt;/option&gt;
+        &lt;option value="GB"&gt;United Kingdom&lt;/option&gt;
       &lt;/select&gt;
-      &lt;small id="ad-country-hint"&gt;ประเทศปลายทาง Destination country&lt;/small&gt;
+      &lt;small id="ad-country-hint"&gt;Destination country&lt;/small&gt;
     &lt;/div&gt;
     &lt;div&gt;
       &lt;div class="field"&gt;
-        &lt;label for="ad-first"&gt;ชื่อ First name *&lt;/label&gt;
-        &lt;input id="ad-first" type="text" value="สมใจ" autocomplete="given-name" required /&gt;
+        &lt;label for="ad-first"&gt;First name *&lt;/label&gt;
+        &lt;input id="ad-first" type="text" value="Emma" autocomplete="given-name" required /&gt;
       &lt;/div&gt;
       &lt;div class="field"&gt;
-        &lt;label for="ad-last"&gt;นามสกุล Last name *&lt;/label&gt;
-        &lt;input id="ad-last" type="text" value="ใจดี" autocomplete="family-name" required /&gt;
+        &lt;label for="ad-last"&gt;Last name *&lt;/label&gt;
+        &lt;input id="ad-last" type="text" value="Wilson" autocomplete="family-name" required /&gt;
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="field"&gt;
-      &lt;label for="ad-line1"&gt;ที่อยู่ บรรทัด 1 Address line 1 *&lt;/label&gt;
+      &lt;label for="ad-line1"&gt;Address line 1 *&lt;/label&gt;
       &lt;div class="input-group"&gt;
         &lt;span&gt;&lt;i class="icon icon-map-pin" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
-        &lt;input id="ad-line1" type="text" value="99/1 ถนนสุขุมวิท" autocomplete="address-line1" aria-describedby="ad-line1-hint" required /&gt;
+        &lt;input id="ad-line1" type="text" value="742 Congress Ave" autocomplete="address-line1" aria-describedby="ad-line1-hint" required /&gt;
       &lt;/div&gt;
-      &lt;small id="ad-line1-hint"&gt;บ้านเลขที่ ถนน House number and street&lt;/small&gt;
+      &lt;small id="ad-line1-hint"&gt;House number and street&lt;/small&gt;
     &lt;/div&gt;
     &lt;div class="field"&gt;
-      &lt;label for="ad-line2"&gt;ที่อยู่ บรรทัด 2 Address line 2&lt;/label&gt;
-      &lt;input id="ad-line2" type="text" placeholder="ไม่บังคับ Optional" autocomplete="address-line2" /&gt;
+      &lt;label for="ad-line2"&gt;Address line 2&lt;/label&gt;
+      &lt;input id="ad-line2" type="text" placeholder="Optional" autocomplete="address-line2" /&gt;
     &lt;/div&gt;
     &lt;div&gt;
       &lt;div class="field"&gt;
-        &lt;label for="ad-city"&gt;เขต/อำเภอ City *&lt;/label&gt;
-        &lt;input id="ad-city" type="text" value="วัฒนา" autocomplete="address-level2" required /&gt;
+        &lt;label for="ad-city"&gt;City *&lt;/label&gt;
+        &lt;input id="ad-city" type="text" value="Austin" autocomplete="address-level2" required /&gt;
       &lt;/div&gt;
       &lt;div class="field"&gt;
-        &lt;label for="ad-province"&gt;จังหวัด Province *&lt;/label&gt;
+        &lt;label for="ad-province"&gt;State *&lt;/label&gt;
         &lt;select id="ad-province" autocomplete="address-level1" required&gt;
-          &lt;option selected&gt;กรุงเทพฯ Bangkok&lt;/option&gt;
-          &lt;option&gt;เชียงใหม่ Chiang Mai&lt;/option&gt;
-          &lt;option&gt;ภูเก็ต Phuket&lt;/option&gt;
+          &lt;option selected&gt;Texas&lt;/option&gt;
+          &lt;option&gt;California&lt;/option&gt;
+          &lt;option&gt;New York&lt;/option&gt;
         &lt;/select&gt;
       &lt;/div&gt;
       &lt;div class="field"&gt;
-        &lt;label for="ad-zip"&gt;รหัสไปรษณีย์ ZIP *&lt;/label&gt;
-        &lt;input id="ad-zip" type="text" inputmode="numeric" value="10110" autocomplete="postal-code" required /&gt;
+        &lt;label for="ad-zip"&gt;ZIP *&lt;/label&gt;
+        &lt;input id="ad-zip" type="text" inputmode="numeric" value="78701" autocomplete="postal-code" required /&gt;
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="field"&gt;
-      &lt;label for="ad-phone"&gt;เบอร์โทร Phone&lt;/label&gt;
-      &lt;input id="ad-phone" type="tel" value="+66 81 234 5678" autocomplete="tel" /&gt;
+      &lt;label for="ad-phone"&gt;Phone&lt;/label&gt;
+      &lt;input id="ad-phone" type="tel" value="+1 512 555 0142" autocomplete="tel" /&gt;
     &lt;/div&gt;
     &lt;div class="field"&gt;
-      &lt;label for="ad-notes"&gt;หมายเหตุการจัดส่ง Delivery instructions&lt;/label&gt;
+      &lt;label for="ad-notes"&gt;Delivery instructions&lt;/label&gt;
       &lt;textarea id="ad-notes" rows="3" aria-describedby="ad-notes-hint"&gt;&lt;/textarea&gt;
-      &lt;small id="ad-notes-hint"&gt;เช่น ฝากไว้ที่ป้อมยาม e.g. leave at the gate&lt;/small&gt;
+      &lt;small id="ad-notes-hint"&gt;e.g. leave at the front desk&lt;/small&gt;
     &lt;/div&gt;
   &lt;/fieldset&gt;
   &lt;footer&gt;
-    &lt;button type="button" class="btn"&gt;ปิด Close&lt;/button&gt;
-    &lt;button type="submit" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;button type="button" class="btn"&gt;Close&lt;/button&gt;
+    &lt;button type="submit" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
   &lt;/footer&gt;
 &lt;/form&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              ช่องที่ไม่ถูกต้องและ checkbox ข้างป้าย Invalid field and a
-              checkbox beside its label
-            </h2>
+            <h2>Invalid field and a checkbox beside its label</h2>
             <p>
-              ใส่ <code>aria-invalid="true"</code> บนช่อง ขอบและคำแนะนำจะเป็นสี
-              danger ผูกข้อความผิดพลาดด้วย <code>aria-describedby</code> ส่วน
-              checkbox ที่อยู่ก่อน label ใน
-              <code>.field</code> จะเรียงเป็นแถวเอง
+              Set <code>aria-invalid="true"</code> on the input to turn its
+              border and hint danger. Link the error with
+              <code>aria-describedby</code>. A checkbox placed before its label
+              in a <code>.field</code> lays out as a row.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -651,9 +634,9 @@
               >
                 <div class="docs-preview">
                   <fieldset class="field-group docs-narrow">
-                    <legend>ที่อยู่ออกใบกำกับ Billing address</legend>
+                    <legend>Billing address</legend>
                     <div class="field">
-                      <label for="bl-zip">รหัสไปรษณีย์ ZIP *</label>
+                      <label for="bl-zip">ZIP *</label>
                       <input
                         id="bl-zip"
                         type="text"
@@ -663,16 +646,11 @@
                         aria-describedby="bl-zip-error"
                         required
                       />
-                      <small id="bl-zip-error"
-                        >กรอกตัวเลข 5 หลัก Enter a 5 digit ZIP code</small
-                      >
+                      <small id="bl-zip-error">Enter a 5 digit ZIP code</small>
                     </div>
                     <div class="field">
                       <input id="bl-same" type="checkbox" />
-                      <label for="bl-same"
-                        >ใช้ที่อยู่เดียวกับที่อยู่จัดส่ง Same as shipping
-                        address</label
-                      >
+                      <label for="bl-same">Same as shipping address</label>
                     </div>
                   </fieldset>
                 </div>
@@ -685,15 +663,15 @@
                 hidden
               >
                 <pre><code>&lt;fieldset class="field-group docs-narrow"&gt;
-  &lt;legend&gt;ที่อยู่ออกใบกำกับ Billing address&lt;/legend&gt;
+  &lt;legend&gt;Billing address&lt;/legend&gt;
   &lt;div class="field"&gt;
-    &lt;label for="bl-zip"&gt;รหัสไปรษณีย์ ZIP *&lt;/label&gt;
+    &lt;label for="bl-zip"&gt;ZIP *&lt;/label&gt;
     &lt;input id="bl-zip" type="text" inputmode="numeric" value="1011" aria-invalid="true" aria-describedby="bl-zip-error" required /&gt;
-    &lt;small id="bl-zip-error"&gt;กรอกตัวเลข 5 หลัก Enter a 5 digit ZIP code&lt;/small&gt;
+    &lt;small id="bl-zip-error"&gt;Enter a 5 digit ZIP code&lt;/small&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="bl-same" type="checkbox" /&gt;
-    &lt;label for="bl-same"&gt;ใช้ที่อยู่เดียวกับที่อยู่จัดส่ง Same as shipping address&lt;/label&gt;
+    &lt;label for="bl-same"&gt;Same as shipping address&lt;/label&gt;
   &lt;/div&gt;
 &lt;/fieldset&gt;</code></pre>
               </div>
@@ -701,14 +679,14 @@
           </section>
           <section>
             <h2>
-              Checkbox: ธรรมดา มีคำอธิบาย ปิดใช้งาน และทั้งแถวเป็น label Plain,
-              with help text, disabled, whole row as the label
+              Checkbox: plain, with help text, disabled, whole row as label
             </h2>
             <p>
-              ข้อความยาวใส่ label กับ <code>&lt;small&gt;</code> ไว้ใน
-              <code>&lt;div&gt;</code> หลัง checkbox ถ้าทั้งแถวควรกดได้ ให้
-              <code>&lt;label class="field"&gt;</code> ห่อทั้งหมด และใส่
-              <code>data-variant="card"</code> เพื่อให้มีกรอบ
+              For longer text, put the label and a <code>&lt;small&gt;</code> in
+              a <code>&lt;div&gt;</code> after the checkbox. To make the whole
+              row clickable, wrap it all in
+              <code>&lt;label class="field"&gt;</code>. Add
+              <code>data-variant="card"</code> for a border.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -742,13 +720,11 @@
                   <div
                     class="field-group docs-narrow"
                     role="group"
-                    aria-label="ตัวเลือก Options"
+                    aria-label="Options"
                   >
                     <div class="field">
                       <input id="cb-terms" type="checkbox" />
-                      <label for="cb-terms"
-                        >ยอมรับข้อตกลง Accept terms and conditions</label
-                      >
+                      <label for="cb-terms">Accept terms and conditions</label>
                     </div>
                     <div class="field">
                       <input
@@ -759,19 +735,16 @@
                       />
                       <div>
                         <label for="cb-terms-2"
-                          >ยอมรับข้อตกลง Accept terms and conditions</label
+                          >Accept terms and conditions</label
                         >
                         <small id="cb-terms-2-hint"
-                          >เมื่อติ๊กแล้วถือว่ายอมรับข้อตกลงการขาย By ticking
-                          this you agree to the terms</small
+                          >By ticking this you agree to the terms</small
                         >
                       </div>
                     </div>
                     <div class="field">
                       <input id="cb-notify" type="checkbox" disabled />
-                      <label for="cb-notify"
-                        >เปิดการแจ้งเตือน Enable notifications</label
-                      >
+                      <label for="cb-notify">Enable notifications</label>
                     </div>
                     <label class="field" data-variant="card">
                       <input
@@ -779,12 +752,9 @@
                         aria-describedby="cb-notify-2-hint"
                       />
                       <div>
-                        <h3>
-                          เปิดการแจ้งเตือนคำสั่งซื้อ Enable order notifications
-                        </h3>
+                        <h3>Enable order notifications</h3>
                         <small id="cb-notify-2-hint"
-                          >เปิดหรือปิดได้ทุกเมื่อ You can turn this on or off at
-                          any time</small
+                          >You can turn this on or off at any time</small
                         >
                       </div>
                     </label>
@@ -798,27 +768,27 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="field-group docs-narrow" role="group" aria-label="ตัวเลือก Options"&gt;
+                <pre><code>&lt;div class="field-group docs-narrow" role="group" aria-label="Options"&gt;
   &lt;div class="field"&gt;
     &lt;input id="cb-terms" type="checkbox" /&gt;
-    &lt;label for="cb-terms"&gt;ยอมรับข้อตกลง Accept terms and conditions&lt;/label&gt;
+    &lt;label for="cb-terms"&gt;Accept terms and conditions&lt;/label&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="cb-terms-2" type="checkbox" aria-describedby="cb-terms-2-hint" checked /&gt;
     &lt;div&gt;
-      &lt;label for="cb-terms-2"&gt;ยอมรับข้อตกลง Accept terms and conditions&lt;/label&gt;
-      &lt;small id="cb-terms-2-hint"&gt;เมื่อติ๊กแล้วถือว่ายอมรับข้อตกลงการขาย By ticking this you agree to the terms&lt;/small&gt;
+      &lt;label for="cb-terms-2"&gt;Accept terms and conditions&lt;/label&gt;
+      &lt;small id="cb-terms-2-hint"&gt;By ticking this you agree to the terms&lt;/small&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="cb-notify" type="checkbox" disabled /&gt;
-    &lt;label for="cb-notify"&gt;เปิดการแจ้งเตือน Enable notifications&lt;/label&gt;
+    &lt;label for="cb-notify"&gt;Enable notifications&lt;/label&gt;
   &lt;/div&gt;
   &lt;label class="field" data-variant="card"&gt;
     &lt;input type="checkbox" aria-describedby="cb-notify-2-hint" /&gt;
     &lt;div&gt;
-      &lt;h3&gt;เปิดการแจ้งเตือนคำสั่งซื้อ Enable order notifications&lt;/h3&gt;
-      &lt;small id="cb-notify-2-hint"&gt;เปิดหรือปิดได้ทุกเมื่อ You can turn this on or off at any time&lt;/small&gt;
+      &lt;h3&gt;Enable order notifications&lt;/h3&gt;
+      &lt;small id="cb-notify-2-hint"&gt;You can turn this on or off at any time&lt;/small&gt;
     &lt;/div&gt;
   &lt;/label&gt;
 &lt;/div&gt;</code></pre>
@@ -826,12 +796,12 @@
             </div>
           </section>
           <section>
-            <h2>ติ๊กบางส่วน Partly ticked (select all)</h2>
+            <h2>Partly ticked (select all)</h2>
             <p>
-              สถานะ indeterminate ตั้งจาก HTML ไม่ได้ ต้องใช้ script ตั้ง
-              <code>checkbox.indeterminate = true</code> ตัวอย่างนี้เป็น
-              checkbox เลือกทั้งหมดที่คุมตัวเลือกย่อยของสินค้า
-              เบราว์เซอร์จะวาดขีดกลางให้เอง
+              HTML cannot set the indeterminate state. A script has to set
+              <code>checkbox.indeterminate = true</code>. This example is a
+              select-all checkbox that controls a product's variants. The
+              browser draws the dash itself.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -867,7 +837,7 @@
                     data-gap="sm"
                     id="pt-group"
                     role="group"
-                    aria-label="ตัวเลือกสินค้า Variants"
+                    aria-label="Variants"
                   >
                     <div class="field">
                       <input
@@ -877,24 +847,21 @@
                         aria-describedby="pt-all-hint"
                       />
                       <div>
-                        <label for="pt-all">นาฬิกา Timeless Watch</label>
-                        <small id="pt-all-hint"
-                          >เลือก 1 จาก 3 ตัวเลือก 1 of 3 variants
-                          selected</small
-                        >
+                        <label for="pt-all">Timeless Watch</label>
+                        <small id="pt-all-hint">1 of 3 variants selected</small>
                       </div>
                     </div>
                     <div class="field">
                       <input id="pt-1" type="checkbox" checked />
-                      <label for="pt-1">สีเงิน Silver · ฿4,990</label>
+                      <label for="pt-1">Silver · $149.00</label>
                     </div>
                     <div class="field">
                       <input id="pt-2" type="checkbox" />
-                      <label for="pt-2">สีทอง Gold · ฿5,490</label>
+                      <label for="pt-2">Gold · $169.00</label>
                     </div>
                     <div class="field">
                       <input id="pt-3" type="checkbox" />
-                      <label for="pt-3">สีดำ Black · ฿4,990</label>
+                      <label for="pt-3">Black · $149.00</label>
                     </div>
                   </div>
                   <script>
@@ -909,15 +876,7 @@
                         all.checked = n === rows.length;
                         all.indeterminate = n > 0 && n < rows.length;
                         hint.textContent =
-                          "เลือก " +
-                          n +
-                          " จาก " +
-                          rows.length +
-                          " ตัวเลือก " +
-                          n +
-                          " of " +
-                          rows.length +
-                          " variants selected";
+                          n + " of " + rows.length + " variants selected";
                       };
                       all.addEventListener("change", () => {
                         for (const r of rows) r.checked = all.checked;
@@ -936,25 +895,30 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="field-group docs-narrow" data-gap="sm" id="pt-group" role="group" aria-label="ตัวเลือกสินค้า Variants"&gt;
+                <pre><code>&lt;div class="field-group docs-narrow" data-gap="sm" id="pt-group" role="group" aria-label="Variants"&gt;
   &lt;div class="field"&gt;
-    &lt;input id="pt-all" type="checkbox" aria-controls="pt-1 pt-2 pt-3" aria-describedby="pt-all-hint" /&gt;
+    &lt;input
+      id="pt-all"
+      type="checkbox"
+      aria-controls="pt-1 pt-2 pt-3"
+      aria-describedby="pt-all-hint"
+    /&gt;
     &lt;div&gt;
-      &lt;label for="pt-all"&gt;นาฬิกา Timeless Watch&lt;/label&gt;
-      &lt;small id="pt-all-hint"&gt;เลือก 1 จาก 3 ตัวเลือก 1 of 3 variants selected&lt;/small&gt;
+      &lt;label for="pt-all"&gt;Timeless Watch&lt;/label&gt;
+      &lt;small id="pt-all-hint"&gt;1 of 3 variants selected&lt;/small&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="pt-1" type="checkbox" checked /&gt;
-    &lt;label for="pt-1"&gt;สีเงิน Silver · ฿4,990&lt;/label&gt;
+    &lt;label for="pt-1"&gt;Silver · $149.00&lt;/label&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="pt-2" type="checkbox" /&gt;
-    &lt;label for="pt-2"&gt;สีทอง Gold · ฿5,490&lt;/label&gt;
+    &lt;label for="pt-2"&gt;Gold · $169.00&lt;/label&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="pt-3" type="checkbox" /&gt;
-    &lt;label for="pt-3"&gt;สีดำ Black · ฿4,990&lt;/label&gt;
+    &lt;label for="pt-3"&gt;Black · $149.00&lt;/label&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
@@ -966,7 +930,7 @@
       const n = rows.filter((r) =&gt; r.checked).length;
       all.checked = n === rows.length;
       all.indeterminate = n &gt; 0 &amp;&amp; n &lt; rows.length;
-      hint.textContent = "เลือก " + n + " จาก " + rows.length + " ตัวเลือก " + n + " of " + rows.length + " variants selected";
+      hint.textContent = n + " of " + rows.length + " variants selected";
     };
     all.addEventListener("change", () =&gt; {
       for (const r of rows) r.checked = all.checked;
@@ -982,10 +946,10 @@
           <section>
             <h2>Radio</h2>
             <p>
-              ห่อด้วย
+              Wrap radios in
               <code>&lt;fieldset class="field-group" data-gap="sm"&gt;</code>
-              และ <code>&lt;legend&gt;</code> เพื่อให้ screen reader
-              อ่านชื่อกลุ่ม ปุ่มลูกศรเลื่อนตัวเลือกได้เองแบบ native
+              with a <code>&lt;legend&gt;</code> so screen readers announce the
+              group name. Arrow keys move between options natively.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -1017,7 +981,7 @@
               >
                 <div class="docs-preview">
                   <fieldset class="field-group" data-gap="sm">
-                    <legend>ความหนาแน่นของตาราง Table density</legend>
+                    <legend>Table density</legend>
                     <div class="field">
                       <input
                         id="rd-default"
@@ -1025,7 +989,7 @@
                         name="rd-density"
                         value="default"
                       />
-                      <label for="rd-default">ปกติ Default</label>
+                      <label for="rd-default">Default</label>
                     </div>
                     <div class="field">
                       <input
@@ -1035,7 +999,7 @@
                         value="comfortable"
                         checked
                       />
-                      <label for="rd-comfortable">โปร่ง Comfortable</label>
+                      <label for="rd-comfortable">Comfortable</label>
                     </div>
                     <div class="field">
                       <input
@@ -1044,7 +1008,7 @@
                         name="rd-density"
                         value="compact"
                       />
-                      <label for="rd-compact">แน่น Compact</label>
+                      <label for="rd-compact">Compact</label>
                     </div>
                   </fieldset>
                 </div>
@@ -1057,29 +1021,29 @@
                 hidden
               >
                 <pre><code>&lt;fieldset class="field-group" data-gap="sm"&gt;
-  &lt;legend&gt;ความหนาแน่นของตาราง Table density&lt;/legend&gt;
+  &lt;legend&gt;Table density&lt;/legend&gt;
   &lt;div class="field"&gt;
     &lt;input id="rd-default" type="radio" name="rd-density" value="default" /&gt;
-    &lt;label for="rd-default"&gt;ปกติ Default&lt;/label&gt;
+    &lt;label for="rd-default"&gt;Default&lt;/label&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="rd-comfortable" type="radio" name="rd-density" value="comfortable" checked /&gt;
-    &lt;label for="rd-comfortable"&gt;โปร่ง Comfortable&lt;/label&gt;
+    &lt;label for="rd-comfortable"&gt;Comfortable&lt;/label&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="rd-compact" type="radio" name="rd-density" value="compact" /&gt;
-    &lt;label for="rd-compact"&gt;แน่น Compact&lt;/label&gt;
+    &lt;label for="rd-compact"&gt;Compact&lt;/label&gt;
   &lt;/div&gt;
 &lt;/fieldset&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>สวิตช์ Switch</h2>
+            <h2>Switch</h2>
             <p>
-              checkbox ที่ใส่ <code>role="switch"</code> จะวาดเป็นสวิตช์
-              เหมาะกับการตั้งค่าที่มีผลทันที ใช้ได้ทั้งใน
-              <code>.field</code> และวางเดี่ยว
+              A checkbox with <code>role="switch"</code> draws as a switch. Use
+              it for settings that apply at once. It works inside a
+              <code>.field</code> or on its own.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -1114,7 +1078,7 @@
                     class="field-group docs-narrow"
                     data-gap="sm"
                     role="group"
-                    aria-label="การตั้งค่าร้าน Store settings"
+                    aria-label="Store settings"
                   >
                     <div class="field">
                       <input
@@ -1123,7 +1087,7 @@
                         role="switch"
                         checked
                       />
-                      <label for="sw-open">เปิดร้าน Store open</label>
+                      <label for="sw-open">Store open</label>
                     </div>
                     <div class="field">
                       <input
@@ -1133,13 +1097,8 @@
                         aria-describedby="sw-cod-hint"
                       />
                       <div>
-                        <label for="sw-cod"
-                          >เก็บเงินปลายทาง Cash on delivery</label
-                        >
-                        <small id="sw-cod-hint"
-                          >ค่าธรรมเนียม ฿30 ต่อคำสั่งซื้อ ฿30 fee per
-                          order</small
-                        >
+                        <label for="sw-cod">Cash on delivery</label>
+                        <small id="sw-cod-hint">$2.00 fee per order</small>
                       </div>
                     </div>
                     <div class="field">
@@ -1149,9 +1108,7 @@
                         role="switch"
                         disabled
                       />
-                      <label for="sw-intl"
-                        >ส่งต่างประเทศ International shipping</label
-                      >
+                      <label for="sw-intl">International shipping</label>
                     </div>
                   </div>
                 </div>
@@ -1163,32 +1120,33 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="field-group docs-narrow" data-gap="sm" role="group" aria-label="การตั้งค่าร้าน Store settings"&gt;
+                <pre><code>&lt;div class="field-group docs-narrow" data-gap="sm" role="group" aria-label="Store settings"&gt;
   &lt;div class="field"&gt;
     &lt;input id="sw-open" type="checkbox" role="switch" checked /&gt;
-    &lt;label for="sw-open"&gt;เปิดร้าน Store open&lt;/label&gt;
+    &lt;label for="sw-open"&gt;Store open&lt;/label&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="sw-cod" type="checkbox" role="switch" aria-describedby="sw-cod-hint" /&gt;
     &lt;div&gt;
-      &lt;label for="sw-cod"&gt;เก็บเงินปลายทาง Cash on delivery&lt;/label&gt;
-      &lt;small id="sw-cod-hint"&gt;ค่าธรรมเนียม ฿30 ต่อคำสั่งซื้อ ฿30 fee per order&lt;/small&gt;
+      &lt;label for="sw-cod"&gt;Cash on delivery&lt;/label&gt;
+      &lt;small id="sw-cod-hint"&gt;$2.00 fee per order&lt;/small&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
     &lt;input id="sw-intl" type="checkbox" role="switch" disabled /&gt;
-    &lt;label for="sw-intl"&gt;ส่งต่างประเทศ International shipping&lt;/label&gt;
+    &lt;label for="sw-intl"&gt;International shipping&lt;/label&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>สไลเดอร์ Slider</h2>
+            <h2>Slider</h2>
             <p>
-              <code>&lt;input type="range" class="slider"&gt;</code> ใช้ min,
-              max, step, value ของตัวเองตามปกติ script เติมแถบจนถึงตำแหน่งปุ่ม
-              และเขียนค่าลง <code>&lt;output for="id"&gt;</code> ที่ชี้มา
+              <code>&lt;input type="range" class="slider"&gt;</code> uses its
+              own min, max, step and value as usual. The script fills the track
+              up to the thumb and writes the value into any
+              <code>&lt;output for="id"&gt;</code> that points to it.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -1222,8 +1180,7 @@
                   <div class="stack docs-narrow">
                     <div class="field">
                       <label for="sl-discount"
-                        >ส่วนลด Discount:
-                        <output for="sl-discount">15</output>%</label
+                        >Discount: <output for="sl-discount">15</output>%</label
                       >
                       <input
                         id="sl-discount"
@@ -1237,8 +1194,8 @@
                     </div>
                     <div class="field">
                       <label for="sl-stock"
-                        >แจ้งเตือนเมื่อสต็อกต่ำกว่า Low stock alert:
-                        <output for="sl-stock">20</output> ชิ้น</label
+                        >Low stock alert:
+                        <output for="sl-stock">20</output> units</label
                       >
                       <input
                         id="sl-stock"
@@ -1255,7 +1212,7 @@
                       min="0"
                       max="100"
                       value="60"
-                      aria-label="ระดับเสียงแจ้งเตือน Alert volume"
+                      aria-label="Alert volume"
                       disabled
                     />
                   </div>
@@ -1270,14 +1227,14 @@
               >
                 <pre><code>&lt;div class="stack docs-narrow"&gt;
   &lt;div class="field"&gt;
-    &lt;label for="sl-discount"&gt;ส่วนลด Discount: &lt;output for="sl-discount"&gt;15&lt;/output&gt;%&lt;/label&gt;
+    &lt;label for="sl-discount"&gt;Discount: &lt;output for="sl-discount"&gt;15&lt;/output&gt;%&lt;/label&gt;
     &lt;input id="sl-discount" class="slider" type="range" min="0" max="50" step="5" value="15" /&gt;
   &lt;/div&gt;
   &lt;div class="field"&gt;
-    &lt;label for="sl-stock"&gt;แจ้งเตือนเมื่อสต็อกต่ำกว่า Low stock alert: &lt;output for="sl-stock"&gt;20&lt;/output&gt; ชิ้น&lt;/label&gt;
+    &lt;label for="sl-stock"&gt;Low stock alert: &lt;output for="sl-stock"&gt;20&lt;/output&gt; units&lt;/label&gt;
     &lt;input id="sl-stock" class="slider" type="range" min="0" max="100" value="20" /&gt;
   &lt;/div&gt;
-  &lt;input class="slider" type="range" min="0" max="100" value="60" aria-label="ระดับเสียงแจ้งเตือน Alert volume" disabled /&gt;
+  &lt;input class="slider" type="range" min="0" max="100" value="60" aria-label="Alert volume" disabled /&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
@@ -1285,8 +1242,8 @@
           <section>
             <h2>API</h2>
             <p>
-              สไลเดอร์ใช้ <code>js/slider.js</code> (Field อื่นไม่ต้องใช้ JS)
-              ทำงานกับ <code>.slider</code> ที่เพิ่มเข้ามาภายหลังด้วย
+              The slider uses <code>js/slider.js</code> (other fields need no
+              JS). It also works on <code>.slider</code> elements added later.
             </p>
             <div class="card">
               <table class="table">
@@ -1302,18 +1259,19 @@
                     <td><code>--value</code></td>
                     <td></td>
                     <td>
-                      custom property บน input: ค่าปัจจุบันเป็นเปอร์เซ็นต์ (เช่น
-                      <code>30%</code>) แถบสี accent กว้างเท่านี้ ตั้งเองใน
-                      <code>style</code> ได้ถ้าไม่โหลด JS
+                      Custom property on the input: the current value as a
+                      percentage (e.g. <code>30%</code>). The accent fill is
+                      this wide. Set it in <code>style</code> yourself if you
+                      don't load the JS.
                     </td>
                   </tr>
                   <tr>
                     <td><code>output[for]</code></td>
                     <td></td>
                     <td>
-                      script เขียน <code>value</code> ลงทุก
-                      <code>&lt;output&gt;</code> ที่ <code>for</code> มี id
-                      ของสไลเดอร์
+                      The script writes <code>value</code> into every
+                      <code>&lt;output&gt;</code> whose <code>for</code>
+                      contains the slider's id.
                     </td>
                   </tr>
                   <tr>
@@ -1324,17 +1282,17 @@
                     </td>
                     <td><code>el</code></td>
                     <td>
-                      <code>el</code> คือ input.slider: วาดแถบและ output ใหม่
-                      เรียกหลังตั้ง <code>el.value</code> จาก script
-                      (ค่าที่ตั้งจาก script ไม่ส่ง event input)
+                      <code>el</code> is an input.slider. Redraws the fill and
+                      outputs. Call it after setting <code>el.value</code> from
+                      script (script changes don't fire an input event).
                     </td>
                   </tr>
                   <tr>
                     <td><code>input</code></td>
                     <td></td>
                     <td>
-                      event ของ input เอง: script วาดใหม่ทุกครั้งที่เลื่อน
-                      และหลัง form reset
+                      The input's own event. The script redraws on every move
+                      and after a form reset.
                     </td>
                   </tr>
                 </tbody>
@@ -1359,8 +1317,9 @@
                     </td>
                     <td></td>
                     <td>
-                      ห่อ label + ช่อง + คำแนะนำ เรียงแนวตั้ง ถ้ามี
-                      checkbox/radio เป็นลูกตัวแรกจะเรียงเป็นแถว
+                      Wraps a label, input and hint in a vertical stack. With a
+                      checkbox or radio as the first child, it lays out as a
+                      row.
                     </td>
                   </tr>
                   <tr>
@@ -1368,7 +1327,7 @@
                       <code>.<wbr />field &gt; label</code>
                     </td>
                     <td></td>
-                    <td>ป้ายสีเทาขนาดเล็ก (ในแถว checkbox เป็นสีปกติ)</td>
+                    <td>Small muted label (normal colour in a checkbox row)</td>
                   </tr>
                   <tr>
                     <td>
@@ -1376,8 +1335,8 @@
                     </td>
                     <td></td>
                     <td>
-                      คำแนะนำหรือข้อความผิดพลาด ผูกกับช่องด้วย
-                      <code>aria-describedby</code>
+                      Hint or error text. Link it to the input with
+                      <code>aria-describedby</code>.
                     </td>
                   </tr>
                   <tr>
@@ -1386,8 +1345,8 @@
                     </td>
                     <td></td>
                     <td>
-                      ได้หน้าตาเดียวกับ <code>.input</code> โดยไม่ต้องใส่ class
-                      (ดูหน้า Input)
+                      Styled like <code>.input</code> without the class (see the
+                      Input page).
                     </td>
                   </tr>
                   <tr>
@@ -1396,33 +1355,35 @@
                     </td>
                     <td></td>
                     <td>
-                      ในแถว checkbox: ห่อ label กับ small (หรือ h3) ให้ซ้อนกัน
+                      In a checkbox row: stacks the label and small (or h3).
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-invalid</code></td>
                     <td><code>true</code></td>
-                    <td>บนช่อง: ขอบและ small เป็นสี danger</td>
+                    <td>On the input: border and small turn danger</td>
                   </tr>
                   <tr>
                     <td><code>disabled</code></td>
                     <td></td>
-                    <td>บน input: ป้ายในแถวเป็นสีเทา เคอร์เซอร์ not-allowed</td>
+                    <td>
+                      On the input: row label turns muted, cursor not-allowed
+                    </td>
                   </tr>
                   <tr>
                     <td><code>data-variant</code></td>
-                    <td><code>card</code> (ไม่มี = default)</td>
+                    <td><code>card</code> (none = default)</td>
                     <td>
-                      บน <code>label.field</code>: กรอบรอบทั้งแถว
-                      พื้นเปลี่ยนเมื่อติ๊ก
+                      On <code>label.field</code>: a border around the whole
+                      row. The background changes when ticked.
                     </td>
                   </tr>
                   <tr>
                     <td><code>role</code></td>
                     <td><code>switch</code></td>
                     <td>
-                      บน <code>input type=checkbox</code>: วาดเป็นสวิตช์
-                      ใช้ได้ทุกที่
+                      On <code>input type=checkbox</code>: draws a switch. Works
+                      anywhere.
                     </td>
                   </tr>
                   <tr>
@@ -1431,8 +1392,8 @@
                     </td>
                     <td></td>
                     <td>
-                      บน <code>input[type=range]</code>: แถบและปุ่มสีตาม token
-                      ดู API ด้านบน
+                      On <code>input[type=range]</code>: track and thumb use the
+                      colour tokens. See the API above.
                     </td>
                   </tr>
                   <tr>
@@ -1441,8 +1402,8 @@
                     </td>
                     <td></td>
                     <td>
-                      fieldset หรือ div[role=group] ไม่มีกรอบ เรียง field ห่าง
-                      space-4
+                      Borderless fieldset or div[role=group]. Stacks fields
+                      space-4 apart.
                     </td>
                   </tr>
                   <tr>
@@ -1451,8 +1412,8 @@
                     </td>
                     <td></td>
                     <td>
-                      หัวข้อกลุ่ม (ตัวหนา) ถ้า
-                      <code>data-gap="sm"</code> เป็นป้ายสีเทาเล็ก
+                      Group heading (bold). With
+                      <code>data-gap="sm"</code> it is a small muted label.
                     </td>
                   </tr>
                   <tr>
@@ -1461,16 +1422,16 @@
                     </td>
                     <td></td>
                     <td>
-                      div ที่ไม่มี class แบ่ง field ข้างในเป็นคอลัมน์เท่ากัน
-                      กว้างอย่างน้อย 9rem
+                      A div with no class splits its fields into equal columns,
+                      each at least 9rem wide.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-gap</code></td>
-                    <td><code>sm</code> (ไม่มี = space-4)</td>
+                    <td><code>sm</code> (none = space-4)</td>
                     <td>
-                      บน .field-group: ระยะชิดสำหรับรายการ checkbox, radio,
-                      switch
+                      On .field-group: tight spacing for checkbox, radio and
+                      switch lists.
                     </td>
                   </tr>
                 </tbody>
