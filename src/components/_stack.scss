@@ -6,6 +6,12 @@
     gap: var(--space-4);
   }
 
+  // A list used as a stack is laid out by the stack, not by markers.
+  :where(ul.stack, ol.stack) {
+    padding: 0;
+    list-style: none;
+  }
+
   :where(.stack[data-direction="row"]) {
     flex-direction: row;
     flex-wrap: wrap;
