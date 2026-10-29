@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Select | tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+    <script type="module" src="docs.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="index.html">tsunami <span>津波</span></a>
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a
+            href="index.html"
+            data-label="Overview"
+            data-keywords="Get started index"
+            >Overview</a
+          >
+          <h2>Foundations</h2>
+          <a
+            href="colors.html"
+            data-label="Colors"
+            data-keywords="Foundations colors --bg --surface --subtle --fg --muted --line --accent --on-accent --ok-bg --ok-fg --danger-bg --danger-fg --neutral-bg --neutral-fg --overlay"
+            >Colors</a
+          >
+          <a
+            href="typography.html"
+            data-label="Typography"
+            data-keywords="Foundations typography --font-sans --font-mono --text-sm -base -lg -xl --leading"
+            >Typography</a
+          >
+          <a
+            href="icons.html"
+            data-label="Icons"
+            data-keywords="Foundations icons class data-size color"
+            >Icons</a
+          >
+          <h2>Layout</h2>
+          <a
+            href="stack.html"
+            data-label="Stack"
+            data-keywords="Layout stack data-direction data-gap"
+            >Stack</a
+          >
+          <a
+            href="card.html"
+            data-label="Card"
+            data-keywords="Layout card header div footer table"
+            >Card</a
+          >
+          <a
+            href="item.html"
+            data-label="Item"
+            data-keywords="Layout item data-variant data-size item-group"
+            >Item</a
+          >
+          <a
+            href="page-header.html"
+            data-label="Page header"
+            data-keywords="Layout page-header first-child last-child"
+            >Page header</a
+          >
+          <a
+            href="stat.html"
+            data-label="Stat"
+            data-keywords="Layout stat div dd data-variant"
+            >Stat</a
+          >
+          <a
+            href="table.html"
+            data-label="Table"
+            data-keywords="Layout table data-align"
+            >Table</a
+          >
+          <a
+            href="timeline.html"
+            data-label="Timeline"
+            data-keywords="Layout timeline li data-variant"
+            >Timeline</a
+          >
+          <a
+            href="journey.html"
+            data-label="Journey"
+            data-keywords="Layout journey data-orientation fieldset label data"
+            >Journey</a
+          >
+          <a
+            href="accordion.html"
+            data-label="Accordion"
+            data-keywords="Layout accordion details name open"
+            >Accordion</a
+          >
+          <a
+            href="scroll-area.html"
+            data-label="Scroll area"
+            data-keywords="Layout scroll-area style class"
+            >Scroll area</a
+          >
+          <a
+            href="workspace.html"
+            data-label="Workspace"
+            data-keywords="Layout workspace data-panel aside popover id header popovertarget"
+            >Workspace</a
+          >
+          <h2>Actions</h2>
+          <a
+            href="btn.html"
+            data-label="Button"
+            data-keywords="Actions btn data-variant data-size disabled aria-disabled"
+            >Button</a
+          >
+          <a
+            href="dropdown.html"
+            data-label="Dropdown"
+            data-keywords="Actions dropdown popover id popovertarget popovertargetaction data-variant"
+            >Dropdown</a
+          >
+          <a
+            href="theme-switcher.html"
+            data-label="Theme switcher"
+            data-keywords="Actions theme-switcher data-theme-toggle html data-theme"
+            >Theme switcher</a
+          >
+          <h2>Forms</h2>
+          <a
+            href="field.html"
+            data-label="Field"
+            data-keywords="Forms field label small aria-invalid checkbox"
+            >Field</a
+          >
+          <a href="input.html" data-label="Input" data-keywords="Forms input"
+            >Input</a
+          >
+          <a
+            href="input-group.html"
+            data-label="Input group"
+            data-keywords="Forms input-group data-variant span"
+            >Input group</a
+          >
+          <a
+            href="select.html"
+            data-label="Select"
+            data-keywords="Forms select"
+            aria-current="page"
+            >Select</a
+          >
+          <a
+            href="save-bar.html"
+            data-label="Save bar"
+            data-keywords="Forms save-bar data-form hidden button type reset form"
+            >Save bar</a
+          >
+          <h2>Feedback</h2>
+          <a
+            href="alert.html"
+            data-label="Alert"
+            data-keywords="Feedback alert data-variant role"
+            >Alert</a
+          >
+          <a
+            href="badge.html"
+            data-label="Badge"
+            data-keywords="Feedback badge data-variant"
+            >Badge</a
+          >
+          <a
+            href="empty.html"
+            data-label="Empty state"
+            data-keywords="Feedback empty icon div"
+            >Empty state</a
+          >
+          <a
+            href="loader.html"
+            data-label="Loader"
+            data-keywords="Feedback loader data-size skeleton data-variant aria-busy"
+            >Loader</a
+          >
+          <a
+            href="progress.html"
+            data-label="Progress"
+            data-keywords="Feedback progress value max data-variant"
+            >Progress</a
+          >
+          <h2>Media</h2>
+          <a
+            href="avatar.html"
+            data-label="Avatar"
+            data-keywords="Media avatar data-size img"
+            >Avatar</a
+          >
+          <h2>Navigation</h2>
+          <a
+            href="breadcrumb.html"
+            data-label="Breadcrumb"
+            data-keywords="Navigation breadcrumb aria-current"
+            >Breadcrumb</a
+          >
+          <a
+            href="link.html"
+            data-label="Link"
+            data-keywords="Navigation link data-variant"
+            >Link</a
+          >
+          <a
+            href="pagination.html"
+            data-label="Pagination"
+            data-keywords="Navigation pagination aria-current aria-disabled"
+            >Pagination</a
+          >
+          <a
+            href="sidebar.html"
+            data-label="Sidebar"
+            data-keywords="Navigation sidebar nav h2 a aria-current popover id sidebar-toggle popovertarget"
+            >Sidebar</a
+          >
+          <a
+            href="subnav.html"
+            data-label="Subnav"
+            data-keywords="Navigation subnav h2 a aria-current"
+            >Subnav</a
+          >
+          <a
+            href="tabs.html"
+            data-label="Tabs"
+            data-keywords="Navigation tabs data-tabs role tab aria-controls tabpanel"
+            >Tabs</a
+          >
+          <a
+            href="tree.html"
+            data-label="Tree"
+            data-keywords="Navigation tree li details summary a span aria-current"
+            >Tree</a
+          >
+          <h2>Overlays</h2>
+          <a
+            href="dialog.html"
+            data-label="Dialog"
+            data-keywords="Overlays dialog commandfor command closedby header div footer"
+            >Dialog</a
+          >
+          <a
+            href="drawer.html"
+            data-label="Drawer"
+            data-keywords="Overlays drawer data-side commandfor command"
+            >Drawer</a
+          >
+          <a
+            href="popover.html"
+            data-label="Popover"
+            data-keywords="Overlays popover id popovertarget"
+            >Popover</a
+          >
+          <a
+            href="tooltip.html"
+            data-label="Tooltip"
+            data-keywords="Overlays tooltip data-tooltip data-side"
+            >Tooltip</a
+          >
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Select</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Select</h1>
+              <p>เลือกจากรายการ native select และแบบมีรายการที่จัดรูปแบบเอง</p>
+            </div>
+          </header>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

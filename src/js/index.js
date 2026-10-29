@@ -2,3 +2,7 @@
 import "./theme.js";
 import "./tabs.js";
 import "./save-bar.js";
+import "./select.js";
+import "./table.js";
+import "./tree.js";
+import "./journey.js";

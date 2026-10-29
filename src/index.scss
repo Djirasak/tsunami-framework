@@ -3,6 +3,7 @@
 @use "base";
 
 // Foundations and layout
+@use "components/typography";
 @use "components/icon";
 @use "components/stack";
 @use "components/card";
@@ -20,6 +21,7 @@
 @use "components/link";
 @use "components/field";
 @use "components/input-group";
+@use "components/select";
 @use "components/save-bar";
 @use "components/theme-switcher";
 
