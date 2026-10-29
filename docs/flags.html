@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flags | Tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+    <script type="module" src="docs.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="./"
+          ><svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" rx="7" />
+            <path
+              d="M5.5 21c3 0 5-2 6.5-5.2C14 11 17.2 7 22 7c3 0 4.8 2.2 4.8 4.5 0 2-1.6 3.5-3.5 3.5-1.8 0-3-1.3-3-2.9"
+            />
+            <path
+              d="M5.5 26c2.2-2.2 4.4-2.2 6.6 0s4.4 2.2 6.6 0 4.4-2.2 6.6 0"
+            /></svg
+          >Tsunami <span>津波</span></a
+        >
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a href="./" data-label="Overview" data-keywords="Get started index"
+            >Overview</a
+          >
+          <h2>Foundations</h2>
+          <a
+            href="colors"
+            data-label="Colors"
+            data-keywords="Foundations colors --bg --surface --subtle --fg --muted --line --accent --on-accent --ok-bg --ok-fg --warning-bg --warning-fg --danger-bg --danger-fg --info-bg --info-fg --neutral-bg --neutral-fg --overlay"
+            >Colors</a
+          >
+          <a
+            href="typography"
+            data-label="Typography"
+            data-keywords="Foundations typography prose p data-variant small ul ol li dl dt dd blockquote pre code hr kbd"
+            >Typography</a
+          >
+          <a
+            href="icons"
+            data-label="Icons"
+            data-keywords="Foundations icons class data-size aria-hidden color include icon glyph name"
+            >Icons</a
+          >
+          <h2>Layout</h2>
+          <a
+            href="stack"
+            data-label="Stack"
+            data-keywords="Layout stack data-direction data-gap"
+            >Stack</a
+          >
+          <a
+            href="card"
+            data-label="Card"
+            data-keywords="Layout card header h2 h3 p aside strong data-trend section div footer empty stat stat-group data-variant data-direction"
+            >Card</a
+          >
+          <a
+            href="item"
+            data-label="Item"
+            data-keywords="Layout item figure section h3 p aside data-variant data-size item-group hr"
+            >Item</a
+          >
+          <a
+            href="page-header"
+            data-label="Page header"
+            data-keywords="Layout page-header nav btn h1 hgroup div first-child last-child p"
+            >Page header</a
+          >
+          <a
+            href="stat"
+            data-label="Stat"
+            data-keywords="Layout stat span first-child strong data-trend loader aria-busy aria-pressed data-reverse data-variant data-size stat-group data-even dl"
+            >Stat</a
+          >
+          <a
+            href="table"
+            data-label="Table"
+            data-keywords="Layout table caption thead th tbody scope row tfoot data-align data-truncate td avatar img first-child aria-sort button data-sort-type data-sort-value tr aria-selected scroll-area"
+            >Table</a
+          >
+          <a
+            href="timeline"
+            data-label="Timeline"
+            data-keywords="Layout timeline ol li data-variant aria-busy time details summary dl dt dd article footer form code textarea"
+            >Timeline</a
+          >
+          <a
+            href="journey"
+            data-label="Journey"
+            data-keywords="Layout journey data-orientation data-view ol li header ul button aria-pressed span small data data-outcomes svg"
+            >Journey</a
+          >
+          <a
+            href="json-viewer"
+            data-label="JSON viewer"
+            data-keywords="Layout json-viewer data-view data-collapsed textarea readonly aria-invalid details expand collapse value"
+            >JSON viewer</a
+          >
+          <a
+            href="accordion"
+            data-label="Accordion"
+            data-keywords="Layout accordion details name open aria-disabled summary not"
+            >Accordion</a
+          >
+          <a
+            href="scroll-area"
+            data-label="Scroll area"
+            data-keywords="Layout scroll-area height code max-height tabindex aria-label"
+            >Scroll area</a
+          >
+          <a
+            href="workspace"
+            data-label="Workspace"
+            data-keywords="Layout workspace data-panel header h1 popovertarget aside code main td tr popover id"
+            >Workspace</a
+          >
+          <h2>Actions</h2>
+          <a
+            href="btn"
+            data-label="Button"
+            data-keywords="Actions btn data-variant data-size aria-label icon aria-pressed disabled aria-disabled btn-group data-pressed dropdown"
+            >Button</a
+          >
+          <a
+            href="dropdown"
+            data-label="Dropdown"
+            data-keywords="Actions dropdown popover id button a label input h2 h3 h4 hr kbd"
+            >Dropdown</a
+          >
+          <a
+            href="theme-switcher"
+            data-label="Theme switcher"
+            data-keywords="Actions theme-switcher html data-theme data-theme-toggle aria-pressed aria-label data-theme-show tsunami-theme"
+            >Theme switcher</a
+          >
+          <h2>Forms</h2>
+          <a
+            href="field"
+            data-label="Field"
+            data-keywords="Forms field aria-invalid disabled data-variant role data-gap"
+            >Field</a
+          >
+          <a
+            href="image-field"
+            data-label="Image field"
+            data-keywords="Forms image-field data-fit data-empty data-change data-clear img input file checkbox"
+            >Image field</a
+          >
+          <a
+            href="input"
+            data-label="Input"
+            data-keywords="Forms input data-size data-variant type file placeholder aria-label aria-invalid disabled"
+            >Input</a
+          >
+          <a
+            href="input-group"
+            data-label="Input group"
+            data-keywords="Forms input-group data-size data-variant aria-invalid disabled aria-hidden"
+            >Input group</a
+          >
+          <a
+            href="select"
+            data-label="Select"
+            data-keywords="Forms select div data-size data-placeholder data-search data-input data-tags data-url data-empty header code wrapper td tr multiple optgroup label option value selected disabled hidden data-label data-text data-avatar data-badge data-tag data-ready data-has-value role combobox"
+            >Select</a
+          >
+          <a
+            href="save-bar"
+            data-label="Save bar"
+            data-keywords="Forms save-bar data-form hidden data-warn-on-leave data-dirty role region aria-label a href data-save-bar-ignore"
+            >Save bar</a
+          >
+          <h2>Feedback</h2>
+          <a
+            href="alert"
+            data-label="Alert"
+            data-keywords="Feedback alert data-variant icon strong h2 h3 h4 p section footer role"
+            >Alert</a
+          >
+          <a
+            href="badge"
+            data-label="Badge"
+            data-keywords="Feedback badge data-variant data-size icon button"
+            >Badge</a
+          >
+          <a
+            href="empty"
+            data-label="Empty state"
+            data-keywords="Feedback empty header figure h3 p footer div a link"
+            >Empty state</a
+          >
+          <a
+            href="loader"
+            data-label="Loader"
+            data-keywords="Feedback loader data-size role aria-label aria-hidden aria-busy true"
+            >Loader</a
+          >
+          <a
+            href="skeleton"
+            data-label="Skeleton"
+            data-keywords="Feedback skeleton data-variant aria-hidden aria-busy"
+            >Skeleton</a
+          >
+          <a
+            href="progress"
+            data-label="Progress"
+            data-keywords="Feedback progress data-size span data-variant role aria-valuenow aria-valuemin aria-valuemax aria-valuetext aria-label aria-labelledby header ul li"
+            >Progress</a
+          >
+          <h2>Media</h2>
+          <a
+            href="avatar"
+            data-label="Avatar"
+            data-keywords="Media avatar img span data-size data-variant data-count data-status avatar-group"
+            >Avatar</a
+          >
+          <a
+            href="flags"
+            aria-current="page"
+            data-label="Flags"
+            data-keywords="Media flags flag data-size role aria-label aria-hidden"
+            >Flags</a
+          >
+          <h2>Navigation</h2>
+          <a
+            href="breadcrumb"
+            data-label="Breadcrumb"
+            data-keywords="Navigation breadcrumb ol li a aria-current"
+            >Breadcrumb</a
+          >
+          <a
+            href="link"
+            data-label="Link"
+            data-keywords="Navigation link a data-variant data-weight icon"
+            >Link</a
+          >
+          <a
+            href="pagination"
+            data-label="Pagination"
+            data-keywords="Navigation pagination ul li a span aria-current aria-disabled data-size"
+            >Pagination</a
+          >
+          <a
+            href="sidebar"
+            data-label="Sidebar"
+            data-keywords="Navigation sidebar popover id data-collapsed nav header section footer role group h2 h3 ul li a badge hr aria-current"
+            >Sidebar</a
+          >
+          <a
+            href="subnav"
+            data-label="Subnav"
+            data-keywords="Navigation subnav h2 ul li a aria-current sidebar data-collapsed true"
+            >Subnav</a
+          >
+          <a
+            href="tabs"
+            data-label="Tabs"
+            data-keywords="Navigation tabs role tablist data-variant data-size aria-orientation tab aria-controls aria-selected disabled aria-disabled popovertarget data-close tabpanel"
+            >Tabs</a
+          >
+          <a
+            href="tree"
+            data-label="Tree"
+            data-keywords="Navigation tree ul li details summary open a span icon aria-current input type search p hidden"
+            >Tree</a
+          >
+          <h2>Overlays</h2>
+          <a
+            href="dialog"
+            data-label="Dialog"
+            data-keywords="Overlays dialog closedby commandfor command value autofocus header figure div footer"
+            >Dialog</a
+          >
+          <a
+            href="drawer"
+            data-label="Drawer"
+            data-keywords="Overlays drawer closedby commandfor command value header div footer"
+            >Drawer</a
+          >
+          <a
+            href="popover"
+            data-label="Popover"
+            data-keywords="Overlays popover id header autofocus"
+            >Popover</a
+          >
+          <a
+            href="tooltip"
+            data-label="Tooltip"
+            data-keywords="Overlays tooltip"
+            >Tooltip</a
+          >
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Flags</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Flags</h1>
+              <p>
+                ธงประเทศอัตราส่วน 4:3 จาก flag-icons ใช้ class เดียวต่อธง
+                Country flags at 4:3 from flag-icons, one class per flag.
+              </p>
+            </div>
+          </header>
+          <div class="alert" data-variant="info" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <div>
+              <strong>ธงมาจาก flag-icons Flags come from flag-icons</strong>
+              <p>
+                flag-icons เวอร์ชัน 7.6.0 (<a
+                  href="https://github.com/lipis/flag-icons"
+                  rel="noopener"
+                  >github.com/lipis/flag-icons</a
+                >, MIT license) ไฟล์ SVG ประเทศละไฟล์ใน
+                <code>flags/</code> เบราว์เซอร์โหลดเฉพาะธงที่ใช้
+              </p>
+            </div>
+          </div>
+          <section>
+            <h2>
+              ธงที่มีชื่อสำหรับ screen reader Flags with an accessible name
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ธงที่มีชื่อสำหรับ screen reader Flags with an accessible name"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <span
+                      class="flag flag-th"
+                      role="img"
+                      aria-label="ไทย Thailand"
+                    ></span>
+                    <span
+                      class="flag flag-jp"
+                      role="img"
+                      aria-label="ญี่ปุ่น Japan"
+                    ></span>
+                    <span
+                      class="flag flag-us"
+                      role="img"
+                      aria-label="สหรัฐอเมริกา United States of America"
+                    ></span>
+                    <span
+                      class="flag flag-gb"
+                      role="img"
+                      aria-label="สหราชอาณาจักร United Kingdom"
+                    ></span>
+                    <span
+                      class="flag flag-de"
+                      role="img"
+                      aria-label="เยอรมนี Germany"
+                    ></span>
+                    <span
+                      class="flag flag-fr"
+                      role="img"
+                      aria-label="ฝรั่งเศส France"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;span class="flag flag-th" role="img" aria-label="ไทย Thailand"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-jp" role="img" aria-label="ญี่ปุ่น Japan"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-us" role="img" aria-label="สหรัฐอเมริกา United States of America"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-gb" role="img" aria-label="สหราชอาณาจักร United Kingdom"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-de" role="img" aria-label="เยอรมนี Germany"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-fr" role="img" aria-label="ฝรั่งเศส France"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ข้างชื่อประเทศ Beside the country name</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ข้างชื่อประเทศ Beside the country name"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ul class="stack" data-gap="sm">
+                    <li>
+                      <span class="flag flag-th" aria-hidden="true"></span> ไทย
+                      Thailand
+                    </li>
+                    <li>
+                      <span class="flag flag-sg" aria-hidden="true"></span>
+                      สิงคโปร์ Singapore
+                    </li>
+                    <li>
+                      <span class="flag flag-vn" aria-hidden="true"></span>
+                      เวียดนาม Vietnam
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ul class="stack" data-gap="sm"&gt;
+  &lt;li&gt;&lt;span class="flag flag-th" aria-hidden="true"&gt;&lt;/span&gt; ไทย Thailand&lt;/li&gt;
+  &lt;li&gt;&lt;span class="flag flag-sg" aria-hidden="true"&gt;&lt;/span&gt; สิงคโปร์ Singapore&lt;/li&gt;
+  &lt;li&gt;&lt;span class="flag flag-vn" aria-hidden="true"&gt;&lt;/span&gt; เวียดนาม Vietnam&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ขนาด Sizes: sm, default, lg และ xl</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ขนาด Sizes: sm, default, lg และ xl"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span
+                      class="flag flag-se"
+                      data-size="sm"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="flag flag-se" aria-hidden="true"></span>
+                    <span
+                      class="flag flag-se"
+                      data-size="lg"
+                      aria-hidden="true"
+                    ></span>
+                    <span
+                      class="flag flag-se"
+                      data-size="xl"
+                      aria-hidden="true"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="flag flag-se" data-size="sm" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-se" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-se" data-size="lg" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-se" data-size="xl" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.flag</code></td>
+                    <td></td>
+                    <td>
+                      กล่อง 4:3 สูง 16px มีเส้นขอบบางให้ธงสีขาวมองเห็นบนพื้นขาว
+                      A 4:3 box, 16px tall, with a hairline edge.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.flag-{code}</code></td>
+                    <td>
+                      ISO 3166 code, e.g. <code>th</code>, <code>gb-eng</code>
+                    </td>
+                    <td>
+                      เลือกธงจากรายการด้านล่าง Picks the flag; see the list
+                      below.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, default, <code>lg</code>, <code>xl</code>
+                    </td>
+                    <td>สูง 12, 16, 24 หรือ 32px Height 12, 16, 24 or 32px.</td>
+                  </tr>
+                  <tr>
+                    <td><code>role="img"</code> + <code>aria-label</code></td>
+                    <td>text</td>
+                    <td>
+                      ใช้เมื่อธงอยู่ลำพัง เพื่อให้มีชื่อ For a flag on its own.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-hidden="true"</code></td>
+                    <td></td>
+                    <td>
+                      ใช้เมื่อมีชื่อประเทศอยู่ข้างๆ แล้ว When the country name
+                      is next to it.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>ธงทั้งหมด Every flag</h2>
+            <p>
+              ค้นจากรหัสหรือชื่อประเทศได้ คลิกที่ธงเพื่อคัดลอก HTML Search by
+              code or name; click a flag to copy its HTML.
+            </p>
+            <div class="input-group docs-narrow">
+              <span><i class="icon icon-search" aria-hidden="true"></i></span>
+              <input
+                id="flag-search"
+                type="search"
+                placeholder="ค้นหาธง Search flags"
+                aria-label="Search flags"
+                autocomplete="off"
+              />
+              <span id="flag-count" aria-live="polite"></span>
+            </div>
+            <div id="flag-grid" class="docs-icons"></div>
+          </section>
+          <script type="module" src="flags.js"></script>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
