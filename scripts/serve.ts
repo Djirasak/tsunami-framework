@@ -1,8 +1,8 @@
-// Local static server: 127.0.0.1 only, serves /docs /dist /fonts.
+// Local static server: 127.0.0.1 only, serves /docs /dist /fonts /flags.
 import { resolve, sep } from "node:path";
 
 const root = resolve(import.meta.dir, "..");
-const allowed = new Set(["docs", "dist", "fonts"]);
+const allowed = new Set(["docs", "dist", "fonts", "flags"]);
 const notFound = () => new Response("Not found", { status: 404 });
 
 const server = Bun.serve({
