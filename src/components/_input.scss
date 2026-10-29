@@ -13,7 +13,7 @@ $controls: ".input, .field > input:not([type='checkbox'], [type='radio'], [type=
   :where(#{$controls}) {
     width: 100%;
     min-width: 0;
-    height: 2rem;
+    height: 2.25rem;
     padding: 0 var(--space-3);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
@@ -52,7 +52,7 @@ $controls: ".input, .field > input:not([type='checkbox'], [type='radio'], [type=
 
   // Sizes match .btn heights so an input and a button line up.
   :where(#{states("[data-size='sm']")}) {
-    height: 1.625rem;
+    height: 1.75rem;
     padding: 0 var(--space-2);
     font-size: var(--text-sm);
   }
@@ -75,7 +75,7 @@ $controls: ".input, .field > input:not([type='checkbox'], [type='radio'], [type=
   :where(#{states("[type='file']")}) {
     padding-left: 0;
     color: var(--muted);
-    line-height: calc(2rem - 2px);
+    line-height: calc(2.25rem - 2px);
     cursor: pointer;
   }
 

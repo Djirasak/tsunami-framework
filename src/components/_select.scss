@@ -7,7 +7,7 @@
 // The bordered box shared by the native select and the styled control.
 @mixin box {
   width: 100%;
-  height: 2rem;
+  height: 2.25rem;
   padding: 0 var(--space-3);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -23,7 +23,7 @@
   }
 
   :where(select.select[data-size="sm"], .select[data-size="sm"] > select) {
-    height: 1.625rem;
+    height: 1.75rem;
     font-size: var(--text-sm);
   }
 
@@ -106,7 +106,7 @@
   :where(.select > div:not([popover])) {
     flex-wrap: wrap;
     height: auto;
-    min-height: 2rem;
+    min-height: 2.25rem;
     padding: 3px var(--space-2);
     cursor: text;
   }
@@ -122,8 +122,8 @@
   }
 
   :where(.select[data-size="sm"] > :is(button, div:not([popover]))) {
-    height: 1.625rem;
-    min-height: 1.625rem;
+    height: 1.75rem;
+    min-height: 1.75rem;
     font-size: var(--text-sm);
   }
 

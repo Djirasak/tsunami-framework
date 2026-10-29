@@ -6,7 +6,7 @@
     align-items: center;
     gap: var(--space-2);
     min-width: 0;
-    height: 2rem;
+    height: 2.25rem;
     padding: 0 var(--space-3);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
@@ -69,7 +69,7 @@
 
   // Sizes match .input and .btn.
   :where(.input-group[data-size="sm"]) {
-    height: 1.625rem;
+    height: 1.75rem;
     padding: 0 var(--space-2);
     font-size: var(--text-sm);
   }
