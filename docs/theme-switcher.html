@@ -4,16 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Theme switcher | Tsunami</title>
-    <script>
-      try {
-        const t = localStorage.getItem("tsunami-theme");
-        if (t) document.documentElement.dataset.theme = t;
-      } catch {}
-    </script>
     <link rel="stylesheet" href="../dist/tsunami.min.css" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="docs.css" />
-    <script type="module" src="../dist/tsunami.min.js"></script>
+    <script src="../dist/tsunami.min.js"></script>
     <script type="module" src="docs.js"></script>
   </head>
   <body>
@@ -482,19 +476,16 @@
             </div>
           </section>
           <section>
-            <h2>Apply the saved theme in the head</h2>
+            <h2>No flash on load</h2>
             <p>
-              Put it in <code>&lt;head&gt;</code> before the stylesheet. Without
-              it, people who chose dark see a white flash on every load. If
+              The script applies the saved theme as soon as it runs, so load it
+              as a plain script in <code>&lt;head&gt;</code>. With
+              <code>type="module"</code> or <code>defer</code> it runs after
+              the first paint, and people who chose dark see a white flash. If
               localStorage is blocked, the theme still changes but is only kept
               for that page.
             </p>
-            <pre><code>&lt;script&gt;
-  try {
-    const t = localStorage.getItem("tsunami-theme");
-    if (t) document.documentElement.dataset.theme = t;
-  } catch {}
-&lt;/script&gt;</code></pre>
+            <pre><code>&lt;script src="dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
           </section>
           <section>
             <h2>Icon and label follow the theme</h2>

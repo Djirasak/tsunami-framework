@@ -4,16 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Overview | Tsunami</title>
-    <script>
-      try {
-        const t = localStorage.getItem("tsunami-theme");
-        if (t) document.documentElement.dataset.theme = t;
-      } catch {}
-    </script>
     <link rel="stylesheet" href="../dist/tsunami.min.css" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="docs.css" />
-    <script type="module" src="../dist/tsunami.min.js"></script>
+    <script src="../dist/tsunami.min.js"></script>
     <script type="module" src="docs.js"></script>
   </head>
   <body>
@@ -413,17 +407,14 @@
           <section id="install">
             <h2>Install</h2>
             <p>
-              Add the files from <code>dist/</code>, plus this script in
-              <code>&lt;head&gt;</code> to stop the theme from flashing.
+              Add the files from <code>dist/</code>. Load the script in
+              <code>&lt;head&gt;</code> as a plain script, not
+              <code>type="module"</code>: it then applies the saved theme before
+              the first paint, so there is no flash and no inline script to
+              add.
             </p>
             <pre><code>&lt;link rel="stylesheet" href="dist/tsunami.min.css"&gt;
-&lt;script&gt;
-  try {
-    const t = localStorage.getItem("tsunami-theme");
-    if (t) document.documentElement.dataset.theme = t;
-  } catch {}
-&lt;/script&gt;
-&lt;script type="module" src="dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
           </section>
           <section>
             <h2>Example</h2>
