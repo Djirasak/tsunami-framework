@@ -25,6 +25,15 @@
     background: var(--surface);
   }
 
+  // The title pushes the actions after it to the end of the bar.
+  :where(.workspace > header > h1) {
+    margin-inline-end: auto;
+    overflow: hidden;
+    font-size: var(--text-lg);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   :where(.workspace > main) {
     grid-column: 2;
     min-width: 0;
@@ -77,8 +86,9 @@
       width: var(--panel);
     }
 
+    // !important: .btn sets display later in the same layer.
     :where(.workspace > header [popovertarget]) {
-      display: none;
+      display: none !important;
     }
   }
 }

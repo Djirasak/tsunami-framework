@@ -329,15 +329,37 @@
             <div>
               <h1>Workspace</h1>
               <p>
-                Layout เต็มหน้าต่างสำหรับงานเดียว
-                แผงข้างและพื้นที่ทำงานเลื่อนแยกกัน บนจอแคบแผงข้างเปิดเป็น
-                overlay
+                Layout เต็มหน้าต่างสำหรับงานเดียวที่ต้องใช้พื้นที่ แถบบน แผงข้าง
+                และพื้นที่ทำงานเลื่อนแยกกัน
               </p>
             </div>
+            <a
+              href="workspace-full.html"
+              class="btn"
+              data-size="sm"
+              target="_blank"
+              >เปิดเต็มหน้า Open full page</a
+            >
           </header>
           <section>
+            <h2>Workspace คือทั้งหน้า A workspace is the whole page</h2>
+            <p>
+              <code>.workspace</code> สูงเต็มหน้าต่าง (<code>100dvh</code>)
+              ใช้แทน app shell (sidebar ของแอป) สำหรับงานเดียว เช่นแก้ธีม ลูกคือ
+              <code>&lt;header&gt;</code> แถบบน: ปุ่มกลับ,
+              <code>&lt;h1&gt;</code> ชื่องาน, ปุ่มควบคุม และปุ่มหลักไว้ท้ายสุด,
+              <code>&lt;aside&gt;</code> แผงข้าง และ
+              <code>&lt;main&gt;</code> พื้นที่ทำงาน
+              ในหน้าเอกสารนี้กล่องตัวอย่างถูกจำกัดความสูงไว้ ดูของจริงได้ที่
+              <a href="workspace-full.html" target="_blank"
+                >เปิดเต็มหน้า Open full page</a
+              >
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="Example">
+              <div
+                role="tablist"
+                aria-label="Workspace คือทั้งหน้า A workspace is the whole page"
+              >
                 <button
                   type="button"
                   role="tab"
@@ -373,21 +395,45 @@
                         data-variant="ghost"
                         data-size="icon"
                         popovertarget="ws-panel"
-                        aria-label="เปิดแผง Open panel"
+                        aria-label="เปิดแผง Open the panel"
                       >
-                        <i class="icon icon-menu" aria-hidden="true"></i>
+                        <i class="icon icon-panel-left" aria-hidden="true"></i>
                       </button>
-                      <strong>แก้ไขธีม Theme editor</strong>
+                      <a
+                        href="#"
+                        class="btn"
+                        data-size="icon"
+                        aria-label="กลับไปหน้าธีม Back to themes"
+                      >
+                        <i class="icon icon-arrow-left" aria-hidden="true"></i>
+                      </a>
+                      <h1>ธีมหน้าร้อน Summer theme</h1>
+                      <button type="button" class="btn" data-size="sm">
+                        ดูตัวอย่าง Preview
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="primary"
+                        data-size="sm"
+                      >
+                        บันทึก Save
+                      </button>
                     </header>
-                    <aside id="ws-panel" popover aria-label="Sections">
-                      <nav class="subnav" aria-label="Sections">
-                        <a href="#" aria-current="page">หัวเว็บ Header</a>
-                        <a href="#">สินค้า Products</a>
+                    <aside
+                      id="ws-panel"
+                      popover
+                      aria-label="ส่วนของหน้า Sections"
+                    >
+                      <nav class="subnav" aria-label="ส่วนของหน้า Sections">
+                        <a href="#" aria-current="page">ตัวอักษร Typography</a>
+                        <a href="#">เมนู Navigation</a>
+                        <a href="#">หน้าแรก Homepage</a>
                         <a href="#">ท้ายเว็บ Footer</a>
                       </nav>
                     </aside>
                     <main>
-                      <p>พื้นที่ทำงาน Work area</p>
+                      <p>พื้นที่ทำงาน The work area</p>
                     </main>
                   </div>
                 </div>
@@ -401,22 +447,344 @@
               >
                 <pre><code>&lt;div class="workspace"&gt;
   &lt;header&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-panel" aria-label="เปิดแผง Open panel"&gt;&lt;i class="icon icon-menu" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-    &lt;strong&gt;แก้ไขธีม Theme editor&lt;/strong&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-panel" aria-label="เปิดแผง Open the panel"&gt;
+      &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;a href="#" class="btn" data-size="icon" aria-label="กลับไปหน้าธีม Back to themes"&gt;
+      &lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+    &lt;h1&gt;ธีมหน้าร้อน Summer theme&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;ดูตัวอย่าง Preview&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;บันทึก Save&lt;/button&gt;
   &lt;/header&gt;
-  &lt;aside id="ws-panel" popover aria-label="Sections"&gt;
-    &lt;nav class="subnav" aria-label="Sections"&gt;
-      &lt;a href="#" aria-current="page"&gt;หัวเว็บ Header&lt;/a&gt;
-      &lt;a href="#"&gt;สินค้า Products&lt;/a&gt;
+  &lt;aside id="ws-panel" popover aria-label="ส่วนของหน้า Sections"&gt;
+    &lt;nav class="subnav" aria-label="ส่วนของหน้า Sections"&gt;
+      &lt;a href="#" aria-current="page"&gt;ตัวอักษร Typography&lt;/a&gt;
+      &lt;a href="#"&gt;เมนู Navigation&lt;/a&gt;
+      &lt;a href="#"&gt;หน้าแรก Homepage&lt;/a&gt;
       &lt;a href="#"&gt;ท้ายเว็บ Footer&lt;/a&gt;
     &lt;/nav&gt;
   &lt;/aside&gt;
   &lt;main&gt;
-    &lt;p&gt;พื้นที่ทำงาน Work area&lt;/p&gt;
+    &lt;p&gt;พื้นที่ทำงาน The work area&lt;/p&gt;
   &lt;/main&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
+          </section>
+          <section>
+            <h2>แผงกว้าง data-panel="wide" A wide panel</h2>
+            <p>
+              แผงข้างกว้าง 20rem เป็นค่าเริ่มต้น
+              <code>data-panel="wide"</code> ทำให้กว้าง 24rem
+              สำหรับแผงที่มีฟอร์มหรือรายการยาว
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label='แผงกว้าง data-panel="wide" A wide panel'
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="workspace" data-panel="wide">
+                    <header>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-wide-panel"
+                        aria-label="เปิดแผง Open the panel"
+                      >
+                        <i class="icon icon-panel-left" aria-hidden="true"></i>
+                      </button>
+                      <h1>ธีมหน้าร้อน Summer theme</h1>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="primary"
+                        data-size="sm"
+                      >
+                        บันทึก Save
+                      </button>
+                    </header>
+                    <aside
+                      id="ws-wide-panel"
+                      popover
+                      aria-label="ตั้งค่า Settings"
+                    >
+                      <p>แผงกว้าง 24rem A panel 24rem wide</p>
+                    </aside>
+                    <main>
+                      <p>พื้นที่ทำงาน The work area</p>
+                    </main>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="workspace" data-panel="wide"&gt;
+  &lt;header&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-wide-panel" aria-label="เปิดแผง Open the panel"&gt;
+      &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;h1&gt;ธีมหน้าร้อน Summer theme&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;บันทึก Save&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;aside id="ws-wide-panel" popover aria-label="ตั้งค่า Settings"&gt;
+    &lt;p&gt;แผงกว้าง 24rem A panel 24rem wide&lt;/p&gt;
+  &lt;/aside&gt;
+  &lt;main&gt;
+    &lt;p&gt;พื้นที่ทำงาน The work area&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แผงท้าย: aside หลัง main An aside after the main is the end panel
+            </h2>
+            <p>
+              <code>&lt;aside&gt;</code> ที่อยู่หลัง
+              <code>&lt;main&gt;</code> คือแผงท้าย กว้างเท่าแผงต้น
+              เส้นอยู่อีกฝั่ง workspace มีแผงต้น แผงท้าย หรือทั้งสองก็ได้
+              เช่นรายการหน้าทางซ้ายและแชตทางขวา
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="แผงท้าย: aside หลัง main An aside after the main is the end panel"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="workspace">
+                    <header>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-end-start"
+                        aria-label="เปิดรายการหน้า Open the pages"
+                      >
+                        <i class="icon icon-panel-left" aria-hidden="true"></i>
+                      </button>
+                      <h1>แคมเปญหน้าร้อน Summer campaign</h1>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-end-end"
+                        aria-label="เปิดแชต Open the chat"
+                      >
+                        <i class="icon icon-panel-right" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <aside id="ws-end-start" popover aria-label="หน้า Pages">
+                      <p>แผงต้น The panel at the start</p>
+                    </aside>
+                    <main>
+                      <p>พื้นที่ทำงาน The work area</p>
+                    </main>
+                    <aside id="ws-end-end" popover aria-label="แชต Chat">
+                      <p>แผงท้าย The end panel</p>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="workspace"&gt;
+  &lt;header&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-end-start" aria-label="เปิดรายการหน้า Open the pages"&gt;
+      &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;h1&gt;แคมเปญหน้าร้อน Summer campaign&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-end-end" aria-label="เปิดแชต Open the chat"&gt;
+      &lt;i class="icon icon-panel-right" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/header&gt;
+  &lt;aside id="ws-end-start" popover aria-label="หน้า Pages"&gt;
+    &lt;p&gt;แผงต้น The panel at the start&lt;/p&gt;
+  &lt;/aside&gt;
+  &lt;main&gt;
+    &lt;p&gt;พื้นที่ทำงาน The work area&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;aside id="ws-end-end" popover aria-label="แชต Chat"&gt;
+    &lt;p&gt;แผงท้าย The end panel&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>แผงท้ายอย่างเดียว Only an end panel</h2>
+            <p>
+              ไม่มีแผงต้นก็ได้: <code>&lt;main&gt;</code> ตามด้วย
+              <code>&lt;aside&gt;</code>
+              เช่นรายละเอียดคำสั่งซื้อพร้อมแผงลูกค้าทางขวา
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="แผงท้ายอย่างเดียว Only an end panel"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="workspace">
+                    <header>
+                      <h1>คำสั่งซื้อ #1042 Order</h1>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-only-end"
+                        aria-label="เปิดข้อมูลลูกค้า Open the customer"
+                      >
+                        <i class="icon icon-panel-right" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <main>
+                      <p>รายการสินค้า 3 ชิ้น รวม ฿2,450.00</p>
+                    </main>
+                    <aside
+                      id="ws-only-end"
+                      popover
+                      aria-label="ลูกค้า Customer"
+                    >
+                      <p>สมหญิง รักดี · somying@example.com</p>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="workspace"&gt;
+  &lt;header&gt;
+    &lt;h1&gt;คำสั่งซื้อ #1042 Order&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-only-end" aria-label="เปิดข้อมูลลูกค้า Open the customer"&gt;
+      &lt;i class="icon icon-panel-right" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;p&gt;รายการสินค้า 3 ชิ้น รวม ฿2,450.00&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;aside id="ws-only-end" popover aria-label="ลูกค้า Customer"&gt;
+    &lt;p&gt;สมหญิง รักดี · somying@example.com&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ต่ำกว่า 768px ปุ่มในแถบบนเปิดแผง Below 768px a button in the bar
+              opens the panel
+            </h2>
+            <p>
+              แผงข้างใส่ <code>popover</code> และ
+              <code>id</code> ปุ่มในแถบบนที่มี
+              <code>popovertarget</code> ชี้ไปที่ id
+              นั้นจะเปิดแผงทับพื้นที่ทำงาน กด
+              <kbd>Esc</kbd> หรือคลิกข้างนอกเพื่อปิด แผงท้ายเปิดจากขอบขวา
+              ตั้งแต่ 768px ขึ้นไปแผงเป็นคอลัมน์ปกติและปุ่มที่มี
+              <code>popovertarget</code> ในแถบบนจะซ่อนเอง ไม่ต้องใช้ JS
+              ลองย่อหน้าต่างในตัวอย่างด้านบนหรือ
+              <a href="workspace-full.html" target="_blank">หน้าเต็ม</a>
+            </p>
           </section>
           <section>
             <h2>Attributes</h2>
@@ -431,19 +799,58 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td><code>.workspace</code></td>
+                    <td></td>
+                    <td>
+                      layout เต็มหน้าต่าง (<code>100dvh</code>) ใช้เป็นลูกของ
+                      <code>body</code> โดยตรง
+                    </td>
+                  </tr>
+                  <tr>
                     <td><code>data-panel</code></td>
-                    <td><code>wide</code></td>
-                    <td>แผงกว้าง 24rem (ค่าเริ่มต้น 20rem)</td>
+                    <td><code>wide</code>; ไม่ใส่ = 20rem (ค่าเริ่มต้น)</td>
+                    <td>แผงข้างกว้าง 24rem</td>
                   </tr>
                   <tr>
-                    <td><code>&gt; aside[popover][id]</code></td>
+                    <td><code>&gt; header</code></td>
                     <td></td>
-                    <td>แผงข้าง ถ้าวางหลัง <code>main</code> จะเป็นแผงขวา</td>
+                    <td>แถบบนเต็มความกว้าง เรียงลูกเป็นแถว</td>
                   </tr>
                   <tr>
-                    <td><code>&gt; header [popovertarget]</code></td>
+                    <td><code>header &gt; h1</code></td>
                     <td></td>
-                    <td>ปุ่มเปิดแผงบนจอแคบ ซ่อนเองตั้งแต่ 48rem</td>
+                    <td>
+                      ชื่องาน ดันปุ่มที่ตามมาไปชิดขวา ตัดด้วย … เมื่อยาวเกิน
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>header [popovertarget]</code></td>
+                    <td>id ของแผง</td>
+                    <td>ปุ่มเปิดแผงบนจอแคบ ซ่อนเองตั้งแต่ 768px</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; aside</code> (ก่อน <code>main</code>)</td>
+                    <td></td>
+                    <td>แผงต้น เส้นทางขวา เลื่อนแยก</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; main</code></td>
+                    <td></td>
+                    <td>พื้นที่ทำงาน เลื่อนแยก</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; main ~ aside</code></td>
+                    <td></td>
+                    <td>แผงท้าย เส้นทางซ้าย บนจอแคบเปิดจากขอบขวา</td>
+                  </tr>
+                  <tr>
+                    <td><code>aside[popover]</code>, <code>id</code></td>
+                    <td></td>
+                    <td>
+                      ต่ำกว่า 768px แผงซ่อนและเปิดเป็น popover ทับพื้นที่ทำงาน
+                      (มี backdrop) ตั้งแต่ 768px เป็นคอลัมน์ ใส่
+                      <code>aria-label</code> ตั้งชื่อแผง
+                    </td>
                   </tr>
                 </tbody>
               </table>
