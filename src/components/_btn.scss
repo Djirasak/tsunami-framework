@@ -21,7 +21,7 @@
     flex-shrink: 0;
     cursor: pointer;
     transition-property:
-      background-color, border-color, color, filter, translate;
+      background-color, border-color, color, filter, opacity, translate;
     transition-duration: motion.$base;
     transition-timing-function: motion.$ease;
   }
