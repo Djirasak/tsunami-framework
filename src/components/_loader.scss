@@ -16,7 +16,10 @@ $sizes: (
     border-top-color: currentColor;
     border-radius: 50%;
     vertical-align: middle;
-    animation: tsunami-spin 0.7s linear infinite;
+    // Spins, and fades in so a loader that shows for a moment does not flash.
+    animation:
+      tsunami-spin 0.7s linear infinite,
+      tsunami-appear 0.2s ease-out;
   }
 
   @each $name, $size in $sizes {
@@ -39,16 +42,22 @@ $sizes: (
     color: var(--muted);
   }
 
-  // Reduced motion: keep spinning, slower.
+  // Reduced motion: keep spinning, slower, and appear at once.
   @media (prefers-reduced-motion: reduce) {
     :where(.loader) {
-      animation-duration: 1.6s;
+      animation: tsunami-spin 1.6s linear infinite;
     }
   }
 
   @keyframes tsunami-spin {
     to {
       rotate: 1turn;
+    }
+  }
+
+  @keyframes tsunami-appear {
+    from {
+      opacity: 0;
     }
   }
 }
