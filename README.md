@@ -50,7 +50,7 @@ The class names the component; `data-*` sets variant and size.
 
 | Group       | Components                                                                                                     |
 | ----------- | -------------------------------------------------------------------------------------------------------------- |
-| Foundations | Colors, Typography (`.prose`), Icons (Lucide)                                                                  |
+| Foundations | Colors, Typography (`.typography`), Icons (Lucide)                                                             |
 | Layout      | Stack, Card, Item, Page header, Stat, Table, Timeline, Journey, JSON viewer, Accordion, Scroll area, Workspace |
 | Actions     | Button, Dropdown, Theme switcher                                                                               |
 | Forms       | Field, Image field, Input, Input group, Select, Save bar                                                       |

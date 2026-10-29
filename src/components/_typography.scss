@@ -1,122 +1,122 @@
-// Typography: .prose gives long-form content its rhythm (base styles reset
+// Typography: .typography gives long-form content its rhythm (base styles reset
 // margins). Paragraphs take data-variant="lead|muted"; <small> is small text.
-// .kbd draws a keyboard key anywhere; inside .prose a bare <kbd> does too.
+// .kbd draws a keyboard key anywhere; inside .typography a bare <kbd> does too.
 @layer components {
   // Block rhythm: direct children are spaced; headings open a new part.
-  :where(.prose > *) {
+  :where(.typography > *) {
     margin-block: 0;
   }
 
-  :where(.prose > * + *) {
+  :where(.typography > * + *) {
     margin-top: var(--space-4);
   }
 
-  :where(.prose :is(h1, h2, h3, h4, h5, h6)) {
+  :where(.typography :is(h1, h2, h3, h4, h5, h6)) {
     font-weight: 600;
     line-height: 1.25;
   }
 
-  :where(.prose h1) {
+  :where(.typography h1) {
     font-size: var(--text-xl);
   }
 
-  :where(.prose h2) {
+  :where(.typography h2) {
     font-size: var(--text-lg);
   }
 
-  :where(.prose :is(h3, h4)) {
+  :where(.typography :is(h3, h4)) {
     font-size: var(--text-base);
   }
 
-  :where(.prose :is(h5, h6)) {
+  :where(.typography :is(h5, h6)) {
     font-size: var(--text-sm);
   }
 
-  :where(.prose h6) {
+  :where(.typography h6) {
     color: var(--muted);
   }
 
-  :where(.prose > :is(h2, h3, h4, h5, h6):not(:first-child)) {
+  :where(.typography > :is(h2, h3, h4, h5, h6):not(:first-child)) {
     margin-top: var(--space-6);
   }
 
-  :where(.prose > :is(h1, h2, h3, h4, h5, h6) + *) {
+  :where(.typography > :is(h1, h2, h3, h4, h5, h6) + *) {
     margin-top: var(--space-2);
   }
 
-  :where(.prose > hr) {
+  :where(.typography > hr) {
     margin-block: var(--space-5);
   }
 
   // Paragraph variants.
-  :where(.prose p[data-variant="lead"]) {
+  :where(.typography p[data-variant="lead"]) {
     color: var(--muted);
     font-size: var(--text-lg);
   }
 
-  :where(.prose p[data-variant="muted"], .prose small) {
+  :where(.typography p[data-variant="muted"], .typography small) {
     color: var(--muted);
   }
 
-  :where(.prose small) {
+  :where(.typography small) {
     font-size: var(--text-sm);
   }
 
   // Inline text.
-  :where(.prose a) {
+  :where(.typography a) {
     text-decoration: underline;
   }
 
-  :where(.prose :is(strong, b)) {
+  :where(.typography :is(strong, b)) {
     font-weight: 600;
   }
 
-  :where(.prose mark) {
+  :where(.typography mark) {
     padding: 0 0.15em;
     border-radius: var(--radius-sm);
     background: var(--warning-bg);
     color: inherit;
   }
 
-  :where(.prose del) {
+  :where(.typography del) {
     color: var(--muted);
   }
 
-  :where(.prose ins) {
+  :where(.typography ins) {
     text-decoration: underline;
     text-decoration-color: var(--ok-fg);
     text-underline-offset: 2px;
   }
 
-  :where(.prose abbr[title]) {
+  :where(.typography abbr[title]) {
     text-decoration: underline dotted;
     text-underline-offset: 2px;
     cursor: help;
   }
 
-  :where(.prose :is(sub, sup)) {
+  :where(.typography :is(sub, sup)) {
     position: relative;
     font-size: 0.75em;
     line-height: 0;
     vertical-align: baseline;
   }
 
-  :where(.prose sup) {
+  :where(.typography sup) {
     top: -0.5em;
   }
 
-  :where(.prose sub) {
+  :where(.typography sub) {
     bottom: -0.25em;
   }
 
-  :where(.prose :not(pre) > code) {
+  :where(.typography :not(pre) > code) {
     padding: 0.1em 0.3em;
     border-radius: var(--radius-sm);
     background: var(--subtle);
   }
 
   // Keyboard key.
-  :where(.kbd, .prose kbd) {
+  :where(.kbd, .typography kbd) {
     display: inline-block;
     min-width: 1.6em;
     padding: 0 0.35em;
@@ -131,52 +131,52 @@
   }
 
   // Lists.
-  :where(.prose :is(ul, ol)) {
+  :where(.typography :is(ul, ol)) {
     padding-left: var(--space-5);
   }
 
-  :where(.prose ul) {
+  :where(.typography ul) {
     list-style: disc;
   }
 
-  :where(.prose ul ul) {
+  :where(.typography ul ul) {
     list-style: circle;
   }
 
-  :where(.prose ol) {
+  :where(.typography ol) {
     list-style: decimal;
   }
 
-  :where(.prose li)::marker {
+  :where(.typography li)::marker {
     color: var(--muted);
   }
 
-  :where(.prose li + li, .prose li > :is(ul, ol)) {
+  :where(.typography li + li, .typography li > :is(ul, ol)) {
     margin-top: var(--space-1);
   }
 
   // Description list: small gray terms beside their values.
-  :where(.prose dl) {
+  :where(.typography dl) {
     display: grid;
     grid-template-columns: max-content 1fr;
     gap: var(--space-1) var(--space-4);
   }
 
-  :where(.prose dt) {
+  :where(.typography dt) {
     color: var(--muted);
   }
 
-  :where(.prose dd) {
+  :where(.typography dd) {
     margin: 0;
   }
 
-  :where(.prose blockquote) {
+  :where(.typography blockquote) {
     padding-left: var(--space-4);
     border-left: 2px solid var(--line);
     color: var(--muted);
   }
 
-  :where(.prose pre) {
+  :where(.typography pre) {
     padding: var(--space-4);
     overflow-x: auto;
     border: 1px solid var(--line);
@@ -186,7 +186,7 @@
     line-height: 1.6;
   }
 
-  :where(.prose pre > code) {
+  :where(.typography pre > code) {
     font-size: inherit;
   }
 }
