@@ -315,14 +315,29 @@
             <div>
               <h1>Theme switcher</h1>
               <p>
-                ปุ่มเลือกธีม จำค่าไว้ใน localStorage และตั้ง aria-pressed ให้เอง
+                ธีมอยู่ที่ <code>data-theme</code> บน
+                <code>&lt;html&gt;</code> ปุ่มเลือกธีมจำค่าไว้ใน localStorage
+                และตั้ง aria-pressed ให้เอง
               </p>
             </div>
           </header>
           <section>
-            <h2>Segmented</h2>
+            <h2>
+              ธีมอยู่ที่ data-theme บน html The theme is data-theme on html
+            </h2>
+            <p>
+              <code>&lt;html data-theme="dark"&gt;</code> หรือ
+              <code>"light"</code> คือเลือกธีมไว้ ถ้าไม่มี attribute
+              จะใช้ธีมของระบบ (prefers-color-scheme) ปุ่ม
+              <code>data-theme-toggle</code> เปลี่ยนค่านี้และบันทึกไว้ใน
+              localStorage คีย์ <code>tsunami-theme</code> ทุก token
+              สีมีค่าที่สองสำหรับ dark
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="Segmented">
+              <div
+                role="tablist"
+                aria-label="ธีมอยู่ที่ data-theme บน html The theme is data-theme on html"
+              >
                 <button
                   type="button"
                   role="tab"
@@ -386,16 +401,22 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="theme-switcher" role="group" aria-label="ธีม Theme"&gt;
-  &lt;button type="button" data-theme-toggle="light" aria-label="Light"&gt;&lt;i class="icon icon-sun" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-  &lt;button type="button" data-theme-toggle="dark" aria-label="Dark"&gt;&lt;i class="icon icon-moon" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-  &lt;button type="button" data-theme-toggle="system" aria-label="System"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-&lt;/div&gt;</code></pre>
+                <pre><code>&lt;html lang="th" data-theme="dark"&gt;
+  ...
+  &lt;div class="theme-switcher" role="group" aria-label="ธีม Theme"&gt;
+    &lt;button type="button" data-theme-toggle="light" aria-label="Light"&gt;&lt;i class="icon icon-sun" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" data-theme-toggle="dark" aria-label="Dark"&gt;&lt;i class="icon icon-moon" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" data-theme-toggle="system" aria-label="System"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>ปุ่มสลับ Toggle</h2>
+            <p>
+              <code>data-theme-toggle</code> ที่ไม่มีค่าสลับ light / dark
+              จากธีมที่ใช้อยู่ตอนนี้
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="ปุ่มสลับ Toggle">
                 <button
@@ -442,6 +463,420 @@
             </div>
           </section>
           <section>
+            <h2>
+              ใส่สคริปต์ใน head ก่อนวาดหน้า Apply the saved theme in the head
+            </h2>
+            <p>
+              วางไว้ใน <code>&lt;head&gt;</code> ก่อน stylesheet ถ้าไม่มี
+              คนที่เลือก dark จะเห็นหน้าขาวกะพริบทุกครั้งที่โหลด ถ้า
+              localStorage ถูกบล็อก ธีมยังเปลี่ยนได้แต่จำไว้แค่หน้านั้น
+            </p>
+            <pre><code>&lt;script&gt;
+  try {
+    const t = localStorage.getItem("tsunami-theme");
+    if (t) document.documentElement.dataset.theme = t;
+  } catch {}
+&lt;/script&gt;</code></pre>
+          </section>
+          <section>
+            <h2>
+              ไอคอนและข้อความตามธีมโดยไม่ใช้สคริปต์ Icon and label follow the
+              theme
+            </h2>
+            <p>
+              <code>data-theme-show="dark"</code> แสดงเฉพาะตอน dark และ
+              <code>"light"</code> เฉพาะตอน light ใช้ CSS ล้วน (อ่าน
+              <code>html[data-theme]</code> หรือ prefers-color-scheme)
+              จึงถูกต้องตั้งแต่ก่อน JS โหลด
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ไอคอนและข้อความตามธีมโดยไม่ใช้สคริปต์ Icon and label follow the theme"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="ghost"
+                      data-size="icon-sm"
+                      data-theme-toggle
+                      aria-label="สลับธีม Toggle theme"
+                    >
+                      <i
+                        class="icon icon-sun"
+                        data-theme-show="dark"
+                        aria-hidden="true"
+                      ></i>
+                      <i
+                        class="icon icon-moon"
+                        data-theme-show="light"
+                        aria-hidden="true"
+                      ></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      data-theme-toggle
+                    >
+                      <i
+                        class="icon icon-sun"
+                        data-theme-show="dark"
+                        aria-hidden="true"
+                      ></i>
+                      <i
+                        class="icon icon-moon"
+                        data-theme-show="light"
+                        aria-hidden="true"
+                      ></i>
+                      <span data-theme-show="dark">โหมดสว่าง Light mode</span>
+                      <span data-theme-show="light">โหมดมืด Dark mode</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-theme-toggle aria-label="สลับธีม Toggle theme"&gt;
+    &lt;i class="icon icon-sun" data-theme-show="dark" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;i class="icon icon-moon" data-theme-show="light" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="sm" data-theme-toggle&gt;
+    &lt;i class="icon icon-sun" data-theme-show="dark" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;i class="icon icon-moon" data-theme-show="light" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;span data-theme-show="dark"&gt;โหมดสว่าง Light mode&lt;/span&gt;
+    &lt;span data-theme-show="light"&gt;โหมดมืด Dark mode&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>set() เลือกธีมตามชื่อ set() picks a theme by name</h2>
+            <p>
+              <code>window.tsunami.theme.set(name)</code> รับ
+              <code>"light"</code>, <code>"dark"</code> หรือ
+              <code>"system"</code> ใช้เมื่อเปลี่ยนธีมจากโค้ด
+              เช่นหลังผู้ใช้บันทึกการตั้งค่าบัญชี
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="set() เลือกธีมตามชื่อ set() picks a theme by name"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      onclick="window.tsunami.theme.set('light')"
+                    >
+                      <i class="icon icon-sun" aria-hidden="true"></i>สว่าง
+                      Light
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      onclick="window.tsunami.theme.set('dark')"
+                    >
+                      <i class="icon icon-moon" aria-hidden="true"></i>มืด Dark
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      onclick="window.tsunami.theme.set('system')"
+                    >
+                      <i class="icon icon-monitor" aria-hidden="true"></i
+                      >ตามระบบ System
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-size="sm" onclick="window.tsunami.theme.set('light')"&gt;&lt;i class="icon icon-sun" aria-hidden="true"&gt;&lt;/i&gt;สว่าง Light&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="sm" onclick="window.tsunami.theme.set('dark')"&gt;&lt;i class="icon icon-moon" aria-hidden="true"&gt;&lt;/i&gt;มืด Dark&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="sm" onclick="window.tsunami.theme.set('system')"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;ตามระบบ System&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              อ่านธีมด้วย get() และฟัง tsunami:themechange Read with get(),
+              listen for a change
+            </h2>
+            <p>
+              <code>get()</code> คืน <code>"dark"</code> หรือ
+              <code>"light"</code> ตามที่แสดงจริง event ส่งที่
+              <code>document</code> ทุกครั้งที่ <code>set()</code> /
+              <code>toggle()</code> / ปุ่มถูกกด และเมื่อธีมระบบเปลี่ยนตอนเลือก
+              system
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="อ่านธีมด้วย get() และฟัง tsunami:themechange Read with get(), listen for a change"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        onclick="window.tsunami.theme.toggle()"
+                      >
+                        สลับ Toggle
+                      </button>
+                    </div>
+                    <p id="theme-result"></p>
+                  </div>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      const result = document.getElementById("theme-result");
+                      result.textContent =
+                        "get() คืนค่า " + window.tsunami.theme.get();
+                      document.addEventListener("tsunami:themechange", (e) => {
+                        result.textContent =
+                          "tsunami:themechange: theme = " +
+                          e.detail.theme +
+                          ", choice = " +
+                          e.detail.choice;
+                      });
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div&gt;&lt;button type="button" class="btn" data-size="sm" onclick="window.tsunami.theme.toggle()"&gt;สลับ Toggle&lt;/button&gt;&lt;/div&gt;
+  &lt;p id="theme-result"&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.addEventListener("DOMContentLoaded", () =&gt; {
+    const result = document.getElementById("theme-result");
+    result.textContent = "get() คืนค่า " + window.tsunami.theme.get();
+    document.addEventListener("tsunami:themechange", (e) =&gt; {
+      result.textContent = "tsunami:themechange: theme = " + e.detail.theme + ", choice = " + e.detail.choice;
+    });
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              คอมโพเนนต์วาดใหม่เมื่อธีมเปลี่ยน Components redraw on a change
+            </h2>
+            <p>
+              CSS เปลี่ยนสีเองอยู่แล้ว แต่ canvas หรือ iframe
+              ที่หน้าวาดเองต้องฟัง <code>tsunami:themechange</code> แล้วอ่าน
+              token สีใหม่มาวาดซ้ำ
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="คอมโพเนนต์วาดใหม่เมื่อธีมเปลี่ยน Components redraw on a change"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <canvas
+                    id="theme-chart"
+                    style="width: 100%; max-width: 20rem; height: 7.5rem"
+                    aria-label="ยอดขาย 7 วัน Sales, last 7 days"
+                    role="img"
+                  ></canvas>
+                  <script>
+                    (() => {
+                      const canvas = document.getElementById("theme-chart");
+                      const sales = [12, 18, 9, 22, 16, 27, 20];
+                      function draw() {
+                        const css = getComputedStyle(canvas);
+                        const w = canvas.clientWidth;
+                        const h = canvas.clientHeight;
+                        canvas.width = w * devicePixelRatio;
+                        canvas.height = h * devicePixelRatio;
+                        const ctx = canvas.getContext("2d");
+                        ctx.scale(devicePixelRatio, devicePixelRatio);
+                        ctx.fillStyle = css.getPropertyValue("--subtle");
+                        ctx.fillRect(0, 0, w, h);
+                        const bar = w / sales.length;
+                        ctx.fillStyle = css.getPropertyValue("--accent");
+                        sales.forEach((v, i) => {
+                          const y = h - (v / 30) * h;
+                          ctx.fillRect(i * bar + 4, y, bar - 8, h - y);
+                        });
+                      }
+                      document.addEventListener("tsunami:themechange", draw);
+                      draw();
+                    })();
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;canvas id="theme-chart" style="width: 100%; max-width: 20rem; height: 7.5rem" aria-label="ยอดขาย 7 วัน Sales, last 7 days" role="img"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  (() =&gt; {
+    const canvas = document.getElementById("theme-chart");
+    const sales = [12, 18, 9, 22, 16, 27, 20];
+    function draw() {
+      const css = getComputedStyle(canvas);
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      canvas.width = w * devicePixelRatio;
+      canvas.height = h * devicePixelRatio;
+      const ctx = canvas.getContext("2d");
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      ctx.fillStyle = css.getPropertyValue("--subtle");
+      ctx.fillRect(0, 0, w, h);
+      const bar = w / sales.length;
+      ctx.fillStyle = css.getPropertyValue("--accent");
+      sales.forEach((v, i) =&gt; {
+        const y = h - (v / 30) * h;
+        ctx.fillRect(i * bar + 4, y, bar - 8, h - y);
+      });
+    }
+    document.addEventListener("tsunami:themechange", draw);
+    draw();
+  })();
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>Attributes</h2>
             <div class="card">
               <table class="table">
@@ -454,19 +889,116 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>data-theme-toggle</code></td>
-                    <td><code>(empty)</code></td>
-                    <td>สลับ light / dark</td>
-                  </tr>
-                  <tr>
-                    <td><code>data-theme-toggle</code></td>
-                    <td><code>light, dark, system</code></td>
-                    <td>เลือกค่า <code>system</code> คือลบค่าที่เลือกไว้</td>
-                  </tr>
-                  <tr>
                     <td><code>html[data-theme]</code></td>
-                    <td><code>light, dark</code></td>
-                    <td>ตั้งโดย JS ถ้าไม่มีจะใช้ prefers-color-scheme</td>
+                    <td>
+                      (ไม่ใส่ = ตามระบบ, ค่าเริ่มต้น), <code>light</code>,
+                      <code>dark</code>
+                    </td>
+                    <td>
+                      ธีมที่เลือก ตั้งโดย JS และสคริปต์ใน head ไม่มี attribute
+                      จะใช้ prefers-color-scheme
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.theme-switcher</code></td>
+                    <td>
+                      <code>div</code> + <code>role="group"</code>,
+                      <code>aria-label</code>
+                    </td>
+                    <td>
+                      กรอบปุ่มเลือกธีมแบบ segmented ลูกคือ
+                      <code>&lt;button&gt;</code> ที่มีไอคอน
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-theme-toggle</code></td>
+                    <td>
+                      (ว่าง), <code>light</code>, <code>dark</code>,
+                      <code>system</code>
+                    </td>
+                    <td>
+                      ใส่ที่ปุ่มใดก็ได้ ว่าง = สลับ light / dark, ค่าอื่น =
+                      <code>set(ค่า)</code>;
+                      <code>system</code> ลบค่าที่เลือกไว้
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-pressed</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td>
+                      JS ตั้งให้ปุ่ม <code>data-theme-toggle</code> ที่มีค่า
+                      ตรงกับค่าที่เลือกอยู่ (system เมื่อไม่มี data-theme)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>ข้อความ</td>
+                    <td>จำเป็นกับปุ่มไอคอนอย่างเดียว</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-theme-show</code></td>
+                    <td><code>light</code>, <code>dark</code></td>
+                    <td>แสดง element นี้เฉพาะในธีมนั้น ใช้ CSS ล้วน</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami-theme</code></td>
+                    <td><code>light</code>, <code>dark</code></td>
+                    <td>
+                      คีย์ใน localStorage เก็บค่าที่เลือก ลบออกเมื่อเลือก system
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>ฟังก์ชันอยู่ที่ <code>window.tsunami.theme</code></p>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function / event</th>
+                    <th scope="col">Arguments / detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>theme.get()</code></td>
+                    <td>-</td>
+                    <td>
+                      คืน <code>"dark"</code> หรือ
+                      <code>"light"</code> ตามธีมที่แสดงอยู่จริง
+                      (รวมกรณีตามระบบ)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>theme.set(name)</code></td>
+                    <td>
+                      <code>name</code>: <code>"light"</code>,
+                      <code>"dark"</code>, <code>"system"</code>
+                    </td>
+                    <td>
+                      ตั้งธีมและบันทึก ค่าอื่นนอกจาก light / dark ถือเป็น system
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>theme.toggle()</code></td>
+                    <td>-</td>
+                    <td>สลับไปอีกธีมจากที่แสดงอยู่</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami:themechange</code></td>
+                    <td><code>{ theme, choice }</code></td>
+                    <td>
+                      ส่งที่ <code>document</code> หลังทุก <code>set()</code> /
+                      <code>toggle()</code> / คลิกปุ่ม (แม้ค่าไม่เปลี่ยน)
+                      และเมื่อธีมระบบเปลี่ยนตอนเลือก system <code>theme</code> =
+                      <code>"dark"</code> | <code>"light"</code>,
+                      <code>choice</code> = <code>"light"</code> |
+                      <code>"dark"</code> | <code>"system"</code>
+                    </td>
                   </tr>
                 </tbody>
               </table>
