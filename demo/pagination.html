@@ -328,10 +328,19 @@
           <header class="page-header">
             <div>
               <h1>Pagination</h1>
-              <p>เปลี่ยนหน้าในรายการยาว</p>
+              <p>
+                เลื่อนไปหน้าอื่นของรายการยาว ๆ Move between pages of a long
+                list.
+              </p>
             </div>
           </header>
           <section>
+            <h2>การใช้งาน Usage</h2>
+            <p>
+              หน้าปัจจุบันมีกรอบ ใส่
+              <code>aria-current="page"</code> ช่วงที่ข้ามไปเป็น
+              <code>span</code>
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -362,17 +371,33 @@
               >
                 <div class="docs-preview">
                   <nav class="pagination" aria-label="Pagination">
-                    <a href="#" aria-label="ก่อนหน้า Previous"
-                      ><i class="icon icon-chevron-left" aria-hidden="true"></i
-                    ></a>
-                    <a href="#">1</a>
-                    <a href="#" aria-current="page">2</a>
-                    <a href="#">3</a>
-                    <span>…</span>
-                    <a href="#">12</a>
-                    <a href="#" aria-label="ถัดไป Next"
-                      ><i class="icon icon-chevron-right" aria-hidden="true"></i
-                    ></a>
+                    <ul>
+                      <li>
+                        <a href="#"
+                          ><i
+                            class="icon icon-chevron-left"
+                            aria-hidden="true"
+                          ></i
+                          >ก่อนหน้า Previous</a
+                        >
+                      </li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#" aria-current="page">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li>
+                        <span aria-hidden="true"
+                          ><i class="icon icon-ellipsis"></i
+                        ></span>
+                      </li>
+                      <li>
+                        <a href="#"
+                          >ถัดไป Next<i
+                            class="icon icon-chevron-right"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </li>
+                    </ul>
                   </nav>
                 </div>
               </div>
@@ -384,20 +409,120 @@
                 hidden
               >
                 <pre><code>&lt;nav class="pagination" aria-label="Pagination"&gt;
-  &lt;a href="#" aria-label="ก่อนหน้า Previous"&gt;&lt;i class="icon icon-chevron-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;a href="#"&gt;1&lt;/a&gt;
-  &lt;a href="#" aria-current="page"&gt;2&lt;/a&gt;
-  &lt;a href="#"&gt;3&lt;/a&gt;
-  &lt;span&gt;…&lt;/span&gt;
-  &lt;a href="#"&gt;12&lt;/a&gt;
-  &lt;a href="#" aria-label="ถัดไป Next"&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-chevron-left" aria-hidden="true"&gt;&lt;/i&gt;ก่อนหน้า Previous&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" aria-current="page"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span aria-hidden="true"&gt;&lt;i class="icon icon-ellipsis"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;ถัดไป Next&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แบบกะทัดรัด เห็นหน้าปัจจุบันชัด Compact, with the current page
+              marked
+            </h2>
+            <p>
+              สำหรับใต้ตารางหรือในการ์ด ปุ่มที่มีแต่ไอคอนต้องมี
+              <code>aria-label</code> ลิงก์ที่ใช้ไม่ได้ใส่
+              <code>aria-disabled="true"</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav
+                    class="pagination"
+                    data-size="sm"
+                    aria-label="Pagination"
+                  >
+                    <ul>
+                      <li>
+                        <a aria-disabled="true" aria-label="หน้าแรก First page"
+                          ><i
+                            class="icon icon-chevrons-left"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </li>
+                      <li><a href="#" aria-current="page">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li>
+                        <a href="#" aria-label="หน้าถัดไป Next page"
+                          ><i
+                            class="icon icon-chevron-right"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="#" aria-label="หน้าสุดท้าย Last page"
+                          ><i
+                            class="icon icon-chevrons-right"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="pagination" data-size="sm" aria-label="Pagination"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a aria-disabled="true" aria-label="หน้าแรก First page"&gt;&lt;i class="icon icon-chevrons-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" aria-current="page"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" aria-label="หน้าถัดไป Next page"&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" aria-label="หน้าสุดท้าย Last page"&gt;&lt;i class="icon icon-chevrons-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>Attributes</h2>
-            <div class="card">
+
+            <div class="card scroll-area">
               <table class="table">
                 <thead>
                   <tr>
@@ -408,14 +533,51 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td><code>.pagination</code></td>
+                    <td><code>nav</code></td>
+                    <td>ใส่ <code>aria-label="Pagination"</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>ul &gt; li</code></td>
+                    <td>child</td>
+                    <td>แต่ละหน้า เรียงเป็นแถว ตัดบรรทัดเมื่อแคบ</td>
+                  </tr>
+                  <tr>
+                    <td><code>a</code></td>
+                    <td>ใน <code>li</code></td>
+                    <td>
+                      ลิงก์ไปหน้านั้น ใส่ <code>.icon</code> ได้
+                      ถ้ามีแต่ไอคอนต้องมี <code>aria-label</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>span</code></td>
+                    <td>ใน <code>li</code></td>
+                    <td>
+                      ช่วงที่ข้ามไป (…) สีเทา ใส่
+                      <code>aria-hidden="true"</code>
+                    </td>
+                  </tr>
+                  <tr>
                     <td><code>aria-current</code></td>
                     <td><code>page</code></td>
-                    <td>หน้าปัจจุบัน พื้นเทาอ่อน</td>
+                    <td>หน้าปัจจุบัน: มีกรอบ ใน <code>sm</code> เป็นสีทึบ</td>
                   </tr>
                   <tr>
                     <td><code>aria-disabled</code></td>
                     <td><code>true</code></td>
-                    <td>ปิดลิงก์ก่อนหน้าหรือถัดไป</td>
+                    <td>
+                      ลิงก์ที่ใช้ไม่ได้ เช่น ก่อนหน้าบนหน้าแรก (ไม่ต้องมี
+                      <code>href</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      ไม่ใส่ (default) 32px โปร่ง · <code>sm</code> 28px
+                      มีกรอบทุกหน้า
+                    </td>
+                    <td>ขนาด แบบกะทัดรัด</td>
                   </tr>
                 </tbody>
               </table>

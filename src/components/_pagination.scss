@@ -1,39 +1,74 @@
-// Pagination: <nav class="pagination"> with links; mark the current page with aria-current.
+// Pagination: <nav class="pagination" aria-label="..."><ul><li><a>..</a></li></ul></nav>.
+// Mark the current page with aria-current="page"; an ellipsis is a <span>.
+// data-size="sm": compact square outlined pages, the current one filled.
 @layer components {
-  :where(.pagination) {
+  :where(.pagination ul) {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  :where(.pagination > :is(a, span)) {
-    display: inline-grid;
-    place-items: center;
+  :where(.pagination li) {
+    display: flex;
+  }
+
+  :where(.pagination :is(a, li > span)) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
     min-width: 2rem;
     height: 2rem;
     padding: 0 var(--space-2);
+    border: 1px solid transparent;
     border-radius: var(--radius-sm);
     color: var(--fg);
+    font-weight: 500;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
     text-decoration: none;
   }
 
-  :where(.pagination > a:hover) {
+  :where(.pagination a:hover) {
+    background: var(--subtle);
+    text-decoration: none;
+  }
+
+  :where(.pagination [aria-current="page"]) {
+    border-color: var(--line);
+    background: var(--surface);
+  }
+
+  :where(.pagination li > span) {
+    color: var(--muted);
+  }
+
+  :where(.pagination [aria-disabled="true"]) {
+    color: var(--muted);
+    pointer-events: none;
+  }
+
+  // Compact: small outlined squares, the current page filled.
+  :where(.pagination[data-size="sm"] :is(a, li > span)) {
+    min-width: 1.75rem;
+    height: 1.75rem;
+    padding: 0 var(--space-1);
+    border-color: var(--line);
+    background: var(--surface);
+    font-size: var(--text-sm);
+  }
+
+  :where(.pagination[data-size="sm"] a:hover) {
     background: var(--subtle);
   }
 
-  :where(.pagination > [aria-current="page"]) {
-    background: var(--neutral-bg);
-    font-weight: 600;
-  }
-
-  :where(.pagination > span) {
-    color: var(--muted);
-  }
-
-  :where(.pagination > [aria-disabled="true"]) {
-    color: var(--muted);
-    pointer-events: none;
+  :where(.pagination[data-size="sm"] [aria-current="page"]) {
+    border-color: var(--fg);
+    background: var(--fg);
+    color: var(--bg);
   }
 }
