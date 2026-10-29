@@ -1,4 +1,6 @@
 // Switch: <input type="checkbox" role="switch"> drawn as an on/off track.
+@use "motion";
+
 @layer components {
   :where(input[type="checkbox"][role="switch"]) {
     appearance: none;
@@ -11,7 +13,9 @@
     border-radius: 999px;
     background: var(--neutral-bg);
     cursor: pointer;
-    transition: background-color 0.15s;
+    transition-property: background-color, border-color;
+    transition-duration: motion.$base;
+    transition-timing-function: motion.$ease;
   }
 
   :where(input[type="checkbox"][role="switch"])::before {
@@ -23,7 +27,7 @@
     height: calc(1.125rem - 4px);
     border-radius: 50%;
     background: var(--surface);
-    transition: translate 0.15s;
+    transition: translate motion.$base motion.$ease;
   }
 
   :where(input[type="checkbox"][role="switch"]:checked) {
