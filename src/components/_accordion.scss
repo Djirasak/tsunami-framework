@@ -43,4 +43,15 @@
     padding: 0 var(--space-5) var(--space-4);
     color: var(--muted);
   }
+
+  :where(.accordion summary:focus-visible) {
+    outline-offset: -2px;
+  }
+
+  // A disabled item: also give its summary tabindex="-1".
+  :where(.accordion details[aria-disabled="true"] > summary) {
+    color: var(--muted);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
