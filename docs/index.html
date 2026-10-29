@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -350,19 +346,19 @@
             <span class="badge">v0.1.0</span>
             <h1>Tsunami <span>津波</span></h1>
             <p class="docs-lead">
-              CSS framework ขนาดเล็กสำหรับหน้าจอหลังบ้าน เงียบ แน่น
-              และใช้งานได้จริง เขียนด้วย semantic HTML กับ data attributes ไม่มี
-              dependency ตอนรันจริง
+              A small CSS framework for back-office screens. Quiet, dense and
+              practical. Written with semantic HTML and data attributes, with no
+              runtime dependencies.
             </p>
             <div class="stack" data-direction="row" data-gap="sm">
               <a class="btn" data-variant="primary" href="#install"
-                >เริ่มใช้งาน Get started</a
+                >Get started</a
               >
-              <a class="btn" href="btn">ดู components</a>
+              <a class="btn" href="btn">Browse components</a>
             </div>
           </section>
           <section>
-            <h2>หลักการ Principles</h2>
+            <h2>Principles</h2>
             <div class="docs-grid">
               <article class="card">
                 <header>
@@ -370,9 +366,9 @@
                 </header>
                 <div>
                   <p>
-                    ใช้ <code>dialog</code>, <code>popover</code>,
-                    <code>details</code> และ <code>button</code> ก่อนเสมอ JS
-                    มีแค่ theme, tabs และ save bar
+                    Reach for <code>dialog</code>, <code>popover</code>,
+                    <code>details</code> and <code>button</code> first. JS
+                    covers only theme, tabs and the save bar.
                   </p>
                 </div>
               </article>
@@ -382,8 +378,8 @@
                 </header>
                 <div>
                   <p>
-                    ทุก selector อยู่ใน <code>@layer components</code> และ
-                    <code>:where()</code> CSS ของคุณจึง override ได้ทันที
+                    Every selector sits in <code>@layer components</code> and
+                    <code>:where()</code>, so your CSS overrides it right away.
                   </p>
                 </div>
               </article>
@@ -393,29 +389,30 @@
                 </header>
                 <div>
                   <p>
-                    สลับธีมผ่าน CSS custom properties ตามระบบหรือตามที่เลือก
-                    และไม่กะพริบตอนโหลด
+                    Themes switch through CSS custom properties, following the
+                    system or the user's choice, with no flash on load.
                   </p>
                 </div>
               </article>
               <article class="card">
                 <header>
-                  <h2>ไทย + Latin</h2>
+                  <h2>Thai + Latin</h2>
                 </header>
                 <div>
                   <p>
-                    Google Sans ตัวเดียวทั้งไทยและ Latin แบบ self-hosted woff2
-                    ตัวเลขในตารางเป็น tabular-nums
+                    One self-hosted woff2 Google Sans for both Thai and Latin.
+                    Table numbers use tabular-nums.
                   </p>
+                  <p lang="th">ภาษาไทยกับ Latin ในบรรทัดเดียวกัน 1,234.50</p>
                 </div>
               </article>
             </div>
           </section>
           <section id="install">
-            <h2>ติดตั้ง Install</h2>
+            <h2>Install</h2>
             <p>
-              ใส่ไฟล์จาก <code>dist/</code> และสคริปต์ใน
-              <code>&lt;head&gt;</code> เพื่อกันธีมกะพริบ
+              Add the files from <code>dist/</code>, plus this script in
+              <code>&lt;head&gt;</code> to stop the theme from flashing.
             </p>
             <pre><code>&lt;link rel="stylesheet" href="dist/tsunami.min.css"&gt;
 &lt;script&gt;
@@ -427,9 +424,9 @@
 &lt;script type="module" src="dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
           </section>
           <section>
-            <h2>ตัวอย่าง Example</h2>
+            <h2>Example</h2>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="ตัวอย่าง Example">
+              <div role="tablist" aria-label="Example">
                 <button
                   type="button"
                   role="tab"
@@ -460,62 +457,60 @@
                   <div class="stack">
                     <dl class="stat">
                       <div>
-                        <dt>รายได้ Revenue</dt>
-                        <dd>฿128,400</dd>
-                        <dd data-variant="ok">+12.4% จากเดือนก่อน</dd>
+                        <dt>Revenue</dt>
+                        <dd>$12,840</dd>
+                        <dd data-variant="ok">+12.4% from last month</dd>
                       </div>
                       <div>
-                        <dt>คำสั่งซื้อ Orders</dt>
+                        <dt>Orders</dt>
                         <dd>1,284</dd>
                         <dd>+3.1%</dd>
                       </div>
                       <div>
-                        <dt>คืนสินค้า Refunds</dt>
+                        <dt>Refunds</dt>
                         <dd>18</dd>
-                        <dd data-variant="danger">+2 รายการ</dd>
+                        <dd data-variant="danger">+2 orders</dd>
                       </div>
                       <div>
-                        <dt>ลูกค้าใหม่ New customers</dt>
+                        <dt>New customers</dt>
                         <dd>342</dd>
-                        <dd>เท่าเดิม Flat</dd>
+                        <dd>Flat</dd>
                       </div>
                     </dl>
                     <div class="card">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">คำสั่งซื้อ Order</th>
-                            <th scope="col">ลูกค้า Customer</th>
-                            <th scope="col">สถานะ Status</th>
-                            <th scope="col" data-align="end">ยอดรวม Total</th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" data-align="end">Total</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>#1042</td>
-                            <td>สมชาย ใจดี</td>
+                            <td>Emma Wilson</td>
                             <td>
-                              <span class="badge" data-variant="ok"
-                                >ชำระแล้ว Paid</span
-                              >
+                              <span class="badge" data-variant="ok">Paid</span>
                             </td>
-                            <td data-align="end">฿1,250.00</td>
+                            <td data-align="end">$129.00</td>
                           </tr>
                           <tr>
                             <td>#1041</td>
-                            <td>Suda Kaewmanee</td>
-                            <td><span class="badge">รอจัดส่ง Pending</span></td>
-                            <td data-align="end">฿980.00</td>
+                            <td>James Carter</td>
+                            <td><span class="badge">Pending</span></td>
+                            <td data-align="end">$84.50</td>
                           </tr>
                           <tr>
                             <td>#1040</td>
-                            <td>วิชัย ศรีสุข</td>
+                            <td>Olivia Brown</td>
                             <td>
                               <span class="badge" data-variant="danger"
-                                >ยกเลิก Cancelled</span
+                                >Cancelled</span
                               >
                             </td>
-                            <td data-align="end">฿2,410.50</td>
+                            <td data-align="end">$246.00</td>
                           </tr>
                         </tbody>
                       </table>
@@ -533,54 +528,54 @@
                 <pre><code>&lt;div class="stack"&gt;
 &lt;dl class="stat"&gt;
   &lt;div&gt;
-    &lt;dt&gt;รายได้ Revenue&lt;/dt&gt;
-    &lt;dd&gt;฿128,400&lt;/dd&gt;
-    &lt;dd data-variant="ok"&gt;+12.4% จากเดือนก่อน&lt;/dd&gt;
+    &lt;dt&gt;Revenue&lt;/dt&gt;
+    &lt;dd&gt;$12,840&lt;/dd&gt;
+    &lt;dd data-variant="ok"&gt;+12.4% from last month&lt;/dd&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;dt&gt;คำสั่งซื้อ Orders&lt;/dt&gt;
+    &lt;dt&gt;Orders&lt;/dt&gt;
     &lt;dd&gt;1,284&lt;/dd&gt;
     &lt;dd&gt;+3.1%&lt;/dd&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;dt&gt;คืนสินค้า Refunds&lt;/dt&gt;
+    &lt;dt&gt;Refunds&lt;/dt&gt;
     &lt;dd&gt;18&lt;/dd&gt;
-    &lt;dd data-variant="danger"&gt;+2 รายการ&lt;/dd&gt;
+    &lt;dd data-variant="danger"&gt;+2 orders&lt;/dd&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;dt&gt;ลูกค้าใหม่ New customers&lt;/dt&gt;
+    &lt;dt&gt;New customers&lt;/dt&gt;
     &lt;dd&gt;342&lt;/dd&gt;
-    &lt;dd&gt;เท่าเดิม Flat&lt;/dd&gt;
+    &lt;dd&gt;Flat&lt;/dd&gt;
   &lt;/div&gt;
 &lt;/dl&gt;
 &lt;div class="card"&gt;
 &lt;table class="table"&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th scope="col"&gt;คำสั่งซื้อ Order&lt;/th&gt;
-      &lt;th scope="col"&gt;ลูกค้า Customer&lt;/th&gt;
-      &lt;th scope="col"&gt;สถานะ Status&lt;/th&gt;
-      &lt;th scope="col" data-align="end"&gt;ยอดรวม Total&lt;/th&gt;
+      &lt;th scope="col"&gt;Order&lt;/th&gt;
+      &lt;th scope="col"&gt;Customer&lt;/th&gt;
+      &lt;th scope="col"&gt;Status&lt;/th&gt;
+      &lt;th scope="col" data-align="end"&gt;Total&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;#1042&lt;/td&gt;
-      &lt;td&gt;สมชาย ใจดี&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;ชำระแล้ว Paid&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;฿1,250.00&lt;/td&gt;
+      &lt;td&gt;Emma Wilson&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;
+      &lt;td data-align="end"&gt;$129.00&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;#1041&lt;/td&gt;
-      &lt;td&gt;Suda Kaewmanee&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge"&gt;รอจัดส่ง Pending&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;฿980.00&lt;/td&gt;
+      &lt;td&gt;James Carter&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge"&gt;Pending&lt;/span&gt;&lt;/td&gt;
+      &lt;td data-align="end"&gt;$84.50&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;#1040&lt;/td&gt;
-      &lt;td&gt;วิชัย ศรีสุข&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge" data-variant="danger"&gt;ยกเลิก Cancelled&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;฿2,410.50&lt;/td&gt;
+      &lt;td&gt;Olivia Brown&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge" data-variant="danger"&gt;Cancelled&lt;/span&gt;&lt;/td&gt;
+      &lt;td data-align="end"&gt;$246.00&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;

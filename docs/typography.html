@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,24 +343,21 @@
             <div>
               <h1>Typography</h1>
               <p>
-                Google Sans ตัวเดียวทั้งไทยและ Latin ขนาดฐาน 14px line-height
-                1.55 ใส่ <code>.prose</code> รอบเนื้อหายาวเพื่อให้มีระยะห่าง
-                list และ quote
+                One typeface, Google Sans, for both Thai and Latin. Base size
+                14px, line-height 1.55. Wrap long content in
+                <code>.prose</code> to get spacing, lists and quotes.
               </p>
             </div>
           </header>
           <section>
-            <h2>หัวข้อ h1 ถึง h6 Headings: h1 to h6</h2>
+            <h2>Headings: h1 to h6</h2>
             <p>
-              Base style ล้าง margin ของทุก element ไว้ ใส่
-              <code>class="prose"</code> ที่กล่องครอบเพื่อให้ heading, ย่อหน้า
-              และ list มีระยะห่างของบทความ
+              The base style resets the margin of every element. Add
+              <code>class="prose"</code> to a wrapper to give headings,
+              paragraphs and lists article spacing.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="หัวข้อ h1 ถึง h6 Headings: h1 to h6"
-              >
+              <div role="tablist" aria-label="Headings: h1 to h6">
                 <button
                   type="button"
                   role="tab"
@@ -393,12 +386,12 @@
               >
                 <div class="docs-preview">
                   <div class="prose">
-                    <h1>หัวข้อ 1 Heading 1</h1>
-                    <h2>หัวข้อ 2 Heading 2</h2>
-                    <h3>หัวข้อ 3 Heading 3</h3>
-                    <h4>หัวข้อ 4 Heading 4</h4>
-                    <h5>หัวข้อ 5 Heading 5</h5>
-                    <h6>หัวข้อ 6 Heading 6</h6>
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
                   </div>
                 </div>
               </div>
@@ -410,29 +403,27 @@
                 hidden
               >
                 <pre><code>&lt;div class="prose"&gt;
-  &lt;h1&gt;หัวข้อ 1 Heading 1&lt;/h1&gt;
-  &lt;h2&gt;หัวข้อ 2 Heading 2&lt;/h2&gt;
-  &lt;h3&gt;หัวข้อ 3 Heading 3&lt;/h3&gt;
-  &lt;h4&gt;หัวข้อ 4 Heading 4&lt;/h4&gt;
-  &lt;h5&gt;หัวข้อ 5 Heading 5&lt;/h5&gt;
-  &lt;h6&gt;หัวข้อ 6 Heading 6&lt;/h6&gt;
+  &lt;h1&gt;Heading 1&lt;/h1&gt;
+  &lt;h2&gt;Heading 2&lt;/h2&gt;
+  &lt;h3&gt;Heading 3&lt;/h3&gt;
+  &lt;h4&gt;Heading 4&lt;/h4&gt;
+  &lt;h5&gt;Heading 5&lt;/h5&gt;
+  &lt;h6&gt;Heading 6&lt;/h6&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              ย่อหน้า lead, ปกติ, muted และ small Paragraphs: lead, default,
-              muted and small
-            </h2>
+            <h2>Paragraphs: lead, default, muted and small</h2>
             <p>
-              ใส่ <code>data-variant="lead"</code> หรือ <code>"muted"</code> ที่
-              <code>&lt;p&gt;</code> ข้อความเล็กใช้ <code>&lt;small&gt;</code>
+              Add <code>data-variant="lead"</code> or <code>"muted"</code> to a
+              <code>&lt;p&gt;</code>. Use <code>&lt;small&gt;</code> for small
+              text.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ย่อหน้า lead, ปกติ, muted และ small Paragraphs: lead, default, muted and small"
+                aria-label="Paragraphs: lead, default, muted and small"
               >
                 <button
                   type="button"
@@ -463,22 +454,20 @@
                 <div class="docs-preview">
                   <div class="prose">
                     <p data-variant="lead">
-                      ย่อหน้านำ Lead paragraph.
-                      หนึ่งหรือสองประโยคที่เปิดหน้าและบอกว่าหน้านี้มีไว้ทำอะไร
+                      Lead paragraph. One or two sentences that open the page
+                      and say what it is for.
                     </p>
                     <p>
-                      ย่อหน้า Paragraph. คำสั่งซื้อเปลี่ยนจาก Pending เป็น
-                      Processing เมื่อรับชำระเงินแล้ว และเป็น Fulfilled
-                      เมื่อจัดส่งสินค้าครบทุกรายการ
+                      Paragraph. An order moves from Pending to Processing once
+                      payment is captured, and to Fulfilled once every item has
+                      shipped.
                     </p>
                     <p data-variant="muted">
-                      ย่อหน้ารอง Muted paragraph.
-                      รายละเอียดเสริมของข้อความด้านบน
+                      Muted paragraph. Extra detail for the text above.
                     </p>
                     <p>
                       <small
-                        >ข้อความเล็ก Small text. แก้ไขล่าสุด 2 ต.ค. 2026 เวลา
-                        02:39 น.</small
+                        >Small text. Last edited Oct 2, 2026 at 02:39.</small
                       >
                     </p>
                   </div>
@@ -492,24 +481,23 @@
                 hidden
               >
                 <pre><code>&lt;div class="prose"&gt;
-  &lt;p data-variant="lead"&gt;ย่อหน้านำ Lead paragraph. หนึ่งหรือสองประโยคที่เปิดหน้าและบอกว่าหน้านี้มีไว้ทำอะไร&lt;/p&gt;
-  &lt;p&gt;ย่อหน้า Paragraph. คำสั่งซื้อเปลี่ยนจาก Pending เป็น Processing เมื่อรับชำระเงินแล้ว และเป็น Fulfilled เมื่อจัดส่งสินค้าครบทุกรายการ&lt;/p&gt;
-  &lt;p data-variant="muted"&gt;ย่อหน้ารอง Muted paragraph. รายละเอียดเสริมของข้อความด้านบน&lt;/p&gt;
-  &lt;p&gt;&lt;small&gt;ข้อความเล็ก Small text. แก้ไขล่าสุด 2 ต.ค. 2026 เวลา 02:39 น.&lt;/small&gt;&lt;/p&gt;
+  &lt;p data-variant="lead"&gt;Lead paragraph. One or two sentences that open the page and say what it is for.&lt;/p&gt;
+  &lt;p&gt;Paragraph. An order moves from Pending to Processing once payment is captured, and to Fulfilled once every item has shipped.&lt;/p&gt;
+  &lt;p data-variant="muted"&gt;Muted paragraph. Extra detail for the text above.&lt;/p&gt;
+  &lt;p&gt;&lt;small&gt;Small text. Last edited Oct 2, 2026 at 02:39.&lt;/small&gt;&lt;/p&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>
-              ข้อความในบรรทัด Inline text: strong, emphasis, link, mark,
-              deleted, inserted, abbreviation, code, key, subscript and
-              superscript
+              Inline text: strong, emphasis, link, mark, deleted, inserted,
+              abbreviation, code, key, subscript and superscript
             </h2>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ข้อความในบรรทัด Inline text: strong, emphasis, link, mark, deleted, inserted, abbreviation, code, key, subscript and superscript"
+                aria-label="Inline text: strong, emphasis, link, mark, deleted, inserted, abbreviation, code, key, subscript and superscript"
               >
                 <button
                   type="button"
@@ -539,22 +527,23 @@
               >
                 <div class="docs-preview">
                   <div class="prose">
+                    <p><strong>Strong</strong> for the most important text.</p>
+                    <p><em>Emphasis</em> stresses a word.</p>
+                    <p><a href="#">Link</a> to another page.</p>
+                    <p><mark>Mark</mark> highlights a search match.</p>
+                    <p><del>$39.00</del> <ins>$29.00</ins> shows a change.</p>
                     <p>
-                      <strong>ตัวหนา Strong</strong> ใช้กับข้อความที่สำคัญที่สุด
-                    </p>
-                    <p><em>ตัวเอียง Emphasis</em> เน้นคำ</p>
-                    <p><a href="#">ลิงก์ Link</a> ไปยังหน้าอื่น</p>
-                    <p><mark>ไฮไลต์ Mark</mark> ใช้กับคำที่ค้นเจอ</p>
-                    <p><del>฿1,290</del> <ins>฿990</ins> แสดงการเปลี่ยนแปลง</p>
-                    <p>
-                      <abbr title="Stock keeping unit">SKU</abbr> คือคำย่อ
-                      ชี้เพื่อดูความหมาย
+                      <abbr title="Stock keeping unit">SKU</abbr> is an
+                      abbreviation. Hover to see what it means.
                     </p>
                     <p>
-                      <code>order_status</code> ใช้กับชื่อ field ค่า หรือคำสั่ง
+                      <code>order_status</code> for field names, values or
+                      commands.
                     </p>
-                    <p>กด <kbd>Ctrl</kbd> <kbd>K</kbd> เพื่อค้นหา</p>
-                    <p>ตัวห้อย H<sub>2</sub>O และตัวยก m<sup>2</sup></p>
+                    <p>Press <kbd>Ctrl</kbd> <kbd>K</kbd> to search.</p>
+                    <p>
+                      Subscript H<sub>2</sub>O and superscript m<sup>2</sup>.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -566,27 +555,27 @@
                 hidden
               >
                 <pre><code>&lt;div class="prose"&gt;
-  &lt;p&gt;&lt;strong&gt;ตัวหนา Strong&lt;/strong&gt; ใช้กับข้อความที่สำคัญที่สุด&lt;/p&gt;
-  &lt;p&gt;&lt;em&gt;ตัวเอียง Emphasis&lt;/em&gt; เน้นคำ&lt;/p&gt;
-  &lt;p&gt;&lt;a href="#"&gt;ลิงก์ Link&lt;/a&gt; ไปยังหน้าอื่น&lt;/p&gt;
-  &lt;p&gt;&lt;mark&gt;ไฮไลต์ Mark&lt;/mark&gt; ใช้กับคำที่ค้นเจอ&lt;/p&gt;
-  &lt;p&gt;&lt;del&gt;฿1,290&lt;/del&gt; &lt;ins&gt;฿990&lt;/ins&gt; แสดงการเปลี่ยนแปลง&lt;/p&gt;
-  &lt;p&gt;&lt;abbr title="Stock keeping unit"&gt;SKU&lt;/abbr&gt; คือคำย่อ ชี้เพื่อดูความหมาย&lt;/p&gt;
-  &lt;p&gt;&lt;code&gt;order_status&lt;/code&gt; ใช้กับชื่อ field ค่า หรือคำสั่ง&lt;/p&gt;
-  &lt;p&gt;กด &lt;kbd&gt;Ctrl&lt;/kbd&gt; &lt;kbd&gt;K&lt;/kbd&gt; เพื่อค้นหา&lt;/p&gt;
-  &lt;p&gt;ตัวห้อย H&lt;sub&gt;2&lt;/sub&gt;O และตัวยก m&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Strong&lt;/strong&gt; for the most important text.&lt;/p&gt;
+  &lt;p&gt;&lt;em&gt;Emphasis&lt;/em&gt; stresses a word.&lt;/p&gt;
+  &lt;p&gt;&lt;a href="#"&gt;Link&lt;/a&gt; to another page.&lt;/p&gt;
+  &lt;p&gt;&lt;mark&gt;Mark&lt;/mark&gt; highlights a search match.&lt;/p&gt;
+  &lt;p&gt;&lt;del&gt;$39.00&lt;/del&gt; &lt;ins&gt;$29.00&lt;/ins&gt; shows a change.&lt;/p&gt;
+  &lt;p&gt;&lt;abbr title="Stock keeping unit"&gt;SKU&lt;/abbr&gt; is an abbreviation. Hover to see what it means.&lt;/p&gt;
+  &lt;p&gt;&lt;code&gt;order_status&lt;/code&gt; for field names, values or commands.&lt;/p&gt;
+  &lt;p&gt;Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; &lt;kbd&gt;K&lt;/kbd&gt; to search.&lt;/p&gt;
+  &lt;p&gt;Subscript H&lt;sub&gt;2&lt;/sub&gt;O and superscript m&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ปุ่มคีย์บอร์ด Keyboard keys</h2>
+            <h2>Keyboard keys</h2>
             <p>
-              ใช้ <code>class="kbd"</code> นอก <code>.prose</code> ใน
-              <code>.prose</code> ใช้ <code>&lt;kbd&gt;</code> เฉย ๆ ได้
+              Use <code>class="kbd"</code> outside <code>.prose</code>. Inside
+              <code>.prose</code>, a plain <code>&lt;kbd&gt;</code> is enough.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="ปุ่มคีย์บอร์ด Keyboard keys">
+              <div role="tablist" aria-label="Keyboard keys">
                 <button
                   type="button"
                   role="tab"
@@ -653,13 +642,11 @@
             </div>
           </section>
           <section>
-            <h2>
-              รายการแบบไม่มีลำดับ ซ้อนกันได้ Unordered list, with a nested list
-            </h2>
+            <h2>Unordered list, with a nested list</h2>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="รายการแบบไม่มีลำดับ ซ้อนกันได้ Unordered list, with a nested list"
+                aria-label="Unordered list, with a nested list"
               >
                 <button
                   type="button"
@@ -690,15 +677,15 @@
                 <div class="docs-preview">
                   <div class="prose">
                     <ul>
-                      <li>สินค้า Products</li>
+                      <li>Products</li>
                       <li>
-                        คำสั่งซื้อ Orders
+                        Orders
                         <ul>
-                          <li>ตะกร้าค้าง Open carts</li>
-                          <li>คืนสินค้า Returns</li>
+                          <li>Open carts</li>
+                          <li>Returns</li>
                         </ul>
                       </li>
-                      <li>ลูกค้า Customers</li>
+                      <li>Customers</li>
                     </ul>
                   </div>
                 </div>
@@ -712,23 +699,23 @@
               >
                 <pre><code>&lt;div class="prose"&gt;
   &lt;ul&gt;
-    &lt;li&gt;สินค้า Products&lt;/li&gt;
-    &lt;li&gt;คำสั่งซื้อ Orders
+    &lt;li&gt;Products&lt;/li&gt;
+    &lt;li&gt;Orders
       &lt;ul&gt;
-        &lt;li&gt;ตะกร้าค้าง Open carts&lt;/li&gt;
-        &lt;li&gt;คืนสินค้า Returns&lt;/li&gt;
+        &lt;li&gt;Open carts&lt;/li&gt;
+        &lt;li&gt;Returns&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
-    &lt;li&gt;ลูกค้า Customers&lt;/li&gt;
+    &lt;li&gt;Customers&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>รายการแบบมีลำดับ Ordered list</h2>
+            <h2>Ordered list</h2>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="รายการแบบมีลำดับ Ordered list">
+              <div role="tablist" aria-label="Ordered list">
                 <button
                   type="button"
                   role="tab"
@@ -758,9 +745,9 @@
                 <div class="docs-preview">
                   <div class="prose">
                     <ol>
-                      <li>สร้างสินค้า Create the product.</li>
-                      <li>เพิ่มตัวเลือก Add its variants.</li>
-                      <li>ตั้งเป็นสาธารณะ Set it to public.</li>
+                      <li>Create the product.</li>
+                      <li>Add its variants.</li>
+                      <li>Set it to public.</li>
                     </ol>
                   </div>
                 </div>
@@ -774,24 +761,24 @@
               >
                 <pre><code>&lt;div class="prose"&gt;
   &lt;ol&gt;
-    &lt;li&gt;สร้างสินค้า Create the product.&lt;/li&gt;
-    &lt;li&gt;เพิ่มตัวเลือก Add its variants.&lt;/li&gt;
-    &lt;li&gt;ตั้งเป็นสาธารณะ Set it to public.&lt;/li&gt;
+    &lt;li&gt;Create the product.&lt;/li&gt;
+    &lt;li&gt;Add its variants.&lt;/li&gt;
+    &lt;li&gt;Set it to public.&lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>รายการคำและค่า Description list: terms and their values</h2>
+            <h2>Description list: terms and their values</h2>
             <p>
-              <code>&lt;dt&gt;</code> เป็นป้ายสีเทาอยู่ซ้าย
-              <code>&lt;dd&gt;</code> เป็นค่าอยู่ขวา
+              <code>&lt;dt&gt;</code> is a grey label on the left.
+              <code>&lt;dd&gt;</code> is the value on the right.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="รายการคำและค่า Description list: terms and their values"
+                aria-label="Description list: terms and their values"
               >
                 <button
                   type="button"
@@ -822,12 +809,12 @@
                 <div class="docs-preview">
                   <div class="prose">
                     <dl>
-                      <dt>วิธีจัดส่ง Method</dt>
+                      <dt>Method</dt>
                       <dd>Express</dd>
-                      <dt>ช่องทาง Source</dt>
+                      <dt>Source</dt>
                       <dd>Checkout Flow</dd>
-                      <dt>วันที่ Date</dt>
-                      <dd>3 ก.ย. 2026 เวลา 00:35 น.</dd>
+                      <dt>Date</dt>
+                      <dd>Sep 3, 2026 at 00:35</dd>
                     </dl>
                   </div>
                 </div>
@@ -841,21 +828,21 @@
               >
                 <pre><code>&lt;div class="prose"&gt;
   &lt;dl&gt;
-    &lt;dt&gt;วิธีจัดส่ง Method&lt;/dt&gt;
+    &lt;dt&gt;Method&lt;/dt&gt;
     &lt;dd&gt;Express&lt;/dd&gt;
-    &lt;dt&gt;ช่องทาง Source&lt;/dt&gt;
+    &lt;dt&gt;Source&lt;/dt&gt;
     &lt;dd&gt;Checkout Flow&lt;/dd&gt;
-    &lt;dt&gt;วันที่ Date&lt;/dt&gt;
-    &lt;dd&gt;3 ก.ย. 2026 เวลา 00:35 น.&lt;/dd&gt;
+    &lt;dt&gt;Date&lt;/dt&gt;
+    &lt;dd&gt;Sep 3, 2026 at 00:35&lt;/dd&gt;
   &lt;/dl&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>คำพูดอ้างอิง Blockquote</h2>
+            <h2>Blockquote</h2>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="คำพูดอ้างอิง Blockquote">
+              <div role="tablist" aria-label="Blockquote">
                 <button
                   type="button"
                   role="tab"
@@ -886,8 +873,8 @@
                   <div class="prose">
                     <blockquote>
                       <p>
-                        แจ้งสิ่งที่เราควรรู้ก่อนจัดส่งคำสั่งซื้อของคุณ Tell us
-                        anything we should know when delivering your order.
+                        Tell us anything we should know when delivering your
+                        order.
                       </p>
                     </blockquote>
                   </div>
@@ -902,16 +889,16 @@
               >
                 <pre><code>&lt;div class="prose"&gt;
   &lt;blockquote&gt;
-    &lt;p&gt;แจ้งสิ่งที่เราควรรู้ก่อนจัดส่งคำสั่งซื้อของคุณ Tell us anything we should know when delivering your order.&lt;/p&gt;
+    &lt;p&gt;Tell us anything we should know when delivering your order.&lt;/p&gt;
   &lt;/blockquote&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>บล็อกโค้ด Code block</h2>
+            <h2>Code block</h2>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="บล็อกโค้ด Code block">
+              <div role="tablist" aria-label="Code block">
                 <button
                   type="button"
                   role="tab"
@@ -958,9 +945,9 @@
             </div>
           </section>
           <section>
-            <h2>เส้นคั่น Horizontal line</h2>
+            <h2>Horizontal line</h2>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="เส้นคั่น Horizontal line">
+              <div role="tablist" aria-label="Horizontal line">
                 <button
                   type="button"
                   role="tab"
@@ -989,9 +976,9 @@
               >
                 <div class="docs-preview">
                   <div class="prose">
-                    <p>ข้อความเหนือเส้น Text above the line.</p>
+                    <p>Text above the line.</p>
                     <hr />
-                    <p>ข้อความใต้เส้น Text below the line.</p>
+                    <p>Text below the line.</p>
                   </div>
                 </div>
               </div>
@@ -1003,17 +990,17 @@
                 hidden
               >
                 <pre><code>&lt;div class="prose"&gt;
-  &lt;p&gt;ข้อความเหนือเส้น Text above the line.&lt;/p&gt;
+  &lt;p&gt;Text above the line.&lt;/p&gt;
   &lt;hr /&gt;
-  &lt;p&gt;ข้อความใต้เส้น Text below the line.&lt;/p&gt;
+  &lt;p&gt;Text below the line.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>บทความเต็ม A full article</h2>
+            <h2>A full article</h2>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="บทความเต็ม A full article">
+              <div role="tablist" aria-label="A full article">
                 <button
                   type="button"
                   role="tab"
@@ -1042,36 +1029,39 @@
               >
                 <div class="docs-preview">
                   <article class="prose">
-                    <h1>ประกันการจัดส่ง Shipping protection</h1>
+                    <h1>Shipping protection</h1>
                     <p data-variant="lead">
-                      คุ้มครองคำสั่งซื้อที่สูญหาย ถูกขโมย
-                      หรือเสียหายระหว่างทางไปหาลูกค้า
+                      Cover orders that are lost, stolen or damaged on the way
+                      to the customer.
                     </p>
-                    <h2>ทำงานอย่างไร How it works</h2>
+                    <h2>How it works</h2>
                     <p>
-                      ลูกค้าเพิ่มประกันตอน checkout ราคา ฿39 ถ้าพัสดุไม่ถึง
-                      ลูกค้าเปิดเคลมได้จาก<a href="#">หน้าสถานะคำสั่งซื้อ</a>
-                      แล้วเลือกคืนเงินหรือส่งใหม่
+                      Customers add protection at checkout for $2.99. If a
+                      parcel does not arrive, the customer opens a claim from
+                      the <a href="#">order status page</a> and chooses a refund
+                      or a reshipment.
                     </p>
-                    <h3>คุ้มครองอะไรบ้าง What is covered</h3>
+                    <h3>What is covered</h3>
                     <ul>
-                      <li>พัสดุที่ขึ้นว่าส่งแล้วแต่ไม่ถึงมือ</li>
-                      <li>สินค้าเสียหายระหว่างขนส่ง</li>
-                      <li>พัสดุที่ขนส่งทำหาย</li>
+                      <li>Parcels marked as delivered that never arrived</li>
+                      <li>Items damaged in transit</li>
+                      <li>Parcels lost by the carrier</li>
                     </ul>
                     <blockquote>
-                      <p>เปิดเคลมได้ภายใน 30 วันหลังวันจัดส่ง</p>
+                      <p>
+                        Claims can be opened within 30 days of the ship date.
+                      </p>
                     </blockquote>
-                    <h3>ตั้งค่า Setting it up</h3>
+                    <h3>Setting it up</h3>
                     <ol>
                       <li>
-                        เปิด <strong>ตั้งค่า Settings</strong> แล้วไปที่
-                        <strong>การจัดส่ง Shipping</strong>
+                        Open <strong>Settings</strong> and go to
+                        <strong>Shipping</strong>.
                       </li>
-                      <li>เปิดประกันและกำหนดราคา</li>
+                      <li>Turn on protection and set the price.</li>
                       <li>
-                        บันทึก ระบบจะสร้างสินค้า
-                        <code>shipping-protection</code> ให้
+                        Save. A <code>shipping-protection</code> product is
+                        created for you.
                       </li>
                     </ol>
                   </article>
@@ -1085,26 +1075,94 @@
                 hidden
               >
                 <pre><code>&lt;article class="prose"&gt;
-  &lt;h1&gt;ประกันการจัดส่ง Shipping protection&lt;/h1&gt;
-  &lt;p data-variant="lead"&gt;คุ้มครองคำสั่งซื้อที่สูญหาย ถูกขโมย หรือเสียหายระหว่างทางไปหาลูกค้า&lt;/p&gt;
-  &lt;h2&gt;ทำงานอย่างไร How it works&lt;/h2&gt;
-  &lt;p&gt;ลูกค้าเพิ่มประกันตอน checkout ราคา ฿39 ถ้าพัสดุไม่ถึง ลูกค้าเปิดเคลมได้จาก&lt;a href="#"&gt;หน้าสถานะคำสั่งซื้อ&lt;/a&gt; แล้วเลือกคืนเงินหรือส่งใหม่&lt;/p&gt;
-  &lt;h3&gt;คุ้มครองอะไรบ้าง What is covered&lt;/h3&gt;
+  &lt;h1&gt;Shipping protection&lt;/h1&gt;
+  &lt;p data-variant="lead"&gt;
+    Cover orders that are lost, stolen or damaged on the way to the customer.
+  &lt;/p&gt;
+  &lt;h2&gt;How it works&lt;/h2&gt;
+  &lt;p&gt;
+    Customers add protection at checkout for $2.99. If a parcel does not arrive, the customer opens
+    a claim from the &lt;a href="#"&gt;order status page&lt;/a&gt; and chooses a refund or a reshipment.
+  &lt;/p&gt;
+  &lt;h3&gt;What is covered&lt;/h3&gt;
   &lt;ul&gt;
-    &lt;li&gt;พัสดุที่ขึ้นว่าส่งแล้วแต่ไม่ถึงมือ&lt;/li&gt;
-    &lt;li&gt;สินค้าเสียหายระหว่างขนส่ง&lt;/li&gt;
-    &lt;li&gt;พัสดุที่ขนส่งทำหาย&lt;/li&gt;
+    &lt;li&gt;Parcels marked as delivered that never arrived&lt;/li&gt;
+    &lt;li&gt;Items damaged in transit&lt;/li&gt;
+    &lt;li&gt;Parcels lost by the carrier&lt;/li&gt;
   &lt;/ul&gt;
   &lt;blockquote&gt;
-    &lt;p&gt;เปิดเคลมได้ภายใน 30 วันหลังวันจัดส่ง&lt;/p&gt;
+    &lt;p&gt;Claims can be opened within 30 days of the ship date.&lt;/p&gt;
   &lt;/blockquote&gt;
-  &lt;h3&gt;ตั้งค่า Setting it up&lt;/h3&gt;
+  &lt;h3&gt;Setting it up&lt;/h3&gt;
   &lt;ol&gt;
-    &lt;li&gt;เปิด &lt;strong&gt;ตั้งค่า Settings&lt;/strong&gt; แล้วไปที่ &lt;strong&gt;การจัดส่ง Shipping&lt;/strong&gt;&lt;/li&gt;
-    &lt;li&gt;เปิดประกันและกำหนดราคา&lt;/li&gt;
-    &lt;li&gt;บันทึก ระบบจะสร้างสินค้า &lt;code&gt;shipping-protection&lt;/code&gt; ให้&lt;/li&gt;
+    &lt;li&gt;Open &lt;strong&gt;Settings&lt;/strong&gt; and go to &lt;strong&gt;Shipping&lt;/strong&gt;.&lt;/li&gt;
+    &lt;li&gt;Turn on protection and set the price.&lt;/li&gt;
+    &lt;li&gt;Save. A &lt;code&gt;shipping-protection&lt;/code&gt; product is created for you.&lt;/li&gt;
   &lt;/ol&gt;
 &lt;/article&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Thai and Latin</h2>
+            <p>
+              Google Sans covers both scripts, so Thai and Latin share one
+              baseline and line-height. Mark Thai text with
+              <code>lang="th"</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Thai and Latin">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tp"
+                  aria-selected="true"
+                  aria-controls="ex12-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tc"
+                  aria-selected="false"
+                  aria-controls="ex12-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-p"
+                aria-labelledby="ex12-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="prose">
+                    <h3><span lang="th">คำสั่งซื้อ</span> Orders</h3>
+                    <p lang="th">
+                      คำสั่งซื้อเปลี่ยนเป็น Fulfilled
+                      เมื่อจัดส่งสินค้าครบทุกรายการ
+                    </p>
+                    <p>
+                      An order becomes Fulfilled once every item has shipped.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-c"
+                aria-labelledby="ex12-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="prose"&gt;
+  &lt;h3&gt;&lt;span lang="th"&gt;คำสั่งซื้อ&lt;/span&gt; Orders&lt;/h3&gt;
+  &lt;p lang="th"&gt;คำสั่งซื้อเปลี่ยนเป็น Fulfilled เมื่อจัดส่งสินค้าครบทุกรายการ&lt;/p&gt;
+  &lt;p&gt;An order becomes Fulfilled once every item has shipped.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
@@ -1124,42 +1182,43 @@
                     <td><code>.prose</code></td>
                     <td><code>class</code></td>
                     <td>
-                      กล่องครอบเนื้อหายาว ให้ระยะห่างระหว่าง block, heading
-                      h1-h6, list marker, quote, pre, hr
+                      Wrapper for long content. Adds spacing between blocks and
+                      styles h1-h6, list markers, quotes, pre and hr.
                     </td>
                   </tr>
                   <tr>
                     <td><code>p[data-variant]</code></td>
                     <td>
-                      <code>lead</code>, <code>muted</code> (ไม่ใส่ = ปกติ
-                      default)
+                      <code>lead</code>, <code>muted</code> (omit for default)
                     </td>
-                    <td>lead: 16px สีเทา, muted: สีเทา ใช้ใน .prose</td>
+                    <td>lead: 16px grey, muted: grey. Used in .prose.</td>
                   </tr>
                   <tr>
                     <td><code>small</code></td>
                     <td></td>
-                    <td>12px สีเทา ใน .prose</td>
+                    <td>12px grey in .prose.</td>
                   </tr>
                   <tr>
                     <td><code>ul, ol, li</code></td>
                     <td></td>
-                    <td>marker disc / circle (ซ้อน) / decimal สี --muted</td>
+                    <td>
+                      Markers disc / circle (nested) / decimal in --muted.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>dl > dt, dd</code></td>
                     <td></td>
-                    <td>สองคอลัมน์: dt ป้ายสีเทา, dd ค่า</td>
+                    <td>Two columns: dt is a grey label, dd is the value.</td>
                   </tr>
                   <tr>
                     <td><code>blockquote</code></td>
                     <td></td>
-                    <td>เส้นซ้าย 2px --line ข้อความสีเทา</td>
+                    <td>2px --line on the left, grey text.</td>
                   </tr>
                   <tr>
                     <td><code>pre > code</code></td>
                     <td></td>
-                    <td>บล็อกโค้ด พื้น --subtle เลื่อนแนวนอนได้</td>
+                    <td>Code block on --subtle. Scrolls horizontally.</td>
                   </tr>
                   <tr>
                     <td>
@@ -1170,21 +1229,23 @@
                     </td>
                     <td></td>
                     <td>
-                      รูปแบบในบรรทัดใน .prose (ลิงก์ขีดเส้นใต้, mark พื้น
-                      --warning-bg)
+                      Inline styles in .prose (underlined links, mark on
+                      --warning-bg).
                     </td>
                   </tr>
                   <tr>
                     <td><code>hr</code></td>
                     <td></td>
-                    <td>เส้น 1px --line ระยะ 24px บนล่างใน .prose</td>
+                    <td>
+                      1px --line with 24px space above and below in .prose.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>.kbd</code></td>
                     <td><code>class</code></td>
                     <td>
-                      ปุ่มคีย์บอร์ดใช้ได้ทุกที่ ใน .prose ใช้
-                      <code>&lt;kbd&gt;</code> เฉย ๆ
+                      Keyboard key that works anywhere. In .prose, a plain
+                      <code>&lt;kbd&gt;</code> works.
                     </td>
                   </tr>
                 </tbody>
@@ -1211,7 +1272,10 @@
                         sans-serif</code
                       >
                     </td>
-                    <td>ฟอนต์หลัก ไทยและ Latin (ไม่เปลี่ยนตามธีม)</td>
+                    <td>
+                      Main typeface for Thai and Latin (the same in every
+                      theme).
+                    </td>
                   </tr>
                   <tr>
                     <td><code>--font-mono</code></td>
@@ -1231,7 +1295,7 @@
                   <tr>
                     <td><code>--text-base</code></td>
                     <td><code>0.875rem (14px)</code></td>
-                    <td>เนื้อหา, h3, h4</td>
+                    <td>Body, h3, h4</td>
                   </tr>
                   <tr>
                     <td><code>--text-lg</code></td>
@@ -1241,17 +1305,17 @@
                   <tr>
                     <td><code>--text-xl</code></td>
                     <td><code>1.5rem (24px)</code></td>
-                    <td>h1, ชื่อหน้า</td>
+                    <td>h1, page title</td>
                   </tr>
                   <tr>
                     <td><code>--leading</code></td>
                     <td><code>1.55</code></td>
-                    <td>line-height ฐาน heading ใช้ 1.25</td>
+                    <td>Base line-height. Headings use 1.25.</td>
                   </tr>
                   <tr>
                     <td><code>--fg / --muted</code></td>
                     <td><code>#12191d / #e7eef0, #5f6e75 / #8b9ba2</code></td>
-                    <td>สีข้อความหลัก / รอง (Light / Dark)</td>
+                    <td>Main / secondary text colour (Light / Dark).</td>
                   </tr>
                 </tbody>
               </table>

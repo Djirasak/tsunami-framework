@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,44 +343,41 @@
             <div>
               <h1>Icons</h1>
               <p>
-                ไอคอนจาก Lucide icon font ขนาดตาม data-size หรือขนาดตัวอักษร
-                และใช้สีของข้อความ
+                Icons from the Lucide icon font. Sized by data-size or the font
+                size, and coloured like the surrounding text.
               </p>
             </div>
           </header>
           <div class="alert" role="note">
             <i class="icon icon-info" aria-hidden="true"></i>
             <div>
-              <strong>ไอคอนมาจาก Lucide Icons come from Lucide</strong>
+              <strong>Icons come from Lucide</strong>
               <p>
-                Lucide icon font เวอร์ชัน 1.61.0 (<a
+                Lucide icon font version 1.61.0 (<a
                   href="https://lucide.dev"
                   rel="noopener"
                   >lucide.dev</a
-                >, ISC license) รวมไว้ในไฟล์ฟอนต์เดียว
-                <code>fonts/lucide.woff2</code> มี 2,191 ชื่อ 1,926 แบบ
-                (บางแบบมีหลายชื่อ)
+                >, ISC license), bundled in a single font file,
+                <code>fonts/lucide.woff2</code>. It has 2,191 names for 1,926
+                glyphs (some glyphs have several names).
               </p>
             </div>
           </div>
           <section>
-            <h2>
-              ขนาดตามกล่อง สีตามข้อความ An icon is sized by its box and takes
-              the text colour
-            </h2>
+            <h2>An icon is sized by its box and takes the text colour</h2>
             <p>
-              ไอคอนเป็นตัวอักษรหนึ่งตัวจาก icon font ขนาดจึงมาจาก
-              <code>font-size</code>: ไม่ใส่อะไรจะเท่ากับ 1.15em ของข้อความรอบ ๆ
-              หรือกำหนด <code>data-size</code> เป็น <code>sm</code> (16px),
-              <code>lg</code> (20px), <code>xl</code> (24px) สีมาจาก
-              <code>color</code> ของข้อความ (<code>currentColor</code>)
-              ในลิงก์จึงเป็นสี accent และใน
-              <code>.link[data-variant="muted"]</code> เป็นสีเทา
+              An icon is one glyph from an icon font, so its size comes from
+              <code>font-size</code>. By default it is 1.15em of the surrounding
+              text, or set <code>data-size</code> to <code>sm</code> (16px),
+              <code>lg</code> (20px) or <code>xl</code> (24px). The colour comes
+              from the text <code>color</code> (<code>currentColor</code>), so
+              it is the accent colour in a link and grey in
+              <code>.link[data-variant="muted"]</code>.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ขนาดตามกล่อง สีตามข้อความ An icon is sized by its box and takes the text colour"
+                aria-label="An icon is sized by its box and takes the text colour"
               >
                 <button
                   type="button"
@@ -470,10 +463,12 @@
             </div>
           </section>
           <section>
-            <h2>ในปุ่ม In a button</h2>
-            <p>ปุ่มเว้นระยะไอคอนกับข้อความเองด้วย gap ไม่ต้องใส่ margin</p>
+            <h2>In a button</h2>
+            <p>
+              The button spaces the icon and text with gap. No margin needed.
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="ในปุ่ม In a button">
+              <div role="tablist" aria-label="In a button">
                 <button
                   type="button"
                   role="tab"
@@ -502,7 +497,7 @@
               >
                 <div class="docs-preview">
                   <button type="button" class="btn">
-                    <i class="icon icon-plus" aria-hidden="true"></i>เพิ่มสินค้า
+                    <i class="icon icon-plus" aria-hidden="true"></i>
                     Add product
                   </button>
                 </div>
@@ -514,7 +509,7 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn"&gt;&lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;เพิ่มสินค้า Add product&lt;/button&gt;</code></pre>
+                <pre><code>&lt;button type="button" class="btn"&gt;&lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;Add product&lt;/button&gt;</code></pre>
               </div>
             </div>
           </section>
@@ -534,53 +529,59 @@
                     <td><code>class</code></td>
                     <td><code>icon icon-{name}</code></td>
                     <td>
-                      ทั้งสอง class จำเป็น name จากรายการด้านล่าง (Lucide)
+                      Both classes are required. Pick the name from the list
+                      below (Lucide).
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
                     <td>
-                      <code>sm</code>, <code>lg</code>, <code>xl</code> (ไม่ใส่
-                      = ตามข้อความ default)
+                      <code>sm</code>, <code>lg</code>, <code>xl</code> (omit =
+                      follow the text, default)
                     </td>
                     <td>
-                      16, 20 หรือ 24px ค่าเริ่มต้น 1.15em ของตัวอักษรรอบ ๆ
+                      16, 20 or 24px. Defaults to 1.15em of the surrounding
+                      text.
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-hidden</code></td>
                     <td><code>true</code></td>
                     <td>
-                      ใส่เสมอ ไอคอนเป็นของตกแต่ง ใส่ข้อความหรือ aria-label
-                      ที่ปุ่ม/ลิงก์แทน
+                      Always set. Icons are decorative. Put text or an
+                      aria-label on the button or link instead.
                     </td>
                   </tr>
                   <tr>
                     <td><code>color</code></td>
                     <td><code>currentColor</code></td>
-                    <td>ไม่มี data-variant สีมาจาก color ของ element แม่</td>
+                    <td>
+                      No data-variant. The colour comes from the parent's color.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>@include icon.glyph(name)</code></td>
                     <td>Sass mixin</td>
-                    <td>วาดไอคอนใน ::before / ::after ของ component อื่น</td>
+                    <td>
+                      Draws an icon in another component's ::before / ::after.
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </section>
           <section>
-            <h2>ทั้งหมด All icons</h2>
+            <h2>All icons</h2>
             <p>
-              Lucide 1.61.0 (ISC) บางไอคอนมีหลายชื่อ ค้นจากชื่อหรือ tag ได้
-              คลิกที่ไอคอนเพื่อคัดลอก HTML
+              Lucide 1.61.0 (ISC). Some icons have several names. Search by name
+              or tag. Click an icon to copy its HTML.
             </p>
             <div class="input-group docs-narrow">
               <span><i class="icon icon-search" aria-hidden="true"></i></span>
               <input
                 id="icon-search"
                 type="search"
-                placeholder="ค้นหาไอคอน Search icons"
+                placeholder="Search icons"
                 aria-label="Search icons"
                 autocomplete="off"
               />
