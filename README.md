@@ -6,6 +6,7 @@
 
 A small, quiet CSS framework for back-office UIs.
 Semantic HTML + `data-*` attributes. No runtime dependencies.
+43 component pages, Lucide icons and 270 country flags.
 
 </div>
 
@@ -15,7 +16,9 @@ Semantic HTML + `data-*` attributes. No runtime dependencies.
 - **Zero specificity.** Every selector sits in `@layer components` inside `:where()`, so your CSS always wins.
 - **Light / dark.** Tokens are CSS custom properties, so the theme switches at runtime with no flash.
 - **Thai + Latin.** Self-hosted Google Sans (OFL), tabular numbers in tables.
-- **Quiet look.** 1px borders, no shadows, no gradients. Accent only for links, the primary button and focus.
+- **Quiet look.** 1px borders, no shadows, no gradients. The accent marks links, the primary button, focus and picked states (such as a journey page).
+- **Comfortable sizes.** Buttons and inputs are 36px tall (28px small), with 6px corners.
+- **Calm motion.** Short fades and slides for dialogs, drawers, popovers and tooltips. All of it stops under `prefers-reduced-motion`.
 
 ## Install
 
@@ -51,16 +54,16 @@ The class names the component; `data-*` sets variant and size.
 
 ## Components
 
-| Group       | Components                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------------- |
-| Foundations | Colors, Typography (`.prose`), Icons (Lucide)                                                     |
-| Layout      | Stack, Card, Item, Page header, Stat, Table, Timeline, Journey, Accordion, Scroll area, Workspace |
-| Actions     | Button, Dropdown, Theme switcher                                                                  |
-| Forms       | Field, Input, Input group, Select, Save bar                                                       |
-| Feedback    | Alert, Badge, Empty, Loader, Skeleton, Progress                                                   |
-| Media       | Avatar                                                                                            |
-| Navigation  | Breadcrumb, Link, Pagination, Sidebar, Subnav, Tabs, Tree                                         |
-| Overlays    | Dialog, Drawer, Popover, Tooltip                                                                  |
+| Group       | Components                                                                                                     |
+| ----------- | -------------------------------------------------------------------------------------------------------------- |
+| Foundations | Colors, Typography (`.prose`), Icons (Lucide)                                                                  |
+| Layout      | Stack, Card, Item, Page header, Stat, Table, Timeline, Journey, JSON viewer, Accordion, Scroll area, Workspace |
+| Actions     | Button, Dropdown, Theme switcher                                                                               |
+| Forms       | Field, Image field, Input, Input group, Select, Save bar                                                       |
+| Feedback    | Alert, Badge, Empty, Loader, Skeleton, Progress                                                                |
+| Media       | Avatar, Flags                                                                                                  |
+| Navigation  | Breadcrumb, Link, Pagination, Sidebar, Subnav, Tabs, Tree                                                      |
+| Overlays    | Dialog, Drawer, Popover, Tooltip                                                                               |
 
 Every component has a docs page with live examples, a Code tab and an attributes table.
 
@@ -72,12 +75,12 @@ Requires [Bun](https://bun.sh) `>=1.4.3`.
 bun install --frozen-lockfile
 bun run build      # dist/tsunami.min.css + dist/tsunami.min.js
 bun run dev        # sass --watch -> dist/tsunami.css
-bun run serve      # docs at http://localhost:5477
+bun run serve      # docs at http://localhost:5477/docs/
 bun run lint       # eslint src/js
 bun run audit      # bun audit
 ```
 
-Docs are plain HTML in `docs/`; there is no build step for them.
+Docs are plain HTML in `docs/` with clean URLs (`/docs/btn`); there is no build step for them. Only `/docs`, `/dist`, `/fonts` and `/flags` are served, on `127.0.0.1`.
 
 ## Structure
 
@@ -88,10 +91,12 @@ src/
   _base.scss            @font-face + element reset
   components/_*.scss    one partial per component
   icons/_lucide.scss    icon name -> codepoint (generated)
+  icons/_flags.scss     flag codes (generated)
   js/                   one ES module per behavior
 docs/                   docs site (plain HTML)
 fonts/                  Google Sans + Lucide (woff2, licenses, CHECKSUMS.txt)
-scripts/                serve.ts, stamp-version.ts, lucide.ts
+flags/                  flag-icons 4x3 SVGs (MIT)
+scripts/                serve.ts, stamp-version.ts, lucide.ts, flags.ts
 ```
 
 ## Tokens
@@ -114,9 +119,11 @@ Vanilla ES modules, event delegation on `document`, no init functions. CSS works
 | `select`                                   | styled select over a native `<select>`, remote options, tags |
 | `table`                                    | sorting and row selection                                    |
 | `save-bar`, `slider`, `pressed`, `journey` | form dirty state, range fill, toggle groups, journey lines   |
+| `image-field`, `json-viewer`               | image change/clear, foldable JSON tree with raw view         |
 
 ## Licenses
 
 - Code: personal project.
 - Google Sans: SIL OFL 1.1 (`fonts/GoogleSans-OFL.txt`).
 - Lucide icons: ISC (`fonts/Lucide-LICENSE.txt`).
+- Flags: flag-icons, MIT (`flags/LICENSE.txt`).
