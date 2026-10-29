@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,17 +343,16 @@
             <div>
               <h1>Popover</h1>
               <p>
-                <code>[<wbr />popover]</code> แบบ native เปิดด้วยปุ่ม
-                <code>popover<wbr />target</code> และวางติดกับปุ่มด้วย CSS
-                anchor positioning ไม่ต้องใช้ JS. A native popover, opened by
-                its button and placed beside it with no script.
+                A native <code>[<wbr />popover]</code>, opened by its button
+                with <code>popover<wbr />target</code> and placed beside it with
+                CSS anchor positioning. No script needed.
               </p>
             </div>
           </header>
           <section>
-            <h2>ป๊อปโอเวอร์ที่เปิดด้วยปุ่ม A popover opened by a button</h2>
+            <h2>A popover opened by a button</h2>
             <p>
-              ปุ่มชี้ไปที่ <code>id</code> ของป๊อปโอเวอร์ด้วย
+              The button names the popover's <code>id</code> in
               <code>popover<wbr />target</code>. A click outside or Escape
               closes it, and opening another popover closes this one. The
               popover lines up with the start of the button, below it.
@@ -392,15 +387,14 @@
               >
                 <div class="docs-preview">
                   <button type="button" class="btn" popovertarget="pop-fees">
-                    <i class="icon icon-info" aria-hidden="true"></i
-                    >ค่าธรรมเนียม Fees
+                    <i class="icon icon-info" aria-hidden="true"></i>Fees
                   </button>
                   <div class="popover" id="pop-fees" popover>
                     <header>
-                      <h3>ค่าธรรมเนียมบัตร Card fees</h3>
-                      <p>คิดต่อธุรกรรม Charged per transaction.</p>
+                      <h3>Card fees</h3>
+                      <p>Charged per transaction.</p>
                     </header>
-                    <p><strong>2.9% + ฿10</strong></p>
+                    <p><strong>2.9% + $0.30</strong></p>
                   </div>
                 </div>
               </div>
@@ -411,25 +405,22 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn" popovertarget="pop-fees"&gt;&lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;ค่าธรรมเนียม Fees&lt;/button&gt;
+                <pre><code>&lt;button type="button" class="btn" popovertarget="pop-fees"&gt;&lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;Fees&lt;/button&gt;
 &lt;div class="popover" id="pop-fees" popover&gt;
   &lt;header&gt;
-    &lt;h3&gt;ค่าธรรมเนียมบัตร Card fees&lt;/h3&gt;
-    &lt;p&gt;คิดต่อธุรกรรม Charged per transaction.&lt;/p&gt;
+    &lt;h3&gt;Card fees&lt;/h3&gt;
+    &lt;p&gt;Charged per transaction.&lt;/p&gt;
   &lt;/header&gt;
-  &lt;p&gt;&lt;strong&gt;2.9% + ฿10&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;2.9% + $0.30&lt;/strong&gt;&lt;/p&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              ด้าน: ล่าง บน ซ้าย และขวาของปุ่ม Side: below, above, left and
-              right of the button
-            </h2>
+            <h2>Side: below, above, left and right of the button</h2>
             <p>
-              <code>data-<wbr />side</code> บนป๊อปโอเวอร์. When the popover does
-              not fit, it flips to the opposite side.
+              <code>data-<wbr />side</code> on the popover. When the popover
+              does not fit, it flips to the opposite side.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -466,15 +457,12 @@
                       class="btn"
                       popovertarget="pop-side-bottom"
                     >
-                      ล่าง Bottom
+                      Bottom
                     </button>
                     <div class="popover" id="pop-side-bottom" popover>
                       <header>
-                        <h3>ล่าง Bottom</h3>
-                        <p>
-                          เปิดใต้ปุ่ม ค่าเริ่มต้น Opens below the button. The
-                          default.
-                        </p>
+                        <h3>Bottom</h3>
+                        <p>Opens below the button. The default.</p>
                       </header>
                     </div>
                     <button
@@ -482,7 +470,7 @@
                       class="btn"
                       popovertarget="pop-side-top"
                     >
-                      บน Top
+                      Top
                     </button>
                     <div
                       class="popover"
@@ -491,8 +479,8 @@
                       data-side="top"
                     >
                       <header>
-                        <h3>บน Top</h3>
-                        <p>เปิดเหนือปุ่ม Opens above the button.</p>
+                        <h3>Top</h3>
+                        <p>Opens above the button.</p>
                       </header>
                     </div>
                     <button
@@ -500,7 +488,7 @@
                       class="btn"
                       popovertarget="pop-side-left"
                     >
-                      ซ้าย Left
+                      Left
                     </button>
                     <div
                       class="popover"
@@ -509,8 +497,8 @@
                       data-side="left"
                     >
                       <header>
-                        <h3>ซ้าย Left</h3>
-                        <p>เปิดทางซ้าย Opens to the left of the button.</p>
+                        <h3>Left</h3>
+                        <p>Opens to the left of the button.</p>
                       </header>
                     </div>
                     <button
@@ -518,7 +506,7 @@
                       class="btn"
                       popovertarget="pop-side-right"
                     >
-                      ขวา Right
+                      Right
                     </button>
                     <div
                       class="popover"
@@ -527,8 +515,8 @@
                       data-side="right"
                     >
                       <header>
-                        <h3>ขวา Right</h3>
-                        <p>เปิดทางขวา Opens to the right of the button.</p>
+                        <h3>Right</h3>
+                        <p>Opens to the right of the button.</p>
                       </header>
                     </div>
                   </div>
@@ -542,31 +530,28 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-side-bottom"&gt;ล่าง Bottom&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-side-bottom"&gt;Bottom&lt;/button&gt;
   &lt;div class="popover" id="pop-side-bottom" popover&gt;
-    &lt;header&gt;&lt;h3&gt;ล่าง Bottom&lt;/h3&gt;&lt;p&gt;เปิดใต้ปุ่ม ค่าเริ่มต้น Opens below the button. The default.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;Bottom&lt;/h3&gt;&lt;p&gt;Opens below the button. The default.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-side-top"&gt;บน Top&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-side-top"&gt;Top&lt;/button&gt;
   &lt;div class="popover" id="pop-side-top" popover data-side="top"&gt;
-    &lt;header&gt;&lt;h3&gt;บน Top&lt;/h3&gt;&lt;p&gt;เปิดเหนือปุ่ม Opens above the button.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;Top&lt;/h3&gt;&lt;p&gt;Opens above the button.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-side-left"&gt;ซ้าย Left&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-side-left"&gt;Left&lt;/button&gt;
   &lt;div class="popover" id="pop-side-left" popover data-side="left"&gt;
-    &lt;header&gt;&lt;h3&gt;ซ้าย Left&lt;/h3&gt;&lt;p&gt;เปิดทางซ้าย Opens to the left of the button.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;Left&lt;/h3&gt;&lt;p&gt;Opens to the left of the button.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-side-right"&gt;ขวา Right&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-side-right"&gt;Right&lt;/button&gt;
   &lt;div class="popover" id="pop-side-right" popover data-side="right"&gt;
-    &lt;header&gt;&lt;h3&gt;ขวา Right&lt;/h3&gt;&lt;p&gt;เปิดทางขวา Opens to the right of the button.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;Right&lt;/h3&gt;&lt;p&gt;Opens to the right of the button.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              การจัดแนว: ต้น กลาง และท้ายของปุ่ม Alignment: start, center and
-              end of the button
-            </h2>
+            <h2>Alignment: start, center and end of the button</h2>
             <p>
               <code>data-<wbr />align</code>: for a popover on the left or
               right, start is the top edge of the button and end its bottom
@@ -607,14 +592,13 @@
                       class="btn"
                       popovertarget="pop-align-start"
                     >
-                      ต้น Start
+                      Start
                     </button>
                     <div class="popover" id="pop-align-start" popover>
                       <header>
-                        <h3>ต้น Start</h3>
+                        <h3>Start</h3>
                         <p>
-                          ชิดขอบต้นของปุ่ม ค่าเริ่มต้น Lines up with the start
-                          of the button. The default.
+                          Lines up with the start of the button. The default.
                         </p>
                       </header>
                     </div>
@@ -623,7 +607,7 @@
                       class="btn"
                       popovertarget="pop-align-center"
                     >
-                      กลาง Center
+                      Center
                     </button>
                     <div
                       class="popover"
@@ -632,8 +616,8 @@
                       data-align="center"
                     >
                       <header>
-                        <h3>กลาง Center</h3>
-                        <p>อยู่กึ่งกลางปุ่ม Centred on the button.</p>
+                        <h3>Center</h3>
+                        <p>Centred on the button.</p>
                       </header>
                     </div>
                     <button
@@ -641,7 +625,7 @@
                       class="btn"
                       popovertarget="pop-align-end"
                     >
-                      ท้าย End
+                      End
                     </button>
                     <div
                       class="popover"
@@ -650,10 +634,8 @@
                       data-align="end"
                     >
                       <header>
-                        <h3>ท้าย End</h3>
-                        <p>
-                          ชิดขอบท้ายของปุ่ม Lines up with the end of the button.
-                        </p>
+                        <h3>End</h3>
+                        <p>Lines up with the end of the button.</p>
                       </header>
                     </div>
                   </div>
@@ -667,24 +649,24 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-align-start"&gt;ต้น Start&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-align-start"&gt;Start&lt;/button&gt;
   &lt;div class="popover" id="pop-align-start" popover&gt;
-    &lt;header&gt;&lt;h3&gt;ต้น Start&lt;/h3&gt;&lt;p&gt;ชิดขอบต้นของปุ่ม ค่าเริ่มต้น Lines up with the start of the button. The default.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;Start&lt;/h3&gt;&lt;p&gt;Lines up with the start of the button. The default.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-align-center"&gt;กลาง Center&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-align-center"&gt;Center&lt;/button&gt;
   &lt;div class="popover" id="pop-align-center" popover data-align="center"&gt;
-    &lt;header&gt;&lt;h3&gt;กลาง Center&lt;/h3&gt;&lt;p&gt;อยู่กึ่งกลางปุ่ม Centred on the button.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;Center&lt;/h3&gt;&lt;p&gt;Centred on the button.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-align-end"&gt;ท้าย End&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-align-end"&gt;End&lt;/button&gt;
   &lt;div class="popover" id="pop-align-end" popover data-align="end"&gt;
-    &lt;header&gt;&lt;h3&gt;ท้าย End&lt;/h3&gt;&lt;p&gt;ชิดขอบท้ายของปุ่ม Lines up with the end of the button.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;End&lt;/h3&gt;&lt;p&gt;Lines up with the end of the button.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ใช้ด้านและการจัดแนวร่วมกัน Side and alignment together</h2>
+            <h2>Side and alignment together</h2>
 
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -721,7 +703,7 @@
                       class="btn"
                       popovertarget="pop-both-top-end"
                     >
-                      บน ท้าย Top, end
+                      Top, end
                     </button>
                     <div
                       class="popover"
@@ -731,11 +713,8 @@
                       data-align="end"
                     >
                       <header>
-                        <h3>บน ท้าย Top, end</h3>
-                        <p>
-                          เหนือปุ่ม ชิดขอบท้าย Above the button, lined up with
-                          its end.
-                        </p>
+                        <h3>Top, end</h3>
+                        <p>Above the button, lined up with its end.</p>
                       </header>
                     </div>
                     <button
@@ -743,7 +722,7 @@
                       class="btn"
                       popovertarget="pop-both-right-center"
                     >
-                      ขวา กลาง Right, center
+                      Right, center
                     </button>
                     <div
                       class="popover"
@@ -753,11 +732,8 @@
                       data-align="center"
                     >
                       <header>
-                        <h3>ขวา กลาง Right, center</h3>
-                        <p>
-                          ทางขวา กึ่งกลางปุ่ม Right of the button, centred on
-                          it.
-                        </p>
+                        <h3>Right, center</h3>
+                        <p>Right of the button, centred on it.</p>
                       </header>
                     </div>
                   </div>
@@ -771,13 +747,13 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-both-top-end"&gt;บน ท้าย Top, end&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-both-top-end"&gt;Top, end&lt;/button&gt;
   &lt;div class="popover" id="pop-both-top-end" popover data-side="top" data-align="end"&gt;
-    &lt;header&gt;&lt;h3&gt;บน ท้าย Top, end&lt;/h3&gt;&lt;p&gt;เหนือปุ่ม ชิดขอบท้าย Above the button, lined up with its end.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;Top, end&lt;/h3&gt;&lt;p&gt;Above the button, lined up with its end.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="pop-both-right-center"&gt;ขวา กลาง Right, center&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="pop-both-right-center"&gt;Right, center&lt;/button&gt;
   &lt;div class="popover" id="pop-both-right-center" popover data-side="right" data-align="center"&gt;
-    &lt;header&gt;&lt;h3&gt;ขวา กลาง Right, center&lt;/h3&gt;&lt;p&gt;ทางขวา กึ่งกลางปุ่ม Right of the button, centred on it.&lt;/p&gt;&lt;/header&gt;
+    &lt;header&gt;&lt;h3&gt;Right, center&lt;/h3&gt;&lt;p&gt;Right of the button, centred on it.&lt;/p&gt;&lt;/header&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
@@ -785,14 +761,13 @@
           </section>
           <section>
             <h2>
-              หัวพร้อมจำนวน: badge หลังชื่อเรื่องอยู่บรรทัดเดียวกัน A header
-              with a count: a badge after the title sits on the same row
+              A header with a count: a badge after the title sits on the same
+              row
             </h2>
             <p>
-              <code>&lt;header&gt;</code> ในป๊อปโอเวอร์เรียงชื่อเรื่องและ badge
-              เป็นแถวเดียว และ <code>&lt;p&gt;</code> ขึ้นบรรทัดใหม่. In the
-              header the title and a badge share a row; a
-              <code>&lt;p&gt;</code> after them takes its own line.
+              In the popover's <code>&lt;header&gt;</code> the title and a badge
+              share a row; a <code>&lt;p&gt;</code> after them takes its own
+              line.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -824,14 +799,14 @@
               >
                 <div class="docs-preview">
                   <button type="button" class="btn" popovertarget="pop-count">
-                    สินค้า Products<i
+                    Products<i
                       class="icon icon-chevron-down"
                       aria-hidden="true"
                     ></i>
                   </button>
                   <div class="popover" id="pop-count" popover>
                     <header>
-                      <h3>สินค้าในตะกร้า Products in cart</h3>
+                      <h3>Products in cart</h3>
                       <span class="badge">3</span>
                     </header>
                     <div class="item-group">
@@ -839,22 +814,22 @@
                         <figure>
                           <i class="icon icon-watch" aria-hidden="true"></i>
                         </figure>
-                        <section><h3>นาฬิกา Timeless Watch</h3></section>
-                        <aside>฿1,990</aside>
+                        <section><h3>Timeless Watch</h3></section>
+                        <aside>$59.00</aside>
                       </div>
                       <div class="item" data-size="sm">
                         <figure>
                           <i class="icon icon-coffee" aria-hidden="true"></i>
                         </figure>
-                        <section><h3>แก้ว Ceramic Mug</h3></section>
-                        <aside>฿490</aside>
+                        <section><h3>Ceramic Mug</h3></section>
+                        <aside>$15.00</aside>
                       </div>
                       <div class="item" data-size="sm">
                         <figure>
                           <i class="icon icon-armchair" aria-hidden="true"></i>
                         </figure>
-                        <section><h3>เก้าอี้ Wooden Stool</h3></section>
-                        <aside>฿1,290</aside>
+                        <section><h3>Wooden Stool</h3></section>
+                        <aside>$39.00</aside>
                       </div>
                     </div>
                   </div>
@@ -867,16 +842,16 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn" popovertarget="pop-count"&gt;สินค้า Products&lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+                <pre><code>&lt;button type="button" class="btn" popovertarget="pop-count"&gt;Products&lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;div class="popover" id="pop-count" popover&gt;
   &lt;header&gt;
-    &lt;h3&gt;สินค้าในตะกร้า Products in cart&lt;/h3&gt;
+    &lt;h3&gt;Products in cart&lt;/h3&gt;
     &lt;span class="badge"&gt;3&lt;/span&gt;
   &lt;/header&gt;
   &lt;div class="item-group"&gt;
-    &lt;div class="item" data-size="sm"&gt;&lt;figure&gt;&lt;i class="icon icon-watch" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;นาฬิกา Timeless Watch&lt;/h3&gt;&lt;/section&gt;&lt;aside&gt;฿1,990&lt;/aside&gt;&lt;/div&gt;
-    &lt;div class="item" data-size="sm"&gt;&lt;figure&gt;&lt;i class="icon icon-coffee" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;แก้ว Ceramic Mug&lt;/h3&gt;&lt;/section&gt;&lt;aside&gt;฿490&lt;/aside&gt;&lt;/div&gt;
-    &lt;div class="item" data-size="sm"&gt;&lt;figure&gt;&lt;i class="icon icon-armchair" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;เก้าอี้ Wooden Stool&lt;/h3&gt;&lt;/section&gt;&lt;aside&gt;฿1,290&lt;/aside&gt;&lt;/div&gt;
+    &lt;div class="item" data-size="sm"&gt;&lt;figure&gt;&lt;i class="icon icon-watch" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;Timeless Watch&lt;/h3&gt;&lt;/section&gt;&lt;aside&gt;$59.00&lt;/aside&gt;&lt;/div&gt;
+    &lt;div class="item" data-size="sm"&gt;&lt;figure&gt;&lt;i class="icon icon-coffee" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;Ceramic Mug&lt;/h3&gt;&lt;/section&gt;&lt;aside&gt;$15.00&lt;/aside&gt;&lt;/div&gt;
+    &lt;div class="item" data-size="sm"&gt;&lt;figure&gt;&lt;i class="icon icon-armchair" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;&lt;section&gt;&lt;h3&gt;Wooden Stool&lt;/h3&gt;&lt;/section&gt;&lt;aside&gt;$39.00&lt;/aside&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
@@ -901,7 +876,7 @@
                     </td>
                     <td>method</td>
                     <td>
-                      เปิด. Opens the popover; any other open
+                      Opens the popover; any other open
                       <code>auto</code> popover closes.
                     </td>
                   </tr>
@@ -910,7 +885,7 @@
                       <code>hidePopover(<wbr />)</code>
                     </td>
                     <td>method</td>
-                    <td>ปิด. Closes the popover.</td>
+                    <td>Closes the popover.</td>
                   </tr>
                   <tr>
                     <td>
@@ -918,7 +893,7 @@
                     </td>
                     <td>method</td>
                     <td>
-                      สลับเปิดปิด. Opens it when closed, closes it when open;
+                      Opens it when closed, closes it when open;
                       <code>force</code> picks one. Returns the new state.
                     </td>
                   </tr>
@@ -928,7 +903,7 @@
                     </td>
                     <td>CSS</td>
                     <td>
-                      ตรงเมื่อเปิดอยู่. Matches while it is open:
+                      Matches while it is open:
                       <code
                         >el.<wbr />matches(<wbr />":popover-<wbr />open")</code
                       >.
@@ -957,14 +932,14 @@
                       / <code>"closed"</code>)
                     </td>
                     <td>
-                      ก่อนเปิดหรือปิด. Before it opens or closes;
+                      Before it opens or closes;
                       <code>preventDefault(<wbr />)</code> stops an opening.
                     </td>
                   </tr>
                   <tr>
                     <td><code>toggle</code></td>
                     <td><code>oldState</code>, <code>newState</code></td>
-                    <td>หลังเปิดหรือปิด. After it has opened or closed.</td>
+                    <td>After it has opened or closed.</td>
                   </tr>
                 </tbody>
               </table>
@@ -981,33 +956,27 @@
                 <tbody>
                   <tr>
                     <td><kbd>Enter</kbd> / <kbd>Space</kbd></td>
-                    <td>
-                      บนปุ่ม: เปิดหรือปิด. On the button: opens or closes the
-                      popover.
-                    </td>
+                    <td>On the button: opens or closes the popover.</td>
                   </tr>
                   <tr>
                     <td><kbd>Tab</kbd></td>
                     <td>
-                      จากปุ่มเข้าไปในป๊อปโอเวอร์ (ลำดับถัดจากปุ่ม). From the
-                      button into the popover, which comes next in the focus
-                      order.
+                      From the button into the popover, which comes next in the
+                      focus order.
                     </td>
                   </tr>
                   <tr>
                     <td><kbd>Esc</kbd></td>
                     <td>
-                      ปิดป๊อปโอเวอร์ และคืนโฟกัสให้ปุ่ม. Closes the popover
-                      only; a dialog around it stays open.
+                      Closes the popover only; a dialog around it stays open.
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p>
-              ไม่มี JS: ทั้งหมดเป็นของเบราว์เซอร์. No script. Without CSS anchor
-              positioning the browser shows the popover in the middle of the
-              window.
+              No script. Without CSS anchor positioning the browser shows the
+              popover in the middle of the window.
             </p>
           </section>
           <section>
@@ -1027,10 +996,7 @@
                       <code>class=<wbr />"popover"</code>
                     </td>
                     <td>on the panel</td>
-                    <td>
-                      สไตล์ป๊อปโอเวอร์. The component: a bordered panel up to
-                      20rem wide.
-                    </td>
+                    <td>The component: a bordered panel up to 20rem wide.</td>
                   </tr>
                   <tr>
                     <td><code>popover</code></td>
@@ -1038,16 +1004,15 @@
                       none or <code>auto</code> (default), <code>manual</code>
                     </td>
                     <td>
-                      ทำให้เป็นป๊อปโอเวอร์. <code>auto</code> closes on an
-                      outside click, Escape, or another popover;
-                      <code>manual</code> only by its button.
+                      <code>auto</code> closes on an outside click, Escape, or
+                      another popover; <code>manual</code> only by its button.
                     </td>
                   </tr>
                   <tr>
                     <td><code>id</code></td>
                     <td>unique id</td>
                     <td>
-                      ให้ปุ่มชี้มา. What the button's
+                      What the button's
                       <code>popover<wbr />target</code> names.
                     </td>
                   </tr>
@@ -1057,8 +1022,8 @@
                     </td>
                     <td>the popover's id</td>
                     <td>
-                      บนปุ่มที่เปิด. On the button; also makes it the anchor the
-                      popover is placed against.
+                      On the button; also makes it the anchor the popover is
+                      placed against.
                     </td>
                   </tr>
                   <tr>
@@ -1069,7 +1034,7 @@
                       <code>toggle</code> (default), <code>show</code>,
                       <code>hide</code>
                     </td>
-                    <td>บนปุ่ม. What a click on the button does.</td>
+                    <td>What a click on the button does.</td>
                   </tr>
                   <tr>
                     <td>
@@ -1079,10 +1044,7 @@
                       none or <code>bottom</code> (default), <code>top</code>,
                       <code>left</code>, <code>right</code>
                     </td>
-                    <td>
-                      ด้านของปุ่มที่เปิด. Flips to the other side when it does
-                      not fit.
-                    </td>
+                    <td>Flips to the other side when it does not fit.</td>
                   </tr>
                   <tr>
                     <td>
@@ -1093,8 +1055,8 @@
                       <code>end</code>
                     </td>
                     <td>
-                      จัดแนวกับปุ่ม. Start/end: left/right edge below or above;
-                      top/bottom edge on the left or right.
+                      Start/end: left/right edge below or above; top/bottom edge
+                      on the left or right.
                     </td>
                   </tr>
                   <tr>
@@ -1103,17 +1065,12 @@
                       <code>h3</code>, <code>.<wbr />badge</code>,
                       <code>p</code>
                     </td>
-                    <td>
-                      ชื่อเรื่องกับ badge บรรทัดเดียว p บรรทัดใหม่. Title and
-                      count on one row, description below.
-                    </td>
+                    <td>Title and count on one row, description below.</td>
                   </tr>
                   <tr>
                     <td><code>autofocus</code></td>
                     <td>on a control in the popover</td>
-                    <td>
-                      ได้โฟกัสเมื่อเปิด. Takes focus when the popover opens.
-                    </td>
+                    <td>Takes focus when the popover opens.</td>
                   </tr>
                 </tbody>
               </table>
