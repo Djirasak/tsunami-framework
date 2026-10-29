@@ -316,32 +316,680 @@
               <h1>Colors</h1>
               <p>
                 Semantic tokens เป็น CSS custom properties
-                และเปลี่ยนค่าเองตามธีม component อ้างอิงเฉพาะ token เหล่านี้
+                ที่เปลี่ยนค่าเองตามธีม component อ้างอิงเฉพาะ token เหล่านี้
               </p>
             </div>
           </header>
+          <div class="alert" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <div>
+              <strong
+                >ค่าสว่างและมืดในหน้านี้เป็นค่าคงที่ Light and dark columns are
+                static</strong
+              >
+              <p>
+                Token อยู่บน <code>:root</code> เท่านั้น
+                <code>data-theme</code> ใส่ได้ที่
+                <code>&lt;html&gt;</code> ไม่ใช่ element ย่อย
+                แถบสีสองคอลัมน์จึงวาดจากค่า hex ของทั้งสองธีมเพื่อเทียบกัน ส่วน
+                Preview ทุกอันใช้ธีมปัจจุบัน
+              </p>
+            </div>
+          </div>
           <section>
-            <h2>Swatches</h2>
-            <div class="docs-swatches">
-              <div style="--c: var(--bg)"><code>--bg</code></div>
-              <div style="--c: var(--surface)"><code>--surface</code></div>
-              <div style="--c: var(--subtle)"><code>--subtle</code></div>
-              <div style="--c: var(--fg)"><code>--fg</code></div>
-              <div style="--c: var(--muted)"><code>--muted</code></div>
-              <div style="--c: var(--line)"><code>--line</code></div>
-              <div style="--c: var(--accent)"><code>--accent</code></div>
-              <div style="--c: var(--on-accent)"><code>--on-accent</code></div>
-              <div style="--c: var(--ok-bg)"><code>--ok-bg</code></div>
-              <div style="--c: var(--ok-fg)"><code>--ok-fg</code></div>
-              <div style="--c: var(--danger-bg)"><code>--danger-bg</code></div>
-              <div style="--c: var(--danger-fg)"><code>--danger-fg</code></div>
-              <div style="--c: var(--neutral-bg)">
-                <code>--neutral-bg</code>
+            <h2>พื้นผิว Surfaces</h2>
+            <p>
+              หน้า และแผงที่วางบนหน้า The page, and the panels that sit on it.
+            </p>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>สว่าง Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #fcfcfc">
+                    <code>--bg</code><span>#fcfcfc</span>
+                  </div>
+                  <div style="--c: #fff">
+                    <code>--surface</code><span>#fff</span>
+                  </div>
+                  <div style="--c: #f4f6f7">
+                    <code>--subtle</code><span>#f4f6f7</span>
+                  </div>
+                  <div style="--c: rgb(18 25 29 / 0.4)">
+                    <code>--overlay</code><span>rgb(18 25 29 / 0.4)</span>
+                  </div>
+                </div>
               </div>
-              <div style="--c: var(--neutral-fg)">
-                <code>--neutral-fg</code>
+              <div class="stack" data-gap="sm">
+                <h3>มืด Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #0d1316">
+                    <code>--bg</code><span>#0d1316</span>
+                  </div>
+                  <div style="--c: #12191d">
+                    <code>--surface</code><span>#12191d</span>
+                  </div>
+                  <div style="--c: #182126">
+                    <code>--subtle</code><span>#182126</span>
+                  </div>
+                  <div style="--c: rgb(0 0 0 / 0.6)">
+                    <code>--overlay</code><span>rgb(0 0 0 / 0.6)</span>
+                  </div>
+                </div>
               </div>
-              <div style="--c: var(--overlay)"><code>--overlay</code></div>
+            </div>
+          </section>
+          <section>
+            <h2>การกระทำและการเน้น Actions and emphasis</h2>
+            <p>
+              ข้อความหลักกับข้อความรอง และ accent ที่ใช้กับลิงก์ ปุ่ม primary
+              และ focus เท่านั้น ปุ่มปกติเป็นแบบ outline ไม่มีสีพื้นของตัวเอง
+              Text, and the one accent for links, the primary button and focus.
+            </p>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>สว่าง Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #12191d">
+                    <code>--fg</code><span>#12191d</span>
+                  </div>
+                  <div style="--c: #5f6e75">
+                    <code>--muted</code><span>#5f6e75</span>
+                  </div>
+                  <div style="--c: #2b7f93">
+                    <code>--accent</code><span>#2b7f93</span>
+                  </div>
+                  <div style="--c: #fff">
+                    <code>--on-accent</code><span>#fff</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>มืด Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #e7eef0">
+                    <code>--fg</code><span>#e7eef0</span>
+                  </div>
+                  <div style="--c: #8b9ba2">
+                    <code>--muted</code><span>#8b9ba2</span>
+                  </div>
+                  <div style="--c: #6cc0d3">
+                    <code>--accent</code><span>#6cc0d3</span>
+                  </div>
+                  <div style="--c: #0d1316">
+                    <code>--on-accent</code><span>#0d1316</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>สถานะ Status</h2>
+            <p>
+              แต่ละสถานะเป็นคู่ <code>-bg</code> กับ
+              <code>-fg</code> ใช้คู่กันเป็นพื้นอ่อนกับข้อความเข้ม (badge,
+              alert) หรือใช้ <code>-fg</code> อย่างเดียวกับข้อความ ไอคอน และแถบ
+              progress Each status is a soft fill and a dark text pair.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="สถานะ Status">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <span class="badge" data-variant="ok">ชำระแล้ว Paid</span>
+                    <span class="badge" data-variant="warning"
+                      >รอตรวจสอบ Review</span
+                    >
+                    <span class="badge" data-variant="danger"
+                      >ยกเลิก Cancelled</span
+                    >
+                    <span class="badge" data-variant="info"
+                      >กำลังจัดส่ง Shipping</span
+                    >
+                    <span class="badge">ร่าง Draft</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;span class="badge" data-variant="ok"&gt;ชำระแล้ว Paid&lt;/span&gt;
+  &lt;span class="badge" data-variant="warning"&gt;รอตรวจสอบ Review&lt;/span&gt;
+  &lt;span class="badge" data-variant="danger"&gt;ยกเลิก Cancelled&lt;/span&gt;
+  &lt;span class="badge" data-variant="info"&gt;กำลังจัดส่ง Shipping&lt;/span&gt;
+  &lt;span class="badge"&gt;ร่าง Draft&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>สว่าง Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #e4f5ec">
+                    <code>--ok-bg</code><span>#e4f5ec</span>
+                  </div>
+                  <div style="--c: #17724a">
+                    <code>--ok-fg</code><span>#17724a</span>
+                  </div>
+                  <div style="--c: #fdf3dc">
+                    <code>--warning-bg</code><span>#fdf3dc</span>
+                  </div>
+                  <div style="--c: #8a5a00">
+                    <code>--warning-fg</code><span>#8a5a00</span>
+                  </div>
+                  <div style="--c: #fde8e8">
+                    <code>--danger-bg</code><span>#fde8e8</span>
+                  </div>
+                  <div style="--c: #b42323">
+                    <code>--danger-fg</code><span>#b42323</span>
+                  </div>
+                  <div style="--c: #e3f0fb">
+                    <code>--info-bg</code><span>#e3f0fb</span>
+                  </div>
+                  <div style="--c: #1f5f99">
+                    <code>--info-fg</code><span>#1f5f99</span>
+                  </div>
+                  <div style="--c: #eceff1">
+                    <code>--neutral-bg</code><span>#eceff1</span>
+                  </div>
+                  <div style="--c: #4a585e">
+                    <code>--neutral-fg</code><span>#4a585e</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>มืด Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #12301f">
+                    <code>--ok-bg</code><span>#12301f</span>
+                  </div>
+                  <div style="--c: #6fd3a0">
+                    <code>--ok-fg</code><span>#6fd3a0</span>
+                  </div>
+                  <div style="--c: #33270f">
+                    <code>--warning-bg</code><span>#33270f</span>
+                  </div>
+                  <div style="--c: #f0c060">
+                    <code>--warning-fg</code><span>#f0c060</span>
+                  </div>
+                  <div style="--c: #3a1717">
+                    <code>--danger-bg</code><span>#3a1717</span>
+                  </div>
+                  <div style="--c: #f08a8a">
+                    <code>--danger-fg</code><span>#f08a8a</span>
+                  </div>
+                  <div style="--c: #12263a">
+                    <code>--info-bg</code><span>#12263a</span>
+                  </div>
+                  <div style="--c: #7fb8ea">
+                    <code>--info-fg</code><span>#7fb8ea</span>
+                  </div>
+                  <div style="--c: #1e292f">
+                    <code>--neutral-bg</code><span>#1e292f</span>
+                  </div>
+                  <div style="--c: #a9b8be">
+                    <code>--neutral-fg</code><span>#a9b8be</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>เส้นและช่องกรอก Lines and fields</h2>
+            <p>
+              ไม่มี token แยกสำหรับ input field ใช้ <code>--line</code> เป็นขอบ
+              <code>--surface</code> เป็นพื้น และ focus ring เป็น
+              <code>--accent</code> 2px เหมือนทุก element Borders and the
+              controls of a form reuse the same tokens.
+            </p>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>สว่าง Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #e3e8ea">
+                    <code>--line</code><span>ขอบ field Field border</span
+                    ><span>#e3e8ea</span>
+                  </div>
+                  <div style="--c: #fff">
+                    <code>--surface</code><span>พื้น field Field fill</span
+                    ><span>#fff</span>
+                  </div>
+                  <div style="--c: #2b7f93">
+                    <code>--accent</code><span>ขอบและ ring ตอน focus Focus</span
+                    ><span>#2b7f93</span>
+                  </div>
+                  <div style="--c: #b42323">
+                    <code>--danger-fg</code><span>ขอบตอน invalid Invalid</span
+                    ><span>#b42323</span>
+                  </div>
+                  <div style="--c: #f4f6f7">
+                    <code>--subtle</code><span>พื้นตอน disabled Disabled</span
+                    ><span>#f4f6f7</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>มืด Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #25333a">
+                    <code>--line</code><span>ขอบ field Field border</span
+                    ><span>#25333a</span>
+                  </div>
+                  <div style="--c: #12191d">
+                    <code>--surface</code><span>พื้น field Field fill</span
+                    ><span>#12191d</span>
+                  </div>
+                  <div style="--c: #6cc0d3">
+                    <code>--accent</code><span>ขอบและ ring ตอน focus Focus</span
+                    ><span>#6cc0d3</span>
+                  </div>
+                  <div style="--c: #f08a8a">
+                    <code>--danger-fg</code><span>ขอบตอน invalid Invalid</span
+                    ><span>#f08a8a</span>
+                  </div>
+                  <div style="--c: #182126">
+                    <code>--subtle</code><span>พื้นตอน disabled Disabled</span
+                    ><span>#182126</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>กราฟ Charts</h2>
+            <p>
+              tsunami ไม่มี token สำหรับชุดสีกราฟ และไม่มี component กราฟ
+              ถ้าต้องการแท่งเทียบค่าง่าย ๆ ใช้ <code>progress</code> กับสี
+              <code>--fg</code> และ <code>-fg</code> ของสถานะ
+              กราฟเต็มรูปแบบอยู่นอกขอบเขต Charts are out of scope; status
+              <code>-fg</code> tokens can colour simple bars.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="กราฟ Charts">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <label for="ch-1">หน้าร้าน Storefront ฿182,400</label>
+                    <progress
+                      id="ch-1"
+                      class="progress"
+                      value="182400"
+                      max="250000"
+                    >
+                      73%
+                    </progress>
+                    <label for="ch-2">LINE Shopping ฿96,250</label>
+                    <progress
+                      id="ch-2"
+                      class="progress"
+                      data-variant="ok"
+                      value="96250"
+                      max="250000"
+                    >
+                      39%
+                    </progress>
+                    <label for="ch-3">คืนเงิน Refunds ฿12,900</label>
+                    <progress
+                      id="ch-3"
+                      class="progress"
+                      data-variant="danger"
+                      value="12900"
+                      max="250000"
+                    >
+                      5%
+                    </progress>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;label for="ch-1"&gt;หน้าร้าน Storefront ฿182,400&lt;/label&gt;
+  &lt;progress id="ch-1" class="progress" value="182400" max="250000"&gt;73%&lt;/progress&gt;
+  &lt;label for="ch-2"&gt;LINE Shopping ฿96,250&lt;/label&gt;
+  &lt;progress id="ch-2" class="progress" data-variant="ok" value="96250" max="250000"&gt;39%&lt;/progress&gt;
+  &lt;label for="ch-3"&gt;คืนเงิน Refunds ฿12,900&lt;/label&gt;
+  &lt;progress id="ch-3" class="progress" data-variant="danger" value="12900" max="250000"&gt;5%&lt;/progress&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sidebar</h2>
+            <p>
+              Sidebar และ subnav ไม่มีชุด token แยก ใช้
+              <code>--subtle</code> เป็นพื้น
+              <code>--neutral-bg</code> สำหรับรายการปัจจุบันและรายการที่ชี้อยู่
+              The sidebar reuses the page tokens.
+            </p>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>สว่าง Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #f4f6f7">
+                    <code>--subtle</code><span>พื้น sidebar Surface</span
+                    ><span>#f4f6f7</span>
+                  </div>
+                  <div style="--c: #eceff1">
+                    <code>--neutral-bg</code
+                    ><span>รายการปัจจุบันและ hover Current and hover</span
+                    ><span>#eceff1</span>
+                  </div>
+                  <div style="--c: #e3e8ea">
+                    <code>--line</code><span>เส้นขอบขวา Border</span
+                    ><span>#e3e8ea</span>
+                  </div>
+                  <div style="--c: #5f6e75">
+                    <code>--muted</code
+                    ><span>หัวกลุ่มและไอคอน Group labels, icons</span
+                    ><span>#5f6e75</span>
+                  </div>
+                  <div style="--c: #2b7f93">
+                    <code>--accent</code><span>focus ring</span
+                    ><span>#2b7f93</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>มืด Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #182126">
+                    <code>--subtle</code><span>พื้น sidebar Surface</span
+                    ><span>#182126</span>
+                  </div>
+                  <div style="--c: #1e292f">
+                    <code>--neutral-bg</code
+                    ><span>รายการปัจจุบันและ hover Current and hover</span
+                    ><span>#1e292f</span>
+                  </div>
+                  <div style="--c: #25333a">
+                    <code>--line</code><span>เส้นขอบขวา Border</span
+                    ><span>#25333a</span>
+                  </div>
+                  <div style="--c: #8b9ba2">
+                    <code>--muted</code
+                    ><span>หัวกลุ่มและไอคอน Group labels, icons</span
+                    ><span>#8b9ba2</span>
+                  </div>
+                  <div style="--c: #6cc0d3">
+                    <code>--accent</code><span>focus ring</span
+                    ><span>#6cc0d3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>สถานะของแต่ละสี States of each colour</h2>
+            <p>
+              สีของแต่ละสถานะตามที่ component ใช้จริง ไม่มีสีแยกสำหรับ
+              <code>:active</code> ใช้สีเดียวกับ hover ลองชี้และกด Tab ใน
+              Preview Each state as the components draw it.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="สถานะของแต่ละสี States of each colour"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button type="button" class="btn" data-variant="primary">
+                        บันทึก Save
+                      </button>
+                      <button type="button" class="btn">ส่งออก Export</button>
+                      <button type="button" class="btn" data-variant="ghost">
+                        ยกเลิก Cancel
+                      </button>
+                      <button type="button" class="btn" data-variant="danger">
+                        ลบ Delete
+                      </button>
+                      <button type="button" class="btn" disabled>
+                        ปิดอยู่ Disabled
+                      </button>
+                    </div>
+                    <div class="stack" data-direction="row">
+                      <a href="#">ดูคำสั่งซื้อ View order</a>
+                      <a class="link" data-variant="muted" href="#"
+                        >ประวัติ History</a
+                      >
+                    </div>
+                    <div class="stack docs-narrow" data-gap="sm">
+                      <div class="field">
+                        <label for="st-1">SKU</label>
+                        <input id="st-1" type="text" value="TS-1042" />
+                      </div>
+                      <div class="field">
+                        <label for="st-2">ราคา Price</label>
+                        <input
+                          id="st-2"
+                          type="text"
+                          value="฿-90"
+                          aria-invalid="true"
+                          aria-describedby="st-2-hint"
+                        />
+                        <small id="st-2-hint"
+                          >ราคาต้องมากกว่า 0 Price must be above 0</small
+                        >
+                      </div>
+                      <div class="field">
+                        <label for="st-3">รหัสร้าน Store ID</label>
+                        <input
+                          id="st-3"
+                          type="text"
+                          value="somjai-01"
+                          disabled
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="button" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;button type="button" class="btn"&gt;ส่งออก Export&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="ghost"&gt;ยกเลิก Cancel&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="danger"&gt;ลบ Delete&lt;/button&gt;
+    &lt;button type="button" class="btn" disabled&gt;ปิดอยู่ Disabled&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row"&gt;
+    &lt;a href="#"&gt;ดูคำสั่งซื้อ View order&lt;/a&gt;
+    &lt;a class="link" data-variant="muted" href="#"&gt;ประวัติ History&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="stack docs-narrow" data-gap="sm"&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="st-1"&gt;SKU&lt;/label&gt;
+      &lt;input id="st-1" type="text" value="TS-1042" /&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="st-2"&gt;ราคา Price&lt;/label&gt;
+      &lt;input id="st-2" type="text" value="฿-90" aria-invalid="true" aria-describedby="st-2-hint" /&gt;
+      &lt;small id="st-2-hint"&gt;ราคาต้องมากกว่า 0 Price must be above 0&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="st-3"&gt;รหัสร้าน Store ID&lt;/label&gt;
+      &lt;input id="st-3" type="text" value="somjai-01" disabled /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">สี · สถานะ Colour · state</th>
+                    <th scope="col">ค่า Value</th>
+                    <th scope="col">ใช้ใน Used in</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Accent · ปกติ Rest</td>
+                    <td><code>--accent</code> + <code>--on-accent</code></td>
+                    <td>ปุ่ม primary</td>
+                  </tr>
+                  <tr>
+                    <td>Accent · Hover</td>
+                    <td><code>filter: brightness(0.94)</code></td>
+                    <td>ปุ่ม primary</td>
+                  </tr>
+                  <tr>
+                    <td>Accent · ข้อความ Text</td>
+                    <td><code>--accent</code>, hover ขีดเส้นใต้</td>
+                    <td>ลิงก์</td>
+                  </tr>
+                  <tr>
+                    <td>Accent · Focus</td>
+                    <td>outline 2px <code>--accent</code></td>
+                    <td>ทุก element ที่ focus ได้, ขอบ field</td>
+                  </tr>
+                  <tr>
+                    <td>Outline · ปกติ Rest</td>
+                    <td>
+                      <code>--surface</code> + ขอบ <code>--line</code> +
+                      <code>--fg</code>
+                    </td>
+                    <td>ปุ่มปกติ</td>
+                  </tr>
+                  <tr>
+                    <td>Outline · Hover</td>
+                    <td><code>--subtle</code></td>
+                    <td>ปุ่มปกติและปุ่ม ghost</td>
+                  </tr>
+                  <tr>
+                    <td>Muted · Hover</td>
+                    <td><code>--muted</code> → <code>--fg</code></td>
+                    <td>ลิงก์ muted</td>
+                  </tr>
+                  <tr>
+                    <td>Neutral · Hover / current</td>
+                    <td><code>--neutral-bg</code></td>
+                    <td>รายการใน sidebar, subnav</td>
+                  </tr>
+                  <tr>
+                    <td>Danger · ปกติ Rest</td>
+                    <td><code>--danger-fg</code></td>
+                    <td>ปุ่ม danger, ขอบ field ที่ invalid</td>
+                  </tr>
+                  <tr>
+                    <td>Danger · Hover</td>
+                    <td><code>--danger-bg</code></td>
+                    <td>ปุ่ม danger</td>
+                  </tr>
+                  <tr>
+                    <td>Ok / warning / info / danger · Soft</td>
+                    <td><code>--*-bg</code> + <code>--*-fg</code></td>
+                    <td>badge, alert</td>
+                  </tr>
+                  <tr>
+                    <td>Ok / warning / info / danger · ข้อความ Text</td>
+                    <td><code>--*-fg</code></td>
+                    <td>stat, progress, ไอคอน</td>
+                  </tr>
+                  <tr>
+                    <td>ทุกสี All · Disabled</td>
+                    <td>
+                      <code>opacity: 0.5</code> (ปุ่ม),
+                      <code>--subtle</code> (field)
+                    </td>
+                    <td>ปุ่ม, field</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
           <section>
@@ -352,84 +1000,115 @@
                   <tr>
                     <th scope="col">Token</th>
                     <th scope="col">Light / Dark</th>
-                    <th scope="col">ใช้กับ</th>
+                    <th scope="col">ใช้กับ Used for</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><code>--bg</code></td>
                     <td><code>#fcfcfc / #0d1316</code></td>
-                    <td>พื้นหลังหน้า</td>
+                    <td>พื้นหลังหน้า The page</td>
                   </tr>
                   <tr>
                     <td><code>--surface</code></td>
                     <td><code>#fff / #12191d</code></td>
-                    <td>การ์ด, input, overlay</td>
+                    <td>
+                      การ์ด, input, dialog, popover, dropdown Cards and raised
+                      panels
+                    </td>
                   </tr>
                   <tr>
                     <td><code>--subtle</code></td>
                     <td><code>#f4f6f7 / #182126</code></td>
-                    <td>sidebar, hover, code</td>
+                    <td>
+                      sidebar, hover ของปุ่ม, code, field ที่ disabled Quiet
+                      fills
+                    </td>
                   </tr>
                   <tr>
                     <td><code>--fg</code></td>
                     <td><code>#12191d / #e7eef0</code></td>
-                    <td>ข้อความหลัก</td>
+                    <td>ข้อความหลัก, แถบ progress เริ่มต้น Main text</td>
                   </tr>
                   <tr>
                     <td><code>--muted</code></td>
                     <td><code>#5f6e75 / #8b9ba2</code></td>
-                    <td>ข้อความรอง, ป้าย</td>
+                    <td>ข้อความรอง, label, หัวตาราง Secondary text</td>
                   </tr>
                   <tr>
                     <td><code>--line</code></td>
                     <td><code>#e3e8ea / #25333a</code></td>
-                    <td>เส้นขอบ 1px</td>
+                    <td>เส้นขอบ 1px และเส้นแบ่ง Borders and dividers</td>
                   </tr>
                   <tr>
                     <td><code>--accent</code></td>
                     <td><code>#2b7f93 / #6cc0d3</code></td>
-                    <td>ลิงก์และปุ่ม primary เท่านั้น</td>
+                    <td>
+                      ลิงก์, ปุ่ม primary, focus ring, checkbox ที่เลือก Links,
+                      primary, focus
+                    </td>
                   </tr>
                   <tr>
                     <td><code>--on-accent</code></td>
                     <td><code>#fff / #0d1316</code></td>
-                    <td>ข้อความบน accent</td>
+                    <td>ข้อความบน accent Text on an accent fill</td>
                   </tr>
                   <tr>
                     <td><code>--ok-bg</code></td>
                     <td><code>#e4f5ec / #12301f</code></td>
-                    <td>พื้นสถานะสำเร็จ</td>
+                    <td>พื้นสถานะสำเร็จ Success fill</td>
                   </tr>
                   <tr>
                     <td><code>--ok-fg</code></td>
                     <td><code>#17724a / #6fd3a0</code></td>
-                    <td>ข้อความสถานะสำเร็จ</td>
+                    <td>ข้อความ/ไอคอนสถานะสำเร็จ Success text</td>
+                  </tr>
+                  <tr>
+                    <td><code>--warning-bg</code></td>
+                    <td><code>#fdf3dc / #33270f</code></td>
+                    <td>พื้นสถานะเตือน Warning fill</td>
+                  </tr>
+                  <tr>
+                    <td><code>--warning-fg</code></td>
+                    <td><code>#8a5a00 / #f0c060</code></td>
+                    <td>ข้อความสถานะเตือน Warning text</td>
                   </tr>
                   <tr>
                     <td><code>--danger-bg</code></td>
                     <td><code>#fde8e8 / #3a1717</code></td>
-                    <td>พื้นสถานะผิดพลาด</td>
+                    <td>พื้นสถานะผิดพลาด, hover ปุ่ม danger Error fill</td>
                   </tr>
                   <tr>
                     <td><code>--danger-fg</code></td>
                     <td><code>#b42323 / #f08a8a</code></td>
-                    <td>ข้อความสถานะผิดพลาด</td>
+                    <td>ข้อความผิดพลาด, ขอบ field ที่ invalid Error text</td>
+                  </tr>
+                  <tr>
+                    <td><code>--info-bg</code></td>
+                    <td><code>#e3f0fb / #12263a</code></td>
+                    <td>พื้นสถานะข้อมูล Info fill</td>
+                  </tr>
+                  <tr>
+                    <td><code>--info-fg</code></td>
+                    <td><code>#1f5f99 / #7fb8ea</code></td>
+                    <td>ข้อความสถานะข้อมูล Info text</td>
                   </tr>
                   <tr>
                     <td><code>--neutral-bg</code></td>
                     <td><code>#eceff1 / #1e292f</code></td>
-                    <td>พื้น badge, รายการที่ active</td>
+                    <td>
+                      badge ปกติ, รายการที่ active ใน sidebar Neutral fill
+                    </td>
                   </tr>
                   <tr>
                     <td><code>--neutral-fg</code></td>
                     <td><code>#4a585e / #a9b8be</code></td>
-                    <td>ข้อความ badge</td>
+                    <td>ข้อความ badge ปกติ Neutral text</td>
                   </tr>
                   <tr>
                     <td><code>--overlay</code></td>
                     <td><code>rgb(18 25 29 / 0.4) / rgb(0 0 0 / 0.6)</code></td>
-                    <td>backdrop ของ dialog และ drawer</td>
+                    <td>backdrop ของ dialog และ drawer Behind a modal</td>
                   </tr>
                 </tbody>
               </table>
