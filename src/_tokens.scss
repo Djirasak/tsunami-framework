@@ -17,6 +17,7 @@
   --danger-fg: #f08a8a;
   --neutral-bg: #1e292f;
   --neutral-fg: #a9b8be;
+  --overlay: rgb(0 0 0 / 0.6);
 }
 
 @layer tokens {
@@ -36,6 +37,7 @@
     --danger-fg: #b42323;
     --neutral-bg: #eceff1;
     --neutral-fg: #4a585e;
+    --overlay: rgb(18 25 29 / 0.4);
 
     --font-sans:
       "Inter", "Noto Sans Thai", system-ui, -apple-system, "Segoe UI",

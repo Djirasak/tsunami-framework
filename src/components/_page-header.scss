@@ -1,0 +1,26 @@
+// Page header: title block on the left, actions on the right.
+@layer components {
+  :where(.page-header) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-4);
+  }
+
+  :where(.page-header > :first-child) {
+    display: grid;
+    flex: 1 1 20rem;
+    gap: var(--space-1);
+  }
+
+  :where(.page-header p) {
+    color: var(--muted);
+  }
+
+  :where(.page-header > :last-child:not(:first-child)) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+}

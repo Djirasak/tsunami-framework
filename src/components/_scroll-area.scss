@@ -1,0 +1,9 @@
+// Scroll area: contained scrolling with a thin scrollbar. Add tabindex="0" for keyboard use.
+@layer components {
+  :where(.scroll-area) {
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+}

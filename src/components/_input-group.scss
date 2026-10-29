@@ -1,0 +1,40 @@
+// Input group: one bordered box around an input with leading/trailing spans.
+@layer components {
+  :where(.input-group) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: 2rem;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+  }
+
+  :where(.input-group:has(input:focus-visible)) {
+    border-color: var(--accent);
+    outline: 2px solid var(--accent);
+  }
+
+  :where(.input-group > input) {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+  }
+
+  :where(.input-group > span) {
+    display: inline-flex;
+    color: var(--muted);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+  }
+
+  :where(.input-group[data-variant="ghost"]) {
+    border-color: transparent;
+    background: transparent;
+  }
+}

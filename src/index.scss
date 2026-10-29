@@ -1,3 +1,48 @@
 // tsunami entry. Layer order is declared in _tokens.
 @use "tokens";
 @use "base";
+
+// Foundations and layout
+@use "components/icon";
+@use "components/stack";
+@use "components/card";
+@use "components/item";
+@use "components/page-header";
+@use "components/scroll-area";
+@use "components/stat";
+@use "components/table";
+@use "components/timeline";
+@use "components/journey";
+@use "components/workspace";
+
+// Actions and forms
+@use "components/btn";
+@use "components/link";
+@use "components/field";
+@use "components/input-group";
+@use "components/save-bar";
+@use "components/theme-switcher";
+
+// Feedback and media
+@use "components/alert";
+@use "components/badge";
+@use "components/empty";
+@use "components/loader";
+@use "components/progress";
+@use "components/avatar";
+
+// Navigation
+@use "components/sidebar";
+@use "components/subnav";
+@use "components/breadcrumb";
+@use "components/pagination";
+@use "components/tabs";
+@use "components/tree";
+@use "components/accordion";
+
+// Overlays
+@use "components/dialog";
+@use "components/drawer";
+@use "components/popover";
+@use "components/dropdown";
+@use "components/tooltip";

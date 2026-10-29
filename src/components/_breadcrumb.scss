@@ -1,0 +1,41 @@
+// Breadcrumb: <nav class="breadcrumb"><ol><li><a>..</a></li>...</ol></nav>
+@use "icon";
+
+@layer components {
+  :where(.breadcrumb ol) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.breadcrumb li) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  :where(.breadcrumb li + li)::before {
+    content: "";
+    width: 0.875rem;
+    height: 0.875rem;
+    background: currentColor;
+    mask: icon.svg(chevron-right) center / contain no-repeat;
+  }
+
+  :where(.breadcrumb a) {
+    color: inherit;
+  }
+
+  :where(.breadcrumb a:hover) {
+    color: var(--fg);
+  }
+
+  :where(.breadcrumb [aria-current="page"]) {
+    color: var(--fg);
+  }
+}

@@ -1,0 +1,46 @@
+// Dialog: native <dialog class="dialog">. Open with commandfor + command="show-modal".
+@layer components {
+  :where(.dialog) {
+    width: min(32rem, 100% - 2rem);
+    max-height: calc(100dvh - 2rem);
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    color: var(--fg);
+  }
+
+  :where(.dialog)::backdrop {
+    background: var(--overlay);
+  }
+
+  :where(.dialog > *) {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  :where(.dialog > * + *) {
+    border-top: 1px solid var(--line);
+  }
+
+  :where(.dialog > header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  :where(.dialog > header h2) {
+    font-size: var(--text-lg);
+  }
+
+  :where(.dialog > footer) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-2);
+  }
+
+  :where(html:has(dialog:modal)) {
+    overflow: hidden;
+  }
+}

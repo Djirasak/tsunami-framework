@@ -1,0 +1,64 @@
+// Field: label + control + hint. Checkbox/radio fields lay out in a row.
+@layer components {
+  :where(.field) {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  :where(.field > label, .field > small) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(
+    .field > input:not([type="checkbox"], [type="radio"]),
+    .field > select,
+    .field > textarea
+  ) {
+    width: 100%;
+    height: 2rem;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+  }
+
+  :where(.field > textarea) {
+    height: auto;
+    min-height: 5rem;
+    padding: var(--space-2) var(--space-3);
+    resize: vertical;
+  }
+
+  :where(.field > :is(input, select, textarea):focus-visible) {
+    border-color: var(--accent);
+    outline-offset: 0;
+  }
+
+  :where(.field [aria-invalid="true"]) {
+    border-color: var(--danger-fg);
+  }
+
+  :where(.field:has([aria-invalid="true"]) > small) {
+    color: var(--danger-fg);
+  }
+
+  :where(.field > :is(input, select, textarea):disabled) {
+    background: var(--subtle);
+    cursor: not-allowed;
+  }
+
+  :where(.field:has(> input:is([type="checkbox"], [type="radio"]))) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+  }
+
+  :where(.field input:is([type="checkbox"], [type="radio"])) {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: var(--accent);
+  }
+}

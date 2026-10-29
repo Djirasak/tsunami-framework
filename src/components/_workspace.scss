@@ -1,0 +1,83 @@
+// Workspace: full-window task layout. header + aside panels + main, each scrolling alone.
+// Panels use popover + id: overlay below 48rem, columns from 48rem.
+@layer components {
+  :where(.workspace) {
+    --panel: 20rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr auto;
+    height: 100dvh;
+    background: var(--bg);
+  }
+
+  :where(.workspace[data-panel="wide"]) {
+    --panel: 24rem;
+  }
+
+  :where(.workspace > header) {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 3rem;
+    padding: var(--space-2) var(--space-4);
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  :where(.workspace > main) {
+    grid-column: 2;
+    min-width: 0;
+    overflow: auto;
+  }
+
+  :where(.workspace > aside) {
+    grid-column: 1;
+    width: min(var(--panel), 100% - 3rem);
+    height: 100%;
+    margin: 0;
+    padding: var(--space-4);
+    overflow: auto;
+    border: 0;
+    border-right: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--fg);
+  }
+
+  :where(.workspace > main ~ aside) {
+    grid-column: 3;
+    border-right: 0;
+    border-left: 1px solid var(--line);
+  }
+
+  :where(.workspace > aside[popover]) {
+    position: fixed;
+    inset: 0 auto 0 0;
+  }
+
+  :where(.workspace > main ~ aside[popover]) {
+    inset: 0 0 0 auto;
+  }
+
+  :where(.workspace > aside[popover])::backdrop {
+    background: var(--overlay);
+  }
+
+  @media (width < 48rem) {
+    :where(.workspace > main) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (width >= 48rem) {
+    :where(.workspace > aside[popover], .workspace > main ~ aside[popover]) {
+      position: static;
+      display: block;
+      width: var(--panel);
+    }
+
+    :where(.workspace > header [popovertarget]) {
+      display: none;
+    }
+  }
+}

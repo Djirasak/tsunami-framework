@@ -1,0 +1,46 @@
+// Timeline: <ol class="timeline"> with a dot and a connecting line per entry.
+@layer components {
+  :where(.timeline) {
+    display: grid;
+    padding: 0;
+    list-style: none;
+  }
+
+  :where(.timeline > li) {
+    --dot: var(--line);
+    position: relative;
+    padding: 0 0 var(--space-4) var(--space-5);
+  }
+
+  :where(.timeline > li)::before {
+    content: "";
+    position: absolute;
+    top: 0.45em;
+    left: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--dot);
+  }
+
+  :where(.timeline > li:not(:last-child))::after {
+    content: "";
+    position: absolute;
+    top: 1.25em;
+    bottom: 0.15em;
+    left: calc(0.25rem - 0.5px);
+    border-left: 1px solid var(--line);
+  }
+
+  :where(.timeline time) {
+    display: block;
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  @each $v in (ok, danger) {
+    :where(.timeline > li[data-variant="#{$v}"]) {
+      --dot: var(--#{$v}-fg);
+    }
+  }
+}

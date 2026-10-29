@@ -1,0 +1,32 @@
+// Table: quiet header, row lines, tabular numbers.
+@layer components {
+  :where(.table) {
+    width: 100%;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :where(.table th, .table td) {
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  :where(.table th) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+
+  :where(.table tbody tr:last-child > *) {
+    border-bottom: 0;
+  }
+
+  :where(.table tbody tr:hover) {
+    background: var(--subtle);
+  }
+
+  :where(.table [data-align="end"]) {
+    text-align: right;
+  }
+}

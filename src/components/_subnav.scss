@@ -1,0 +1,11 @@
+// Subnav: secondary section links beside the content.
+@use "sidebar";
+
+@layer components {
+  :where(.subnav) {
+    @include sidebar.nav-links;
+    align-content: start;
+    width: 13rem;
+    padding: var(--space-4) var(--space-3);
+  }
+}

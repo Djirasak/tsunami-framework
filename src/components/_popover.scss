@@ -1,0 +1,23 @@
+// Popover: native [popover] anchored below its popovertarget button.
+@mixin anchored {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--fg);
+
+  // Without anchor positioning the browser centers the popover.
+  @supports (position-area: bottom) {
+    inset: auto;
+    margin: var(--space-1) 0;
+    position-area: bottom span-right;
+    position-try-fallbacks: flip-block, flip-inline;
+  }
+}
+
+@layer components {
+  :where(.popover) {
+    @include anchored;
+    max-width: min(20rem, 100% - 2rem);
+    padding: var(--space-3) var(--space-4);
+  }
+}

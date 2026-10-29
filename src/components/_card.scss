@@ -1,0 +1,39 @@
+// Card: direct children are sections divided by 1px lines.
+@layer components {
+  :where(.card) {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+  }
+
+  :where(.card > *) {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  :where(.card > * + *) {
+    border-top: 1px solid var(--line);
+  }
+
+  :where(.card > header h2, .card > header h3) {
+    font-size: var(--text-base);
+  }
+
+  :where(.card > header p) {
+    color: var(--muted);
+  }
+
+  :where(.card > footer) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-2);
+  }
+
+  :where(.card > .table th:first-child, .card > .table td:first-child) {
+    padding-left: var(--space-5);
+  }
+
+  :where(.card > .table th:last-child, .card > .table td:last-child) {
+    padding-right: var(--space-5);
+  }
+}

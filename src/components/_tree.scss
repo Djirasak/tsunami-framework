@@ -1,0 +1,64 @@
+// Tree: nested lists; folders are <details>, leaves are links or text.
+@use "icon";
+
+@layer components {
+  :where(.tree, .tree ul) {
+    display: grid;
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  :where(.tree ul) {
+    margin-left: calc(var(--space-2) + 0.5rem);
+    padding-left: var(--space-2);
+    border-left: 1px solid var(--line);
+  }
+
+  :where(.tree summary, .tree li > a, .tree li > span) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    color: var(--fg);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  :where(.tree summary) {
+    list-style: none;
+  }
+
+  :where(.tree summary)::-webkit-details-marker {
+    display: none;
+  }
+
+  :where(.tree summary)::before {
+    content: "";
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    background: var(--muted);
+    mask: icon.svg(chevron-right) center / contain no-repeat;
+    transition: rotate 0.15s;
+  }
+
+  :where(.tree details[open] > summary)::before {
+    rotate: 90deg;
+  }
+
+  :where(.tree summary:hover, .tree li > a:hover) {
+    background: var(--subtle);
+  }
+
+  :where(.tree [aria-current="page"]) {
+    background: var(--neutral-bg);
+    font-weight: 500;
+  }
+
+  :where(.tree .icon) {
+    color: var(--muted);
+  }
+}

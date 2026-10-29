@@ -1,0 +1,14 @@
+// Link: base <a> is accent; .link adds quieter variants.
+@layer components {
+  :where(.link[data-variant="muted"]) {
+    color: var(--muted);
+  }
+
+  :where(.link[data-variant="muted"]:hover) {
+    color: var(--fg);
+  }
+
+  :where(.link > .icon) {
+    margin-left: 0.15em;
+  }
+}

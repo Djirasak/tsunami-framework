@@ -1,0 +1,48 @@
+// Accordion: <details> rows in one box. Give them the same name to open one at a time.
+@use "icon";
+
+@layer components {
+  :where(.accordion) {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+  }
+
+  :where(.accordion > details + details) {
+    border-top: 1px solid var(--line);
+  }
+
+  :where(.accordion summary) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    font-weight: 500;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  :where(.accordion summary)::-webkit-details-marker {
+    display: none;
+  }
+
+  :where(.accordion summary)::after {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    background: var(--muted);
+    mask: icon.svg(chevron-down) center / contain no-repeat;
+    transition: rotate 0.15s;
+  }
+
+  :where(.accordion details[open] > summary)::after {
+    rotate: 180deg;
+  }
+
+  :where(.accordion details > :not(summary)) {
+    padding: 0 var(--space-5) var(--space-4);
+    color: var(--muted);
+  }
+}

@@ -1,0 +1,43 @@
+// Tooltip: data-tooltip="text" on a focusable element; data-side="right|bottom".
+// Pseudo-elements: not for <input> or <img>. Keep an aria-label for icon-only buttons.
+@layer components {
+  :where([data-tooltip]) {
+    position: relative;
+  }
+
+  :where([data-tooltip])::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + var(--space-1));
+    left: 50%;
+    z-index: 20;
+    translate: -50% 0;
+    padding: 0.125rem var(--space-2);
+    border-radius: var(--radius-sm);
+    background: var(--fg);
+    color: var(--bg);
+    font-size: var(--text-sm);
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  :where([data-tooltip]:is(:hover, :focus-visible))::after {
+    opacity: 1;
+  }
+
+  :where([data-tooltip][data-side="bottom"])::after {
+    top: calc(100% + var(--space-1));
+    bottom: auto;
+  }
+
+  :where([data-tooltip][data-side="right"])::after {
+    top: 50%;
+    bottom: auto;
+    left: calc(100% + var(--space-1));
+    translate: 0 -50%;
+  }
+}

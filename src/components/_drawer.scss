@@ -1,0 +1,54 @@
+// Drawer: <dialog class="drawer"> pinned to the end edge; data-side="left" for the start.
+@layer components {
+  :where(.drawer) {
+    width: min(24rem, 100%);
+    height: 100dvh;
+    max-height: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+    border: 0;
+    border-left: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--fg);
+  }
+
+  :where(.drawer[open]) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :where(.drawer[data-side="left"]) {
+    margin: 0 auto 0 0;
+    border-left: 0;
+    border-right: 1px solid var(--line);
+  }
+
+  :where(.drawer)::backdrop {
+    background: var(--overlay);
+  }
+
+  :where(.drawer > *) {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  :where(.drawer > * + *) {
+    border-top: 1px solid var(--line);
+  }
+
+  :where(.drawer > header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  :where(.drawer > :not(header, footer)) {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  :where(.drawer > footer) {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+  }
+}

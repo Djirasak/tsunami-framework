@@ -1,0 +1,39 @@
+// Pagination: <nav class="pagination"> with links; mark the current page with aria-current.
+@layer components {
+  :where(.pagination) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  :where(.pagination > :is(a, span)) {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-sm);
+    color: var(--fg);
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+  }
+
+  :where(.pagination > a:hover) {
+    background: var(--subtle);
+  }
+
+  :where(.pagination > [aria-current="page"]) {
+    background: var(--neutral-bg);
+    font-weight: 600;
+  }
+
+  :where(.pagination > span) {
+    color: var(--muted);
+  }
+
+  :where(.pagination > [aria-disabled="true"]) {
+    color: var(--muted);
+    pointer-events: none;
+  }
+}

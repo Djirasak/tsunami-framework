@@ -1,0 +1,76 @@
+// Button: outline by default; primary only for the page's main action.
+@layer components {
+  :where(.btn) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: 2rem;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-base);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s;
+  }
+
+  :where(.btn:hover) {
+    background: var(--subtle);
+    text-decoration: none;
+  }
+
+  :where(.btn[data-variant="primary"]) {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :where(.btn[data-variant="primary"]:hover) {
+    filter: brightness(0.94);
+  }
+
+  :where(.btn[data-variant="ghost"]) {
+    border-color: transparent;
+    background: transparent;
+  }
+
+  :where(.btn[data-variant="ghost"]:hover) {
+    background: var(--subtle);
+  }
+
+  :where(.btn[data-variant="danger"]) {
+    color: var(--danger-fg);
+  }
+
+  :where(.btn[data-variant="danger"]:hover) {
+    background: var(--danger-bg);
+  }
+
+  :where(.btn[data-size="sm"]) {
+    height: 1.625rem;
+    padding: 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  :where(.btn[data-size="lg"]) {
+    height: 2.5rem;
+    padding: 0 var(--space-4);
+  }
+
+  :where(.btn[data-size="icon"]) {
+    width: 2rem;
+    padding: 0;
+  }
+
+  :where(.btn:disabled, .btn[aria-disabled="true"]) {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

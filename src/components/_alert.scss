@@ -1,0 +1,27 @@
+// Alert: icon + text block. Neutral by default, soft status variants.
+@layer components {
+  :where(.alert) {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+  }
+
+  :where(.alert > .icon) {
+    margin-top: 0.2em;
+  }
+
+  :where(.alert strong) {
+    font-weight: 600;
+  }
+
+  @each $v in (ok, danger) {
+    :where(.alert[data-variant="#{$v}"]) {
+      border-color: transparent;
+      background: var(--#{$v}-bg);
+      color: var(--#{$v}-fg);
+    }
+  }
+}

@@ -1,0 +1,33 @@
+// Theme switcher: segmented light/dark/system buttons (data-theme-toggle="...").
+@layer components {
+  :where(.theme-switcher) {
+    display: inline-flex;
+    gap: 2px;
+    padding: 2px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+  }
+
+  :where(.theme-switcher > button) {
+    display: inline-grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  :where(.theme-switcher > button:hover) {
+    color: var(--fg);
+  }
+
+  :where(.theme-switcher > [aria-pressed="true"]) {
+    background: var(--neutral-bg);
+    color: var(--fg);
+  }
+}
