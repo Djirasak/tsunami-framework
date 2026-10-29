@@ -329,12 +329,17 @@
             <div>
               <h1>Link</h1>
               <p>
-                ลิงก์ใช้สี accent โดยค่าเริ่มต้น ใช้
-                <code>.link</code> เมื่อต้องการแบบเบาลง
+                ลิงก์ในข้อความและข้อมูล <code>a</code> เปล่าเป็นสี accent ส่วน
+                <code>.link</code> ใช้สีของข้อความ Links in text and data.
               </p>
             </div>
           </header>
           <section>
+            <h2>
+              พื้นฐาน: สีของข้อความเอง ขีดเส้นใต้สี accent เมื่อชี้ Preview: the
+              text's own colour, underlined in accent under the pointer
+            </h2>
+            <p>ใช้กับลิงก์ที่อยู่ปนกับข้อมูล ไม่ให้หน้าเต็มไปด้วยสี</p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -364,26 +369,7 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="stack" data-gap="sm">
-                    <p>
-                      อ่าน
-                      <a href="#">นโยบายการคืนสินค้า return policy</a>
-                      ก่อนสั่งซื้อ
-                    </p>
-                    <p>
-                      <a class="link" data-variant="muted" href="#"
-                        >ดูประวัติ View history</a
-                      >
-                    </p>
-                    <p>
-                      <a class="link" href="#"
-                        >เอกสาร API docs<i
-                          class="icon icon-external-link"
-                          aria-hidden="true"
-                        ></i
-                      ></a>
-                    </p>
-                  </div>
+                  <a href="#" class="link">คำสั่งซื้อ Order #100482</a>
                 </div>
               </div>
               <div
@@ -393,17 +379,261 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
-  &lt;p&gt;อ่าน &lt;a href="#"&gt;นโยบายการคืนสินค้า return policy&lt;/a&gt; ก่อนสั่งซื้อ&lt;/p&gt;
-  &lt;p&gt;&lt;a class="link" data-variant="muted" href="#"&gt;ดูประวัติ View history&lt;/a&gt;&lt;/p&gt;
-  &lt;p&gt;&lt;a class="link" href="#"&gt;เอกสาร API docs&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;
+                <pre><code>&lt;a href="#" class="link"&gt;คำสั่งซื้อ Order #100482&lt;/a&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Primary: ข้อความเป็นสี accent ด้วย Primary: the text is the accent
+              colour too
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <a href="#" class="link" data-variant="primary"
+                    >somchai@example.co.th</a
+                  >
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;a href="#" class="link" data-variant="primary"&gt;somchai@example.co.th&lt;/a&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              น้ำหนักตัวอักษรทำให้ชื่อเด่นในประโยคหรือรายการ A weight makes a
+              name stand out in a sentence or a list
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <p>
+                    สั่งโดย Placed by
+                    <a href="#" class="link" data-weight="medium"
+                      >สมชาย ใจดี Somchai Jaidee</a
+                    >
+                    เมื่อ 8 ต.ค. 2026
+                  </p>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;p&gt;สั่งโดย Placed by &lt;a href="#" class="link" data-weight="medium"&gt;สมชาย ใจดี Somchai Jaidee&lt;/a&gt; เมื่อ 8 ต.ค. 2026&lt;/p&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ในตาราง: ลิงก์ของแถวนั้นเองตัวหนาปานกลาง ลิงก์ไปที่อื่นตัวปกติ In
+              a table: the record's own link is medium weight, a link to another
+              record is not
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">คำสั่งซื้อ Order</th>
+                          <th scope="col">ลูกค้า Customer</th>
+                          <th scope="col" data-align="end">ยอดรวม Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <a href="#" class="link" data-weight="medium"
+                              >#100482</a
+                            >
+                          </td>
+                          <td><a href="#" class="link">สมชาย ใจดี</a></td>
+                          <td data-align="end">฿1,290.00</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a href="#" class="link" data-weight="medium"
+                              >#100481</a
+                            >
+                          </td>
+                          <td><a href="#" class="link">มาลี ศรีสุข</a></td>
+                          <td data-align="end">฿645.50</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th scope="col"&gt;คำสั่งซื้อ Order&lt;/th&gt;&lt;th scope="col"&gt;ลูกค้า Customer&lt;/th&gt;&lt;th scope="col" data-align="end"&gt;ยอดรวม Total&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;&lt;a href="#" class="link" data-weight="medium"&gt;#100482&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="#" class="link"&gt;สมชาย ใจดี&lt;/a&gt;&lt;/td&gt;&lt;td data-align="end"&gt;฿1,290.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;&lt;a href="#" class="link" data-weight="medium"&gt;#100481&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="#" class="link"&gt;มาลี ศรีสุข&lt;/a&gt;&lt;/td&gt;&lt;td data-align="end"&gt;฿645.50&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
+            <h2>สีเทา Muted</h2>
+            <p>ลิงก์รองที่ไม่ควรแย่งสายตา เช่น ลิงก์ช่วยเหลือ</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <a href="#" class="link" data-variant="muted"
+                    >ดูวิธีคืนเงิน How refunds work<i
+                      class="icon icon-external-link"
+                      aria-hidden="true"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;a href="#" class="link" data-variant="muted"&gt;ดูวิธีคืนเงิน How refunds work&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>Attributes</h2>
-            <div class="card">
+
+            <div class="card scroll-area">
               <table class="table">
                 <thead>
                   <tr>
@@ -414,9 +644,38 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td><code>a</code></td>
+                    <td>ไม่มี class</td>
+                    <td>สี accent ขีดเส้นใต้เมื่อชี้ สำหรับลิงก์ในเนื้อหา</td>
+                  </tr>
+                  <tr>
+                    <td><code>.link</code></td>
+                    <td><code>a</code></td>
+                    <td>ใช้สีของข้อความรอบ ๆ ขีดเส้นใต้สี accent เมื่อชี้</td>
+                  </tr>
+                  <tr>
                     <td><code>data-variant</code></td>
-                    <td><code>muted</code></td>
-                    <td>สีเทา เปลี่ยนเป็นสีข้อความเมื่อ hover</td>
+                    <td>
+                      ไม่ใส่ (default) สีข้อความ · <code>primary</code> สี
+                      accent · <code>muted</code> สีเทา
+                    </td>
+                    <td>สีของลิงก์</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-weight</code></td>
+                    <td>ไม่ใส่ (default) ปกติ · <code>medium</code></td>
+                    <td>
+                      ตัวหนาปานกลาง สำหรับชื่อที่ต้องเด่น
+                      หรือลิงก์ของแถวนั้นในตาราง
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.link &gt; .icon</code></td>
+                    <td>child</td>
+                    <td>
+                      ไอคอนท้ายลิงก์ เช่น
+                      <code>icon-external-link</code> มีระยะห่างให้
+                    </td>
                   </tr>
                 </tbody>
               </table>

@@ -1,11 +1,34 @@
-// Link: base <a> is accent; .link adds quieter variants.
+// Link: a bare <a> is accent. .link keeps the text's own colour and
+// underlines in the accent under the pointer, for links among data.
+// data-variant="primary" (accent text) | "muted"; data-weight="medium" for a record's own name.
 @layer components {
+  :where(.link) {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s;
+  }
+
+  :where(.link:hover) {
+    text-decoration-color: var(--accent);
+  }
+
+  :where(.link[data-variant="primary"]) {
+    color: var(--accent);
+  }
+
   :where(.link[data-variant="muted"]) {
     color: var(--muted);
   }
 
   :where(.link[data-variant="muted"]:hover) {
     color: var(--fg);
+  }
+
+  :where(.link[data-weight="medium"]) {
+    font-weight: 500;
   }
 
   :where(.link > .icon) {
