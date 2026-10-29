@@ -33,8 +33,8 @@
     z-index: 0;
     overflow: visible;
     fill: none;
-    stroke: var(--muted);
-    stroke-width: 1;
+    stroke: var(--accent);
+    stroke-width: 1.5;
     pointer-events: none;
   }
 
@@ -52,10 +52,15 @@
     gap: 0 var(--space-2);
   }
 
+  // The step name is a small filled pill.
   :where(.journey > ol > li > header > span) {
-    width: 100%;
-    color: var(--muted);
+    padding: 0 var(--space-2);
+    border-radius: 999px;
+    background: var(--fg);
+    color: var(--bg);
     font-size: var(--text-sm);
+    font-weight: 500;
+    line-height: 1.5rem;
   }
 
   :where(.journey > ol > li > header > strong) {
@@ -83,9 +88,9 @@
     gap: 0 var(--space-3);
     width: 100%;
     padding: var(--space-2) var(--space-3);
-    border: 1px solid var(--line);
+    border: 1px solid transparent;
     border-radius: var(--radius-md);
-    background: var(--surface);
+    background: var(--subtle);
     color: var(--fg);
     text-align: start;
   }
@@ -95,11 +100,14 @@
   }
 
   :where(.journey button:hover) {
-    background: var(--subtle);
+    background: var(--line);
   }
 
+  // A picked page is filled with the accent; its counts and path follow it.
   :where(.journey button[aria-pressed="true"]) {
-    border-color: var(--fg);
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--on-accent);
   }
 
   :where(.journey button:focus-visible) {
@@ -137,7 +145,15 @@
 
   :where(.journey button > data:first-of-type) {
     grid-row: 1;
-    color: var(--fg);
+    color: inherit;
+  }
+
+  :where(
+    .journey button[aria-pressed="true"] > small,
+    .journey button[aria-pressed="true"] > data
+  ) {
+    color: inherit;
+    opacity: 0.85;
   }
 
   // Columns are narrow: a page with a path stacks its counts under the name.
@@ -164,6 +180,11 @@
       grid-column: 1;
       text-align: start;
     }
+  }
+
+  // Outcome buttons sit on the page's own subtle row.
+  :where(.journey [data-outcomes] button:not([aria-pressed="true"])) {
+    background: var(--surface);
   }
 
   :where(.journey [data-outcomes] > div) {
