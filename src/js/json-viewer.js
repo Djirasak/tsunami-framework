@@ -1,99 +1,129 @@
 // JSON viewer: .json-viewer > textarea holds the JSON (the form sends it).
-// The script adds a toolbar and a foldable tree; data-view="parsed|raw", data-collapsed.
+// The script adds .json-viewer-toolbar (Show raw / Collapse all / Expand all)
+// and ul.json-viewer-tree; data-view="parsed|raw" and data-collapsed set the start.
 // API: window.tsunami.jsonViewer = { expand(el), collapse(el), view(el, v?), value(el, v?) }.
-const el = (tag, props = {}, ...kids) => {
-  const e = Object.assign(document.createElement(tag), props);
-  e.append(...kids);
+const h = (tag, cls, text) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined) e.textContent = text;
   return e;
 };
 
-function part(t, text) {
-  const s = el("span", { textContent: text });
-  s.dataset.t = t;
-  return s;
-}
+const kind = (v) =>
+  v === null ? "null" : Array.isArray(v) ? "array" : typeof v;
 
-function render(value, key, depth, collapsed) {
-  const label =
-    key === undefined
-      ? []
-      : [part("key", JSON.stringify(key)), part("punct", ": ")];
-  if (value === null || typeof value !== "object") {
-    const type = value === null ? "null" : typeof value;
-    return el("div", {}, ...label, part(type, JSON.stringify(value)));
+// One li per value: `key: value,`; objects and lists are a details whose
+// summary is `key: {` and whose close bracket follows the details.
+function node(value, key, comma) {
+  const li = h("li");
+  if (key !== undefined) li.append(h("span", "json-viewer-key", key), ": ");
+  const type = kind(value);
+  const entries =
+    type === "array"
+      ? value.map((v) => [undefined, v])
+      : type === "object"
+        ? Object.entries(value)
+        : null;
+  const [open, close] = type === "array" ? ["[", "]"] : ["{", "}"];
+  if (!entries) {
+    li.append(h("span", `json-viewer-${type}`, JSON.stringify(value)));
+  } else if (!entries.length) {
+    li.append(open + close);
+  } else {
+    const details = h("details");
+    details.open = true;
+    details.dataset.kind = type;
+    const summary = h("summary");
+    summary.append(...li.childNodes, open);
+    const list = h("ul");
+    entries.forEach(([k, v], i) =>
+      list.append(node(v, k, i < entries.length - 1)),
+    );
+    details.append(summary, list);
+    li.append(details, h("span", "json-viewer-close", close));
   }
-  const list = Array.isArray(value);
-  const entries = list
-    ? value.map((v) => [undefined, v])
-    : Object.entries(value);
-  const count = `${entries.length} ${list ? "items" : "keys"}`;
-  const [open, close] = list ? ["[", "]"] : ["{", "}"];
-  const details = el(
-    "details",
-    { open: !(collapsed && depth > 0) },
-    el(
-      "summary",
-      {},
-      ...label,
-      part("punct", open),
-      part("count", ` ${count} ${close}`),
-    ),
-    el(
-      "ul",
-      {},
-      ...entries.map(([k, v]) =>
-        el("li", {}, render(v, k, depth + 1, collapsed)),
-      ),
-    ),
-    part("punct", close),
-  );
-  return details;
+  if (comma) li.append(",");
+  return li;
 }
 
-function draw(viewer, collapsed = viewer.hasAttribute("data-collapsed")) {
-  const area = viewer.querySelector(":scope > textarea");
-  const tree = viewer.querySelector(":scope > [data-tree]");
-  let data;
+const parts = (viewer) => {
+  const bar = viewer.querySelector(":scope > .json-viewer-toolbar");
+  return {
+    area: viewer.querySelector(":scope > textarea"),
+    tree: viewer.querySelector(":scope > .json-viewer-tree"),
+    toggle: bar.querySelector("[data-json-viewer='toggle']"),
+    folds: bar.querySelectorAll(
+      "[data-json-viewer='collapse'], [data-json-viewer='expand']",
+    ),
+  };
+};
+
+const parse = (text) => {
   try {
-    data = JSON.parse(area.value);
+    return { value: JSON.parse(text) };
   } catch {
-    return false;
+    return undefined;
   }
-  tree.replaceChildren(render(data, undefined, 0, collapsed));
-  return true;
+};
+
+// Folded: every details except the outermost one is closed.
+function fold(viewer, folded) {
+  const { tree } = parts(viewer);
+  tree.querySelectorAll("details").forEach((d) => {
+    d.open = !folded || d.parentElement.parentElement === tree;
+  });
 }
 
-function setView(viewer, view) {
-  const area = viewer.querySelector(":scope > textarea");
-  const tree = viewer.querySelector(":scope > [data-tree]");
-  const btn = viewer.querySelector(":scope > header [data-json-toggle]");
-  if (view === "raw") {
-    try {
-      area.value = JSON.stringify(JSON.parse(area.value), null, 2);
-    } catch {
-      // Not JSON: leave the text as typed.
-    }
-  } else if (!draw(viewer)) {
-    area.setAttribute("aria-invalid", "true");
-    view = "raw";
-  }
-  viewer.dataset.view = view;
-  area.hidden = view !== "raw";
-  tree.hidden = view === "raw";
-  btn.textContent =
-    view === "raw" ? "แสดงแบบ tree Show parsed" : "แสดง raw Show raw";
+function showRaw(viewer) {
+  const { area, tree, toggle, folds } = parts(viewer);
+  const parsed = parse(area.value);
+  if (parsed) area.value = JSON.stringify(parsed.value, null, 2);
+  viewer.dataset.view = "raw";
+  area.hidden = false;
+  tree.hidden = true;
+  folds.forEach((b) => (b.hidden = true));
+  toggle.textContent = "Show parsed";
 }
+
+function showParsed(viewer) {
+  const { area, tree, toggle, folds } = parts(viewer);
+  const parsed = parse(area.value);
+  if (!parsed) {
+    area.setAttribute("aria-invalid", "true");
+    showRaw(viewer);
+    return;
+  }
+  area.removeAttribute("aria-invalid");
+  tree.replaceChildren(node(parsed.value, undefined, false));
+  if (viewer.hasAttribute("data-collapsed")) fold(viewer, true);
+  viewer.dataset.view = "parsed";
+  area.hidden = true;
+  tree.hidden = false;
+  folds.forEach((b) => (b.hidden = false));
+  toggle.textContent = "Show raw";
+}
+
+const show = (viewer, view) =>
+  view === "raw" ? showRaw(viewer) : showParsed(viewer);
 
 function upgrade(viewer) {
-  if (viewer.querySelector(":scope > [data-tree]")) return;
-  const toggle = el("button", { type: "button", className: "btn" });
-  toggle.dataset.jsonToggle = "";
-  toggle.dataset.variant = "ghost";
-  toggle.dataset.size = "sm";
-  viewer.prepend(el("header", {}, toggle));
-  viewer.querySelector(":scope > textarea").before(el("div", { hidden: true }));
-  viewer.querySelector(":scope > div").dataset.tree = "";
-  setView(viewer, viewer.dataset.view === "raw" ? "raw" : "parsed");
+  if (viewer.querySelector(":scope > .json-viewer-tree")) return;
+  if (!viewer.querySelector(":scope > textarea")) return;
+  const bar = h("div", "json-viewer-toolbar");
+  for (const [action, label] of [
+    ["toggle", "Show raw"],
+    ["collapse", "Collapse all"],
+    ["expand", "Expand all"],
+  ]) {
+    const b = h("button", "btn", label);
+    b.type = "button";
+    b.dataset.size = "sm";
+    b.dataset.jsonViewer = action;
+    bar.append(b);
+  }
+  viewer.prepend(bar);
+  viewer.append(h("ul", "json-viewer-tree"));
+  show(viewer, viewer.dataset.view);
 }
 
 const all = (root) => root.querySelectorAll?.(".json-viewer").forEach(upgrade);
@@ -107,10 +137,13 @@ new MutationObserver((list) =>
 ).observe(document.documentElement, { childList: true, subtree: true });
 
 document.addEventListener("click", (e) => {
-  const btn = e.target.closest(".json-viewer > header [data-json-toggle]");
+  const btn = e.target.closest(".json-viewer-toolbar [data-json-viewer]");
   if (!btn) return;
   const viewer = btn.closest(".json-viewer");
-  setView(viewer, viewer.dataset.view === "raw" ? "parsed" : "raw");
+  const action = btn.dataset.jsonViewer;
+  if (action === "toggle")
+    show(viewer, viewer.dataset.view === "raw" ? "parsed" : "raw");
+  else fold(viewer, action === "collapse");
 });
 
 document.addEventListener("input", (e) => {
@@ -118,23 +151,21 @@ document.addEventListener("input", (e) => {
     e.target.removeAttribute("aria-invalid");
 });
 
-const fold = (viewer, open) =>
-  viewer
-    .querySelectorAll(":scope > [data-tree] details")
-    .forEach((d, i) => (d.open = open || i === 0));
+// The API upgrades a viewer first, so it works before the observer has run.
+const ready = (viewer) => (upgrade(viewer), viewer);
 
 (window.tsunami ??= {}).jsonViewer = {
-  expand: (viewer) => fold(viewer, true),
-  collapse: (viewer) => fold(viewer, false),
+  expand: (viewer) => fold(ready(viewer), false),
+  collapse: (viewer) => fold(ready(viewer), true),
   view(viewer, v) {
-    if (v !== undefined) setView(viewer, v === "raw" ? "raw" : "parsed");
+    if (v !== undefined) show(ready(viewer), v);
     return viewer.dataset.view;
   },
   value(viewer, v) {
-    const area = viewer.querySelector(":scope > textarea");
+    const { area } = parts(ready(viewer));
     if (v !== undefined) {
       area.value = typeof v === "string" ? v : JSON.stringify(v);
-      setView(viewer, viewer.dataset.view === "raw" ? "raw" : "parsed");
+      show(viewer, viewer.dataset.view);
     }
     return area.value;
   },
