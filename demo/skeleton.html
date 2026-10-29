@@ -188,13 +188,13 @@
           <a
             href="loader.html"
             data-label="Loader"
-            data-keywords="Feedback loader data-size skeleton data-variant aria-busy"
+            data-keywords="Feedback loader data-size"
             >Loader</a
           >
           <a
             href="skeleton.html"
             data-label="Skeleton"
-            data-keywords="Feedback skeleton"
+            data-keywords="Feedback skeleton data-variant aria-busy"
             aria-current="page"
             >Skeleton</a
           >
@@ -317,6 +317,221 @@
               <p>บล็อกสีเทาแทนเนื้อหาที่กำลังโหลด</p>
             </div>
           </header>
+          <section>
+            <h2>Skeleton: บล็อกสีเทาแทนเนื้อหาที่กำลังโหลด</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Skeleton: บล็อกสีเทาแทนเนื้อหาที่กำลังโหลด"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="stack"
+                    data-direction="row"
+                    aria-busy="true"
+                    aria-label="กำลังโหลด Loading"
+                  >
+                    <span class="skeleton" data-variant="circle"></span>
+                    <div class="stack" data-gap="sm">
+                      <span class="skeleton" style="width: 15rem"></span>
+                      <span class="skeleton" style="width: 12rem"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" aria-busy="true" aria-label="กำลังโหลด Loading"&gt;
+  &lt;span class="skeleton" data-variant="circle"&gt;&lt;/span&gt;
+  &lt;div class="stack" data-gap="sm"&gt;
+    &lt;span class="skeleton" style="width: 15rem"&gt;&lt;/span&gt;
+    &lt;span class="skeleton" style="width: 12rem"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Skeleton ในการ์ด In a card</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Skeleton ในการ์ด In a card">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <article
+                    class="card"
+                    aria-busy="true"
+                    aria-label="กำลังโหลด Loading"
+                  >
+                    <header>
+                      <span class="skeleton" style="width: 10rem"></span>
+                    </header>
+                    <div class="stack" data-gap="sm">
+                      <span class="skeleton"></span>
+                      <span class="skeleton" style="width: 80%"></span>
+                      <span class="skeleton" style="width: 60%"></span>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;article class="card" aria-busy="true" aria-label="กำลังโหลด Loading"&gt;
+  &lt;header&gt;
+    &lt;span class="skeleton" style="width: 10rem"&gt;&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;div class="stack" data-gap="sm"&gt;
+    &lt;span class="skeleton"&gt;&lt;/span&gt;
+    &lt;span class="skeleton" style="width: 80%"&gt;&lt;/span&gt;
+    &lt;span class="skeleton" style="width: 60%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Skeleton: บรรทัดเดียว One line</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Skeleton: บรรทัดเดียว One line">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <span
+                    class="skeleton"
+                    style="width: 15rem"
+                    aria-hidden="true"
+                  ></span>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;span class="skeleton" style="width: 15rem" aria-hidden="true"&gt;&lt;/span&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.skeleton</code></td>
+                    <td></td>
+                    <td>
+                      บล็อกสูง 1em เต็มความกว้าง กำหนด <code>width</code> /
+                      <code>height</code> ตามเนื้อหาที่จะมาแทน
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.skeleton[data-variant]</code></td>
+                    <td><code>circle</code></td>
+                    <td>วงกลม 40px สำหรับ avatar</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-busy</code></td>
+                    <td><code>true</code></td>
+                    <td>บนกล่องที่กำลังโหลด เอาออกเมื่อเนื้อหามาแล้ว</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
         </main>
       </div>
     </div>
