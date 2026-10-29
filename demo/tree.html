@@ -328,10 +328,20 @@
           <header class="page-header">
             <div>
               <h1>Tree</h1>
-              <p>รายการซ้อนชั้น โฟลเดอร์ใช้ <code>&lt;details&gt;</code></p>
+              <p>
+                โฟลเดอร์และไฟล์ซ้อนกัน โฟลเดอร์คือ
+                <code>details</code> ไม่ต้องใช้ JS Nested folders and files.
+              </p>
             </div>
           </header>
           <section>
+            <h2>การใช้งาน พร้อมช่องค้นหา Usage, with a search field</h2>
+            <p>
+              <code>input[type="search"]</code> ใน
+              <code>.tree</code> กรองไฟล์ขณะพิมพ์
+              ไฟล์ที่ตรงยังแสดงพร้อมเปิดโฟลเดอร์
+              <code>p</code> ท้ายสุดแสดงเมื่อไม่มีไฟล์ไหนตรง
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -361,60 +371,104 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <ul class="tree">
-                    <li>
-                      <details open>
-                        <summary>
-                          <i class="icon icon-folder" aria-hidden="true"></i>src
-                        </summary>
-                        <ul>
-                          <li>
-                            <a href="#" aria-current="page"
-                              ><i class="icon icon-file" aria-hidden="true"></i
-                              >index.scss</a
-                            >
-                          </li>
-                          <li>
-                            <details>
-                              <summary>
-                                <i
-                                  class="icon icon-folder"
+                  <nav
+                    class="tree"
+                    aria-label="ไฟล์ธีม Theme files"
+                    style="max-width: 18rem"
+                  >
+                    <input
+                      type="search"
+                      placeholder="ค้นหา Search"
+                      aria-label="ค้นหาไฟล์ธีม Search theme files"
+                    />
+                    <ul>
+                      <li>
+                        <details>
+                          <summary>
+                            <i class="icon icon-folder" aria-hidden="true"></i
+                            ><span>assets</span>
+                          </summary>
+                          <ul>
+                            <li>
+                              <a href="#"
+                                ><i
+                                  class="icon icon-file"
                                   aria-hidden="true"
                                 ></i
-                                >components
-                              </summary>
-                              <ul>
-                                <li>
-                                  <span
-                                    ><i
-                                      class="icon icon-file"
-                                      aria-hidden="true"
-                                    ></i
-                                    >_btn.scss</span
-                                  >
-                                </li>
-                                <li>
-                                  <span
-                                    ><i
-                                      class="icon icon-file"
-                                      aria-hidden="true"
-                                    ></i
-                                    >_card.scss</span
-                                  >
-                                </li>
-                              </ul>
-                            </details>
-                          </li>
-                        </ul>
-                      </details>
-                    </li>
-                    <li>
-                      <span
-                        ><i class="icon icon-file" aria-hidden="true"></i
-                        >package.json</span
-                      >
-                    </li>
-                  </ul>
+                                ><span>js/cart.js</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="#"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>img/hero.jpg</span></a
+                              >
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                      <li>
+                        <details>
+                          <summary>
+                            <i class="icon icon-folder" aria-hidden="true"></i
+                            ><span>layouts</span>
+                          </summary>
+                          <ul>
+                            <li>
+                              <a href="#"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>base.html</span></a
+                              >
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                      <li>
+                        <details open>
+                          <summary>
+                            <i class="icon icon-folder" aria-hidden="true"></i
+                            ><span>templates</span>
+                          </summary>
+                          <ul>
+                            <li>
+                              <a href="#"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>cart.html</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="#" aria-current="page"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>index.html</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="#"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>product.html</span></a
+                              >
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                    </ul>
+                    <p hidden>ไม่พบไฟล์ No files found.</p>
+                  </nav>
                 </div>
               </div>
               <div
@@ -424,32 +478,454 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;ul class="tree"&gt;
-  &lt;li&gt;
-    &lt;details open&gt;
-      &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;src&lt;/summary&gt;
-      &lt;ul&gt;
-        &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;index.scss&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;
-          &lt;details&gt;
-            &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;components&lt;/summary&gt;
-            &lt;ul&gt;
-              &lt;li&gt;&lt;span&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;_btn.scss&lt;/span&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;_card.scss&lt;/span&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/details&gt;
-        &lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/details&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;package.json&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+                <pre><code>&lt;nav class="tree" aria-label="ไฟล์ธีม Theme files" style="max-width: 18rem"&gt;
+  &lt;input type="search" placeholder="ค้นหา Search" aria-label="ค้นหาไฟล์ธีม Search theme files" /&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;details&gt;
+        &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;assets&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;js/cart.js&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;img/hero.jpg&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;details&gt;
+        &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;layouts&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;base.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;details open&gt;
+        &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;templates&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;cart.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;index.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;product.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;p hidden&gt;ไม่พบไฟล์ No files found.&lt;/p&gt;
+&lt;/nav&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
+            <h2>
+              โฟลเดอร์ซ้อนโฟลเดอร์ ลิงก์อยู่นอกโฟลเดอร์ได้ และไม่ใส่ไอคอนก็ได้ A
+              folder holds folders, a link can sit outside every folder, and
+              icons are optional
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav
+                    class="tree"
+                    aria-label="บทความช่วยเหลือ Help articles"
+                    style="max-width: 18rem"
+                  >
+                    <ul>
+                      <li>
+                        <details open>
+                          <summary><span>คำสั่งซื้อ Orders</span></summary>
+                          <ul>
+                            <li>
+                              <a href="#"
+                                ><span>คืนเงิน Refund an order</span></a
+                              >
+                            </li>
+                            <li>
+                              <details>
+                                <summary>
+                                  <span>การจัดส่ง Fulfillment</span>
+                                </summary>
+                                <ul>
+                                  <li>
+                                    <a href="#"
+                                      ><span>แยกพัสดุ Split a shipment</span></a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a href="#"
+                                      ><span
+                                        >พิมพ์ใบแพ็ก Print a packing slip</span
+                                      ></a
+                                    >
+                                  </li>
+                                </ul>
+                              </details>
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                      <li>
+                        <a href="#"><span>ติดต่อเรา Contact support</span></a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="tree" aria-label="บทความช่วยเหลือ Help articles" style="max-width: 18rem"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;details open&gt;
+        &lt;summary&gt;&lt;span&gt;คำสั่งซื้อ Orders&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;คืนเงิน Refund an order&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;
+            &lt;details&gt;
+              &lt;summary&gt;&lt;span&gt;การจัดส่ง Fulfillment&lt;/span&gt;&lt;/summary&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;แยกพัสดุ Split a shipment&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;พิมพ์ใบแพ็ก Print a packing slip&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/details&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;ติดต่อเรา Contact support&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              aria-current="page" บนลิงก์บอกไฟล์ที่เปิด และ open บน details
+              ให้เห็นไฟล์นั้น aria-current marks the open file, and open on its
+              details shows it
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav
+                    class="tree"
+                    aria-label="เทมเพลต Templates"
+                    style="max-width: 18rem"
+                  >
+                    <ul>
+                      <li>
+                        <details open>
+                          <summary>
+                            <i class="icon icon-folder" aria-hidden="true"></i
+                            ><span>templates</span>
+                          </summary>
+                          <ul>
+                            <li>
+                              <a href="#"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>cart.html</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="#" aria-current="page"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>index.html</span></a
+                              >
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="tree" aria-label="เทมเพลต Templates" style="max-width: 18rem"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;details open&gt;
+        &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;templates&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;cart.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;index.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              สคริปต์กรองไฟล์ด้วย filter() A script filters the files with
+              filter()
+            </h2>
+            <p>
+              ค่าว่างแสดงทุกไฟล์ และคืนสถานะเปิด/ปิดของโฟลเดอร์กลับเหมือนเดิม
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" style="max-width: 18rem">
+                    <nav class="tree" id="tr-filter" aria-label="Partials">
+                      <ul>
+                        <li>
+                          <details>
+                            <summary>
+                              <i class="icon icon-folder" aria-hidden="true"></i
+                              ><span>partials</span>
+                            </summary>
+                            <ul>
+                              <li>
+                                <a href="#"
+                                  ><i
+                                    class="icon icon-file"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>footer.html</span></a
+                                >
+                              </li>
+                              <li>
+                                <a href="#"
+                                  ><i
+                                    class="icon icon-file"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>header.html</span></a
+                                >
+                              </li>
+                              <li>
+                                <a href="#"
+                                  ><i
+                                    class="icon icon-file"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>product_card.html</span></a
+                                >
+                              </li>
+                            </ul>
+                          </details>
+                        </li>
+                      </ul>
+                      <p hidden>ไม่พบไฟล์ No files found.</p>
+                    </nav>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="tr-filter-er"
+                      >
+                        ไฟล์ที่มี "er"
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="tr-filter-all"
+                      >
+                        ทุกไฟล์ Every file
+                      </button>
+                    </div>
+                  </div>
+                  <script type="module">
+                    const tree = document.getElementById("tr-filter");
+                    document
+                      .getElementById("tr-filter-er")
+                      .addEventListener("click", () =>
+                        tsunami.tree.filter(tree, "er"),
+                      );
+                    document
+                      .getElementById("tr-filter-all")
+                      .addEventListener("click", () =>
+                        tsunami.tree.filter(tree, ""),
+                      );
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" style="max-width: 18rem"&gt;
+  &lt;nav class="tree" id="tr-filter" aria-label="Partials"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;details&gt;
+          &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;partials&lt;/span&gt;&lt;/summary&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;footer.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;header.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;product_card.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/details&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p hidden&gt;ไม่พบไฟล์ No files found.&lt;/p&gt;
+  &lt;/nav&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tr-filter-er"&gt;ไฟล์ที่มี "er"&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tr-filter-all"&gt;ทุกไฟล์ Every file&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  const tree = document.getElementById("tr-filter");
+  document.getElementById("tr-filter-er").addEventListener("click", () =&gt; tsunami.tree.filter(tree, "er"));
+  document.getElementById("tr-filter-all").addEventListener("click", () =&gt; tsunami.tree.filter(tree, ""));
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              อยู่ใน <code>js/tree.js</code> tree ที่ไม่มีช่องค้นหาไม่ต้องใช้ JS
+              ไม่มี event ของตัวเอง <code>details</code> ส่ง
+              <code>toggle</code> ของ browser
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.tree.filter(tree, query)</code></td>
+                    <td>
+                      <code>tree</code>: element <code>.tree</code>,
+                      <code>query</code>: string
+                    </td>
+                    <td>
+                      แสดงเฉพาะไฟล์ที่ชื่อมี
+                      <code>query</code> (ไม่สนตัวพิมพ์เล็กใหญ่)
+                      ซ่อนโฟลเดอร์ที่ไม่มีไฟล์ตรง เปิดโฟลเดอร์ที่มี
+                      ค่าว่างแสดงทุกไฟล์และคืนสถานะโฟลเดอร์เดิม
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input[type="search"]</code></td>
+                    <td>ใน <code>.tree</code></td>
+                    <td>พิมพ์แล้วเรียก <code>filter()</code> ให้เอง</td>
+                  </tr>
+                  <tr>
+                    <td><code>Tab / Enter / Space</code></td>
+                    <td>คีย์บอร์ด</td>
+                    <td>
+                      ของ browser เอง: ไปทีละโฟลเดอร์/ไฟล์ เปิดปิดโฟลเดอร์
+                      เปิดลิงก์
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
             <h2>Attributes</h2>
-            <div class="card">
+
+            <div class="card scroll-area">
               <table class="table">
                 <thead>
                   <tr>
@@ -460,19 +936,71 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>li &gt; details &gt; summary</code></td>
-                    <td></td>
-                    <td>โฟลเดอร์ เปิดปิดได้</td>
+                    <td><code>.tree</code></td>
+                    <td><code>nav</code></td>
+                    <td>
+                      ใส่ <code>aria-label</code> (<code>ul.tree</code> ก็ได้)
+                    </td>
                   </tr>
                   <tr>
-                    <td><code>li &gt; a / li &gt; span</code></td>
-                    <td></td>
-                    <td>รายการปลายทาง</td>
+                    <td><code>ul &gt; li</code></td>
+                    <td>child</td>
+                    <td>
+                      แต่ละรายการ <code>ul</code> ที่ซ้อนใน
+                      <code>li</code> ย่อหน้าบนเส้นนำ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>details &gt; summary</code></td>
+                    <td>ใน <code>li</code></td>
+                    <td>
+                      โฟลเดอร์ มีลูกศรหมุนเมื่อเปิด ตามด้วย
+                      <code>ul</code> ของไฟล์
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>open</code></td>
+                    <td>บน <code>details</code></td>
+                    <td>โฟลเดอร์เปิดอยู่ (ของ browser)</td>
+                  </tr>
+                  <tr>
+                    <td><code>a / span</code></td>
+                    <td>ใน <code>li</code></td>
+                    <td>
+                      ไฟล์ (ลิงก์) หรือรายการที่ไม่ใช่ลิงก์ ชื่อใน
+                      <code>span</code> ตัดด้วย … เมื่อยาว
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.icon</code></td>
+                    <td>ใน <code>summary</code> / <code>a</code></td>
+                    <td>
+                      ไม่บังคับ เช่น <code>icon-folder</code>,
+                      <code>icon-file</code>
+                    </td>
                   </tr>
                   <tr>
                     <td><code>aria-current</code></td>
                     <td><code>page</code></td>
-                    <td>รายการที่เลือก</td>
+                    <td>บนลิงก์: ไฟล์ที่เปิดอยู่</td>
+                  </tr>
+                  <tr>
+                    <td><code>input[type="search"]</code></td>
+                    <td>ลูกตรงของ <code>.tree</code></td>
+                    <td>ช่องค้นหา กรองขณะพิมพ์</td>
+                  </tr>
+                  <tr>
+                    <td><code>p</code></td>
+                    <td>ลูกตรงของ <code>.tree</code></td>
+                    <td>
+                      ข้อความเมื่อไม่พบไฟล์ ใส่ <code>hidden</code> ไว้ JS
+                      เปิด/ปิดให้
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>hidden</code></td>
+                    <td>บน <code>li</code></td>
+                    <td>JS ใส่ให้ไฟล์/โฟลเดอร์ที่ไม่ตรงการค้นหา</td>
                   </tr>
                 </tbody>
               </table>
