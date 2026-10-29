@@ -328,10 +328,18 @@
           <header class="page-header">
             <div>
               <h1>Avatar</h1>
-              <p>รูปหรือตัวอักษรย่อในวงกลม</p>
+              <p>
+                รูปคน โลโก้ หรือตัวอักษรย่อ ในกรอบมุมมน Photo, logo or initials
+                in a rounded frame.
+              </p>
             </div>
           </header>
           <section>
+            <h2>ขนาด Sizes</h2>
+            <p>
+              รูปอยู่ทับตัวอักษรย่อ ถ้ารูปยังไม่มาหรือไม่มีรูป
+              จะเห็นตัวอักษรย่อแทน
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -361,12 +369,25 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="stack" data-direction="row" data-gap="sm">
-                    <span class="avatar" data-size="sm">SK</span>
-                    <span class="avatar">สจ</span>
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm"
+                      ><img
+                        src="img/person-1.svg"
+                        alt="สมชาย ใจดี Somchai Jaidee"
+                      /><span>SJ</span></span
+                    >
+                    <span class="avatar"
+                      ><img
+                        src="img/person-1.svg"
+                        alt="สมชาย ใจดี Somchai Jaidee"
+                      /><span>SJ</span></span
+                    >
                     <span class="avatar" data-size="lg"
-                      ><i class="icon icon-user" aria-hidden="true"></i
-                    ></span>
+                      ><img
+                        src="img/person-1.svg"
+                        alt="สมชาย ใจดี Somchai Jaidee"
+                      /><span>SJ</span></span
+                    >
                   </div>
                 </div>
               </div>
@@ -377,17 +398,437 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;span class="avatar" data-size="sm"&gt;SK&lt;/span&gt;
-  &lt;span class="avatar"&gt;สจ&lt;/span&gt;
-  &lt;span class="avatar" data-size="lg"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm"&gt;&lt;img src="img/person-1.svg" alt="สมชาย ใจดี Somchai Jaidee" /&gt;&lt;span&gt;SJ&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/person-1.svg" alt="สมชาย ใจดี Somchai Jaidee" /&gt;&lt;span&gt;SJ&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/person-1.svg" alt="สมชาย ใจดี Somchai Jaidee" /&gt;&lt;span&gt;SJ&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ตัวอักษรย่อเมื่อไม่มีรูป Initials, when there is no image</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm"><span>NK</span></span>
+                    <span class="avatar"><span>NK</span></span>
+                    <span class="avatar" data-size="lg"><span>NK</span></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm"&gt;&lt;span&gt;NK&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;span&gt;NK&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;span&gt;NK&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              โลโก้พื้นใสวางบนพื้นขาว ทั้งโหมดสว่างและมืด A logo with a
+              transparent background sits on white, in light and dark
+            </h2>
+            <p>รูปใน avatar มีพื้นขาวเสมอ โลโก้สีเข้มจึงอ่านออกในโหมดมืดด้วย</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm"
+                      ><img src="img/logo-acme.svg" alt="Acme"
+                    /></span>
+                    <span class="avatar"
+                      ><img src="img/logo-acme.svg" alt="Acme"
+                    /></span>
+                    <span class="avatar" data-size="lg"
+                      ><img src="img/logo-acme.svg" alt="Acme"
+                    /></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm"&gt;&lt;img src="img/logo-acme.svg" alt="Acme" /&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/logo-acme.svg" alt="Acme" /&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/logo-acme.svg" alt="Acme" /&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>วงกลม Circle</h2>
+            <p>
+              ใช้กับรูปคน เช่น ลูกค้าหรือพนักงาน
+              กรอบมุมมนเป็นค่าเริ่มต้นสำหรับสินค้าและโลโก้
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm" data-variant="circle"
+                      ><img
+                        src="img/person-2.svg"
+                        alt="มาลี ศรีสุข Malee Srisuk"
+                      /><span>MS</span></span
+                    >
+                    <span class="avatar" data-variant="circle"
+                      ><img
+                        src="img/person-2.svg"
+                        alt="มาลี ศรีสุข Malee Srisuk"
+                      /><span>MS</span></span
+                    >
+                    <span class="avatar" data-size="lg" data-variant="circle"
+                      ><img
+                        src="img/person-2.svg"
+                        alt="มาลี ศรีสุข Malee Srisuk"
+                      /><span>MS</span></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm" data-variant="circle"&gt;&lt;img src="img/person-2.svg" alt="มาลี ศรีสุข Malee Srisuk" /&gt;&lt;span&gt;MS&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-variant="circle"&gt;&lt;img src="img/person-2.svg" alt="มาลี ศรีสุข Malee Srisuk" /&gt;&lt;span&gt;MS&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg" data-variant="circle"&gt;&lt;img src="img/person-2.svg" alt="มาลี ศรีสุข Malee Srisuk" /&gt;&lt;span&gt;MS&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>กลุ่ม Group</h2>
+            <p>
+              avatar ซ้อนกันพร้อมขอบสีพื้นหลัง ปิดท้ายด้วยจำนวนที่เหลือใน
+              <code>data-count</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="avatar-group">
+                    <span class="avatar"
+                      ><img
+                        src="img/person-1.svg"
+                        alt="สมชาย ใจดี Somchai Jaidee"
+                      /><span>SJ</span></span
+                    >
+                    <span class="avatar"
+                      ><img
+                        src="img/person-2.svg"
+                        alt="มาลี ศรีสุข Malee Srisuk"
+                      /><span>MS</span></span
+                    >
+                    <span class="avatar"
+                      ><img
+                        src="img/person-3.svg"
+                        alt="อนันต์ วงศ์ไทย Anan Wongthai"
+                      /><span>AW</span></span
+                    >
+                    <span data-count>+4</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="avatar-group"&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/person-1.svg" alt="สมชาย ใจดี Somchai Jaidee" /&gt;&lt;span&gt;SJ&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/person-2.svg" alt="มาลี ศรีสุข Malee Srisuk" /&gt;&lt;span&gt;MS&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/person-3.svg" alt="อนันต์ วงศ์ไทย Anan Wongthai" /&gt;&lt;span&gt;AW&lt;/span&gt;&lt;/span&gt;
+  &lt;span data-count&gt;+4&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              จำนวนที่มุม เช่น จำนวนชิ้นของรายการในคำสั่งซื้อ A count on the
+              corner, such as the quantity of an order line
+            </h2>
+            <p>ถ้าสินค้าไม่มีรูป ใส่ไอคอนแทนตัวอักษรย่อ</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="lg"
+                      ><img
+                        src="img/product-watch.svg"
+                        alt="นาฬิกา Watch"
+                      /><span data-count>1</span></span
+                    >
+                    <span class="avatar" data-size="lg"
+                      ><img
+                        src="img/product-headphones.svg"
+                        alt="หูฟัง Headphones"
+                      /><span data-count>12</span></span
+                    >
+                    <span class="avatar" data-size="lg"
+                      ><span
+                        ><i
+                          class="icon icon-image"
+                          aria-hidden="true"
+                        ></i></span
+                      ><span data-count>3</span></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/product-watch.svg" alt="นาฬิกา Watch" /&gt;&lt;span data-count&gt;1&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/product-headphones.svg" alt="หูฟัง Headphones" /&gt;&lt;span data-count&gt;12&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;span&gt;&lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;&lt;span data-count&gt;3&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              จุดสถานะที่มุม เช่น สินค้าพร้อมขาย A status dot on the corner,
+              such as a product's availability
+            </h2>
+            <p>
+              จุดเป็นแค่สี จึงต้องมี <code>role="img"</code> กับ
+              <code>aria-label</code> บอกสถานะ
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm"
+                      ><img src="img/product-mug.svg" alt="แก้วมัค Mug" /><span
+                        data-status="ok"
+                        role="img"
+                        aria-label="พร้อมขาย Available"
+                      ></span
+                    ></span>
+                    <span class="avatar"
+                      ><img
+                        src="img/product-watch.svg"
+                        alt="นาฬิกา Watch" /><span
+                        data-status="warning"
+                        role="img"
+                        aria-label="ใกล้หมด Low stock"
+                      ></span
+                    ></span>
+                    <span class="avatar" data-size="lg"
+                      ><img
+                        src="img/product-headphones.svg"
+                        alt="หูฟัง Headphones" /><span
+                        data-status="danger"
+                        role="img"
+                        aria-label="หมด Unavailable"
+                      ></span
+                    ></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm"&gt;&lt;img src="img/product-mug.svg" alt="แก้วมัค Mug" /&gt;&lt;span data-status="ok" role="img" aria-label="พร้อมขาย Available"&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/product-watch.svg" alt="นาฬิกา Watch" /&gt;&lt;span data-status="warning" role="img" aria-label="ใกล้หมด Low stock"&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/product-headphones.svg" alt="หูฟัง Headphones" /&gt;&lt;span data-status="danger" role="img" aria-label="หมด Unavailable"&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>Attributes</h2>
-            <div class="card">
+
+            <div class="card scroll-area">
               <table class="table">
                 <thead>
                   <tr>
@@ -398,14 +839,64 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>data-size</code></td>
-                    <td><code>sm, lg</code></td>
-                    <td>24px หรือ 40px (ค่าเริ่มต้น 32px)</td>
+                    <td><code>.avatar</code></td>
+                    <td><code>span</code></td>
+                    <td>กรอบ avatar มุมมน ตัวอักษรย่อสีเทา</td>
                   </tr>
                   <tr>
-                    <td><code>&gt; img</code></td>
-                    <td></td>
-                    <td>รูปเต็มวง ใส่ <code>alt</code> เสมอ</td>
+                    <td><code>img</code></td>
+                    <td>child</td>
+                    <td>
+                      รูปคนหรือโลโก้ อยู่ทับตัวอักษรย่อ พื้นขาวเสมอ ใส่
+                      <code>alt</code> เป็นชื่อ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>span</code></td>
+                    <td>child</td>
+                    <td>ตัวอักษรย่อหรือไอคอน แสดงเมื่อไม่มีรูป</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code> 24px · ไม่ใส่ (default) 32px ·
+                      <code>lg</code> 40px
+                    </td>
+                    <td>ขนาด</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>ไม่ใส่ (default) มุมมน · <code>circle</code></td>
+                    <td>วงกลม สำหรับรูปคน</td>
+                  </tr>
+                  <tr>
+                    <td><code>span[data-count]</code></td>
+                    <td>ตัวเลข</td>
+                    <td>
+                      ใน <code>.avatar</code>: จำนวนที่มุมขวาบน เช่น จำนวนชิ้น
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>span[data-status]</code></td>
+                    <td>
+                      <code>ok</code> · <code>warning</code> ·
+                      <code>danger</code> · <code>info</code> · ว่าง (default)
+                      เทา
+                    </td>
+                    <td>
+                      จุดสถานะที่มุมขวาล่าง ต้องมี <code>role="img"</code> +
+                      <code>aria-label</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.avatar-group</code></td>
+                    <td><code>div</code></td>
+                    <td>avatar ซ้อนกัน มีขอบสีพื้นหลังคั่น</td>
+                  </tr>
+                  <tr>
+                    <td><code>.avatar-group &gt; [data-count]</code></td>
+                    <td>ข้อความ เช่น <code>+4</code></td>
+                    <td>จำนวนที่เหลือ ต่อท้ายกลุ่ม</td>
                   </tr>
                 </tbody>
               </table>

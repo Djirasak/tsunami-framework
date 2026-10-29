@@ -1,28 +1,45 @@
-// Avatar: <span class="avatar"><img alt=""></span> or initials text.
+// Avatar: <span class="avatar"><img alt=""><span>AB</span></span>.
+// The image covers the initials; without an image the initials show.
+// Rounded square by default, data-variant="circle" for people.
+// Corner marks: <span data-count>2</span> or <span data-status="ok" role="img" aria-label="..."></span>.
+// Group: <div class="avatar-group"> avatars + <span data-count>+4</span>.
 @layer components {
   :where(.avatar) {
+    position: relative;
+    isolation: isolate;
     display: inline-grid;
     flex-shrink: 0;
     place-items: center;
     width: 2rem;
     height: 2rem;
-    overflow: hidden;
-    border-radius: 50%;
+    border-radius: var(--radius-md);
     background: var(--neutral-bg);
     color: var(--neutral-fg);
     font-size: var(--text-sm);
     font-weight: 500;
+    line-height: 1;
+    vertical-align: middle;
   }
 
+  // Image and initials share one cell; the image sits on top.
+  :where(.avatar > :is(img, span:not([data-count], [data-status]))) {
+    grid-area: 1 / 1;
+  }
+
+  // Logos with a transparent background sit on white in both themes.
   :where(.avatar > img) {
+    z-index: 1;
     width: 100%;
     height: 100%;
+    border-radius: inherit;
+    background: #fff;
     object-fit: cover;
   }
 
   :where(.avatar[data-size="sm"]) {
     width: 1.5rem;
     height: 1.5rem;
+    border-radius: var(--radius-sm);
     font-size: 0.625rem;
   }
 
@@ -30,5 +47,80 @@
     width: 2.5rem;
     height: 2.5rem;
     font-size: var(--text-base);
+  }
+
+  :where(.avatar[data-variant="circle"]) {
+    border-radius: 50%;
+  }
+
+  // Count on the top-right corner, e.g. the quantity of an order line.
+  :where(.avatar > [data-count]) {
+    position: absolute;
+    top: -0.375rem;
+    right: -0.375rem;
+    z-index: 2;
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.125rem;
+    height: 1.125rem;
+    padding: 0 0.25rem;
+    border: 1px solid var(--bg);
+    border-radius: 999px;
+    background: var(--fg);
+    color: var(--bg);
+    font-size: 0.625rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // Status dot on the bottom-right corner.
+  :where(.avatar > [data-status]) {
+    position: absolute;
+    right: -0.125rem;
+    bottom: -0.125rem;
+    z-index: 2;
+    width: 0.625rem;
+    height: 0.625rem;
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    background: var(--neutral-fg);
+  }
+
+  @each $v in ok, danger, warning, info {
+    :where(.avatar > [data-status="#{$v}"]) {
+      background: var(--#{$v}-fg);
+    }
+  }
+
+  // Group: overlapping avatars, ringed in the page background.
+  :where(.avatar-group) {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  :where(.avatar-group > *) {
+    outline: 2px solid var(--bg);
+  }
+
+  :where(.avatar-group > * + *) {
+    margin-left: calc(var(--space-2) * -1);
+  }
+
+  :where(.avatar-group > [data-count]) {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 var(--space-1);
+    border-radius: var(--radius-md);
+    background: var(--neutral-bg);
+    color: var(--neutral-fg);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :where(.avatar-group:has(> [data-variant="circle"]) > [data-count]) {
+    border-radius: 999px;
   }
 }
