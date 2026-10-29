@@ -1,0 +1,106 @@
+// JSON viewer: a textarea holding JSON; js/json-viewer.js draws a foldable tree above it.
+@use "icon";
+
+@layer components {
+  :where(.json-viewer) {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+
+  :where(.json-viewer > header) {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-1);
+    padding: var(--space-1);
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-sans);
+  }
+
+  :where(.json-viewer > textarea) {
+    display: block;
+    width: 100%;
+    min-height: 10rem;
+    padding: var(--space-3);
+    border: 0;
+    border-radius: inherit;
+    background: none;
+    font: inherit;
+    resize: vertical;
+  }
+
+  :where(.json-viewer > textarea[aria-invalid="true"]) {
+    outline: 2px solid var(--danger-fg);
+    outline-offset: -2px;
+  }
+
+  :where(.json-viewer > [data-tree]) {
+    padding: var(--space-3);
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  :where(.json-viewer ul) {
+    margin: 0;
+    padding: 0 0 0 1.25rem;
+    border-left: 1px solid var(--line);
+    margin-left: 0.4rem;
+    list-style: none;
+  }
+
+  :where(.json-viewer summary) {
+    display: inline;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  :where(.json-viewer summary)::-webkit-details-marker {
+    display: none;
+  }
+
+  :where(.json-viewer summary)::before {
+    @include icon.glyph(chevron-right);
+    display: inline-block;
+    margin-right: 0.25rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    transition: rotate 0.15s;
+  }
+
+  :where(.json-viewer details[open] > summary)::before {
+    rotate: 90deg;
+  }
+
+  // Folded: hide the body and the closing bracket.
+  :where(.json-viewer details:not([open]) > summary [data-t="count"]) {
+    display: inline;
+  }
+
+  :where(.json-viewer [data-t="count"]) {
+    display: none;
+    color: var(--muted);
+  }
+
+  :where(.json-viewer [data-t="punct"]) {
+    color: var(--muted);
+  }
+
+  :where(.json-viewer [data-t="key"]) {
+    color: var(--fg);
+  }
+
+  :where(.json-viewer [data-t="string"]) {
+    color: var(--ok-fg);
+  }
+
+  :where(.json-viewer :is([data-t="number"], [data-t="boolean"])) {
+    color: var(--info-fg);
+  }
+
+  :where(.json-viewer [data-t="null"]) {
+    color: var(--danger-fg);
+  }
+}
