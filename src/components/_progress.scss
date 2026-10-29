@@ -4,6 +4,7 @@
 // </div>
 // The native <progress class="progress" value="40" max="100"> works too.
 @use "sass:list";
+@use "motion";
 
 // Parts without a variant: --fg first (the default), then lighter steps toward the track colour.
 $parts: (100%, 66%, 44%, 28%, 16%);
@@ -34,7 +35,7 @@ $heights: (
   :where(.progress > span) {
     flex-shrink: 0;
     background: var(--part, var(--fg));
-    transition: width 0.3s ease;
+    transition: width motion.$base motion.$ease;
   }
 
   // A thin gap between neighbouring parts (not after an empty spacer).
