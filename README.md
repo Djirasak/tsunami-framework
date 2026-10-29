@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="demo/favicon.svg" width="72" height="72" alt="tsunami logo">
+<img src="docs/favicon.svg" width="72" height="72" alt="tsunami logo">
 
 # tsunami 津波
 
@@ -77,7 +77,7 @@ bun run lint       # eslint src/js
 bun run audit      # bun audit
 ```
 
-Docs are plain HTML in `demo/`; there is no build step for them.
+Docs are plain HTML in `docs/`; there is no build step for them.
 
 ## Structure
 
@@ -89,7 +89,7 @@ src/
   components/_*.scss    one partial per component
   icons/_lucide.scss    icon name -> codepoint (generated)
   js/                   one ES module per behavior
-demo/                   docs site (plain HTML)
+docs/                   docs site (plain HTML)
 fonts/                  Google Sans + Lucide (woff2, licenses, CHECKSUMS.txt)
 scripts/                serve.ts, stamp-version.ts, lucide.ts
 ```

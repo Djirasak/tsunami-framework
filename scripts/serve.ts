@@ -1,8 +1,8 @@
-// Local static server: 127.0.0.1 only, serves /demo /dist /fonts.
+// Local static server: 127.0.0.1 only, serves /docs /dist /fonts.
 import { resolve, sep } from "node:path";
 
 const root = resolve(import.meta.dir, "..");
-const allowed = new Set(["demo", "dist", "fonts"]);
+const allowed = new Set(["docs", "dist", "fonts"]);
 const notFound = () => new Response("Not found", { status: 404 });
 
 const server = Bun.serve({
@@ -16,7 +16,7 @@ const server = Bun.serve({
       return new Response("Bad request", { status: 400 });
     }
     if (path === "/")
-      return Response.redirect(new URL("/demo/", req.url).href, 302);
+      return Response.redirect(new URL("/docs/", req.url).href, 302);
     if (path.includes("\0")) return notFound();
     if (path.endsWith("/")) path += "index.html";
 
