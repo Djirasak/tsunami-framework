@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,19 +343,19 @@
             <div>
               <h1>Button</h1>
               <p>
-                ปุ่มเป็นแบบ outline โดยค่าเริ่มต้น ใช้ primary กับ action
-                หลักของหน้าเท่านั้น
+                Buttons are outline by default. Use primary only for the main
+                action on a page.
               </p>
             </div>
           </header>
           <section>
-            <h2>รูปแบบ Variants</h2>
+            <h2>Variants</h2>
             <p>
-              ไม่ใส่ <code>data-variant</code> คือปุ่ม outline ใช้
-              <code>primary</code> หนึ่งปุ่มต่อหน้า
+              Without <code>data-variant</code> a button is outline. Use one
+              <code>primary</code> button per page.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="รูปแบบ Variants">
+              <div role="tablist" aria-label="Variants">
                 <button
                   type="button"
                   role="tab"
@@ -388,15 +384,15 @@
               >
                 <div class="docs-preview">
                   <div class="stack" data-direction="row" data-gap="sm">
-                    <button type="button" class="btn">ยกเลิก Cancel</button>
+                    <button type="button" class="btn">Cancel</button>
                     <button type="button" class="btn" data-variant="primary">
-                      บันทึก Save
+                      Save
                     </button>
                     <button type="button" class="btn" data-variant="ghost">
-                      ข้าม Skip
+                      Skip
                     </button>
                     <button type="button" class="btn" data-variant="danger">
-                      ลบ Delete
+                      Delete
                     </button>
                   </div>
                 </div>
@@ -409,22 +405,22 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn"&gt;ยกเลิก Cancel&lt;/button&gt;
-  &lt;button type="button" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
-  &lt;button type="button" class="btn" data-variant="ghost"&gt;ข้าม Skip&lt;/button&gt;
-  &lt;button type="button" class="btn" data-variant="danger"&gt;ลบ Delete&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Cancel&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="ghost"&gt;Skip&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="danger"&gt;Delete&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ขนาด Sizes</h2>
+            <h2>Sizes</h2>
             <p>
-              ปุ่มไอคอนอย่างเดียวใช้ <code>data-size="icon"</code> หรือ
-              <code>icon-sm</code> และต้องมี <code>aria-label</code>
+              Icon-only buttons use <code>data-size="icon"</code> or
+              <code>icon-sm</code> and need an <code>aria-label</code>.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="ขนาด Sizes">
+              <div role="tablist" aria-label="Sizes">
                 <button
                   type="button"
                   role="tab"
@@ -454,17 +450,17 @@
                 <div class="docs-preview">
                   <div class="stack" data-direction="row" data-gap="sm">
                     <button type="button" class="btn" data-size="sm">
-                      เล็ก Small
+                      Small
                     </button>
-                    <button type="button" class="btn">ปกติ Default</button>
+                    <button type="button" class="btn">Default</button>
                     <button type="button" class="btn" data-size="lg">
-                      ใหญ่ Large
+                      Large
                     </button>
                     <button
                       type="button"
                       class="btn"
                       data-size="icon"
-                      aria-label="ตั้งค่า Settings"
+                      aria-label="Settings"
                     >
                       <i class="icon icon-settings" aria-hidden="true"></i>
                     </button>
@@ -472,7 +468,7 @@
                       type="button"
                       class="btn"
                       data-size="icon-sm"
-                      aria-label="เพิ่ม Add"
+                      aria-label="Add"
                     >
                       <i class="icon icon-plus" aria-hidden="true"></i>
                     </button>
@@ -487,26 +483,23 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" data-size="sm"&gt;เล็ก Small&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;ปกติ Default&lt;/button&gt;
-  &lt;button type="button" class="btn" data-size="lg"&gt;ใหญ่ Large&lt;/button&gt;
-  &lt;button type="button" class="btn" data-size="icon" aria-label="ตั้งค่า Settings"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-  &lt;button type="button" class="btn" data-size="icon-sm" aria-label="เพิ่ม Add"&gt;&lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="sm"&gt;Small&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Default&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="lg"&gt;Large&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="Settings"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon-sm" aria-label="Add"&gt;&lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ไอคอนและ disabled Icon and disabled</h2>
+            <h2>Icon and disabled</h2>
             <p>
-              ใส่ไอคอนไว้ก่อนข้อความ ลิงก์ที่ปิดใช้งานใช้
+              Put the icon before the text. Disabled links use
               <code>aria-disabled="true"</code>
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="ไอคอนและ disabled Icon and disabled"
-              >
+              <div role="tablist" aria-label="Icon and disabled">
                 <button
                   type="button"
                   role="tab"
@@ -537,14 +530,10 @@
                   <div class="stack" data-direction="row" data-gap="sm">
                     <a class="btn" href="#"
                       ><i class="icon icon-external-link" aria-hidden="true"></i
-                      >เปิดหน้าร้าน Open store</a
+                      >Open store</a
                     >
-                    <button type="button" class="btn" disabled>
-                      ส่งออก Export
-                    </button>
-                    <a class="btn" aria-disabled="true"
-                      >ดูใบเสร็จ View receipt</a
-                    >
+                    <button type="button" class="btn" disabled>Export</button>
+                    <a class="btn" aria-disabled="true">View receipt</a>
                   </div>
                 </div>
               </div>
@@ -556,25 +545,22 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;a class="btn" href="#"&gt;&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;เปิดหน้าร้าน Open store&lt;/a&gt;
-  &lt;button type="button" class="btn" disabled&gt;ส่งออก Export&lt;/button&gt;
-  &lt;a class="btn" aria-disabled="true"&gt;ดูใบเสร็จ View receipt&lt;/a&gt;
+  &lt;a class="btn" href="#"&gt;&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;Open store&lt;/a&gt;
+  &lt;button type="button" class="btn" disabled&gt;Export&lt;/button&gt;
+  &lt;a class="btn" aria-disabled="true"&gt;View receipt&lt;/a&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ปุ่มลบแบบไอคอน Delete icon button</h2>
+            <h2>Delete icon button</h2>
             <p>
-              ปุ่มลบเป็นไอคอนถังขยะสีแดงในกรอบ outline หรือแบบ ghost (<code
+              A red trash icon in an outline frame, or ghost (<code
                 >data-variant="ghost danger"</code
-              >) สำหรับแถวในตาราง
+              >) for table rows.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="ปุ่มลบแบบไอคอน Delete icon button"
-              >
+              <div role="tablist" aria-label="Delete icon button">
                 <button
                   type="button"
                   role="tab"
@@ -608,7 +594,7 @@
                       class="btn"
                       data-variant="danger"
                       data-size="icon-sm"
-                      aria-label="ลบ Delete"
+                      aria-label="Delete"
                     >
                       <i class="icon icon-trash-2" aria-hidden="true"></i>
                     </button>
@@ -617,7 +603,7 @@
                       class="btn"
                       data-variant="danger"
                       data-size="icon"
-                      aria-label="ลบ Delete"
+                      aria-label="Delete"
                     >
                       <i class="icon icon-trash-2" aria-hidden="true"></i>
                     </button>
@@ -626,7 +612,7 @@
                       class="btn"
                       data-variant="ghost danger"
                       data-size="icon-sm"
-                      aria-label="ลบ Delete"
+                      aria-label="Delete"
                     >
                       <i class="icon icon-trash-2" aria-hidden="true"></i>
                     </button>
@@ -641,23 +627,24 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" data-variant="danger" data-size="icon-sm" aria-label="ลบ Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-  &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="ลบ Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-  &lt;button type="button" class="btn" data-variant="ghost danger" data-size="icon-sm" aria-label="ลบ Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="danger" data-size="icon-sm" aria-label="Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="ghost danger" data-size="icon-sm" aria-label="Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ลบท้ายแถวฟิลด์ Delete at the end of a row of fields</h2>
+            <h2>Delete at the end of a row of fields</h2>
             <p>
-              ปุ่มไม่หดเมื่อแถวแคบ (<code>flex-shrink: 0</code>)
-              จึงอยู่ท้ายแถวขนาดเท่าเดิมเสมอ
+              The button does not shrink in a narrow row (<code
+                >flex-shrink: 0</code
+              >), so it always keeps its size at the end of the row.
             </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ลบท้ายแถวฟิลด์ Delete at the end of a row of fields"
+                aria-label="Delete at the end of a row of fields"
               >
                 <button
                   type="button"
@@ -691,15 +678,15 @@
                       <div class="field" style="width: min(10rem, 35%)">
                         <select aria-label="Metafield">
                           <option value="">--------</option>
-                          <option value="agent">ตัวแทน Agent</option>
+                          <option value="agent">Agent</option>
                           <option value="funnel">Funnel</option>
                         </select>
                       </div>
                       <div class="field" style="width: min(16rem, 45%)">
                         <input
                           type="text"
-                          aria-label="ค่า Value"
-                          value="ร้านสาขาสยาม"
+                          aria-label="Value"
+                          value="Downtown store"
                         />
                       </div>
                       <button
@@ -707,7 +694,7 @@
                         class="btn"
                         data-variant="danger"
                         data-size="icon"
-                        aria-label="ลบฟิลด์ Delete field"
+                        aria-label="Delete field"
                       >
                         <i class="icon icon-trash-2" aria-hidden="true"></i>
                       </button>
@@ -716,14 +703,14 @@
                       <div class="field" style="width: min(10rem, 35%)">
                         <select aria-label="Metafield">
                           <option value="">--------</option>
-                          <option value="agent">ตัวแทน Agent</option>
+                          <option value="agent">Agent</option>
                           <option value="funnel" selected>Funnel</option>
                         </select>
                       </div>
                       <div class="field" style="width: min(16rem, 45%)">
                         <input
                           type="text"
-                          aria-label="ค่า Value"
+                          aria-label="Value"
                           value="flash-sale-11"
                         />
                       </div>
@@ -732,7 +719,7 @@
                         class="btn"
                         data-variant="danger"
                         data-size="icon"
-                        aria-label="ลบฟิลด์ Delete field"
+                        aria-label="Delete field"
                       >
                         <i class="icon icon-trash-2" aria-hidden="true"></i>
                       </button>
@@ -752,40 +739,40 @@
     &lt;div class="field" style="width: min(10rem, 35%)"&gt;
       &lt;select aria-label="Metafield"&gt;
         &lt;option value=""&gt;--------&lt;/option&gt;
-        &lt;option value="agent"&gt;ตัวแทน Agent&lt;/option&gt;
+        &lt;option value="agent"&gt;Agent&lt;/option&gt;
         &lt;option value="funnel"&gt;Funnel&lt;/option&gt;
       &lt;/select&gt;
     &lt;/div&gt;
     &lt;div class="field" style="width: min(16rem, 45%)"&gt;
-      &lt;input type="text" aria-label="ค่า Value" value="ร้านสาขาสยาม" /&gt;
+      &lt;input type="text" aria-label="Value" value="Downtown store" /&gt;
     &lt;/div&gt;
-    &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="ลบฟิลด์ Delete field"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="Delete field"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
     &lt;div class="field" style="width: min(10rem, 35%)"&gt;
       &lt;select aria-label="Metafield"&gt;
         &lt;option value=""&gt;--------&lt;/option&gt;
-        &lt;option value="agent"&gt;ตัวแทน Agent&lt;/option&gt;
+        &lt;option value="agent"&gt;Agent&lt;/option&gt;
         &lt;option value="funnel" selected&gt;Funnel&lt;/option&gt;
       &lt;/select&gt;
     &lt;/div&gt;
     &lt;div class="field" style="width: min(16rem, 45%)"&gt;
-      &lt;input type="text" aria-label="ค่า Value" value="flash-sale-11" /&gt;
+      &lt;input type="text" aria-label="Value" value="flash-sale-11" /&gt;
     &lt;/div&gt;
-    &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="ลบฟิลด์ Delete field"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="Delete field"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>กลุ่มปุ่ม Button group</h2>
+            <h2>Button group</h2>
             <p>
-              <code>.btn-group</code> ต่อปุ่มชิดกันเป็นชุดเดียว ใส่
-              <code>role="group"</code> และ <code>aria-label</code>
+              <code>.btn-group</code> joins buttons into one set. Add
+              <code>role="group"</code> and an <code>aria-label</code>.
             </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="กลุ่มปุ่ม Button group">
+              <div role="tablist" aria-label="Button group">
                 <button
                   type="button"
                   role="tab"
@@ -816,11 +803,11 @@
                   <div
                     class="btn-group"
                     role="group"
-                    aria-label="จัดการคำสั่งซื้อ Order actions"
+                    aria-label="Order actions"
                   >
-                    <button type="button" class="btn">เก็บถาวร Archive</button>
-                    <button type="button" class="btn">รายงาน Report</button>
-                    <button type="button" class="btn">พิมพ์ Print</button>
+                    <button type="button" class="btn">Archive</button>
+                    <button type="button" class="btn">Report</button>
+                    <button type="button" class="btn">Print</button>
                   </div>
                 </div>
               </div>
@@ -831,26 +818,24 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="btn-group" role="group" aria-label="จัดการคำสั่งซื้อ Order actions"&gt;
-  &lt;button type="button" class="btn"&gt;เก็บถาวร Archive&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;รายงาน Report&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;พิมพ์ Print&lt;/button&gt;
+                <pre><code>&lt;div class="btn-group" role="group" aria-label="Order actions"&gt;
+  &lt;button type="button" class="btn"&gt;Archive&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Report&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Print&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>aria-pressed แสดงปุ่มที่เปิดอยู่ Pressed toggle buttons</h2>
+            <h2>Pressed toggle buttons</h2>
             <p>
-              <code>aria-pressed="true"</code> ทำให้ปุ่มมีพื้นเทาว่าเปิดอยู่ ใส่
-              <code>data-pressed="single"</code> ที่กลุ่มให้เลือกได้ทีละปุ่ม
-              หรือ <code>multiple</code> ให้แต่ละปุ่มสลับเอง (ต้องใช้ JS)
+              <code>aria-pressed="true"</code> gives a button a grey background
+              to show it is on. Put <code>data-pressed="single"</code> on the
+              group to allow one button at a time, or <code>multiple</code> to
+              let each button toggle on its own (needs JS).
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="aria-pressed แสดงปุ่มที่เปิดอยู่ Pressed toggle buttons"
-              >
+              <div role="tablist" aria-label="Pressed toggle buttons">
                 <button
                   type="button"
                   role="tab"
@@ -882,7 +867,7 @@
                     <div
                       class="btn-group"
                       role="group"
-                      aria-label="ขนาดตัวอย่าง Preview width"
+                      aria-label="Preview width"
                       data-pressed="single"
                     >
                       <button
@@ -916,17 +901,17 @@
                     <div
                       class="btn-group"
                       role="group"
-                      aria-label="ตัวกรองสินค้า Product filters"
+                      aria-label="Product filters"
                       data-pressed="multiple"
                     >
                       <button type="button" class="btn" aria-pressed="true">
-                        พร้อมส่ง
+                        Ready to ship
                       </button>
                       <button type="button" class="btn" aria-pressed="false">
-                        ลดราคา
+                        On sale
                       </button>
                       <button type="button" class="btn" aria-pressed="false">
-                        ใหม่
+                        New
                       </button>
                     </div>
                   </div>
@@ -940,32 +925,30 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;div class="btn-group" role="group" aria-label="ขนาดตัวอย่าง Preview width" data-pressed="single"&gt;
+  &lt;div class="btn-group" role="group" aria-label="Preview width" data-pressed="single"&gt;
     &lt;button type="button" class="btn" data-size="icon" aria-pressed="true" aria-label="Desktop"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
     &lt;button type="button" class="btn" data-size="icon" aria-pressed="false" aria-label="Tablet"&gt;&lt;i class="icon icon-tablet" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
     &lt;button type="button" class="btn" data-size="icon" aria-pressed="false" aria-label="Mobile"&gt;&lt;i class="icon icon-smartphone" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
   &lt;/div&gt;
-  &lt;div class="btn-group" role="group" aria-label="ตัวกรองสินค้า Product filters" data-pressed="multiple"&gt;
-    &lt;button type="button" class="btn" aria-pressed="true"&gt;พร้อมส่ง&lt;/button&gt;
-    &lt;button type="button" class="btn" aria-pressed="false"&gt;ลดราคา&lt;/button&gt;
-    &lt;button type="button" class="btn" aria-pressed="false"&gt;ใหม่&lt;/button&gt;
+  &lt;div class="btn-group" role="group" aria-label="Product filters" data-pressed="multiple"&gt;
+    &lt;button type="button" class="btn" aria-pressed="true"&gt;Ready to ship&lt;/button&gt;
+    &lt;button type="button" class="btn" aria-pressed="false"&gt;On sale&lt;/button&gt;
+    &lt;button type="button" class="btn" aria-pressed="false"&gt;New&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>กลุ่มปุ่มพร้อมเมนู Button group with a menu</h2>
+            <h2>Button group with a menu</h2>
             <p>
-              ปุ่มสุดท้ายของกลุ่มเปิด <a href="dropdown">dropdown</a> ด้วย
-              <code>popovertarget</code> ตัว popover
-              อยู่ในกลุ่มได้โดยไม่กระทบมุมโค้งของปุ่ม
+              The last button in the group opens a
+              <a href="dropdown">dropdown</a> with <code>popovertarget</code>.
+              The popover can sit inside the group without affecting the
+              buttons' rounded corners.
             </p>
             <div class="tabs" data-tabs>
-              <div
-                role="tablist"
-                aria-label="กลุ่มปุ่มพร้อมเมนู Button group with a menu"
-              >
+              <div role="tablist" aria-label="Button group with a menu">
                 <button
                   type="button"
                   role="tab"
@@ -998,32 +981,22 @@
                       type="button"
                       class="btn"
                       data-size="icon"
-                      aria-label="ย้อนกลับ Go back"
+                      aria-label="Go back"
                     >
                       <i class="icon icon-arrow-left" aria-hidden="true"></i>
                     </button>
-                    <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="จัดการ Manage"
-                    >
-                      <button type="button" class="btn">
-                        เก็บถาวร Archive
-                      </button>
-                      <button type="button" class="btn">รายงาน Report</button>
+                    <div class="btn-group" role="group" aria-label="Manage">
+                      <button type="button" class="btn">Archive</button>
+                      <button type="button" class="btn">Report</button>
                     </div>
-                    <div
-                      class="btn-group"
-                      role="group"
-                      aria-label="เลื่อน Snooze"
-                    >
-                      <button type="button" class="btn">เลื่อน Snooze</button>
+                    <div class="btn-group" role="group" aria-label="Snooze">
+                      <button type="button" class="btn">Snooze</button>
                       <button
                         type="button"
                         class="btn"
                         data-size="icon"
                         popovertarget="btn-more"
-                        aria-label="ตัวเลือกเพิ่มเติม More options"
+                        aria-label="More options"
                       >
                         <i class="icon icon-ellipsis" aria-hidden="true"></i>
                       </button>
@@ -1034,7 +1007,7 @@
                           popovertargetaction="hide"
                         >
                           <i class="icon icon-mail-check" aria-hidden="true"></i
-                          >อ่านแล้ว Mark as read
+                          >Mark as read
                         </button>
                         <button
                           type="button"
@@ -1042,7 +1015,7 @@
                           popovertargetaction="hide"
                         >
                           <i class="icon icon-archive" aria-hidden="true"></i
-                          >เก็บถาวร Archive
+                          >Archive
                         </button>
                         <hr />
                         <button
@@ -1051,7 +1024,7 @@
                           popovertargetaction="hide"
                         >
                           <i class="icon icon-clock" aria-hidden="true"></i
-                          >เลื่อน Snooze
+                          >Snooze
                         </button>
                         <button
                           type="button"
@@ -1059,7 +1032,7 @@
                           popovertargetaction="hide"
                         >
                           <i class="icon icon-calendar" aria-hidden="true"></i
-                          >เพิ่มในปฏิทิน Add to calendar
+                          >Add to calendar
                         </button>
                         <button
                           type="button"
@@ -1070,7 +1043,7 @@
                             class="icon icon-list-filter-plus"
                             aria-hidden="true"
                           ></i
-                          >เพิ่มในรายการ Add to list
+                          >Add to list
                         </button>
                         <hr />
                         <button
@@ -1079,8 +1052,8 @@
                           popovertarget="btn-more"
                           popovertargetaction="hide"
                         >
-                          <i class="icon icon-trash-2" aria-hidden="true"></i>ลบ
-                          Trash
+                          <i class="icon icon-trash-2" aria-hidden="true"></i
+                          >Trash
                         </button>
                       </div>
                     </div>
@@ -1095,23 +1068,23 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" data-size="icon" aria-label="ย้อนกลับ Go back"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
-  &lt;div class="btn-group" role="group" aria-label="จัดการ Manage"&gt;
-    &lt;button type="button" class="btn"&gt;เก็บถาวร Archive&lt;/button&gt;
-    &lt;button type="button" class="btn"&gt;รายงาน Report&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="Go back"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;div class="btn-group" role="group" aria-label="Manage"&gt;
+    &lt;button type="button" class="btn"&gt;Archive&lt;/button&gt;
+    &lt;button type="button" class="btn"&gt;Report&lt;/button&gt;
   &lt;/div&gt;
-  &lt;div class="btn-group" role="group" aria-label="เลื่อน Snooze"&gt;
-    &lt;button type="button" class="btn"&gt;เลื่อน Snooze&lt;/button&gt;
-    &lt;button type="button" class="btn" data-size="icon" popovertarget="btn-more" aria-label="ตัวเลือกเพิ่มเติม More options"&gt;&lt;i class="icon icon-ellipsis" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;div class="btn-group" role="group" aria-label="Snooze"&gt;
+    &lt;button type="button" class="btn"&gt;Snooze&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon" popovertarget="btn-more" aria-label="More options"&gt;&lt;i class="icon icon-ellipsis" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
     &lt;div class="dropdown" id="btn-more" popover&gt;
-      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-mail-check" aria-hidden="true"&gt;&lt;/i&gt;อ่านแล้ว Mark as read&lt;/button&gt;
-      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-archive" aria-hidden="true"&gt;&lt;/i&gt;เก็บถาวร Archive&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-mail-check" aria-hidden="true"&gt;&lt;/i&gt;Mark as read&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-archive" aria-hidden="true"&gt;&lt;/i&gt;Archive&lt;/button&gt;
       &lt;hr /&gt;
-      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-clock" aria-hidden="true"&gt;&lt;/i&gt;เลื่อน Snooze&lt;/button&gt;
-      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-calendar" aria-hidden="true"&gt;&lt;/i&gt;เพิ่มในปฏิทิน Add to calendar&lt;/button&gt;
-      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-list-filter-plus" aria-hidden="true"&gt;&lt;/i&gt;เพิ่มในรายการ Add to list&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-clock" aria-hidden="true"&gt;&lt;/i&gt;Snooze&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-calendar" aria-hidden="true"&gt;&lt;/i&gt;Add to calendar&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-list-filter-plus" aria-hidden="true"&gt;&lt;/i&gt;Add to list&lt;/button&gt;
       &lt;hr /&gt;
-      &lt;button type="button" data-variant="danger" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;ลบ Trash&lt;/button&gt;
+      &lt;button type="button" data-variant="danger" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;Trash&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -1134,84 +1107,89 @@
                     <td><code>.btn</code></td>
                     <td><code>button</code>, <code>a</code></td>
                     <td>
-                      ปุ่ม ใช้กับ
-                      <code>&lt;button type="button"&gt;</code> หรือลิงก์
+                      A button. Use on
+                      <code>&lt;button type="button"&gt;</code> or a link.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-variant</code></td>
                     <td>
-                      (ไม่ใส่ = outline, ค่าเริ่มต้น), <code>primary</code>,
+                      (none = outline, default), <code>primary</code>,
                       <code>ghost</code>, <code>danger</code>,
                       <code>ghost danger</code>
                     </td>
                     <td>
-                      รูปแบบปุ่ม ใส่ได้หลายค่าคั่นด้วยช่องว่าง เช่น
-                      <code>ghost danger</code> คือ ghost สีแดง
+                      Button style. Takes several values separated by spaces,
+                      e.g. <code>ghost danger</code> is a red ghost button.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
                     <td>
-                      (ไม่ใส่ = ปกติ 32px, ค่าเริ่มต้น), <code>sm</code>,
-                      <code>lg</code>, <code>icon</code>, <code>icon-sm</code>
+                      (none = 32px, default), <code>sm</code>, <code>lg</code>,
+                      <code>icon</code>, <code>icon-sm</code>
                     </td>
                     <td>
-                      <code>icon</code> / <code>icon-sm</code> เป็นปุ่มจัตุรัส
-                      32px / 26px สำหรับไอคอนอย่างเดียว
+                      <code>icon</code> / <code>icon-sm</code> are 32px / 26px
+                      square buttons for a single icon.
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-label</code></td>
-                    <td>ข้อความ</td>
-                    <td>จำเป็นกับปุ่มไอคอนอย่างเดียว</td>
+                    <td>text</td>
+                    <td>Required on icon-only buttons.</td>
                   </tr>
                   <tr>
                     <td><code>.icon</code></td>
-                    <td><code>i</code>, ชื่อไอคอน Lucide</td>
+                    <td><code>i</code>, Lucide icon name</td>
                     <td>
-                      ไอคอนในปุ่ม ใส่ <code>aria-hidden="true"</code> เสมอ
+                      Icon inside a button. Always add
+                      <code>aria-hidden="true"</code>.
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-pressed</code></td>
                     <td><code>true</code>, <code>false</code></td>
-                    <td>ปุ่มสลับ <code>true</code> มีพื้นเทาว่าเปิดอยู่</td>
+                    <td>
+                      Toggle button. <code>true</code> shows a grey background.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>disabled</code></td>
                     <td>boolean</td>
-                    <td>ปิดการใช้งานปุ่ม</td>
+                    <td>Disables the button.</td>
                   </tr>
                   <tr>
                     <td><code>aria-disabled</code></td>
                     <td><code>true</code></td>
-                    <td>ปิดการใช้งานลิงก์ <code>a.btn</code></td>
+                    <td>Disables an <code>a.btn</code> link.</td>
                   </tr>
                   <tr>
                     <td><code>.btn-group</code></td>
                     <td><code>div</code></td>
                     <td>
-                      กลุ่มปุ่มต่อกัน ปุ่มลูกคือ <code>.btn</code> ใส่
-                      <code>role="group"</code> และ <code>aria-label</code>
+                      Joined group of buttons. Children are <code>.btn</code>.
+                      Add <code>role="group"</code> and an
+                      <code>aria-label</code>.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-pressed</code></td>
                     <td><code>single</code>, <code>multiple</code></td>
                     <td>
-                      ใส่ที่ <code>.btn-group</code> (หรือ element ใดก็ได้) ให้
-                      JS สลับ <code>aria-pressed</code> ของปุ่มข้างใน: ทีละปุ่ม
-                      หรือสลับแยกแต่ละปุ่ม
+                      Put on <code>.btn-group</code> (or any element) so JS
+                      toggles <code>aria-pressed</code> on the buttons inside:
+                      one at a time, or each on its own.
                     </td>
                   </tr>
                   <tr>
                     <td><code>.dropdown</code></td>
                     <td><code>popover</code>, <code>id</code></td>
                     <td>
-                      เมนูของกลุ่ม วางใน <code>.btn-group</code> ได้
-                      เปิดด้วยปุ่มในกลุ่มที่มี
-                      <code>popovertarget</code> ไม่นับเป็นปุ่มเวลาคิดมุมโค้ง
+                      The group's menu. It can sit inside
+                      <code>.btn-group</code> and opens from a group button with
+                      <code>popovertarget</code>. It does not count as a button
+                      for the rounded corners.
                     </td>
                   </tr>
                 </tbody>
@@ -1221,8 +1199,8 @@
           <section>
             <h2>API</h2>
             <p>
-              ไม่มีฟังก์ชัน ปุ่มในกลุ่ม <code>[data-pressed]</code> ทำงานผ่าน
-              event delegation จึงใช้กับปุ่มที่เพิ่มทีหลังได้
+              No functions. Buttons in a <code>[data-pressed]</code> group work
+              through event delegation, so buttons added later work too.
             </p>
             <div class="card">
               <table class="table">
@@ -1238,9 +1216,10 @@
                     <td><code>tsunami:pressedchange</code></td>
                     <td><code>{ button, pressed }</code></td>
                     <td>
-                      ส่งจาก element ที่มี <code>data-pressed</code> (bubbles)
-                      หลังคลิกปุ่ม <code>button</code> คือปุ่มที่คลิก
-                      <code>pressed</code> คือสถานะใหม่ของปุ่มนั้น
+                      Fires from the element with
+                      <code>data-pressed</code> (bubbles) after a button click.
+                      <code>button</code> is the clicked button,
+                      <code>pressed</code> is its new state.
                     </td>
                   </tr>
                 </tbody>

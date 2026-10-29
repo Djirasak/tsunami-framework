@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,18 +343,16 @@
             <div>
               <h1>Dropdown</h1>
               <p>
-                เมนูการทำงานใน <code>[<wbr />popover]</code> แบบ native
-                เปิดด้วยปุ่ม <code>popover<wbr />target</code> ไม่ต้องใช้ JS. A
-                menu of actions in a native popover, opened by its button with
+                A menu of actions in a native popover, opened by its button with
                 no script.
               </p>
             </div>
           </header>
           <section>
-            <h2>เมนูการทำงาน A menu of actions</h2>
+            <h2>A menu of actions</h2>
             <p>
-              ลูกของ <code>.<wbr />dropdown</code> คือ
-              <code>&lt;button&gt;</code> และ <code>&lt;a&gt;</code>. Give each
+              The children of <code>.<wbr />dropdown</code> are
+              <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code>. Give each
               button <code>popover<wbr />target</code> +
               <code>popover<wbr />target<wbr />action=<wbr />"hide"</code> so a
               click closes the menu; listen for the button's own
@@ -395,7 +389,7 @@
               >
                 <div class="docs-preview">
                   <button type="button" class="btn" popovertarget="dd-actions">
-                    การทำงาน Actions
+                    Actions
                     <i class="icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="dropdown" id="dd-actions" popover>
@@ -404,20 +398,18 @@
                       popovertarget="dd-actions"
                       popovertargetaction="hide"
                     >
-                      <i class="icon icon-pencil" aria-hidden="true"></i>แก้ไข
-                      Edit
+                      <i class="icon icon-pencil" aria-hidden="true"></i>Edit
                     </button>
                     <button
                       type="button"
                       popovertarget="dd-actions"
                       popovertargetaction="hide"
                     >
-                      <i class="icon icon-copy" aria-hidden="true"></i>ทำสำเนา
-                      Duplicate
+                      <i class="icon icon-copy" aria-hidden="true"></i>Duplicate
                     </button>
                     <a href="#"
                       ><i class="icon icon-external-link" aria-hidden="true"></i
-                      >ดูหน้าร้าน View in store</a
+                      >View in store</a
                     >
                     <hr />
                     <button
@@ -426,8 +418,7 @@
                       popovertarget="dd-actions"
                       popovertargetaction="hide"
                     >
-                      <i class="icon icon-trash-2" aria-hidden="true"></i>ลบ
-                      Delete
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>Delete
                     </button>
                   </div>
                 </div>
@@ -439,24 +430,21 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-actions"&gt;การทำงาน Actions &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-actions"&gt;Actions &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;div class="dropdown" id="dd-actions" popover&gt;
-  &lt;button type="button" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;แก้ไข Edit&lt;/button&gt;
-  &lt;button type="button" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;ทำสำเนา Duplicate&lt;/button&gt;
-  &lt;a href="#"&gt;&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;ดูหน้าร้าน View in store&lt;/a&gt;
+  &lt;button type="button" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;Edit&lt;/button&gt;
+  &lt;button type="button" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;Duplicate&lt;/button&gt;
+  &lt;a href="#"&gt;&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;View in store&lt;/a&gt;
   &lt;hr&gt;
-  &lt;button type="button" data-variant="danger" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;ลบ Delete&lt;/button&gt;
+  &lt;button type="button" data-variant="danger" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;Delete&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              การจัดแนว: ต้น กลาง และท้ายของปุ่ม Alignment: start, center and
-              end of the button
-            </h2>
+            <h2>Alignment: start, center and end of the button</h2>
             <p>
-              <code>data-<wbr />align</code> บนเมนู ค่าเริ่มต้น
+              <code>data-<wbr />align</code> on the menu, default
               <code>start</code>. The same attribute as the popover.
             </p>
             <div class="tabs" data-tabs>
@@ -494,7 +482,7 @@
                       class="btn"
                       popovertarget="dd-align-start"
                     >
-                      ต้น Start
+                      Start
                     </button>
                     <div class="dropdown" id="dd-align-start" popover>
                       <button
@@ -502,21 +490,21 @@
                         popovertarget="dd-align-start"
                         popovertargetaction="hide"
                       >
-                        แก้ไข Edit
+                        Edit
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-align-start"
                         popovertargetaction="hide"
                       >
-                        ทำสำเนา Duplicate
+                        Duplicate
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-align-start"
                         popovertargetaction="hide"
                       >
-                        เก็บถาวร Archive
+                        Archive
                       </button>
                     </div>
                     <button
@@ -524,7 +512,7 @@
                       class="btn"
                       popovertarget="dd-align-center"
                     >
-                      กลาง Center
+                      Center
                     </button>
                     <div
                       class="dropdown"
@@ -537,21 +525,21 @@
                         popovertarget="dd-align-center"
                         popovertargetaction="hide"
                       >
-                        แก้ไข Edit
+                        Edit
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-align-center"
                         popovertargetaction="hide"
                       >
-                        ทำสำเนา Duplicate
+                        Duplicate
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-align-center"
                         popovertargetaction="hide"
                       >
-                        เก็บถาวร Archive
+                        Archive
                       </button>
                     </div>
                     <button
@@ -559,7 +547,7 @@
                       class="btn"
                       popovertarget="dd-align-end"
                     >
-                      ท้าย End
+                      End
                     </button>
                     <div
                       class="dropdown"
@@ -572,21 +560,21 @@
                         popovertarget="dd-align-end"
                         popovertargetaction="hide"
                       >
-                        แก้ไข Edit
+                        Edit
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-align-end"
                         popovertargetaction="hide"
                       >
-                        ทำสำเนา Duplicate
+                        Duplicate
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-align-end"
                         popovertargetaction="hide"
                       >
-                        เก็บถาวร Archive
+                        Archive
                       </button>
                     </div>
                   </div>
@@ -600,36 +588,33 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" popovertarget="dd-align-start"&gt;ต้น Start&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-align-start"&gt;Start&lt;/button&gt;
   &lt;div class="dropdown" id="dd-align-start" popover&gt;
-    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;แก้ไข Edit&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;ทำสำเนา Duplicate&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;เก็บถาวร Archive&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="dd-align-center"&gt;กลาง Center&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-align-center"&gt;Center&lt;/button&gt;
   &lt;div class="dropdown" id="dd-align-center" popover data-align="center"&gt;
-    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;แก้ไข Edit&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;ทำสำเนา Duplicate&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;เก็บถาวร Archive&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="dd-align-end"&gt;ท้าย End&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-align-end"&gt;End&lt;/button&gt;
   &lt;div class="dropdown" id="dd-align-end" popover data-align="end"&gt;
-    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;แก้ไข Edit&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;ทำสำเนา Duplicate&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;เก็บถาวร Archive&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              ด้าน: ล่าง บน ซ้าย และขวาของปุ่ม Side: below, above, left and
-              right of the button
-            </h2>
+            <h2>Side: below, above, left and right of the button</h2>
             <p>
-              <code>data-<wbr />side</code> ค่าเริ่มต้น <code>bottom</code>. A
-              menu that does not fit flips to the other side.
+              <code>data-<wbr />side</code>, default <code>bottom</code>. A menu
+              that does not fit flips to the other side.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -666,7 +651,7 @@
                       class="btn"
                       popovertarget="dd-side-bottom"
                     >
-                      ล่าง Bottom
+                      Bottom
                     </button>
                     <div class="dropdown" id="dd-side-bottom" popover>
                       <button
@@ -674,21 +659,21 @@
                         popovertarget="dd-side-bottom"
                         popovertargetaction="hide"
                       >
-                        แก้ไข Edit
+                        Edit
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-side-bottom"
                         popovertargetaction="hide"
                       >
-                        ทำสำเนา Duplicate
+                        Duplicate
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-side-bottom"
                         popovertargetaction="hide"
                       >
-                        เก็บถาวร Archive
+                        Archive
                       </button>
                     </div>
                     <button
@@ -696,7 +681,7 @@
                       class="btn"
                       popovertarget="dd-side-top"
                     >
-                      บน Top
+                      Top
                     </button>
                     <div
                       class="dropdown"
@@ -709,21 +694,21 @@
                         popovertarget="dd-side-top"
                         popovertargetaction="hide"
                       >
-                        แก้ไข Edit
+                        Edit
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-side-top"
                         popovertargetaction="hide"
                       >
-                        ทำสำเนา Duplicate
+                        Duplicate
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-side-top"
                         popovertargetaction="hide"
                       >
-                        เก็บถาวร Archive
+                        Archive
                       </button>
                     </div>
                     <button
@@ -731,7 +716,7 @@
                       class="btn"
                       popovertarget="dd-side-left"
                     >
-                      ซ้าย Left
+                      Left
                     </button>
                     <div
                       class="dropdown"
@@ -744,21 +729,21 @@
                         popovertarget="dd-side-left"
                         popovertargetaction="hide"
                       >
-                        แก้ไข Edit
+                        Edit
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-side-left"
                         popovertargetaction="hide"
                       >
-                        ทำสำเนา Duplicate
+                        Duplicate
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-side-left"
                         popovertargetaction="hide"
                       >
-                        เก็บถาวร Archive
+                        Archive
                       </button>
                     </div>
                     <button
@@ -766,7 +751,7 @@
                       class="btn"
                       popovertarget="dd-side-right"
                     >
-                      ขวา Right
+                      Right
                     </button>
                     <div
                       class="dropdown"
@@ -779,21 +764,21 @@
                         popovertarget="dd-side-right"
                         popovertargetaction="hide"
                       >
-                        แก้ไข Edit
+                        Edit
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-side-right"
                         popovertargetaction="hide"
                       >
-                        ทำสำเนา Duplicate
+                        Duplicate
                       </button>
                       <button
                         type="button"
                         popovertarget="dd-side-right"
                         popovertargetaction="hide"
                       >
-                        เก็บถาวร Archive
+                        Archive
                       </button>
                     </div>
                   </div>
@@ -807,39 +792,36 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" popovertarget="dd-side-bottom"&gt;ล่าง Bottom&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-side-bottom"&gt;Bottom&lt;/button&gt;
   &lt;div class="dropdown" id="dd-side-bottom" popover&gt;
-    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;แก้ไข Edit&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;ทำสำเนา Duplicate&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;เก็บถาวร Archive&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="dd-side-top"&gt;บน Top&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-side-top"&gt;Top&lt;/button&gt;
   &lt;div class="dropdown" id="dd-side-top" popover data-side="top"&gt;
-    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;แก้ไข Edit&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;ทำสำเนา Duplicate&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;เก็บถาวร Archive&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="dd-side-left"&gt;ซ้าย Left&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-side-left"&gt;Left&lt;/button&gt;
   &lt;div class="dropdown" id="dd-side-left" popover data-side="left"&gt;
-    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;แก้ไข Edit&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;ทำสำเนา Duplicate&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;เก็บถาวร Archive&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
   &lt;/div&gt;
-  &lt;button type="button" class="btn" popovertarget="dd-side-right"&gt;ขวา Right&lt;/button&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-side-right"&gt;Right&lt;/button&gt;
   &lt;div class="dropdown" id="dd-side-right" popover data-side="right"&gt;
-    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;แก้ไข Edit&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;ทำสำเนา Duplicate&lt;/button&gt;
-    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;เก็บถาวร Archive&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              จากปุ่มไอคอนท้ายแถว ชิดขอบท้าย From an icon button at the end of a
-              row, aligned to its end
-            </h2>
+            <h2>From an icon button at the end of a row, aligned to its end</h2>
             <p>
               <code>data-<wbr />align=<wbr />"end"</code> keeps a menu from an
               end-of-row button inside the page. An icon button needs an
@@ -876,8 +858,8 @@
                 <div class="docs-preview">
                   <div class="item" data-variant="outline">
                     <section>
-                      <h3>คำสั่งซื้อ #1042 Order #1042</h3>
-                      <p>฿2,480 · ชำระแล้ว Paid</p>
+                      <h3>Order #1042</h3>
+                      <p>$84.50 · Paid</p>
                     </section>
                     <aside>
                       <button
@@ -886,7 +868,7 @@
                         data-variant="ghost"
                         data-size="icon"
                         popovertarget="dd-row"
-                        aria-label="การทำงานของคำสั่งซื้อ Order actions"
+                        aria-label="Order actions"
                       >
                         <i class="icon icon-ellipsis" aria-hidden="true"></i>
                       </button>
@@ -902,7 +884,7 @@
                           popovertargetaction="hide"
                         >
                           <i class="icon icon-pencil" aria-hidden="true"></i
-                          >แก้ไข Edit
+                          >Edit
                         </button>
                         <button
                           type="button"
@@ -910,7 +892,7 @@
                           popovertargetaction="hide"
                         >
                           <i class="icon icon-copy" aria-hidden="true"></i
-                          >ทำสำเนา Duplicate
+                          >Duplicate
                         </button>
                         <button
                           type="button"
@@ -918,7 +900,7 @@
                           popovertargetaction="hide"
                         >
                           <i class="icon icon-printer" aria-hidden="true"></i
-                          >พิมพ์ใบแพ็กสินค้า Print packing slip
+                          >Print packing slip
                         </button>
                         <hr />
                         <button
@@ -927,8 +909,8 @@
                           popovertarget="dd-row"
                           popovertargetaction="hide"
                         >
-                          <i class="icon icon-trash-2" aria-hidden="true"></i>ลบ
-                          Delete
+                          <i class="icon icon-trash-2" aria-hidden="true"></i
+                          >Delete
                         </button>
                       </div>
                     </aside>
@@ -943,15 +925,15 @@
                 hidden
               >
                 <pre><code>&lt;div class="item" data-variant="outline"&gt;
-  &lt;section&gt;&lt;h3&gt;คำสั่งซื้อ #1042 Order #1042&lt;/h3&gt;&lt;p&gt;฿2,480 · ชำระแล้ว Paid&lt;/p&gt;&lt;/section&gt;
+  &lt;section&gt;&lt;h3&gt;Order #1042&lt;/h3&gt;&lt;p&gt;$84.50 · Paid&lt;/p&gt;&lt;/section&gt;
   &lt;aside&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="dd-row" aria-label="การทำงานของคำสั่งซื้อ Order actions"&gt;&lt;i class="icon icon-ellipsis" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="dd-row" aria-label="Order actions"&gt;&lt;i class="icon icon-ellipsis" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
     &lt;div class="dropdown" id="dd-row" popover data-align="end"&gt;
-      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;แก้ไข Edit&lt;/button&gt;
-      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;ทำสำเนา Duplicate&lt;/button&gt;
-      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-printer" aria-hidden="true"&gt;&lt;/i&gt;พิมพ์ใบแพ็กสินค้า Print packing slip&lt;/button&gt;
+      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;Edit&lt;/button&gt;
+      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;Duplicate&lt;/button&gt;
+      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-printer" aria-hidden="true"&gt;&lt;/i&gt;Print packing slip&lt;/button&gt;
       &lt;hr&gt;
-      &lt;button type="button" data-variant="danger" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;ลบ Delete&lt;/button&gt;
+      &lt;button type="button" data-variant="danger" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;Delete&lt;/button&gt;
     &lt;/div&gt;
   &lt;/aside&gt;
 &lt;/div&gt;</code></pre>
@@ -959,15 +941,12 @@
             </div>
           </section>
           <section>
-            <h2>
-              หัวข้อ ปุ่มลัด และรายการที่ใช้ไม่ได้ Headings, shortcuts and a
-              disabled item
-            </h2>
+            <h2>Headings, shortcuts and a disabled item</h2>
             <p>
-              <code>&lt;h3&gt;</code> เป็นหัวข้อสีเทา
-              <code>&lt;kbd&gt;</code> ชิดขวา และ
-              <code>disabled</code> ทำให้รายการกดไม่ได้และข้ามด้วย Tab. A link
-              cannot be disabled: use
+              <code>&lt;h3&gt;</code> is a gray heading,
+              <code>&lt;kbd&gt;</code> sits at the end, and
+              <code>disabled</code> makes an item unclickable and skipped by
+              Tab. A link cannot be disabled: use
               <code>aria-<wbr />disabled=<wbr />"true"</code> and remove its
               <code>href</code>. The shortcut is only a label: wire the key
               yourself.
@@ -1002,8 +981,7 @@
               >
                 <div class="docs-preview">
                   <button type="button" class="btn" popovertarget="dd-account">
-                    <i class="icon icon-user" aria-hidden="true"></i>บัญชี
-                    Account
+                    <i class="icon icon-user" aria-hidden="true"></i>Account
                   </button>
                   <div class="dropdown" id="dd-account" popover>
                     <h3>jane@example.com</h3>
@@ -1012,14 +990,14 @@
                       popovertarget="dd-account"
                       popovertargetaction="hide"
                     >
-                      โปรไฟล์ Profile<kbd>⇧⌘P</kbd>
+                      Profile<kbd>⇧⌘P</kbd>
                     </button>
                     <button
                       type="button"
                       popovertarget="dd-account"
                       popovertargetaction="hide"
                     >
-                      การชำระเงิน Billing<kbd>⌘B</kbd>
+                      Billing<kbd>⌘B</kbd>
                     </button>
                     <button type="button" disabled>API keys</button>
                     <hr />
@@ -1029,7 +1007,7 @@
                       popovertarget="dd-account"
                       popovertargetaction="hide"
                     >
-                      ออกจากระบบ Sign out<kbd>⇧⌘Q</kbd>
+                      Sign out<kbd>⇧⌘Q</kbd>
                     </button>
                   </div>
                 </div>
@@ -1041,25 +1019,22 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-account"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;บัญชี Account&lt;/button&gt;
+                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-account"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;Account&lt;/button&gt;
 &lt;div class="dropdown" id="dd-account" popover&gt;
   &lt;h3&gt;jane@example.com&lt;/h3&gt;
-  &lt;button type="button" popovertarget="dd-account" popovertargetaction="hide"&gt;โปรไฟล์ Profile&lt;kbd&gt;⇧⌘P&lt;/kbd&gt;&lt;/button&gt;
-  &lt;button type="button" popovertarget="dd-account" popovertargetaction="hide"&gt;การชำระเงิน Billing&lt;kbd&gt;⌘B&lt;/kbd&gt;&lt;/button&gt;
+  &lt;button type="button" popovertarget="dd-account" popovertargetaction="hide"&gt;Profile&lt;kbd&gt;⇧⌘P&lt;/kbd&gt;&lt;/button&gt;
+  &lt;button type="button" popovertarget="dd-account" popovertargetaction="hide"&gt;Billing&lt;kbd&gt;⌘B&lt;/kbd&gt;&lt;/button&gt;
   &lt;button type="button" disabled&gt;API keys&lt;/button&gt;
   &lt;hr&gt;
-  &lt;button type="button" data-variant="danger" popovertarget="dd-account" popovertargetaction="hide"&gt;ออกจากระบบ Sign out&lt;kbd&gt;⇧⌘Q&lt;/kbd&gt;&lt;/button&gt;
+  &lt;button type="button" data-variant="danger" popovertarget="dd-account" popovertargetaction="hide"&gt;Sign out&lt;kbd&gt;⇧⌘Q&lt;/kbd&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              รายการ checkbox: เลือกคอลัมน์ที่จะแสดง Checkbox items: choose
-              which columns to show
-            </h2>
+            <h2>Checkbox items: choose which columns to show</h2>
             <p>
-              ใช้ <code>&lt;input type=<wbr />"checkbox"&gt;</code> ใน
+              Use <code>&lt;input type=<wbr />"checkbox"&gt;</code> inside a
               <code>&lt;label&gt;</code>. Native checkboxes: Space ticks the
               focused one, the menu stays open, and the page listens for
               <code>change</code> and reads <code>checked</code>.
@@ -1094,10 +1069,10 @@
               >
                 <div class="docs-preview">
                   <button type="button" class="btn" popovertarget="dd-columns">
-                    คอลัมน์ Columns
+                    Columns
                   </button>
                   <div class="dropdown" id="dd-columns" popover>
-                    <h3>แสดงคอลัมน์ Show columns</h3>
+                    <h3>Show columns</h3>
                     <label
                       ><input
                         type="checkbox"
@@ -1105,7 +1080,7 @@
                         value="variants"
                         checked
                       />
-                      ตัวเลือก Variants</label
+                      Variants</label
                     >
                     <label
                       ><input
@@ -1114,11 +1089,11 @@
                         value="visibility"
                         checked
                       />
-                      การแสดงผล Visibility</label
+                      Visibility</label
                     >
                     <label
                       ><input type="checkbox" name="columns" value="ranking" />
-                      อันดับ Ranking</label
+                      Ranking</label
                     >
                   </div>
                 </div>
@@ -1130,22 +1105,22 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-columns"&gt;คอลัมน์ Columns&lt;/button&gt;
+                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-columns"&gt;Columns&lt;/button&gt;
 &lt;div class="dropdown" id="dd-columns" popover&gt;
-  &lt;h3&gt;แสดงคอลัมน์ Show columns&lt;/h3&gt;
-  &lt;label&gt;&lt;input type="checkbox" name="columns" value="variants" checked&gt; ตัวเลือก Variants&lt;/label&gt;
-  &lt;label&gt;&lt;input type="checkbox" name="columns" value="visibility" checked&gt; การแสดงผล Visibility&lt;/label&gt;
-  &lt;label&gt;&lt;input type="checkbox" name="columns" value="ranking"&gt; อันดับ Ranking&lt;/label&gt;
+  &lt;h3&gt;Show columns&lt;/h3&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="columns" value="variants" checked&gt; Variants&lt;/label&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="columns" value="visibility" checked&gt; Visibility&lt;/label&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="columns" value="ranking"&gt; Ranking&lt;/label&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>รายการ radio: เลือกได้หนึ่งอย่าง Radio items: choose one</h2>
+            <h2>Radio items: choose one</h2>
             <p>
-              ใช้ <code>&lt;input type=<wbr />"radio"&gt;</code> ที่มี
-              <code>name</code> เดียวกัน. The arrow keys move the choice within
-              the group, as in any radio group.
+              Use <code>&lt;input type=<wbr />"radio"&gt;</code> with the same
+              <code>name</code>. The arrow keys move the choice within the
+              group, as in any radio group.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -1177,10 +1152,10 @@
               >
                 <div class="docs-preview">
                   <button type="button" class="btn" popovertarget="dd-sort">
-                    เรียงตาม Sort by
+                    Sort by
                   </button>
                   <div class="dropdown" id="dd-sort" popover>
-                    <h3>เรียงตาม Sort by</h3>
+                    <h3>Sort by</h3>
                     <label
                       ><input
                         type="radio"
@@ -1188,15 +1163,15 @@
                         value="newest"
                         checked
                       />
-                      ใหม่สุด Newest</label
+                      Newest</label
                     >
                     <label
                       ><input type="radio" name="dd-sort" value="oldest" />
-                      เก่าสุด Oldest</label
+                      Oldest</label
                     >
                     <label
-                      ><input type="radio" name="dd-sort" value="total" />
-                      ยอดรวม Order total</label
+                      ><input type="radio" name="dd-sort" value="total" /> Order
+                      total</label
                     >
                   </div>
                 </div>
@@ -1208,12 +1183,12 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-sort"&gt;เรียงตาม Sort by&lt;/button&gt;
+                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-sort"&gt;Sort by&lt;/button&gt;
 &lt;div class="dropdown" id="dd-sort" popover&gt;
-  &lt;h3&gt;เรียงตาม Sort by&lt;/h3&gt;
-  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="newest" checked&gt; ใหม่สุด Newest&lt;/label&gt;
-  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="oldest"&gt; เก่าสุด Oldest&lt;/label&gt;
-  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="total"&gt; ยอดรวม Order total&lt;/label&gt;
+  &lt;h3&gt;Sort by&lt;/h3&gt;
+  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="newest" checked&gt; Newest&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="oldest"&gt; Oldest&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="total"&gt; Order total&lt;/label&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
@@ -1236,21 +1211,21 @@
                       <code>showPopover(<wbr />)</code>
                     </td>
                     <td>method</td>
-                    <td>เปิดเมนู. Opens the menu.</td>
+                    <td>Opens the menu.</td>
                   </tr>
                   <tr>
                     <td>
                       <code>hidePopover(<wbr />)</code>
                     </td>
                     <td>method</td>
-                    <td>ปิดเมนู. Closes the menu.</td>
+                    <td>Closes the menu.</td>
                   </tr>
                   <tr>
                     <td>
                       <code>togglePopover(<wbr />force?)</code>
                     </td>
                     <td>method</td>
-                    <td>สลับ. Opens it when closed, closes it when open.</td>
+                    <td>Opens it when closed, closes it when open.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1272,24 +1247,18 @@
                       <code>newState</code>: <code>"open"</code> /
                       <code>"closed"</code>
                     </td>
-                    <td>
-                      บนเมนู หลังเปิดหรือปิด. On the menu, after it opens or
-                      closes.
-                    </td>
+                    <td>On the menu, after it opens or closes.</td>
                   </tr>
                   <tr>
                     <td><code>click</code></td>
                     <td>none</td>
-                    <td>
-                      บนรายการ: ทำงานตามรายการ. On an item: do its action.
-                    </td>
+                    <td>On an item: do its action.</td>
                   </tr>
                   <tr>
                     <td><code>change</code></td>
                     <td>none</td>
                     <td>
-                      บน checkbox หรือ radio: อ่าน <code>checked</code>. On a
-                      checkbox or radio item.
+                      On a checkbox or radio item: read <code>checked</code>.
                     </td>
                   </tr>
                 </tbody>
@@ -1308,38 +1277,30 @@
                   <tr>
                     <td><kbd>Enter</kbd> / <kbd>Space</kbd></td>
                     <td>
-                      บนปุ่ม: เปิดหรือปิดเมนู. On the button: opens or closes
-                      the menu. On an item: chooses it.
+                      On the button: opens or closes the menu. On an item:
+                      chooses it.
                     </td>
                   </tr>
                   <tr>
                     <td><kbd>Tab</kbd> / <kbd>Shift Tab</kbd></td>
                     <td>
-                      ไปยังรายการถัดไปหรือก่อนหน้า
-                      (เมนูอยู่ถัดจากปุ่มในลำดับโฟกัส). Moves through the items;
-                      the menu comes right after its button in the focus order.
+                      Moves through the items; the menu comes right after its
+                      button in the focus order.
                     </td>
                   </tr>
                   <tr>
                     <td><kbd>↑</kbd> <kbd>↓</kbd></td>
-                    <td>
-                      ในกลุ่ม radio: เปลี่ยนตัวเลือก. In a radio group: moves
-                      the choice.
-                    </td>
+                    <td>In a radio group: moves the choice.</td>
                   </tr>
                   <tr>
                     <td><kbd>Esc</kbd></td>
-                    <td>
-                      ปิดเมนูและคืนโฟกัสให้ปุ่ม. Closes the menu and returns
-                      focus to the button.
-                    </td>
+                    <td>Closes the menu and returns focus to the button.</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p>
-              ไม่มี JS และไม่ใช้ <code>role="menu"</code>:
-              รายการเป็นปุ่มและลิงก์ธรรมดา จึงใช้ Tab แทนลูกศร. No script and no
+              No script and no
               <code>role="menu"</code>: items are plain buttons and links, so
               Tab moves between them instead of the arrow keys.
             </p>
@@ -1361,17 +1322,13 @@
                       <code>class=<wbr />"dropdown"</code>
                     </td>
                     <td>on the menu</td>
-                    <td>
-                      สไตล์เมนู. The component: a bordered list at least 10rem
-                      wide.
-                    </td>
+                    <td>The component: a bordered list at least 10rem wide.</td>
                   </tr>
                   <tr>
                     <td><code>popover + id</code></td>
                     <td><code>auto</code> (default)</td>
                     <td>
-                      ทำให้เป็นป๊อปโอเวอร์. Closes on an outside click, Escape,
-                      or another menu.
+                      Closes on an outside click, Escape, or another menu.
                     </td>
                   </tr>
                   <tr>
@@ -1379,10 +1336,7 @@
                       <code>popover<wbr />target</code>
                     </td>
                     <td>the menu's id</td>
-                    <td>
-                      บนปุ่มที่เปิด. On the button; the menu is placed against
-                      it.
-                    </td>
+                    <td>On the button; the menu is placed against it.</td>
                   </tr>
                   <tr>
                     <td>
@@ -1392,10 +1346,7 @@
                       <code>hide</code> on an item,
                       <code>toggle</code> (default) on the button
                     </td>
-                    <td>
-                      บนรายการ เพื่อปิดเมนูหลังคลิก. On an item button: closes
-                      the menu on click.
-                    </td>
+                    <td>On an item button: closes the menu on click.</td>
                   </tr>
                   <tr>
                     <td>
@@ -1405,7 +1356,10 @@
                       none or <code>bottom</code> (default), <code>top</code>,
                       <code>left</code>, <code>right</code>
                     </td>
-                    <td>ด้านของปุ่มที่เมนูเปิด. Flips when it does not fit.</td>
+                    <td>
+                      The side of the button the menu opens on. Flips when it
+                      does not fit.
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -1415,14 +1369,12 @@
                       none or <code>start</code> (default), <code>center</code>,
                       <code>end</code>
                     </td>
-                    <td>
-                      จัดแนวกับปุ่ม. How the menu lines up with the button.
-                    </td>
+                    <td>How the menu lines up with the button.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; button, &gt; a</code></td>
                     <td>items</td>
-                    <td>รายการ. An icon before the text is gray.</td>
+                    <td>Menu items. An icon before the text is gray.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; label &gt; input</code></td>
@@ -1430,29 +1382,22 @@
                       <code>type=<wbr />"checkbox"</code> or
                       <code>type=<wbr />"radio"</code>
                     </td>
-                    <td>
-                      รายการเลือก. A checkbox or radio item; the menu stays
-                      open.
-                    </td>
+                    <td>A checkbox or radio item; the menu stays open.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; h2, &gt; h3, &gt; h4</code></td>
                     <td>text</td>
-                    <td>
-                      หัวข้อกลุ่ม สีเทา ตัวเล็ก. A small gray group heading.
-                    </td>
+                    <td>A small gray group heading.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; hr</code></td>
                     <td></td>
-                    <td>เส้นคั่นกลุ่ม. Separates groups.</td>
+                    <td>Separates groups.</td>
                   </tr>
                   <tr>
                     <td><code>kbd</code></td>
                     <td>inside an item</td>
-                    <td>
-                      ปุ่มลัด ชิดขวา. A shortcut label at the end of the item.
-                    </td>
+                    <td>A shortcut label at the end of the item.</td>
                   </tr>
                   <tr>
                     <td>
@@ -1462,17 +1407,14 @@
                       <code>disabled</code> on a button or input,
                       <code>aria-<wbr />disabled=<wbr />"true"</code> on a link
                     </td>
-                    <td>
-                      รายการที่ใช้ไม่ได้. Grayed out; a disabled button is
-                      skipped by Tab.
-                    </td>
+                    <td>Grayed out; a disabled button is skipped by Tab.</td>
                   </tr>
                   <tr>
                     <td>
                       <code>data-<wbr />variant</code>
                     </td>
                     <td><code>danger</code></td>
-                    <td>บนรายการที่ทำลายข้อมูล. A destructive item, in red.</td>
+                    <td>A destructive item, in red.</td>
                   </tr>
                 </tbody>
               </table>
