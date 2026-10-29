@@ -7,7 +7,7 @@ const notFound = () => new Response("Not found", { status: 404 });
 
 const server = Bun.serve({
   hostname: "127.0.0.1",
-  port: Number(Bun.env.PORT ?? 3000),
+  port: Number(Bun.env.PORT ?? 5477),
   async fetch(req) {
     let path: string;
     try {
