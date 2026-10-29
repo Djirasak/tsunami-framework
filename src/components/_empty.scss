@@ -1,30 +1,54 @@
-// Empty state: centered icon, title, text and actions.
+// Empty state: <header> (figure with an icon, h3, p) then <footer> (a row of buttons, then a quiet link).
 @layer components {
   :where(.empty) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-5);
     padding: var(--space-6) var(--space-4);
     text-align: center;
   }
 
-  :where(.empty > .icon) {
-    margin-bottom: var(--space-2);
-    color: var(--muted);
-    font-size: 1.5rem;
+  :where(.empty > header) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  :where(.empty figure) {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 0 var(--space-2);
+    border-radius: var(--radius-md);
+    background: var(--subtle);
+    color: var(--fg);
+    font-size: 1.25rem;
+  }
+
+  :where(.empty h3) {
+    font-size: var(--text-lg);
+    font-weight: 600;
   }
 
   :where(.empty p) {
-    max-width: 32rem;
+    max-width: 28rem;
     color: var(--muted);
   }
 
-  :where(.empty > div) {
+  :where(.empty > footer) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  :where(.empty > footer > div) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--space-2);
-    margin-top: var(--space-2);
   }
 }

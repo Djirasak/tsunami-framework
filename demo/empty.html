@@ -313,11 +313,19 @@
         <main class="docs-main">
           <header class="page-header">
             <div>
-              <h1>Empty state</h1>
-              <p>บอกว่ายังไม่มีข้อมูลและควรทำอะไรต่อ</p>
+              <h1>Empty</h1>
+              <p>
+                สถานะว่างเมื่อยังไม่มีข้อมูล: ไอคอน หัวข้อ คำอธิบาย ปุ่มเริ่มต้น
+                และลิงก์อ่านเพิ่ม
+              </p>
             </div>
           </header>
           <section>
+            <h2>การใช้งาน Usage</h2>
+            <p>
+              <code>&lt;header&gt;</code> มี figure ไอคอน หัวข้อและคำอธิบาย
+              <code>&lt;footer&gt;</code> มีแถวปุ่มแล้วตามด้วยลิงก์
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -347,20 +355,36 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="empty">
-                    <i class="icon icon-inbox" aria-hidden="true"></i>
-                    <h3>ยังไม่มีคำสั่งซื้อ No orders yet</h3>
-                    <p>
-                      เมื่อลูกค้าสั่งซื้อ รายการจะแสดงที่นี่ Orders appear here
-                      once customers check out.
-                    </p>
-                    <div>
-                      <button type="button" class="btn">นำเข้า Import</button>
-                      <button type="button" class="btn" data-variant="primary">
-                        สร้างคำสั่งซื้อ Create order
-                      </button>
-                    </div>
-                  </div>
+                  <section class="empty">
+                    <header>
+                      <figure>
+                        <i class="icon icon-package" aria-hidden="true"></i>
+                      </figure>
+                      <h3>ยังไม่มีสินค้า No products yet</h3>
+                      <p>
+                        คุณยังไม่ได้เพิ่มสินค้า
+                        เริ่มด้วยการสร้างสินค้าชิ้นแรกหรือนำเข้าจากไฟล์ CSV
+                      </p>
+                    </header>
+                    <footer>
+                      <div>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          เพิ่มสินค้า Add product
+                        </button>
+                        <button type="button" class="btn">นำเข้า Import</button>
+                      </div>
+                      <a href="#" class="link" data-variant="muted"
+                        >อ่านเพิ่ม Learn more<i
+                          class="icon icon-arrow-up-right"
+                          aria-hidden="true"
+                        ></i
+                      ></a>
+                    </footer>
+                  </section>
                 </div>
               </div>
               <div
@@ -370,15 +394,20 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="empty"&gt;
-  &lt;i class="icon icon-inbox" aria-hidden="true"&gt;&lt;/i&gt;
-  &lt;h3&gt;ยังไม่มีคำสั่งซื้อ No orders yet&lt;/h3&gt;
-  &lt;p&gt;เมื่อลูกค้าสั่งซื้อ รายการจะแสดงที่นี่ Orders appear here once customers check out.&lt;/p&gt;
-  &lt;div&gt;
-    &lt;button type="button" class="btn"&gt;นำเข้า Import&lt;/button&gt;
-    &lt;button type="button" class="btn" data-variant="primary"&gt;สร้างคำสั่งซื้อ Create order&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+                <pre><code>&lt;section class="empty"&gt;
+  &lt;header&gt;
+    &lt;figure&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;h3&gt;ยังไม่มีสินค้า No products yet&lt;/h3&gt;
+    &lt;p&gt;คุณยังไม่ได้เพิ่มสินค้า เริ่มด้วยการสร้างสินค้าชิ้นแรกหรือนำเข้าจากไฟล์ CSV&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;div&gt;
+      &lt;button type="button" class="btn" data-variant="primary"&gt;เพิ่มสินค้า Add product&lt;/button&gt;
+      &lt;button type="button" class="btn"&gt;นำเข้า Import&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;a href="#" class="link" data-variant="muted"&gt;อ่านเพิ่ม Learn more&lt;i class="icon icon-arrow-up-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/footer&gt;
+&lt;/section&gt;</code></pre>
               </div>
             </div>
           </section>
@@ -395,14 +424,52 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>&gt; .icon</code></td>
+                    <td><code>.empty</code></td>
                     <td></td>
-                    <td>ไอคอนขนาด 1.5rem สีเทา</td>
+                    <td>
+                      กล่องกึ่งกลาง ระยะ 32px บนล่าง ใช้กับ
+                      <code>&lt;section&gt;</code> หรือ <code>&lt;div&gt;</code>
+                    </td>
                   </tr>
                   <tr>
-                    <td><code>&gt; div</code></td>
+                    <td><code>&gt; header</code></td>
                     <td></td>
-                    <td>กลุ่มปุ่ม action</td>
+                    <td>กลุ่มไอคอน หัวข้อ และคำอธิบาย</td>
+                  </tr>
+                  <tr>
+                    <td><code>figure</code></td>
+                    <td></td>
+                    <td>
+                      กรอบไอคอน 40px พื้น subtle ใส่ <code>.icon</code> ข้างใน
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>h3</code></td>
+                    <td></td>
+                    <td>หัวข้อ 16px ตัวหนา</td>
+                  </tr>
+                  <tr>
+                    <td><code>p</code></td>
+                    <td></td>
+                    <td>คำอธิบายสีจาง กว้างไม่เกิน 28rem</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer</code></td>
+                    <td></td>
+                    <td>ไม่บังคับ ปุ่มและลิงก์เรียงตามแนวตั้ง</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer &gt; div</code></td>
+                    <td></td>
+                    <td>
+                      แถวปุ่ม ตัดบรรทัดได้ ปุ่มหลักใช้
+                      <code>data-variant="primary"</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer &gt; a.link</code></td>
+                    <td><code>data-variant="muted"</code></td>
+                    <td>ลิงก์อ่านเพิ่มสีจาง ใต้แถวปุ่ม</td>
                   </tr>
                 </tbody>
               </table>
