@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,20 +343,17 @@
             <div>
               <h1>Progress</h1>
               <p>
-                แถบความคืบหน้า: track หนึ่งเส้นกับ span หนึ่งตัวต่อหนึ่งส่วน
-                ความกว้างของ span คือสัดส่วนของมัน
+                A progress bar: one track with one span per part. A span's width
+                is its share.
               </p>
             </div>
           </header>
           <section>
-            <h2>
-              โครงสร้าง: track และ span The markup is a track and a span for
-              each part
-            </h2>
+            <h2>The markup is a track and a span for each part</h2>
             <p>
-              ความกว้าง inline ของ span คือส่วนของมันบน track
-              แถบที่แสดงค่าเดียวใส่ <code>role="progressbar"</code> กับ
-              <code>aria-valuenow</code> บน track
+              The span's inline width is its part of the track. A bar that shows
+              a single value gets <code>role="progressbar"</code> and
+              <code>aria-valuenow</code> on the track.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -394,7 +387,7 @@
                   <div
                     class="progress"
                     role="progressbar"
-                    aria-label="กำลังอัปโหลด Uploading"
+                    aria-label="Uploading"
                     aria-valuenow="66"
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -410,14 +403,16 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="progress" role="progressbar" aria-label="กำลังอัปโหลด Uploading" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+                <pre><code>&lt;div class="progress" role="progressbar" aria-label="Uploading" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
   &lt;span style="width: 66%"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ความสูง data-size: sm 4px, ปกติ 6px, lg 12px, xl 32px</h2>
+            <h2>
+              Height with data-size: sm 4px, default 6px, lg 12px, xl 32px
+            </h2>
 
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -453,7 +448,7 @@
                       class="progress"
                       data-size="sm"
                       role="progressbar"
-                      aria-label="เล็ก Small, 4 of 6 steps"
+                      aria-label="Small, 4 of 6 steps"
                       aria-valuenow="66"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -463,7 +458,7 @@
                     <div
                       class="progress"
                       role="progressbar"
-                      aria-label="ปกติ Default, 4 of 6 steps"
+                      aria-label="Default, 4 of 6 steps"
                       aria-valuenow="66"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -474,7 +469,7 @@
                       class="progress"
                       data-size="lg"
                       role="progressbar"
-                      aria-label="ใหญ่ Large, 4 of 6 steps"
+                      aria-label="Large, 4 of 6 steps"
                       aria-valuenow="66"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -485,7 +480,7 @@
                       class="progress"
                       data-size="xl"
                       role="progressbar"
-                      aria-label="ใหญ่มาก Extra large, 4 of 6 steps"
+                      aria-label="Extra large, 4 of 6 steps"
                       aria-valuenow="66"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -503,16 +498,16 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack"&gt;
-  &lt;div class="progress" data-size="sm" role="progressbar" aria-label="เล็ก Small, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" data-size="sm" role="progressbar" aria-label="Small, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 66%"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="progress" role="progressbar" aria-label="ปกติ Default, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Default, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 66%"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="progress" data-size="lg" role="progressbar" aria-label="ใหญ่ Large, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" data-size="lg" role="progressbar" aria-label="Large, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 66%"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="progress" data-size="xl" role="progressbar" aria-label="ใหญ่มาก Extra large, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" data-size="xl" role="progressbar" aria-label="Extra large, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 66%"&gt;&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -520,10 +515,11 @@
             </div>
           </section>
           <section>
-            <h2>สีของแต่ละส่วน data-variant on a span sets its colour</h2>
+            <h2>data-variant on a span sets its colour</h2>
             <p>
-              ไม่ใส่ = สีตัวอักษรหลัก (accent ใช้เฉพาะลิงก์และปุ่มหลัก)
-              ที่เหลือคือ ok, warning, info และ danger
+              Without it, the span uses the main text colour (accent is only for
+              links and primary buttons). The others are ok, warning, info and
+              danger.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -558,7 +554,7 @@
                     <div
                       class="progress"
                       role="progressbar"
-                      aria-label="นำเข้าสินค้า Product import"
+                      aria-label="Product import"
                       aria-valuenow="45"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -568,7 +564,7 @@
                     <div
                       class="progress"
                       role="progressbar"
-                      aria-label="พื้นที่ที่ใช้ Storage used"
+                      aria-label="Storage used"
                       aria-valuenow="30"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -578,7 +574,7 @@
                     <div
                       class="progress"
                       role="progressbar"
-                      aria-label="พื้นที่ที่ใช้ Storage used"
+                      aria-label="Storage used"
                       aria-valuenow="78"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -588,7 +584,7 @@
                     <div
                       class="progress"
                       role="progressbar"
-                      aria-label="ซิงก์สต็อก Stock sync"
+                      aria-label="Stock sync"
                       aria-valuenow="55"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -598,7 +594,7 @@
                     <div
                       class="progress"
                       role="progressbar"
-                      aria-label="พื้นที่ที่ใช้ Storage used"
+                      aria-label="Storage used"
                       aria-valuenow="96"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -616,19 +612,19 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack"&gt;
-  &lt;div class="progress" role="progressbar" aria-label="นำเข้าสินค้า Product import" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Product import" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 45%"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="progress" role="progressbar" aria-label="พื้นที่ที่ใช้ Storage used" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Storage used" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 30%" data-variant="ok"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="progress" role="progressbar" aria-label="พื้นที่ที่ใช้ Storage used" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Storage used" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 78%" data-variant="warning"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="progress" role="progressbar" aria-label="ซิงก์สต็อก Stock sync" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Stock sync" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 55%" data-variant="info"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="progress" role="progressbar" aria-label="พื้นที่ที่ใช้ Storage used" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Storage used" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 96%" data-variant="danger"&gt;&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -636,12 +632,12 @@
             </div>
           </section>
           <section>
-            <h2>ชื่อและค่าเหนือแถบ A label and the value above the track</h2>
+            <h2>A label and the value above the track</h2>
             <p>
-              ใส่ <code>&lt;header&gt;</code> ไว้ก่อน track ทันที: ชื่อทางซ้าย
-              ค่าทางขวา โยงชื่อด้วย
-              <code>aria-labelledby</code> และค่าที่อ่านได้ด้วย
-              <code>aria-valuetext</code>
+              Put a <code>&lt;header&gt;</code> right before the track, with the
+              label on the left and the value on the right. Link the label with
+              <code>aria-labelledby</code> and give a readable value with
+              <code>aria-valuetext</code>.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -674,10 +670,8 @@
                 <div class="docs-preview">
                   <div>
                     <header>
-                      <span id="pg-storage-label"
-                        >พื้นที่เก็บรูปสินค้า Storage</span
-                      >
-                      <span>7.8 GB จาก 10 GB</span>
+                      <span id="pg-storage-label">Product image storage</span>
+                      <span>7.8 GB of 10 GB</span>
                     </header>
                     <div
                       class="progress"
@@ -686,7 +680,7 @@
                       aria-valuenow="78"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                      aria-valuetext="7.8 GB จาก 10 GB"
+                      aria-valuetext="7.8 GB of 10 GB"
                     >
                       <span style="width: 78%" data-variant="warning"></span>
                     </div>
@@ -702,10 +696,10 @@
               >
                 <pre><code>&lt;div&gt;
   &lt;header&gt;
-    &lt;span id="pg-storage-label"&gt;พื้นที่เก็บรูปสินค้า Storage&lt;/span&gt;
-    &lt;span&gt;7.8 GB จาก 10 GB&lt;/span&gt;
+    &lt;span id="pg-storage-label"&gt;Product image storage&lt;/span&gt;
+    &lt;span&gt;7.8 GB of 10 GB&lt;/span&gt;
   &lt;/header&gt;
-  &lt;div class="progress" role="progressbar" aria-labelledby="pg-storage-label" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-valuetext="7.8 GB จาก 10 GB"&gt;
+  &lt;div class="progress" role="progressbar" aria-labelledby="pg-storage-label" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-valuetext="7.8 GB of 10 GB"&gt;
     &lt;span style="width: 78%" data-variant="warning"&gt;&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -713,11 +707,12 @@
             </div>
           </section>
           <section>
-            <h2>หลาย span แบ่ง track Several spans divide the track</h2>
+            <h2>Several spans divide the track</h2>
             <p>
-              ส่วนที่ไม่ใส่สีจะไล่จากสีเข้มไปจาง แถบที่แบ่งหลายส่วนใช้
-              <code>role="img"</code> และ <code>aria-label</code> ที่บอกทุกส่วน
-              ใช้ไม่เกิน 5 ส่วน
+              Parts without a colour go from dark to light. A bar split into
+              parts uses <code>role="img"</code> and an
+              <code>aria-label</code> that names every part. Use at most 5
+              parts.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -752,7 +747,7 @@
                     class="progress"
                     data-size="lg"
                     role="img"
-                    aria-label="คำสั่งซื้อตามการจัดส่ง Orders by fulfillment: 62% fulfilled, 23% processing, 15% unfulfilled"
+                    aria-label="Orders by fulfillment: 62% fulfilled, 23% processing, 15% unfulfilled"
                   >
                     <span style="width: 62%"></span>
                     <span style="width: 23%"></span>
@@ -767,7 +762,7 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="progress" data-size="lg" role="img" aria-label="คำสั่งซื้อตามการจัดส่ง Orders by fulfillment: 62% fulfilled, 23% processing, 15% unfulfilled"&gt;
+                <pre><code>&lt;div class="progress" data-size="lg" role="img" aria-label="Orders by fulfillment: 62% fulfilled, 23% processing, 15% unfulfilled"&gt;
   &lt;span style="width: 62%"&gt;&lt;/span&gt;
   &lt;span style="width: 23%"&gt;&lt;/span&gt;
   &lt;span style="width: 15%"&gt;&lt;/span&gt;
@@ -776,10 +771,10 @@
             </div>
           </section>
           <section>
-            <h2>ส่วนว่าง data-variant="empty" เป็นตัวเว้น</h2>
+            <h2>data-variant="empty" leaves a gap</h2>
             <p>
-              span ที่เป็น <code>empty</code> ไม่วาดอะไร ส่วนถัดไปจึงเริ่มกลาง
-              track เหมาะกับการแสดงช่วงหรือค่าเทียบกับจุดกึ่งกลาง
+              An <code>empty</code> span draws nothing, so the next part starts
+              mid-track. Good for ranges or values compared with a midpoint.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -814,7 +809,7 @@
                     <div
                       class="progress"
                       role="img"
-                      aria-label="คะแนนความเสี่ยงเพิ่มขึ้น 25.3 เท่า Risk score raised 25.3 times"
+                      aria-label="Risk score raised 25.3 times"
                     >
                       <span data-variant="empty" style="width: 50%"></span>
                       <span data-variant="danger" style="width: 35%"></span>
@@ -822,7 +817,7 @@
                     <div
                       class="progress"
                       role="img"
-                      aria-label="คะแนนความเสี่ยงลดลงเหลือ 0.4 เท่า Risk score lowered to 0.4 times"
+                      aria-label="Risk score lowered to 0.4 times"
                     >
                       <span data-variant="empty" style="width: 40%"></span>
                       <span data-variant="ok" style="width: 10%"></span>
@@ -838,11 +833,11 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack"&gt;
-  &lt;div class="progress" role="img" aria-label="คะแนนความเสี่ยงเพิ่มขึ้น 25.3 เท่า Risk score raised 25.3 times"&gt;
+  &lt;div class="progress" role="img" aria-label="Risk score raised 25.3 times"&gt;
     &lt;span data-variant="empty" style="width: 50%"&gt;&lt;/span&gt;
     &lt;span data-variant="danger" style="width: 35%"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="progress" role="img" aria-label="คะแนนความเสี่ยงลดลงเหลือ 0.4 เท่า Risk score lowered to 0.4 times"&gt;
+  &lt;div class="progress" role="img" aria-label="Risk score lowered to 0.4 times"&gt;
     &lt;span data-variant="empty" style="width: 40%"&gt;&lt;/span&gt;
     &lt;span data-variant="ok" style="width: 10%"&gt;&lt;/span&gt;
   &lt;/div&gt;
@@ -852,13 +847,13 @@
           </section>
           <section>
             <h2>
-              แถบ xl กับรายการด้านล่าง The extra large track with a list under
-              it shows how a total divides
+              The extra large track with a list under it shows how a total
+              divides
             </h2>
             <p>
-              <code>&lt;ul&gt;</code> ที่อยู่ต่อจาก track
-              ทันทีได้สีสัญลักษณ์ตรงกับส่วนลำดับเดียวกันอัตโนมัติ ตัวเลขอยู่ใน
-              span สุดท้ายของแต่ละแถว
+              A <code>&lt;ul&gt;</code> right after the track gets markers that
+              match the part in the same position. The number goes in the last
+              span of each row.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -891,15 +886,15 @@
                 <div class="docs-preview">
                   <div class="card">
                     <header>
-                      <h2>การยกเลิกตามเหตุผล Cancellations by reason</h2>
-                      <p>ยกเลิก 678 รายการใน 30 วันที่ผ่านมา</p>
+                      <h2>Cancellations by reason</h2>
+                      <p>678 cancellations in the last 30 days</p>
                     </header>
                     <section>
                       <div
                         class="progress"
                         data-size="xl"
                         role="img"
-                        aria-label="การยกเลิกตามเหตุผล: อื่น ๆ 60%, ตัดบัตรไม่ผ่าน 23%, ไม่พอใจคุณภาพ 9%, แพงเกินไป 5%, เปลี่ยนใจ 3%"
+                        aria-label="Cancellations by reason: other 60%, recurring payment declined 23%, not satisfied with quality 9%, too expensive 5%, changed my mind 3%"
                       >
                         <span style="width: 60%"></span>
                         <span style="width: 23%"></span>
@@ -908,26 +903,16 @@
                         <span style="width: 3%"></span>
                       </div>
                       <ul>
-                        <li><span>อื่น ๆ Other</span><span>60%</span></li>
+                        <li><span>Other</span><span>60%</span></li>
                         <li>
-                          <span
-                            >ตัดบัตรรายเดือนไม่ผ่าน Recurring payment
-                            declined</span
+                          <span>Recurring payment declined</span
                           ><span>23%</span>
                         </li>
                         <li>
-                          <span
-                            >ไม่พอใจคุณภาพสินค้า Not satisfied with
-                            quality</span
-                          ><span>9%</span>
+                          <span>Not satisfied with quality</span><span>9%</span>
                         </li>
-                        <li>
-                          <span>ราคาแพงเกินไป Too expensive</span
-                          ><span>5%</span>
-                        </li>
-                        <li>
-                          <span>เปลี่ยนใจ Changed my mind</span><span>3%</span>
-                        </li>
+                        <li><span>Too expensive</span><span>5%</span></li>
+                        <li><span>Changed my mind</span><span>3%</span></li>
                       </ul>
                     </section>
                   </div>
@@ -942,11 +927,11 @@
               >
                 <pre><code>&lt;div class="card"&gt;
   &lt;header&gt;
-    &lt;h2&gt;การยกเลิกตามเหตุผล Cancellations by reason&lt;/h2&gt;
-    &lt;p&gt;ยกเลิก 678 รายการใน 30 วันที่ผ่านมา&lt;/p&gt;
+    &lt;h2&gt;Cancellations by reason&lt;/h2&gt;
+    &lt;p&gt;678 cancellations in the last 30 days&lt;/p&gt;
   &lt;/header&gt;
   &lt;section&gt;
-    &lt;div class="progress" data-size="xl" role="img" aria-label="การยกเลิกตามเหตุผล: อื่น ๆ 60%, ตัดบัตรไม่ผ่าน 23%, ไม่พอใจคุณภาพ 9%, แพงเกินไป 5%, เปลี่ยนใจ 3%"&gt;
+    &lt;div class="progress" data-size="xl" role="img" aria-label="Cancellations by reason: other 60%, recurring payment declined 23%, not satisfied with quality 9%, too expensive 5%, changed my mind 3%"&gt;
       &lt;span style="width: 60%"&gt;&lt;/span&gt;
       &lt;span style="width: 23%"&gt;&lt;/span&gt;
       &lt;span style="width: 9%"&gt;&lt;/span&gt;
@@ -954,11 +939,11 @@
       &lt;span style="width: 3%"&gt;&lt;/span&gt;
     &lt;/div&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;span&gt;อื่น ๆ Other&lt;/span&gt;&lt;span&gt;60%&lt;/span&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;span&gt;ตัดบัตรรายเดือนไม่ผ่าน Recurring payment declined&lt;/span&gt;&lt;span&gt;23%&lt;/span&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;span&gt;ไม่พอใจคุณภาพสินค้า Not satisfied with quality&lt;/span&gt;&lt;span&gt;9%&lt;/span&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;span&gt;ราคาแพงเกินไป Too expensive&lt;/span&gt;&lt;span&gt;5%&lt;/span&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;span&gt;เปลี่ยนใจ Changed my mind&lt;/span&gt;&lt;span&gt;3%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Other&lt;/span&gt;&lt;span&gt;60%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Recurring payment declined&lt;/span&gt;&lt;span&gt;23%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Not satisfied with quality&lt;/span&gt;&lt;span&gt;9%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Too expensive&lt;/span&gt;&lt;span&gt;5%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Changed my mind&lt;/span&gt;&lt;span&gt;3%&lt;/span&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/section&gt;
 &lt;/div&gt;</code></pre>
@@ -967,12 +952,11 @@
           </section>
           <section>
             <h2>
-              หน้าเลื่อนแถบโดยตั้ง width และ aria-valuenow พร้อมกัน The page
-              moves the bar
+              The page moves the bar by setting width and aria-valuenow together
             </h2>
             <p>
-              ไม่มี JS ใน Tsunami สำหรับ progress หน้าตั้งค่าทั้งสองเอง
-              ตัวอย่างนี้ใช้สคริปต์สั้น ๆ ในหน้า
+              Tsunami has no JS for progress. The page sets both values itself.
+              This example uses a short inline script.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -1008,7 +992,7 @@
                       class="progress"
                       id="pg-import"
                       role="progressbar"
-                      aria-label="นำเข้าสินค้า Importing products"
+                      aria-label="Importing products"
                       aria-valuenow="10"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -1022,7 +1006,7 @@
                         data-size="sm"
                         id="pg-import-add"
                       >
-                        เพิ่ม Add 15%
+                        Add 15%
                       </button>
                     </div>
                   </div>
@@ -1049,11 +1033,11 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-gap="sm"&gt;
-  &lt;div class="progress" id="pg-import" role="progressbar" aria-label="นำเข้าสินค้า Importing products" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;div class="progress" id="pg-import" role="progressbar" aria-label="Importing products" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"&gt;
     &lt;span style="width: 10%"&gt;&lt;/span&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;button type="button" class="btn" data-size="sm" id="pg-import-add"&gt;เพิ่ม Add 15%&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="pg-import-add"&gt;Add 15%&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
@@ -1068,12 +1052,12 @@
             </div>
           </section>
           <section>
-            <h2>&lt;progress&gt; แบบ native</h2>
+            <h2>Native &lt;progress&gt;</h2>
             <p>
-              สำหรับค่าเดียวแบบง่าย ใช้
-              <code>&lt;progress class="progress"&gt;</code> ได้ ความหมาย
-              progressbar มาในตัว ใช้ <code>data-size</code> และ
-              <code>data-variant</code> บนตัว element
+              For a simple single value, you can use
+              <code>&lt;progress class="progress"&gt;</code>. It has progressbar
+              semantics built in. Put <code>data-size</code> and
+              <code>data-variant</code> on the element.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -1109,7 +1093,7 @@
                     data-variant="ok"
                     value="40"
                     max="100"
-                    aria-label="อัปโหลดรูป Uploading images"
+                    aria-label="Uploading images"
                   >
                     40%
                   </progress>
@@ -1122,7 +1106,7 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;progress class="progress" data-variant="ok" value="40" max="100" aria-label="อัปโหลดรูป Uploading images"&gt;40%&lt;/progress&gt;</code></pre>
+                <pre><code>&lt;progress class="progress" data-variant="ok" value="40" max="100" aria-label="Uploading images"&gt;40%&lt;/progress&gt;</code></pre>
               </div>
             </div>
           </section>
@@ -1142,40 +1126,40 @@
                     <td><code>.progress</code></td>
                     <td></td>
                     <td>
-                      track เต็มความกว้าง สูง 6px พื้น subtle มุม 4px ใช้กับ
-                      <code>&lt;div&gt;</code> (มี span) หรือ
-                      <code>&lt;progress&gt;</code>
+                      Full-width track, 6px tall, subtle fill, 4px corners. Use
+                      on a <code>&lt;div&gt;</code> (with spans) or a
+                      <code>&lt;progress&gt;</code>.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
                     <td>
-                      <code>sm</code>, <code>lg</code>, <code>xl</code> (ไม่ใส่
-                      = 6px)
+                      <code>sm</code>, <code>lg</code>, <code>xl</code> (omit
+                      for 6px)
                     </td>
                     <td>
-                      บน track: <code>sm</code> 4px <code>lg</code> 12px
-                      <code>xl</code> 32px
+                      On the track: <code>sm</code> 4px, <code>lg</code> 12px,
+                      <code>xl</code> 32px.
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; span</code></td>
                     <td></td>
                     <td>
-                      หนึ่งส่วนของ track ตั้ง
-                      <code>style="width: N%"</code> ส่วนที่ติดกันมีเส้นคั่น 2px
-                      ส่วนที่ไม่ใส่สีไล่จาก --fg ไปจาง (ลำดับ 1-5)
+                      One part of the track. Set <code>style="width: N%"</code>.
+                      Adjacent parts have a 2px divider. Parts without a colour
+                      fade from --fg (positions 1-5).
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; span[data-variant]</code></td>
                     <td>
                       <code>ok</code>, <code>warning</code>, <code>info</code>,
-                      <code>danger</code>, <code>empty</code> (ไม่ใส่ = --fg)
+                      <code>danger</code>, <code>empty</code> (omit for --fg)
                     </td>
                     <td>
-                      สีของส่วน <code>empty</code> ไม่วาด
-                      ใช้เป็นตัวเว้นให้ส่วนถัดไปเริ่มกลาง track
+                      The part's colour. <code>empty</code> draws nothing and
+                      acts as a spacer so the next part starts mid-track.
                     </td>
                   </tr>
                   <tr>
@@ -1184,69 +1168,71 @@
                       <code>ok</code>, <code>warning</code>, <code>info</code>,
                       <code>danger</code>
                     </td>
-                    <td>สีของ <code>&lt;progress&gt;</code> แบบ native</td>
+                    <td>Colour of a native <code>&lt;progress&gt;</code>.</td>
                   </tr>
                   <tr>
                     <td><code>role</code></td>
                     <td><code>progressbar</code>, <code>img</code></td>
                     <td>
-                      บน track: <code>progressbar</code> เมื่อแสดงค่าเดียว
-                      <code>img</code> เมื่อแบ่งหลายส่วน (พร้อม
-                      <code>aria-label</code> ที่บอกทุกส่วน)
+                      On the track: <code>progressbar</code> for a single value,
+                      <code>img</code> for a bar split into parts (with an
+                      <code>aria-label</code> that names every part).
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-valuenow</code></td>
-                    <td>ตัวเลข</td>
+                    <td>Number</td>
                     <td>
-                      บน track ที่เป็น progressbar ค่าปัจจุบัน ตั้งพร้อมกับ
-                      width ของ span
+                      The current value on a progressbar track. Set it together
+                      with the span's width.
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-valuemin</code></td>
                     <td><code>0</code></td>
-                    <td>ค่าต่ำสุด</td>
+                    <td>Minimum value.</td>
                   </tr>
                   <tr>
                     <td><code>aria-valuemax</code></td>
                     <td><code>100</code></td>
-                    <td>ค่าสูงสุด</td>
+                    <td>Maximum value.</td>
                   </tr>
                   <tr>
                     <td><code>aria-valuetext</code></td>
-                    <td>ข้อความ</td>
+                    <td>Text</td>
                     <td>
-                      ไม่บังคับ ค่าที่อ่านออกเสียง เช่น "7.8 GB จาก 10 GB"
+                      Optional. The value read aloud, e.g. "7.8 GB of 10 GB".
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-label</code></td>
-                    <td>ข้อความ</td>
-                    <td>ชื่อของแถบ</td>
+                    <td>Text</td>
+                    <td>Name of the bar.</td>
                   </tr>
                   <tr>
                     <td><code>aria-labelledby</code></td>
                     <td>id</td>
                     <td>
-                      ใช้แทน <code>aria-label</code> เมื่อชื่อแสดงอยู่ใน header
+                      Use instead of <code>aria-label</code> when the label is
+                      shown in the header.
                     </td>
                   </tr>
                   <tr>
                     <td><code>header + .progress</code></td>
                     <td></td>
                     <td>
-                      <code>&lt;header&gt;</code> ก่อน track: ลูกแรกเป็นชื่อ
-                      ลูกสุดท้ายเป็นค่าสีจางชิดขวา ตัวอักษร 12px
+                      <code>&lt;header&gt;</code> before the track. The first
+                      child is the label, the last child is the value, muted and
+                      right-aligned, 12px text.
                     </td>
                   </tr>
                   <tr>
                     <td><code>.progress + ul &gt; li</code></td>
                     <td></td>
                     <td>
-                      รายการต่อจาก track:
-                      แต่ละแถวได้สีสัญลักษณ์ของส่วนลำดับเดียวกัน span
-                      สุดท้ายในแถวคือค่า ชิดขวาตัวหนา
+                      List after the track. Each row gets the marker colour of
+                      the part in the same position. The last span in a row is
+                      the value, right-aligned and bold.
                     </td>
                   </tr>
                 </tbody>
@@ -1256,11 +1242,11 @@
           <section>
             <h2>API</h2>
             <p>
-              Progress ไม่มีสคริปต์ ไม่มีฟังก์ชันและอีเวนต์ หน้าตั้ง
-              <code>style.width</code> ของ span และ
-              <code>aria-valuenow</code> (และ <code>aria-valuetext</code> ถ้ามี)
-              พร้อมกัน ความกว้างที่เปลี่ยนจะเลื่อนอย่างนุ่มนวล 0.3 วินาที
-              (ไม่เคลื่อนไหวเมื่อ reduced motion)
+              Progress has no script, functions or events. The page sets the
+              span's <code>style.width</code> and
+              <code>aria-valuenow</code> (and <code>aria-valuetext</code> if
+              used) together. Width changes animate smoothly over 0.3s (no
+              animation with reduced motion).
             </p>
           </section>
         </main>

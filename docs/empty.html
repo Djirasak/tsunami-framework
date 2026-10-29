@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,16 +343,17 @@
             <div>
               <h1>Empty</h1>
               <p>
-                สถานะว่างเมื่อยังไม่มีข้อมูล: ไอคอน หัวข้อ คำอธิบาย ปุ่มเริ่มต้น
-                และลิงก์อ่านเพิ่ม
+                An empty state for when there is no data yet: icon, title,
+                description, starting actions and a learn-more link.
               </p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน Usage</h2>
+            <h2>Usage</h2>
             <p>
-              <code>&lt;header&gt;</code> มี figure ไอคอน หัวข้อและคำอธิบาย
-              <code>&lt;footer&gt;</code> มีแถวปุ่มแล้วตามด้วยลิงก์
+              <code>&lt;header&gt;</code> holds the icon figure, title and
+              description. <code>&lt;footer&gt;</code> holds a row of buttons
+              followed by a link.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -392,10 +389,10 @@
                       <figure>
                         <i class="icon icon-package" aria-hidden="true"></i>
                       </figure>
-                      <h3>ยังไม่มีสินค้า No products yet</h3>
+                      <h3>No products yet</h3>
                       <p>
-                        คุณยังไม่ได้เพิ่มสินค้า
-                        เริ่มด้วยการสร้างสินค้าชิ้นแรกหรือนำเข้าจากไฟล์ CSV
+                        You have not added any products. Create your first
+                        product or import them from a CSV file.
                       </p>
                     </header>
                     <footer>
@@ -405,12 +402,12 @@
                           class="btn"
                           data-variant="primary"
                         >
-                          เพิ่มสินค้า Add product
+                          Add product
                         </button>
-                        <button type="button" class="btn">นำเข้า Import</button>
+                        <button type="button" class="btn">Import</button>
                       </div>
                       <a href="#" class="link" data-variant="muted"
-                        >อ่านเพิ่ม Learn more<i
+                        >Learn more<i
                           class="icon icon-arrow-up-right"
                           aria-hidden="true"
                         ></i
@@ -429,15 +426,15 @@
                 <pre><code>&lt;section class="empty"&gt;
   &lt;header&gt;
     &lt;figure&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
-    &lt;h3&gt;ยังไม่มีสินค้า No products yet&lt;/h3&gt;
-    &lt;p&gt;คุณยังไม่ได้เพิ่มสินค้า เริ่มด้วยการสร้างสินค้าชิ้นแรกหรือนำเข้าจากไฟล์ CSV&lt;/p&gt;
+    &lt;h3&gt;No products yet&lt;/h3&gt;
+    &lt;p&gt;You have not added any products. Create your first product or import them from a CSV file.&lt;/p&gt;
   &lt;/header&gt;
   &lt;footer&gt;
     &lt;div&gt;
-      &lt;button type="button" class="btn" data-variant="primary"&gt;เพิ่มสินค้า Add product&lt;/button&gt;
-      &lt;button type="button" class="btn"&gt;นำเข้า Import&lt;/button&gt;
+      &lt;button type="button" class="btn" data-variant="primary"&gt;Add product&lt;/button&gt;
+      &lt;button type="button" class="btn"&gt;Import&lt;/button&gt;
     &lt;/div&gt;
-    &lt;a href="#" class="link" data-variant="muted"&gt;อ่านเพิ่ม Learn more&lt;i class="icon icon-arrow-up-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a href="#" class="link" data-variant="muted"&gt;Learn more&lt;i class="icon icon-arrow-up-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
   &lt;/footer&gt;
 &lt;/section&gt;</code></pre>
               </div>
@@ -459,49 +456,50 @@
                     <td><code>.empty</code></td>
                     <td></td>
                     <td>
-                      กล่องกึ่งกลาง ระยะ 32px บนล่าง ใช้กับ
-                      <code>&lt;section&gt;</code> หรือ <code>&lt;div&gt;</code>
+                      Centred box with 32px padding top and bottom. Use on
+                      <code>&lt;section&gt;</code> or <code>&lt;div&gt;</code>.
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; header</code></td>
                     <td></td>
-                    <td>กลุ่มไอคอน หัวข้อ และคำอธิบาย</td>
+                    <td>Groups the icon, title and description.</td>
                   </tr>
                   <tr>
                     <td><code>figure</code></td>
                     <td></td>
                     <td>
-                      กรอบไอคอน 40px พื้น subtle ใส่ <code>.icon</code> ข้างใน
+                      40px icon frame with a subtle fill. Put an
+                      <code>.icon</code> inside.
                     </td>
                   </tr>
                   <tr>
                     <td><code>h3</code></td>
                     <td></td>
-                    <td>หัวข้อ 16px ตัวหนา</td>
+                    <td>Title, 16px bold.</td>
                   </tr>
                   <tr>
                     <td><code>p</code></td>
                     <td></td>
-                    <td>คำอธิบายสีจาง กว้างไม่เกิน 28rem</td>
+                    <td>Muted description, max 28rem wide.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; footer</code></td>
                     <td></td>
-                    <td>ไม่บังคับ ปุ่มและลิงก์เรียงตามแนวตั้ง</td>
+                    <td>Optional. Stacks the buttons and link vertically.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; footer &gt; div</code></td>
                     <td></td>
                     <td>
-                      แถวปุ่ม ตัดบรรทัดได้ ปุ่มหลักใช้
+                      Button row that can wrap. The main button uses
                       <code>data-variant="primary"</code>
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; footer &gt; a.link</code></td>
                     <td><code>data-variant="muted"</code></td>
-                    <td>ลิงก์อ่านเพิ่มสีจาง ใต้แถวปุ่ม</td>
+                    <td>Muted learn-more link below the button row.</td>
                   </tr>
                 </tbody>
               </table>

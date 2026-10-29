@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,16 +343,16 @@
             <div>
               <h1>Badge</h1>
               <p>
-                ป้ายสถานะสั้น ๆ พื้นอ่อนตัวอักษรเข้ม ใช้ในตาราง หัวการ์ด
-                และข้างชื่อหน้า
+                A short status label with a light fill and dark text. Use it in
+                tables, card headers and next to page titles.
               </p>
             </div>
           </header>
           <section>
-            <h2>รูปแบบ Variants</h2>
+            <h2>Variants</h2>
             <p>
-              ค่าเริ่มต้นเป็นสีกลาง
-              <code>outline</code> สำหรับป้ายที่ไม่ใช่สถานะ เช่น ประเภทลูกค้า
+              The default is neutral. Use <code>outline</code> for labels that
+              are not a status, such as a customer type.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -388,20 +384,12 @@
               >
                 <div class="docs-preview">
                   <div class="stack" data-direction="row" data-gap="sm">
-                    <span class="badge">ฉบับร่าง Draft</span>
-                    <span class="badge" data-variant="outline"
-                      >ขายส่ง Wholesale</span
-                    >
-                    <span class="badge" data-variant="info"
-                      >กำลังดำเนินการ Processing</span
-                    >
-                    <span class="badge" data-variant="ok">ชำระแล้ว Paid</span>
-                    <span class="badge" data-variant="warning"
-                      >รอดำเนินการ Pending</span
-                    >
-                    <span class="badge" data-variant="danger"
-                      >คืนเงินแล้ว Refunded</span
-                    >
+                    <span class="badge">Draft</span>
+                    <span class="badge" data-variant="outline">Wholesale</span>
+                    <span class="badge" data-variant="info">Processing</span>
+                    <span class="badge" data-variant="ok">Paid</span>
+                    <span class="badge" data-variant="warning">Pending</span>
+                    <span class="badge" data-variant="danger">Refunded</span>
                   </div>
                 </div>
               </div>
@@ -413,18 +401,18 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;span class="badge"&gt;ฉบับร่าง Draft&lt;/span&gt;
-  &lt;span class="badge" data-variant="outline"&gt;ขายส่ง Wholesale&lt;/span&gt;
-  &lt;span class="badge" data-variant="info"&gt;กำลังดำเนินการ Processing&lt;/span&gt;
-  &lt;span class="badge" data-variant="ok"&gt;ชำระแล้ว Paid&lt;/span&gt;
-  &lt;span class="badge" data-variant="warning"&gt;รอดำเนินการ Pending&lt;/span&gt;
-  &lt;span class="badge" data-variant="danger"&gt;คืนเงินแล้ว Refunded&lt;/span&gt;
+  &lt;span class="badge"&gt;Draft&lt;/span&gt;
+  &lt;span class="badge" data-variant="outline"&gt;Wholesale&lt;/span&gt;
+  &lt;span class="badge" data-variant="info"&gt;Processing&lt;/span&gt;
+  &lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;
+  &lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;
+  &lt;span class="badge" data-variant="danger"&gt;Refunded&lt;/span&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ขนาดปกติและใหญ่ Sizes: default and lg</h2>
+            <h2>Sizes: default and lg</h2>
 
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -456,11 +444,9 @@
               >
                 <div class="docs-preview">
                   <div class="stack" data-direction="row" data-gap="sm">
-                    <span class="badge" data-variant="ok"
-                      >จัดส่งแล้ว Fulfilled</span
-                    >
+                    <span class="badge" data-variant="ok">Fulfilled</span>
                     <span class="badge" data-variant="ok" data-size="lg"
-                      >จัดส่งแล้ว Fulfilled</span
+                      >Fulfilled</span
                     >
                   </div>
                 </div>
@@ -473,15 +459,15 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;span class="badge" data-variant="ok"&gt;จัดส่งแล้ว Fulfilled&lt;/span&gt;
-  &lt;span class="badge" data-variant="ok" data-size="lg"&gt;จัดส่งแล้ว Fulfilled&lt;/span&gt;
+  &lt;span class="badge" data-variant="ok"&gt;Fulfilled&lt;/span&gt;
+  &lt;span class="badge" data-variant="ok" data-size="lg"&gt;Fulfilled&lt;/span&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>พร้อมไอคอน With an icon</h2>
-            <p>ไอคอนอยู่หน้าข้อความ ใช้สีเดียวกับข้อความ</p>
+            <h2>With an icon</h2>
+            <p>The icon sits before the text and uses the same colour.</p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -517,22 +503,22 @@
                         class="icon icon-triangle-alert"
                         aria-hidden="true"
                       ></i
-                      >ยังไม่จัดส่ง Unfulfilled</span
+                      >Unfulfilled</span
                     >
                     <span class="badge" data-variant="ok"
                       ><i class="icon icon-truck" aria-hidden="true"></i
-                      >จัดส่งแล้ว Fulfilled</span
+                      >Fulfilled</span
                     >
                     <span class="badge" data-variant="info"
-                      ><i class="icon icon-clock" aria-hidden="true"></i>พักไว้
-                      On hold</span
+                      ><i class="icon icon-clock" aria-hidden="true"></i> On
+                      hold</span
                     >
                     <span class="badge" data-variant="danger"
                       ><i class="icon icon-circle-x" aria-hidden="true"></i
-                      >ยกเลิก Cancelled</span
+                      >Cancelled</span
                     >
                     <span class="badge" data-variant="outline"
-                      ><i class="icon icon-tag" aria-hidden="true"></i>ขายส่ง
+                      ><i class="icon icon-tag" aria-hidden="true"></i>
                       Wholesale</span
                     >
                   </div>
@@ -546,23 +532,20 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;span class="badge" data-variant="warning"&gt;&lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;ยังไม่จัดส่ง Unfulfilled&lt;/span&gt;
-  &lt;span class="badge" data-variant="ok"&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;จัดส่งแล้ว Fulfilled&lt;/span&gt;
-  &lt;span class="badge" data-variant="info"&gt;&lt;i class="icon icon-clock" aria-hidden="true"&gt;&lt;/i&gt;พักไว้ On hold&lt;/span&gt;
-  &lt;span class="badge" data-variant="danger"&gt;&lt;i class="icon icon-circle-x" aria-hidden="true"&gt;&lt;/i&gt;ยกเลิก Cancelled&lt;/span&gt;
-  &lt;span class="badge" data-variant="outline"&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;ขายส่ง Wholesale&lt;/span&gt;
+  &lt;span class="badge" data-variant="warning"&gt;&lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;Unfulfilled&lt;/span&gt;
+  &lt;span class="badge" data-variant="ok"&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;Fulfilled&lt;/span&gt;
+  &lt;span class="badge" data-variant="info"&gt;&lt;i class="icon icon-clock" aria-hidden="true"&gt;&lt;/i&gt;On hold&lt;/span&gt;
+  &lt;span class="badge" data-variant="danger"&gt;&lt;i class="icon icon-circle-x" aria-hidden="true"&gt;&lt;/i&gt;Cancelled&lt;/span&gt;
+  &lt;span class="badge" data-variant="outline"&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;Wholesale&lt;/span&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              ป้ายใหญ่เป็นหัวการ์ดการจัดส่ง Large with an icon, as a fulfillment
-              card heading
-            </h2>
+            <h2>Large with an icon, as a fulfillment card heading</h2>
             <p>
-              ป้าย
-              <code>data-size="lg"</code> แทนหัวข้อของการ์ดที่จัดกลุ่มตามสถานะ
+              A <code>data-size="lg"</code> badge replaces the heading of a card
+              grouped by status.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -605,28 +588,28 @@
                               class="icon icon-triangle-alert"
                               aria-hidden="true"
                             ></i
-                            >ยังไม่จัดส่ง Unfulfilled</span
+                            >Unfulfilled</span
                           >
                         </div>
                         <div>
                           <button type="button" class="btn" data-size="sm">
-                            การทำงานอื่น More actions
+                            More actions
                           </button>
                         </div>
                       </header>
                       <section>
-                        <p>ผ้าปูที่นอน Magic Sheets, ฟ้า / Twin × 2</p>
+                        <p>Magic Sheets bed sheet, Blue / Twin × 2</p>
                       </section>
                     </div>
                     <div class="card">
                       <header>
                         <span class="badge" data-variant="ok" data-size="lg"
                           ><i class="icon icon-truck" aria-hidden="true"></i
-                          >จัดส่งแล้ว Fulfilled</span
+                          >Fulfilled</span
                         >
                       </header>
                       <section>
-                        <p>ผ้าปูที่นอน Magic Sheets, ฟ้า / King × 1</p>
+                        <p>Magic Sheets bed sheet, Blue / King × 1</p>
                       </section>
                     </div>
                   </div>
@@ -643,22 +626,22 @@
   &lt;div class="card"&gt;
     &lt;header class="page-header"&gt;
       &lt;div&gt;
-        &lt;span class="badge" data-variant="warning" data-size="lg"&gt;&lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;ยังไม่จัดส่ง Unfulfilled&lt;/span&gt;
+        &lt;span class="badge" data-variant="warning" data-size="lg"&gt;&lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;Unfulfilled&lt;/span&gt;
       &lt;/div&gt;
       &lt;div&gt;
-        &lt;button type="button" class="btn" data-size="sm"&gt;การทำงานอื่น More actions&lt;/button&gt;
+        &lt;button type="button" class="btn" data-size="sm"&gt;More actions&lt;/button&gt;
       &lt;/div&gt;
     &lt;/header&gt;
     &lt;section&gt;
-      &lt;p&gt;ผ้าปูที่นอน Magic Sheets, ฟ้า / Twin × 2&lt;/p&gt;
+      &lt;p&gt;Magic Sheets bed sheet, Blue / Twin × 2&lt;/p&gt;
     &lt;/section&gt;
   &lt;/div&gt;
   &lt;div class="card"&gt;
     &lt;header&gt;
-      &lt;span class="badge" data-variant="ok" data-size="lg"&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;จัดส่งแล้ว Fulfilled&lt;/span&gt;
+      &lt;span class="badge" data-variant="ok" data-size="lg"&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;Fulfilled&lt;/span&gt;
     &lt;/header&gt;
     &lt;section&gt;
-      &lt;p&gt;ผ้าปูที่นอน Magic Sheets, ฟ้า / King × 1&lt;/p&gt;
+      &lt;p&gt;Magic Sheets bed sheet, Blue / King × 1&lt;/p&gt;
     &lt;/section&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -666,10 +649,10 @@
             </div>
           </section>
           <section>
-            <h2>ข้างชื่อหน้าใน h1 Beside a page title, inside the h1</h2>
+            <h2>Beside a page title, inside the h1</h2>
             <p>
-              วางป้ายไว้ใน <code>&lt;h1&gt;</code> ต่อจากชื่อ
-              ป้ายใช้ขนาดตัวอักษรของตัวเอง
+              Put the badge inside the <code>&lt;h1&gt;</code>, after the title.
+              The badge keeps its own font size.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -703,15 +686,10 @@
                   <header class="page-header">
                     <div>
                       <h1>
-                        คำสั่งซื้อ #110963<span
-                          class="badge"
-                          data-variant="warning"
-                          >เปิดอยู่ Open</span
-                        ><span class="badge"
-                          >จัดส่งบางส่วน Partially fulfilled</span
-                        ><span class="badge" data-variant="info"
-                          >ชำระแล้ว Paid</span
-                        >
+                        Order #110963<span class="badge" data-variant="warning"
+                          >Open</span
+                        ><span class="badge">Partially fulfilled</span
+                        ><span class="badge" data-variant="info">Paid</span>
                       </h1>
                     </div>
                   </header>
@@ -726,18 +704,18 @@
               >
                 <pre><code>&lt;header class="page-header"&gt;
   &lt;div&gt;
-    &lt;h1&gt;คำสั่งซื้อ #110963&lt;span class="badge" data-variant="warning"&gt;เปิดอยู่ Open&lt;/span&gt;&lt;span class="badge"&gt;จัดส่งบางส่วน Partially fulfilled&lt;/span&gt;&lt;span class="badge" data-variant="info"&gt;ชำระแล้ว Paid&lt;/span&gt;&lt;/h1&gt;
+    &lt;h1&gt;Order #110963&lt;span class="badge" data-variant="warning"&gt;Open&lt;/span&gt;&lt;span class="badge"&gt;Partially fulfilled&lt;/span&gt;&lt;span class="badge" data-variant="info"&gt;Paid&lt;/span&gt;&lt;/h1&gt;
   &lt;/div&gt;
 &lt;/header&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ลบได้ Removable</h2>
+            <h2>Removable</h2>
             <p>
-              ใส่ <code>&lt;button&gt;</code> ไว้ท้ายป้าย พร้อม
-              <code>aria-label</code> หน้าเป็นผู้ลบป้ายเมื่อกด
-              (ตัวอย่างนี้ใช้สคริปต์สั้น ๆ ในหน้า)
+              Add a <code>&lt;button&gt;</code> at the end of the badge, with an
+              <code>aria-label</code>. The page removes the badge on click (this
+              example uses a short inline script).
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -775,16 +753,16 @@
                     id="badge-filters"
                   >
                     <span class="badge"
-                      >บัตรของขวัญ Gift card: ใช่ Yes<button
+                      >Gift card: Yes<button
                         type="button"
-                        aria-label="ลบตัวกรอง Remove filter Gift card"
+                        aria-label="Remove filter Gift card"
                       >
                         <i class="icon icon-x" aria-hidden="true"></i></button
                     ></span>
                     <span class="badge" data-variant="outline"
-                      >หมวดหมู่ Category: เฟอร์นิเจอร์<button
+                      >Category: Furniture<button
                         type="button"
-                        aria-label="ลบตัวกรอง Remove filter Category"
+                        aria-label="Remove filter Category"
                       >
                         <i class="icon icon-x" aria-hidden="true"></i></button
                     ></span>
@@ -808,8 +786,8 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm" id="badge-filters"&gt;
-  &lt;span class="badge"&gt;บัตรของขวัญ Gift card: ใช่ Yes&lt;button type="button" aria-label="ลบตัวกรอง Remove filter Gift card"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
-  &lt;span class="badge" data-variant="outline"&gt;หมวดหมู่ Category: เฟอร์นิเจอร์&lt;button type="button" aria-label="ลบตัวกรอง Remove filter Category"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;span class="badge"&gt;Gift card: Yes&lt;button type="button" aria-label="Remove filter Gift card"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;span class="badge" data-variant="outline"&gt;Category: Furniture&lt;button type="button" aria-label="Remove filter Category"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
 &lt;/div&gt;
 &lt;script&gt;
   document.getElementById("badge-filters").addEventListener("click", (e) =&gt; {
@@ -834,39 +812,41 @@
                   <tr>
                     <td><code>.badge</code></td>
                     <td></td>
-                    <td>ป้าย inline สูง 20px ตัวอักษร 12px พื้นสีกลาง</td>
+                    <td>Inline label, 20px tall, 12px text, neutral fill.</td>
                   </tr>
                   <tr>
                     <td><code>data-variant</code></td>
                     <td>
                       <code>outline</code>, <code>ok</code>,
                       <code>warning</code>, <code>info</code>,
-                      <code>danger</code> (ไม่ใส่ = กลาง)
+                      <code>danger</code> (omit for neutral)
                     </td>
                     <td>
-                      <code>outline</code> ขอบ 1px พื้นโปร่ง
-                      สำหรับป้ายที่ไม่ใช่สถานะ ที่เหลือเป็นสีสถานะ
+                      <code>outline</code> has a 1px border and no fill, for
+                      labels that are not a status. The rest are status colours.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
-                    <td><code>lg</code> (ไม่ใส่ = ปกติ 20px)</td>
+                    <td><code>lg</code> (omit for the default 20px)</td>
                     <td>
-                      <code>lg</code> สูง 28px ตัวอักษร 14px ใช้เป็นหัวการ์ด
+                      <code>lg</code> is 28px tall with 14px text. Use it as a
+                      card heading.
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; .icon</code></td>
                     <td></td>
-                    <td>ไอคอนหน้าข้อความ ขนาดตามข้อความ</td>
+                    <td>Icon before the text, sized to the text.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; button</code></td>
                     <td></td>
                     <td>
-                      ปุ่มลบท้ายป้าย ใส่ <code>type="button"</code> และ
-                      <code>aria-label</code> ข้างในเป็น
-                      <code>.icon-x</code> หน้าเป็นผู้ลบป้าย
+                      Remove button at the end of the badge. Set
+                      <code>type="button"</code> and an <code>aria-label</code>,
+                      with an <code>.icon-x</code> inside. The page removes the
+                      badge.
                     </td>
                   </tr>
                   <tr>
@@ -877,7 +857,8 @@
                     </td>
                     <td></td>
                     <td>
-                      ในหัวข้อ ป้ายเว้นระยะ 8px จากชื่อและอยู่กึ่งกลางบรรทัด
+                      In a heading, the badge sits 8px from the title and is
+                      centred on the line.
                     </td>
                   </tr>
                 </tbody>

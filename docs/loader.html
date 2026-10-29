@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,17 +343,18 @@
             <div>
               <h1>Loader</h1>
               <p>
-                วงหมุนระหว่างรอ ใช้สีของตัวอักษรรอบข้าง
-                จึงเข้ากับปุ่มและข้อความได้เอง สำหรับบล็อกสีเทาแทนเนื้อหาดู
+                A spinner for waiting. It takes the colour of the surrounding
+                text, so it fits buttons and text on its own. For grey blocks
+                that stand in for content, see
                 <a href="skeleton">Skeleton</a>
               </p>
             </div>
           </header>
           <section>
-            <h2>วงหมุน Spinner</h2>
+            <h2>Spinner</h2>
             <p>
-              ใส่ <code>role="status"</code> และ
-              <code>aria-label</code> บอกว่ากำลังโหลดอะไร
+              Add <code>role="status"</code> and an <code>aria-label</code> that
+              says what is loading.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -391,7 +388,7 @@
                   <span
                     class="loader"
                     role="status"
-                    aria-label="กำลังโหลด Loading"
+                    aria-label="Loading"
                   ></span>
                 </div>
               </div>
@@ -402,12 +399,12 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;span class="loader" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;</code></pre>
+                <pre><code>&lt;span class="loader" role="status" aria-label="Loading"&gt;&lt;/span&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ขนาด xs, sm, ปกติ และ lg Spinner sizes</h2>
+            <h2>Spinner sizes: xs, sm, default and lg</h2>
 
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -443,24 +440,24 @@
                       class="loader"
                       data-size="xs"
                       role="status"
-                      aria-label="กำลังโหลด Loading"
+                      aria-label="Loading"
                     ></span>
                     <span
                       class="loader"
                       data-size="sm"
                       role="status"
-                      aria-label="กำลังโหลด Loading"
+                      aria-label="Loading"
                     ></span>
                     <span
                       class="loader"
                       role="status"
-                      aria-label="กำลังโหลด Loading"
+                      aria-label="Loading"
                     ></span>
                     <span
                       class="loader"
                       data-size="lg"
                       role="status"
-                      aria-label="กำลังโหลด Loading"
+                      aria-label="Loading"
                     ></span>
                   </div>
                 </div>
@@ -473,19 +470,20 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
-  &lt;span class="loader" data-size="xs" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
-  &lt;span class="loader" data-size="sm" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
-  &lt;span class="loader" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
-  &lt;span class="loader" data-size="lg" role="status" aria-label="กำลังโหลด Loading"&gt;&lt;/span&gt;
+  &lt;span class="loader" data-size="xs" role="status" aria-label="Loading"&gt;&lt;/span&gt;
+  &lt;span class="loader" data-size="sm" role="status" aria-label="Loading"&gt;&lt;/span&gt;
+  &lt;span class="loader" role="status" aria-label="Loading"&gt;&lt;/span&gt;
+  &lt;span class="loader" data-size="lg" role="status" aria-label="Loading"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>วงหมุนในปุ่ม ใช้สีตัวอักษรของปุ่ม Spinner in a button</h2>
+            <h2>Spinner in a button</h2>
             <p>
-              วงหมุนในปุ่มเป็นของตกแต่ง ใส่
-              <code>aria-hidden="true"</code> ข้อความปุ่มบอกสถานะแทน
+              A spinner in a button is decorative. Add
+              <code>aria-hidden="true"</code> and let the button text describe
+              the state.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -528,7 +526,7 @@
                         data-size="xs"
                         aria-hidden="true"
                       ></span
-                      >กำลังบันทึก Saving…
+                      >Saving…
                     </button>
                     <button type="button" class="btn" disabled>
                       <span
@@ -536,7 +534,7 @@
                         data-size="xs"
                         aria-hidden="true"
                       ></span
-                      >กำลังโหลด Loading…
+                      >Loading…
                     </button>
                     <button
                       type="button"
@@ -549,7 +547,7 @@
                         data-size="xs"
                         aria-hidden="true"
                       ></span
-                      >กำลังลบ Deleting…
+                      >Deleting…
                     </button>
                   </div>
                 </div>
@@ -562,15 +560,15 @@
                 hidden
               >
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-  &lt;button type="button" class="btn" data-variant="primary" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;กำลังบันทึก Saving…&lt;/button&gt;
-  &lt;button type="button" class="btn" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;กำลังโหลด Loading…&lt;/button&gt;
-  &lt;button type="button" class="btn" data-variant="danger" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;กำลังลบ Deleting…&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="primary" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;Saving…&lt;/button&gt;
+  &lt;button type="button" class="btn" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;Loading…&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="danger" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;Deleting…&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>วงหมุนข้างข้อความ Spinner beside text</h2>
+            <h2>Spinner beside text</h2>
 
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -607,13 +605,13 @@
                         class="loader"
                         data-size="xs"
                         role="status"
-                        aria-label="กำลังประมวลผล Processing"
+                        aria-label="Processing"
                       ></span>
                     </figure>
                     <section>
-                      <h3>กำลังประมวลผลการชำระเงิน Processing payment…</h3>
+                      <h3>Processing payment…</h3>
                     </section>
-                    <aside>฿1,250.00</aside>
+                    <aside>$39.00</aside>
                   </article>
                 </div>
               </div>
@@ -625,20 +623,19 @@
                 hidden
               >
                 <pre><code>&lt;article class="item" data-variant="muted"&gt;
-  &lt;figure&gt;&lt;span class="loader" data-size="xs" role="status" aria-label="กำลังประมวลผล Processing"&gt;&lt;/span&gt;&lt;/figure&gt;
-  &lt;section&gt;&lt;h3&gt;กำลังประมวลผลการชำระเงิน Processing payment…&lt;/h3&gt;&lt;/section&gt;
-  &lt;aside&gt;฿1,250.00&lt;/aside&gt;
+  &lt;figure&gt;&lt;span class="loader" data-size="xs" role="status" aria-label="Processing"&gt;&lt;/span&gt;&lt;/figure&gt;
+  &lt;section&gt;&lt;h3&gt;Processing payment…&lt;/h3&gt;&lt;/section&gt;
+  &lt;aside&gt;$39.00&lt;/aside&gt;
 &lt;/article&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              วงหมุนระหว่างโหลดเนื้อหาการ์ด Spinner while a card's content loads
-            </h2>
+            <h2>Spinner while a card's content loads</h2>
             <p>
-              ใส่ <code>aria-busy="true"</code> บนส่วนที่กำลังโหลด
-              ถ้าข้างในมีแค่วงหมุน มันจะอยู่กลางกล่องสูงอย่างน้อย 128px
+              Add <code>aria-busy="true"</code> to the loading region. If it
+              holds only a spinner, the spinner is centred in a box at least
+              128px tall.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -671,13 +668,13 @@
                 <div class="docs-preview">
                   <div class="card">
                     <header>
-                      <h2>ยอดขายตามช่วงเวลา Sales over time</h2>
+                      <h2>Sales over time</h2>
                     </header>
                     <section aria-busy="true" style="min-height: 12rem">
                       <span
                         class="loader"
                         role="status"
-                        aria-label="กำลังโหลดยอดขาย Loading sales"
+                        aria-label="Loading sales"
                       ></span>
                     </section>
                   </div>
@@ -692,10 +689,10 @@
               >
                 <pre><code>&lt;div class="card"&gt;
   &lt;header&gt;
-    &lt;h2&gt;ยอดขายตามช่วงเวลา Sales over time&lt;/h2&gt;
+    &lt;h2&gt;Sales over time&lt;/h2&gt;
   &lt;/header&gt;
   &lt;section aria-busy="true" style="min-height: 12rem"&gt;
-    &lt;span class="loader" role="status" aria-label="กำลังโหลดยอดขาย Loading sales"&gt;&lt;/span&gt;
+    &lt;span class="loader" role="status" aria-label="Loading sales"&gt;&lt;/span&gt;
   &lt;/section&gt;
 &lt;/div&gt;</code></pre>
               </div>
@@ -717,18 +714,18 @@
                     <td><code>.loader</code></td>
                     <td></td>
                     <td>
-                      วงหมุน 16px เส้น 2px ใช้ <code>currentColor</code> ร่องจาง
-                      20% ยังหมุน (ช้าลง) เมื่อ reduced motion
+                      16px spinner, 2px stroke in <code>currentColor</code> on a
+                      faint 20% track. Still spins (slower) with reduced motion.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
                     <td>
-                      <code>xs</code>, <code>sm</code>, <code>lg</code> (ไม่ใส่
-                      = 16px)
+                      <code>xs</code>, <code>sm</code>, <code>lg</code> (omit =
+                      16px)
                     </td>
                     <td>
-                      <code>xs</code> 12px (ในปุ่ม) <code>sm</code> 14px
+                      <code>xs</code> 12px (in buttons), <code>sm</code> 14px,
                       <code>lg</code> 24px
                     </td>
                   </tr>
@@ -736,27 +733,32 @@
                     <td><code>role</code></td>
                     <td><code>status</code></td>
                     <td>
-                      บนวงหมุนที่ยืนเดี่ยว คู่กับ
-                      <code>aria-label</code> บอกสิ่งที่กำลังโหลด
+                      On a standalone spinner, with an
+                      <code>aria-label</code> that names what is loading.
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-label</code></td>
-                    <td>ข้อความ</td>
-                    <td>ชื่อที่โปรแกรมอ่านหน้าจออ่าน เช่น "กำลังโหลดยอดขาย"</td>
+                    <td>Text</td>
+                    <td>
+                      The name screen readers announce, e.g. "Loading sales".
+                    </td>
                   </tr>
                   <tr>
                     <td><code>aria-hidden</code></td>
                     <td><code>true</code></td>
-                    <td>ในปุ่มหรือข้างข้อความที่บอกสถานะอยู่แล้ว</td>
+                    <td>
+                      In a button or next to text that already states the
+                      status.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>[aria-busy="true"]</code></td>
                     <td><code>true</code></td>
                     <td>
-                      บนกล่องที่กำลังโหลด ถ้ามีแค่ <code>.loader</code> ข้างใน
-                      จะจัดกึ่งกลาง สูงอย่างน้อย 128px สีจาง
-                      เอาออกเมื่อเนื้อหามาแล้ว
+                      On the loading container. If it holds only a
+                      <code>.loader</code>, it is centred, at least 128px tall
+                      and muted. Remove it once the content arrives.
                     </td>
                   </tr>
                 </tbody>

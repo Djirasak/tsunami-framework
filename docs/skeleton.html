@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,16 +343,18 @@
             <div>
               <h1>Skeleton</h1>
               <p>
-                บล็อกสีเทากะพริบเบา ๆ แทนเนื้อหาที่กำลังโหลด
-                ให้รูปร่างใกล้เนื้อหาจริง หน้าจึงไม่กระโดดเมื่อข้อมูลมา
+                Softly pulsing grey blocks that stand in for loading content.
+                Match the shape of the real content so the page does not jump
+                when data arrives.
               </p>
             </div>
           </header>
           <section>
-            <h2>บล็อกสีเทาแทนเนื้อหา Grey blocks where the content will be</h2>
+            <h2>Grey blocks where the content will be</h2>
             <p>
-              ตั้ง <code>width</code> / <code>height</code> ตามเนื้อหาที่จะมาแทน
-              วงกลมใช้ <code>data-variant="circle"</code>
+              Set <code>width</code> / <code>height</code> to match the content
+              that will replace it. Use <code>data-variant="circle"</code> for a
+              circle.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -414,10 +412,10 @@
             </div>
           </section>
           <section>
-            <h2>ในการ์ด In a card</h2>
+            <h2>In a card</h2>
             <p>
-              ใส่ <code>aria-busy="true"</code> และ
-              <code>aria-label</code> บนการ์ดระหว่างโหลด
+              Add <code>aria-busy="true"</code> and an
+              <code>aria-label</code> to the card while it loads.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -451,7 +449,7 @@
                   <article
                     class="card"
                     aria-busy="true"
-                    aria-label="กำลังโหลดคำสั่งซื้อ Loading order"
+                    aria-label="Loading order"
                   >
                     <header>
                       <span class="skeleton" style="width: 10rem"></span>
@@ -471,7 +469,7 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;article class="card" aria-busy="true" aria-label="กำลังโหลดคำสั่งซื้อ Loading order"&gt;
+                <pre><code>&lt;article class="card" aria-busy="true" aria-label="Loading order"&gt;
   &lt;header&gt;
     &lt;span class="skeleton" style="width: 10rem"&gt;&lt;/span&gt;
   &lt;/header&gt;
@@ -485,8 +483,11 @@
             </div>
           </section>
           <section>
-            <h2>บรรทัดเดียว One line</h2>
-            <p>แทนข้อความบรรทัดเดียว เช่น ชื่อลูกค้าในตาราง</p>
+            <h2>One line</h2>
+            <p>
+              Stands in for a single line of text, such as a customer name in a
+              table.
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -550,27 +551,30 @@
                     <td><code>.skeleton</code></td>
                     <td></td>
                     <td>
-                      บล็อก สูง 1em เต็มความกว้าง พื้น neutral มุม 4px
-                      กะพริบรอบละ 1.5 วินาที (2.5 วินาทีเมื่อ reduced motion)
-                      กำหนด <code>width</code> / <code>height</code> เอง
+                      Block, 1em tall, full width, neutral fill, 4px corners.
+                      Pulses every 1.5s (2.5s with reduced motion). Set
+                      <code>width</code> / <code>height</code> yourself.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-variant</code></td>
-                    <td><code>circle</code> (ไม่ใส่ = บล็อก)</td>
-                    <td>วงกลม 40px สำหรับ avatar ไม่หดใน flex</td>
+                    <td><code>circle</code> (omit for a block)</td>
+                    <td>40px circle for avatars. Does not shrink in flex.</td>
                   </tr>
                   <tr>
                     <td><code>aria-hidden</code></td>
                     <td><code>true</code></td>
-                    <td>บน skeleton หรือกลุ่ม skeleton ที่ไม่มีความหมาย</td>
+                    <td>
+                      On a skeleton or skeleton group that carries no meaning.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>aria-busy</code></td>
                     <td><code>true</code></td>
                     <td>
-                      บนกล่องที่กำลังโหลด พร้อม
-                      <code>aria-label</code> เอาออกเมื่อเนื้อหามาแล้ว
+                      On the loading container, with an
+                      <code>aria-label</code>. Remove it once the content
+                      arrives.
                     </td>
                   </tr>
                 </tbody>

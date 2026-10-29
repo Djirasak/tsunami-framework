@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,17 +343,18 @@
             <div>
               <h1>Alert</h1>
               <p>
-                ข้อความแจ้งเตือนในหน้า: ไอคอน หัวข้อ เนื้อความ และปุ่ม
-                ค่าเริ่มต้นเป็นกลาง สถานะใช้พื้นอ่อนตัวอักษรเข้ม
+                An inline message with an icon, title, body and actions. Neutral
+                by default. Status variants use a light fill with dark text.
               </p>
             </div>
           </header>
           <section>
-            <h2>สถานะ Status</h2>
+            <h2>Status</h2>
             <p>
-              ค่าเริ่มต้นสำหรับข้อมูลทั่วไป ใช้
-              <code>data-variant</code> เมื่อข้อความมีสถานะ ใช้
-              <code>role="alert"</code> เฉพาะข้อผิดพลาดที่ต้องแจ้งทันที
+              Use the default for general information. Use
+              <code>data-variant</code> when the message has a status. Use
+              <code>role="alert"</code> only for errors that must be announced
+              right away.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -391,39 +388,33 @@
                   <div class="stack" data-gap="sm">
                     <div class="alert" role="status">
                       <i class="icon icon-terminal" aria-hidden="true"></i>
-                      <strong>ได้รับคำสั่งซื้อ Order received</strong>
-                      <p>คำสั่งซื้อ #1042 รอยืนยันการชำระเงิน</p>
+                      <strong>Order received</strong>
+                      <p>Order #1042 is awaiting payment confirmation.</p>
                     </div>
                     <div class="alert" data-variant="info" role="status">
                       <i class="icon icon-info" aria-hidden="true"></i>
-                      <strong>อัปเดตค่าจัดส่ง Shipping rates updated</strong>
-                      <p>
-                        อัตราขนส่งใหม่ใช้กับคำสั่งซื้อตั้งแต่วันนี้ New carrier
-                        rates apply from today.
-                      </p>
+                      <strong>Shipping rates updated</strong>
+                      <p>New carrier rates apply from today.</p>
                     </div>
                     <div class="alert" data-variant="ok" role="status">
                       <i class="icon icon-circle-check" aria-hidden="true"></i>
-                      <strong>ชำระเงินแล้ว Payment captured</strong>
-                      <p>รับชำระ ฿2,480.00 แล้ว พร้อมจัดส่ง Ready to fulfil.</p>
+                      <strong>Payment captured</strong>
+                      <p>$79.00 captured. Ready to fulfil.</p>
                     </div>
                     <div class="alert" data-variant="warning" role="status">
                       <i
                         class="icon icon-triangle-alert"
                         aria-hidden="true"
                       ></i>
-                      <strong>สินค้าใกล้หมด Low stock</strong>
-                      <p>
-                        3 ตัวเลือกสินค้าต่ำกว่าจุดสั่งซื้อ 3 variants are below
-                        their reorder point.
-                      </p>
+                      <strong>Low stock</strong>
+                      <p>3 variants are below their reorder point.</p>
                     </div>
                     <div class="alert" data-variant="danger" role="alert">
                       <i class="icon icon-circle-alert" aria-hidden="true"></i>
-                      <strong>ชำระเงินไม่สำเร็จ Payment failed</strong>
+                      <strong>Payment failed</strong>
                       <p>
-                        บัตรถูกปฏิเสธ ขอให้ลูกค้าใช้วิธีอื่น The card was
-                        declined.
+                        The card was declined. Ask the customer to use another
+                        method.
                       </p>
                     </div>
                   </div>
@@ -439,37 +430,38 @@
                 <pre><code>&lt;div class="stack" data-gap="sm"&gt;
   &lt;div class="alert" role="status"&gt;
     &lt;i class="icon icon-terminal" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;strong&gt;ได้รับคำสั่งซื้อ Order received&lt;/strong&gt;
-    &lt;p&gt;คำสั่งซื้อ #1042 รอยืนยันการชำระเงิน&lt;/p&gt;
+    &lt;strong&gt;Order received&lt;/strong&gt;
+    &lt;p&gt;Order #1042 is awaiting payment confirmation.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="alert" data-variant="info" role="status"&gt;
     &lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;strong&gt;อัปเดตค่าจัดส่ง Shipping rates updated&lt;/strong&gt;
-    &lt;p&gt;อัตราขนส่งใหม่ใช้กับคำสั่งซื้อตั้งแต่วันนี้ New carrier rates apply from today.&lt;/p&gt;
+    &lt;strong&gt;Shipping rates updated&lt;/strong&gt;
+    &lt;p&gt;New carrier rates apply from today.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="alert" data-variant="ok" role="status"&gt;
     &lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;strong&gt;ชำระเงินแล้ว Payment captured&lt;/strong&gt;
-    &lt;p&gt;รับชำระ ฿2,480.00 แล้ว พร้อมจัดส่ง Ready to fulfil.&lt;/p&gt;
+    &lt;strong&gt;Payment captured&lt;/strong&gt;
+    &lt;p&gt;$79.00 captured. Ready to fulfil.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="alert" data-variant="warning" role="status"&gt;
     &lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;strong&gt;สินค้าใกล้หมด Low stock&lt;/strong&gt;
-    &lt;p&gt;3 ตัวเลือกสินค้าต่ำกว่าจุดสั่งซื้อ 3 variants are below their reorder point.&lt;/p&gt;
+    &lt;strong&gt;Low stock&lt;/strong&gt;
+    &lt;p&gt;3 variants are below their reorder point.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="alert" data-variant="danger" role="alert"&gt;
     &lt;i class="icon icon-circle-alert" aria-hidden="true"&gt;&lt;/i&gt;
-    &lt;strong&gt;ชำระเงินไม่สำเร็จ Payment failed&lt;/strong&gt;
-    &lt;p&gt;บัตรถูกปฏิเสธ ขอให้ลูกค้าใช้วิธีอื่น The card was declined.&lt;/p&gt;
+    &lt;strong&gt;Payment failed&lt;/strong&gt;
+    &lt;p&gt;The card was declined. Ask the customer to use another method.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>พร้อมปุ่ม With actions</h2>
+            <h2>With actions</h2>
             <p>
-              ใส่ปุ่มใน <code>&lt;footer&gt;</code> ใต้เนื้อความ ใช้ปุ่มขนาดเล็ก
+              Put buttons in a <code>&lt;footer&gt;</code> below the body. Use
+              small buttons.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -502,17 +494,11 @@
                 <div class="docs-preview">
                   <div class="alert" data-variant="warning" role="status">
                     <i class="icon icon-triangle-alert" aria-hidden="true"></i>
-                    <strong
-                      >แพ็กเกจหมดอายุในอีก 3 วัน Subscription ends in 3
-                      days</strong
-                    >
-                    <p>
-                      ต่ออายุเพื่อให้ระบบจัดส่งอัตโนมัติทำงานต่อ Renew to keep
-                      fulfilment automations running.
-                    </p>
+                    <strong>Subscription ends in 3 days</strong>
+                    <p>Renew to keep fulfilment automations running.</p>
                     <footer>
                       <button type="button" class="btn" data-size="sm">
-                        ต่ออายุ Renew
+                        Renew
                       </button>
                       <button
                         type="button"
@@ -520,7 +506,7 @@
                         data-variant="ghost"
                         data-size="sm"
                       >
-                        เตือนภายหลัง Remind me later
+                        Remind me later
                       </button>
                     </footer>
                   </div>
@@ -535,19 +521,19 @@
               >
                 <pre><code>&lt;div class="alert" data-variant="warning" role="status"&gt;
   &lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;
-  &lt;strong&gt;แพ็กเกจหมดอายุในอีก 3 วัน Subscription ends in 3 days&lt;/strong&gt;
-  &lt;p&gt;ต่ออายุเพื่อให้ระบบจัดส่งอัตโนมัติทำงานต่อ Renew to keep fulfilment automations running.&lt;/p&gt;
+  &lt;strong&gt;Subscription ends in 3 days&lt;/strong&gt;
+  &lt;p&gt;Renew to keep fulfilment automations running.&lt;/p&gt;
   &lt;footer&gt;
-    &lt;button type="button" class="btn" data-size="sm"&gt;ต่ออายุ Renew&lt;/button&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="sm"&gt;เตือนภายหลัง Remind me later&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;Renew&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="sm"&gt;Remind me later&lt;/button&gt;
   &lt;/footer&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>หัวข้ออย่างเดียว Title only</h2>
-            <p>ข้อความสั้นที่ไม่ต้องอธิบายเพิ่ม</p>
+            <h2>Title only</h2>
+            <p>For short messages that need no extra detail.</p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -579,7 +565,7 @@
                 <div class="docs-preview">
                   <div class="alert" data-variant="ok" role="status">
                     <i class="icon icon-circle-check" aria-hidden="true"></i>
-                    <strong>บันทึกแล้ว Changes saved</strong>
+                    <strong>Changes saved</strong>
                   </div>
                 </div>
               </div>
@@ -592,14 +578,14 @@
               >
                 <pre><code>&lt;div class="alert" data-variant="ok" role="status"&gt;
   &lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;
-  &lt;strong&gt;บันทึกแล้ว Changes saved&lt;/strong&gt;
+  &lt;strong&gt;Changes saved&lt;/strong&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ไม่มีไอคอน Without icon</h2>
-            <p>ไม่ใส่ไอคอน ข้อความจะเต็มความกว้าง</p>
+            <h2>Without icon</h2>
+            <p>Without an icon, the text takes the full width.</p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -630,11 +616,8 @@
               >
                 <div class="docs-preview">
                   <div class="alert" data-variant="info" role="note">
-                    <strong>ปิดปรับปรุงระบบ Scheduled maintenance</strong>
-                    <p>
-                      Admin API อ่านได้อย่างเดียววันอาทิตย์ 02:00-04:00 น.
-                      Read-only on Sunday 02:00-04:00.
-                    </p>
+                    <strong>Scheduled maintenance</strong>
+                    <p>The Admin API is read-only on Sunday 02:00-04:00.</p>
                   </div>
                 </div>
               </div>
@@ -646,8 +629,8 @@
                 hidden
               >
                 <pre><code>&lt;div class="alert" data-variant="info" role="note"&gt;
-  &lt;strong&gt;ปิดปรับปรุงระบบ Scheduled maintenance&lt;/strong&gt;
-  &lt;p&gt;Admin API อ่านได้อย่างเดียววันอาทิตย์ 02:00-04:00 น. Read-only on Sunday 02:00-04:00.&lt;/p&gt;
+  &lt;strong&gt;Scheduled maintenance&lt;/strong&gt;
+  &lt;p&gt;The Admin API is read-only on Sunday 02:00-04:00.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
@@ -668,40 +651,43 @@
                     <td><code>.alert</code></td>
                     <td></td>
                     <td>
-                      กล่องแจ้งเตือน: grid สองคอลัมน์ ไอคอนอยู่ซ้าย
-                      ลูกอื่นทั้งหมดอยู่คอลัมน์ขวา
+                      Alert box. A two-column grid with the icon on the left and
+                      all other children in the right column.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-variant</code></td>
                     <td>
                       <code>ok</code>, <code>warning</code>, <code>info</code>,
-                      <code>danger</code> (ไม่ใส่ = กลาง)
+                      <code>danger</code> (omit for neutral)
                     </td>
                     <td>
-                      สีพื้นอ่อนและตัวอักษรตามสถานะ ค่าเริ่มต้นพื้น surface ขอบ
-                      1px
+                      Light fill and text colour for the status. The default has
+                      a surface fill and a 1px border.
                     </td>
                   </tr>
                   <tr>
                     <td><code>&gt; .icon</code></td>
                     <td></td>
-                    <td>ไม่บังคับ ไอคอนตัวแรก ถ้าไม่มี ข้อความเต็มความกว้าง</td>
+                    <td>
+                      Optional. The first icon. Without it, the text takes the
+                      full width.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>&gt; strong, &gt; h2, h3, h4</code></td>
                     <td></td>
-                    <td>หัวข้อ ตัวหนา 14px</td>
+                    <td>Title, 14px bold.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; p, &gt; section</code></td>
                     <td></td>
-                    <td>เนื้อความ</td>
+                    <td>Body text.</td>
                   </tr>
                   <tr>
                     <td><code>&gt; footer</code></td>
                     <td></td>
-                    <td>แถวปุ่ม ห่างจากเนื้อความ 8px</td>
+                    <td>Button row, 8px below the body.</td>
                   </tr>
                   <tr>
                     <td><code>role</code></td>
@@ -709,9 +695,9 @@
                       <code>status</code>, <code>alert</code>, <code>note</code>
                     </td>
                     <td>
-                      <code>status</code> แจ้งทั่วไป
-                      <code>alert</code> ข้อผิดพลาดที่ต้องประกาศทันที
-                      <code>note</code> ข้อความคงที่ในหน้า
+                      <code>status</code> for general notices,
+                      <code>alert</code> for errors that must be announced at
+                      once, <code>note</code> for static text on the page.
                     </td>
                   </tr>
                 </tbody>
