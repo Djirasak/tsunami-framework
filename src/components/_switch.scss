@@ -1,0 +1,47 @@
+// Switch: <input type="checkbox" role="switch"> drawn as an on/off track.
+@layer components {
+  :where(input[type="checkbox"][role="switch"]) {
+    appearance: none;
+    position: relative;
+    flex: none;
+    width: 1.875rem;
+    height: 1.125rem;
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--neutral-bg);
+    cursor: pointer;
+    transition: background-color 0.15s;
+  }
+
+  :where(input[type="checkbox"][role="switch"])::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: calc(1.125rem - 4px);
+    height: calc(1.125rem - 4px);
+    border-radius: 50%;
+    background: var(--surface);
+    transition: translate 0.15s;
+  }
+
+  :where(input[type="checkbox"][role="switch"]:checked) {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  :where(input[type="checkbox"][role="switch"]:checked)::before {
+    translate: 0.75rem 0;
+  }
+
+  :where(input[type="checkbox"][role="switch"]:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // In a field row, centre the 18px track on the first line of text.
+  :where(.field > input[type="checkbox"][role="switch"]) {
+    margin-top: calc((var(--leading) * 1em - 1.125rem) / 2);
+  }
+}

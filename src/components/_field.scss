@@ -1,64 +1,120 @@
-// Field: label + control + hint. Checkbox/radio fields lay out in a row.
+// Field: label + control + hint. A checkbox, radio or switch field is a row.
+// The control box itself lives in _input; switch and slider in their own.
+@use "input";
+@use "switch";
+@use "slider";
+
+$check: "input:is([type='checkbox'], [type='radio'])";
+
 @layer components {
   :where(.field) {
     display: grid;
     gap: var(--space-1);
+    min-width: 0;
   }
 
-  :where(.field > label, .field > small) {
+  :where(.field > label, .field > small, .field > div > small) {
     color: var(--muted);
     font-size: var(--text-sm);
   }
 
+  :where(.field:has([aria-invalid="true"]) small) {
+    color: var(--danger-fg);
+  }
+
+  // Row: the box first, then its label (or a div with label + small).
+  :where(.field:has(> #{$check})) {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    cursor: pointer;
+  }
+
   :where(
-    .field > input:not([type="checkbox"], [type="radio"]),
-    .field > select,
-    .field > textarea
+    .field:has(> #{$check}) > label,
+    .field:has(> #{$check}) > div > label
   ) {
-    width: 100%;
-    height: 2rem;
-    padding: 0 var(--space-3);
+    color: var(--fg);
+    font-size: var(--text-base);
+    cursor: pointer;
+  }
+
+  :where(.field:has(> #{$check}) > div) {
+    display: grid;
+    min-width: 0;
+  }
+
+  :where(.field:has(> #{$check}) > div > :is(h3, h4)) {
+    font-weight: 500;
+    line-height: var(--leading);
+  }
+
+  :where(.field > #{$check}:not([role="switch"])) {
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    // Centre the box on the first line of text.
+    margin: calc((var(--leading) * 1em - 1rem) / 2) 0 0;
+    accent-color: var(--accent);
+    cursor: inherit;
+  }
+
+  :where(.field:has(> input:disabled)) {
+    cursor: not-allowed;
+  }
+
+  :where(
+    .field:has(> input:disabled) label,
+    .field:has(> input:disabled) > div
+  ) {
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
+  // Card: the whole bordered row is the label.
+  :where(.field[data-variant="card"]) {
+    padding: var(--space-3) var(--space-4);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     background: var(--surface);
   }
 
-  :where(.field > textarea) {
-    height: auto;
-    min-height: 5rem;
-    padding: var(--space-2) var(--space-3);
-    resize: vertical;
-  }
-
-  :where(.field > :is(input, select, textarea):focus-visible) {
-    border-color: var(--accent);
-    outline-offset: 0;
-  }
-
-  :where(.field [aria-invalid="true"]) {
-    border-color: var(--danger-fg);
-  }
-
-  :where(.field:has([aria-invalid="true"]) > small) {
-    color: var(--danger-fg);
-  }
-
-  :where(.field > :is(input, select, textarea):disabled) {
+  :where(.field[data-variant="card"]:has(> input:checked)) {
+    border-color: var(--muted);
     background: var(--subtle);
-    cursor: not-allowed;
   }
 
-  :where(.field:has(> input:is([type="checkbox"], [type="radio"]))) {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    cursor: pointer;
-  }
-
-  :where(.field input:is([type="checkbox"], [type="radio"])) {
-    width: 1rem;
-    height: 1rem;
+  // Field group: a borderless fieldset of fields with an optional legend.
+  :where(.field-group) {
+    display: grid;
+    gap: var(--space-4);
+    min-width: 0;
     margin: 0;
-    accent-color: var(--accent);
+    padding: 0;
+    border: 0;
+  }
+
+  :where(.field-group[data-gap="sm"]) {
+    gap: var(--space-2);
+  }
+
+  :where(.field-group > legend) {
+    margin-bottom: var(--space-3);
+    padding: 0;
+    font-weight: 600;
+  }
+
+  :where(.field-group[data-gap="sm"] > legend) {
+    margin-bottom: var(--space-1);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+
+  // A plain div inside a group lays its fields out in equal columns.
+  :where(.field-group > div:not([class])) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: var(--space-4);
   }
 }
