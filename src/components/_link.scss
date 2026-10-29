@@ -1,6 +1,8 @@
 // Link: a bare <a> is accent. .link keeps the text's own colour and
 // underlines in the accent under the pointer, for links among data.
 // data-variant="primary" (accent text) | "muted"; data-weight="medium" for a record's own name.
+@use "motion";
+
 @layer components {
   :where(.link) {
     color: inherit;
@@ -8,7 +10,7 @@
     text-decoration-color: transparent;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
-    transition: text-decoration-color 0.15s;
+    transition: text-decoration-color motion.$base motion.$ease;
   }
 
   :where(.link:hover) {

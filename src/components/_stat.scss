@@ -1,6 +1,8 @@
 // Stat: one figure. span (label), strong (value), span[data-trend] (change), .loader (busy).
 // A div; an <a> when the whole stat links to its records; a <button> when it picks a chart's metric.
 // .stat-group: a row of stats with lines between them.
+@use "motion";
+
 @layer components {
   :where(.stat) {
     display: grid;
@@ -111,6 +113,10 @@
   }
 
   // Link and button stats.
+  :where(a.stat, button.stat) {
+    transition: background-color motion.$base motion.$ease;
+  }
+
   :where(a.stat:hover, button.stat:hover) {
     background: var(--subtle);
     text-decoration: none;

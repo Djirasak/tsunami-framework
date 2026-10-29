@@ -2,6 +2,7 @@
 // Sortable headers (th[aria-sort] > button) and selectable rows (checkbox in the first cell)
 // are driven by src/js/table.js.
 @use "icon";
+@use "motion";
 
 @layer components {
   :where(.table) {
@@ -39,6 +40,10 @@
 
   :where(.table tbody tr:last-child > *) {
     border-bottom: 0;
+  }
+
+  :where(.table tbody tr) {
+    transition: background-color motion.$base motion.$ease;
   }
 
   :where(.table tbody tr:hover) {
