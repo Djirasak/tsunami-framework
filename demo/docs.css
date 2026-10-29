@@ -11,6 +11,9 @@
 }
 
 .docs-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   padding: 0 var(--space-2);
   color: var(--fg);
   font-size: var(--text-lg);
@@ -20,6 +23,18 @@
 
 .docs-brand:hover {
   text-decoration: none;
+}
+
+.docs-brand svg rect {
+  fill: var(--accent);
+}
+
+.docs-brand svg path {
+  fill: none;
+  stroke: var(--on-accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .docs-brand span {
