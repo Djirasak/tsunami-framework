@@ -1,6 +1,7 @@
 // Timeline: <ol class="timeline"> with a dot and a connecting line per event.
 // An .icon or .loader first in an event takes the dot's place.
 @use "icon";
+@use "motion";
 
 @layer components {
   :where(.timeline) {
@@ -120,12 +121,14 @@
     @include icon.glyph(chevron-down);
     color: var(--muted);
     font-size: 1rem;
-    transition: rotate 0.15s;
+    transition: rotate motion.$base motion.$ease;
   }
 
   :where(.timeline details[open] > summary)::after {
     rotate: 180deg;
   }
+
+  @include motion.reveal(".timeline details");
 
   :where(.timeline dl) {
     display: grid;

@@ -11,6 +11,25 @@ $base: 0.15s; // hover, press, toggles, tooltips
 $slow: 0.3s; // sidebar collapse and slide
 $drawer: 0.5s;
 
+// <details> content that grows from 0 to its height and fades as it opens and closes.
+// Browsers without ::details-content or calc-size() open it at once.
+@mixin reveal($d) {
+  :where(#{$d})::details-content {
+    block-size: 0;
+    opacity: 0;
+    transition:
+      block-size $base $ease,
+      opacity $base $ease,
+      content-visibility $base allow-discrete;
+  }
+
+  :where(#{$d}[open])::details-content {
+    block-size: auto;
+    block-size: calc-size(auto, size);
+    opacity: 1;
+  }
+}
+
 // A [popover] that fades, grows from 95% and slides 0.5rem from its trigger.
 // Uses --pop-from (set per side by the caller); defaults to opening downwards.
 @mixin pop($c) {

@@ -4,6 +4,7 @@
 // marks the open file. An input[type=search] filters it (js/tree.js), and a
 // direct <p hidden> child is the "no match" line.
 @use "icon";
+@use "motion";
 
 @layer components {
   :where(.tree) {
@@ -62,12 +63,14 @@
     flex-shrink: 0;
     color: var(--muted);
     font-size: 0.875rem;
-    transition: rotate 0.15s;
+    transition: rotate motion.$base linear;
   }
 
   :where(.tree details[open] > summary)::before {
     rotate: 90deg;
   }
+
+  @include motion.reveal(".tree details");
 
   :where(.tree summary:hover, .tree li > a:hover) {
     background: var(--subtle);

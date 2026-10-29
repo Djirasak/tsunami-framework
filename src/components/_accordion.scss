@@ -1,5 +1,6 @@
 // Accordion: <details> rows in one box. Give them the same name to open one at a time.
 @use "icon";
+@use "motion";
 
 @layer components {
   :where(.accordion) {
@@ -32,12 +33,14 @@
     flex-shrink: 0;
     color: var(--muted);
     font-size: 1rem;
-    transition: rotate 0.15s;
+    transition: rotate motion.$base motion.$ease;
   }
 
   :where(.accordion details[open] > summary)::after {
     rotate: 180deg;
   }
+
+  @include motion.reveal(".accordion details");
 
   :where(.accordion details > :not(summary)) {
     padding: 0 var(--space-5) var(--space-4);
