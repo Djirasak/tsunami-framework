@@ -1,4 +1,6 @@
 // Button: outline by default; primary only for the page's main action.
+@use "motion";
+
 @layer components {
   :where(.btn) {
     display: inline-flex;
@@ -18,7 +20,15 @@
     text-decoration: none;
     flex-shrink: 0;
     cursor: pointer;
-    transition: background-color 0.15s;
+    transition-property:
+      background-color, border-color, color, filter, translate;
+    transition-duration: motion.$base;
+    transition-timing-function: motion.$ease;
+  }
+
+  // Pressed: sinks 1px. Not on buttons that open a menu or popover.
+  :where(.btn:active:not([aria-haspopup], [popovertarget])) {
+    translate: 0 1px;
   }
 
   :where(.btn:hover) {

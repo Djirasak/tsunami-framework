@@ -1,0 +1,52 @@
+// Motion: shared durations and easings (Sass only, emits no CSS).
+// The base reset cuts every transition to 0.01ms under prefers-reduced-motion.
+
+// Standard curve for hovers, presses, toggles and small overlays.
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+// Drawer curve: fast start, long soft landing.
+$ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+$fast: 0.1s; // popovers, menus, dialog panel
+$base: 0.15s; // hover, press, toggles, tooltips
+$slow: 0.3s; // sidebar collapse and slide
+$drawer: 0.5s;
+
+// A [popover] that fades, grows from 95% and slides 0.5rem from its trigger.
+// Uses --pop-from (set per side by the caller); defaults to opening downwards.
+@mixin pop($c) {
+  :where(#{$c}) {
+    --pop-from: 0 -0.5rem;
+    transition:
+      opacity $fast $ease,
+      scale $fast $ease,
+      translate $fast $ease,
+      overlay $fast allow-discrete,
+      display $fast allow-discrete;
+  }
+
+  :where(#{$c}:not(:popover-open)) {
+    opacity: 0;
+    scale: 0.95;
+    translate: var(--pop-from);
+  }
+
+  :where(#{$c}:popover-open) {
+    @starting-style {
+      opacity: 0;
+      scale: 0.95;
+      translate: var(--pop-from);
+    }
+  }
+
+  :where(#{$c}[data-side="top"]) {
+    --pop-from: 0 0.5rem;
+  }
+
+  :where(#{$c}[data-side="left"]) {
+    --pop-from: 0.5rem 0;
+  }
+
+  :where(#{$c}[data-side="right"]) {
+    --pop-from: -0.5rem 0;
+  }
+}
