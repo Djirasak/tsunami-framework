@@ -21,6 +21,13 @@
     height: 1.5rem;
   }
 
+  // Reduced motion: keep spinning, slower.
+  @media (prefers-reduced-motion: reduce) {
+    :where(.loader) {
+      animation-duration: 1.6s;
+    }
+  }
+
   @keyframes tsunami-spin {
     to {
       rotate: 1turn;

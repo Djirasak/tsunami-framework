@@ -127,8 +127,9 @@
     outline-offset: 2px;
   }
 
+  // Loaders are exempt: spinning is their only sign of progress.
   @media (prefers-reduced-motion: reduce) {
-    *,
+    *:not(.loader),
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
