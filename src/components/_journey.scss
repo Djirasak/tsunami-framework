@@ -32,6 +32,7 @@
   }
 
   :where(.journey label) {
+    position: relative;
     display: flex;
     justify-content: space-between;
     gap: var(--space-2);

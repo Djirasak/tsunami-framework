@@ -28,6 +28,7 @@
   :where(.workspace > main) {
     grid-column: 2;
     min-width: 0;
+    padding: var(--space-5);
     overflow: auto;
   }
 
