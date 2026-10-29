@@ -328,10 +328,21 @@
           <header class="page-header">
             <div>
               <h1>Subnav</h1>
-              <p>เมนูรองของส่วนที่กำลังดู วางข้างเนื้อหา</p>
+              <p>
+                เมนูรองของหมวด อยู่ข้างเนื้อหา Section links beside the content.
+              </p>
             </div>
           </header>
           <section>
+            <h2>
+              ข้าง sidebar ที่ย่อไว้ตลอด Beside a sidebar that stays collapsed
+            </h2>
+            <p>
+              หน้าตั้งค่าที่มีหลายหมวด: sidebar หลักย่อเหลือไอคอน
+              (<code>data-collapsed="true"</code>) แล้ว subnav แสดงหมวดย่อย
+              element ที่ตามหลัง <code>.subnav</code> คือเนื้อหา ได้ระยะขอบให้
+              ต่ำกว่า 48rem subnav อยู่เหนือเนื้อหา
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -361,21 +372,147 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <nav class="subnav" aria-label="ตั้งค่าร้าน Store settings">
-                    <h2>ตั้งค่า Settings</h2>
-                    <a href="#" aria-current="page"
-                      ><i class="icon icon-settings" aria-hidden="true"></i
-                      >ทั่วไป General</a
+                  <div>
+                    <aside
+                      class="sidebar"
+                      data-collapsed="true"
+                      style="height: 26rem"
                     >
-                    <a href="#"
-                      ><i class="icon icon-user" aria-hidden="true"></i>บัญชี
-                      Account</a
-                    >
-                    <a href="#"
-                      ><i class="icon icon-inbox" aria-hidden="true"></i
-                      >การแจ้งเตือน Notifications</a
-                    >
-                  </nav>
+                      <nav aria-label="เมนูหลัก Main">
+                        <header>
+                          <a href="#"
+                            ><span class="avatar" data-size="sm"
+                              ><span>AS</span></span
+                            ><span>ร้าน Acme Store</span></a
+                          >
+                        </header>
+                        <section>
+                          <div role="group">
+                            <ul>
+                              <li>
+                                <a href="#"
+                                  ><i
+                                    class="icon icon-house"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>หน้าหลัก Home</span></a
+                                >
+                              </li>
+                              <li>
+                                <a href="#"
+                                  ><i
+                                    class="icon icon-package"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>สินค้า Products</span></a
+                                >
+                              </li>
+                              <li>
+                                <a href="#"
+                                  ><i
+                                    class="icon icon-shopping-bag"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>คำสั่งซื้อ Orders</span></a
+                                >
+                              </li>
+                              <li>
+                                <a href="#"
+                                  ><i
+                                    class="icon icon-user"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>ลูกค้า Customers</span></a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                          <hr />
+                          <div role="group">
+                            <ul>
+                              <li>
+                                <a href="#" aria-current="page"
+                                  ><i
+                                    class="icon icon-settings"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>ตั้งค่า Settings</span></a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </section>
+                      </nav>
+                    </aside>
+                    <div>
+                      <nav
+                        class="subnav"
+                        aria-label="ตั้งค่าร้าน Store settings"
+                      >
+                        <h2>ตั้งค่าร้าน Store settings</h2>
+                        <ul>
+                          <li>
+                            <a href="#"
+                              ><i
+                                class="icon icon-sliders-horizontal"
+                                aria-hidden="true"
+                              ></i
+                              ><span>ทั่วไป General</span></a
+                            >
+                          </li>
+                          <li>
+                            <a href="#" aria-current="page"
+                              ><i class="icon icon-globe" aria-hidden="true"></i
+                              ><span>ตลาด Markets</span></a
+                            >
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i
+                                class="icon icon-credit-card"
+                                aria-hidden="true"
+                              ></i
+                              ><span>การชำระเงิน Payments</span></a
+                            >
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i class="icon icon-truck" aria-hidden="true"></i
+                              ><span>การจัดส่ง Fulfillment</span></a
+                            >
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i
+                                class="icon icon-link-2"
+                                aria-hidden="true"
+                              ></i
+                              ><span>โดเมน Domains</span></a
+                            >
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i class="icon icon-users" aria-hidden="true"></i
+                              ><span
+                                >ผู้ใช้และสิทธิ์ Users &amp; permissions</span
+                              ></a
+                            >
+                          </li>
+                        </ul>
+                      </nav>
+                      <div>
+                        <header class="page-header">
+                          <div>
+                            <h1>ตลาด Markets</h1>
+                            <p>
+                              ประเทศและสกุลเงินที่ร้านขาย Countries and
+                              currencies the store sells in.
+                            </p>
+                          </div>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div
@@ -385,18 +522,54 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;nav class="subnav" aria-label="ตั้งค่าร้าน Store settings"&gt;
-  &lt;h2&gt;ตั้งค่า Settings&lt;/h2&gt;
-  &lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;ทั่วไป General&lt;/a&gt;
-  &lt;a href="#"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;บัญชี Account&lt;/a&gt;
-  &lt;a href="#"&gt;&lt;i class="icon icon-inbox" aria-hidden="true"&gt;&lt;/i&gt;การแจ้งเตือน Notifications&lt;/a&gt;
-&lt;/nav&gt;</code></pre>
+                <pre><code>&lt;div&gt;
+  &lt;aside class="sidebar" data-collapsed="true" style="height: 26rem"&gt;
+    &lt;nav aria-label="เมนูหลัก Main"&gt;
+      &lt;header&gt;
+        &lt;a href="#"&gt;&lt;span class="avatar" data-size="sm"&gt;&lt;span&gt;AS&lt;/span&gt;&lt;/span&gt;&lt;span&gt;ร้าน Acme Store&lt;/span&gt;&lt;/a&gt;
+      &lt;/header&gt;
+      &lt;section&gt;
+        &lt;div role="group"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;หน้าหลัก Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;สินค้า Products&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;คำสั่งซื้อ Orders&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;ลูกค้า Customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;hr /&gt;
+        &lt;div role="group"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;ตั้งค่า Settings&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+  &lt;div&gt;
+    &lt;nav class="subnav" aria-label="ตั้งค่าร้าน Store settings"&gt;
+      &lt;h2&gt;ตั้งค่าร้าน Store settings&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-sliders-horizontal" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;ทั่วไป General&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-globe" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;ตลาด Markets&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-credit-card" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;การชำระเงิน Payments&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;การจัดส่ง Fulfillment&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-link-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;โดเมน Domains&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-users" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;ผู้ใช้และสิทธิ์ Users &amp;amp; permissions&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+    &lt;div&gt;
+      &lt;header class="page-header"&gt;&lt;div&gt;&lt;h1&gt;ตลาด Markets&lt;/h1&gt;&lt;p&gt;ประเทศและสกุลเงินที่ร้านขาย Countries and currencies the store sells in.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>Attributes</h2>
-            <div class="card">
+
+            <div class="card scroll-area">
               <table class="table">
                 <thead>
                   <tr>
@@ -407,14 +580,41 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>&gt; h2</code></td>
-                    <td></td>
-                    <td>ชื่อส่วน</td>
+                    <td><code>.subnav</code></td>
+                    <td><code>nav</code></td>
+                    <td>เมนูรอง กว้าง 13rem ใส่ <code>aria-label</code></td>
                   </tr>
                   <tr>
-                    <td><code>a[aria-current]</code></td>
+                    <td><code>h2</code></td>
+                    <td>child</td>
+                    <td>ชื่อหมวด ตัวหนาปานกลาง</td>
+                  </tr>
+                  <tr>
+                    <td><code>ul &gt; li &gt; a</code></td>
+                    <td>child</td>
+                    <td>
+                      ลิงก์ <code>.icon</code> + ชื่อใน <code>span</code> (ใส่
+                      <code>a</code> ตรง ๆ ไม่มี <code>ul</code> ก็ได้)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-current</code></td>
                     <td><code>page</code></td>
-                    <td>หน้าที่ใช้อยู่</td>
+                    <td>บน <code>a</code>: หมวดที่เปิดอยู่</td>
+                  </tr>
+                  <tr>
+                    <td><code>.subnav + *</code></td>
+                    <td>element ถัดไป</td>
+                    <td>
+                      เนื้อหา: กินพื้นที่ที่เหลือ มีระยะขอบ parent
+                      เรียงเป็นแถวตั้งแต่ 48rem มีเส้นคั่นขวา ต่ำกว่านั้นซ้อนลง
+                      มีเส้นคั่นล่าง
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.sidebar[data-collapsed="true"]</code></td>
+                    <td>ข้าง ๆ</td>
+                    <td>sidebar หลักที่ย่อเหลือไอคอน ดูหน้า Sidebar</td>
                   </tr>
                 </tbody>
               </table>
