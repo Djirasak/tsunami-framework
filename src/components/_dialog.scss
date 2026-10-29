@@ -1,46 +1,180 @@
 // Dialog: native <dialog class="dialog">. Open with commandfor + command="show-modal".
+// Children: header (h2, p, close button, optional figure), div (scrolls), footer.
+// A <form method="dialog"> may wrap the three parts. role="alertdialog" for a question.
 @layer components {
   :where(.dialog) {
     width: min(32rem, 100% - 2rem);
+    max-width: none;
     max-height: calc(100dvh - 2rem);
     padding: 0;
+    overflow: hidden;
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     background: var(--surface);
     color: var(--fg);
   }
 
+  :where(.dialog[open], .dialog[open] > form) {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  :where(.dialog[data-size="sm"]) {
+    width: min(24rem, 100% - 2rem);
+  }
+
+  :where(.dialog[data-size="lg"]) {
+    width: min(42rem, 100% - 2rem);
+  }
+
+  :where(.dialog[data-size="xl"]) {
+    width: min(56rem, 100% - 2rem);
+  }
+
   :where(.dialog)::backdrop {
     background: var(--overlay);
   }
 
-  :where(.dialog > *) {
+  // Parts: direct children, or children of a <form method="dialog">.
+  :where(.dialog > :not(form), .dialog > form > *) {
+    flex: none;
     padding: var(--space-4) var(--space-5);
   }
 
-  :where(.dialog > * + *) {
+  :where(.dialog > * + *, .dialog > form > * + *) {
     border-top: 1px solid var(--line);
   }
 
-  :where(.dialog > header) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
+  // The middle part scrolls; header and footer stay.
+  :where(.dialog > div, .dialog > form > div) {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
   }
 
-  :where(.dialog > header h2) {
+  :where(.dialog > header, .dialog > form > header) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-1) var(--space-3);
+  }
+
+  :where(:is(.dialog, .dialog > form) > header > *) {
+    grid-column: 1;
+  }
+
+  :where(:is(.dialog, .dialog > form) > header h2) {
     font-size: var(--text-lg);
   }
 
-  :where(.dialog > footer) {
+  :where(:is(.dialog, .dialog > form) > header p) {
+    color: var(--muted);
+  }
+
+  // A figure puts an icon beside the title. data-variant on the figure colours it.
+  :where(:is(.dialog, .dialog > form) > header:has(> figure)) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  :where(:is(.dialog, .dialog > form) > header:has(> figure) > *) {
+    grid-column: 2;
+  }
+
+  // The close button sits at the end of the first row.
+  :where(:is(.dialog, .dialog > form) > header > :is(button, .btn)) {
+    grid-column: -2;
+    grid-row: 1;
+    align-self: start;
+    margin: calc(var(--space-1) * -1) calc(var(--space-2) * -1) 0 0;
+  }
+
+  :where(:is(.dialog, .dialog > form) > header > figure) {
+    display: grid;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    place-items: center;
+    align-self: start;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0;
+    border-radius: 50%;
+    background: var(--subtle);
+    color: var(--muted);
+    font-size: 1.25rem;
+  }
+
+  @each $v in (ok, danger, warning, info) {
+    :where(
+      :is(.dialog, .dialog > form) > header > figure[data-variant="#{$v}"]
+    ) {
+      background: var(--#{$v}-bg);
+      color: var(--#{$v}-fg);
+    }
+  }
+
+  :where(.dialog > footer, .dialog > form > footer) {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: var(--space-2);
   }
 
+  // Alert dialog: a question and its answers, no dividers.
+  :where(.dialog[role="alertdialog"] > * + *, .dialog[role="alertdialog"] > form > * + *) {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  :where(.dialog[role="alertdialog"] > header, .dialog[role="alertdialog"] > form > header) {
+    padding-top: var(--space-5);
+  }
+
+  :where(.dialog[role="alertdialog"] > footer, .dialog[role="alertdialog"] > form > footer) {
+    padding-bottom: var(--space-5);
+  }
+
+  // Small alert dialog: centred text, figure above, two equal buttons.
+  :where(
+    .dialog[role="alertdialog"][data-size="sm"] > header,
+    .dialog[role="alertdialog"][data-size="sm"] > form > header
+  ) {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+  :where(.dialog[role="alertdialog"][data-size="sm"] header > *) {
+    grid-column: 1;
+  }
+
+  :where(.dialog[role="alertdialog"][data-size="sm"] header > figure) {
+    grid-row: auto;
+    margin-bottom: var(--space-2);
+  }
+
+  :where(
+    .dialog[role="alertdialog"][data-size="sm"] > footer,
+    .dialog[role="alertdialog"][data-size="sm"] > form > footer
+  ) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   :where(html:has(dialog:modal)) {
     overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :where(.dialog[open]) {
+      animation: dialog-in 0.15s ease-out;
+    }
+  }
+
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      translate: 0 0.5rem;
+    }
   }
 }

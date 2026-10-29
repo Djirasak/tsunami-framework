@@ -333,11 +333,26 @@
               <h1>Dialog</h1>
               <p>
                 <code>&lt;dialog&gt;</code> แบบ native เปิดด้วย
-                <code>commandfor</code> ไม่ต้องใช้ JS
+                <code>commandfor</code> + <code>command</code> ไม่ต้องใช้ JS. A
+                native modal dialog, opened and closed by buttons with no
+                script.
               </p>
             </div>
           </header>
           <section>
+            <h2>
+              โครงสร้าง: dialog ที่มี header, div และ footer The markup: a
+              dialog with a header, a div and a footer
+            </h2>
+            <p>
+              ส่วนประกอบเป็นลูกโดยตรงของ <code>&lt;dialog&gt;</code>:
+              <code>&lt;header&gt;</code> (หัวเรื่อง คำอธิบาย ปุ่มปิด),
+              <code>&lt;div&gt;</code> (เนื้อหา) และ
+              <code>&lt;footer&gt;</code> (ปุ่ม). Tsugi wraps the parts in one
+              child; tsunami puts them straight in the dialog, or in a
+              <code>&lt;form method=<wbr />"dialog"&gt;</code>. Every part is
+              optional.
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -370,44 +385,59 @@
                   <button
                     type="button"
                     class="btn"
-                    commandfor="dlg-delete"
+                    commandfor="dlg-edit"
                     command="show-modal"
                   >
-                    ลบสินค้า Delete product
+                    แก้ไขลูกค้า Edit customer
                   </button>
                   <dialog
                     class="dialog"
-                    id="dlg-delete"
-                    aria-labelledby="dlg-delete-title"
+                    id="dlg-edit"
+                    aria-labelledby="dlg-edit-title"
+                    aria-describedby="dlg-edit-desc"
                     closedby="any"
                   >
                     <header>
-                      <h2 id="dlg-delete-title">
-                        ลบสินค้านี้? Delete this product?
-                      </h2>
+                      <h2 id="dlg-edit-title">แก้ไขลูกค้า Edit customer</h2>
+                      <p id="dlg-edit-desc">
+                        แก้ไขข้อมูลแล้วกดบันทึก Change the details, then save.
+                      </p>
                       <button
                         type="button"
                         class="btn"
                         data-variant="ghost"
                         data-size="icon"
-                        commandfor="dlg-delete"
+                        commandfor="dlg-edit"
                         command="close"
                         aria-label="ปิด Close"
                       >
                         <i class="icon icon-x" aria-hidden="true"></i>
                       </button>
                     </header>
-                    <div>
-                      <p>
-                        สินค้าและประวัติสต็อกจะถูกลบถาวร The product and its
-                        stock history are removed permanently.
-                      </p>
+                    <div class="stack">
+                      <div class="field">
+                        <label for="dlg-edit-name">ชื่อ Name</label>
+                        <input
+                          id="dlg-edit-name"
+                          type="text"
+                          value="สมชาย ใจดี"
+                          autofocus
+                        />
+                      </div>
+                      <div class="field">
+                        <label for="dlg-edit-email">อีเมล Email</label>
+                        <input
+                          id="dlg-edit-email"
+                          type="email"
+                          value="somchai@example.com"
+                        />
+                      </div>
                     </div>
                     <footer>
                       <button
                         type="button"
                         class="btn"
-                        commandfor="dlg-delete"
+                        commandfor="dlg-edit"
                         command="close"
                       >
                         ยกเลิก Cancel
@@ -415,11 +445,11 @@
                       <button
                         type="button"
                         class="btn"
-                        data-variant="danger"
-                        commandfor="dlg-delete"
+                        data-variant="primary"
+                        commandfor="dlg-edit"
                         command="close"
                       >
-                        ลบ Delete
+                        บันทึก Save changes
                       </button>
                     </footer>
                   </dialog>
@@ -432,22 +462,1428 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;button type="button" class="btn" commandfor="dlg-delete" command="show-modal"&gt;ลบสินค้า Delete product&lt;/button&gt;
-&lt;dialog class="dialog" id="dlg-delete" aria-labelledby="dlg-delete-title" closedby="any"&gt;
+                <pre><code>&lt;button type="button" class="btn" commandfor="dlg-edit" command="show-modal"&gt;แก้ไขลูกค้า Edit customer&lt;/button&gt;
+&lt;dialog class="dialog" id="dlg-edit" aria-labelledby="dlg-edit-title" aria-describedby="dlg-edit-desc" closedby="any"&gt;
   &lt;header&gt;
-    &lt;h2 id="dlg-delete-title"&gt;ลบสินค้านี้? Delete this product?&lt;/h2&gt;
-    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-delete" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;h2 id="dlg-edit-title"&gt;แก้ไขลูกค้า Edit customer&lt;/h2&gt;
+    &lt;p id="dlg-edit-desc"&gt;แก้ไขข้อมูลแล้วกดบันทึก Change the details, then save.&lt;/p&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-edit" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
   &lt;/header&gt;
-  &lt;div&gt;
-    &lt;p&gt;สินค้าและประวัติสต็อกจะถูกลบถาวร The product and its stock history are removed permanently.&lt;/p&gt;
+  &lt;div class="stack"&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="dlg-edit-name"&gt;ชื่อ Name&lt;/label&gt;
+      &lt;input id="dlg-edit-name" type="text" value="สมชาย ใจดี" autofocus&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="dlg-edit-email"&gt;อีเมล Email&lt;/label&gt;
+      &lt;input id="dlg-edit-email" type="email" value="somchai@example.com"&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
   &lt;footer&gt;
-    &lt;button type="button" class="btn" commandfor="dlg-delete" command="close"&gt;ยกเลิก Cancel&lt;/button&gt;
-    &lt;button type="button" class="btn" data-variant="danger" commandfor="dlg-delete" command="close"&gt;ลบ Delete&lt;/button&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-edit" command="close"&gt;ยกเลิก Cancel&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary" commandfor="dlg-edit" command="close"&gt;บันทึก Save changes&lt;/button&gt;
   &lt;/footer&gt;
 &lt;/dialog&gt;</code></pre>
               </div>
             </div>
+          </section>
+          <section>
+            <h2>
+              เปิดและปิดด้วย commandfor และ command Buttons open and close it
+              with commandfor and command
+            </h2>
+            <p>
+              <code>command=<wbr />"show-<wbr />modal"</code> เท่ากับ
+              <code>data-<wbr />dialog-<wbr />open</code> ของ Tsugi และ
+              <code>command=<wbr />"close"</code> เท่ากับ
+              <code>data-<wbr />dialog-<wbr />close</code>. The button names the
+              dialog's id in <code>commandfor</code>; the browser calls
+              <code>showModal(<wbr />)</code> or <code>close(<wbr />)</code>.
+              Esc closes it too.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="dlg-note"
+                    command="show-modal"
+                  >
+                    หมายเหตุคำสั่งซื้อ Order note
+                  </button>
+                  <dialog
+                    class="dialog"
+                    id="dlg-note"
+                    data-size="sm"
+                    aria-labelledby="dlg-note-title"
+                  >
+                    <header>
+                      <h2 id="dlg-note-title">หมายเหตุ #110963 Order note</h2>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="dlg-note"
+                        command="close"
+                        aria-label="ปิด Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <div>
+                      <p>
+                        ห่อของขวัญ ไม่ใส่ใบเสร็จในกล่อง Gift wrap, no receipt in
+                        the box.
+                      </p>
+                    </div>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-note"
+                        command="close"
+                      >
+                        ปิด Close
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="dlg-note" command="show-modal"&gt;หมายเหตุคำสั่งซื้อ Order note&lt;/button&gt;
+&lt;dialog class="dialog" id="dlg-note" data-size="sm" aria-labelledby="dlg-note-title"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-note-title"&gt;หมายเหตุ #110963 Order note&lt;/h2&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-note" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;div&gt;
+    &lt;p&gt;ห่อของขวัญ ไม่ใส่ใบเสร็จในกล่อง Gift wrap, no receipt in the box.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-note" command="close"&gt;ปิด Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              คลิกพื้นหลังเพื่อปิด และแบบที่เปิดค้างไว้ A click on the backdrop
+              closes it; closedby keeps it open
+            </h2>
+            <p>
+              <code>closedby=<wbr />"any"</code>: Esc และคลิกพื้นหลังปิดได้.
+              ไม่ใส่ <code>closedby</code>: ปิดด้วย Esc เท่านั้น (เหมือน
+              <code>data-<wbr />dialog-<wbr />static</code> ของ Tsugi).
+              <code>closedby=<wbr />"none"</code>: ปิดด้วยปุ่มเท่านั้น. A
+              browser without <code>closedby</code> support ignores it: Escape
+              still closes the dialog.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      commandfor="dlg-any"
+                      command="show-modal"
+                    >
+                      closedby="any"
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      commandfor="dlg-none"
+                      command="show-modal"
+                    >
+                      closedby="none"
+                    </button>
+                  </div>
+                  <dialog
+                    class="dialog"
+                    id="dlg-any"
+                    data-size="sm"
+                    aria-labelledby="dlg-any-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="dlg-any-title">
+                        คลิกนอกกรอบเพื่อปิด Click outside to close
+                      </h2>
+                      <p>
+                        Esc หรือคลิกพื้นหลังก็ปิดได้ Escape or a click on the
+                        backdrop closes it.
+                      </p>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-any"
+                        command="close"
+                      >
+                        ปิด Close
+                      </button>
+                    </footer>
+                  </dialog>
+                  <dialog
+                    class="dialog"
+                    id="dlg-none"
+                    data-size="sm"
+                    aria-labelledby="dlg-none-title"
+                    closedby="none"
+                  >
+                    <header>
+                      <h2 id="dlg-none-title">
+                        กำลังนำเข้าสินค้า Importing products
+                      </h2>
+                      <p>ปิดได้ด้วยปุ่มเท่านั้น Only the button closes it.</p>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-none"
+                        command="close"
+                      >
+                        ปิด Close
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" commandfor="dlg-any" command="show-modal"&gt;closedby="any"&lt;/button&gt;
+  &lt;button type="button" class="btn" commandfor="dlg-none" command="show-modal"&gt;closedby="none"&lt;/button&gt;
+&lt;/div&gt;
+&lt;dialog class="dialog" id="dlg-any" data-size="sm" aria-labelledby="dlg-any-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-any-title"&gt;คลิกนอกกรอบเพื่อปิด Click outside to close&lt;/h2&gt;
+    &lt;p&gt;Esc หรือคลิกพื้นหลังก็ปิดได้ Escape or a click on the backdrop closes it.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-any" command="close"&gt;ปิด Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;
+&lt;dialog class="dialog" id="dlg-none" data-size="sm" aria-labelledby="dlg-none-title" closedby="none"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-none-title"&gt;กำลังนำเข้าสินค้า Importing products&lt;/h2&gt;
+    &lt;p&gt;ปิดได้ด้วยปุ่มเท่านั้น Only the button closes it.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-none" command="close"&gt;ปิด Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ขนาด: เล็ก ปกติ ใหญ่ และใหญ่มาก Sizes: small, default, large and
+              extra large
+            </h2>
+            <p>
+              <code>data-<wbr />size</code> บน dialog. On a narrow screen every
+              size is the window less 1rem each side.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      commandfor="dlg-size-sm"
+                      command="show-modal"
+                    >
+                      เล็ก Small
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      commandfor="dlg-size-md"
+                      command="show-modal"
+                    >
+                      ปกติ Default
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      commandfor="dlg-size-lg"
+                      command="show-modal"
+                    >
+                      ใหญ่ Large
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      commandfor="dlg-size-xl"
+                      command="show-modal"
+                    >
+                      ใหญ่มาก Extra large
+                    </button>
+                  </div>
+                  <dialog
+                    class="dialog"
+                    id="dlg-size-sm"
+                    data-size="sm"
+                    aria-labelledby="dlg-size-sm-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="dlg-size-sm-title">เล็ก Small</h2>
+                      <p>
+                        24rem: ยืนยันสั้นๆ หรือช่องเดียว A short confirmation or
+                        one field.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="dlg-size-sm"
+                        command="close"
+                        aria-label="ปิด Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-size-sm"
+                        command="close"
+                      >
+                        ปิด Close
+                      </button>
+                    </footer>
+                  </dialog>
+                  <dialog
+                    class="dialog"
+                    id="dlg-size-md"
+                    aria-labelledby="dlg-size-md-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="dlg-size-md-title">ปกติ Default</h2>
+                      <p>32rem: ฟอร์ม A form.</p>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="dlg-size-md"
+                        command="close"
+                        aria-label="ปิด Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-size-md"
+                        command="close"
+                      >
+                        ปิด Close
+                      </button>
+                    </footer>
+                  </dialog>
+                  <dialog
+                    class="dialog"
+                    id="dlg-size-lg"
+                    data-size="lg"
+                    aria-labelledby="dlg-size-lg-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="dlg-size-lg-title">ใหญ่ Large</h2>
+                      <p>
+                        42rem: ฟอร์มหลายคอลัมน์ เช่น ที่อยู่ Rows of fields,
+                        such as an address.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="dlg-size-lg"
+                        command="close"
+                        aria-label="ปิด Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-size-lg"
+                        command="close"
+                      >
+                        ปิด Close
+                      </button>
+                    </footer>
+                  </dialog>
+                  <dialog
+                    class="dialog"
+                    id="dlg-size-xl"
+                    data-size="xl"
+                    aria-labelledby="dlg-size-xl-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="dlg-size-xl-title">ใหญ่มาก Extra large</h2>
+                      <p>56rem: ตารางหรือตัวอย่าง A table or a preview.</p>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="dlg-size-xl"
+                        command="close"
+                        aria-label="ปิด Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-size-xl"
+                        command="close"
+                      >
+                        ปิด Close
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" commandfor="dlg-size-sm" command="show-modal"&gt;เล็ก Small&lt;/button&gt;
+  &lt;button type="button" class="btn" commandfor="dlg-size-md" command="show-modal"&gt;ปกติ Default&lt;/button&gt;
+  &lt;button type="button" class="btn" commandfor="dlg-size-lg" command="show-modal"&gt;ใหญ่ Large&lt;/button&gt;
+  &lt;button type="button" class="btn" commandfor="dlg-size-xl" command="show-modal"&gt;ใหญ่มาก Extra large&lt;/button&gt;
+&lt;/div&gt;
+&lt;dialog class="dialog" id="dlg-size-sm" data-size="sm" aria-labelledby="dlg-size-sm-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-size-sm-title"&gt;เล็ก Small&lt;/h2&gt;
+    &lt;p&gt;24rem: ยืนยันสั้นๆ หรือช่องเดียว A short confirmation or one field.&lt;/p&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-size-sm" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-size-sm" command="close"&gt;ปิด Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;
+&lt;dialog class="dialog" id="dlg-size-md" aria-labelledby="dlg-size-md-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-size-md-title"&gt;ปกติ Default&lt;/h2&gt;
+    &lt;p&gt;32rem: ฟอร์ม A form.&lt;/p&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-size-md" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-size-md" command="close"&gt;ปิด Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;
+&lt;dialog class="dialog" id="dlg-size-lg" data-size="lg" aria-labelledby="dlg-size-lg-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-size-lg-title"&gt;ใหญ่ Large&lt;/h2&gt;
+    &lt;p&gt;42rem: ฟอร์มหลายคอลัมน์ เช่น ที่อยู่ Rows of fields, such as an address.&lt;/p&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-size-lg" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-size-lg" command="close"&gt;ปิด Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;
+&lt;dialog class="dialog" id="dlg-size-xl" data-size="xl" aria-labelledby="dlg-size-xl-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-size-xl-title"&gt;ใหญ่มาก Extra large&lt;/h2&gt;
+    &lt;p&gt;56rem: ตารางหรือตัวอย่าง A table or a preview.&lt;/p&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-size-xl" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-size-xl" command="close"&gt;ปิด Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ฟอร์ม method="dialog" ปิด dialog และหน้าอ่านปุ่มที่กดจาก
+              returnValue A form with method="dialog" closes it, and the page
+              reads returnValue
+            </h2>
+            <p>
+              ปุ่ม submit ใน
+              <code>&lt;form method=<wbr />"dialog"&gt;</code> ปิด dialog
+              โดยไม่ส่งข้อมูล และ <code>value</code> ของปุ่มกลายเป็น
+              <code>returnValue</code>. Read it in the <code>close</code> event.
+              Escape leaves it empty. A close button with
+              <code>command=<wbr />"close"</code> and a <code>value</code> sets
+              it the same way.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-cancel"
+                        command="show-modal"
+                      >
+                        ยกเลิกคำสั่งซื้อ Cancel order
+                      </button>
+                    </div>
+                    <p id="dlg-cancel-result">
+                      ยังไม่ได้เลือก Nothing chosen yet.
+                    </p>
+                  </div>
+                  <dialog
+                    class="dialog"
+                    id="dlg-cancel"
+                    data-size="sm"
+                    aria-labelledby="dlg-cancel-title"
+                  >
+                    <form method="dialog">
+                      <header>
+                        <h2 id="dlg-cancel-title">
+                          ยกเลิกคำสั่งซื้อ #110963? Cancel order #110963?
+                        </h2>
+                        <p>
+                          คืนเงินลูกค้าและคืนสินค้าเข้าสต็อก The customer is
+                          refunded and the items go back into stock.
+                        </p>
+                      </header>
+                      <footer>
+                        <button class="btn" value="keep">
+                          เก็บไว้ Keep order
+                        </button>
+                        <button
+                          class="btn"
+                          data-variant="danger"
+                          value="cancel"
+                        >
+                          ยกเลิก Cancel order
+                        </button>
+                      </footer>
+                    </form>
+                  </dialog>
+                  <script type="module">
+                    const dialog = document.getElementById("dlg-cancel");
+                    dialog.addEventListener("close", () => {
+                      document.getElementById("dlg-cancel-result").textContent =
+                        `returnValue = "${dialog.returnValue}"`;
+                      dialog.returnValue = "";
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div&gt;&lt;button type="button" class="btn" commandfor="dlg-cancel" command="show-modal"&gt;ยกเลิกคำสั่งซื้อ Cancel order&lt;/button&gt;&lt;/div&gt;
+  &lt;p id="dlg-cancel-result"&gt;ยังไม่ได้เลือก Nothing chosen yet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;dialog class="dialog" id="dlg-cancel" data-size="sm" aria-labelledby="dlg-cancel-title"&gt;
+  &lt;form method="dialog"&gt;
+    &lt;header&gt;
+      &lt;h2 id="dlg-cancel-title"&gt;ยกเลิกคำสั่งซื้อ #110963? Cancel order #110963?&lt;/h2&gt;
+      &lt;p&gt;คืนเงินลูกค้าและคืนสินค้าเข้าสต็อก The customer is refunded and the items go back into stock.&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;footer&gt;
+      &lt;button class="btn" value="keep"&gt;เก็บไว้ Keep order&lt;/button&gt;
+      &lt;button class="btn" data-variant="danger" value="cancel"&gt;ยกเลิก Cancel order&lt;/button&gt;
+    &lt;/footer&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;
+&lt;script type="module"&gt;
+  const dialog = document.getElementById("dlg-cancel");
+  dialog.addEventListener("close", () =&gt; {
+    document.getElementById("dlg-cancel-result").textContent =
+      `returnValue = "${dialog.returnValue}"`;
+    dialog.returnValue = "";
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              ส่วนที่ยาวเลื่อนภายใน dialog ส่วน header และ footer อยู่กับที่ A
+              long section scrolls inside, and the header and footer stay
+            </h2>
+            <p>
+              dialog สูงไม่เกินหน้าต่าง และ <code>&gt; div</code> เลื่อนได้เอง
+              ไม่ต้องใส่ class. The panel is never taller than the window; the
+              middle <code>&lt;div&gt;</code> scrolls on its own.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="dlg-items"
+                    command="show-modal"
+                  >
+                    รายการสินค้า Order items
+                  </button>
+                  <dialog
+                    class="dialog"
+                    id="dlg-items"
+                    aria-labelledby="dlg-items-title"
+                    closedby="any"
+                  >
+                    <header>
+                      <h2 id="dlg-items-title">รายการสินค้า Order items</h2>
+                      <p>
+                        24 รายการของคำสั่งซื้อ #110963 The 24 lines of order
+                        #110963.
+                      </p>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="dlg-items"
+                        command="close"
+                        aria-label="ปิด Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <div>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">สินค้า Product</th>
+                            <th scope="col">SKU</th>
+                            <th scope="col" data-align="end">จำนวน Qty</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>โคมไฟ Bollard Lamp - Black</td>
+                            <td>LAMP-BLK</td>
+                            <td data-align="end">2</td>
+                          </tr>
+                          <tr>
+                            <td>ผ้าปู Magic Sheets - Twin</td>
+                            <td>SHEET-TWIN</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>นาฬิกา Timeless Watch</td>
+                            <td>WATCH-01</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>ปากกา Magic Pen</td>
+                            <td>PEN-01</td>
+                            <td data-align="end">4</td>
+                          </tr>
+                          <tr>
+                            <td>กระเป๋า Canvas Tote</td>
+                            <td>TOTE-01</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>แผ่นรองโต๊ะ Desk Mat</td>
+                            <td>MAT-01</td>
+                            <td data-align="end">2</td>
+                          </tr>
+                          <tr>
+                            <td>แก้ว Ceramic Mug</td>
+                            <td>MUG-01</td>
+                            <td data-align="end">6</td>
+                          </tr>
+                          <tr>
+                            <td>สมุด Notebook Set</td>
+                            <td>NOTE-03</td>
+                            <td data-align="end">3</td>
+                          </tr>
+                          <tr>
+                            <td>ผ้าห่ม Wool Throw</td>
+                            <td>THROW-01</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>ตะขอ Brass Hook</td>
+                            <td>HOOK-02</td>
+                            <td data-align="end">8</td>
+                          </tr>
+                          <tr>
+                            <td>ผ้ากันเปื้อน Linen Apron</td>
+                            <td>APRON-01</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>ถาด Oak Tray</td>
+                            <td>TRAY-01</td>
+                            <td data-align="end">2</td>
+                          </tr>
+                          <tr>
+                            <td>โคมไฟ Bollard Lamp - White</td>
+                            <td>LAMP-WHT</td>
+                            <td data-align="end">2</td>
+                          </tr>
+                          <tr>
+                            <td>ผ้าปู Magic Sheets - Queen</td>
+                            <td>SHEET-QUEEN</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>นาฬิกา Timeless Watch - Gold</td>
+                            <td>WATCH-02</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>ปากกา Magic Pen - Red</td>
+                            <td>PEN-02</td>
+                            <td data-align="end">4</td>
+                          </tr>
+                          <tr>
+                            <td>กระเป๋า Canvas Tote - Large</td>
+                            <td>TOTE-02</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>แผ่นรองโต๊ะ Desk Mat - Grey</td>
+                            <td>MAT-02</td>
+                            <td data-align="end">2</td>
+                          </tr>
+                          <tr>
+                            <td>แก้ว Ceramic Mug - Blue</td>
+                            <td>MUG-02</td>
+                            <td data-align="end">6</td>
+                          </tr>
+                          <tr>
+                            <td>สมุด Notebook Set - Lined</td>
+                            <td>NOTE-05</td>
+                            <td data-align="end">3</td>
+                          </tr>
+                          <tr>
+                            <td>ผ้าห่ม Wool Throw - Grey</td>
+                            <td>THROW-02</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>ตะขอ Brass Hook - Large</td>
+                            <td>HOOK-04</td>
+                            <td data-align="end">8</td>
+                          </tr>
+                          <tr>
+                            <td>ผ้ากันเปื้อน Linen Apron - Navy</td>
+                            <td>APRON-02</td>
+                            <td data-align="end">1</td>
+                          </tr>
+                          <tr>
+                            <td>ถาด Oak Tray - Round</td>
+                            <td>TRAY-02</td>
+                            <td data-align="end">2</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-items"
+                        command="close"
+                      >
+                        ปิด Close
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="dlg-items" command="show-modal"&gt;รายการสินค้า Order items&lt;/button&gt;
+&lt;dialog class="dialog" id="dlg-items" aria-labelledby="dlg-items-title" closedby="any"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-items-title"&gt;รายการสินค้า Order items&lt;/h2&gt;
+    &lt;p&gt;24 รายการของคำสั่งซื้อ #110963 The 24 lines of order #110963.&lt;/p&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="dlg-items" command="close" aria-label="ปิด Close"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;div&gt;
+    &lt;table class="table"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;&lt;th scope="col"&gt;สินค้า Product&lt;/th&gt;&lt;th scope="col"&gt;SKU&lt;/th&gt;&lt;th scope="col" data-align="end"&gt;จำนวน Qty&lt;/th&gt;&lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;โคมไฟ Bollard Lamp - Black&lt;/td&gt;&lt;td&gt;LAMP-BLK&lt;/td&gt;&lt;td data-align="end"&gt;2&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ผ้าปู Magic Sheets - Twin&lt;/td&gt;&lt;td&gt;SHEET-TWIN&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;นาฬิกา Timeless Watch&lt;/td&gt;&lt;td&gt;WATCH-01&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ปากกา Magic Pen&lt;/td&gt;&lt;td&gt;PEN-01&lt;/td&gt;&lt;td data-align="end"&gt;4&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;กระเป๋า Canvas Tote&lt;/td&gt;&lt;td&gt;TOTE-01&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;แผ่นรองโต๊ะ Desk Mat&lt;/td&gt;&lt;td&gt;MAT-01&lt;/td&gt;&lt;td data-align="end"&gt;2&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;แก้ว Ceramic Mug&lt;/td&gt;&lt;td&gt;MUG-01&lt;/td&gt;&lt;td data-align="end"&gt;6&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;สมุด Notebook Set&lt;/td&gt;&lt;td&gt;NOTE-03&lt;/td&gt;&lt;td data-align="end"&gt;3&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ผ้าห่ม Wool Throw&lt;/td&gt;&lt;td&gt;THROW-01&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ตะขอ Brass Hook&lt;/td&gt;&lt;td&gt;HOOK-02&lt;/td&gt;&lt;td data-align="end"&gt;8&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ผ้ากันเปื้อน Linen Apron&lt;/td&gt;&lt;td&gt;APRON-01&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ถาด Oak Tray&lt;/td&gt;&lt;td&gt;TRAY-01&lt;/td&gt;&lt;td data-align="end"&gt;2&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;โคมไฟ Bollard Lamp - White&lt;/td&gt;&lt;td&gt;LAMP-WHT&lt;/td&gt;&lt;td data-align="end"&gt;2&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ผ้าปู Magic Sheets - Queen&lt;/td&gt;&lt;td&gt;SHEET-QUEEN&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;นาฬิกา Timeless Watch - Gold&lt;/td&gt;&lt;td&gt;WATCH-02&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ปากกา Magic Pen - Red&lt;/td&gt;&lt;td&gt;PEN-02&lt;/td&gt;&lt;td data-align="end"&gt;4&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;กระเป๋า Canvas Tote - Large&lt;/td&gt;&lt;td&gt;TOTE-02&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;แผ่นรองโต๊ะ Desk Mat - Grey&lt;/td&gt;&lt;td&gt;MAT-02&lt;/td&gt;&lt;td data-align="end"&gt;2&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;แก้ว Ceramic Mug - Blue&lt;/td&gt;&lt;td&gt;MUG-02&lt;/td&gt;&lt;td data-align="end"&gt;6&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;สมุด Notebook Set - Lined&lt;/td&gt;&lt;td&gt;NOTE-05&lt;/td&gt;&lt;td data-align="end"&gt;3&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ผ้าห่ม Wool Throw - Grey&lt;/td&gt;&lt;td&gt;THROW-02&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ตะขอ Brass Hook - Large&lt;/td&gt;&lt;td&gt;HOOK-04&lt;/td&gt;&lt;td data-align="end"&gt;8&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ผ้ากันเปื้อน Linen Apron - Navy&lt;/td&gt;&lt;td&gt;APRON-02&lt;/td&gt;&lt;td data-align="end"&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;ถาด Oak Tray - Round&lt;/td&gt;&lt;td&gt;TRAY-02&lt;/td&gt;&lt;td data-align="end"&gt;2&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-items" command="close"&gt;ปิด Close&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Alert dialog: ถามคำถามที่ผู้ใช้ต้องตอบ An alert dialog asks a
+              question the user has to answer
+            </h2>
+            <p>
+              <code>role=<wbr />"alertdialog"</code> บน
+              <code>.<wbr />dialog</code>: ไม่มีเส้นคั่น ไม่มีปุ่มปิด. Use it to
+              confirm something that cannot be undone. Leave
+              <code>closedby</code> out so a stray click on the backdrop does
+              not answer; Escape still cancels.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="dlg-alert"
+                    command="show-modal"
+                  >
+                    ลบลูกค้า Delete customer
+                  </button>
+                  <dialog
+                    class="dialog"
+                    id="dlg-alert"
+                    role="alertdialog"
+                    aria-labelledby="dlg-alert-title"
+                    aria-describedby="dlg-alert-desc"
+                  >
+                    <header>
+                      <h2 id="dlg-alert-title">
+                        ลบลูกค้าคนนี้? Delete this customer?
+                      </h2>
+                      <p id="dlg-alert-desc">
+                        ประวัติคำสั่งซื้อยังอยู่ แต่ลูกค้าจะเข้าสู่ระบบไม่ได้อีก
+                        Their orders stay, but they can no longer sign in. This
+                        cannot be undone.
+                      </p>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-alert"
+                        command="close"
+                      >
+                        ยกเลิก Cancel
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="danger"
+                        commandfor="dlg-alert"
+                        command="close"
+                      >
+                        ลบ Delete
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="dlg-alert" command="show-modal"&gt;ลบลูกค้า Delete customer&lt;/button&gt;
+&lt;dialog class="dialog" id="dlg-alert" role="alertdialog" aria-labelledby="dlg-alert-title" aria-describedby="dlg-alert-desc"&gt;
+  &lt;header&gt;
+    &lt;h2 id="dlg-alert-title"&gt;ลบลูกค้าคนนี้? Delete this customer?&lt;/h2&gt;
+    &lt;p id="dlg-alert-desc"&gt;ประวัติคำสั่งซื้อยังอยู่ แต่ลูกค้าจะเข้าสู่ระบบไม่ได้อีก Their orders stay, but they can no longer sign in. This cannot be undone.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-alert" command="close"&gt;ยกเลิก Cancel&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="danger" commandfor="dlg-alert" command="close"&gt;ลบ Delete&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              figure ใน header วางไอคอนข้างคำถาม A figure in the header puts an
+              icon beside the question
+            </h2>
+            <p>
+              <code>data-<wbr />variant</code> บน <code>&lt;figure&gt;</code>:
+              <code>ok</code>, <code>danger</code>, <code>warning</code>,
+              <code>info</code>; without it the figure is gray. It works in any
+              dialog header.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="dlg-icon"
+                    command="show-modal"
+                  >
+                    ลบสินค้า Delete product
+                  </button>
+                  <dialog
+                    class="dialog"
+                    id="dlg-icon"
+                    role="alertdialog"
+                    aria-labelledby="dlg-icon-title"
+                    aria-describedby="dlg-icon-desc"
+                  >
+                    <header>
+                      <figure data-variant="danger">
+                        <i class="icon icon-trash-2" aria-hidden="true"></i>
+                      </figure>
+                      <h2 id="dlg-icon-title">
+                        ลบ Timeless Watch? Delete Timeless Watch?
+                      </h2>
+                      <p id="dlg-icon-desc">
+                        สินค้าและ 3 ตัวเลือกถูกลบจากร้าน
+                        คำสั่งซื้อเดิมยังเก็บรายการไว้ The product and its 3
+                        variants are removed. Orders that hold it keep their
+                        lines.
+                      </p>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-icon"
+                        command="close"
+                      >
+                        ยกเลิก Cancel
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="danger"
+                        commandfor="dlg-icon"
+                        command="close"
+                      >
+                        ลบสินค้า Delete product
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="dlg-icon" command="show-modal"&gt;ลบสินค้า Delete product&lt;/button&gt;
+&lt;dialog class="dialog" id="dlg-icon" role="alertdialog" aria-labelledby="dlg-icon-title" aria-describedby="dlg-icon-desc"&gt;
+  &lt;header&gt;
+    &lt;figure data-variant="danger"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;h2 id="dlg-icon-title"&gt;ลบ Timeless Watch? Delete Timeless Watch?&lt;/h2&gt;
+    &lt;p id="dlg-icon-desc"&gt;สินค้าและ 3 ตัวเลือกถูกลบจากร้าน คำสั่งซื้อเดิมยังเก็บรายการไว้ The product and its 3 variants are removed. Orders that hold it keep their lines.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-icon" command="close"&gt;ยกเลิก Cancel&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="danger" commandfor="dlg-icon" command="close"&gt;ลบสินค้า Delete product&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-size="sm" บน alert dialog:
+              จัดกึ่งกลางและปุ่มสองปุ่มกว้างเท่ากัน data-size="sm" centres an
+              alert dialog and gives the two buttons equal width
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="dlg-signout"
+                    command="show-modal"
+                  >
+                    ออกจากระบบ Sign out
+                  </button>
+                  <dialog
+                    class="dialog"
+                    id="dlg-signout"
+                    role="alertdialog"
+                    data-size="sm"
+                    aria-labelledby="dlg-signout-title"
+                    aria-describedby="dlg-signout-desc"
+                  >
+                    <header>
+                      <figure>
+                        <i class="icon icon-log-out" aria-hidden="true"></i>
+                      </figure>
+                      <h2 id="dlg-signout-title">ออกจากระบบ? Sign out?</h2>
+                      <p id="dlg-signout-desc">
+                        การแก้ไขที่ยังไม่บันทึกจะหายไป Unsaved changes on this
+                        page are lost.
+                      </p>
+                    </header>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="dlg-signout"
+                        command="close"
+                      >
+                        ยกเลิก Cancel
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="primary"
+                        commandfor="dlg-signout"
+                        command="close"
+                      >
+                        ออกจากระบบ Sign out
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="dlg-signout" command="show-modal"&gt;ออกจากระบบ Sign out&lt;/button&gt;
+&lt;dialog class="dialog" id="dlg-signout" role="alertdialog" data-size="sm" aria-labelledby="dlg-signout-title" aria-describedby="dlg-signout-desc"&gt;
+  &lt;header&gt;
+    &lt;figure&gt;&lt;i class="icon icon-log-out" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;h2 id="dlg-signout-title"&gt;ออกจากระบบ? Sign out?&lt;/h2&gt;
+    &lt;p id="dlg-signout-desc"&gt;การแก้ไขที่ยังไม่บันทึกจะหายไป Unsaved changes on this page are lost.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" commandfor="dlg-signout" command="close"&gt;ยกเลิก Cancel&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary" commandfor="dlg-signout" command="close"&gt;ออกจากระบบ Sign out&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <h3>Methods and properties (native)</h3>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Member</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>showModal(<wbr />)</code>
+                    </td>
+                    <td>method</td>
+                    <td>
+                      เปิดแบบ modal บนพื้นหลังมืด โฟกัสอยู่ใน dialog. Opens the
+                      dialog over the dimmed page; what
+                      <code>command=<wbr />"show-<wbr />modal"</code> calls.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>close(<wbr />returnValue?)</code>
+                    </td>
+                    <td>method</td>
+                    <td>
+                      ปิด และคืนโฟกัสให้ปุ่มที่เปิด. Closes it; the optional
+                      string becomes <code>returnValue</code>. What
+                      <code>command=<wbr />"close"</code> calls.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>requestClose(<wbr />returnValue?)</code>
+                    </td>
+                    <td>method</td>
+                    <td>
+                      เหมือน Esc: ส่ง <code>cancel</code> ก่อน ซึ่งยกเลิกได้.
+                      Like Escape: fires <code>cancel</code> first, which can
+                      keep it open.
+                      <code>command=<wbr />"request-<wbr />close"</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>returnValue</code></td>
+                    <td>property</td>
+                    <td>
+                      ค่าจาก <code>close(<wbr />value)</code> หรือ
+                      <code>value</code> ของปุ่มที่ submit ฟอร์ม
+                      <code>method=<wbr />"dialog"</code>. Not reset on open:
+                      clear it yourself.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>open</code></td>
+                    <td>property</td>
+                    <td>
+                      <code>true</code> ขณะเปิด. Do not set the
+                      <code>open</code> attribute by hand: that dialog is not
+                      modal.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events (native)</h3>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>close</code></td>
+                    <td>none</td>
+                    <td>
+                      หลังปิด ไม่ว่าวิธีใด. After the dialog has closed, however
+                      it closed. Read <code>returnValue</code> here.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>cancel</code></td>
+                    <td>none</td>
+                    <td>
+                      เมื่อกด Esc หรือคลิกพื้นหลัง ก่อนปิด. Before Escape (or a
+                      backdrop click) closes it;
+                      <code>preventDefault(<wbr />)</code> keeps it open.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>Esc</kbd></td>
+                    <td>
+                      ปิด dialog (ยกเว้น <code>closedby=<wbr />"none"</code>).
+                      Closes the dialog; a popover open inside it closes first.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Tab</kbd></td>
+                    <td>
+                      วนอยู่ในตัว dialog ไม่ไปถึงหน้าข้างหลัง. Moves between the
+                      controls of the dialog only.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Enter</kbd></td>
+                    <td>
+                      ในช่องกรอก: submit ฟอร์ม ซึ่งปิด dialog เมื่อ
+                      <code>method=<wbr />"dialog"</code>. In a field: submits
+                      the form.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              tsunami ไม่มี JS สำหรับ dialog: ทั้งหมดเป็นของเบราว์เซอร์.
+              Everything here is the browser's own dialog element; tsunami adds
+              only styles.
+            </p>
           </section>
           <section>
             <h2>Attributes</h2>
@@ -462,19 +1898,137 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>commandfor + command</code></td>
-                    <td><code>show-modal, close</code></td>
-                    <td>บนปุ่ม เปิดหรือปิด dialog</td>
+                    <td>
+                      <code>class=<wbr />"dialog"</code>
+                    </td>
+                    <td>on <code>&lt;dialog&gt;</code></td>
+                    <td>สไตล์ dialog. The component.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />size</code>
+                    </td>
+                    <td>
+                      <code>sm</code> (24rem), none (default, 32rem),
+                      <code>lg</code> (42rem), <code>xl</code> (56rem)
+                    </td>
+                    <td>
+                      ความกว้าง. Width; never wider than the window less 1rem
+                      each side.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>role=<wbr />"alertdialog"</code>
+                    </td>
+                    <td>on the dialog</td>
+                    <td>
+                      คำถามที่ต้องตอบ: ไม่มีเส้นคั่น. A question with answers;
+                      with <code>data-<wbr />size=<wbr />"sm"</code> it is
+                      centred and its two buttons are equal width.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>aria-<wbr />labelledby</code>
+                    </td>
+                    <td>id of the <code>&lt;h2&gt;</code></td>
+                    <td>
+                      ชื่อ dialog สำหรับ screen reader (จำเป็น). Names the
+                      dialog. Required.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>aria-<wbr />describedby</code>
+                    </td>
+                    <td>id of the <code>&lt;p&gt;</code></td>
+                    <td>
+                      คำอธิบาย. Reads the line under the title as the
+                      description.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>closedby</code></td>
-                    <td><code>any</code></td>
-                    <td>ปิดด้วย Esc หรือคลิกนอกกรอบ</td>
+                    <td>
+                      <code>any</code>, <code>closerequest</code> (default for a
+                      modal), <code>none</code>
+                    </td>
+                    <td>
+                      <code>any</code>: Esc และคลิกพื้นหลังปิดได้;
+                      <code>closerequest</code>: Esc เท่านั้น;
+                      <code>none</code>: ปุ่มเท่านั้น.
+                    </td>
                   </tr>
                   <tr>
-                    <td><code>&gt; header / &gt; div / &gt; footer</code></td>
-                    <td></td>
-                    <td>ส่วนต่างๆ คั่นด้วยเส้น</td>
+                    <td><code>commandfor + command</code></td>
+                    <td>
+                      dialog id + <code>show-<wbr />modal</code>,
+                      <code>close</code>, <code>request-<wbr />close</code>
+                    </td>
+                    <td>
+                      บนปุ่ม เปิดหรือปิด dialog. On a button: opens or closes
+                      the dialog it names.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>value</code></td>
+                    <td>text, on a close or submit button</td>
+                    <td>
+                      กลายเป็น <code>returnValue</code>. Becomes the dialog's
+                      <code>returnValue</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>autofocus</code></td>
+                    <td>on a control in the dialog</td>
+                    <td>
+                      ช่องที่ได้โฟกัสเมื่อเปิด. Without it the first focusable
+                      control does.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>&gt; form[<wbr />method=<wbr />dialog]</code>
+                    </td>
+                    <td>optional wrapper</td>
+                    <td>
+                      ห่อ header/div/footer; ปุ่ม submit ปิด dialog. Wraps the
+                      parts; a submit closes the dialog.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; header</code></td>
+                    <td>
+                      <code>h2</code>, <code>p</code>, close
+                      <code>button</code>, <code>figure</code>
+                    </td>
+                    <td>
+                      หัวเรื่อง คำอธิบาย ปุ่มปิด (ท้ายแถวแรก). The close button
+                      sits at the end of the first row.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; header &gt; figure</code></td>
+                    <td>
+                      <code>data-<wbr />variant</code>: none (gray, default),
+                      <code>ok</code>, <code>danger</code>,
+                      <code>warning</code>, <code>info</code>
+                    </td>
+                    <td>ไอคอนกลมข้างคำถาม. A round icon beside the title.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; div</code></td>
+                    <td>any content</td>
+                    <td>
+                      เนื้อหา เลื่อนได้เมื่อยาว. The body; scrolls when it is
+                      long.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer</code></td>
+                    <td>buttons</td>
+                    <td>ปุ่มชิดขวา. Buttons at the end, main action last.</td>
                   </tr>
                 </tbody>
               </table>
