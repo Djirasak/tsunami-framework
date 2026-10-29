@@ -16,6 +16,7 @@
     line-height: 1;
     white-space: nowrap;
     text-decoration: none;
+    flex-shrink: 0;
     cursor: pointer;
     transition: background-color 0.15s;
   }
@@ -35,20 +36,20 @@
     filter: brightness(0.94);
   }
 
-  :where(.btn[data-variant="ghost"]) {
+  :where(.btn[data-variant~="ghost"]) {
     border-color: transparent;
     background: transparent;
   }
 
-  :where(.btn[data-variant="ghost"]:hover) {
+  :where(.btn[data-variant~="ghost"]:hover) {
     background: var(--subtle);
   }
 
-  :where(.btn[data-variant="danger"]) {
+  :where(.btn[data-variant~="danger"]) {
     color: var(--danger-fg);
   }
 
-  :where(.btn[data-variant="danger"]:hover) {
+  :where(.btn[data-variant~="danger"]:hover) {
     background: var(--danger-bg);
   }
 
@@ -68,9 +69,57 @@
     padding: 0;
   }
 
+  :where(.btn[data-size="icon-sm"]) {
+    width: 1.625rem;
+    height: 1.625rem;
+    padding: 0;
+    font-size: var(--text-sm);
+  }
+
+  // Toggle button: aria-pressed="true" marks the one that is on.
+  :where(.btn[aria-pressed="true"]) {
+    background: var(--neutral-bg);
+    color: var(--fg);
+  }
+
   :where(.btn:disabled, .btn[aria-disabled="true"]) {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
+  }
+
+  // Button group: buttons joined edge to edge; a dropdown [popover] may sit inside.
+  :where(.btn-group) {
+    display: inline-flex;
+    align-items: stretch;
+    isolation: isolate;
+  }
+
+  :where(.btn-group > .btn) {
+    position: relative;
+    border-radius: 0;
+  }
+
+  :where(.btn-group > .btn ~ .btn) {
+    margin-left: -1px;
+  }
+
+  :where(.btn-group > .btn:not(.btn ~ .btn)) {
+    border-start-start-radius: var(--radius-sm);
+    border-end-start-radius: var(--radius-sm);
+  }
+
+  :where(.btn-group > .btn:not(:has(~ .btn))) {
+    border-start-end-radius: var(--radius-sm);
+    border-end-end-radius: var(--radius-sm);
+  }
+
+  // Raise the hovered, pressed or focused button so its full border shows.
+  :where(.btn-group > .btn:is(:hover, [aria-pressed="true"])) {
+    z-index: 1;
+  }
+
+  :where(.btn-group > .btn:focus-visible) {
+    z-index: 2;
   }
 }

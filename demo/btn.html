@@ -321,9 +321,13 @@
             </div>
           </header>
           <section>
-            <h2>Variants</h2>
+            <h2>รูปแบบ Variants</h2>
+            <p>
+              ไม่ใส่ <code>data-variant</code> คือปุ่ม outline ใช้
+              <code>primary</code> หนึ่งปุ่มต่อหน้า
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="Variants">
+              <div role="tablist" aria-label="รูปแบบ Variants">
                 <button
                   type="button"
                   role="tab"
@@ -382,9 +386,13 @@
             </div>
           </section>
           <section>
-            <h2>Sizes</h2>
+            <h2>ขนาด Sizes</h2>
+            <p>
+              ปุ่มไอคอนอย่างเดียวใช้ <code>data-size="icon"</code> หรือ
+              <code>icon-sm</code> และต้องมี <code>aria-label</code>
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="Sizes">
+              <div role="tablist" aria-label="ขนาด Sizes">
                 <button
                   type="button"
                   role="tab"
@@ -424,6 +432,14 @@
                       type="button"
                       class="btn"
                       data-size="icon"
+                      aria-label="ตั้งค่า Settings"
+                    >
+                      <i class="icon icon-settings" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon-sm"
                       aria-label="เพิ่ม Add"
                     >
                       <i class="icon icon-plus" aria-hidden="true"></i>
@@ -442,15 +458,23 @@
   &lt;button type="button" class="btn" data-size="sm"&gt;เล็ก Small&lt;/button&gt;
   &lt;button type="button" class="btn"&gt;ปกติ Default&lt;/button&gt;
   &lt;button type="button" class="btn" data-size="lg"&gt;ใหญ่ Large&lt;/button&gt;
-  &lt;button type="button" class="btn" data-size="icon" aria-label="เพิ่ม Add"&gt;&lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="ตั้งค่า Settings"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon-sm" aria-label="เพิ่ม Add"&gt;&lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>ไอคอนและ disabled</h2>
+            <h2>ไอคอนและ disabled Icon and disabled</h2>
+            <p>
+              ใส่ไอคอนไว้ก่อนข้อความ ลิงก์ที่ปิดใช้งานใช้
+              <code>aria-disabled="true"</code>
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="ไอคอนและ disabled">
+              <div
+                role="tablist"
+                aria-label="ไอคอนและ disabled Icon and disabled"
+              >
                 <button
                   type="button"
                   role="tab"
@@ -486,6 +510,9 @@
                     <button type="button" class="btn" disabled>
                       ส่งออก Export
                     </button>
+                    <a class="btn" aria-disabled="true"
+                      >ดูใบเสร็จ View receipt</a
+                    >
                   </div>
                 </div>
               </div>
@@ -499,6 +526,562 @@
                 <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
   &lt;a class="btn" href="#"&gt;&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;เปิดหน้าร้าน Open store&lt;/a&gt;
   &lt;button type="button" class="btn" disabled&gt;ส่งออก Export&lt;/button&gt;
+  &lt;a class="btn" aria-disabled="true"&gt;ดูใบเสร็จ View receipt&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ปุ่มลบแบบไอคอน Delete icon button</h2>
+            <p>
+              ปุ่มลบเป็นไอคอนถังขยะสีแดงในกรอบ outline หรือแบบ ghost (<code
+                >data-variant="ghost danger"</code
+              >) สำหรับแถวในตาราง
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ปุ่มลบแบบไอคอน Delete icon button"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="danger"
+                      data-size="icon-sm"
+                      aria-label="ลบ Delete"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="danger"
+                      data-size="icon"
+                      aria-label="ลบ Delete"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="ghost danger"
+                      data-size="icon-sm"
+                      aria-label="ลบ Delete"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-variant="danger" data-size="icon-sm" aria-label="ลบ Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="ลบ Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="ghost danger" data-size="icon-sm" aria-label="ลบ Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ลบท้ายแถวฟิลด์ Delete at the end of a row of fields</h2>
+            <p>
+              ปุ่มไม่หดเมื่อแถวแคบ (<code>flex-shrink: 0</code>)
+              จึงอยู่ท้ายแถวขนาดเท่าเดิมเสมอ
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ลบท้ายแถวฟิลด์ Delete at the end of a row of fields"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <div class="field" style="width: min(10rem, 35%)">
+                        <select aria-label="Metafield">
+                          <option value="">--------</option>
+                          <option value="agent">ตัวแทน Agent</option>
+                          <option value="funnel">Funnel</option>
+                        </select>
+                      </div>
+                      <div class="field" style="width: min(16rem, 45%)">
+                        <input
+                          type="text"
+                          aria-label="ค่า Value"
+                          value="ร้านสาขาสยาม"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="danger"
+                        data-size="icon"
+                        aria-label="ลบฟิลด์ Delete field"
+                      >
+                        <i class="icon icon-trash-2" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <div class="field" style="width: min(10rem, 35%)">
+                        <select aria-label="Metafield">
+                          <option value="">--------</option>
+                          <option value="agent">ตัวแทน Agent</option>
+                          <option value="funnel" selected>Funnel</option>
+                        </select>
+                      </div>
+                      <div class="field" style="width: min(16rem, 45%)">
+                        <input
+                          type="text"
+                          aria-label="ค่า Value"
+                          value="flash-sale-11"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="danger"
+                        data-size="icon"
+                        aria-label="ลบฟิลด์ Delete field"
+                      >
+                        <i class="icon icon-trash-2" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;div class="field" style="width: min(10rem, 35%)"&gt;
+      &lt;select aria-label="Metafield"&gt;
+        &lt;option value=""&gt;--------&lt;/option&gt;
+        &lt;option value="agent"&gt;ตัวแทน Agent&lt;/option&gt;
+        &lt;option value="funnel"&gt;Funnel&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class="field" style="width: min(16rem, 45%)"&gt;
+      &lt;input type="text" aria-label="ค่า Value" value="ร้านสาขาสยาม" /&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="ลบฟิลด์ Delete field"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;div class="field" style="width: min(10rem, 35%)"&gt;
+      &lt;select aria-label="Metafield"&gt;
+        &lt;option value=""&gt;--------&lt;/option&gt;
+        &lt;option value="agent"&gt;ตัวแทน Agent&lt;/option&gt;
+        &lt;option value="funnel" selected&gt;Funnel&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class="field" style="width: min(16rem, 45%)"&gt;
+      &lt;input type="text" aria-label="ค่า Value" value="flash-sale-11" /&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="ลบฟิลด์ Delete field"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>กลุ่มปุ่ม Button group</h2>
+            <p>
+              <code>.btn-group</code> ต่อปุ่มชิดกันเป็นชุดเดียว ใส่
+              <code>role="group"</code> และ <code>aria-label</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="กลุ่มปุ่ม Button group">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="จัดการคำสั่งซื้อ Order actions"
+                  >
+                    <button type="button" class="btn">เก็บถาวร Archive</button>
+                    <button type="button" class="btn">รายงาน Report</button>
+                    <button type="button" class="btn">พิมพ์ Print</button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="btn-group" role="group" aria-label="จัดการคำสั่งซื้อ Order actions"&gt;
+  &lt;button type="button" class="btn"&gt;เก็บถาวร Archive&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;รายงาน Report&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;พิมพ์ Print&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>aria-pressed แสดงปุ่มที่เปิดอยู่ Pressed toggle buttons</h2>
+            <p>
+              <code>aria-pressed="true"</code> ทำให้ปุ่มมีพื้นเทาว่าเปิดอยู่ ใส่
+              <code>data-pressed="single"</code> ที่กลุ่มให้เลือกได้ทีละปุ่ม
+              หรือ <code>multiple</code> ให้แต่ละปุ่มสลับเอง (ต้องใช้ JS)
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="aria-pressed แสดงปุ่มที่เปิดอยู่ Pressed toggle buttons"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="ขนาดตัวอย่าง Preview width"
+                      data-pressed="single"
+                    >
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon"
+                        aria-pressed="true"
+                        aria-label="Desktop"
+                      >
+                        <i class="icon icon-monitor" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon"
+                        aria-pressed="false"
+                        aria-label="Tablet"
+                      >
+                        <i class="icon icon-tablet" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon"
+                        aria-pressed="false"
+                        aria-label="Mobile"
+                      >
+                        <i class="icon icon-smartphone" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="ตัวกรองสินค้า Product filters"
+                      data-pressed="multiple"
+                    >
+                      <button type="button" class="btn" aria-pressed="true">
+                        พร้อมส่ง
+                      </button>
+                      <button type="button" class="btn" aria-pressed="false">
+                        ลดราคา
+                      </button>
+                      <button type="button" class="btn" aria-pressed="false">
+                        ใหม่
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;div class="btn-group" role="group" aria-label="ขนาดตัวอย่าง Preview width" data-pressed="single"&gt;
+    &lt;button type="button" class="btn" data-size="icon" aria-pressed="true" aria-label="Desktop"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon" aria-pressed="false" aria-label="Tablet"&gt;&lt;i class="icon icon-tablet" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon" aria-pressed="false" aria-label="Mobile"&gt;&lt;i class="icon icon-smartphone" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="btn-group" role="group" aria-label="ตัวกรองสินค้า Product filters" data-pressed="multiple"&gt;
+    &lt;button type="button" class="btn" aria-pressed="true"&gt;พร้อมส่ง&lt;/button&gt;
+    &lt;button type="button" class="btn" aria-pressed="false"&gt;ลดราคา&lt;/button&gt;
+    &lt;button type="button" class="btn" aria-pressed="false"&gt;ใหม่&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>กลุ่มปุ่มพร้อมเมนู Button group with a menu</h2>
+            <p>
+              ปุ่มสุดท้ายของกลุ่มเปิด <a href="dropdown.html">dropdown</a> ด้วย
+              <code>popovertarget</code> ตัว popover
+              อยู่ในกลุ่มได้โดยไม่กระทบมุมโค้งของปุ่ม
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="กลุ่มปุ่มพร้อมเมนู Button group with a menu"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="ย้อนกลับ Go back"
+                    >
+                      <i class="icon icon-arrow-left" aria-hidden="true"></i>
+                    </button>
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="จัดการ Manage"
+                    >
+                      <button type="button" class="btn">
+                        เก็บถาวร Archive
+                      </button>
+                      <button type="button" class="btn">รายงาน Report</button>
+                    </div>
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="เลื่อน Snooze"
+                    >
+                      <button type="button" class="btn">เลื่อน Snooze</button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon"
+                        popovertarget="btn-more"
+                        aria-label="ตัวเลือกเพิ่มเติม More options"
+                      >
+                        <i class="icon icon-ellipsis" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown" id="btn-more" popover>
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-mail-check" aria-hidden="true"></i
+                          >อ่านแล้ว Mark as read
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-archive" aria-hidden="true"></i
+                          >เก็บถาวร Archive
+                        </button>
+                        <hr />
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-clock" aria-hidden="true"></i
+                          >เลื่อน Snooze
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-calendar" aria-hidden="true"></i
+                          >เพิ่มในปฏิทิน Add to calendar
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i
+                            class="icon icon-list-filter-plus"
+                            aria-hidden="true"
+                          ></i
+                          >เพิ่มในรายการ Add to list
+                        </button>
+                        <hr />
+                        <button
+                          type="button"
+                          data-variant="danger"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-trash-2" aria-hidden="true"></i>ลบ
+                          Trash
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="ย้อนกลับ Go back"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;div class="btn-group" role="group" aria-label="จัดการ Manage"&gt;
+    &lt;button type="button" class="btn"&gt;เก็บถาวร Archive&lt;/button&gt;
+    &lt;button type="button" class="btn"&gt;รายงาน Report&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="btn-group" role="group" aria-label="เลื่อน Snooze"&gt;
+    &lt;button type="button" class="btn"&gt;เลื่อน Snooze&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon" popovertarget="btn-more" aria-label="ตัวเลือกเพิ่มเติม More options"&gt;&lt;i class="icon icon-ellipsis" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;div class="dropdown" id="btn-more" popover&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-mail-check" aria-hidden="true"&gt;&lt;/i&gt;อ่านแล้ว Mark as read&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-archive" aria-hidden="true"&gt;&lt;/i&gt;เก็บถาวร Archive&lt;/button&gt;
+      &lt;hr /&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-clock" aria-hidden="true"&gt;&lt;/i&gt;เลื่อน Snooze&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-calendar" aria-hidden="true"&gt;&lt;/i&gt;เพิ่มในปฏิทิน Add to calendar&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-list-filter-plus" aria-hidden="true"&gt;&lt;/i&gt;เพิ่มในรายการ Add to list&lt;/button&gt;
+      &lt;hr /&gt;
+      &lt;button type="button" data-variant="danger" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;ลบ Trash&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
@@ -516,22 +1099,117 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>data-variant</code></td>
-                    <td><code>primary, ghost, danger</code></td>
-                    <td>ค่าเริ่มต้นเป็น outline</td>
-                  </tr>
-                  <tr>
-                    <td><code>data-size</code></td>
-                    <td><code>sm, lg, icon</code></td>
+                    <td><code>.btn</code></td>
+                    <td><code>button</code>, <code>a</code></td>
                     <td>
-                      <code>icon</code> เป็นปุ่มสี่เหลี่ยมจัตุรัส ต้องใส่
-                      <code>aria-label</code>
+                      ปุ่ม ใช้กับ
+                      <code>&lt;button type="button"&gt;</code> หรือลิงก์
                     </td>
                   </tr>
                   <tr>
-                    <td><code>disabled / aria-disabled</code></td>
+                    <td><code>data-variant</code></td>
+                    <td>
+                      (ไม่ใส่ = outline, ค่าเริ่มต้น), <code>primary</code>,
+                      <code>ghost</code>, <code>danger</code>,
+                      <code>ghost danger</code>
+                    </td>
+                    <td>
+                      รูปแบบปุ่ม ใส่ได้หลายค่าคั่นด้วยช่องว่าง เช่น
+                      <code>ghost danger</code> คือ ghost สีแดง
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      (ไม่ใส่ = ปกติ 32px, ค่าเริ่มต้น), <code>sm</code>,
+                      <code>lg</code>, <code>icon</code>, <code>icon-sm</code>
+                    </td>
+                    <td>
+                      <code>icon</code> / <code>icon-sm</code> เป็นปุ่มจัตุรัส
+                      32px / 26px สำหรับไอคอนอย่างเดียว
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>ข้อความ</td>
+                    <td>จำเป็นกับปุ่มไอคอนอย่างเดียว</td>
+                  </tr>
+                  <tr>
+                    <td><code>.icon</code></td>
+                    <td><code>i</code>, ชื่อไอคอน Lucide</td>
+                    <td>
+                      ไอคอนในปุ่ม ใส่ <code>aria-hidden="true"</code> เสมอ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-pressed</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td>ปุ่มสลับ <code>true</code> มีพื้นเทาว่าเปิดอยู่</td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td>boolean</td>
+                    <td>ปิดการใช้งานปุ่ม</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-disabled</code></td>
                     <td><code>true</code></td>
-                    <td>ใช้ <code>aria-disabled</code> กับลิงก์</td>
+                    <td>ปิดการใช้งานลิงก์ <code>a.btn</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>.btn-group</code></td>
+                    <td><code>div</code></td>
+                    <td>
+                      กลุ่มปุ่มต่อกัน ปุ่มลูกคือ <code>.btn</code> ใส่
+                      <code>role="group"</code> และ <code>aria-label</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-pressed</code></td>
+                    <td><code>single</code>, <code>multiple</code></td>
+                    <td>
+                      ใส่ที่ <code>.btn-group</code> (หรือ element ใดก็ได้) ให้
+                      JS สลับ <code>aria-pressed</code> ของปุ่มข้างใน: ทีละปุ่ม
+                      หรือสลับแยกแต่ละปุ่ม
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.dropdown</code></td>
+                    <td><code>popover</code>, <code>id</code></td>
+                    <td>
+                      เมนูของกลุ่ม วางใน <code>.btn-group</code> ได้
+                      เปิดด้วยปุ่มในกลุ่มที่มี
+                      <code>popovertarget</code> ไม่นับเป็นปุ่มเวลาคิดมุมโค้ง
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              ไม่มีฟังก์ชัน ปุ่มในกลุ่ม <code>[data-pressed]</code> ทำงานผ่าน
+              event delegation จึงใช้กับปุ่มที่เพิ่มทีหลังได้
+            </p>
+            <div class="card">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:pressedchange</code></td>
+                    <td><code>{ button, pressed }</code></td>
+                    <td>
+                      ส่งจาก element ที่มี <code>data-pressed</code> (bubbles)
+                      หลังคลิกปุ่ม <code>button</code> คือปุ่มที่คลิก
+                      <code>pressed</code> คือสถานะใหม่ของปุ่มนั้น
+                    </td>
                   </tr>
                 </tbody>
               </table>
