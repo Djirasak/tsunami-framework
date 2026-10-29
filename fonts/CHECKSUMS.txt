@@ -1,5 +1,5 @@
-# sha256  file  source
-693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3  InterVariable.woff2  https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip (web/InterVariable.woff2)
-262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a  Inter-OFL.txt  https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip (LICENSE.txt)
-2e5bc97e4ca571f4a26b63307351b1a6da05156c7556269f9d5524250eab96fd  NotoSansThai-Variable-thai.woff2  https://fonts.gstatic.com/l/font?kit=iJW6BXeUZi_OHPqn4wq6hQ2_hbJ1xyN9wd43SofNWcd1MKVQt_So_9CdU5RtxTpcscNvbn55N5IlAMHCcyY&skey=7ac9f1f92e52f11b&v=v29 (via https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400..600 , thai subset)
-2e98fd23a52d253db8612cd5942c8f2ff4111b21d2367050fdca91d8ccc374a0  NotoSansThai-OFL.txt  https://github.com/notofonts/thai/releases/download/NotoSansThai-v2.002/NotoSansThai-v2.002.zip (OFL.txt)
+# sha256  file  source (via https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..600)
+3f43e613a4176decfb0ab2e4cf68bfcfbebe9eee1a3de080c4115426258fa32f  GoogleSans-latin.woff2  https://fonts.gstatic.com/s/googlesans/v71/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjIUvQ.woff2
+2507802626a6cb16e4a7410bbb809380b957333582156a3907431b4fe57afab4  GoogleSans-latin-ext.woff2  https://fonts.gstatic.com/s/googlesans/v71/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjwUvaYr.woff2
+7b4dce329fabb8a5c9bec1e881a5f6b9abb9dcf917a469f001cdd764236f193c  GoogleSans-thai.woff2  https://fonts.gstatic.com/s/googlesans/v71/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPiYUvaYr.woff2
+2b75ef20f13d83a7514aee452c4782c20cdc9ff2dee17600f44d37a06d4fb958  GoogleSans-OFL.txt  https://raw.githubusercontent.com/google/fonts/main/ofl/googlesans/OFL.txt
