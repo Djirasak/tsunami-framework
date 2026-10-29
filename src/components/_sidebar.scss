@@ -103,6 +103,11 @@
     transition: width 0.15s;
   }
 
+  // Children keep their own height; a long nav must not squash the search box.
+  :where(.sidebar > *) {
+    flex-shrink: 0;
+  }
+
   :where(.sidebar nav) {
     @include nav-links;
   }
