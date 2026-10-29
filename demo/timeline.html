@@ -329,14 +329,19 @@
             <div>
               <h1>Timeline</h1>
               <p>
-                ลำดับเหตุการณ์แนวตั้ง ใช้ <code>&lt;ol&gt;</code> พร้อม
-                <code>&lt;time&gt;</code>
+                ลำดับเหตุการณ์แนวตั้งของคำสั่งซื้อหรืองาน ใช้
+                <code>&lt;ol&gt;</code> พร้อม <code>&lt;time&gt;</code>
               </p>
             </div>
           </header>
           <section>
+            <h2>การใช้งาน Usage</h2>
+            <p>
+              แต่ละเหตุการณ์คือ <code>&lt;li&gt;</code> ข้อความตามด้วย
+              <code>&lt;time&gt;</code> เรียงใหม่สุดไว้บน
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="Example">
+              <div role="tablist" aria-label="การใช้งาน Usage">
                 <button
                   type="button"
                   role="tab"
@@ -365,17 +370,17 @@
               >
                 <div class="docs-preview">
                   <ol class="timeline">
-                    <li data-variant="ok">
-                      <time datetime="2026-10-29T09:12">29 ต.ค. 09:12</time>
-                      <p>ชำระเงินสำเร็จ Payment captured</p>
+                    <li>
+                      ชำระเงินสำเร็จ Payment captured
+                      <time datetime="2026-10-29T18:41"
+                        >29 ต.ค. 2026 18:41</time
+                      >
                     </li>
                     <li>
-                      <time datetime="2026-10-29T09:10">29 ต.ค. 09:10</time>
-                      <p>สร้างคำสั่งซื้อ Order created</p>
-                    </li>
-                    <li data-variant="danger">
-                      <time datetime="2026-10-28T18:40">28 ต.ค. 18:40</time>
-                      <p>บัตรถูกปฏิเสธ Card declined</p>
+                      สร้างคำสั่งซื้อ #1042 Order placed
+                      <time datetime="2026-10-29T18:40"
+                        >29 ต.ค. 2026 18:40</time
+                      >
                     </li>
                   </ol>
                 </div>
@@ -388,19 +393,708 @@
                 hidden
               >
                 <pre><code>&lt;ol class="timeline"&gt;
-  &lt;li data-variant="ok"&gt;
-    &lt;time datetime="2026-10-29T09:12"&gt;29 ต.ค. 09:12&lt;/time&gt;
-    &lt;p&gt;ชำระเงินสำเร็จ Payment captured&lt;/p&gt;
+  &lt;li&gt;
+    ชำระเงินสำเร็จ Payment captured
+    &lt;time datetime="2026-10-29T18:41"&gt;29 ต.ค. 2026 18:41&lt;/time&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;time datetime="2026-10-29T09:10"&gt;29 ต.ค. 09:10&lt;/time&gt;
-    &lt;p&gt;สร้างคำสั่งซื้อ Order created&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li data-variant="danger"&gt;
-    &lt;time datetime="2026-10-28T18:40"&gt;28 ต.ค. 18:40&lt;/time&gt;
-    &lt;p&gt;บัตรถูกปฏิเสธ Card declined&lt;/p&gt;
+    สร้างคำสั่งซื้อ #1042 Order placed
+    &lt;time datetime="2026-10-29T18:40"&gt;29 ต.ค. 2026 18:40&lt;/time&gt;
   &lt;/li&gt;
 &lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              เหตุการณ์ที่เปิดดูรายละเอียดได้ An event that opens to show
+              details
+            </h2>
+            <p>
+              ใส่ <code>&lt;details&gt;</code> ใน event:
+              <code>&lt;summary&gt;</code> คือหัวข้อ (มีลูกศรให้เอง) และ
+              <code>&lt;dl&gt;</code> คือรายละเอียด ใส่
+              <code>open</code> เพื่อเปิดไว้ตั้งแต่แรก
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="เหตุการณ์ที่เปิดดูรายละเอียดได้ An event that opens to show details"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li>
+                      <details open>
+                        <summary>คืนเงินแล้ว Refund issued</summary>
+                        <dl>
+                          <dt>จำนวน Amount</dt>
+                          <dd>฿850.00</dd>
+                          <dt>เหตุผล Reason</dt>
+                          <dd>สินค้าเสียหาย Item arrived damaged</dd>
+                        </dl>
+                      </details>
+                      <time datetime="2026-10-28T10:05"
+                        >28 ต.ค. 2026 10:05</time
+                      >
+                    </li>
+                    <li>
+                      จัดส่งสำเร็จ Delivered
+                      <time datetime="2026-10-26T16:36"
+                        >26 ต.ค. 2026 16:36</time
+                      >
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li&gt;
+    &lt;details open&gt;
+      &lt;summary&gt;คืนเงินแล้ว Refund issued&lt;/summary&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;จำนวน Amount&lt;/dt&gt;
+        &lt;dd&gt;฿850.00&lt;/dd&gt;
+        &lt;dt&gt;เหตุผล Reason&lt;/dt&gt;
+        &lt;dd&gt;สินค้าเสียหาย Item arrived damaged&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/details&gt;
+    &lt;time datetime="2026-10-28T10:05"&gt;28 ต.ค. 2026 10:05&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    จัดส่งสำเร็จ Delivered
+    &lt;time datetime="2026-10-26T16:36"&gt;26 ต.ค. 2026 16:36&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ข้อผิดพลาด data-variant="danger" Error events</h2>
+            <p>
+              <code>data-variant="danger"</code> ทำให้จุดและข้อความเป็นสีแดง
+              เวลาเป็นสีเทาเหมือนเดิม ใช้กับ
+              <code>data-variant="ok"</code> (จุดสีเขียว) ได้เช่นกัน
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label='ข้อผิดพลาด data-variant="danger" Error events'
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li data-variant="danger">
+                      <details open>
+                        <summary>
+                          ต่ออายุสมาชิกไม่สำเร็จ Subscription renewal payment
+                          failed
+                        </summary>
+                        <dl>
+                          <dt>เหตุผล Reason</dt>
+                          <dd>บัตรถูกปฏิเสธ Card declined</dd>
+                        </dl>
+                      </details>
+                      <time datetime="2026-10-05T06:09">5 ต.ค. 2026 06:09</time>
+                    </li>
+                    <li data-variant="danger">
+                      อัปโหลดเลขพัสดุไม่สำเร็จ Uploading tracking information
+                      failed
+                      <time datetime="2026-10-04T14:20">4 ต.ค. 2026 14:20</time>
+                    </li>
+                    <li>
+                      สถานะเปลี่ยนจาก Active เป็น Past due โดยระบบ
+                      <time datetime="2026-10-04T06:09">4 ต.ค. 2026 06:09</time>
+                    </li>
+                    <li data-variant="ok">
+                      ชำระเงินสำเร็จ Payment captured
+                      <time datetime="2026-09-05T06:09">5 ก.ย. 2026 06:09</time>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li data-variant="danger"&gt;
+    &lt;details open&gt;
+      &lt;summary&gt;ต่ออายุสมาชิกไม่สำเร็จ Subscription renewal payment failed&lt;/summary&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;เหตุผล Reason&lt;/dt&gt;
+        &lt;dd&gt;บัตรถูกปฏิเสธ Card declined&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/details&gt;
+    &lt;time datetime="2026-10-05T06:09"&gt;5 ต.ค. 2026 06:09&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li data-variant="danger"&gt;
+    อัปโหลดเลขพัสดุไม่สำเร็จ Uploading tracking information failed
+    &lt;time datetime="2026-10-04T14:20"&gt;4 ต.ค. 2026 14:20&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    สถานะเปลี่ยนจาก Active เป็น Past due โดยระบบ
+    &lt;time datetime="2026-10-04T06:09"&gt;4 ต.ค. 2026 06:09&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li data-variant="ok"&gt;
+    ชำระเงินสำเร็จ Payment captured
+    &lt;time datetime="2026-09-05T06:09"&gt;5 ก.ย. 2026 06:09&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ขั้นตอนของงาน Steps of a job</h2>
+            <p>
+              <code>.icon</code> หรือ <code>.loader</code> ที่อยู่แรกสุดใน event
+              จะแทนที่จุด ใส่ <code>aria-busy="true"</code> ที่ขั้นที่กำลังทำ
+              และ <code>data-variant="pending"</code> ที่ขั้นที่ยังไม่เริ่ม
+              (ข้อความสีเทา จุดกลวง)
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="ขั้นตอนของงาน Steps of a job">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li data-variant="ok">
+                      <i class="icon icon-circle-check" aria-hidden="true"></i>
+                      สร้างบัญชี Creating your account
+                    </li>
+                    <li aria-busy="true">
+                      <span
+                        class="loader"
+                        role="status"
+                        aria-label="กำลังทำ In progress"
+                      ></span>
+                      ตั้งค่าร้านค้า Initializing your store
+                    </li>
+                    <li data-variant="pending">
+                      นำเข้าสินค้า Importing products
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li data-variant="ok"&gt;
+    &lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;
+    สร้างบัญชี Creating your account
+  &lt;/li&gt;
+  &lt;li aria-busy="true"&gt;
+    &lt;span class="loader" role="status" aria-label="กำลังทำ In progress"&gt;&lt;/span&gt;
+    ตั้งค่าร้านค้า Initializing your store
+  &lt;/li&gt;
+  &lt;li data-variant="pending"&gt;นำเข้าสินค้า Importing products&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ขั้นตอนที่สคริปต์เล่นให้ดู Steps played by a script</h2>
+            <p>
+              สคริปต์ของหน้าเปลี่ยน attribute เอง: ขั้นที่กำลังทำได้
+              <code>.loader</code> พอเสร็จเปลี่ยนเป็นไอคอนเช็ก
+              แล้วเริ่มขั้นถัดไป timeline ไม่มี JS ของตัวเอง
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ขั้นตอนที่สคริปต์เล่นให้ดู Steps played by a script"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <ol class="timeline" id="tl-steps">
+                      <li data-variant="pending">
+                        สร้างบัญชี Creating your account
+                      </li>
+                      <li data-variant="pending">
+                        ตั้งค่าร้านค้า Initializing your store
+                      </li>
+                      <li data-variant="pending">
+                        นำเข้าสินค้า Importing products
+                      </li>
+                    </ol>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="tl-steps-play"
+                      >
+                        เล่น Play
+                      </button>
+                    </div>
+                  </div>
+                  <script type="module">
+                    const steps = [
+                      ...document.querySelectorAll("#tl-steps > li"),
+                    ];
+                    const play = document.getElementById("tl-steps-play");
+                    const spinner =
+                      '<span class="loader" role="status" aria-label="กำลังทำ In progress"></span>';
+                    const check =
+                      '<i class="icon icon-circle-check" aria-hidden="true"></i>';
+                    const start = (step) => {
+                      step.removeAttribute("data-variant");
+                      step.setAttribute("aria-busy", "true");
+                      step.insertAdjacentHTML("afterbegin", spinner);
+                    };
+                    play.addEventListener("click", () => {
+                      play.disabled = true;
+                      for (const step of steps) {
+                        step.querySelector(".icon, .loader")?.remove();
+                        step.removeAttribute("aria-busy");
+                        step.dataset.variant = "pending";
+                      }
+                      let current = 0;
+                      start(steps[current]);
+                      const timer = setInterval(() => {
+                        const step = steps[current];
+                        step.removeAttribute("aria-busy");
+                        step.dataset.variant = "ok";
+                        step.querySelector(".loader").outerHTML = check;
+                        current += 1;
+                        if (steps[current]) return start(steps[current]);
+                        clearInterval(timer);
+                        play.disabled = false;
+                      }, 1500);
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;ol class="timeline" id="tl-steps"&gt;
+    &lt;li data-variant="pending"&gt;สร้างบัญชี Creating your account&lt;/li&gt;
+    &lt;li data-variant="pending"&gt;ตั้งค่าร้านค้า Initializing your store&lt;/li&gt;
+    &lt;li data-variant="pending"&gt;นำเข้าสินค้า Importing products&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tl-steps-play"&gt;เล่น Play&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  const steps = [...document.querySelectorAll("#tl-steps &gt; li")];
+  const play = document.getElementById("tl-steps-play");
+  const spinner = '&lt;span class="loader" role="status" aria-label="กำลังทำ In progress"&gt;&lt;/span&gt;';
+  const check = '&lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;';
+  const start = (step) =&gt; {
+    step.removeAttribute("data-variant");
+    step.setAttribute("aria-busy", "true");
+    step.insertAdjacentHTML("afterbegin", spinner);
+  };
+  play.addEventListener("click", () =&gt; {
+    play.disabled = true;
+    for (const step of steps) {
+      step.querySelector(".icon, .loader")?.remove();
+      step.removeAttribute("aria-busy");
+      step.dataset.variant = "pending";
+    }
+    let current = 0;
+    start(steps[current]);
+    const timer = setInterval(() =&gt; {
+      const step = steps[current];
+      step.removeAttribute("aria-busy");
+      step.dataset.variant = "ok";
+      step.querySelector(".loader").outerHTML = check;
+      current += 1;
+      if (steps[current]) return start(steps[current]);
+      clearInterval(timer);
+      play.disabled = false;
+    }, 1500);
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>บันทึกพร้อมปุ่มแก้ไขและลบ A note with Edit and Delete</h2>
+            <p>
+              บันทึกของทีมงานเป็น <code>&lt;article&gt;</code> ใน event:
+              <code>&lt;h4&gt;</code> ชื่อผู้เขียน, <code>&lt;time&gt;</code>,
+              <code>&lt;p&gt;</code> ข้อความ และ
+              <code>&lt;footer&gt;</code> ปุ่ม แสดงปุ่มเฉพาะตอนที่ยังแก้ไขได้
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="บันทึกพร้อมปุ่มแก้ไขและลบ A note with Edit and Delete"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li>
+                      พักคำสั่งซื้อ Order placed on hold
+                      <time datetime="2026-10-23T08:15"
+                        >23 ต.ค. 2026 08:15</time
+                      >
+                    </li>
+                    <li>
+                      <article>
+                        <h4>สมชาย ใจดี</h4>
+                        <time datetime="2026-10-23T08:10"
+                          >23 ต.ค. 2026 08:10</time
+                        >
+                        <p>
+                          ที่อยู่ดูไม่ถูกต้อง ส่งอีเมลให้ลูกค้ายืนยันก่อนจัดส่ง
+                          Emailed the customer to confirm the address.
+                        </p>
+                        <footer>
+                          <button type="button" class="btn" data-size="sm">
+                            แก้ไข Edit
+                          </button>
+                          <button
+                            type="button"
+                            class="btn"
+                            data-variant="danger"
+                            data-size="sm"
+                          >
+                            ลบ Delete
+                          </button>
+                        </footer>
+                      </article>
+                    </li>
+                    <li>
+                      สร้างคำสั่งซื้อ Order placed
+                      <time datetime="2026-10-22T18:40"
+                        >22 ต.ค. 2026 18:40</time
+                      >
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li&gt;
+    พักคำสั่งซื้อ Order placed on hold
+    &lt;time datetime="2026-10-23T08:15"&gt;23 ต.ค. 2026 08:15&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;article&gt;
+      &lt;h4&gt;สมชาย ใจดี&lt;/h4&gt;
+      &lt;time datetime="2026-10-23T08:10"&gt;23 ต.ค. 2026 08:10&lt;/time&gt;
+      &lt;p&gt;ที่อยู่ดูไม่ถูกต้อง ส่งอีเมลให้ลูกค้ายืนยันก่อนจัดส่ง Emailed the customer to confirm the address.&lt;/p&gt;
+      &lt;footer&gt;
+        &lt;button type="button" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/button&gt;
+        &lt;button type="button" class="btn" data-variant="danger" data-size="sm"&gt;ลบ Delete&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    สร้างคำสั่งซื้อ Order placed
+    &lt;time datetime="2026-10-22T18:40"&gt;22 ต.ค. 2026 18:40&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ฟอร์มเพิ่มบันทึก A form for adding a note</h2>
+            <p>
+              event แรกเป็น <code>&lt;form&gt;</code> ที่มี
+              <code>&lt;textarea&gt;</code> และ
+              <code>&lt;footer&gt;</code> ปุ่มกับคำอธิบาย
+              <code>&lt;small&gt;</code> ในตัวอย่าง
+              สคริปต์ของหน้าเพิ่มบันทึกใหม่ลงใต้ฟอร์มเมื่อกดบันทึก
+              ส่วนปุ่มยกเลิกเป็น <code>type="reset"</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ฟอร์มเพิ่มบันทึก A form for adding a note"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline" id="tl-notes">
+                    <li>
+                      <label for="tl-note">เพิ่มบันทึก Add a note</label>
+                      <form id="tl-note-form">
+                        <textarea
+                          id="tl-note"
+                          name="note"
+                          placeholder="เขียนบันทึกคำสั่งซื้อ Add order note..."
+                          required
+                        ></textarea>
+                        <footer>
+                          <button
+                            type="submit"
+                            class="btn"
+                            data-variant="primary"
+                            data-size="sm"
+                          >
+                            บันทึก Save
+                          </button>
+                          <button type="reset" class="btn" data-size="sm">
+                            ยกเลิก Cancel
+                          </button>
+                          <small
+                            >แก้ไขบันทึกได้ภายใน 5 นาทีหลังบันทึก Notes are
+                            editable for 5 minutes.</small
+                          >
+                        </footer>
+                      </form>
+                    </li>
+                    <li>
+                      ส่งอีเมลยืนยันให้ลูกค้าแล้ว Confirmation email sent
+                      <time datetime="2026-10-03T00:36">3 ต.ค. 2026 00:36</time>
+                    </li>
+                    <li>
+                      สถานะจัดส่งเปลี่ยนจาก Unfulfilled เป็น On hold
+                      <time datetime="2026-10-03T00:35">3 ต.ค. 2026 00:35</time>
+                    </li>
+                  </ol>
+                  <script type="module">
+                    const form = document.getElementById("tl-note-form");
+                    form.addEventListener("submit", (event) => {
+                      event.preventDefault();
+                      const now = new Date();
+                      const li = document.createElement("li");
+                      const article = document.createElement("article");
+                      const name = document.createElement("h4");
+                      const time = document.createElement("time");
+                      const text = document.createElement("p");
+                      name.textContent = "คุณ You";
+                      time.dateTime = now.toISOString();
+                      time.textContent = now.toLocaleString("th-TH", {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      });
+                      text.textContent = form.elements.note.value;
+                      article.append(name, time, text);
+                      li.append(article);
+                      form.closest("li").after(li);
+                      form.reset();
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline" id="tl-notes"&gt;
+  &lt;li&gt;
+    &lt;label for="tl-note"&gt;เพิ่มบันทึก Add a note&lt;/label&gt;
+    &lt;form id="tl-note-form"&gt;
+      &lt;textarea id="tl-note" name="note" placeholder="เขียนบันทึกคำสั่งซื้อ Add order note..." required&gt;&lt;/textarea&gt;
+      &lt;footer&gt;
+        &lt;button type="submit" class="btn" data-variant="primary" data-size="sm"&gt;บันทึก Save&lt;/button&gt;
+        &lt;button type="reset" class="btn" data-size="sm"&gt;ยกเลิก Cancel&lt;/button&gt;
+        &lt;small&gt;แก้ไขบันทึกได้ภายใน 5 นาทีหลังบันทึก Notes are editable for 5 minutes.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/form&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    ส่งอีเมลยืนยันให้ลูกค้าแล้ว Confirmation email sent
+    &lt;time datetime="2026-10-03T00:36"&gt;3 ต.ค. 2026 00:36&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    สถานะจัดส่งเปลี่ยนจาก Unfulfilled เป็น On hold
+    &lt;time datetime="2026-10-03T00:35"&gt;3 ต.ค. 2026 00:35&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;script type="module"&gt;
+  const form = document.getElementById("tl-note-form");
+  form.addEventListener("submit", (event) =&gt; {
+    event.preventDefault();
+    const now = new Date();
+    const li = document.createElement("li");
+    const article = document.createElement("article");
+    const name = document.createElement("h4");
+    const time = document.createElement("time");
+    const text = document.createElement("p");
+    name.textContent = "คุณ You";
+    time.dateTime = now.toISOString();
+    time.textContent = now.toLocaleString("th-TH", { dateStyle: "medium", timeStyle: "short" });
+    text.textContent = form.elements.note.value;
+    article.append(name, time, text);
+    li.append(article);
+    form.closest("li").after(li);
+    form.reset();
+  });
+&lt;/script&gt;</code></pre>
               </div>
             </div>
           </section>
@@ -417,9 +1111,85 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td><code>ol.timeline</code></td>
+                    <td></td>
+                    <td>รายการเหตุการณ์ เรียงใหม่สุดไว้บน</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; li</code></td>
+                    <td></td>
+                    <td>
+                      หนึ่งเหตุการณ์ มีจุดและเส้นต่อไปยังเหตุการณ์ถัดไป
+                      (ยกเว้นอันสุดท้าย)
+                    </td>
+                  </tr>
+                  <tr>
                     <td><code>li[data-variant]</code></td>
-                    <td><code>ok, danger</code></td>
-                    <td>สีจุดตามสถานะ</td>
+                    <td>
+                      <code>ok</code>, <code>danger</code>,
+                      <code>pending</code>; ไม่ใส่ = ปกติ (จุดสีเทา)
+                    </td>
+                    <td>
+                      <code>ok</code> จุดและไอคอนแรกสีเขียว,
+                      <code>danger</code> จุดและข้อความสีแดง,
+                      <code>pending</code> ขั้นที่ยังไม่เริ่ม ข้อความสีเทา
+                      จุดกลวง
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>li[aria-busy]</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      บอก screen reader ว่าขั้นนี้กำลังทำ (คู่กับ
+                      <code>.loader</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>li &gt; .icon:first-child</code>,
+                      <code>li &gt; .loader:first-child</code>
+                    </td>
+                    <td></td>
+                    <td>ไอคอนหรือ loader ที่อยู่แรกสุดแทนที่จุด</td>
+                  </tr>
+                  <tr>
+                    <td><code>time</code></td>
+                    <td><code>datetime</code></td>
+                    <td>เวลาของเหตุการณ์ ขึ้นบรรทัดใหม่ ตัวเล็กสีเทา</td>
+                  </tr>
+                  <tr>
+                    <td><code>details &gt; summary</code></td>
+                    <td><code>open</code></td>
+                    <td>
+                      เหตุการณ์ที่เปิดดูรายละเอียดได้ summary มีลูกศรให้เอง
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>dl &gt; dt + dd</code></td>
+                    <td></td>
+                    <td>รายละเอียดแบบชื่อ/ค่า สองคอลัมน์ในกรอบ</td>
+                  </tr>
+                  <tr>
+                    <td><code>article</code></td>
+                    <td></td>
+                    <td>
+                      บันทึก: <code>h4</code> ผู้เขียน และ
+                      <code>time</code> อยู่บรรทัดเดียวกัน ตามด้วย
+                      <code>p</code> และ <code>footer</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>footer</code></td>
+                    <td></td>
+                    <td>
+                      แถวปุ่มของบันทึกหรือฟอร์ม
+                      <code>small</code> ในนั้นเป็นคำอธิบายสีเทา
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>form</code>, <code>textarea</code></td>
+                    <td></td>
+                    <td>ฟอร์มเพิ่มบันทึกใน event; textarea เต็มความกว้าง</td>
                   </tr>
                 </tbody>
               </table>

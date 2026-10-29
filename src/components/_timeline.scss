@@ -1,35 +1,78 @@
-// Timeline: <ol class="timeline"> with a dot and a connecting line per entry.
+// Timeline: <ol class="timeline"> with a dot and a connecting line per event.
+// An .icon or .loader first in an event takes the dot's place.
+@use "icon";
+
 @layer components {
   :where(.timeline) {
     display: grid;
+    margin: 0;
     padding: 0;
     list-style: none;
   }
 
   :where(.timeline > li) {
-    --dot: var(--line);
+    --dot: var(--muted);
+    --mark: 0.5rem;
+    --next-mark: 0.5rem;
     position: relative;
-    padding: 0 0 var(--space-4) var(--space-5);
+    min-width: 0;
+    padding: 0 0 var(--space-4) var(--space-6);
   }
 
+  :where(.timeline > li:last-child) {
+    padding-bottom: 0;
+  }
+
+  // The dot, centred on the first line.
   :where(.timeline > li)::before {
     content: "";
     position: absolute;
-    top: 0.45em;
-    left: 0;
+    top: 0.5lh;
+    left: 0.5rem;
     width: 0.5rem;
     height: 0.5rem;
+    border: 1px solid var(--dot);
     border-radius: 50%;
     background: var(--dot);
+    translate: -50% -50%;
   }
 
+  // The line down to the next event, with a gap around each mark.
   :where(.timeline > li:not(:last-child))::after {
     content: "";
     position: absolute;
-    top: 1.25em;
-    bottom: 0.15em;
-    left: calc(0.25rem - 0.5px);
+    top: calc(0.5lh + var(--mark) * 0.5 + 3px);
+    bottom: calc(var(--next-mark) * 0.5 + 3px - 0.5lh);
+    left: calc(0.5rem - 0.5px);
     border-left: 1px solid var(--line);
+  }
+
+  :where(.timeline > li:has(> :is(.icon, .loader):first-child)) {
+    --mark: 1rem;
+  }
+
+  :where(.timeline > li:has(+ li > :is(.icon, .loader):first-child)) {
+    --next-mark: 1rem;
+  }
+
+  :where(.timeline > li:has(> :is(.icon, .loader):first-child))::before {
+    content: none;
+  }
+
+  :where(.timeline > li > :is(.icon, .loader):first-child) {
+    position: absolute;
+    top: 0.5lh;
+    left: 0.5rem;
+    translate: -50% -50%;
+  }
+
+  :where(.timeline > li > .icon:first-child) {
+    font-size: 1rem;
+  }
+
+  :where(.timeline > li > .loader:first-child) {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 
   :where(.timeline time) {
@@ -38,9 +81,118 @@
     font-size: var(--text-sm);
   }
 
-  @each $v in (ok, danger) {
-    :where(.timeline > li[data-variant="#{$v}"]) {
-      --dot: var(--#{$v}-fg);
-    }
+  // Status
+  :where(.timeline > li[data-variant="ok"]) {
+    --dot: var(--ok-fg);
+  }
+
+  :where(.timeline > li[data-variant="ok"] > .icon:first-child) {
+    color: var(--ok-fg);
+  }
+
+  :where(.timeline > li[data-variant="danger"]) {
+    --dot: var(--danger-fg);
+    color: var(--danger-fg);
+  }
+
+  :where(.timeline > li[data-variant="pending"]) {
+    color: var(--muted);
+  }
+
+  :where(.timeline > li[data-variant="pending"])::before {
+    background: transparent;
+  }
+
+  // An event that opens: <details> with a summary and a <dl>.
+  :where(.timeline summary) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    cursor: pointer;
+  }
+
+  :where(.timeline summary)::-webkit-details-marker {
+    display: none;
+  }
+
+  :where(.timeline summary)::after {
+    @include icon.glyph(chevron-down);
+    color: var(--muted);
+    font-size: 1rem;
+    transition: rotate 0.15s;
+  }
+
+  :where(.timeline details[open] > summary)::after {
+    rotate: 180deg;
+  }
+
+  :where(.timeline dl) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-1) var(--space-4);
+    margin: var(--space-2) 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-sm);
+  }
+
+  :where(.timeline dt) {
+    color: var(--muted);
+  }
+
+  // A note: <article> with h4, time, p and a footer of actions.
+  :where(.timeline article) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-1) var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+  }
+
+  :where(.timeline article > h4) {
+    font-weight: 500;
+  }
+
+  :where(.timeline article > :not(h4, time)) {
+    grid-column: 1 / -1;
+  }
+
+  :where(.timeline footer) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  :where(.timeline footer small) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.timeline form) {
+    margin-top: var(--space-2);
+  }
+
+  :where(.timeline textarea) {
+    display: block;
+    width: 100%;
+    min-height: 5rem;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    resize: vertical;
+  }
+
+  :where(.timeline textarea:focus-visible) {
+    border-color: var(--accent);
+    outline-offset: 0;
   }
 }
