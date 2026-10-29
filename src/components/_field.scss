@@ -13,7 +13,12 @@ $check: "input:is([type='checkbox'], [type='radio'])";
     min-width: 0;
   }
 
-  :where(.field > label, .field > small, .field > div > small) {
+  // The label is plain text colour at medium weight; hints are small and muted.
+  :where(.field > label) {
+    font-weight: 500;
+  }
+
+  :where(.field > small, .field > div > small) {
     color: var(--muted);
     font-size: var(--text-sm);
   }
