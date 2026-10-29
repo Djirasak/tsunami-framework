@@ -121,16 +121,25 @@
   }
 
   // Alert dialog: a question and its answers, no dividers.
-  :where(.dialog[role="alertdialog"] > * + *, .dialog[role="alertdialog"] > form > * + *) {
+  :where(
+    .dialog[role="alertdialog"] > * + *,
+    .dialog[role="alertdialog"] > form > * + *
+  ) {
     padding-top: 0;
     border-top: 0;
   }
 
-  :where(.dialog[role="alertdialog"] > header, .dialog[role="alertdialog"] > form > header) {
+  :where(
+    .dialog[role="alertdialog"] > header,
+    .dialog[role="alertdialog"] > form > header
+  ) {
     padding-top: var(--space-5);
   }
 
-  :where(.dialog[role="alertdialog"] > footer, .dialog[role="alertdialog"] > form > footer) {
+  :where(
+    .dialog[role="alertdialog"] > footer,
+    .dialog[role="alertdialog"] > form > footer
+  ) {
     padding-bottom: var(--space-5);
   }
 

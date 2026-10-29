@@ -59,7 +59,8 @@
 
   // Disabled: <button disabled>, a link with aria-disabled, or a label around a disabled input.
   :where(
-    .dropdown > :is(button:disabled, [aria-disabled="true"], label:has(:disabled))
+    .dropdown
+      > :is(button:disabled, [aria-disabled="true"], label:has(:disabled))
   ) {
     background: none;
     color: var(--muted);

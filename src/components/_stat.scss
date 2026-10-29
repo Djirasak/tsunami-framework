@@ -78,11 +78,17 @@
     white-space: nowrap;
   }
 
-  :where(.stat:not([data-reverse]) > [data-trend="up"], .stat[data-reverse] > [data-trend="down"]) {
+  :where(
+    .stat:not([data-reverse]) > [data-trend="up"],
+    .stat[data-reverse] > [data-trend="down"]
+  ) {
     color: var(--ok-fg);
   }
 
-  :where(.stat:not([data-reverse]) > [data-trend="down"], .stat[data-reverse] > [data-trend="up"]) {
+  :where(
+    .stat:not([data-reverse]) > [data-trend="down"],
+    .stat[data-reverse] > [data-trend="up"]
+  ) {
     color: var(--danger-fg);
   }
 

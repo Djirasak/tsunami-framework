@@ -39,7 +39,9 @@
       display 0.15s allow-discrete;
   }
 
-  :where([data-tooltip]:is(:hover, :focus-visible, :has(:focus-visible)))::after {
+  :where(
+    [data-tooltip]:is(:hover, :focus-visible, :has(:focus-visible))
+  )::after {
     display: block;
     opacity: 1;
 
@@ -78,14 +80,20 @@
 
   // Alignment above or below: start and end line up with the element's edges.
   :where(
-    [data-tooltip][data-align="start"]:not([data-side="left"], [data-side="right"])
+    [data-tooltip][data-align="start"]:not(
+        [data-side="left"],
+        [data-side="right"]
+      )
   )::after {
     left: 0;
     translate: 0 0;
   }
 
   :where(
-    [data-tooltip][data-align="end"]:not([data-side="left"], [data-side="right"])
+    [data-tooltip][data-align="end"]:not(
+        [data-side="left"],
+        [data-side="right"]
+      )
   )::after {
     right: 0;
     left: auto;
@@ -94,7 +102,10 @@
 
   // Alignment left or right: start is the top edge, end the bottom edge.
   :where(
-    [data-tooltip][data-align="start"]:is([data-side="left"], [data-side="right"])
+    [data-tooltip][data-align="start"]:is(
+        [data-side="left"],
+        [data-side="right"]
+      )
   )::after {
     top: 0;
     translate: 0 0;
