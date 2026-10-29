@@ -129,9 +129,9 @@ $font-subsets: (
     outline-offset: 2px;
   }
 
-  // Loaders are exempt: spinning is their only sign of progress.
+  // Loaders and skeletons are exempt: motion is their only sign of progress.
   @media (prefers-reduced-motion: reduce) {
-    *:not(.loader),
+    *:not(.loader, .skeleton),
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
