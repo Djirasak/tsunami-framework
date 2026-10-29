@@ -110,17 +110,49 @@
   max-width: 24rem;
 }
 
-/* Docs code blocks only; .prose pre keeps its own style. */
-.docs-main > section > pre,
-[role="tabpanel"] > pre {
-  padding: var(--space-4);
+/* Docs code blocks: the script wraps each <pre> and adds a copy button. */
+.docs-code {
+  position: relative;
+}
+
+.docs-code > pre,
+.docs-main > section > pre {
+  margin: 0;
+  padding: var(--space-4) 3rem var(--space-4) var(--space-4);
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--subtle);
   font-size: var(--text-sm);
-  line-height: 1.6;
+  line-height: 1.7;
   tab-size: 2;
+}
+
+.docs-copy {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  color: var(--muted);
+}
+
+.docs-copy[data-copied] {
+  color: var(--ok-fg);
+}
+
+.tok-t {
+  color: var(--info-fg);
+}
+
+.tok-a {
+  color: var(--warning-fg);
+}
+
+.tok-s {
+  color: var(--ok-fg);
+}
+
+.tok-c {
+  color: var(--muted);
 }
 
 .docs .input-group kbd {

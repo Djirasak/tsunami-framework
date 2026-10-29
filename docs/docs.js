@@ -48,3 +48,62 @@ document.addEventListener("keydown", (e) => {
   input.focus();
   input.select();
 });
+
+// Code blocks: colour the markup and add a copy button.
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const span = (cls, s) => `<span class="${cls}">${esc(s)}</span>`;
+
+function highlight(src) {
+  return src.replace(/<!--[\s\S]*?-->|<\/?[A-Za-z][^>]*>|[^<]+|</g, (m) => {
+    if (m.startsWith("<!--")) return span("tok-c", m);
+    const tag = /^(<\/?)([\w-]+)([\s\S]*?)(\/?>)$/.exec(m);
+    if (!tag) return esc(m);
+    const [, open, name, rest, close] = tag;
+    const attrs = rest.replace(
+      /("[^"]*"|'[^']*')|([^\s="'<>/]+)|([^"'\w]+)/g,
+      (_, str, attr, other) =>
+        str ? span("tok-s", str) : attr ? span("tok-a", attr) : esc(other),
+    );
+    return `${esc(open)}${span("tok-t", name)}${attrs}${esc(close)}`;
+  });
+}
+
+for (const pre of document.querySelectorAll(
+  ".docs-main > section > pre, [role=tabpanel] > pre",
+)) {
+  const code = pre.querySelector("code");
+  if (!code) continue;
+  code.innerHTML = highlight(code.textContent);
+  const box = document.createElement("div");
+  box.className = "docs-code";
+  pre.replaceWith(box);
+  box.append(
+    pre,
+    Object.assign(document.createElement("button"), {
+      type: "button",
+      className: "btn docs-copy",
+      innerHTML: '<i class="icon icon-copy" aria-hidden="true"></i>',
+    }),
+  );
+  box.lastChild.dataset.variant = "ghost";
+  box.lastChild.dataset.size = "icon-sm";
+  box.lastChild.setAttribute("aria-label", "คัดลอกโค้ด Copy code");
+}
+
+document.addEventListener("click", async (e) => {
+  const btn = e.target.closest(".docs-copy");
+  if (!btn) return;
+  try {
+    await navigator.clipboard.writeText(btn.previousElementSibling.textContent);
+  } catch {
+    return; // Clipboard blocked: nothing to copy to.
+  }
+  btn.dataset.copied = "";
+  btn.firstChild.className = "icon icon-check";
+  btn.setAttribute("aria-label", "คัดลอกแล้ว Copied");
+  setTimeout(() => {
+    delete btn.dataset.copied;
+    btn.firstChild.className = "icon icon-copy";
+    btn.setAttribute("aria-label", "คัดลอกโค้ด Copy code");
+  }, 1500);
+});
