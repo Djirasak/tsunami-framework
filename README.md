@@ -24,16 +24,10 @@ Semantic HTML + `data-*` attributes. No runtime dependencies.
 
 ```html
 <link rel="stylesheet" href="dist/tsunami.min.css" />
-<script>
-  try {
-    const t = localStorage.getItem("tsunami-theme");
-    if (t) document.documentElement.dataset.theme = t;
-  } catch {}
-</script>
-<script type="module" src="dist/tsunami.min.js"></script>
+<script src="dist/tsunami.min.js"></script>
 ```
 
-Keep `fonts/` next to `dist/` (font URLs are `../fonts/...`). The inline script prevents a theme flash.
+Keep `fonts/` next to `dist/` (font URLs are `../fonts/...`). Load the script as a plain `<script>` in `<head>` (not `type="module"`): it applies the saved theme before the first paint, so there is no flash.
 
 ## Use
 
