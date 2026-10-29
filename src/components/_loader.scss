@@ -1,24 +1,41 @@
-// Loader: spinning ring. <span class="loader" role="status" aria-label="Loading"></span>
+// Loader: spinning ring in the current text colour, so it matches any button or text it sits in.
+// <span class="loader" role="status" aria-label="Loading"></span>
+$sizes: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  lg: 1.5rem,
+);
+
 @layer components {
   :where(.loader) {
     display: inline-block;
+    flex-shrink: 0;
     width: 1rem;
     height: 1rem;
-    border: 2px solid var(--line);
-    border-top-color: var(--fg);
+    border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+    border-top-color: currentColor;
     border-radius: 50%;
     vertical-align: middle;
     animation: tsunami-spin 0.7s linear infinite;
   }
 
-  :where(.loader[data-size="sm"]) {
-    width: 0.75rem;
-    height: 0.75rem;
+  @each $name, $size in $sizes {
+    :where(.loader[data-size="#{$name}"]) {
+      width: $size;
+      height: $size;
+    }
   }
 
-  :where(.loader[data-size="lg"]) {
-    width: 1.5rem;
-    height: 1.5rem;
+  :where(.loader[data-size="xs"]) {
+    border-width: 1.5px;
+  }
+
+  // A busy region holding only a loader centres it, e.g. a card section while it loads.
+  :where([aria-busy="true"]:has(> .loader:only-child)) {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    color: var(--muted);
   }
 
   // Reduced motion: keep spinning, slower.
