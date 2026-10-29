@@ -315,8 +315,8 @@
             <div>
               <h1>Icons</h1>
               <p>
-                ไอคอนจาก Lucide icon font (2,191 ชื่อ, 1,926 แบบ)
-                ใช้สีและขนาดตามข้อความ
+                ไอคอนจาก Lucide icon font ขนาดตาม data-size หรือขนาดตัวอักษร
+                และใช้สีของข้อความ
               </p>
             </div>
           </header>
@@ -330,16 +330,29 @@
                   rel="noopener"
                   >lucide.dev</a
                 >, ISC license) รวมไว้ในไฟล์ฟอนต์เดียว
-                <code>fonts/lucide.woff2</code>
+                <code>fonts/lucide.woff2</code> มี 2,191 ชื่อ 1,926 แบบ
+                (บางแบบมีหลายชื่อ)
               </p>
             </div>
           </div>
           <section>
-            <h2>ขนาดและสีตามข้อความ Size and colour follow the text</h2>
+            <h2>
+              ขนาดตามกล่อง สีตามข้อความ An icon is sized by its box and takes
+              the text colour
+            </h2>
+            <p>
+              ไอคอนเป็นตัวอักษรหนึ่งตัวจาก icon font ขนาดจึงมาจาก
+              <code>font-size</code>: ไม่ใส่อะไรจะเท่ากับ 1.15em ของข้อความรอบ ๆ
+              หรือกำหนด <code>data-size</code> เป็น <code>sm</code> (16px),
+              <code>lg</code> (20px), <code>xl</code> (24px) สีมาจาก
+              <code>color</code> ของข้อความ (<code>currentColor</code>)
+              ในลิงก์จึงเป็นสี accent และใน
+              <code>.link[data-variant="muted"]</code> เป็นสีเทา
+            </p>
             <div class="tabs" data-tabs>
               <div
                 role="tablist"
-                aria-label="ขนาดและสีตามข้อความ Size and colour follow the text"
+                aria-label="ขนาดตามกล่อง สีตามข้อความ An icon is sized by its box and takes the text colour"
               >
                 <button
                   type="button"
@@ -368,7 +381,7 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="stack" data-direction="row">
+                  <div class="stack" data-direction="row" data-gap="lg">
                     <i
                       class="icon icon-webhook"
                       data-size="sm"
@@ -385,20 +398,24 @@
                       data-size="xl"
                       aria-hidden="true"
                     ></i>
-                    <a href="#"
+                    <a href="#" aria-label="Webhooks"
                       ><i
                         class="icon icon-webhook"
                         data-size="xl"
                         aria-hidden="true"
                       ></i
                     ></a>
-                    <span style="color: var(--muted)"
+                    <a
+                      class="link"
+                      data-variant="muted"
+                      href="#"
+                      aria-label="Webhooks"
                       ><i
                         class="icon icon-webhook"
                         data-size="xl"
                         aria-hidden="true"
                       ></i
-                    ></span>
+                    ></a>
                   </div>
                 </div>
               </div>
@@ -409,19 +426,20 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
   &lt;i class="icon icon-webhook" data-size="sm" aria-hidden="true"&gt;&lt;/i&gt;
   &lt;i class="icon icon-webhook" aria-hidden="true"&gt;&lt;/i&gt;
   &lt;i class="icon icon-webhook" data-size="lg" aria-hidden="true"&gt;&lt;/i&gt;
   &lt;i class="icon icon-webhook" data-size="xl" aria-hidden="true"&gt;&lt;/i&gt;
-  &lt;a href="#"&gt;&lt;i class="icon icon-webhook" data-size="xl" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;span style="color: var(--muted)"&gt;&lt;i class="icon icon-webhook" data-size="xl" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;a href="#" aria-label="Webhooks"&gt;&lt;i class="icon icon-webhook" data-size="xl" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;a class="link" data-variant="muted" href="#" aria-label="Webhooks"&gt;&lt;i class="icon icon-webhook" data-size="xl" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>ในปุ่ม In a button</h2>
+            <p>ปุ่มเว้นระยะไอคอนกับข้อความเองด้วย gap ไม่ต้องใส่ margin</p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="ในปุ่ม In a button">
                 <button
@@ -484,19 +502,36 @@
                     <td><code>class</code></td>
                     <td><code>icon icon-{name}</code></td>
                     <td>
-                      ชื่อจากรายการด้านล่าง ใส่
-                      <code>aria-hidden="true"</code> เสมอ
+                      ทั้งสอง class จำเป็น name จากรายการด้านล่าง (Lucide)
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
-                    <td><code>sm, lg, xl</code></td>
-                    <td>16, 20 หรือ 24px (ค่าเริ่มต้น 1.15em ของตัวอักษร)</td>
+                    <td>
+                      <code>sm</code>, <code>lg</code>, <code>xl</code> (ไม่ใส่
+                      = ตามข้อความ default)
+                    </td>
+                    <td>
+                      16, 20 หรือ 24px ค่าเริ่มต้น 1.15em ของตัวอักษรรอบ ๆ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-hidden</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      ใส่เสมอ ไอคอนเป็นของตกแต่ง ใส่ข้อความหรือ aria-label
+                      ที่ปุ่ม/ลิงก์แทน
+                    </td>
                   </tr>
                   <tr>
                     <td><code>color</code></td>
-                    <td></td>
-                    <td>ใช้สีของข้อความ (<code>currentColor</code>)</td>
+                    <td><code>currentColor</code></td>
+                    <td>ไม่มี data-variant สีมาจาก color ของ element แม่</td>
+                  </tr>
+                  <tr>
+                    <td><code>@include icon.glyph(name)</code></td>
+                    <td>Sass mixin</td>
+                    <td>วาดไอคอนใน ::before / ::after ของ component อื่น</td>
                   </tr>
                 </tbody>
               </table>
