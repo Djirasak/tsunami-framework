@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -347,18 +343,18 @@
             <div>
               <h1>Tree</h1>
               <p>
-                โฟลเดอร์และไฟล์ซ้อนกัน โฟลเดอร์คือ
-                <code>details</code> ไม่ต้องใช้ JS Nested folders and files.
+                Nested folders and files. A folder is a <code>details</code>, so
+                no JS is needed.
               </p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน พร้อมช่องค้นหา Usage, with a search field</h2>
+            <h2>Usage, with a search field</h2>
             <p>
-              <code>input[type="search"]</code> ใน
-              <code>.tree</code> กรองไฟล์ขณะพิมพ์
-              ไฟล์ที่ตรงยังแสดงพร้อมเปิดโฟลเดอร์
-              <code>p</code> ท้ายสุดแสดงเมื่อไม่มีไฟล์ไหนตรง
+              An <code>input[type="search"]</code> inside
+              <code>.tree</code> filters files as you type. Matching files stay
+              visible and their folders open. The last <code>p</code> shows when
+              nothing matches.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -391,13 +387,13 @@
                 <div class="docs-preview">
                   <nav
                     class="tree"
-                    aria-label="ไฟล์ธีม Theme files"
+                    aria-label="Theme files"
                     style="max-width: 18rem"
                   >
                     <input
                       type="search"
-                      placeholder="ค้นหา Search"
-                      aria-label="ค้นหาไฟล์ธีม Search theme files"
+                      placeholder="Search"
+                      aria-label="Search theme files"
                     />
                     <ul>
                       <li>
@@ -485,7 +481,7 @@
                         </details>
                       </li>
                     </ul>
-                    <p hidden>ไม่พบไฟล์ No files found.</p>
+                    <p hidden>No files found.</p>
                   </nav>
                 </div>
               </div>
@@ -496,8 +492,8 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;nav class="tree" aria-label="ไฟล์ธีม Theme files" style="max-width: 18rem"&gt;
-  &lt;input type="search" placeholder="ค้นหา Search" aria-label="ค้นหาไฟล์ธีม Search theme files" /&gt;
+                <pre><code>&lt;nav class="tree" aria-label="Theme files" style="max-width: 18rem"&gt;
+  &lt;input type="search" placeholder="Search" aria-label="Search theme files" /&gt;
   &lt;ul&gt;
     &lt;li&gt;
       &lt;details&gt;
@@ -527,16 +523,15 @@
       &lt;/details&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
-  &lt;p hidden&gt;ไม่พบไฟล์ No files found.&lt;/p&gt;
+  &lt;p hidden&gt;No files found.&lt;/p&gt;
 &lt;/nav&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>
-              โฟลเดอร์ซ้อนโฟลเดอร์ ลิงก์อยู่นอกโฟลเดอร์ได้ และไม่ใส่ไอคอนก็ได้ A
-              folder holds folders, a link can sit outside every folder, and
-              icons are optional
+              Folders can nest, links can sit outside any folder, and icons are
+              optional
             </h2>
 
             <div class="tabs" data-tabs>
@@ -570,35 +565,31 @@
                 <div class="docs-preview">
                   <nav
                     class="tree"
-                    aria-label="บทความช่วยเหลือ Help articles"
+                    aria-label="Help articles"
                     style="max-width: 18rem"
                   >
                     <ul>
                       <li>
                         <details open>
-                          <summary><span>คำสั่งซื้อ Orders</span></summary>
+                          <summary><span>Orders</span></summary>
                           <ul>
                             <li>
-                              <a href="#"
-                                ><span>คืนเงิน Refund an order</span></a
-                              >
+                              <a href="#"><span>Refund an order</span></a>
                             </li>
                             <li>
                               <details>
                                 <summary>
-                                  <span>การจัดส่ง Fulfillment</span>
+                                  <span>Fulfillment</span>
                                 </summary>
                                 <ul>
                                   <li>
                                     <a href="#"
-                                      ><span>แยกพัสดุ Split a shipment</span></a
+                                      ><span>Split a shipment</span></a
                                     >
                                   </li>
                                   <li>
                                     <a href="#"
-                                      ><span
-                                        >พิมพ์ใบแพ็ก Print a packing slip</span
-                                      ></a
+                                      ><span>Print a packing slip</span></a
                                     >
                                   </li>
                                 </ul>
@@ -608,7 +599,7 @@
                         </details>
                       </li>
                       <li>
-                        <a href="#"><span>ติดต่อเรา Contact support</span></a>
+                        <a href="#"><span>Contact support</span></a>
                       </li>
                     </ul>
                   </nav>
@@ -621,26 +612,26 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;nav class="tree" aria-label="บทความช่วยเหลือ Help articles" style="max-width: 18rem"&gt;
+                <pre><code>&lt;nav class="tree" aria-label="Help articles" style="max-width: 18rem"&gt;
   &lt;ul&gt;
     &lt;li&gt;
       &lt;details open&gt;
-        &lt;summary&gt;&lt;span&gt;คำสั่งซื้อ Orders&lt;/span&gt;&lt;/summary&gt;
+        &lt;summary&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/summary&gt;
         &lt;ul&gt;
-          &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;คืนเงิน Refund an order&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Refund an order&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;
             &lt;details&gt;
-              &lt;summary&gt;&lt;span&gt;การจัดส่ง Fulfillment&lt;/span&gt;&lt;/summary&gt;
+              &lt;summary&gt;&lt;span&gt;Fulfillment&lt;/span&gt;&lt;/summary&gt;
               &lt;ul&gt;
-                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;แยกพัสดุ Split a shipment&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;พิมพ์ใบแพ็ก Print a packing slip&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Split a shipment&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Print a packing slip&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
               &lt;/ul&gt;
             &lt;/details&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/details&gt;
     &lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;ติดต่อเรา Contact support&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Contact support&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
               </div>
@@ -648,9 +639,7 @@
           </section>
           <section>
             <h2>
-              aria-current="page" บนลิงก์บอกไฟล์ที่เปิด และ open บน details
-              ให้เห็นไฟล์นั้น aria-current marks the open file, and open on its
-              details shows it
+              aria-current marks the open file, and open on its details shows it
             </h2>
 
             <div class="tabs" data-tabs>
@@ -684,7 +673,7 @@
                 <div class="docs-preview">
                   <nav
                     class="tree"
-                    aria-label="เทมเพลต Templates"
+                    aria-label="Templates"
                     style="max-width: 18rem"
                   >
                     <ul>
@@ -727,7 +716,7 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;nav class="tree" aria-label="เทมเพลต Templates" style="max-width: 18rem"&gt;
+                <pre><code>&lt;nav class="tree" aria-label="Templates" style="max-width: 18rem"&gt;
   &lt;ul&gt;
     &lt;li&gt;
       &lt;details open&gt;
@@ -744,12 +733,10 @@
             </div>
           </section>
           <section>
-            <h2>
-              สคริปต์กรองไฟล์ด้วย filter() A script filters the files with
-              filter()
-            </h2>
+            <h2>A script filters the files with filter()</h2>
             <p>
-              ค่าว่างแสดงทุกไฟล์ และคืนสถานะเปิด/ปิดของโฟลเดอร์กลับเหมือนเดิม
+              An empty query shows every file and restores each folder's open
+              state.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -821,7 +808,7 @@
                           </details>
                         </li>
                       </ul>
-                      <p hidden>ไม่พบไฟล์ No files found.</p>
+                      <p hidden>No files found.</p>
                     </nav>
                     <div class="stack" data-direction="row" data-gap="sm">
                       <button
@@ -830,7 +817,7 @@
                         data-size="sm"
                         id="tr-filter-er"
                       >
-                        ไฟล์ที่มี "er"
+                        Files with "er"
                       </button>
                       <button
                         type="button"
@@ -838,7 +825,7 @@
                         data-size="sm"
                         id="tr-filter-all"
                       >
-                        ทุกไฟล์ Every file
+                        Every file
                       </button>
                     </div>
                   </div>
@@ -878,11 +865,11 @@
         &lt;/details&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
-    &lt;p hidden&gt;ไม่พบไฟล์ No files found.&lt;/p&gt;
+    &lt;p hidden&gt;No files found.&lt;/p&gt;
   &lt;/nav&gt;
   &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
-    &lt;button type="button" class="btn" data-size="sm" id="tr-filter-er"&gt;ไฟล์ที่มี "er"&lt;/button&gt;
-    &lt;button type="button" class="btn" data-size="sm" id="tr-filter-all"&gt;ทุกไฟล์ Every file&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tr-filter-er"&gt;Files with "er"&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tr-filter-all"&gt;Every file&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script type="module"&gt;
@@ -896,9 +883,9 @@
           <section>
             <h2>API</h2>
             <p>
-              อยู่ใน <code>js/tree.js</code> tree ที่ไม่มีช่องค้นหาไม่ต้องใช้ JS
-              ไม่มี event ของตัวเอง <code>details</code> ส่ง
-              <code>toggle</code> ของ browser
+              Lives in <code>js/tree.js</code>. A tree without a search field
+              needs no JS. It fires no events of its own;
+              <code>details</code> fires the browser's <code>toggle</code>.
             </p>
             <div class="card scroll-area">
               <table class="table">
@@ -917,23 +904,23 @@
                       <code>query</code>: string
                     </td>
                     <td>
-                      แสดงเฉพาะไฟล์ที่ชื่อมี
-                      <code>query</code> (ไม่สนตัวพิมพ์เล็กใหญ่)
-                      ซ่อนโฟลเดอร์ที่ไม่มีไฟล์ตรง เปิดโฟลเดอร์ที่มี
-                      ค่าว่างแสดงทุกไฟล์และคืนสถานะโฟลเดอร์เดิม
+                      Shows only files whose name contains <code>query</code>
+                      (case-insensitive). Hides folders with no match and opens
+                      folders with one. An empty query shows every file and
+                      restores the folders.
                     </td>
                   </tr>
                   <tr>
                     <td><code>input[type="search"]</code></td>
-                    <td>ใน <code>.tree</code></td>
-                    <td>พิมพ์แล้วเรียก <code>filter()</code> ให้เอง</td>
+                    <td>in <code>.tree</code></td>
+                    <td>Calls <code>filter()</code> as you type</td>
                   </tr>
                   <tr>
                     <td><code>Tab / Enter / Space</code></td>
-                    <td>คีย์บอร์ด</td>
+                    <td>keyboard</td>
                     <td>
-                      ของ browser เอง: ไปทีละโฟลเดอร์/ไฟล์ เปิดปิดโฟลเดอร์
-                      เปิดลิงก์
+                      Native browser behaviour: move between folders and files,
+                      open and close folders, follow links
                     </td>
                   </tr>
                 </tbody>
@@ -957,68 +944,69 @@
                     <td><code>.tree</code></td>
                     <td><code>nav</code></td>
                     <td>
-                      ใส่ <code>aria-label</code> (<code>ul.tree</code> ก็ได้)
+                      Add an <code>aria-label</code> (<code>ul.tree</code> also
+                      works)
                     </td>
                   </tr>
                   <tr>
                     <td><code>ul &gt; li</code></td>
                     <td>child</td>
                     <td>
-                      แต่ละรายการ <code>ul</code> ที่ซ้อนใน
-                      <code>li</code> ย่อหน้าบนเส้นนำ
+                      One item each. A <code>ul</code> nested in an
+                      <code>li</code> is indented on a guide line.
                     </td>
                   </tr>
                   <tr>
                     <td><code>details &gt; summary</code></td>
-                    <td>ใน <code>li</code></td>
+                    <td>in <code>li</code></td>
                     <td>
-                      โฟลเดอร์ มีลูกศรหมุนเมื่อเปิด ตามด้วย
-                      <code>ul</code> ของไฟล์
+                      Folder. The chevron turns when open. Followed by a
+                      <code>ul</code> of files.
                     </td>
                   </tr>
                   <tr>
                     <td><code>open</code></td>
-                    <td>บน <code>details</code></td>
-                    <td>โฟลเดอร์เปิดอยู่ (ของ browser)</td>
+                    <td>on <code>details</code></td>
+                    <td>Folder is open (native)</td>
                   </tr>
                   <tr>
                     <td><code>a / span</code></td>
-                    <td>ใน <code>li</code></td>
+                    <td>in <code>li</code></td>
                     <td>
-                      ไฟล์ (ลิงก์) หรือรายการที่ไม่ใช่ลิงก์ ชื่อใน
-                      <code>span</code> ตัดด้วย … เมื่อยาว
+                      File (link) or a non-link item. The label in its
+                      <code>span</code> truncates with … when long.
                     </td>
                   </tr>
                   <tr>
                     <td><code>.icon</code></td>
-                    <td>ใน <code>summary</code> / <code>a</code></td>
+                    <td>in <code>summary</code> / <code>a</code></td>
                     <td>
-                      ไม่บังคับ เช่น <code>icon-folder</code>,
+                      Optional, such as <code>icon-folder</code>,
                       <code>icon-file</code>
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-current</code></td>
                     <td><code>page</code></td>
-                    <td>บนลิงก์: ไฟล์ที่เปิดอยู่</td>
+                    <td>On a link: the open file</td>
                   </tr>
                   <tr>
                     <td><code>input[type="search"]</code></td>
-                    <td>ลูกตรงของ <code>.tree</code></td>
-                    <td>ช่องค้นหา กรองขณะพิมพ์</td>
+                    <td>direct child of <code>.tree</code></td>
+                    <td>Search field, filters as you type</td>
                   </tr>
                   <tr>
                     <td><code>p</code></td>
-                    <td>ลูกตรงของ <code>.tree</code></td>
+                    <td>direct child of <code>.tree</code></td>
                     <td>
-                      ข้อความเมื่อไม่พบไฟล์ ใส่ <code>hidden</code> ไว้ JS
-                      เปิด/ปิดให้
+                      Message when no file matches. Start it
+                      <code>hidden</code>; JS shows and hides it.
                     </td>
                   </tr>
                   <tr>
                     <td><code>hidden</code></td>
-                    <td>บน <code>li</code></td>
-                    <td>JS ใส่ให้ไฟล์/โฟลเดอร์ที่ไม่ตรงการค้นหา</td>
+                    <td>on <code>li</code></td>
+                    <td>Set by JS on files and folders that do not match</td>
                   </tr>
                 </tbody>
               </table>

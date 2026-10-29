@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -346,21 +342,18 @@
           <header class="page-header">
             <div>
               <h1>Sidebar</h1>
-              <p>
-                เมนูหลักของแอปด้านซ้าย ย่อเหลือไอคอนได้ App navigation on the
-                left, collapsible to icons.
-              </p>
+              <p>App navigation on the left, collapsible to icons.</p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน Usage</h2>
+            <h2>Usage</h2>
             <p>
-              <code>nav</code> แบ่งเป็น <code>header</code> /
-              <code>section</code> / <code>footer</code> แต่ละกลุ่มเป็น
-              <code>[role="group"]</code> มี <code>h3</code> กับ
-              <code>ul</code> ลิงก์ย่อยเป็น <code>ul</code> ซ้อนใน
-              <code>li</code> ปุ่มท้ายเมนูย่อ/ขยายด้วย
-              <code>command="--toggle-collapsed"</code>
+              The <code>nav</code> splits into <code>header</code> /
+              <code>section</code> / <code>footer</code>. Each group is a
+              <code>[role="group"]</code> with an <code>h3</code> and a
+              <code>ul</code>. Sub-links are a <code>ul</code> nested in an
+              <code>li</code>. The footer button collapses or expands with
+              <code>command="--toggle-collapsed"</code>.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -393,12 +386,12 @@
                 <div class="docs-preview">
                   <div>
                     <aside class="sidebar" id="sb-usage" style="height: 34rem">
-                      <nav aria-label="เมนูหลัก Main">
+                      <nav aria-label="Main">
                         <header>
                           <a href="#"
                             ><span class="avatar" data-size="sm"
                               ><span>AS</span></span
-                            ><span>ร้าน Acme Store</span></a
+                            ><span>Acme Store</span></a
                           >
                         </header>
                         <section>
@@ -410,13 +403,13 @@
                                     class="icon icon-house"
                                     aria-hidden="true"
                                   ></i
-                                  ><span>แดชบอร์ด Dashboard</span></a
+                                  ><span>Dashboard</span></a
                                 >
                               </li>
                             </ul>
                           </div>
                           <div role="group" aria-labelledby="sb-usage-sell">
-                            <h3 id="sb-usage-sell">ขาย Sell</h3>
+                            <h3 id="sb-usage-sell">Sell</h3>
                             <ul>
                               <li>
                                 <a href="#"
@@ -424,13 +417,11 @@
                                     class="icon icon-receipt"
                                     aria-hidden="true"
                                   ></i
-                                  ><span>คำสั่งซื้อ Orders</span></a
+                                  ><span>Orders</span></a
                                 >
                                 <ul>
                                   <li>
-                                    <a href="#"
-                                      ><span>ตะกร้าค้าง Open carts</span></a
-                                    >
+                                    <a href="#"><span>Open carts</span></a>
                                   </li>
                                 </ul>
                               </li>
@@ -440,7 +431,7 @@
                                     class="icon icon-users"
                                     aria-hidden="true"
                                   ></i
-                                  ><span>ลูกค้า Customers</span></a
+                                  ><span>Customers</span></a
                                 >
                               </li>
                               <li>
@@ -449,14 +440,14 @@
                                     class="icon icon-repeat"
                                     aria-hidden="true"
                                   ></i
-                                  ><span>สมาชิก Subscriptions</span
-                                  ><span class="badge">ใหม่ New</span></a
+                                  ><span>Subscriptions</span
+                                  ><span class="badge">New</span></a
                                 >
                               </li>
                             </ul>
                           </div>
                           <div role="group" aria-labelledby="sb-usage-catalog">
-                            <h3 id="sb-usage-catalog">แคตตาล็อก Catalog</h3>
+                            <h3 id="sb-usage-catalog">Catalog</h3>
                             <ul>
                               <li>
                                 <a href="#" aria-current="page"
@@ -464,18 +455,14 @@
                                     class="icon icon-package"
                                     aria-hidden="true"
                                   ></i
-                                  ><span>สินค้า Products</span></a
+                                  ><span>Products</span></a
                                 >
                                 <ul>
                                   <li>
-                                    <a href="#"
-                                      ><span>หมวดหมู่ Categories</span></a
-                                    >
+                                    <a href="#"><span>Categories</span></a>
                                   </li>
                                   <li>
-                                    <a href="#"
-                                      ><span>คลังสินค้า Inventory</span></a
-                                    >
+                                    <a href="#"><span>Inventory</span></a>
                                   </li>
                                 </ul>
                               </li>
@@ -485,7 +472,7 @@
                                     class="icon icon-tag"
                                     aria-hidden="true"
                                   ></i
-                                  ><span>โปรโมชัน Offers</span></a
+                                  ><span>Offers</span></a
                                 >
                               </li>
                             </ul>
@@ -499,7 +486,7 @@
                                     class="icon icon-settings"
                                     aria-hidden="true"
                                   ></i
-                                  ><span>ตั้งค่า Settings</span></a
+                                  ><span>Settings</span></a
                                 >
                               </li>
                             </ul>
@@ -513,7 +500,7 @@
                             data-size="icon"
                             commandfor="sb-usage"
                             command="--toggle-collapsed"
-                            aria-label="ย่อหรือขยายเมนู Collapse or expand sidebar"
+                            aria-label="Collapse or expand sidebar"
                           >
                             <i
                               class="icon icon-panel-left"
@@ -524,14 +511,14 @@
                       </nav>
                     </aside>
                     <div class="empty">
-                      <p>เนื้อหาของหน้า Page content</p>
+                      <p>Page content</p>
                       <button
                         type="button"
                         class="btn"
                         commandfor="sb-usage"
                         command="--toggle-collapsed"
                       >
-                        ย่อ/ขยาย Toggle
+                        Toggle
                       </button>
                     </div>
                   </div>
@@ -546,71 +533,69 @@
               >
                 <pre><code>&lt;div&gt;
   &lt;aside class="sidebar" id="sb-usage" style="height: 34rem"&gt;
-    &lt;nav aria-label="เมนูหลัก Main"&gt;
+    &lt;nav aria-label="Main"&gt;
       &lt;header&gt;
-        &lt;a href="#"&gt;&lt;span class="avatar" data-size="sm"&gt;&lt;span&gt;AS&lt;/span&gt;&lt;/span&gt;&lt;span&gt;ร้าน Acme Store&lt;/span&gt;&lt;/a&gt;
+        &lt;a href="#"&gt;&lt;span class="avatar" data-size="sm"&gt;&lt;span&gt;AS&lt;/span&gt;&lt;/span&gt;&lt;span&gt;Acme Store&lt;/span&gt;&lt;/a&gt;
       &lt;/header&gt;
       &lt;section&gt;
         &lt;div role="group"&gt;
           &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;แดชบอร์ด Dashboard&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Dashboard&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
           &lt;/ul&gt;
         &lt;/div&gt;
         &lt;div role="group" aria-labelledby="sb-usage-sell"&gt;
-          &lt;h3 id="sb-usage-sell"&gt;ขาย Sell&lt;/h3&gt;
+          &lt;h3 id="sb-usage-sell"&gt;Sell&lt;/h3&gt;
           &lt;ul&gt;
             &lt;li&gt;
-              &lt;a href="#"&gt;&lt;i class="icon icon-receipt" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;คำสั่งซื้อ Orders&lt;/span&gt;&lt;/a&gt;
+              &lt;a href="#"&gt;&lt;i class="icon icon-receipt" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/a&gt;
               &lt;ul&gt;
-                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;ตะกร้าค้าง Open carts&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Open carts&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
               &lt;/ul&gt;
             &lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-users" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;ลูกค้า Customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-repeat" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;สมาชิก Subscriptions&lt;/span&gt;&lt;span class="badge"&gt;ใหม่ New&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-users" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-repeat" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Subscriptions&lt;/span&gt;&lt;span class="badge"&gt;New&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
           &lt;/ul&gt;
         &lt;/div&gt;
         &lt;div role="group" aria-labelledby="sb-usage-catalog"&gt;
-          &lt;h3 id="sb-usage-catalog"&gt;แคตตาล็อก Catalog&lt;/h3&gt;
+          &lt;h3 id="sb-usage-catalog"&gt;Catalog&lt;/h3&gt;
           &lt;ul&gt;
             &lt;li&gt;
-              &lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;สินค้า Products&lt;/span&gt;&lt;/a&gt;
+              &lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Products&lt;/span&gt;&lt;/a&gt;
               &lt;ul&gt;
-                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;หมวดหมู่ Categories&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;คลังสินค้า Inventory&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Categories&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Inventory&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
               &lt;/ul&gt;
             &lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;โปรโมชัน Offers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Offers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
           &lt;/ul&gt;
         &lt;/div&gt;
         &lt;hr /&gt;
         &lt;div role="group"&gt;
           &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;ตั้งค่า Settings&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Settings&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
           &lt;/ul&gt;
         &lt;/div&gt;
       &lt;/section&gt;
       &lt;footer&gt;
-        &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="sb-usage" command="--toggle-collapsed" aria-label="ย่อหรือขยายเมนู Collapse or expand sidebar"&gt;&lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="sb-usage" command="--toggle-collapsed" aria-label="Collapse or expand sidebar"&gt;&lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
       &lt;/footer&gt;
     &lt;/nav&gt;
   &lt;/aside&gt;
   &lt;div class="empty"&gt;
-    &lt;p&gt;เนื้อหาของหน้า Page content&lt;/p&gt;
-    &lt;button type="button" class="btn" commandfor="sb-usage" command="--toggle-collapsed"&gt;ย่อ/ขยาย Toggle&lt;/button&gt;
+    &lt;p&gt;Page content&lt;/p&gt;
+    &lt;button type="button" class="btn" commandfor="sb-usage" command="--toggle-collapsed"&gt;Toggle&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              ย่อเหลือไอคอน พร้อม tooltip Collapsed to icons, with tooltips
-            </h2>
+            <h2>Collapsed to icons, with tooltips</h2>
             <p>
-              <code>data-collapsed="true"</code> ซ่อนหัวข้อ ลิงก์ย่อย และ badge
-              ชื่อใน <code>span</code> ของลิงก์กลายเป็น tooltip
-              เมื่อชี้หรือโฟกัส ลิงก์ระดับบนสุดจึงควรมีไอคอนทุกอัน ใช้คู่กับ
-              Subnav
+              <code>data-collapsed="true"</code> hides headings, sub-links and
+              badges. The link label in its <code>span</code> becomes a tooltip
+              on hover or focus, so every top-level link should have an icon.
+              Pairs well with Subnav.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -646,18 +631,18 @@
                     data-collapsed="true"
                     style="height: 18rem"
                   >
-                    <nav aria-label="เมนูหลัก Main">
+                    <nav aria-label="Main">
                       <ul>
                         <li>
                           <a href="#"
                             ><i class="icon icon-house" aria-hidden="true"></i
-                            ><span>หน้าหลัก Home</span></a
+                            ><span>Home</span></a
                           >
                         </li>
                         <li>
                           <a href="#" aria-current="page"
                             ><i class="icon icon-package" aria-hidden="true"></i
-                            ><span>สินค้า Products</span></a
+                            ><span>Products</span></a
                           >
                         </li>
                         <li>
@@ -666,13 +651,13 @@
                               class="icon icon-shopping-bag"
                               aria-hidden="true"
                             ></i
-                            ><span>คำสั่งซื้อ Orders</span></a
+                            ><span>Orders</span></a
                           >
                         </li>
                         <li>
                           <a href="#"
                             ><i class="icon icon-user" aria-hidden="true"></i
-                            ><span>ลูกค้า Customers</span></a
+                            ><span>Customers</span></a
                           >
                         </li>
                       </ul>
@@ -688,12 +673,12 @@
                 hidden
               >
                 <pre><code>&lt;aside class="sidebar" data-collapsed="true" style="height: 18rem"&gt;
-  &lt;nav aria-label="เมนูหลัก Main"&gt;
+  &lt;nav aria-label="Main"&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;หน้าหลัก Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;สินค้า Products&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;คำสั่งซื้อ Orders&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;ลูกค้า Customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Products&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/nav&gt;
 &lt;/aside&gt;</code></pre>
@@ -703,8 +688,8 @@
           <section>
             <h2>API</h2>
             <p>
-              อยู่ใน <code>js/sidebar.js</code> sidebar ไม่ส่ง event ของตัวเอง
-              อ่านสถานะจาก <code>data-collapsed</code>
+              Lives in <code>js/sidebar.js</code>. The sidebar fires no events
+              of its own. Read the state from <code>data-collapsed</code>.
             </p>
             <div class="card scroll-area">
               <table class="table">
@@ -720,28 +705,28 @@
                     <td><code>tsunami.sidebar.collapse(sidebar)</code></td>
                     <td><code>sidebar</code>: element <code>.sidebar</code></td>
                     <td>
-                      ย่อเหลือไอคอน (ตั้ง <code>data-collapsed="true"</code>)
+                      Collapse to icons (sets
+                      <code>data-collapsed="true"</code>)
                     </td>
                   </tr>
                   <tr>
                     <td><code>tsunami.sidebar.expand(sidebar)</code></td>
                     <td><code>sidebar</code>: element</td>
                     <td>
-                      กลับเป็นความกว้างเต็ม
-                      (<code>data-collapsed="false"</code>)
+                      Back to full width (<code>data-collapsed="false"</code>)
                     </td>
                   </tr>
                   <tr>
                     <td><code>tsunami.sidebar.toggle(sidebar)</code></td>
                     <td><code>sidebar</code>: element</td>
-                    <td>สลับย่อ/ขยาย</td>
+                    <td>Toggle collapsed / expanded</td>
                   </tr>
                   <tr>
                     <td><code>command="--toggle-collapsed"</code></td>
-                    <td>ปุ่มที่มี <code>commandfor="sidebar-id"</code></td>
+                    <td>Button with <code>commandfor="sidebar-id"</code></td>
                     <td>
-                      สลับย่อ/ขยาย จากปุ่มที่อยู่ตรงไหนก็ได้ ไม่ต้องเขียน JS
-                      ยังมี <code>--collapse</code> และ <code>--expand</code>
+                      Toggle from a button anywhere, no JS needed. Also
+                      <code>--collapse</code> and <code>--expand</code>.
                     </td>
                   </tr>
                 </tbody>
@@ -765,91 +750,99 @@
                     <td><code>.sidebar</code></td>
                     <td><code>aside</code></td>
                     <td>
-                      กว้าง 15rem สูงเต็มจอ เลื่อนในตัวเอง แอปเรียงเป็นแถวกับ
-                      element ถัดไปให้เอง
+                      15rem wide, full height, scrolls on its own. Sits in a row
+                      with the next element automatically.
                     </td>
                   </tr>
                   <tr>
                     <td><code>popover + id</code></td>
-                    <td>บน <code>.sidebar</code></td>
+                    <td>on <code>.sidebar</code></td>
                     <td>
-                      ต่ำกว่า 48rem เป็น drawer เปิดด้วยปุ่ม
-                      <code>.sidebar-toggle[popovertarget]</code> ตั้งแต่ 48rem
-                      แสดงตลอด
+                      Below 48rem it is a drawer opened by a
+                      <code>.sidebar-toggle[popovertarget]</code> button. From
+                      48rem it is always shown.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-collapsed</code></td>
                     <td>
-                      ไม่ใส่ / <code>false</code> (default) เต็ม ·
-                      <code>true</code> ไอคอน
+                      unset / <code>false</code> (default) full ·
+                      <code>true</code> icons
                     </td>
-                    <td>ย่อเหลือคอลัมน์ไอคอน 3.5rem ชื่อลิงก์เป็น tooltip</td>
+                    <td>
+                      Collapse to a 3.5rem icon column. Link labels become
+                      tooltips.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>nav</code></td>
                     <td>child</td>
                     <td>
-                      ใส่ <code>aria-label</code> ลิงก์กับ <code>h2</code> ตรง ๆ
-                      ก็ได้ หรือแบ่งเป็น header / section / footer
+                      Add an <code>aria-label</code>. Hold links and an
+                      <code>h2</code>
+                      directly, or split into header / section / footer.
                     </td>
                   </tr>
                   <tr>
                     <td><code>nav &gt; header</code></td>
                     <td>child</td>
-                    <td>ส่วนบน เช่น ชื่อร้านพร้อม <code>.avatar</code></td>
+                    <td>
+                      Top area, such as the store name with an
+                      <code>.avatar</code>
+                    </td>
                   </tr>
                   <tr>
                     <td><code>nav &gt; section</code></td>
                     <td>child</td>
-                    <td>กลุ่มเมนู เว้นระยะระหว่างกลุ่ม</td>
+                    <td>Menu groups, spaced apart</td>
                   </tr>
                   <tr>
                     <td><code>nav &gt; footer</code></td>
                     <td>child</td>
-                    <td>ชิดล่าง เช่น ปุ่มย่อ/ขยาย</td>
+                    <td>Pinned to the bottom, such as the collapse button</td>
                   </tr>
                   <tr>
                     <td><code>[role="group"]</code></td>
                     <td><code>div</code></td>
                     <td>
-                      กลุ่มลิงก์ ใส่ <code>aria-labelledby</code> ชี้ไปที่
-                      <code>h3</code>
+                      Link group. Add <code>aria-labelledby</code> pointing to
+                      the <code>h3</code>.
                     </td>
                   </tr>
                   <tr>
                     <td><code>h2, h3</code></td>
-                    <td>ใน <code>nav</code></td>
-                    <td>หัวข้อกลุ่ม ตัวเล็กสีเทา</td>
+                    <td>in <code>nav</code></td>
+                    <td>Group heading, small and gray</td>
                   </tr>
                   <tr>
                     <td><code>ul &gt; li &gt; a</code></td>
-                    <td>ใน <code>nav</code></td>
+                    <td>in <code>nav</code></td>
                     <td>
-                      ลิงก์ ไอคอน <code>.icon</code> หรือ <code>img</code> 16px
-                      ตามด้วยชื่อใน <code>span</code>
+                      Link: a 16px <code>.icon</code> or <code>img</code>, then
+                      the label in a <code>span</code>
                     </td>
                   </tr>
                   <tr>
                     <td><code>li &gt; ul</code></td>
-                    <td>ลิงก์ย่อย</td>
-                    <td>ย่อหน้าบนเส้นนำ ซ่อนเมื่อย่อ</td>
+                    <td>sub-links</td>
+                    <td>Indented on a guide line. Hidden when collapsed.</td>
                   </tr>
                   <tr>
                     <td><code>.badge</code></td>
-                    <td>ใน <code>a</code></td>
-                    <td>ป้ายท้ายลิงก์ เช่น ใหม่ New ซ่อนเมื่อย่อ</td>
+                    <td>in <code>a</code></td>
+                    <td>Trailing label such as New. Hidden when collapsed.</td>
                   </tr>
                   <tr>
                     <td><code>hr</code></td>
-                    <td>ใน <code>section</code></td>
-                    <td>เส้นคั่นกลุ่ม</td>
+                    <td>in <code>section</code></td>
+                    <td>Divider between groups</td>
                   </tr>
                   <tr>
                     <td><code>aria-current</code></td>
                     <td><code>page</code></td>
                     <td>
-                      บน <code>a</code>: หน้าปัจจุบัน พื้นเทา ตัวหนาปานกลาง
+                      On <code>a</code>: the current page. Gray background,
+                      medium weight.
                     </td>
                   </tr>
                 </tbody>

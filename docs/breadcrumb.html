@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -346,17 +342,14 @@
           <header class="page-header">
             <div>
               <h1>Breadcrumb</h1>
-              <p>
-                ทางกลับไปหน้าก่อนหน้า บอกว่าหน้านี้อยู่ตรงไหน Where this page
-                sits, with links back up.
-              </p>
+              <p>Shows where this page sits, with links back up.</p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน Usage</h2>
+            <h2>Usage</h2>
             <p>
-              ตัวคั่นวาดด้วย CSS ระหว่างแต่ละ <code>li</code> หน้าปัจจุบันเป็น
-              <code>span</code> ที่มี <code>aria-current="page"</code>
+              CSS draws the separator between each <code>li</code>. The current
+              page is a <code>span</code> with <code>aria-current="page"</code>.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -389,8 +382,8 @@
                 <div class="docs-preview">
                   <nav class="breadcrumb" aria-label="Breadcrumb">
                     <ol>
-                      <li><a href="#">หน้าหลัก Home</a></li>
-                      <li><a href="#">คำสั่งซื้อ Orders</a></li>
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Orders</a></li>
                       <li><span aria-current="page">#100482</span></li>
                     </ol>
                   </nav>
@@ -405,8 +398,8 @@
               >
                 <pre><code>&lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
   &lt;ol&gt;
-    &lt;li&gt;&lt;a href="#"&gt;หน้าหลัก Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;คำสั่งซื้อ Orders&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Orders&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span aria-current="page"&gt;#100482&lt;/span&gt;&lt;/li&gt;
   &lt;/ol&gt;
 &lt;/nav&gt;</code></pre>
@@ -429,26 +422,22 @@
                   <tr>
                     <td><code>.breadcrumb</code></td>
                     <td><code>nav</code></td>
-                    <td>ใส่ <code>aria-label="Breadcrumb"</code></td>
+                    <td>Add <code>aria-label="Breadcrumb"</code></td>
                   </tr>
                   <tr>
                     <td><code>ol &gt; li</code></td>
                     <td>child</td>
-                    <td>
-                      แต่ละขั้น มีลูกศรคั่นให้อัตโนมัติ ไม่ต้องใส่ตัวคั่นเอง
-                    </td>
+                    <td>One step each. The separator is added for you.</td>
                   </tr>
                   <tr>
                     <td><code>a</code></td>
-                    <td>ใน <code>li</code></td>
-                    <td>
-                      ลิงก์ไปหน้าที่อยู่เหนือขึ้นไป สีเทา เข้มขึ้นเมื่อชี้
-                    </td>
+                    <td>in <code>li</code></td>
+                    <td>Link to a parent page. Gray, darker on hover.</td>
                   </tr>
                   <tr>
                     <td><code>aria-current</code></td>
                     <td><code>page</code></td>
-                    <td>บน <code>span</code> สุดท้าย: หน้าปัจจุบัน</td>
+                    <td>On the last <code>span</code>: the current page</td>
                   </tr>
                 </tbody>
               </table>

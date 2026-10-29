@@ -32,11 +32,7 @@
         >
         <div class="input-group">
           <span><i class="icon icon-search" aria-hidden="true"></i></span>
-          <input
-            type="search"
-            placeholder="Search"
-            aria-label="Search docs"
-          />
+          <input type="search" placeholder="Search" aria-label="Search docs" />
           <span><kbd>Ctrl K</kbd></span>
         </div>
         <nav aria-label="Docs">
@@ -346,18 +342,15 @@
           <header class="page-header">
             <div>
               <h1>Pagination</h1>
-              <p>
-                เลื่อนไปหน้าอื่นของรายการยาว ๆ Move between pages of a long
-                list.
-              </p>
+              <p>Move between pages of a long list.</p>
             </div>
           </header>
           <section>
-            <h2>การใช้งาน Usage</h2>
+            <h2>Usage</h2>
             <p>
-              หน้าปัจจุบันมีกรอบ ใส่
-              <code>aria-current="page"</code> ช่วงที่ข้ามไปเป็น
-              <code>span</code>
+              The current page gets a border. Mark it with
+              <code>aria-current="page"</code>. A skipped range is a
+              <code>span</code>.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -396,7 +389,7 @@
                             class="icon icon-chevron-left"
                             aria-hidden="true"
                           ></i
-                          >ก่อนหน้า Previous</a
+                          >Previous</a
                         >
                       </li>
                       <li><a href="#">1</a></li>
@@ -409,7 +402,7 @@
                       </li>
                       <li>
                         <a href="#"
-                          >ถัดไป Next<i
+                          >Next<i
                             class="icon icon-chevron-right"
                             aria-hidden="true"
                           ></i
@@ -428,26 +421,23 @@
               >
                 <pre><code>&lt;nav class="pagination" aria-label="Pagination"&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-chevron-left" aria-hidden="true"&gt;&lt;/i&gt;ก่อนหน้า Previous&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-chevron-left" aria-hidden="true"&gt;&lt;/i&gt;Previous&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#" aria-current="page"&gt;2&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span aria-hidden="true"&gt;&lt;i class="icon icon-ellipsis"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;ถัดไป Next&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Next&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
-            <h2>
-              แบบกะทัดรัด เห็นหน้าปัจจุบันชัด Compact, with the current page
-              marked
-            </h2>
+            <h2>Compact, with the current page marked</h2>
             <p>
-              สำหรับใต้ตารางหรือในการ์ด ปุ่มที่มีแต่ไอคอนต้องมี
-              <code>aria-label</code> ลิงก์ที่ใช้ไม่ได้ใส่
-              <code>aria-disabled="true"</code>
+              For under a table or inside a card. Icon-only links need an
+              <code>aria-label</code>. Mark unavailable links with
+              <code>aria-disabled="true"</code>.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -485,7 +475,7 @@
                   >
                     <ul>
                       <li>
-                        <a aria-disabled="true" aria-label="หน้าแรก First page"
+                        <a aria-disabled="true" aria-label="First page"
                           ><i
                             class="icon icon-chevrons-left"
                             aria-hidden="true"
@@ -497,7 +487,7 @@
                       <li><a href="#">3</a></li>
                       <li><a href="#">4</a></li>
                       <li>
-                        <a href="#" aria-label="หน้าถัดไป Next page"
+                        <a href="#" aria-label="Next page"
                           ><i
                             class="icon icon-chevron-right"
                             aria-hidden="true"
@@ -505,7 +495,7 @@
                         ></a>
                       </li>
                       <li>
-                        <a href="#" aria-label="หน้าสุดท้าย Last page"
+                        <a href="#" aria-label="Last page"
                           ><i
                             class="icon icon-chevrons-right"
                             aria-hidden="true"
@@ -525,13 +515,13 @@
               >
                 <pre><code>&lt;nav class="pagination" data-size="sm" aria-label="Pagination"&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;a aria-disabled="true" aria-label="หน้าแรก First page"&gt;&lt;i class="icon icon-chevrons-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a aria-disabled="true" aria-label="First page"&gt;&lt;i class="icon icon-chevrons-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#" aria-current="page"&gt;1&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#" aria-label="หน้าถัดไป Next page"&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#" aria-label="หน้าสุดท้าย Last page"&gt;&lt;i class="icon icon-chevrons-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" aria-label="Next page"&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" aria-label="Last page"&gt;&lt;i class="icon icon-chevrons-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
               </div>
@@ -553,49 +543,49 @@
                   <tr>
                     <td><code>.pagination</code></td>
                     <td><code>nav</code></td>
-                    <td>ใส่ <code>aria-label="Pagination"</code></td>
+                    <td>Add <code>aria-label="Pagination"</code></td>
                   </tr>
                   <tr>
                     <td><code>ul &gt; li</code></td>
                     <td>child</td>
-                    <td>แต่ละหน้า เรียงเป็นแถว ตัดบรรทัดเมื่อแคบ</td>
+                    <td>One page each, in a row that wraps when narrow</td>
                   </tr>
                   <tr>
                     <td><code>a</code></td>
-                    <td>ใน <code>li</code></td>
+                    <td>in <code>li</code></td>
                     <td>
-                      ลิงก์ไปหน้านั้น ใส่ <code>.icon</code> ได้
-                      ถ้ามีแต่ไอคอนต้องมี <code>aria-label</code>
+                      Link to that page. Can hold an <code>.icon</code>.
+                      Icon-only links need an <code>aria-label</code>.
                     </td>
                   </tr>
                   <tr>
                     <td><code>span</code></td>
-                    <td>ใน <code>li</code></td>
+                    <td>in <code>li</code></td>
                     <td>
-                      ช่วงที่ข้ามไป (…) สีเทา ใส่
-                      <code>aria-hidden="true"</code>
+                      Skipped range (…), gray. Add
+                      <code>aria-hidden="true"</code>.
                     </td>
                   </tr>
                   <tr>
                     <td><code>aria-current</code></td>
                     <td><code>page</code></td>
-                    <td>หน้าปัจจุบัน: มีกรอบ ใน <code>sm</code> เป็นสีทึบ</td>
+                    <td>Current page: bordered, solid in <code>sm</code></td>
                   </tr>
                   <tr>
                     <td><code>aria-disabled</code></td>
                     <td><code>true</code></td>
                     <td>
-                      ลิงก์ที่ใช้ไม่ได้ เช่น ก่อนหน้าบนหน้าแรก (ไม่ต้องมี
+                      Unavailable link, such as Previous on the first page (no
                       <code>href</code>)
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-size</code></td>
                     <td>
-                      ไม่ใส่ (default) 32px โปร่ง · <code>sm</code> 28px
-                      มีกรอบทุกหน้า
+                      unset (default) 32px, borderless · <code>sm</code> 28px,
+                      every page bordered
                     </td>
-                    <td>ขนาด แบบกะทัดรัด</td>
+                    <td>Size, compact style</td>
                   </tr>
                 </tbody>
               </table>
