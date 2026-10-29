@@ -3,7 +3,12 @@ import pkg from "../package.json";
 
 const banner = `/* tsunami v${pkg.version} */\n`;
 
-for (const name of ["tsunami.min.css", "tsunami.min.js"]) {
+for (const name of [
+  "tsunami.css",
+  "tsunami.min.css",
+  "tsunami.js",
+  "tsunami.min.js",
+]) {
   const file = Bun.file(new URL(`../dist/${name}`, import.meta.url));
   if (!(await file.exists())) continue;
   const text = await file.text();
