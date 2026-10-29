@@ -139,5 +139,15 @@ $font-subsets: (
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+
+    // Overlay backdrops and <details> content fade too; separate rules so a
+    // browser without ::details-content still reads the backdrop one.
+    *::backdrop {
+      transition-duration: 0.01ms !important;
+    }
+
+    *::details-content {
+      transition-duration: 0.01ms !important;
+    }
   }
 }
