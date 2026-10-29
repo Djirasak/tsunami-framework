@@ -332,14 +332,20 @@
             <div>
               <h1>Card</h1>
               <p>
-                กล่องพื้นขาวขอบ 1px ลูกโดยตรงแต่ละตัวเป็น section คั่นด้วยเส้น
+                กล่องพื้นขาวขอบ 1px ลูกโดยตรงแต่ละตัว (header, section, table,
+                footer) เป็นส่วนหนึ่ง คั่นด้วยเส้น
               </p>
             </div>
           </header>
           <section>
-            <h2>พื้นฐาน Basic</h2>
+            <h2>การใช้งาน Usage</h2>
+            <p>
+              <code>header</code> มีชื่อ <code>h2</code> คำอธิบาย
+              <code>p</code> และ <code>aside</code> สำหรับปุ่มทางขวา
+              ตามด้วยเนื้อหาใน <code>section</code> และ <code>footer</code>
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="พื้นฐาน Basic">
+              <div role="tablist" aria-label="การใช้งาน Usage">
                 <button
                   type="button"
                   role="tab"
@@ -369,15 +375,70 @@
                 <div class="docs-preview">
                   <article class="card">
                     <header>
-                      <h2>คำสั่งซื้อล่าสุด Recent orders</h2>
-                      <p>อัปเดตทุก 5 นาที Updated every 5 minutes</p>
+                      <h2>คำสั่งซื้อ #1042 Order #1042</h2>
+                      <p>สั่งเมื่อ 12 ต.ค. 2026 โดย สมชาย ใจดี</p>
+                      <aside>
+                        <button type="button" class="btn" data-size="sm">
+                          แก้ไข Edit
+                        </button>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-variant="primary"
+                          data-size="sm"
+                        >
+                          จัดส่ง Fulfill
+                        </button>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-size="sm"
+                          popovertarget="card-more"
+                        >
+                          เพิ่มเติม More
+                          <i
+                            class="icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="dropdown" id="card-more" popover>
+                          <button
+                            type="button"
+                            popovertarget="card-more"
+                            popovertargetaction="hide"
+                          >
+                            <i class="icon icon-copy" aria-hidden="true"></i
+                            >ทำสำเนา Duplicate
+                          </button>
+                          <button
+                            type="button"
+                            popovertarget="card-more"
+                            popovertargetaction="hide"
+                          >
+                            <i class="icon icon-printer" aria-hidden="true"></i
+                            >พิมพ์ใบแพ็ก Print packing slip
+                          </button>
+                          <hr />
+                          <button
+                            type="button"
+                            data-variant="danger"
+                            popovertarget="card-more"
+                            popovertargetaction="hide"
+                          >
+                            <i class="icon icon-trash-2" aria-hidden="true"></i
+                            >ลบ Delete
+                          </button>
+                        </div>
+                      </aside>
                     </header>
-                    <div>
+                    <section>
                       <p>
-                        มีคำสั่งซื้อใหม่ 12 รายการวันนี้ 12 new orders today.
+                        สินค้า 3 รายการ รวม ฿2,450.00 3 items, ฿2,450.00 in
+                        total.
                       </p>
-                    </div>
+                    </section>
                     <footer>
+                      <p>อัปเดตล่าสุด 5 นาทีที่แล้ว</p>
                       <button type="button" class="btn">
                         ดูทั้งหมด View all
                       </button>
@@ -394,13 +455,28 @@
               >
                 <pre><code>&lt;article class="card"&gt;
   &lt;header&gt;
-    &lt;h2&gt;คำสั่งซื้อล่าสุด Recent orders&lt;/h2&gt;
-    &lt;p&gt;อัปเดตทุก 5 นาที Updated every 5 minutes&lt;/p&gt;
+    &lt;h2&gt;คำสั่งซื้อ #1042 Order #1042&lt;/h2&gt;
+    &lt;p&gt;สั่งเมื่อ 12 ต.ค. 2026 โดย สมชาย ใจดี&lt;/p&gt;
+    &lt;aside&gt;
+      &lt;button type="button" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/button&gt;
+      &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;จัดส่ง Fulfill&lt;/button&gt;
+      &lt;button type="button" class="btn" data-size="sm" popovertarget="card-more"&gt;
+        เพิ่มเติม More
+        &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;div class="dropdown" id="card-more" popover&gt;
+        &lt;button type="button" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;ทำสำเนา Duplicate&lt;/button&gt;
+        &lt;button type="button" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-printer" aria-hidden="true"&gt;&lt;/i&gt;พิมพ์ใบแพ็ก Print packing slip&lt;/button&gt;
+        &lt;hr /&gt;
+        &lt;button type="button" data-variant="danger" popovertarget="card-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;ลบ Delete&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/aside&gt;
   &lt;/header&gt;
-  &lt;div&gt;
-    &lt;p&gt;มีคำสั่งซื้อใหม่ 12 รายการวันนี้ 12 new orders today.&lt;/p&gt;
-  &lt;/div&gt;
+  &lt;section&gt;
+    &lt;p&gt;สินค้า 3 รายการ รวม ฿2,450.00 3 items, ฿2,450.00 in total.&lt;/p&gt;
+  &lt;/section&gt;
   &lt;footer&gt;
+    &lt;p&gt;อัปเดตล่าสุด 5 นาทีที่แล้ว&lt;/p&gt;
     &lt;button type="button" class="btn"&gt;ดูทั้งหมด View all&lt;/button&gt;
   &lt;/footer&gt;
 &lt;/article&gt;</code></pre>
@@ -408,9 +484,19 @@
             </div>
           </section>
           <section>
-            <h2>พร้อมตาราง With table</h2>
+            <h2>
+              หัวการ์ดมีชื่อ คำอธิบาย และปุ่ม Header with a title, a subtitle
+              and an action
+            </h2>
+            <p>
+              เส้นใต้ header จะขึ้นเมื่อมีส่วนอื่นตามมา ชื่อ คำอธิบาย
+              และปุ่มอยู่แถวเดียวกัน ปุ่มชิดขวาตรงกลางแนวตั้ง
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="พร้อมตาราง With table">
+              <div
+                role="tablist"
+                aria-label="หัวการ์ดมีชื่อ คำอธิบาย และปุ่ม Header with a title, a subtitle and an action"
+              >
                 <button
                   type="button"
                   role="tab"
@@ -438,45 +524,32 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="card">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">คำสั่งซื้อ Order</th>
-                          <th scope="col">ลูกค้า Customer</th>
-                          <th scope="col">สถานะ Status</th>
-                          <th scope="col" data-align="end">ยอดรวม Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>#1042</td>
-                          <td>สมชาย ใจดี</td>
-                          <td>
-                            <span class="badge" data-variant="ok"
-                              >ชำระแล้ว Paid</span
-                            >
-                          </td>
-                          <td data-align="end">฿1,250.00</td>
-                        </tr>
-                        <tr>
-                          <td>#1041</td>
-                          <td>Suda Kaewmanee</td>
-                          <td><span class="badge">รอจัดส่ง Pending</span></td>
-                          <td data-align="end">฿980.00</td>
-                        </tr>
-                        <tr>
-                          <td>#1040</td>
-                          <td>วิชัย ศรีสุข</td>
-                          <td>
-                            <span class="badge" data-variant="danger"
-                              >ยกเลิก Cancelled</span
-                            >
-                          </td>
-                          <td data-align="end">฿2,410.50</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div class="stack">
+                    <section class="card">
+                      <header>
+                        <h2>ที่อยู่จัดส่ง Shipping address</h2>
+                      </header>
+                      <section>
+                        <p>99/1 ถ.สุขุมวิท แขวงคลองเตย กรุงเทพฯ 10110</p>
+                      </section>
+                    </section>
+                    <section class="card">
+                      <header>
+                        <h2>ที่อยู่จัดส่ง Shipping address</h2>
+                        <p>
+                          ที่อยู่ที่คำสั่งซื้อนี้จะถูกส่งไป Where this order is
+                          delivered
+                        </p>
+                        <aside>
+                          <button type="button" class="btn" data-size="sm">
+                            แก้ไข Edit
+                          </button>
+                        </aside>
+                      </header>
+                      <section>
+                        <p>99/1 ถ.สุขุมวิท แขวงคลองเตย กรุงเทพฯ 10110</p>
+                      </section>
+                    </section>
                   </div>
                 </div>
               </div>
@@ -487,79 +560,579 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="card"&gt;
-&lt;table class="table"&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th scope="col"&gt;คำสั่งซื้อ Order&lt;/th&gt;
-      &lt;th scope="col"&gt;ลูกค้า Customer&lt;/th&gt;
-      &lt;th scope="col"&gt;สถานะ Status&lt;/th&gt;
-      &lt;th scope="col" data-align="end"&gt;ยอดรวม Total&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;#1042&lt;/td&gt;
-      &lt;td&gt;สมชาย ใจดี&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;ชำระแล้ว Paid&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;฿1,250.00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;#1041&lt;/td&gt;
-      &lt;td&gt;Suda Kaewmanee&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge"&gt;รอจัดส่ง Pending&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;฿980.00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;#1040&lt;/td&gt;
-      &lt;td&gt;วิชัย ศรีสุข&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge" data-variant="danger"&gt;ยกเลิก Cancelled&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;฿2,410.50&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;section class="card"&gt;
+    &lt;header&gt;
+      &lt;h2&gt;ที่อยู่จัดส่ง Shipping address&lt;/h2&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;p&gt;99/1 ถ.สุขุมวิท แขวงคลองเตย กรุงเทพฯ 10110&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/section&gt;
+  &lt;section class="card"&gt;
+    &lt;header&gt;
+      &lt;h2&gt;ที่อยู่จัดส่ง Shipping address&lt;/h2&gt;
+      &lt;p&gt;ที่อยู่ที่คำสั่งซื้อนี้จะถูกส่งไป Where this order is delivered&lt;/p&gt;
+      &lt;aside&gt;
+        &lt;button type="button" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/button&gt;
+      &lt;/aside&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;p&gt;99/1 ถ.สุขุมวิท แขวงคลองเตย กรุงเทพฯ 10110&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/section&gt;
 &lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              หัวการ์ดเป็นตัวเลข พร้อมการเปลี่ยนแปลงและลิงก์ Header with a
+              figure, its change and a link
+            </h2>
+            <p>
+              ใส่ <code>strong</code> ใน header แล้ว
+              <code>h2</code> จะกลายเป็นป้ายสีเทาเล็กเหนือตัวเลข ใน
+              <code>aside</code> ลิงก์อยู่เหนือ <code>span[data-trend]</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="หัวการ์ดเป็นตัวเลข พร้อมการเปลี่ยนแปลงและลิงก์ Header with a figure, its change and a link"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <section class="card">
+                    <header>
+                      <h2>ยอดขายรวม Total revenue</h2>
+                      <strong>฿145,202.38</strong>
+                      <aside>
+                        <a href="#">ดูคำสั่งซื้อ View orders</a>
+                        <span data-trend="up"
+                          ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                          >40.1%</span
+                        >
+                      </aside>
+                    </header>
+                    <section>
+                      <p>
+                        เทียบกับ 30 วันก่อนหน้า Compared with the previous 30
+                        days.
+                      </p>
+                    </section>
+                  </section>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;section class="card"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;ยอดขายรวม Total revenue&lt;/h2&gt;
+    &lt;strong&gt;฿145,202.38&lt;/strong&gt;
+    &lt;aside&gt;
+      &lt;a href="#"&gt;ดูคำสั่งซื้อ View orders&lt;/a&gt;
+      &lt;span data-trend="up"&gt;&lt;i class="icon icon-arrow-up" aria-hidden="true"&gt;&lt;/i&gt;40.1%&lt;/span&gt;
+    &lt;/aside&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;p&gt;เทียบกับ 30 วันก่อนหน้า Compared with the previous 30 days.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>การ์ดตาราง Table card</h2>
+            <p>
+              ตารางเป็นลูกโดยตรงของการ์ด (หรืออยู่ใน
+              <code>.scroll-area</code> เมื่อคอลัมน์เยอะ) จะชิดขอบ header
+              ใช้ช่องค้นหาแบบ ghost และตัวกรอง footer
+              มีจำนวนผลลัพธ์ทางซ้ายและเลขหน้าทางขวา
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="การ์ดตาราง Table card">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <section class="card">
+                    <header>
+                      <div class="input-group" data-variant="ghost">
+                        <span
+                          ><i class="icon icon-search" aria-hidden="true"></i
+                        ></span>
+                        <input
+                          type="search"
+                          placeholder="ค้นหาชื่อสินค้า Search products"
+                          aria-label="ค้นหาชื่อสินค้า Search products"
+                        />
+                      </div>
+                      <aside>
+                        <a
+                          href="#"
+                          class="btn"
+                          data-variant="ghost"
+                          data-size="sm"
+                          >ล้าง Clear</a
+                        >
+                        <button type="button" class="btn" data-size="sm">
+                          <i
+                            class="icon icon-list-filter"
+                            aria-hidden="true"
+                          ></i
+                          >ตัวกรอง Filters
+                        </button>
+                      </aside>
+                    </header>
+                    <section>
+                      <span class="badge">แสดงหน้าร้าน Public: ใช่ Yes</span>
+                    </section>
+                    <div class="scroll-area" tabindex="0">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">สินค้า Product</th>
+                            <th scope="col" data-align="end" aria-sort="none">
+                              <button type="button">ตัวเลือก Variants</button>
+                            </th>
+                            <th
+                              scope="col"
+                              data-align="end"
+                              aria-sort="descending"
+                            >
+                              <button type="button">อันดับ Ranking</button>
+                            </th>
+                            <th
+                              scope="col"
+                              data-align="end"
+                              aria-label="การทำงาน Actions"
+                            ></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">นาฬิกา Timeless Watch</th>
+                            <td data-align="end">-</td>
+                            <td data-align="end">10</td>
+                            <td data-align="end">
+                              <a href="#" class="btn" data-size="sm"
+                                >แก้ไข Edit</a
+                              >
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">ปากกา Magic Pen</th>
+                            <td data-align="end">3</td>
+                            <td data-align="end">0</td>
+                            <td data-align="end">
+                              <a href="#" class="btn" data-size="sm"
+                                >แก้ไข Edit</a
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <footer>
+                      <p>ผลลัพธ์ 67 รายการ 67 results</p>
+                      <nav class="pagination" aria-label="เลขหน้า Pagination">
+                        <a href="#" aria-current="page">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#" aria-label="หน้าถัดไป Next page"
+                          ><i
+                            class="icon icon-chevron-right"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </nav>
+                    </footer>
+                  </section>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;section class="card"&gt;
+  &lt;header&gt;
+    &lt;div class="input-group" data-variant="ghost"&gt;
+      &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;input type="search" placeholder="ค้นหาชื่อสินค้า Search products" aria-label="ค้นหาชื่อสินค้า Search products" /&gt;
+    &lt;/div&gt;
+    &lt;aside&gt;
+      &lt;a href="#" class="btn" data-variant="ghost" data-size="sm"&gt;ล้าง Clear&lt;/a&gt;
+      &lt;button type="button" class="btn" data-size="sm"&gt;&lt;i class="icon icon-list-filter" aria-hidden="true"&gt;&lt;/i&gt;ตัวกรอง Filters&lt;/button&gt;
+    &lt;/aside&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;span class="badge"&gt;แสดงหน้าร้าน Public: ใช่ Yes&lt;/span&gt;
+  &lt;/section&gt;
+  &lt;div class="scroll-area" tabindex="0"&gt;
+    &lt;table class="table"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col"&gt;สินค้า Product&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;ตัวเลือก Variants&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="descending"&gt;&lt;button type="button"&gt;อันดับ Ranking&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-label="การทำงาน Actions"&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;th scope="row"&gt;นาฬิกา Timeless Watch&lt;/th&gt;
+          &lt;td data-align="end"&gt;-&lt;/td&gt;
+          &lt;td data-align="end"&gt;10&lt;/td&gt;
+          &lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope="row"&gt;ปากกา Magic Pen&lt;/th&gt;
+          &lt;td data-align="end"&gt;3&lt;/td&gt;
+          &lt;td data-align="end"&gt;0&lt;/td&gt;
+          &lt;td data-align="end"&gt;&lt;a href="#" class="btn" data-size="sm"&gt;แก้ไข Edit&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  &lt;footer&gt;
+    &lt;p&gt;ผลลัพธ์ 67 รายการ 67 results&lt;/p&gt;
+    &lt;nav class="pagination" aria-label="เลขหน้า Pagination"&gt;
+      &lt;a href="#" aria-current="page"&gt;1&lt;/a&gt;
+      &lt;a href="#"&gt;2&lt;/a&gt;
+      &lt;a href="#"&gt;3&lt;/a&gt;
+      &lt;a href="#" aria-label="หน้าถัดไป Next page"&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/footer&gt;
+&lt;/section&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>การ์ดตารางที่ยังว่าง Table card, empty</h2>
+            <p>เมื่อยังไม่มีข้อมูล ใส่ <code>.empty</code> แทนตาราง</p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="การ์ดตารางที่ยังว่าง Table card, empty"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <section class="card">
+                    <section class="empty">
+                      <i class="icon icon-package" aria-hidden="true"></i>
+                      <h3>ยังไม่มีสินค้า No products yet</h3>
+                      <p>
+                        เพิ่มสินค้าแรกเพื่อเริ่มขาย Add your first product to
+                        start selling.
+                      </p>
+                      <div>
+                        <a href="#" class="btn" data-variant="primary"
+                          >เพิ่มสินค้า New product</a
+                        >
+                      </div>
+                    </section>
+                  </section>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;section class="card"&gt;
+  &lt;section class="empty"&gt;
+    &lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;h3&gt;ยังไม่มีสินค้า No products yet&lt;/h3&gt;
+    &lt;p&gt;เพิ่มสินค้าแรกเพื่อเริ่มขาย Add your first product to start selling.&lt;/p&gt;
+    &lt;div&gt;
+      &lt;a href="#" class="btn" data-variant="primary"&gt;เพิ่มสินค้า New product&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>การ์ดที่ต้องดู data-variant="warning"</h2>
+            <p>
+              เส้นบน 2px สีเตือน สำหรับการ์ดที่ต้องการความสนใจ ใช้
+              <code>danger</code>, <code>info</code>,
+              <code>ok</code> ได้เหมือนกัน
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label='การ์ดที่ต้องดู data-variant="warning"'
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <section
+                    class="card"
+                    data-variant="warning"
+                    style="max-width: 28rem"
+                  >
+                    <header>
+                      <h2>ลูกค้าโต้แย้งการชำระเงิน Payment disputed</h2>
+                      <aside>
+                        <span class="badge" data-variant="warning"
+                          >ตอบภายใน 4 สัปดาห์</span
+                        >
+                      </aside>
+                    </header>
+                    <section>
+                      <p>
+                        ผู้ถือบัตรแจ้งว่าไม่ได้รับสินค้า The cardholder claims
+                        the order was not received.
+                      </p>
+                    </section>
+                  </section>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;section class="card" data-variant="warning" style="max-width: 28rem"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;ลูกค้าโต้แย้งการชำระเงิน Payment disputed&lt;/h2&gt;
+    &lt;aside&gt;&lt;span class="badge" data-variant="warning"&gt;ตอบภายใน 4 สัปดาห์&lt;/span&gt;&lt;/aside&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;p&gt;ผู้ถือบัตรแจ้งว่าไม่ได้รับสินค้า The cardholder claims the order was not received.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
             <h2>Attributes</h2>
             <div class="card">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Attribute / element</th>
-                    <th scope="col">Values</th>
-                    <th scope="col">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>&gt; header</code></td>
-                    <td></td>
-                    <td>
-                      หัวการ์ด: <code>h2</code> ตัวหนา และ <code>p</code> สีเทา
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><code>&gt; div</code></td>
-                    <td></td>
-                    <td>เนื้อหา padding เท่ากับ section อื่น</td>
-                  </tr>
-                  <tr>
-                    <td><code>&gt; footer</code></td>
-                    <td></td>
-                    <td>ปุ่ม action ชิดขวา</td>
-                  </tr>
-                  <tr>
-                    <td><code>&gt; .table</code></td>
-                    <td></td>
-                    <td>
-                      ตารางเต็มความกว้าง cell แรกและสุดท้ายตรงกับ padding การ์ด
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="scroll-area" tabindex="0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Attribute / element</th>
+                      <th scope="col">Values</th>
+                      <th scope="col">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>.card</code></td>
+                      <td>
+                        <code>article</code>, <code>section</code>,
+                        <code>div</code>
+                      </td>
+                      <td>
+                        กล่องการ์ด ลูกโดยตรงทุกตัวได้ padding และเส้นคั่นด้านบน
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; header</code></td>
+                      <td></td>
+                      <td>
+                        หัวการ์ด: grid สองคอลัมน์ ข้อความซ้าย
+                        <code>aside</code> ขวา
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; header h2 / h3</code></td>
+                      <td></td>
+                      <td>ชื่อการ์ด ขนาด 14px ตัวหนา</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; header p</code></td>
+                      <td></td>
+                      <td>คำอธิบายสีเทา ใต้ชื่อ</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; header &gt; aside</code></td>
+                      <td></td>
+                      <td>
+                        ปุ่มหรือ badge ชิดขวา ครอบสองแถวเมื่อมีชื่อและคำอธิบาย
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; header &gt; strong</code></td>
+                      <td></td>
+                      <td>
+                        ตัวเลขใหญ่ ทำให้ <code>h2</code> กลายเป็นป้ายสีเทาเล็ก
+                        และ <code>aside</code> เรียงลงแนวตั้งชิดขวา
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>header [data-trend]</code></td>
+                      <td>
+                        <code>up</code>, <code>down</code>, ไม่ใส่ค่า = เทา
+                      </td>
+                      <td>
+                        การเปลี่ยนแปลงของตัวเลข: up = สี ok, down = สี danger
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; section, &gt; div</code></td>
+                      <td></td>
+                      <td>เนื้อหา padding เท่ากันทุกส่วน</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; footer</code></td>
+                      <td></td>
+                      <td>
+                        ปุ่มชิดขวา <code>p</code> ตัวแรกชิดซ้ายสีเทา
+                        (เช่นจำนวนผลลัพธ์)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <code>&gt; .table, &gt; .scroll-area &gt; .table</code>
+                      </td>
+                      <td></td>
+                      <td>
+                        ตารางชิดขอบ cell แรกและสุดท้ายตรงกับ padding การ์ด
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; .empty</code></td>
+                      <td></td>
+                      <td>สถานะว่างแทนตาราง</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; .stat, &gt; .stat-group</code></td>
+                      <td></td>
+                      <td>ตัวเลขสถิติ ดู <a href="stat.html">Stat</a></td>
+                    </tr>
+                    <tr>
+                      <td><code>data-variant</code></td>
+                      <td>
+                        <code>warning</code>, <code>danger</code>,
+                        <code>info</code>, <code>ok</code>; ไม่ใส่ = ปกติ
+                        (default)
+                      </td>
+                      <td>เส้นบน 2px สีตามสถานะ สำหรับการ์ดที่ต้องดู</td>
+                    </tr>
+                    <tr>
+                      <td><code>data-direction</code></td>
+                      <td><code>row</code>; ไม่ใส่ = เรียงลง (default)</td>
+                      <td>
+                        ลูกเรียงแนวนอน คั่นด้วยเส้นตั้ง
+                        ลูกตัวแรกกว้างพอดีเนื้อหา (เช่นปุ่มเลือกช่วงเวลา
+                        ข้างกลุ่ม stat)
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         </main>

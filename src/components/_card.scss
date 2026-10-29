@@ -1,6 +1,8 @@
 // Card: direct children are sections divided by 1px lines.
+// header: title (h2), subtitle (p) and an <aside> of actions on the right.
 @layer components {
   :where(.card) {
+    min-width: 0;
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     background: var(--surface);
@@ -14,6 +16,19 @@
     border-top: 1px solid var(--line);
   }
 
+  // Header: text in the first column, the aside in the second.
+  :where(.card > header) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+  }
+
+  :where(.card > header > *) {
+    grid-column: 1;
+  }
+
   :where(.card > header h2, .card > header h3) {
     font-size: var(--text-base);
   }
@@ -22,18 +37,115 @@
     color: var(--muted);
   }
 
-  :where(.card > footer) {
+  :where(.card > header > aside) {
     display: flex;
     flex-wrap: wrap;
+    grid-row: 1;
+    grid-column: 2;
+    align-items: center;
     justify-content: flex-end;
     gap: var(--space-2);
   }
 
-  :where(.card > .table th:first-child, .card > .table td:first-child) {
-    padding-left: var(--space-5);
+  // Title and subtitle: the aside spans both rows.
+  :where(.card > header:has(> :nth-child(3)) > aside) {
+    grid-row: 1 / span 2;
   }
 
-  :where(.card > .table th:last-child, .card > .table td:last-child) {
-    padding-right: var(--space-5);
+  // Header with a figure: small grey name over a large value; aside stacks link over change.
+  :where(.card > header:has(> strong) > :is(h2, h3)) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+
+  :where(.card > header > strong) {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.25;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :where(.card > header:has(> strong) > aside) {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-1);
+  }
+
+  :where(.card > header > aside > a:not(.btn)) {
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+
+  :where(.card > header [data-trend]) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--muted);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.25;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :where(.card > header [data-trend="up"]) {
+    color: var(--ok-fg);
+  }
+
+  :where(.card > header [data-trend="down"]) {
+    color: var(--danger-fg);
+  }
+
+  // Footer: actions on the right; a leading <p> (count, note) stays on the left.
+  :where(.card > footer) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-2);
+  }
+
+  :where(.card > footer > p:first-child) {
+    margin-right: auto;
+    color: var(--muted);
+  }
+
+  // A table (or a .scroll-area holding one) runs edge to edge; see _table.scss.
+  :where(.card > :is(.table, .scroll-area:has(> .table))) {
+    padding: 0;
+  }
+
+  // Status line: a 2px top border in the status colour, for a card that needs attention.
+  @each $v in (warning, danger, info, ok) {
+    :where(.card[data-variant="#{$v}"]) {
+      border-top: 2px solid var(--#{$v}-fg);
+    }
+  }
+
+  // Row: children side by side, divided by lines; they wrap on narrow screens.
+  // Negative margins hide the line on the outer edges.
+  :where(.card[data-direction="row"]) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  :where(.card[data-direction="row"] > *) {
+    min-width: 0;
+    margin: -1px 0 0 -1px;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+
+  :where(.card[data-direction="row"] > * + *) {
+    flex: 1 1 20rem;
+  }
+
+  :where(.card[data-direction="row"] > :first-child:not(:only-child)) {
+    display: flex;
+    flex: none;
+    align-items: center;
+    padding: var(--space-3);
   }
 }
