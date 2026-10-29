@@ -328,10 +328,20 @@
           <header class="page-header">
             <div>
               <h1>Tabs</h1>
-              <p>ARIA tabs กดลูกศรซ้ายขวา Home หรือ End เพื่อเปลี่ยนแท็บ</p>
+              <p>
+                สลับดูเนื้อหาทีละส่วนในที่เดียว กดลูกศร Home End เพื่อเลือก
+                Switch between panels in one place.
+              </p>
             </div>
           </header>
           <section>
+            <h2>การใช้งาน Usage</h2>
+            <p>
+              ค่าเริ่มต้นเป็นแถบแบบ segmented แท็บที่เลือกมีพื้นขาวและกรอบ
+              แต่ละแท็บชี้ panel ด้วย <code>aria-controls</code> panel อื่นใส่
+              <code>hidden</code> ไว้ก่อน แท็บทำงานได้ทันทีภายใน
+              <code>.tabs</code>
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -361,66 +371,54 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="tabs" data-tabs>
-                    <div
-                      role="tablist"
-                      aria-label="รายละเอียดสินค้า Product details"
-                    >
+                  <div class="tabs" id="tb-use">
+                    <div role="tablist" aria-label="ตัวอย่าง Example">
                       <button
                         type="button"
                         role="tab"
-                        id="t-info"
+                        id="tb-use-t1"
                         aria-selected="true"
-                        aria-controls="p-info"
+                        aria-controls="tb-use-p1"
                       >
-                        ข้อมูล Info
+                        บัญชี Account
                       </button>
                       <button
                         type="button"
                         role="tab"
-                        id="t-stock"
+                        id="tb-use-t2"
                         aria-selected="false"
-                        aria-controls="p-stock"
+                        aria-controls="tb-use-p2"
                         tabindex="-1"
                       >
-                        สต็อก Stock
-                      </button>
-                      <button
-                        type="button"
-                        role="tab"
-                        id="t-seo"
-                        aria-selected="false"
-                        aria-controls="p-seo"
-                        tabindex="-1"
-                      >
-                        SEO
+                        รหัสผ่าน Password
                       </button>
                     </div>
                     <div
                       role="tabpanel"
-                      id="p-info"
-                      aria-labelledby="t-info"
+                      id="tb-use-p1"
+                      aria-labelledby="tb-use-t1"
                       tabindex="0"
                     >
-                      <p>เสื้อยืดคอตตอน 100% Cotton crew tee.</p>
+                      <div class="card">
+                        <header>
+                          <h3>บัญชี Account</h3>
+                          <p>แก้ชื่อและอีเมลของบัญชี กดบันทึกเมื่อเสร็จ</p>
+                        </header>
+                      </div>
                     </div>
                     <div
                       role="tabpanel"
-                      id="p-stock"
-                      aria-labelledby="t-stock"
+                      id="tb-use-p2"
+                      aria-labelledby="tb-use-t2"
                       tabindex="0"
                       hidden
                     >
-                      <p>คงเหลือ 128 ชิ้น 128 in stock.</p>
-                    </div>
-                    <div
-                      role="tabpanel"
-                      id="p-seo"
-                      aria-labelledby="t-seo"
-                      tabindex="0"
-                      hidden
-                    >
-                      <p>/products/crew-tee</p>
+                      <div class="card">
+                        <header>
+                          <h3>รหัสผ่าน Password</h3>
+                          <p>เปลี่ยนรหัสผ่าน หลังบันทึกจะต้องเข้าสู่ระบบใหม่</p>
+                        </header>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -432,28 +430,1558 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="tabs" data-tabs&gt;
-  &lt;div role="tablist" aria-label="รายละเอียดสินค้า Product details"&gt;
-    &lt;button type="button" role="tab" id="t-info" aria-selected="true" aria-controls="p-info"&gt;ข้อมูล Info&lt;/button&gt;
-    &lt;button type="button" role="tab" id="t-stock" aria-selected="false" aria-controls="p-stock" tabindex="-1"&gt;สต็อก Stock&lt;/button&gt;
-    &lt;button type="button" role="tab" id="t-seo" aria-selected="false" aria-controls="p-seo" tabindex="-1"&gt;SEO&lt;/button&gt;
+                <pre><code>&lt;div class="tabs" id="tb-use"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example"&gt;
+    &lt;button type="button" role="tab" id="tb-use-t1" aria-selected="true" aria-controls="tb-use-p1"&gt;บัญชี Account&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-use-t2" aria-selected="false" aria-controls="tb-use-p2" tabindex="-1"&gt;รหัสผ่าน Password&lt;/button&gt;
   &lt;/div&gt;
-  &lt;div role="tabpanel" id="p-info" aria-labelledby="t-info" tabindex="0"&gt;
-    &lt;p&gt;เสื้อยืดคอตตอน 100% Cotton crew tee.&lt;/p&gt;
+  &lt;div role="tabpanel" id="tb-use-p1" aria-labelledby="tb-use-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;บัญชี Account&lt;/h3&gt;&lt;p&gt;แก้ชื่อและอีเมลของบัญชี กดบันทึกเมื่อเสร็จ&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div role="tabpanel" id="p-stock" aria-labelledby="t-stock" tabindex="0" hidden&gt;
-    &lt;p&gt;คงเหลือ 128 ชิ้น 128 in stock.&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div role="tabpanel" id="p-seo" aria-labelledby="t-seo" tabindex="0" hidden&gt;
-    &lt;p&gt;/products/crew-tee&lt;/p&gt;
+  &lt;div role="tabpanel" id="tb-use-p2" aria-labelledby="tb-use-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;รหัสผ่าน Password&lt;/h3&gt;&lt;p&gt;เปลี่ยนรหัสผ่าน หลังบันทึกจะต้องเข้าสู่ระบบใหม่&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
               </div>
             </div>
           </section>
           <section>
+            <h2>
+              data-variant="line" บน tablist วาดแท็บแบบขีดเส้นใต้ Underlined
+              tabs
+            </h2>
+            <p>สำหรับแท็บระดับหน้า ที่อยู่ใต้หัวเรื่อง</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-line">
+                    <div
+                      role="tablist"
+                      aria-label="ตัวอย่าง Example"
+                      data-variant="line"
+                    >
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-line-t1"
+                        aria-selected="true"
+                        aria-controls="tb-line-p1"
+                      >
+                        ภาพรวม Overview
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-line-t2"
+                        aria-selected="false"
+                        aria-controls="tb-line-p2"
+                        tabindex="-1"
+                      >
+                        วิเคราะห์ Analytics
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-line-t3"
+                        aria-selected="false"
+                        aria-controls="tb-line-p3"
+                        tabindex="-1"
+                      >
+                        รายงาน Reports
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-line-p1"
+                      aria-labelledby="tb-line-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ภาพรวม Overview</h3>
+                          <p>คำสั่งซื้อ ยอดขาย และการคืนสินค้าในช่วงที่เลือก</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-line-p2"
+                      aria-labelledby="tb-line-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>วิเคราะห์ Analytics</h3>
+                          <p>ผู้เข้าชมมาจากไหน และซื้ออะไร</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-line-p3"
+                      aria-labelledby="tb-line-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>รายงาน Reports</h3>
+                          <p>รายงานที่บันทึกไว้ เปิดหรือส่งออกได้</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-line"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example" data-variant="line"&gt;
+    &lt;button type="button" role="tab" id="tb-line-t1" aria-selected="true" aria-controls="tb-line-p1"&gt;ภาพรวม Overview&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-line-t2" aria-selected="false" aria-controls="tb-line-p2" tabindex="-1"&gt;วิเคราะห์ Analytics&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-line-t3" aria-selected="false" aria-controls="tb-line-p3" tabindex="-1"&gt;รายงาน Reports&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-line-p1" aria-labelledby="tb-line-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ภาพรวม Overview&lt;/h3&gt;&lt;p&gt;คำสั่งซื้อ ยอดขาย และการคืนสินค้าในช่วงที่เลือก&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-line-p2" aria-labelledby="tb-line-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;วิเคราะห์ Analytics&lt;/h3&gt;&lt;p&gt;ผู้เข้าชมมาจากไหน และซื้ออะไร&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-line-p3" aria-labelledby="tb-line-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;รายงาน Reports&lt;/h3&gt;&lt;p&gt;รายงานที่บันทึกไว้ เปิดหรือส่งออกได้&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-size="sm" สูงเท่าปุ่มเล็ก สำหรับหัวการ์ด Small, for a card
+              header
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card tabs">
+                    <header class="page-header">
+                      <div><h3>เนื้อหาสินค้า Product content</h3></div>
+                      <div
+                        role="tablist"
+                        aria-label="ภาษา Language"
+                        data-size="sm"
+                      >
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-sm-t1"
+                          aria-selected="true"
+                          aria-controls="tb-sm-p1"
+                        >
+                          TH
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-sm-t2"
+                          aria-selected="false"
+                          aria-controls="tb-sm-p2"
+                          tabindex="-1"
+                        >
+                          EN
+                        </button>
+                      </div>
+                    </header>
+                    <p role="tabpanel" id="tb-sm-p1" aria-labelledby="tb-sm-t1">
+                      ผ้าปูที่นอนคอตตอน 100%
+                    </p>
+                    <p
+                      role="tabpanel"
+                      id="tb-sm-p2"
+                      aria-labelledby="tb-sm-t2"
+                      hidden
+                    >
+                      100% cotton bed sheet
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card tabs"&gt;
+  &lt;header class="page-header"&gt;
+    &lt;div&gt;&lt;h3&gt;เนื้อหาสินค้า Product content&lt;/h3&gt;&lt;/div&gt;
+    &lt;div role="tablist" aria-label="ภาษา Language" data-size="sm"&gt;
+      &lt;button type="button" role="tab" id="tb-sm-t1" aria-selected="true" aria-controls="tb-sm-p1"&gt;TH&lt;/button&gt;
+      &lt;button type="button" role="tab" id="tb-sm-t2" aria-selected="false" aria-controls="tb-sm-p2" tabindex="-1"&gt;EN&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;p role="tabpanel" id="tb-sm-p1" aria-labelledby="tb-sm-t1"&gt;ผ้าปูที่นอนคอตตอน 100%&lt;/p&gt;
+  &lt;p role="tabpanel" id="tb-sm-p2" aria-labelledby="tb-sm-t2" hidden&gt;100% cotton bed sheet&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              aria-orientation="vertical" วางแท็บซ้อนกันข้าง panel Vertical tabs
+              beside the panels
+            </h2>
+            <p>
+              ใช้ลูกศรขึ้น/ลงแทนซ้าย/ขวา จอแคบกว่า 40rem แท็บอยู่เหนือ panel
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-vert">
+                    <div
+                      role="tablist"
+                      aria-label="ตัวอย่าง Example"
+                      aria-orientation="vertical"
+                    >
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vert-t1"
+                        aria-selected="true"
+                        aria-controls="tb-vert-p1"
+                      >
+                        ทั่วไป General
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vert-t2"
+                        aria-selected="false"
+                        aria-controls="tb-vert-p2"
+                        tabindex="-1"
+                      >
+                        ชำระเงิน Checkout
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vert-t3"
+                        aria-selected="false"
+                        aria-controls="tb-vert-p3"
+                        tabindex="-1"
+                      >
+                        การแจ้งเตือน Notifications
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vert-p1"
+                      aria-labelledby="tb-vert-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ทั่วไป General</h3>
+                          <p>ชื่อร้าน ที่อยู่ และเขตเวลา</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vert-p2"
+                      aria-labelledby="tb-vert-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ชำระเงิน Checkout</h3>
+                          <p>สิ่งที่ลูกค้าต้องกรอกตอนจ่ายเงิน</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vert-p3"
+                      aria-labelledby="tb-vert-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>การแจ้งเตือน Notifications</h3>
+                          <p>อีเมลที่ร้านส่งถึงลูกค้า</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-vert"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example" aria-orientation="vertical"&gt;
+    &lt;button type="button" role="tab" id="tb-vert-t1" aria-selected="true" aria-controls="tb-vert-p1"&gt;ทั่วไป General&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-vert-t2" aria-selected="false" aria-controls="tb-vert-p2" tabindex="-1"&gt;ชำระเงิน Checkout&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-vert-t3" aria-selected="false" aria-controls="tb-vert-p3" tabindex="-1"&gt;การแจ้งเตือน Notifications&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vert-p1" aria-labelledby="tb-vert-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ทั่วไป General&lt;/h3&gt;&lt;p&gt;ชื่อร้าน ที่อยู่ และเขตเวลา&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vert-p2" aria-labelledby="tb-vert-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ชำระเงิน Checkout&lt;/h3&gt;&lt;p&gt;สิ่งที่ลูกค้าต้องกรอกตอนจ่ายเงิน&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vert-p3" aria-labelledby="tb-vert-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;การแจ้งเตือน Notifications&lt;/h3&gt;&lt;p&gt;อีเมลที่ร้านส่งถึงลูกค้า&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>แนวตั้ง แบบขีดเส้น Vertical, with underlined tabs</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-vline">
+                    <div
+                      role="tablist"
+                      aria-label="ตัวอย่าง Example"
+                      aria-orientation="vertical"
+                      data-variant="line"
+                    >
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vline-t1"
+                        aria-selected="true"
+                        aria-controls="tb-vline-p1"
+                      >
+                        ทั่วไป General
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vline-t2"
+                        aria-selected="false"
+                        aria-controls="tb-vline-p2"
+                        tabindex="-1"
+                      >
+                        ชำระเงิน Checkout
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vline-t3"
+                        aria-selected="false"
+                        aria-controls="tb-vline-p3"
+                        tabindex="-1"
+                      >
+                        การแจ้งเตือน Notifications
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vline-p1"
+                      aria-labelledby="tb-vline-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ทั่วไป General</h3>
+                          <p>ชื่อร้าน ที่อยู่ และเขตเวลา</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vline-p2"
+                      aria-labelledby="tb-vline-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ชำระเงิน Checkout</h3>
+                          <p>สิ่งที่ลูกค้าต้องกรอกตอนจ่ายเงิน</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vline-p3"
+                      aria-labelledby="tb-vline-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>การแจ้งเตือน Notifications</h3>
+                          <p>อีเมลที่ร้านส่งถึงลูกค้า</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-vline"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example" aria-orientation="vertical" data-variant="line"&gt;
+    &lt;button type="button" role="tab" id="tb-vline-t1" aria-selected="true" aria-controls="tb-vline-p1"&gt;ทั่วไป General&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-vline-t2" aria-selected="false" aria-controls="tb-vline-p2" tabindex="-1"&gt;ชำระเงิน Checkout&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-vline-t3" aria-selected="false" aria-controls="tb-vline-p3" tabindex="-1"&gt;การแจ้งเตือน Notifications&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vline-p1" aria-labelledby="tb-vline-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ทั่วไป General&lt;/h3&gt;&lt;p&gt;ชื่อร้าน ที่อยู่ และเขตเวลา&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vline-p2" aria-labelledby="tb-vline-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ชำระเงิน Checkout&lt;/h3&gt;&lt;p&gt;สิ่งที่ลูกค้าต้องกรอกตอนจ่ายเงิน&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vline-p3" aria-labelledby="tb-vline-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;การแจ้งเตือน Notifications&lt;/h3&gt;&lt;p&gt;อีเมลที่ร้านส่งถึงลูกค้า&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>มีไอคอน With icons</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-icon">
+                    <div role="tablist" aria-label="ตัวอย่าง Example">
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-icon-t1"
+                        aria-selected="true"
+                        aria-controls="tb-icon-p1"
+                      >
+                        <i class="icon icon-user" aria-hidden="true"></i>บัญชี
+                        Account
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-icon-t2"
+                        aria-selected="false"
+                        aria-controls="tb-icon-p2"
+                        tabindex="-1"
+                      >
+                        <i class="icon icon-lock" aria-hidden="true"></i
+                        >ความปลอดภัย Security
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-icon-t3"
+                        aria-selected="false"
+                        aria-controls="tb-icon-p3"
+                        tabindex="-1"
+                      >
+                        <i class="icon icon-credit-card" aria-hidden="true"></i
+                        >การเรียกเก็บเงิน Billing
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-icon-p1"
+                      aria-labelledby="tb-icon-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>บัญชี Account</h3>
+                          <p>ชื่อ อีเมล และรูปโปรไฟล์</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-icon-p2"
+                      aria-labelledby="tb-icon-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ความปลอดภัย Security</h3>
+                          <p>รหัสผ่านและการยืนยันสองขั้น</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-icon-p3"
+                      aria-labelledby="tb-icon-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>การเรียกเก็บเงิน Billing</h3>
+                          <p>แพ็กเกจและใบแจ้งหนี้</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-icon"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example"&gt;
+    &lt;button type="button" role="tab" id="tb-icon-t1" aria-selected="true" aria-controls="tb-icon-p1"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;บัญชี Account&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-icon-t2" aria-selected="false" aria-controls="tb-icon-p2" tabindex="-1"&gt;&lt;i class="icon icon-lock" aria-hidden="true"&gt;&lt;/i&gt;ความปลอดภัย Security&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-icon-t3" aria-selected="false" aria-controls="tb-icon-p3" tabindex="-1"&gt;&lt;i class="icon icon-credit-card" aria-hidden="true"&gt;&lt;/i&gt;การเรียกเก็บเงิน Billing&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-icon-p1" aria-labelledby="tb-icon-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;บัญชี Account&lt;/h3&gt;&lt;p&gt;ชื่อ อีเมล และรูปโปรไฟล์&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-icon-p2" aria-labelledby="tb-icon-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ความปลอดภัย Security&lt;/h3&gt;&lt;p&gt;รหัสผ่านและการยืนยันสองขั้น&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-icon-p3" aria-labelledby="tb-icon-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;การเรียกเก็บเงิน Billing&lt;/h3&gt;&lt;p&gt;แพ็กเกจและใบแจ้งหนี้&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แท็บที่ปิดใช้งานเลือกไม่ได้ และลูกศรข้ามไป A disabled tab cannot
+              be selected, and the arrow keys skip it
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-dis">
+                    <div role="tablist" aria-label="ตัวอย่าง Example">
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dis-t1"
+                        aria-selected="true"
+                        aria-controls="tb-dis-p1"
+                      >
+                        ภาพรวม Overview
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dis-t2"
+                        aria-selected="false"
+                        aria-controls="tb-dis-p2"
+                        tabindex="-1"
+                        disabled
+                      >
+                        วิเคราะห์ Analytics
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dis-t3"
+                        aria-selected="false"
+                        aria-controls="tb-dis-p3"
+                        tabindex="-1"
+                      >
+                        รายงาน Reports
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dis-p1"
+                      aria-labelledby="tb-dis-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ภาพรวม Overview</h3>
+                          <p>คำสั่งซื้อ ยอดขาย และการคืนสินค้าในช่วงที่เลือก</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dis-p2"
+                      aria-labelledby="tb-dis-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>วิเคราะห์ Analytics</h3>
+                          <p>ผู้เข้าชมมาจากไหน และซื้ออะไร</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dis-p3"
+                      aria-labelledby="tb-dis-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>รายงาน Reports</h3>
+                          <p>รายงานที่บันทึกไว้ เปิดหรือส่งออกได้</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-dis"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example"&gt;
+    &lt;button type="button" role="tab" id="tb-dis-t1" aria-selected="true" aria-controls="tb-dis-p1"&gt;ภาพรวม Overview&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-dis-t2" aria-selected="false" aria-controls="tb-dis-p2" tabindex="-1" disabled&gt;วิเคราะห์ Analytics&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-dis-t3" aria-selected="false" aria-controls="tb-dis-p3" tabindex="-1"&gt;รายงาน Reports&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dis-p1" aria-labelledby="tb-dis-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ภาพรวม Overview&lt;/h3&gt;&lt;p&gt;คำสั่งซื้อ ยอดขาย และการคืนสินค้าในช่วงที่เลือก&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dis-p2" aria-labelledby="tb-dis-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;วิเคราะห์ Analytics&lt;/h3&gt;&lt;p&gt;ผู้เข้าชมมาจากไหน และซื้ออะไร&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dis-p3" aria-labelledby="tb-dis-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;รายงาน Reports&lt;/h3&gt;&lt;p&gt;รายงานที่บันทึกไว้ เปิดหรือส่งออกได้&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แท็บเป็น dropdown ได้: เลือกรายการแล้วแท็บนั้นถูกเลือก A tab can
+              be a dropdown: choosing an entry selects the tab
+            </h2>
+            <p>
+              ใส่ <code>popovertarget</code> บนแท็บ ชี้ไปที่
+              <code>.dropdown</code> คลิกแท็บเปิดเมนู
+              คลิกรายการในเมนูจึงเลือกแท็บ (ใส่
+              <code>popovertargetaction="hide"</code> ให้เมนูปิด)
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-dd">
+                    <div role="tablist" aria-label="ตัวอย่าง Example">
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dd-t1"
+                        aria-selected="true"
+                        aria-controls="tb-dd-p1"
+                      >
+                        ภาพรวม Overview
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dd-t2"
+                        aria-selected="false"
+                        aria-controls="tb-dd-p2"
+                        tabindex="-1"
+                        popovertarget="tb-dd-menu"
+                      >
+                        ตาม UTM By UTM<i
+                          class="icon icon-chevron-down"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dd-t3"
+                        aria-selected="false"
+                        aria-controls="tb-dd-p3"
+                        tabindex="-1"
+                      >
+                        ตามสินค้า By product
+                      </button>
+                    </div>
+                    <div class="dropdown" id="tb-dd-menu" popover>
+                      <button
+                        type="button"
+                        popovertarget="tb-dd-menu"
+                        popovertargetaction="hide"
+                      >
+                        UTM Source
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="tb-dd-menu"
+                        popovertargetaction="hide"
+                      >
+                        UTM Medium
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="tb-dd-menu"
+                        popovertargetaction="hide"
+                      >
+                        UTM Campaign
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dd-p1"
+                      aria-labelledby="tb-dd-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ภาพรวม Overview</h3>
+                          <p>ลูกค้าทุกคนในช่วงที่เลือก</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dd-p2"
+                      aria-labelledby="tb-dd-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ตาม UTM By UTM</h3>
+                          <p>ลูกค้าแยกตามค่า UTM ที่เลือก</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dd-p3"
+                      aria-labelledby="tb-dd-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>ตามสินค้า By product</h3>
+                          <p>ลูกค้าแยกตามสินค้าที่ซื้อ</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-dd"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example"&gt;
+    &lt;button type="button" role="tab" id="tb-dd-t1" aria-selected="true" aria-controls="tb-dd-p1"&gt;ภาพรวม Overview&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-dd-t2" aria-selected="false" aria-controls="tb-dd-p2" tabindex="-1" popovertarget="tb-dd-menu"&gt;ตาม UTM By UTM&lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-dd-t3" aria-selected="false" aria-controls="tb-dd-p3" tabindex="-1"&gt;ตามสินค้า By product&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="dropdown" id="tb-dd-menu" popover&gt;
+    &lt;button type="button" popovertarget="tb-dd-menu" popovertargetaction="hide"&gt;UTM Source&lt;/button&gt;
+    &lt;button type="button" popovertarget="tb-dd-menu" popovertargetaction="hide"&gt;UTM Medium&lt;/button&gt;
+    &lt;button type="button" popovertarget="tb-dd-menu" popovertargetaction="hide"&gt;UTM Campaign&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dd-p1" aria-labelledby="tb-dd-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ภาพรวม Overview&lt;/h3&gt;&lt;p&gt;ลูกค้าทุกคนในช่วงที่เลือก&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dd-p2" aria-labelledby="tb-dd-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ตาม UTM By UTM&lt;/h3&gt;&lt;p&gt;ลูกค้าแยกตามค่า UTM ที่เลือก&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dd-p3" aria-labelledby="tb-dd-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ตามสินค้า By product&lt;/h3&gt;&lt;p&gt;ลูกค้าแยกตามสินค้าที่ซื้อ&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              หน้าเว็บเลือกแท็บเองด้วย select() The page selects a tab with
+              select()
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="tabs" id="tb-js">
+                      <div role="tablist" aria-label="ตัวอย่าง Example">
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-js-t1"
+                          aria-selected="true"
+                          aria-controls="tb-js-p1"
+                        >
+                          ภาพรวม Overview
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-js-t2"
+                          aria-selected="false"
+                          aria-controls="tb-js-p2"
+                          tabindex="-1"
+                        >
+                          วิเคราะห์ Analytics
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-js-t3"
+                          aria-selected="false"
+                          aria-controls="tb-js-p3"
+                          tabindex="-1"
+                        >
+                          รายงาน Reports
+                        </button>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-js-p1"
+                        aria-labelledby="tb-js-t1"
+                        tabindex="0"
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>ภาพรวม Overview</h3>
+                            <p>
+                              คำสั่งซื้อ ยอดขาย และการคืนสินค้าในช่วงที่เลือก
+                            </p>
+                          </header>
+                        </div>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-js-p2"
+                        aria-labelledby="tb-js-t2"
+                        tabindex="0"
+                        hidden
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>วิเคราะห์ Analytics</h3>
+                            <p>ผู้เข้าชมมาจากไหน และซื้ออะไร</p>
+                          </header>
+                        </div>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-js-p3"
+                        aria-labelledby="tb-js-t3"
+                        tabindex="0"
+                        hidden
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>รายงาน Reports</h3>
+                            <p>รายงานที่บันทึกไว้ เปิดหรือส่งออกได้</p>
+                          </header>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="tb-js-show"
+                      >
+                        ดูรายงาน Show reports
+                      </button>
+                    </div>
+                  </div>
+                  <script type="module">
+                    document
+                      .getElementById("tb-js-show")
+                      .addEventListener("click", () => {
+                        tsunami.tabs.select(
+                          document.getElementById("tb-js-t3"),
+                        );
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;div class="tabs" id="tb-js"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example"&gt;
+    &lt;button type="button" role="tab" id="tb-js-t1" aria-selected="true" aria-controls="tb-js-p1"&gt;ภาพรวม Overview&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-js-t2" aria-selected="false" aria-controls="tb-js-p2" tabindex="-1"&gt;วิเคราะห์ Analytics&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-js-t3" aria-selected="false" aria-controls="tb-js-p3" tabindex="-1"&gt;รายงาน Reports&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-js-p1" aria-labelledby="tb-js-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ภาพรวม Overview&lt;/h3&gt;&lt;p&gt;คำสั่งซื้อ ยอดขาย และการคืนสินค้าในช่วงที่เลือก&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-js-p2" aria-labelledby="tb-js-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;วิเคราะห์ Analytics&lt;/h3&gt;&lt;p&gt;ผู้เข้าชมมาจากไหน และซื้ออะไร&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-js-p3" aria-labelledby="tb-js-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;รายงาน Reports&lt;/h3&gt;&lt;p&gt;รายงานที่บันทึกไว้ เปิดหรือส่งออกได้&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;div&gt;&lt;button type="button" class="btn" data-size="sm" id="tb-js-show"&gt;ดูรายงาน Show reports&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  document.getElementById("tb-js-show").addEventListener("click", () =&gt; {
+    tsunami.tabs.select(document.getElementById("tb-js-t3"));
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              element ที่มี data-close ในแท็บปิดแท็บนั้น ปุ่ม Delete
+              บนแท็บก็ปิดได้ An element with data-close inside a tab closes it,
+              and so does Delete
+            </h2>
+            <p>
+              ปิดแล้วแท็บกับ panel ถูกลบออก ถ้าเป็นแท็บที่เลือกอยู่ แท็บถัดไป
+              (หรือก่อนหน้า) จะถูกเลือกแทน
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-close">
+                    <div
+                      role="tablist"
+                      aria-label="คำสั่งซื้อที่เปิดอยู่ Open orders"
+                    >
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-close-t1"
+                        aria-selected="true"
+                        aria-controls="tb-close-p1"
+                      >
+                        คำสั่งซื้อ #1042<i
+                          class="icon icon-x"
+                          data-close
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-close-t2"
+                        aria-selected="false"
+                        aria-controls="tb-close-p2"
+                        tabindex="-1"
+                      >
+                        คำสั่งซื้อ #1043<i
+                          class="icon icon-x"
+                          data-close
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-close-t3"
+                        aria-selected="false"
+                        aria-controls="tb-close-p3"
+                        tabindex="-1"
+                      >
+                        คำสั่งซื้อ #1044<i
+                          class="icon icon-x"
+                          data-close
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-close-p1"
+                      aria-labelledby="tb-close-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>คำสั่งซื้อ #1042</h3>
+                          <p>2 ชิ้น ชำระแล้ว รอจัดส่ง</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-close-p2"
+                      aria-labelledby="tb-close-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>คำสั่งซื้อ #1043</h3>
+                          <p>1 ชิ้น ส่งแล้ววันจันทร์</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-close-p3"
+                      aria-labelledby="tb-close-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>คำสั่งซื้อ #1044</h3>
+                          <p>3 ชิ้น คืนเงินบางส่วน</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-close"&gt;
+  &lt;div role="tablist" aria-label="คำสั่งซื้อที่เปิดอยู่ Open orders"&gt;
+    &lt;button type="button" role="tab" id="tb-close-t1" aria-selected="true" aria-controls="tb-close-p1"&gt;คำสั่งซื้อ #1042&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-close-t2" aria-selected="false" aria-controls="tb-close-p2" tabindex="-1"&gt;คำสั่งซื้อ #1043&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-close-t3" aria-selected="false" aria-controls="tb-close-p3" tabindex="-1"&gt;คำสั่งซื้อ #1044&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-close-p1" aria-labelledby="tb-close-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;คำสั่งซื้อ #1042&lt;/h3&gt;&lt;p&gt;2 ชิ้น ชำระแล้ว รอจัดส่ง&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-close-p2" aria-labelledby="tb-close-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;คำสั่งซื้อ #1043&lt;/h3&gt;&lt;p&gt;1 ชิ้น ส่งแล้ววันจันทร์&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-close-p3" aria-labelledby="tb-close-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;คำสั่งซื้อ #1044&lt;/h3&gt;&lt;p&gt;3 ชิ้น คืนเงินบางส่วน&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              หน้าเว็บได้ยิน tsunami:closetab ก่อน และเก็บแท็บไว้ด้วย
+              preventDefault() The page hears closetab first, and keeps the tab
+              with preventDefault()
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tp"
+                  aria-selected="true"
+                  aria-controls="ex11-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tc"
+                  aria-selected="false"
+                  aria-controls="ex11-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-p"
+                aria-labelledby="ex11-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="tabs" id="tb-keep">
+                      <div role="tablist" aria-label="ตัวอย่าง Example">
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-keep-t1"
+                          aria-selected="true"
+                          aria-controls="tb-keep-p1"
+                        >
+                          ร่างที่บันทึกแล้ว Saved draft<i
+                            class="icon icon-x"
+                            data-close
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-keep-t2"
+                          aria-selected="false"
+                          aria-controls="tb-keep-p2"
+                          tabindex="-1"
+                          data-unsaved
+                        >
+                          ร่างยังไม่บันทึก Unsaved draft<i
+                            class="icon icon-x"
+                            data-close
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-keep-p1"
+                        aria-labelledby="tb-keep-t1"
+                        tabindex="0"
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>ร่างที่บันทึกแล้ว Saved draft</h3>
+                            <p>แท็บนี้ปิดได้</p>
+                          </header>
+                        </div>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-keep-p2"
+                        aria-labelledby="tb-keep-t2"
+                        tabindex="0"
+                        hidden
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>ร่างยังไม่บันทึก Unsaved draft</h3>
+                            <p>หน้าเว็บไม่ยอมให้ปิดแท็บนี้</p>
+                          </header>
+                        </div>
+                      </div>
+                    </div>
+                    <p id="tb-keep-log">
+                      ยังไม่มีแท็บถูกปิด Nothing closed yet.
+                    </p>
+                  </div>
+                  <script type="module">
+                    document
+                      .getElementById("tb-keep")
+                      .addEventListener("tsunami:closetab", (e) => {
+                        const kept = e.detail.tab.hasAttribute("data-unsaved");
+                        if (kept) e.preventDefault();
+                        document.getElementById("tb-keep-log").textContent =
+                          e.detail.tab.textContent.trim() +
+                          (kept
+                            ? " ถูกเก็บไว้ was kept open."
+                            : " ถูกปิด was closed.");
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-c"
+                aria-labelledby="ex11-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;div class="tabs" id="tb-keep"&gt;
+  &lt;div role="tablist" aria-label="ตัวอย่าง Example"&gt;
+    &lt;button type="button" role="tab" id="tb-keep-t1" aria-selected="true" aria-controls="tb-keep-p1"&gt;ร่างที่บันทึกแล้ว Saved draft&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-keep-t2" aria-selected="false" aria-controls="tb-keep-p2" tabindex="-1" data-unsaved&gt;ร่างยังไม่บันทึก Unsaved draft&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-keep-p1" aria-labelledby="tb-keep-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ร่างที่บันทึกแล้ว Saved draft&lt;/h3&gt;&lt;p&gt;แท็บนี้ปิดได้&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-keep-p2" aria-labelledby="tb-keep-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;ร่างยังไม่บันทึก Unsaved draft&lt;/h3&gt;&lt;p&gt;หน้าเว็บไม่ยอมให้ปิดแท็บนี้&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;p id="tb-keep-log"&gt;ยังไม่มีแท็บถูกปิด Nothing closed yet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  document.getElementById("tb-keep").addEventListener("tsunami:closetab", (e) =&gt; {
+    const kept = e.detail.tab.hasAttribute("data-unsaved");
+    if (kept) e.preventDefault();
+    document.getElementById("tb-keep-log").textContent =
+      e.detail.tab.textContent.trim() + (kept ? " ถูกเก็บไว้ was kept open." : " ถูกปิด was closed.");
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              อยู่ใน <code>js/tabs.js</code> ใช้ event delegation
+              แท็บที่เพิ่มทีหลังก็ทำงาน
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.tabs.select(tab)</code></td>
+                    <td><code>tab</code>: element <code>[role="tab"]</code></td>
+                    <td>
+                      เลือกแท็บ แสดง panel ของมัน ซ่อน panel อื่น
+                      แท็บที่ปิดใช้งานไม่ทำอะไร
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.tabs.close(tab)</code></td>
+                    <td><code>tab</code>: element <code>[role="tab"]</code></td>
+                    <td>
+                      ส่ง <code>tsunami:closetab</code> ก่อน
+                      ถ้าไม่ถูกยกเลิกก็ลบแท็บกับ panel แล้วเลือกแท็บถัดไป
+                      (หรือก่อนหน้า) ถ้าแท็บนั้นถูกเลือกอยู่ คืนค่าแท็บที่มาแทน
+                      (หรือ <code>null</code>) หรือ
+                      <code>false</code> ถ้าถูกเก็บไว้
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Arrow Left / Right</code></td>
+                    <td>คีย์บอร์ด</td>
+                    <td>
+                      แท็บก่อน/ถัดไป วนรอบ ข้ามแท็บที่ปิดใช้งาน แนวตั้งใช้ Arrow
+                      Up / Down
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Home / End</code></td>
+                    <td>คีย์บอร์ด</td>
+                    <td>แท็บแรก / สุดท้าย</td>
+                  </tr>
+                  <tr>
+                    <td><code>Delete</code></td>
+                    <td>คีย์บอร์ด</td>
+                    <td>
+                      บนแท็บที่มี <code>[data-close]</code>: ปิดแท็บ
+                      แล้วโฟกัสแท็บที่มาแทน
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Tab</code></td>
+                    <td>คีย์บอร์ด</td>
+                    <td>เฉพาะแท็บที่เลือกอยู่ในลำดับ Tab</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Events</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:closetab</code></td>
+                    <td><code>{ tab, panel }</code></td>
+                    <td>
+                      ส่งจากแท็บก่อนปิด bubble ขึ้นไป ยกเลิกได้:
+                      <code>preventDefault()</code> เก็บแท็บไว้
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
             <h2>Attributes</h2>
-            <div class="card">
+
+            <div class="card scroll-area">
               <table class="table">
                 <thead>
                   <tr>
@@ -464,23 +1992,85 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>data-tabs</code></td>
-                    <td></td>
-                    <td>เปิดใช้ JS (click และคีย์บอร์ด)</td>
-                  </tr>
-                  <tr>
-                    <td><code>role=tab + aria-controls</code></td>
-                    <td><code>panel id</code></td>
+                    <td><code>.tabs</code></td>
+                    <td><code>div</code></td>
                     <td>
-                      แท็บที่เลือก:
-                      <code>aria-selected="true"</code> ส่วนแท็บอื่น
-                      <code>tabindex="-1"</code>
+                      ครอบ tablist และ panel (<code>data-tabs</code>
+                      ก็ใช้ได้เหมือนกัน)
                     </td>
                   </tr>
                   <tr>
-                    <td><code>role=tabpanel</code></td>
-                    <td></td>
-                    <td>panel ที่ไม่ได้เลือกใส่ <code>hidden</code></td>
+                    <td><code>[role="tablist"]</code></td>
+                    <td>child</td>
+                    <td>แถวแท็บ ใส่ <code>aria-label</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>
+                      ไม่ใส่ (default) segmented · <code>line</code> ขีดเส้นใต้
+                    </td>
+                    <td>บน tablist: รูปแบบแท็บ</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>ไม่ใส่ (default) 32px · <code>sm</code> 28px</td>
+                    <td>บน tablist: ขนาด <code>sm</code> สำหรับหัวการ์ด</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-orientation</code></td>
+                    <td>
+                      <code>horizontal</code> (default) · <code>vertical</code>
+                    </td>
+                    <td>
+                      บน tablist: <code>vertical</code> วางแท็บข้าง panel
+                      ใช้ลูกศรขึ้น/ลง (tablist ต้องเป็นลูกตรงของ
+                      <code>.tabs</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>[role="tab"]</code></td>
+                    <td><code>button</code></td>
+                    <td>แท็บ ใส่ <code>.icon</code> ได้</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-controls</code></td>
+                    <td>id ของ panel</td>
+                    <td>บนแท็บ: panel ที่แท็บนี้แสดง (ต้องมี)</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-selected</code></td>
+                    <td><code>true</code> · <code>false</code></td>
+                    <td>
+                      บนแท็บ: แท็บที่เลือก ใส่
+                      <code>tabindex="-1"</code> บนแท็บอื่น JS อัปเดตให้
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled / aria-disabled</code></td>
+                    <td><code>true</code></td>
+                    <td>บนแท็บ: เลือกไม่ได้ คีย์บอร์ดข้ามไป</td>
+                  </tr>
+                  <tr>
+                    <td><code>popovertarget</code></td>
+                    <td>id ของ <code>.dropdown</code></td>
+                    <td>
+                      บนแท็บ: แท็บเป็น dropdown คลิกรายการในเมนูเพื่อเลือกแท็บ
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>[data-close]</code></td>
+                    <td>element ในแท็บ</td>
+                    <td>
+                      แท็บปิดได้ คลิกที่ element นี้หรือกด Delete เพื่อปิด
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>[role="tabpanel"]</code></td>
+                    <td>element</td>
+                    <td>
+                      เนื้อหา ใส่ <code>aria-labelledby</code> ชี้แท็บ และ
+                      <code>hidden</code> ยกเว้นอันที่เลือก
+                    </td>
                   </tr>
                 </tbody>
               </table>
