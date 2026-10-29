@@ -1,23 +1,119 @@
-// Popover: native [popover] anchored below its popovertarget button.
+// Popover: native [popover] opened by a popovertarget button, anchored to it.
+// data-side="bottom|top|left|right" (default bottom), data-align="start|center|end" (default start).
+// Without anchor positioning the browser centres the popover in the window.
+@use "sass:map";
+
+// position-area for each side + alignment. Start/end line up with the button's edge.
+$areas: (
+  bottom: (
+    start: bottom span-right,
+    center: bottom,
+    end: bottom span-left,
+  ),
+  top: (
+    start: top span-right,
+    center: top,
+    end: top span-left,
+  ),
+  left: (
+    start: left span-bottom,
+    center: left,
+    end: left span-top,
+  ),
+  right: (
+    start: right span-bottom,
+    center: right,
+    end: right span-top,
+  ),
+);
+
+$gaps: (
+  bottom: margin-top,
+  top: margin-bottom,
+  left: margin-right,
+  right: margin-left,
+);
+
 @mixin anchored {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--surface);
   color: var(--fg);
+}
 
-  // Without anchor positioning the browser centers the popover.
+// Emits the side/align rules for one component class, e.g. positions(".dropdown").
+@mixin positions($c) {
   @supports (position-area: bottom) {
-    inset: auto;
-    margin: var(--space-1) 0;
-    position-area: bottom span-right;
-    position-try-fallbacks: flip-block, flip-inline;
+    :where(#{$c}) {
+      inset: auto;
+      margin: 0;
+      position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    }
+
+    @each $side, $aligns in $areas {
+      $s: '[data-side="#{$side}"]';
+      @if $side == bottom {
+        $s: ':is(:not([data-side]), [data-side="bottom"])';
+      }
+
+      :where(#{$c}#{$s}) {
+        #{map.get($gaps, $side)}: var(--space-1);
+      }
+
+      @if $side == left or $side == right {
+        :where(#{$c}#{$s}) {
+          position-try-fallbacks:
+            flip-inline,
+            flip-block,
+            flip-inline flip-block;
+        }
+      }
+
+      @each $align, $area in $aligns {
+        $a: '[data-align="#{$align}"]';
+        @if $align == start {
+          $a: ':is(:not([data-align]), [data-align="start"])';
+        }
+
+        :where(#{$c}#{$s}#{$a}) {
+          position-area: $area;
+        }
+      }
+    }
   }
 }
 
 @layer components {
   :where(.popover) {
     @include anchored;
-    max-width: min(20rem, 100% - 2rem);
+    width: max-content;
+    max-width: min(20rem, 100vw - 2rem);
     padding: var(--space-3) var(--space-4);
+  }
+
+  :where(.popover:popover-open) {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  @include positions(".popover");
+
+  // Header: title, then a badge or count on the same row, then an optional line.
+  :where(.popover > header) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-2);
+  }
+
+  :where(.popover > header > :is(h2, h3, h4)) {
+    font-size: var(--text-base);
+    font-weight: 600;
+  }
+
+  :where(.popover > header > p) {
+    flex-basis: 100%;
+    color: var(--muted);
+    font-size: var(--text-sm);
   }
 }
