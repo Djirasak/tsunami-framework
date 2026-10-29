@@ -333,6 +333,10 @@
           </header>
           <section>
             <h2>แนวตั้ง Vertical</h2>
+            <p>
+              ลูกเรียงจากบนลงล่าง ห่างกัน 16px ใช้จัดส่วนต่าง ๆ
+              ของหน้าหรือฟอร์มโดยไม่ต้องใส่ margin
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="แนวตั้ง Vertical">
                 <button
@@ -385,9 +389,13 @@
             </div>
           </section>
           <section>
-            <h2>แนวนอน Row</h2>
+            <h2>แนวนอน data-direction="row" Row</h2>
+            <p>
+              เรียงเป็นแถว จัดกึ่งกลางแนวตั้ง และขึ้นบรรทัดใหม่เมื่อที่ไม่พอ
+              เหมาะกับกลุ่มปุ่มหรือ badge
+            </p>
             <div class="tabs" data-tabs>
-              <div role="tablist" aria-label="แนวนอน Row">
+              <div role="tablist" aria-label='แนวนอน data-direction="row" Row'>
                 <button
                   type="button"
                   role="tab"
@@ -440,6 +448,164 @@
             </div>
           </section>
           <section>
+            <h2>ระยะห่าง data-gap Gap sizes</h2>
+            <p><code>sm</code> 8px, ค่าเริ่มต้น 16px, <code>lg</code> 32px</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="ระยะห่าง data-gap Gap sizes">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="lg">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <strong>sm · 8px</strong>
+                      <span class="badge">ใหม่ New</span>
+                      <span class="badge">ขายดี Bestseller</span>
+                      <span class="badge">ลดราคา Sale</span>
+                    </div>
+                    <div class="stack" data-direction="row">
+                      <strong>ค่าเริ่มต้น Default · 16px</strong>
+                      <span class="badge">ใหม่ New</span>
+                      <span class="badge">ขายดี Bestseller</span>
+                      <span class="badge">ลดราคา Sale</span>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="lg">
+                      <strong>lg · 32px</strong>
+                      <span class="badge">ใหม่ New</span>
+                      <span class="badge">ขายดี Bestseller</span>
+                      <span class="badge">ลดราคา Sale</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="lg"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;strong&gt;sm · 8px&lt;/strong&gt;
+    &lt;span class="badge"&gt;ใหม่ New&lt;/span&gt;
+    &lt;span class="badge"&gt;ขายดี Bestseller&lt;/span&gt;
+    &lt;span class="badge"&gt;ลดราคา Sale&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row"&gt;
+    &lt;strong&gt;ค่าเริ่มต้น Default · 16px&lt;/strong&gt;
+    &lt;span class="badge"&gt;ใหม่ New&lt;/span&gt;
+    &lt;span class="badge"&gt;ขายดี Bestseller&lt;/span&gt;
+    &lt;span class="badge"&gt;ลดราคา Sale&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+    &lt;strong&gt;lg · 32px&lt;/strong&gt;
+    &lt;span class="badge"&gt;ใหม่ New&lt;/span&gt;
+    &lt;span class="badge"&gt;ขายดี Bestseller&lt;/span&gt;
+    &lt;span class="badge"&gt;ลดราคา Sale&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ซ้อนกันในฟอร์ม Nested in a form</h2>
+            <p>stack ซ้อน stack ได้ เช่นฟอร์มแนวตั้งที่มีแถวปุ่มด้านล่าง</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="ซ้อนกันในฟอร์ม Nested in a form">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form class="stack docs-narrow">
+                    <div class="field">
+                      <label for="st-name">ชื่อสินค้า Product name</label>
+                      <input id="st-name" value="เสื้อยืด T-shirt" />
+                    </div>
+                    <div class="field">
+                      <label for="st-price">ราคา Price (฿)</label>
+                      <input id="st-price" type="number" value="390" />
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button type="submit" class="btn" data-variant="primary">
+                        บันทึก Save
+                      </button>
+                      <button type="reset" class="btn">ยกเลิก Cancel</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form class="stack docs-narrow"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="st-name"&gt;ชื่อสินค้า Product name&lt;/label&gt;
+    &lt;input id="st-name" value="เสื้อยืด T-shirt" /&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="st-price"&gt;ราคา Price (฿)&lt;/label&gt;
+    &lt;input id="st-price" type="number" value="390" /&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="submit" class="btn" data-variant="primary"&gt;บันทึก Save&lt;/button&gt;
+    &lt;button type="reset" class="btn"&gt;ยกเลิก Cancel&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>Attributes</h2>
             <div class="card">
               <table class="table">
@@ -452,14 +618,26 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td><code>.stack</code></td>
+                    <td></td>
+                    <td>
+                      flex แนวตั้ง ลูกห่างกัน 16px ใช้กับ element ใดก็ได้
+                      (<code>div</code>, <code>form</code>,
+                      <code>section</code> ...)
+                    </td>
+                  </tr>
+                  <tr>
                     <td><code>data-direction</code></td>
-                    <td><code>row</code></td>
+                    <td><code>row</code>; ไม่ใส่ = แนวตั้ง (ค่าเริ่มต้น)</td>
                     <td>เรียงแนวนอน ขึ้นบรรทัดใหม่ได้ และจัดกึ่งกลางแนวตั้ง</td>
                   </tr>
                   <tr>
                     <td><code>data-gap</code></td>
-                    <td><code>sm, lg</code></td>
-                    <td>ระยะห่าง 8px หรือ 32px (ค่าเริ่มต้น 16px)</td>
+                    <td>
+                      <code>sm</code>, <code>lg</code>; ไม่ใส่ = 16px
+                      (ค่าเริ่มต้น)
+                    </td>
+                    <td>ระยะห่าง 8px หรือ 32px</td>
                   </tr>
                 </tbody>
               </table>
