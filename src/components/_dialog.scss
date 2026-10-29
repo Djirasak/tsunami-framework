@@ -1,6 +1,8 @@
 // Dialog: native <dialog class="dialog">. Open with commandfor + command="show-modal".
 // Children: header (h2, p, close button, optional figure), div (scrolls), footer.
 // A <form method="dialog"> may wrap the three parts. role="alertdialog" for a question.
+@use "motion";
+
 @layer components {
   :where(.dialog) {
     width: min(32rem, 100% - 2rem);
@@ -174,16 +176,40 @@
     overflow: hidden;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    :where(.dialog[open]) {
-      animation: dialog-in 0.15s ease-out;
+  // Open and close: the box fades and grows from 95%, the backdrop fades.
+  :where(.dialog) {
+    transition:
+      opacity motion.$base motion.$ease,
+      scale motion.$fast motion.$ease,
+      overlay motion.$base allow-discrete,
+      display motion.$base allow-discrete;
+  }
+
+  :where(.dialog:not([open])) {
+    opacity: 0;
+    scale: 0.95;
+  }
+
+  :where(.dialog[open]) {
+    @starting-style {
+      opacity: 0;
+      scale: 0.95;
     }
   }
 
-  @keyframes dialog-in {
-    from {
+  :where(.dialog)::backdrop {
+    opacity: 0;
+    transition:
+      opacity motion.$fast motion.$ease,
+      overlay motion.$fast allow-discrete,
+      display motion.$fast allow-discrete;
+  }
+
+  :where(.dialog[open])::backdrop {
+    opacity: 1;
+
+    @starting-style {
       opacity: 0;
-      translate: 0 0.5rem;
     }
   }
 }
