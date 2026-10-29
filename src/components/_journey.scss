@@ -7,6 +7,7 @@
     --gap: var(--space-6);
     --indent: 1.5rem;
     position: relative;
+    container-type: inline-size;
     overflow-x: auto;
     overscroll-behavior-x: contain;
   }
@@ -150,6 +151,19 @@
     grid-row: auto;
     grid-column: 1;
     text-align: start;
+  }
+
+  // A narrow vertical journey stacks them too.
+  @container (width < 32rem) {
+    :where(.journey[data-orientation="vertical"] button:has(> small)) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    :where(.journey[data-orientation="vertical"] button:has(> small) > data) {
+      grid-row: auto;
+      grid-column: 1;
+      text-align: start;
+    }
   }
 
   :where(.journey [data-outcomes] > div) {

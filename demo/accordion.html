@@ -639,12 +639,16 @@
                   <script type="module">
                     const accordion = document.getElementById("acc-events");
                     const output = document.getElementById("acc-events-output");
+                    // toggle does not bubble: listen in the capture phase.
                     accordion.addEventListener(
                       "toggle",
-                      (event) => {
-                        const name =
-                          event.target.querySelector("summary").textContent;
-                        output.textContent = `${event.newState === "open" ? "เปิด Opened" : "ปิด Closed"}: ${name}`;
+                      () => {
+                        const open = accordion.querySelector(
+                          "details[open] > summary",
+                        );
+                        output.textContent = open
+                          ? `เปิดอยู่ Open: ${open.textContent}`
+                          : "ปิดทั้งหมด All closed";
                       },
                       { capture: true },
                     );
@@ -682,11 +686,12 @@
 &lt;script type="module"&gt;
   const accordion = document.getElementById("acc-events");
   const output = document.getElementById("acc-events-output");
+  // toggle does not bubble: listen in the capture phase.
   accordion.addEventListener(
     "toggle",
-    (event) =&gt; {
-      const name = event.target.querySelector("summary").textContent;
-      output.textContent = `${event.newState === "open" ? "เปิด Opened" : "ปิด Closed"}: ${name}`;
+    () =&gt; {
+      const open = accordion.querySelector("details[open] &gt; summary");
+      output.textContent = open ? `เปิดอยู่ Open: ${open.textContent}` : "ปิดทั้งหมด All closed";
     },
     { capture: true },
   );
