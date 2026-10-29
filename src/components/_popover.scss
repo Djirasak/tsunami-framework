@@ -2,6 +2,7 @@
 // data-side="bottom|top|left|right" (default bottom), data-align="start|center|end" (default start).
 // Without anchor positioning the browser centres the popover in the window.
 @use "sass:map";
+@use "motion";
 
 // position-area for each side + alignment. Start/end line up with the button's edge.
 $areas: (
@@ -100,6 +101,7 @@ $gaps: (
   }
 
   @include positions(".popover");
+  @include motion.pop(".popover");
 
   // Header: title, then a badge or count on the same row, then an optional line.
   :where(.popover > header) {

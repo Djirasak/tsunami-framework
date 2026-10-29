@@ -2,6 +2,7 @@
 // Same data-side / data-align as the popover. Children: a, button, label (checkbox/radio),
 // h2-h4 headings, hr separators, kbd shortcuts. No JS: Tab moves through the items.
 @use "popover";
+@use "motion";
 
 @layer components {
   :where(.dropdown) {
@@ -17,6 +18,7 @@
   }
 
   @include popover.positions(".dropdown");
+  @include motion.pop(".dropdown");
 
   :where(.dropdown > :is(a, button, label)) {
     display: flex;
