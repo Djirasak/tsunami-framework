@@ -1,6 +1,8 @@
 // Tabs: .tabs > [role="tablist"] > [role="tab"], then [role="tabpanel"]s.
 // Behaviour in js/tabs.js. On the tablist: data-variant="line" (underlined
 // instead of segmented), data-size="sm", aria-orientation="vertical".
+@use "motion";
+
 @layer components {
   :where(.tabs [role="tablist"]) {
     display: inline-flex;
@@ -29,9 +31,9 @@
     line-height: 1;
     white-space: nowrap;
     cursor: pointer;
-    transition:
-      color 0.15s,
-      background-color 0.15s;
+    transition-property: color, background-color, border-color;
+    transition-duration: motion.$base;
+    transition-timing-function: motion.$ease;
   }
 
   // The tablist scrolls, so the focus ring sits inside the tab.
