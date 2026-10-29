@@ -1,8 +1,19 @@
 // Table: quiet header, row lines, tabular numbers.
+// Sortable headers (th[aria-sort] > button) and selectable rows (checkbox in the first cell)
+// are driven by src/js/table.js.
+@use "icon";
+
 @layer components {
   :where(.table) {
     width: 100%;
     font-variant-numeric: tabular-nums;
+  }
+
+  :where(.table caption) {
+    padding-bottom: var(--space-3);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    text-align: left;
   }
 
   :where(.table th, .table td) {
@@ -16,6 +27,14 @@
     color: var(--muted);
     font-size: var(--text-sm);
     font-weight: 400;
+    white-space: nowrap;
+  }
+
+  // A th in the body names its row.
+  :where(.table tbody th) {
+    color: var(--fg);
+    font-size: var(--text-base);
+    font-weight: 500;
   }
 
   :where(.table tbody tr:last-child > *) {
@@ -26,7 +45,126 @@
     background: var(--subtle);
   }
 
+  // Total row.
+  :where(.table tfoot :is(th, td)) {
+    border-top: 1px solid var(--line);
+    border-bottom: 0;
+    color: var(--fg);
+    font-size: var(--text-base);
+    font-weight: 600;
+  }
+
   :where(.table [data-align="end"]) {
     text-align: right;
+  }
+
+  // Avatar or image before the text in a cell.
+  :where(.table td > :is(.avatar, img):first-child) {
+    display: inline-grid;
+    margin-right: var(--space-2);
+    vertical-align: middle;
+  }
+
+  :where(.table td > img:first-child) {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+  }
+
+  // Truncate: the cell takes the spare width and cuts its text; put the whole text in title.
+  :where(.table [data-truncate]) {
+    width: 100%;
+    min-width: 8rem;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  // Sortable column: a button in the header; the icon follows aria-sort.
+  :where(.table th[aria-sort] > button) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin: 0 calc(-1 * var(--space-1));
+    padding: 0 var(--space-1);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  :where(.table th[aria-sort] > button:hover) {
+    color: var(--fg);
+  }
+
+  :where(.table th[aria-sort] > button)::after {
+    @include icon.glyph(chevrons-up-down);
+    font-size: 0.875rem;
+    opacity: 0.6;
+  }
+
+  :where(.table th[aria-sort="ascending"]),
+  :where(.table th[aria-sort="descending"]) {
+    color: var(--fg);
+  }
+
+  :where(.table th[aria-sort="ascending"] > button)::after {
+    content: icon.content(arrow-up);
+    opacity: 1;
+  }
+
+  :where(.table th[aria-sort="descending"] > button)::after {
+    content: icon.content(arrow-down);
+    opacity: 1;
+  }
+
+  :where(.table th[data-align="end"][aria-sort] > button) {
+    flex-direction: row-reverse;
+  }
+
+  // Selectable rows: checkbox in the first cell; works without JS via :has.
+  :where(.table :is(th, td):first-child:has(> input[type="checkbox"])) {
+    width: 1px;
+    padding-right: 0;
+  }
+
+  :where(.table :is(th, td) > input[type="checkbox"]) {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+
+  :where(
+    .table tbody tr[aria-selected="true"],
+    .table tbody tr:has(> td:first-child > input[type="checkbox"]:checked)
+  ) {
+    background: var(--neutral-bg);
+  }
+
+  // In a card: edge to edge, first and last cells match the card padding.
+  :where(
+    .card > .table :is(th, td):first-child,
+    .card > .scroll-area > .table :is(th, td):first-child
+  ) {
+    padding-left: var(--space-5);
+  }
+
+  :where(
+    .card > .table :is(th, td):last-child,
+    .card > .scroll-area > .table :is(th, td):last-child
+  ) {
+    padding-right: var(--space-5);
+  }
+
+  :where(.card > .table caption, .card > .scroll-area > .table caption) {
+    padding: var(--space-3) var(--space-5);
+    border-bottom: 1px solid var(--line);
   }
 }
