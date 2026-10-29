@@ -1,3 +1,306 @@
-// Select: styled list built on a native <select> (see js/select.js).
+// Select: <select class="select"> alone is a styled native select.
+// <div class="select"> around a native <select> gets a styled control and
+// list from js/select.js; the native select stays the source of truth.
+@use "icon";
+
+// The bordered box shared by the native select and the styled control.
+@mixin box {
+  width: 100%;
+  height: 2rem;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--fg);
+}
+
 @layer components {
+  :where(select.select) {
+    @include box;
+    width: auto;
+    min-width: 8rem;
+  }
+
+  :where(select.select[data-size="sm"], .select[data-size="sm"] > select) {
+    height: 1.625rem;
+    font-size: var(--text-sm);
+  }
+
+  :where(select.select[data-size="lg"], .select[data-size="lg"] > select) {
+    height: 2.5rem;
+  }
+
+  :where(
+    select.select:focus-visible,
+    .select > :is(select, button):focus-visible,
+    .select > div:not([popover]):has(input:focus-visible)
+  ) {
+    border-color: var(--accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 0;
+  }
+
+  :where(
+    select.select:disabled,
+    .select > :is(select, button):disabled,
+    .select > div:not([popover]):has(input:disabled)
+  ) {
+    background: var(--subtle);
+    cursor: not-allowed;
+  }
+
+  // Wrapper. Before the script runs, the native select inside it shows.
+  :where(.select:not(select)) {
+    display: inline-block;
+    position: relative;
+    min-width: 10rem;
+    vertical-align: middle;
+  }
+
+  :where(.select:not(select) > select) {
+    @include box;
+  }
+
+  :where(.select:not(select) > header) {
+    margin-bottom: var(--space-1);
+  }
+
+  // Once enhanced the native select is invisible but keeps its place, so
+  // form validation messages point at the control.
+  :where(.select[data-ready] > select) {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  // Control: a button, or a box with chips and a text field.
+  :where(.select > button, .select > div:not([popover])) {
+    @include box;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  :where(.select > button > span) {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  :where(.select:not([data-has-value]) > button > span) {
+    color: var(--muted);
+  }
+
+  :where(.select > button)::after {
+    @include icon.glyph(chevron-down);
+    color: var(--muted);
+  }
+
+  :where(.select > div:not([popover])) {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 2rem;
+    padding: 3px var(--space-2);
+    cursor: text;
+  }
+
+  :where(.select > div:not([popover]) > input) {
+    flex: 1;
+    min-width: 4rem;
+    height: 1.5rem;
+    padding: 0 var(--space-1);
+    border: 0;
+    outline: 0;
+    background: none;
+  }
+
+  :where(.select[data-size="sm"] > :is(button, div:not([popover]))) {
+    height: 1.625rem;
+    min-height: 1.625rem;
+    font-size: var(--text-sm);
+  }
+
+  :where(.select[data-size="sm"] > div:not([popover])) {
+    height: auto;
+    padding-block: 1px;
+  }
+
+  :where(.select[data-size="lg"] > :is(button, div:not([popover]))) {
+    height: 2.5rem;
+    min-height: 2.5rem;
+  }
+
+  :where(.select[data-size="lg"] > div:not([popover])) {
+    height: auto;
+    padding-block: 7px;
+  }
+
+  // Chips: one per chosen option, with a remove button.
+  :where(.select > div:not([popover]) > span) {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    max-width: 100%;
+    height: 1.375rem;
+    padding: 0 2px 0 var(--space-2);
+    border-radius: var(--radius-sm);
+    background: var(--neutral-bg);
+    color: var(--neutral-fg);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+  }
+
+  :where(.select > div:not([popover]) > span > button) {
+    display: inline-grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  :where(.select > div:not([popover]) > span > button:hover) {
+    background: var(--line);
+  }
+
+  // List: a manual popover placed under the control by the script.
+  :where(.select > [popover]) {
+    position: fixed;
+    inset: auto;
+    max-width: calc(100vw - 2rem);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+  }
+
+  :where(.select > [popover]:popover-open) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :where(.select > [popover] > header) {
+    padding: var(--space-1);
+    border-bottom: 1px solid var(--line);
+  }
+
+  :where(.select > [popover] > header > .btn) {
+    width: 100%;
+  }
+
+  :where(.select > [popover] > .input-group) {
+    border-width: 0 0 1px;
+    border-color: var(--line);
+    border-radius: 0;
+  }
+
+  :where(.select > [popover] > .input-group:has(input:focus-visible)) {
+    outline: 0;
+  }
+
+  :where(.select [role="listbox"]) {
+    max-height: 16rem;
+    padding: var(--space-1);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  :where(.select [role="listbox"]:empty) {
+    display: none;
+  }
+
+  :where(.select [role="option"]) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  :where(.select [role="option"])::after {
+    @include icon.glyph(check);
+    width: 1em;
+    margin-left: auto;
+    padding-left: var(--space-2);
+    color: var(--accent);
+    visibility: hidden;
+  }
+
+  :where(.select [role="option"][aria-selected="true"])::after {
+    visibility: visible;
+  }
+
+  :where(.select [role="option"][data-active]) {
+    background: var(--subtle);
+  }
+
+  :where(.select [role="option"][aria-disabled="true"]) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  :where(.select [role="option"] > span:last-of-type) {
+    min-width: 0;
+  }
+
+  :where(.select [role="option"] .badge) {
+    margin-left: var(--space-1);
+  }
+
+  :where(.select [role="option"] small) {
+    display: block;
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.select [role="option"]:has(small) > span:last-of-type > span) {
+    font-weight: 500;
+  }
+
+  :where(.select [role="option"] > .icon) {
+    color: var(--muted);
+  }
+
+  :where(.select [role="group"] + [role="group"]) {
+    margin-top: var(--space-1);
+    padding-top: var(--space-1);
+    border-top: 1px solid var(--line);
+  }
+
+  :where(.select [role="group"] > strong) {
+    display: block;
+    padding: var(--space-1) var(--space-2);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+
+  // Status line: no results, searching, loading more, error.
+  :where(.select > [popover] > p) {
+    padding: var(--space-2) var(--space-3);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.select > [popover] > p:empty) {
+    display: none;
+  }
+
+  :where(.select [role="listbox"][data-error] ~ p) {
+    color: var(--danger-fg);
+  }
 }
