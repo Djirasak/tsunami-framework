@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Image field | Tsunami</title>
+    <script>
+      try {
+        const t = localStorage.getItem("tsunami-theme");
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="docs.css" />
+    <script type="module" src="../dist/tsunami.min.js"></script>
+    <script type="module" src="docs.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="./"
+          ><svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" rx="7" />
+            <path
+              d="M5.5 21c3 0 5-2 6.5-5.2C14 11 17.2 7 22 7c3 0 4.8 2.2 4.8 4.5 0 2-1.6 3.5-3.5 3.5-1.8 0-3-1.3-3-2.9"
+            />
+            <path
+              d="M5.5 26c2.2-2.2 4.4-2.2 6.6 0s4.4 2.2 6.6 0 4.4-2.2 6.6 0"
+            /></svg
+          >Tsunami <span>津波</span></a
+        >
+        <div class="input-group">
+          <span><i class="icon icon-search" aria-hidden="true"></i></span>
+          <input
+            type="search"
+            placeholder="ค้นหา Search"
+            aria-label="Search docs"
+          />
+          <span><kbd>Ctrl K</kbd></span>
+        </div>
+        <nav aria-label="Docs">
+          <h2>Get started</h2>
+          <a href="./" data-label="Overview" data-keywords="Get started index"
+            >Overview</a
+          >
+          <h2>Foundations</h2>
+          <a
+            href="colors"
+            data-label="Colors"
+            data-keywords="Foundations colors --bg --surface --subtle --fg --muted --line --accent --on-accent --ok-bg --ok-fg --warning-bg --warning-fg --danger-bg --danger-fg --info-bg --info-fg --neutral-bg --neutral-fg --overlay"
+            >Colors</a
+          >
+          <a
+            href="typography"
+            data-label="Typography"
+            data-keywords="Foundations typography prose p data-variant small ul ol li dl dt dd blockquote pre code hr kbd"
+            >Typography</a
+          >
+          <a
+            href="icons"
+            data-label="Icons"
+            data-keywords="Foundations icons class data-size aria-hidden color include icon glyph name"
+            >Icons</a
+          >
+          <h2>Layout</h2>
+          <a
+            href="stack"
+            data-label="Stack"
+            data-keywords="Layout stack data-direction data-gap"
+            >Stack</a
+          >
+          <a
+            href="card"
+            data-label="Card"
+            data-keywords="Layout card header h2 h3 p aside strong data-trend section div footer empty stat stat-group data-variant data-direction"
+            >Card</a
+          >
+          <a
+            href="item"
+            data-label="Item"
+            data-keywords="Layout item figure section h3 p aside data-variant data-size item-group hr"
+            >Item</a
+          >
+          <a
+            href="page-header"
+            data-label="Page header"
+            data-keywords="Layout page-header nav btn h1 hgroup div first-child last-child p"
+            >Page header</a
+          >
+          <a
+            href="stat"
+            data-label="Stat"
+            data-keywords="Layout stat span first-child strong data-trend loader aria-busy aria-pressed data-reverse data-variant data-size stat-group data-even dl"
+            >Stat</a
+          >
+          <a
+            href="table"
+            data-label="Table"
+            data-keywords="Layout table caption thead th tbody scope row tfoot data-align data-truncate td avatar img first-child aria-sort button data-sort-type data-sort-value tr aria-selected scroll-area"
+            >Table</a
+          >
+          <a
+            href="timeline"
+            data-label="Timeline"
+            data-keywords="Layout timeline ol li data-variant aria-busy time details summary dl dt dd article footer form code textarea"
+            >Timeline</a
+          >
+          <a
+            href="journey"
+            data-label="Journey"
+            data-keywords="Layout journey data-orientation data-view ol li header ul button aria-pressed span small data data-outcomes svg"
+            >Journey</a
+          >
+          <a
+            href="accordion"
+            data-label="Accordion"
+            data-keywords="Layout accordion details name open aria-disabled summary not"
+            >Accordion</a
+          >
+          <a
+            href="scroll-area"
+            data-label="Scroll area"
+            data-keywords="Layout scroll-area height code max-height tabindex aria-label"
+            >Scroll area</a
+          >
+          <a
+            href="workspace"
+            data-label="Workspace"
+            data-keywords="Layout workspace data-panel header h1 popovertarget aside code main td tr popover id"
+            >Workspace</a
+          >
+          <h2>Actions</h2>
+          <a
+            href="btn"
+            data-label="Button"
+            data-keywords="Actions btn data-variant data-size aria-label icon aria-pressed disabled aria-disabled btn-group data-pressed dropdown"
+            >Button</a
+          >
+          <a
+            href="dropdown"
+            data-label="Dropdown"
+            data-keywords="Actions dropdown popover id button a label input h2 h3 h4 hr kbd"
+            >Dropdown</a
+          >
+          <a
+            href="theme-switcher"
+            data-label="Theme switcher"
+            data-keywords="Actions theme-switcher html data-theme data-theme-toggle aria-pressed aria-label data-theme-show tsunami-theme"
+            >Theme switcher</a
+          >
+          <h2>Forms</h2>
+          <a
+            href="field"
+            data-label="Field"
+            data-keywords="Forms field aria-invalid disabled data-variant role data-gap"
+            >Field</a
+          >
+          <a
+            href="image-field"
+            aria-current="page"
+            data-label="Image field"
+            data-keywords="Forms image-field data-fit data-empty data-change data-clear img input file checkbox"
+            >Image field</a
+          >
+          <a
+            href="input"
+            data-label="Input"
+            data-keywords="Forms input data-size data-variant type file placeholder aria-label aria-invalid disabled"
+            >Input</a
+          >
+          <a
+            href="input-group"
+            data-label="Input group"
+            data-keywords="Forms input-group data-size data-variant aria-invalid disabled aria-hidden"
+            >Input group</a
+          >
+          <a
+            href="select"
+            data-label="Select"
+            data-keywords="Forms select div data-size data-placeholder data-search data-input data-tags data-url data-empty header code wrapper td tr multiple optgroup label option value selected disabled hidden data-label data-text data-avatar data-badge data-tag data-ready data-has-value role combobox"
+            >Select</a
+          >
+          <a
+            href="save-bar"
+            data-label="Save bar"
+            data-keywords="Forms save-bar data-form hidden data-warn-on-leave data-dirty role region aria-label a href data-save-bar-ignore"
+            >Save bar</a
+          >
+          <h2>Feedback</h2>
+          <a
+            href="alert"
+            data-label="Alert"
+            data-keywords="Feedback alert data-variant icon strong h2 h3 h4 p section footer role"
+            >Alert</a
+          >
+          <a
+            href="badge"
+            data-label="Badge"
+            data-keywords="Feedback badge data-variant data-size icon button"
+            >Badge</a
+          >
+          <a
+            href="empty"
+            data-label="Empty state"
+            data-keywords="Feedback empty header figure h3 p footer div a link"
+            >Empty state</a
+          >
+          <a
+            href="loader"
+            data-label="Loader"
+            data-keywords="Feedback loader data-size role aria-label aria-hidden aria-busy true"
+            >Loader</a
+          >
+          <a
+            href="skeleton"
+            data-label="Skeleton"
+            data-keywords="Feedback skeleton data-variant aria-hidden aria-busy"
+            >Skeleton</a
+          >
+          <a
+            href="progress"
+            data-label="Progress"
+            data-keywords="Feedback progress data-size span data-variant role aria-valuenow aria-valuemin aria-valuemax aria-valuetext aria-label aria-labelledby header ul li"
+            >Progress</a
+          >
+          <h2>Media</h2>
+          <a
+            href="avatar"
+            data-label="Avatar"
+            data-keywords="Media avatar img span data-size data-variant data-count data-status avatar-group"
+            >Avatar</a
+          >
+          <h2>Navigation</h2>
+          <a
+            href="breadcrumb"
+            data-label="Breadcrumb"
+            data-keywords="Navigation breadcrumb ol li a aria-current"
+            >Breadcrumb</a
+          >
+          <a
+            href="link"
+            data-label="Link"
+            data-keywords="Navigation link a data-variant data-weight icon"
+            >Link</a
+          >
+          <a
+            href="pagination"
+            data-label="Pagination"
+            data-keywords="Navigation pagination ul li a span aria-current aria-disabled data-size"
+            >Pagination</a
+          >
+          <a
+            href="sidebar"
+            data-label="Sidebar"
+            data-keywords="Navigation sidebar popover id data-collapsed nav header section footer role group h2 h3 ul li a badge hr aria-current"
+            >Sidebar</a
+          >
+          <a
+            href="subnav"
+            data-label="Subnav"
+            data-keywords="Navigation subnav h2 ul li a aria-current sidebar data-collapsed true"
+            >Subnav</a
+          >
+          <a
+            href="tabs"
+            data-label="Tabs"
+            data-keywords="Navigation tabs role tablist data-variant data-size aria-orientation tab aria-controls aria-selected disabled aria-disabled popovertarget data-close tabpanel"
+            >Tabs</a
+          >
+          <a
+            href="tree"
+            data-label="Tree"
+            data-keywords="Navigation tree ul li details summary open a span icon aria-current input type search p hidden"
+            >Tree</a
+          >
+          <h2>Overlays</h2>
+          <a
+            href="dialog"
+            data-label="Dialog"
+            data-keywords="Overlays dialog closedby commandfor command value autofocus header figure div footer"
+            >Dialog</a
+          >
+          <a
+            href="drawer"
+            data-label="Drawer"
+            data-keywords="Overlays drawer closedby commandfor command value header div footer"
+            >Drawer</a
+          >
+          <a
+            href="popover"
+            data-label="Popover"
+            data-keywords="Overlays popover id header autofocus"
+            >Popover</a
+          >
+          <a
+            href="tooltip"
+            data-label="Tooltip"
+            data-keywords="Overlays tooltip"
+            >Tooltip</a
+          >
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="เปิดเมนู Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>Image field</span>
+          <div class="theme-switcher" role="group" aria-label="ธีม Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Image field</h1>
+              <p>
+                ช่องรูปภาพที่มีปุ่มเปลี่ยนและล้างรูป ฟอร์มเป็นตัวส่งไฟล์ An
+                image with change and clear buttons; the form sends the file.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>
+              ตัวอย่าง: ชี้ที่รูปเพื่อแสดงปุ่มเปลี่ยนและล้าง Preview: point at
+              the image for the change and clear buttons
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="ตัวอย่าง: ชี้ที่รูปเพื่อแสดงปุ่มเปลี่ยนและล้าง Preview: point at the image for the change and clear buttons"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="if-icon">ไอคอนร้าน Store icon</label>
+                    <div class="image-field">
+                      <img
+                        src="img/logo-acme.svg"
+                        alt="ไอคอนร้านปัจจุบัน Current store icon"
+                      />
+                      <i class="icon icon-image" aria-hidden="true"></i>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        id="if-icon"
+                        data-change
+                        aria-label="เปลี่ยนไอคอนร้าน Change store icon"
+                        data-tooltip="เปลี่ยน Change"
+                      >
+                        <i class="icon icon-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        data-clear
+                        aria-label="ล้างไอคอนร้าน Clear store icon"
+                        data-tooltip="ล้าง Clear"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                      <input type="file" name="icon" accept="image/*" />
+                    </div>
+                    <small
+                      >แสดงในแท็บเบราว์เซอร์และบุ๊กมาร์ก Shown in browser tabs
+                      and bookmarks.</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="if-icon"&gt;ไอคอนร้าน Store icon&lt;/label&gt;
+  &lt;div class="image-field"&gt;
+    &lt;img src="img/logo-acme.svg" alt="ไอคอนร้านปัจจุบัน Current store icon"&gt;
+    &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-icon" data-change aria-label="เปลี่ยนไอคอนร้าน Change store icon" data-tooltip="เปลี่ยน Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="ล้างไอคอนร้าน Clear store icon" data-tooltip="ล้าง Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;input type="file" name="icon" accept="image/*"&gt;
+  &lt;/div&gt;
+  &lt;small&gt;แสดงในแท็บเบราว์เซอร์และบุ๊กมาร์ก Shown in browser tabs and bookmarks.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-fit=&quot;contain&quot; แสดงรูปทั้งรูปในกล่องกว้าง
+              สำหรับโลโก้ Shows the whole image in a wide box, for a logo
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-fit=&amp;quot;contain&amp;quot; แสดงรูปทั้งรูปในกล่องกว้าง สำหรับโลโก้ Shows the whole image in a wide box, for a logo"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="if-logo">โลโก้ร้าน Store logo</label>
+                    <div
+                      class="image-field"
+                      data-fit="contain"
+                      style="width: 18rem"
+                    >
+                      <img
+                        src="img/logo-acme.svg"
+                        alt="โลโก้ร้านปัจจุบัน Current store logo"
+                      />
+                      <i class="icon icon-image" aria-hidden="true"></i>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        id="if-logo"
+                        data-change
+                        aria-label="เปลี่ยนโลโก้ Change store logo"
+                        data-tooltip="เปลี่ยน Change"
+                      >
+                        <i class="icon icon-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        data-clear
+                        aria-label="ล้างโลโก้ Clear store logo"
+                        data-tooltip="ล้าง Clear"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                      <input type="file" name="logo" accept="image/*" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="if-logo"&gt;โลโก้ร้าน Store logo&lt;/label&gt;
+  &lt;div class="image-field" data-fit="contain" style="width: 18rem"&gt;
+    &lt;img src="img/logo-acme.svg" alt="โลโก้ร้านปัจจุบัน Current store logo"&gt;
+    &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-logo" data-change aria-label="เปลี่ยนโลโก้ Change store logo" data-tooltip="เปลี่ยน Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="ล้างโลโก้ Clear store logo" data-tooltip="ล้าง Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;input type="file" name="logo" accept="image/*"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-empty: ยังไม่มีรูป จึงแสดงไอคอนและปุ่มเลือกเท่านั้น No image
+              yet: the icon and only the change button
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-empty: ยังไม่มีรูป จึงแสดงไอคอนและปุ่มเลือกเท่านั้น No image yet: the icon and only the change button"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="if-empty">รูปหมวดหมู่ Category image</label>
+                    <div class="image-field" data-empty>
+                      <img alt="รูปหมวดหมู่ปัจจุบัน Current category image" />
+                      <i class="icon icon-image" aria-hidden="true"></i>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        id="if-empty"
+                        data-change
+                        aria-label="เลือกรูปหมวดหมู่ Choose a category image"
+                        data-tooltip="เลือก Choose"
+                      >
+                        <i class="icon icon-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        data-clear
+                        aria-label="ล้างรูปหมวดหมู่ Clear category image"
+                        data-tooltip="ล้าง Clear"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                      <input type="file" name="image" accept="image/*" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="if-empty"&gt;รูปหมวดหมู่ Category image&lt;/label&gt;
+  &lt;div class="image-field" data-empty&gt;
+    &lt;img alt="รูปหมวดหมู่ปัจจุบัน Current category image"&gt;
+    &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-empty" data-change aria-label="เลือกรูปหมวดหมู่ Choose a category image" data-tooltip="เลือก Choose"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="ล้างรูปหมวดหมู่ Clear category image" data-tooltip="ล้าง Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;input type="file" name="image" accept="image/*"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              checkbox ในช่องจะถูกติ๊กเมื่อล้างรูป และฟอร์มได้รับ change A
+              checkbox is checked while the image is cleared, and the form hears
+              change
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="checkbox ในช่องจะถูกติ๊กเมื่อล้างรูป และฟอร์มได้รับ change A checkbox is checked while the image is cleared, and the form hears change"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form class="stack" data-gap="sm" id="if-form">
+                    <div class="field">
+                      <label for="if-form-icon">ไอคอนร้าน Store icon</label>
+                      <div class="image-field">
+                        <img
+                          src="img/logo-acme.svg"
+                          alt="ไอคอนร้านปัจจุบัน Current store icon"
+                        />
+                        <i class="icon icon-image" aria-hidden="true"></i>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-size="icon-xs"
+                          id="if-form-icon"
+                          data-change
+                          aria-label="เปลี่ยนไอคอนร้าน Change store icon"
+                          data-tooltip="เปลี่ยน Change"
+                        >
+                          <i class="icon icon-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-size="icon-xs"
+                          data-clear
+                          aria-label="ล้างไอคอนร้าน Clear store icon"
+                          data-tooltip="ล้าง Clear"
+                        >
+                          <i class="icon icon-x" aria-hidden="true"></i>
+                        </button>
+                        <input type="file" name="icon" accept="image/*" />
+                        <input type="checkbox" name="icon-clear" />
+                      </div>
+                    </div>
+                    <output id="if-result"
+                      >icon-clear: ไม่ได้ส่ง not sent</output
+                    >
+                  </form>
+                  <script>
+                    document
+                      .getElementById("if-form")
+                      .addEventListener("change", (event) => {
+                        const sent = new FormData(event.currentTarget).get(
+                          "icon-clear",
+                        );
+                        document.getElementById("if-result").textContent =
+                          "icon-clear: " + (sent ?? "ไม่ได้ส่ง not sent");
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form class="stack" data-gap="sm" id="if-form"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="if-form-icon"&gt;ไอคอนร้าน Store icon&lt;/label&gt;
+    &lt;div class="image-field"&gt;
+      &lt;img src="img/logo-acme.svg" alt="ไอคอนร้านปัจจุบัน Current store icon"&gt;
+      &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;button type="button" class="btn" data-size="icon-xs" id="if-form-icon" data-change aria-label="เปลี่ยนไอคอนร้าน Change store icon" data-tooltip="เปลี่ยน Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="ล้างไอคอนร้าน Clear store icon" data-tooltip="ล้าง Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;input type="file" name="icon" accept="image/*"&gt;
+      &lt;input type="checkbox" name="icon-clear"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;output id="if-result"&gt;icon-clear: ไม่ได้ส่ง not sent&lt;/output&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  document.getElementById("if-form").addEventListener("change", (event) =&gt; {
+    const sent = new FormData(event.currentTarget).get("icon-clear");
+    document.getElementById("if-result").textContent = "icon-clear: " + (sent ?? "ไม่ได้ส่ง not sent");
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              ช่องนี้ไม่อัปโหลดเอง ฟอร์มที่มันอยู่เป็นตัวส่งไฟล์ อ่านไฟล์จาก
+              input ได้โดยตรง The field never uploads; the form sends the file.
+              Read it through the input.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>input</code>, <code>change</code></td>
+                    <td><code>input[type=file]</code>, bubbles</td>
+                    <td>
+                      ส่งเมื่อเลือกไฟล์ (โดยเบราว์เซอร์) และเมื่อล้างรูป
+                      หลังล้าง <code>event.target.files</code> ว่าง Sent when a
+                      file is chosen and when the image is cleared.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>Tab</code></td>
+                    <td>
+                      ไปที่ปุ่มเปลี่ยน แล้วปุ่มล้าง
+                      ปุ่มทั้งสองแสดงเมื่อปุ่มใดปุ่มหนึ่งมี focus Moves to the
+                      change button, then the clear button.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Enter</code>, <code>Space</code></td>
+                    <td>
+                      ปุ่มเปลี่ยนเปิดตัวเลือกไฟล์ ปุ่มล้างล้างรูปแล้วย้าย focus
+                      ไปปุ่มเปลี่ยน Change opens the picker; clear empties the
+                      field and focuses change.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.image-field</code></td>
+                    <td></td>
+                    <td>
+                      กล่องสี่เหลี่ยม 96px ล้อม img, ไอคอน, ปุ่ม และ input A
+                      96px square box.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-fit</code></td>
+                    <td><code>contain</code></td>
+                    <td>
+                      แสดงรูปทั้งรูปในกล่อง 2:1 ค่าเริ่มต้น (ไม่ใส่)
+                      รูปเต็มกล่องและถูกครอป Default: the image fills the box
+                      and is cropped.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-empty</code></td>
+                    <td>present</td>
+                    <td>
+                      ตั้งโดยสคริปต์ขณะไม่มีรูป
+                      เขียนเองได้เพื่อให้ถูกตั้งแต่ก่อนสคริปต์ทำงาน Set by the
+                      script while there is no image.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; img[src]</code></td>
+                    <td>URL</td>
+                    <td>
+                      รูปเริ่มต้น ไม่มี <code>src</code> = ว่าง The starting
+                      image; without src the field is empty.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; .icon</code></td>
+                    <td></td>
+                    <td>
+                      ไอคอนที่แสดงเมื่อว่าง เช่น <code>icon-image</code> Shown
+                      while empty.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; [data-change]</code></td>
+                    <td>button</td>
+                    <td>
+                      เปิดตัวเลือกไฟล์ ต้องมี Opens the file picker. Required.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; [data-clear]</code></td>
+                    <td>button</td>
+                    <td>
+                      ล้างรูป ไม่ใส่ถ้ารูปลบไม่ได้ Clears the image; leave out
+                      if it cannot be removed.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; input[type=file]</code></td>
+                    <td><code>name</code>, <code>accept</code></td>
+                    <td>
+                      ส่งไฟล์ไปกับฟอร์ม Sends the chosen file with the form.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; input[type=checkbox]</code></td>
+                    <td><code>name</code></td>
+                    <td>
+                      ไม่บังคับ ติ๊กเมื่อล้างรูป เพื่อบอก server ให้ลบไฟล์
+                      Optional; checked while cleared.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code>, <code>data-tooltip</code></td>
+                    <td>text</td>
+                    <td>บนปุ่มไอคอนทั้งสอง On both icon buttons.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
