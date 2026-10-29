@@ -1,8 +1,8 @@
 // Theme: <html data-theme="light|dark">; no attribute follows the system.
 // [data-theme-toggle] buttons: empty value flips light/dark; "light", "dark"
 // or "system" sets it. Pressed state is kept in sync. The choice is stored
-// in localStorage "tsunami-theme"; pair with an inline <head> script that
-// applies it before paint. API: window.tsunami.theme = { get, set, toggle }.
+// in localStorage "tsunami-theme" and applied as soon as the script runs, so
+// load it as a plain blocking <script> in <head> to avoid a flash. API: window.tsunami.theme = { get, set, toggle }.
 // Every change fires tsunami:themechange on document with { theme, choice }.
 const KEY = "tsunami-theme";
 const root = document.documentElement;
@@ -69,4 +69,15 @@ prefersDark.addEventListener("change", () => {
 
 (window.tsunami ??= {}).theme = { get, set, toggle };
 
-sync();
+// Apply the stored choice before the first paint.
+try {
+  const saved = localStorage.getItem(KEY);
+  if (saved === "light" || saved === "dark") root.dataset.theme = saved;
+} catch {
+  // Storage blocked: follow the system.
+}
+
+// The toggles may not be parsed yet when the script sits in <head>.
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", sync);
+else sync();
