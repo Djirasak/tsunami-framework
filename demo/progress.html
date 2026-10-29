@@ -314,10 +314,22 @@
           <header class="page-header">
             <div>
               <h1>Progress</h1>
-              <p>แถบความคืบหน้าจาก <code>&lt;progress&gt;</code> แบบ native</p>
+              <p>
+                แถบความคืบหน้า: track หนึ่งเส้นกับ span หนึ่งตัวต่อหนึ่งส่วน
+                ความกว้างของ span คือสัดส่วนของมัน
+              </p>
             </div>
           </header>
           <section>
+            <h2>
+              โครงสร้าง: track และ span The markup is a track and a span for
+              each part
+            </h2>
+            <p>
+              ความกว้าง inline ของ span คือส่วนของมันบน track
+              แถบที่แสดงค่าเดียวใส่ <code>role="progressbar"</code> กับ
+              <code>aria-valuenow</code> บน track
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
                 <button
@@ -347,37 +359,15 @@
                 tabindex="0"
               >
                 <div class="docs-preview">
-                  <div class="stack docs-narrow">
-                    <div class="field">
-                      <label for="pg-1">อัปโหลด Uploading 40%</label>
-                      <progress id="pg-1" class="progress" value="40" max="100">
-                        40%
-                      </progress>
-                    </div>
-                    <div class="field">
-                      <label for="pg-2">นำเข้าสำเร็จ Import done</label>
-                      <progress
-                        id="pg-2"
-                        class="progress"
-                        data-variant="ok"
-                        value="100"
-                        max="100"
-                      >
-                        100%
-                      </progress>
-                    </div>
-                    <div class="field">
-                      <label for="pg-3">พื้นที่เกือบเต็ม Storage 92%</label>
-                      <progress
-                        id="pg-3"
-                        class="progress"
-                        data-variant="danger"
-                        value="92"
-                        max="100"
-                      >
-                        92%
-                      </progress>
-                    </div>
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="กำลังอัปโหลด Uploading"
+                    aria-valuenow="66"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <span style="width: 66%"></span>
                   </div>
                 </div>
               </div>
@@ -388,20 +378,719 @@
                 tabindex="0"
                 hidden
               >
-                <pre><code>&lt;div class="stack docs-narrow"&gt;
-  &lt;div class="field"&gt;
-    &lt;label for="pg-1"&gt;อัปโหลด Uploading 40%&lt;/label&gt;
-    &lt;progress id="pg-1" class="progress" value="40" max="100"&gt;40%&lt;/progress&gt;
+                <pre><code>&lt;div class="progress" role="progressbar" aria-label="กำลังอัปโหลด Uploading" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;span style="width: 66%"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ความสูง data-size: sm 4px, ปกติ 6px, lg 12px, xl 32px</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div
+                      class="progress"
+                      data-size="sm"
+                      role="progressbar"
+                      aria-label="เล็ก Small, 4 of 6 steps"
+                      aria-valuenow="66"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 66%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="ปกติ Default, 4 of 6 steps"
+                      aria-valuenow="66"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 66%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      data-size="lg"
+                      role="progressbar"
+                      aria-label="ใหญ่ Large, 4 of 6 steps"
+                      aria-valuenow="66"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 66%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      data-size="xl"
+                      role="progressbar"
+                      aria-label="ใหญ่มาก Extra large, 4 of 6 steps"
+                      aria-valuenow="66"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 66%"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="progress" data-size="sm" role="progressbar" aria-label="เล็ก Small, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 66%"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="field"&gt;
-    &lt;label for="pg-2"&gt;นำเข้าสำเร็จ Import done&lt;/label&gt;
-    &lt;progress id="pg-2" class="progress" data-variant="ok" value="100" max="100"&gt;100%&lt;/progress&gt;
+  &lt;div class="progress" role="progressbar" aria-label="ปกติ Default, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 66%"&gt;&lt;/span&gt;
   &lt;/div&gt;
-  &lt;div class="field"&gt;
-    &lt;label for="pg-3"&gt;พื้นที่เกือบเต็ม Storage 92%&lt;/label&gt;
-    &lt;progress id="pg-3" class="progress" data-variant="danger" value="92" max="100"&gt;92%&lt;/progress&gt;
+  &lt;div class="progress" data-size="lg" role="progressbar" aria-label="ใหญ่ Large, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 66%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" data-size="xl" role="progressbar" aria-label="ใหญ่มาก Extra large, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 66%"&gt;&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>สีของแต่ละส่วน data-variant on a span sets its colour</h2>
+            <p>
+              ไม่ใส่ = สีตัวอักษรหลัก (accent ใช้เฉพาะลิงก์และปุ่มหลัก)
+              ที่เหลือคือ ok, warning, info และ danger
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="นำเข้าสินค้า Product import"
+                      aria-valuenow="45"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 45%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="พื้นที่ที่ใช้ Storage used"
+                      aria-valuenow="30"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 30%" data-variant="ok"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="พื้นที่ที่ใช้ Storage used"
+                      aria-valuenow="78"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 78%" data-variant="warning"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="ซิงก์สต็อก Stock sync"
+                      aria-valuenow="55"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 55%" data-variant="info"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="พื้นที่ที่ใช้ Storage used"
+                      aria-valuenow="96"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 96%" data-variant="danger"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="นำเข้าสินค้า Product import" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 45%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="พื้นที่ที่ใช้ Storage used" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 30%" data-variant="ok"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="พื้นที่ที่ใช้ Storage used" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 78%" data-variant="warning"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="ซิงก์สต็อก Stock sync" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 55%" data-variant="info"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="พื้นที่ที่ใช้ Storage used" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 96%" data-variant="danger"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ชื่อและค่าเหนือแถบ A label and the value above the track</h2>
+            <p>
+              ใส่ <code>&lt;header&gt;</code> ไว้ก่อน track ทันที: ชื่อทางซ้าย
+              ค่าทางขวา โยงชื่อด้วย
+              <code>aria-labelledby</code> และค่าที่อ่านได้ด้วย
+              <code>aria-valuetext</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div>
+                    <header>
+                      <span id="pg-storage-label"
+                        >พื้นที่เก็บรูปสินค้า Storage</span
+                      >
+                      <span>7.8 GB จาก 10 GB</span>
+                    </header>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-labelledby="pg-storage-label"
+                      aria-valuenow="78"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      aria-valuetext="7.8 GB จาก 10 GB"
+                    >
+                      <span style="width: 78%" data-variant="warning"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div&gt;
+  &lt;header&gt;
+    &lt;span id="pg-storage-label"&gt;พื้นที่เก็บรูปสินค้า Storage&lt;/span&gt;
+    &lt;span&gt;7.8 GB จาก 10 GB&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;div class="progress" role="progressbar" aria-labelledby="pg-storage-label" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-valuetext="7.8 GB จาก 10 GB"&gt;
+    &lt;span style="width: 78%" data-variant="warning"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>หลาย span แบ่ง track Several spans divide the track</h2>
+            <p>
+              ส่วนที่ไม่ใส่สีจะไล่จากสีเข้มไปจาง แถบที่แบ่งหลายส่วนใช้
+              <code>role="img"</code> และ <code>aria-label</code> ที่บอกทุกส่วน
+              ใช้ไม่เกิน 5 ส่วน
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="progress"
+                    data-size="lg"
+                    role="img"
+                    aria-label="คำสั่งซื้อตามการจัดส่ง Orders by fulfillment: 62% fulfilled, 23% processing, 15% unfulfilled"
+                  >
+                    <span style="width: 62%"></span>
+                    <span style="width: 23%"></span>
+                    <span style="width: 15%"></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="progress" data-size="lg" role="img" aria-label="คำสั่งซื้อตามการจัดส่ง Orders by fulfillment: 62% fulfilled, 23% processing, 15% unfulfilled"&gt;
+  &lt;span style="width: 62%"&gt;&lt;/span&gt;
+  &lt;span style="width: 23%"&gt;&lt;/span&gt;
+  &lt;span style="width: 15%"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>ส่วนว่าง data-variant="empty" เป็นตัวเว้น</h2>
+            <p>
+              span ที่เป็น <code>empty</code> ไม่วาดอะไร ส่วนถัดไปจึงเริ่มกลาง
+              track เหมาะกับการแสดงช่วงหรือค่าเทียบกับจุดกึ่งกลาง
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div
+                      class="progress"
+                      role="img"
+                      aria-label="คะแนนความเสี่ยงเพิ่มขึ้น 25.3 เท่า Risk score raised 25.3 times"
+                    >
+                      <span data-variant="empty" style="width: 50%"></span>
+                      <span data-variant="danger" style="width: 35%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="img"
+                      aria-label="คะแนนความเสี่ยงลดลงเหลือ 0.4 เท่า Risk score lowered to 0.4 times"
+                    >
+                      <span data-variant="empty" style="width: 40%"></span>
+                      <span data-variant="ok" style="width: 10%"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="progress" role="img" aria-label="คะแนนความเสี่ยงเพิ่มขึ้น 25.3 เท่า Risk score raised 25.3 times"&gt;
+    &lt;span data-variant="empty" style="width: 50%"&gt;&lt;/span&gt;
+    &lt;span data-variant="danger" style="width: 35%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="img" aria-label="คะแนนความเสี่ยงลดลงเหลือ 0.4 เท่า Risk score lowered to 0.4 times"&gt;
+    &lt;span data-variant="empty" style="width: 40%"&gt;&lt;/span&gt;
+    &lt;span data-variant="ok" style="width: 10%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              แถบ xl กับรายการด้านล่าง The extra large track with a list under
+              it shows how a total divides
+            </h2>
+            <p>
+              <code>&lt;ul&gt;</code> ที่อยู่ต่อจาก track
+              ทันทีได้สีสัญลักษณ์ตรงกับส่วนลำดับเดียวกันอัตโนมัติ ตัวเลขอยู่ใน
+              span สุดท้ายของแต่ละแถว
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <header>
+                      <h2>การยกเลิกตามเหตุผล Cancellations by reason</h2>
+                      <p>ยกเลิก 678 รายการใน 30 วันที่ผ่านมา</p>
+                    </header>
+                    <section>
+                      <div
+                        class="progress"
+                        data-size="xl"
+                        role="img"
+                        aria-label="การยกเลิกตามเหตุผล: อื่น ๆ 60%, ตัดบัตรไม่ผ่าน 23%, ไม่พอใจคุณภาพ 9%, แพงเกินไป 5%, เปลี่ยนใจ 3%"
+                      >
+                        <span style="width: 60%"></span>
+                        <span style="width: 23%"></span>
+                        <span style="width: 9%"></span>
+                        <span style="width: 5%"></span>
+                        <span style="width: 3%"></span>
+                      </div>
+                      <ul>
+                        <li><span>อื่น ๆ Other</span><span>60%</span></li>
+                        <li>
+                          <span
+                            >ตัดบัตรรายเดือนไม่ผ่าน Recurring payment
+                            declined</span
+                          ><span>23%</span>
+                        </li>
+                        <li>
+                          <span
+                            >ไม่พอใจคุณภาพสินค้า Not satisfied with
+                            quality</span
+                          ><span>9%</span>
+                        </li>
+                        <li>
+                          <span>ราคาแพงเกินไป Too expensive</span
+                          ><span>5%</span>
+                        </li>
+                        <li>
+                          <span>เปลี่ยนใจ Changed my mind</span><span>3%</span>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;การยกเลิกตามเหตุผล Cancellations by reason&lt;/h2&gt;
+    &lt;p&gt;ยกเลิก 678 รายการใน 30 วันที่ผ่านมา&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;div class="progress" data-size="xl" role="img" aria-label="การยกเลิกตามเหตุผล: อื่น ๆ 60%, ตัดบัตรไม่ผ่าน 23%, ไม่พอใจคุณภาพ 9%, แพงเกินไป 5%, เปลี่ยนใจ 3%"&gt;
+      &lt;span style="width: 60%"&gt;&lt;/span&gt;
+      &lt;span style="width: 23%"&gt;&lt;/span&gt;
+      &lt;span style="width: 9%"&gt;&lt;/span&gt;
+      &lt;span style="width: 5%"&gt;&lt;/span&gt;
+      &lt;span style="width: 3%"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;span&gt;อื่น ๆ Other&lt;/span&gt;&lt;span&gt;60%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;ตัดบัตรรายเดือนไม่ผ่าน Recurring payment declined&lt;/span&gt;&lt;span&gt;23%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;ไม่พอใจคุณภาพสินค้า Not satisfied with quality&lt;/span&gt;&lt;span&gt;9%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;ราคาแพงเกินไป Too expensive&lt;/span&gt;&lt;span&gt;5%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;เปลี่ยนใจ Changed my mind&lt;/span&gt;&lt;span&gt;3%&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              หน้าเลื่อนแถบโดยตั้ง width และ aria-valuenow พร้อมกัน The page
+              moves the bar
+            </h2>
+            <p>
+              ไม่มี JS ใน tsunami สำหรับ progress หน้าตั้งค่าทั้งสองเอง
+              ตัวอย่างนี้ใช้สคริปต์สั้น ๆ ในหน้า
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div
+                      class="progress"
+                      id="pg-import"
+                      role="progressbar"
+                      aria-label="นำเข้าสินค้า Importing products"
+                      aria-valuenow="10"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 10%"></span>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="pg-import-add"
+                      >
+                        เพิ่ม Add 15%
+                      </button>
+                    </div>
+                  </div>
+                  <script>
+                    document
+                      .getElementById("pg-import-add")
+                      .addEventListener("click", () => {
+                        const bar = document.getElementById("pg-import");
+                        const value = Math.min(
+                          100,
+                          Number(bar.getAttribute("aria-valuenow")) + 15,
+                        );
+                        bar.setAttribute("aria-valuenow", value);
+                        bar.querySelector("span").style.width = value + "%";
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div class="progress" id="pg-import" role="progressbar" aria-label="นำเข้าสินค้า Importing products" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 10%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="pg-import-add"&gt;เพิ่ม Add 15%&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("pg-import-add").addEventListener("click", () =&gt; {
+    const bar = document.getElementById("pg-import");
+    const value = Math.min(100, Number(bar.getAttribute("aria-valuenow")) + 15);
+    bar.setAttribute("aria-valuenow", value);
+    bar.querySelector("span").style.width = value + "%";
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>&lt;progress&gt; แบบ native</h2>
+            <p>
+              สำหรับค่าเดียวแบบง่าย ใช้
+              <code>&lt;progress class="progress"&gt;</code> ได้ ความหมาย
+              progressbar มาในตัว ใช้ <code>data-size</code> และ
+              <code>data-variant</code> บนตัว element
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <progress
+                    class="progress"
+                    data-variant="ok"
+                    value="40"
+                    max="100"
+                    aria-label="อัปโหลดรูป Uploading images"
+                  >
+                    40%
+                  </progress>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;progress class="progress" data-variant="ok" value="40" max="100" aria-label="อัปโหลดรูป Uploading images"&gt;40%&lt;/progress&gt;</code></pre>
               </div>
             </div>
           </section>
@@ -418,18 +1107,129 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>value / max</code></td>
-                    <td><code>number</code></td>
-                    <td>ไม่ใส่ value จะเป็นแบบ indeterminate ของเบราว์เซอร์</td>
+                    <td><code>.progress</code></td>
+                    <td></td>
+                    <td>
+                      track เต็มความกว้าง สูง 6px พื้น subtle มุม 4px ใช้กับ
+                      <code>&lt;div&gt;</code> (มี span) หรือ
+                      <code>&lt;progress&gt;</code>
+                    </td>
                   </tr>
                   <tr>
-                    <td><code>data-variant</code></td>
-                    <td><code>ok, danger</code></td>
-                    <td>สีแถบตามสถานะ</td>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, <code>lg</code>, <code>xl</code> (ไม่ใส่
+                      = 6px)
+                    </td>
+                    <td>
+                      บน track: <code>sm</code> 4px <code>lg</code> 12px
+                      <code>xl</code> 32px
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; span</code></td>
+                    <td></td>
+                    <td>
+                      หนึ่งส่วนของ track ตั้ง
+                      <code>style="width: N%"</code> ส่วนที่ติดกันมีเส้นคั่น 2px
+                      ส่วนที่ไม่ใส่สีไล่จาก --fg ไปจาง (ลำดับ 1-5)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; span[data-variant]</code></td>
+                    <td>
+                      <code>ok</code>, <code>warning</code>, <code>info</code>,
+                      <code>danger</code>, <code>empty</code> (ไม่ใส่ = --fg)
+                    </td>
+                    <td>
+                      สีของส่วน <code>empty</code> ไม่วาด
+                      ใช้เป็นตัวเว้นให้ส่วนถัดไปเริ่มกลาง track
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>progress[data-variant]</code></td>
+                    <td>
+                      <code>ok</code>, <code>warning</code>, <code>info</code>,
+                      <code>danger</code>
+                    </td>
+                    <td>สีของ <code>&lt;progress&gt;</code> แบบ native</td>
+                  </tr>
+                  <tr>
+                    <td><code>role</code></td>
+                    <td><code>progressbar</code>, <code>img</code></td>
+                    <td>
+                      บน track: <code>progressbar</code> เมื่อแสดงค่าเดียว
+                      <code>img</code> เมื่อแบ่งหลายส่วน (พร้อม
+                      <code>aria-label</code> ที่บอกทุกส่วน)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-valuenow</code></td>
+                    <td>ตัวเลข</td>
+                    <td>
+                      บน track ที่เป็น progressbar ค่าปัจจุบัน ตั้งพร้อมกับ
+                      width ของ span
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-valuemin</code></td>
+                    <td><code>0</code></td>
+                    <td>ค่าต่ำสุด</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-valuemax</code></td>
+                    <td><code>100</code></td>
+                    <td>ค่าสูงสุด</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-valuetext</code></td>
+                    <td>ข้อความ</td>
+                    <td>
+                      ไม่บังคับ ค่าที่อ่านออกเสียง เช่น "7.8 GB จาก 10 GB"
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>ข้อความ</td>
+                    <td>ชื่อของแถบ</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-labelledby</code></td>
+                    <td>id</td>
+                    <td>
+                      ใช้แทน <code>aria-label</code> เมื่อชื่อแสดงอยู่ใน header
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>header + .progress</code></td>
+                    <td></td>
+                    <td>
+                      <code>&lt;header&gt;</code> ก่อน track: ลูกแรกเป็นชื่อ
+                      ลูกสุดท้ายเป็นค่าสีจางชิดขวา ตัวอักษร 12px
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.progress + ul &gt; li</code></td>
+                    <td></td>
+                    <td>
+                      รายการต่อจาก track:
+                      แต่ละแถวได้สีสัญลักษณ์ของส่วนลำดับเดียวกัน span
+                      สุดท้ายในแถวคือค่า ชิดขวาตัวหนา
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              Progress ไม่มีสคริปต์ ไม่มีฟังก์ชันและอีเวนต์ หน้าตั้ง
+              <code>style.width</code> ของ span และ
+              <code>aria-valuenow</code> (และ <code>aria-valuetext</code> ถ้ามี)
+              พร้อมกัน ความกว้างที่เปลี่ยนจะเลื่อนอย่างนุ่มนวล 0.3 วินาที
+              (ไม่เคลื่อนไหวเมื่อ reduced motion)
+            </p>
           </section>
         </main>
       </div>
