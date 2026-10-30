@@ -48,7 +48,9 @@ function countries() {
     names = new Intl.DisplayNames([document.documentElement.lang || "en"], {
       type: "region",
     });
-  } catch {}
+  } catch {
+    // An unknown language tag: the country codes stand in for the names.
+  }
   for (const [, dial, code] of DATA.matchAll(/(\d+)([A-Z]{2})/g)) {
     if (!dials.has(dial)) dials.set(dial, code);
     if (!byCode.has(code))
