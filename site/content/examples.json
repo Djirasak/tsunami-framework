@@ -1,0 +1,26 @@
+{
+  "dashboard": {
+    "title": "Dashboard example",
+    "description": "A full-page dashboard built only from Tsunami components: stats, a chart and a table of recent orders, with the sidebar and the top bar.",
+    "libs": [
+      "/dist/chart.min.js"
+    ]
+  },
+  "orders": {
+    "title": "Orders example",
+    "description": "A full-page orders list built from Tsunami components: a data table with filters, a date range and bulk actions on the selected rows.",
+    "libs": [
+      "/dist/vanilla-calendar.min.js"
+    ]
+  },
+  "settings": {
+    "title": "Settings example",
+    "description": "A full-page settings flow built from Tsunami components: a multi-step form with a stepper, validation and a review step.",
+    "libs": []
+  },
+  "login": {
+    "title": "Login example",
+    "description": "A full-page sign-in built from Tsunami components: email and password, then a one-time code, with the OTP input and a light and dark theme switch.",
+    "libs": []
+  }
+}
