@@ -1,0 +1,177 @@
+<div class="stack" data-gap="lg" style="min-height: 100vh; align-items: center; justify-content: center; padding: var(--space-4)">
+  <div class="theme-switcher" role="group" aria-label="Theme" style="align-self: flex-end">
+    <button type="button" data-theme-toggle="light" aria-label="Light"><i class="icon icon-sun" aria-hidden="true"></i></button>
+    <button type="button" data-theme-toggle="dark" aria-label="Dark"><i class="icon icon-moon" aria-hidden="true"></i></button>
+    <button type="button" data-theme-toggle="system" aria-label="System"><i class="icon icon-monitor" aria-hidden="true"></i></button>
+  </div>
+
+  <main class="stack" id="login" style="width: 100%; max-width: 24rem">
+    <div class="stack" data-direction="row" data-gap="sm" style="justify-content: center">
+      <span class="avatar" data-variant="circle"><span><i class="icon icon-waves" aria-hidden="true"></i></span></span>
+      <strong>Acme Store</strong>
+    </div>
+
+    <article class="card">
+      <!-- Step 1: sign in -->
+      <form id="step-signin" novalidate>
+        <header>
+          <h1 id="signin-title" tabindex="-1">Sign in</h1>
+          <p>Welcome back. Use your work email to continue.</p>
+        </header>
+        <section class="stack">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="username" placeholder="mina.park@example.com" aria-describedby="email-error" required />
+            <small id="email-error" role="alert" hidden>Enter a valid email address, like mina.park@example.com.</small>
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input id="password" name="password" type="password" autocomplete="current-password" required />
+              <span><button type="button" class="btn" data-variant="ghost" data-size="icon-sm" id="pw-toggle" aria-label="Show password" aria-pressed="false"><i class="icon icon-eye" aria-hidden="true"></i></button></span>
+            </div>
+          </div>
+          <div class="stack" data-direction="row" style="justify-content: space-between">
+            <div class="field">
+              <input id="keep" name="keep" type="checkbox" />
+              <label for="keep">Keep me signed in</label>
+            </div>
+            <a href="#" class="link" data-variant="muted">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn" data-variant="primary">Continue</button>
+          <div class="stack" data-direction="row" data-gap="sm">
+            <hr style="flex: 1" /><small>or</small><hr style="flex: 1" />
+          </div>
+          <button type="button" class="btn"><i class="icon icon-key-round" aria-hidden="true"></i>Continue with SSO</button>
+        </section>
+      </form>
+
+      <!-- Step 2: one-time code -->
+      <div id="step-code" hidden>
+        <header>
+          <h1 id="code-title" tabindex="-1">Check your phone</h1>
+          <p>We sent a 6-digit code to +66 •• ••• 5678. It works for 10 minutes.</p>
+        </header>
+        <section class="stack">
+          <div id="code-error" class="alert" data-variant="danger" role="alert" hidden>
+            <i class="icon icon-triangle-alert" aria-hidden="true"></i><strong>That code is not right</strong>
+            <p>Check the message and try again. The demo code is 123456.</p>
+          </div>
+          <div class="field">
+            <label id="otp-label">Verification code</label>
+            <div class="otp" role="group" aria-labelledby="otp-label" data-name="code"></div>
+          </div>
+          <div id="verifying" class="stack" data-direction="row" data-gap="sm" role="status" hidden>
+            <span class="loader" aria-hidden="true"></span><small>Verifying...</small>
+          </div>
+          <div class="stack" data-direction="row" data-gap="sm" style="justify-content: space-between">
+            <small id="countdown" aria-live="polite" data-seconds="30">Resend code in 30s</small>
+            <button type="button" class="btn" data-variant="ghost" id="resend" hidden>Resend code</button>
+            <a href="#" class="link" id="back">Use a different email</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Step 3: success -->
+      <section id="step-done" hidden>
+        <div class="empty">
+          <header>
+            <figure><i class="icon icon-circle-check" aria-hidden="true"></i></figure>
+            <h1 id="done-title" tabindex="-1">You are signed in</h1>
+            <p>Welcome back to Acme Store.</p>
+          </header>
+          <footer>
+            <div><a href="/examples/dashboard" class="btn" data-variant="primary">Go to the dashboard</a></div>
+          </footer>
+        </div>
+      </section>
+    </article>
+
+    <p style="text-align: center"><small>
+      <a href="#" class="link" data-variant="muted">Terms</a> ·
+      <a href="#" class="link" data-variant="muted">Privacy</a> ·
+      <a href="#" class="link" data-variant="muted">Help</a>
+    </small></p>
+  </main>
+</div>
+
+<script>
+  (() => {
+    const $ = (id) => document.getElementById(id);
+    const email = $("email"), otp = document.querySelector("#step-code .otp");
+    const steps = { signin: $("step-signin"), code: $("step-code"), done: $("step-done") };
+    let timer;
+
+    // Show one step and move focus to its heading (or a field).
+    function show(name, focusEl) {
+      for (const k in steps) steps[k].hidden = k !== name;
+      (focusEl || $(name === "signin" ? "signin-title" : name + "-title")).focus();
+    }
+
+    function startCountdown() {
+      const label = $("countdown"), resend = $("resend");
+      let left = +label.dataset.seconds;
+      resend.hidden = true;
+      label.hidden = false;
+      clearInterval(timer);
+      const tick = () => {
+        label.textContent = "Resend code in " + left + "s";
+        if (left-- > 0) return;
+        clearInterval(timer);
+        label.hidden = true;
+        resend.hidden = false;
+      };
+      tick();
+      timer = setInterval(tick, 1000);
+    }
+
+    steps.signin.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const ok = email.value.trim() !== "" && email.checkValidity();
+      email.setAttribute("aria-invalid", !ok);
+      $("email-error").hidden = ok;
+      if (!ok) return email.focus();
+      show("code", otp.querySelector("input"));
+      startCountdown();
+    });
+
+    $("pw-toggle").addEventListener("click", (e) => {
+      const pw = $("password"), btn = e.currentTarget;
+      const reveal = pw.type === "password";
+      pw.type = reveal ? "text" : "password";
+      btn.setAttribute("aria-pressed", reveal);
+      btn.setAttribute("aria-label", reveal ? "Hide password" : "Show password");
+      btn.firstElementChild.className = "icon icon-" + (reveal ? "eye-off" : "eye");
+    });
+
+    $("back").addEventListener("click", (e) => {
+      e.preventDefault();
+      clearInterval(timer);
+      show("signin", email);
+    });
+
+    $("resend").addEventListener("click", () => {
+      tsunami.otp.clear(otp);
+      otp.removeAttribute("aria-invalid");
+      $("code-error").hidden = true;
+      tsunami.toast("A new code is on its way");
+      startCountdown();
+    });
+
+    steps.code.addEventListener("tsunami:otpcomplete", (e) => {
+      otp.inert = true;
+      $("verifying").hidden = false;
+      setTimeout(() => {
+        otp.inert = false;
+        $("verifying").hidden = true;
+        const ok = e.detail.value === "123456";
+        otp.setAttribute("aria-invalid", !ok);
+        $("code-error").hidden = ok;
+        if (!ok) return tsunami.otp.clear(otp);
+        clearInterval(timer);
+        tsunami.toast({ title: "Signed in", variant: "ok" });
+        show("done");
+      }, 800);
+    });
+  })();
+</script>
