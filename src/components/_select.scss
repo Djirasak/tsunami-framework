@@ -15,6 +15,9 @@
   color: var(--fg);
 }
 
+// Select and Autocomplete share the popover list.
+$list: ":is(.select, .autocomplete)";
+
 @layer components {
   :where(select.select) {
     @include box;
@@ -175,7 +178,7 @@
   }
 
   // List: a manual popover placed under the control by the script.
-  :where(.select > [popover]) {
+  :where(#{$list} > [popover]) {
     position: fixed;
     inset: auto;
     max-width: calc(100vw - 2rem);
@@ -188,12 +191,12 @@
     color: var(--fg);
   }
 
-  :where(.select > [popover]:popover-open) {
+  :where(#{$list} > [popover]:popover-open) {
     display: flex;
     flex-direction: column;
   }
 
-  @include motion.pop(".select > [popover]");
+  @include motion.pop("#{$list} > [popover]");
 
   :where(.select > [popover] > header) {
     padding: var(--space-1);
@@ -214,18 +217,18 @@
     outline: 0;
   }
 
-  :where(.select [role="listbox"]) {
+  :where(#{$list} [role="listbox"]) {
     max-height: 16rem;
     padding: var(--space-1);
     overflow-y: auto;
     overscroll-behavior: contain;
   }
 
-  :where(.select [role="listbox"]:empty) {
+  :where(#{$list} [role="listbox"]:empty) {
     display: none;
   }
 
-  :where(.select [role="option"]) {
+  :where(#{$list} [role="option"]) {
     display: flex;
     align-items: center;
     gap: var(--space-2);
@@ -234,7 +237,7 @@
     cursor: pointer;
   }
 
-  :where(.select [role="option"])::after {
+  :where(#{$list} [role="option"])::after {
     @include icon.glyph(check);
     width: 1em;
     margin-left: auto;
@@ -243,48 +246,48 @@
     visibility: hidden;
   }
 
-  :where(.select [role="option"][aria-selected="true"])::after {
+  :where(#{$list} [role="option"][aria-selected="true"])::after {
     visibility: visible;
   }
 
-  :where(.select [role="option"][data-active]) {
+  :where(#{$list} [role="option"][data-active]) {
     background: var(--subtle);
   }
 
-  :where(.select [role="option"][aria-disabled="true"]) {
+  :where(#{$list} [role="option"][aria-disabled="true"]) {
     opacity: 0.5;
     cursor: not-allowed;
   }
 
-  :where(.select [role="option"] > span:last-of-type) {
+  :where(#{$list} [role="option"] > span:last-of-type) {
     min-width: 0;
   }
 
-  :where(.select [role="option"] .badge) {
+  :where(#{$list} [role="option"] .badge) {
     margin-left: var(--space-1);
   }
 
-  :where(.select [role="option"] small) {
+  :where(#{$list} [role="option"] small) {
     display: block;
     color: var(--muted);
     font-size: var(--text-sm);
   }
 
-  :where(.select [role="option"]:has(small) > span:last-of-type > span) {
+  :where(#{$list} [role="option"]:has(small) > span:last-of-type > span) {
     font-weight: 500;
   }
 
-  :where(.select [role="option"] > .icon) {
+  :where(#{$list} [role="option"] > .icon) {
     color: var(--muted);
   }
 
-  :where(.select [role="group"] + [role="group"]) {
+  :where(#{$list} [role="group"] + [role="group"]) {
     margin-top: var(--space-1);
     padding-top: var(--space-1);
     border-top: 1px solid var(--line);
   }
 
-  :where(.select [role="group"] > strong) {
+  :where(#{$list} [role="group"] > strong) {
     display: block;
     padding: var(--space-1) var(--space-2);
     color: var(--muted);

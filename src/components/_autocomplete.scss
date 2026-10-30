@@ -1,0 +1,25 @@
+// Autocomplete: <div class="autocomplete"> around a text input (or an
+// .input-group with one). The value is free text; js/autocomplete.js shows
+// suggestions in a popover list. The list look (popover, options, active
+// state) is shared with Select in _select.scss. Without the script, a
+// <datalist> linked by the input's list attribute still works natively.
+@use "select";
+
+@layer components {
+  :where(.autocomplete) {
+    display: block;
+    position: relative;
+    min-width: 0;
+  }
+
+  // Suggestions have no chosen state, so no check mark column.
+  :where(.autocomplete [role="option"])::after {
+    display: none;
+  }
+
+  :where(.autocomplete [role="option"] mark) {
+    background: none;
+    color: inherit;
+    font-weight: 600;
+  }
+}
