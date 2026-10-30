@@ -17,6 +17,10 @@
 // Any filter goes back to page 1. With no match, an empty row shows: a
 // tr[data-table-empty] in tbody, or a template[data-table-empty] (in the table or
 // with data-table-empty="table-id") whose content goes in one cell.
+// Columns: a .dropdown[data-table-columns="table-id"] holds a checkbox per column
+// (value = column index; written from the header texts when it has none). An
+// unchecked column gets `hidden` on every th and td. With an id on the table and
+// data-table-remember, the choice is kept in localStorage.
 
 const SORT_BUTTON = ".table th[aria-sort] > button";
 const ROW_BOX = '.table tbody tr > td:first-child > input[type="checkbox"]';
@@ -303,12 +307,103 @@ function stateFor(table) {
       query: "",
       columns: new Map(),
       empty: null,
+      hidden: new Set(),
     };
     states.set(table, state);
     table.dataset.enhanced = "";
+    setupColumns(table, state);
   }
   return state;
 }
+
+const storeKey = (table) =>
+  table.id && table.hasAttribute("data-table-remember")
+    ? `tsunami:table:${table.id}`
+    : null;
+
+function applyColumns(table, state) {
+  for (const row of table.rows) {
+    if (row.matches(EMPTY)) continue;
+    for (const cell of row.cells)
+      cell.hidden = state.hidden.has(cell.cellIndex);
+  }
+}
+
+// Fill the column menu, restore the saved choice and hide those columns.
+function setupColumns(table, state) {
+  const menus = table.id
+    ? [
+        ...document.querySelectorAll(
+          `[data-table-columns="${CSS.escape(table.id)}"]`,
+        ),
+      ]
+    : [];
+  const heads = [...(table.tHead?.rows[0]?.cells ?? [])];
+  const key = storeKey(table);
+  try {
+    const saved = key && JSON.parse(localStorage.getItem(key));
+    if (Array.isArray(saved))
+      for (const i of saved)
+        if (Number.isInteger(i) && heads[i]) state.hidden.add(i);
+  } catch {
+    // Storage is blocked or the value is not JSON: keep every column.
+  }
+  for (const menu of menus) {
+    if (!menu.querySelector('input[type="checkbox"]')) {
+      heads.forEach((th, i) => {
+        const text = th.textContent.trim();
+        if (!text) return;
+        const label = document.createElement("label");
+        const box = document.createElement("input");
+        box.type = "checkbox";
+        box.value = String(i);
+        label.append(box, text);
+        menu.append(label);
+      });
+    }
+    for (const box of menu.querySelectorAll('input[type="checkbox"]'))
+      box.checked = !state.hidden.has(Number(box.value));
+  }
+  syncMenus(table, state);
+  applyColumns(table, state);
+}
+
+// Keep the last visible column checked and unchangeable.
+function syncMenus(table, state) {
+  if (!table.id) return;
+  for (const menu of document.querySelectorAll(
+    `[data-table-columns="${CSS.escape(table.id)}"]`,
+  )) {
+    const boxes = [...menu.querySelectorAll('input[type="checkbox"]')];
+    const on = boxes.filter((b) => b.checked);
+    for (const box of boxes) {
+      box.checked = !state.hidden.has(Number(box.value));
+      box.disabled = on.length === 1 && box.checked;
+    }
+  }
+}
+
+document.addEventListener("change", (e) => {
+  const box = e.target.closest?.('[data-table-columns] input[type="checkbox"]');
+  if (!box) return;
+  const table = document.getElementById(
+    box.closest("[data-table-columns]").dataset.tableColumns,
+  );
+  if (!table) return;
+  const state = stateFor(table);
+  const i = Number(box.value);
+  if (box.checked) state.hidden.delete(i);
+  else state.hidden.add(i);
+  syncMenus(table, state);
+  applyColumns(table, state);
+  const key = storeKey(table);
+  try {
+    if (key) localStorage.setItem(key, JSON.stringify([...state.hidden]));
+  } catch {
+    // Storage is blocked: the choice lasts until the page closes.
+  }
+  update(table);
+});
 
 const colSpan = (table) =>
   [...(table.tHead?.rows[0]?.cells ?? [])].filter((c) => !c.hidden).length || 1;
@@ -373,7 +468,7 @@ function update(table, { page } = {}) {
         total: rows.length,
         filtered: state.matched.length,
         sort: state.sort,
-        hidden: [],
+        hidden: [...state.hidden].sort((a, b) => a - b),
       },
     }),
   );
@@ -455,6 +550,8 @@ document.addEventListener("change", (e) => {
 const wanted = (table) =>
   table.hasAttribute("data-page-size") ||
   table.querySelector("thead > tr[data-filters]") ||
+  (table.id &&
+    document.querySelector(`[data-table-columns="${CSS.escape(table.id)}"]`)) ||
   (table.id &&
     document.querySelector(
       ["pagination-for", "table-page-size", "table-search"]
