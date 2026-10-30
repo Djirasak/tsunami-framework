@@ -210,6 +210,299 @@
         </div>
       </div>
 
+      <div class="card">
+        <div class="scroll-area" tabindex="0" aria-label="Orders table">
+          <table class="table" id="orders" data-page-size="10" style="min-width: 44rem">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <input type="checkbox" aria-label="Select all orders" />
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button">Order</button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button">Customer</button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button">Status</button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button">Channel</button>
+                </th>
+                <th scope="col" aria-sort="none">
+                  <button type="button">Date</button>
+                </th>
+                <th scope="col" data-align="end" aria-sort="none">
+                  <button type="button">Total</button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr data-status="paid" data-date="2026-10-29">
+              <td><input type="checkbox" aria-label="Select order #10447" /></td>
+              <td>
+                <span>#10447</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10447" aria-label="Copy order number #10447"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>ML</span></span> Maya Lindqvist</td>
+              <td><span class="badge" data-variant="ok">Paid</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-10-29">Oct 29, 2026</td>
+              <td data-align="end" data-sort-value="189.00">$189.00</td>
+            </tr>
+            <tr data-status="pending" data-date="2026-10-29">
+              <td><input type="checkbox" aria-label="Select order #10446" /></td>
+              <td>
+                <span>#10446</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10446" aria-label="Copy order number #10446"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>TB</span></span> Tomas Brandt</td>
+              <td><span class="badge" data-variant="warning">Pending</span></td>
+              <td>Marketplace</td>
+              <td data-sort-value="2026-10-29">Oct 29, 2026</td>
+              <td data-align="end" data-sort-value="64.50">$64.50</td>
+            </tr>
+            <tr data-status="shipped" data-date="2026-10-28">
+              <td><input type="checkbox" aria-label="Select order #10445" /></td>
+              <td>
+                <span>#10445</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10445" aria-label="Copy order number #10445"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>AT</span></span> Aiko Tanabe</td>
+              <td><span class="badge" data-variant="info">Shipped</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-10-28">Oct 28, 2026</td>
+              <td data-align="end" data-sort-value="412.80">$412.80</td>
+            </tr>
+            <tr data-status="paid" data-date="2026-10-27">
+              <td><input type="checkbox" aria-label="Select order #10444" /></td>
+              <td>
+                <span>#10444</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10444" aria-label="Copy order number #10444"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>RD</span></span> Rafael Duarte</td>
+              <td><span class="badge" data-variant="ok">Paid</span></td>
+              <td>Point of sale</td>
+              <td data-sort-value="2026-10-27">Oct 27, 2026</td>
+              <td data-align="end" data-sort-value="23.00">$23.00</td>
+            </tr>
+            <tr data-status="refunded" data-date="2026-10-26">
+              <td><input type="checkbox" aria-label="Select order #10443" /></td>
+              <td>
+                <span>#10443</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10443" aria-label="Copy order number #10443"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>PR</span></span> Priya Raman</td>
+              <td><span class="badge">Refunded</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-10-26">Oct 26, 2026</td>
+              <td data-align="end" data-sort-value="96.00">$96.00</td>
+            </tr>
+            <tr data-status="paid" data-date="2026-10-24">
+              <td><input type="checkbox" aria-label="Select order #10442" /></td>
+              <td>
+                <span>#10442</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10442" aria-label="Copy order number #10442"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>JW</span></span> Jonas Weber</td>
+              <td><span class="badge" data-variant="ok">Paid</span></td>
+              <td>Marketplace</td>
+              <td data-sort-value="2026-10-24">Oct 24, 2026</td>
+              <td data-align="end" data-sort-value="1204.00">$1,204.00</td>
+            </tr>
+            <tr data-status="pending" data-date="2026-10-22">
+              <td><input type="checkbox" aria-label="Select order #10441" /></td>
+              <td>
+                <span>#10441</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10441" aria-label="Copy order number #10441"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>CM</span></span> Chloe Marchand</td>
+              <td><span class="badge" data-variant="warning">Pending</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-10-22">Oct 22, 2026</td>
+              <td data-align="end" data-sort-value="58.25">$58.25</td>
+            </tr>
+            <tr data-status="shipped" data-date="2026-10-20">
+              <td><input type="checkbox" aria-label="Select order #10440" /></td>
+              <td>
+                <span>#10440</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10440" aria-label="Copy order number #10440"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>OH</span></span> Omar Haddad</td>
+              <td><span class="badge" data-variant="info">Shipped</span></td>
+              <td>Point of sale</td>
+              <td data-sort-value="2026-10-20">Oct 20, 2026</td>
+              <td data-align="end" data-sort-value="310.00">$310.00</td>
+            </tr>
+            <tr data-status="paid" data-date="2026-10-18">
+              <td><input type="checkbox" aria-label="Select order #10439" /></td>
+              <td>
+                <span>#10439</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10439" aria-label="Copy order number #10439"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>ES</span></span> Elin Sjoberg</td>
+              <td><span class="badge" data-variant="ok">Paid</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-10-18">Oct 18, 2026</td>
+              <td data-align="end" data-sort-value="77.90">$77.90</td>
+            </tr>
+            <tr data-status="paid" data-date="2026-10-15">
+              <td><input type="checkbox" aria-label="Select order #10438" /></td>
+              <td>
+                <span>#10438</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10438" aria-label="Copy order number #10438"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>KM</span></span> Kofi Mensah</td>
+              <td><span class="badge" data-variant="ok">Paid</span></td>
+              <td>Marketplace</td>
+              <td data-sort-value="2026-10-15">Oct 15, 2026</td>
+              <td data-align="end" data-sort-value="145.00">$145.00</td>
+            </tr>
+            <tr data-status="refunded" data-date="2026-10-12">
+              <td><input type="checkbox" aria-label="Select order #10437" /></td>
+              <td>
+                <span>#10437</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10437" aria-label="Copy order number #10437"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>LF</span></span> Lucia Ferrari</td>
+              <td><span class="badge">Refunded</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-10-12">Oct 12, 2026</td>
+              <td data-align="end" data-sort-value="39.99">$39.99</td>
+            </tr>
+            <tr data-status="shipped" data-date="2026-10-09">
+              <td><input type="checkbox" aria-label="Select order #10436" /></td>
+              <td>
+                <span>#10436</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10436" aria-label="Copy order number #10436"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>NR</span></span> Noor Rahman</td>
+              <td><span class="badge" data-variant="info">Shipped</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-10-09">Oct 9, 2026</td>
+              <td data-align="end" data-sort-value="268.40">$268.40</td>
+            </tr>
+            <tr data-status="pending" data-date="2026-10-04">
+              <td><input type="checkbox" aria-label="Select order #10435" /></td>
+              <td>
+                <span>#10435</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10435" aria-label="Copy order number #10435"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>HD</span></span> Henrik Dahl</td>
+              <td><span class="badge" data-variant="warning">Pending</span></td>
+              <td>Point of sale</td>
+              <td data-sort-value="2026-10-04">Oct 4, 2026</td>
+              <td data-align="end" data-sort-value="15.00">$15.00</td>
+            </tr>
+            <tr data-status="paid" data-date="2026-10-01">
+              <td><input type="checkbox" aria-label="Select order #10434" /></td>
+              <td>
+                <span>#10434</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10434" aria-label="Copy order number #10434"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>SQ</span></span> Sana Qureshi</td>
+              <td><span class="badge" data-variant="ok">Paid</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-10-01">Oct 1, 2026</td>
+              <td data-align="end" data-sort-value="530.00">$530.00</td>
+            </tr>
+            <tr data-status="paid" data-date="2026-09-28">
+              <td><input type="checkbox" aria-label="Select order #10433" /></td>
+              <td>
+                <span>#10433</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10433" aria-label="Copy order number #10433"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>MS</span></span> Mateo Silva</td>
+              <td><span class="badge" data-variant="ok">Paid</span></td>
+              <td>Marketplace</td>
+              <td data-sort-value="2026-09-28">Sep 28, 2026</td>
+              <td data-align="end" data-sort-value="92.75">$92.75</td>
+            </tr>
+            <tr data-status="shipped" data-date="2026-09-25">
+              <td><input type="checkbox" aria-label="Select order #10432" /></td>
+              <td>
+                <span>#10432</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10432" aria-label="Copy order number #10432"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>IV</span></span> Ingrid Voss</td>
+              <td><span class="badge" data-variant="info">Shipped</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-09-25">Sep 25, 2026</td>
+              <td data-align="end" data-sort-value="181.20">$181.20</td>
+            </tr>
+            <tr data-status="refunded" data-date="2026-09-21">
+              <td><input type="checkbox" aria-label="Select order #10431" /></td>
+              <td>
+                <span>#10431</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10431" aria-label="Copy order number #10431"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>DI</span></span> Dmitri Ivanov</td>
+              <td><span class="badge">Refunded</span></td>
+              <td>Marketplace</td>
+              <td data-sort-value="2026-09-21">Sep 21, 2026</td>
+              <td data-align="end" data-sort-value="47.00">$47.00</td>
+            </tr>
+            <tr data-status="paid" data-date="2026-09-18">
+              <td><input type="checkbox" aria-label="Select order #10430" /></td>
+              <td>
+                <span>#10430</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10430" aria-label="Copy order number #10430"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>YP</span></span> Yuna Park</td>
+              <td><span class="badge" data-variant="ok">Paid</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-09-18">Sep 18, 2026</td>
+              <td data-align="end" data-sort-value="336.00">$336.00</td>
+            </tr>
+            <tr data-status="pending" data-date="2026-09-15">
+              <td><input type="checkbox" aria-label="Select order #10429" /></td>
+              <td>
+                <span>#10429</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10429" aria-label="Copy order number #10429"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>FO</span></span> Felix Okoye</td>
+              <td><span class="badge" data-variant="warning">Pending</span></td>
+              <td>Online store</td>
+              <td data-sort-value="2026-09-15">Sep 15, 2026</td>
+              <td data-align="end" data-sort-value="120.60">$120.60</td>
+            </tr>
+            <tr data-status="shipped" data-date="2026-09-12">
+              <td><input type="checkbox" aria-label="Select order #10428" /></td>
+              <td>
+                <span>#10428</span>
+                <button type="button" class="btn" data-variant="ghost" data-size="icon-xs" data-copy="#10428" aria-label="Copy order number #10428"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+              </td>
+              <td><span class="avatar" data-size="sm"><span>AN</span></span> Amara Nwosu</td>
+              <td><span class="badge" data-variant="info">Shipped</span></td>
+              <td>Point of sale</td>
+              <td data-sort-value="2026-09-12">Sep 12, 2026</td>
+              <td data-align="end" data-sort-value="74.00">$74.00</td>
+            </tr>
+            </tbody>
+            <template data-table-empty>
+              <section class="empty">
+                <header>
+                  <figure>
+                    <i class="icon icon-inbox" aria-hidden="true"></i>
+                  </figure>
+                  <h2>No orders match</h2>
+                  <p>Try another search or clear the filters.</p>
+                </header>
+              </section>
+            </template>
+          </table>
+        </div>
+        <footer>
+          <p data-table-info="orders" aria-live="polite"></p>
+          <nav
+            class="pagination"
+            data-size="sm"
+            aria-label="Pages"
+            data-pagination-for="orders"
+          ></nav>
+        </footer>
+      </div>
     </main>
   </div>
 </div>
