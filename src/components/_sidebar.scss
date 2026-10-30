@@ -279,5 +279,16 @@
     :where([popovertarget].sidebar-toggle) {
       display: none;
     }
+
+    // From here the popover sidebar is in the flow like the plain one, so its
+    // parent is a row and the next sibling fills it.
+    :where(:has(> .sidebar[popover] + *)) {
+      display: flex;
+    }
+
+    :where(.sidebar[popover] + *) {
+      flex: 1;
+      min-width: 0;
+    }
   }
 }
