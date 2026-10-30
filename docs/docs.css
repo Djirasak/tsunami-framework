@@ -110,6 +110,16 @@
   max-width: 24rem;
 }
 
+/* Inline code in the prose: a tinted pill, so names and values stand out. Not in previews, which show the framework as it is. */
+.docs-main :not(pre, .docs-preview, .docs-preview *) > code {
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--subtle);
+  font-size: 0.85em;
+  white-space: break-spaces;
+}
+
 /* Docs code blocks: the script wraps each <pre> and adds a copy button. */
 .docs-code {
   position: relative;
