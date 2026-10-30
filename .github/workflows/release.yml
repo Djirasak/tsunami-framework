@@ -1,0 +1,68 @@
+name: Release
+
+# Run it from the Actions tab: pick patch, minor or major, or type a version.
+# It sets the version, builds dist/, commits "Release X.Y.Z", tags it, publishes
+# the GitHub release, then deploys the docs and warms jsDelivr for the new tag.
+# Everything happens in this one run, so a tag always carries the dist/ built
+# for its version.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: patch, minor, major or a version like 0.2.0
+        required: true
+        default: patch
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+      - name: Install
+        run: bun install --frozen-lockfile
+      - name: Bump, build and commit
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          bun scripts/release.ts "$VERSION" --notes="$RUNNER_TEMP/notes.md"
+      - name: Tag and push
+        id: tag
+        run: |
+          tag="v$(jq -r .version package.json)"
+          git tag "$tag"
+          git push origin HEAD:main "$tag"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: gh release create "$TAG" --title "$TAG" --notes-file "$RUNNER_TEMP/notes.md" --verify-tag
+
+  deploy-docs:
+    needs: release
+    uses: ./.github/workflows/deploy-docs.yml
+    with:
+      ref: ${{ needs.release.outputs.tag }}
+    secrets: inherit
+
+  clear-cdn-cache:
+    needs: release
+    uses: ./.github/workflows/clear-cdn-cache.yml
+    with:
+      tag: ${{ needs.release.outputs.tag }}

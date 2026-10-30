@@ -1,14 +1,16 @@
 // Prepare a release: bun run release <version | patch | minor | major> [--dry]
 // Sets the version in package.json, points the jsDelivr links in README.md at
 // the new tag, builds dist/, commits it all as "Release X.Y.Z" and prints the
-// release notes for the GitHub release form. It does not push or tag: push,
-// wait for the "Build Framework" workflow, then publish the release.
+// release notes. It does not push or tag; the "Release" workflow runs this and
+// then tags, pushes and publishes (Actions > Release > Run workflow).
 // With --dry nothing is written; it only shows what would happen.
+// With --notes=<file> the release notes are also written to that file.
 import { $ } from "bun";
 
 const args = Bun.argv.slice(2);
 const dry = args.includes("--dry");
 const input = args.find((a) => !a.startsWith("--"));
+const notesFile = args.find((a) => a.startsWith("--notes="))?.slice(8);
 
 const color = process.stdout.isTTY && !process.env.NO_COLOR;
 const paint = (code: number) => (text: string) =>
@@ -97,12 +99,15 @@ const notes = [
   "```",
 ].join("\n");
 
+if (notesFile && !dry) await Bun.write(notesFile, notes + "\n");
+
 console.log(`\n  ${bold("Release notes")} ${dim(`(${subjects.length} commits since ${last || "the start"}; group and reword them)`)}\n`);
 console.log(notes.replace(/^/gm, "  "));
 console.log(`
   ${bold("Next")}
+  Run the "Release" workflow (Actions > Release) to do this on CI, or by hand:
   1. git push origin main
-  2. wait for the "Build Framework" workflow
-  3. create the release: tag v${version}, target main, paste the notes
-  ${dim('"Deploy Docs" and "Clear CDN Cache" run when it is published.')}
+  2. git tag v${version} && git push origin v${version}
+  3. create the release on GitHub and paste the notes
+  ${dim('Then run "Deploy Docs" and "Clear CDN Cache" for v' + version + ".")}
 `);
