@@ -14,6 +14,12 @@
     "title": "Actions",
     "items": [
       {
+        "label": "Bulk action bar",
+        "href": "/docs/bulk-bar",
+        "icon": "list-checks",
+        "keywords": "Actions bulk-bar bulk action bar selected rows table selection clear data-table data-bulk-count data-bulk-clear data-active tsunami:select"
+      },
+      {
         "label": "Button",
         "href": "/docs/button",
         "icon": "mouse-pointer-click",
@@ -24,6 +30,12 @@
         "href": "/docs/command",
         "icon": "command",
         "keywords": "Actions command dialog command-dialog palette search menu data-label data-keywords data-results data-filter data-filters data-suggested data-filter-list data-filter-badge data-limit data-more data-hint data-description data-tab-filter data-shortcut aria-busy aria-disabled role menuitem"
+      },
+      {
+        "label": "Copy button",
+        "href": "/docs/copy-button",
+        "icon": "copy",
+        "keywords": "Actions copy-button copy clipboard button attributes events api"
       },
       {
         "label": "Dropdown",
@@ -79,6 +91,12 @@
         "keywords": "Feedback skeleton data-variant aria-hidden aria-busy"
       },
       {
+        "label": "Status dot",
+        "href": "/docs/status-dot",
+        "icon": "circle-dot",
+        "keywords": "Feedback status-dot dot online offline live pulse health attributes"
+      },
+      {
         "label": "Toast",
         "href": "/docs/toast",
         "icon": "bell",
@@ -132,6 +150,12 @@
         "keywords": "Forms field checkbox radio switch toggle slider range indeterminate label hint fieldset field-group aria-invalid disabled data-variant role data-gap"
       },
       {
+        "label": "Filter bar",
+        "href": "/docs/filter-bar",
+        "icon": "list-filter",
+        "keywords": "Forms filter-bar chip chips filter tag pill remove clear all data-clear data-value data-variant tsunami:chipremove tsunami:filterchange attributes events"
+      },
+      {
         "label": "Image field",
         "href": "/docs/image-field",
         "icon": "image",
@@ -156,16 +180,40 @@
         "keywords": "Forms otp one-time code verification pin sms two-factor 2fa input data-length data-type data-name tsunami:otpcomplete autocomplete one-time-code paste"
       },
       {
+        "label": "Phone input",
+        "href": "/docs/phone-input",
+        "icon": "phone",
+        "keywords": "Forms phone-input phone tel telephone country dial code flag international e164 data-country data-name tsunami:phonechange"
+      },
+      {
         "label": "Save bar",
         "href": "/docs/save-bar",
         "icon": "save",
         "keywords": "Forms save-bar data-form hidden data-warn-on-leave data-dirty role region aria-label a href data-save-bar-ignore"
       },
       {
+        "label": "Segmented control",
+        "href": "/docs/segmented",
+        "icon": "toggle-left",
+        "keywords": "Forms segmented radio group toggle day week month attributes events"
+      },
+      {
         "label": "Select",
         "href": "/docs/select",
         "icon": "list-filter",
         "keywords": "Forms select div data-size data-placeholder data-search data-input data-tags data-url data-empty header code wrapper td tr multiple optgroup label option value selected disabled hidden data-label data-text data-avatar data-badge data-tag data-ready data-has-value role combobox"
+      },
+      {
+        "label": "Tag input",
+        "href": "/docs/tag-input",
+        "icon": "tag",
+        "keywords": "Forms tag-input tags chips input multiple values email list data-value data-max data-name data-disabled aria-invalid tsunami:tagschange paste comma enter backspace attributes events"
+      },
+      {
+        "label": "Time picker",
+        "href": "/docs/time-picker",
+        "icon": "clock",
+        "keywords": "Forms time-picker time hour minute seconds am pm 24 hour spinbutton segments input step min max attributes events"
       }
     ]
   },
@@ -214,6 +262,12 @@
         "keywords": "Layout chart canvas aria-label tsunami.chart Chart.js type labelKey data series legend legendAlign tooltip options surface total axis line bar doughnut pie polarArea radar tsunami:chartready data-chart-initialized"
       },
       {
+        "label": "Description list",
+        "href": "/docs/description-list",
+        "icon": "list",
+        "keywords": "Layout description-list desc dl dt dd label value detail page data-layout inline grid data-divided data-empty"
+      },
+      {
         "label": "Item",
         "href": "/docs/item",
         "icon": "rows-3",
@@ -260,6 +314,12 @@
         "href": "/docs/stat",
         "icon": "chart-column",
         "keywords": "Layout stat span first-child strong data-trend loader aria-busy aria-pressed data-reverse data-variant data-size stat-group data-even dl"
+      },
+      {
+        "label": "Stepper",
+        "href": "/docs/stepper",
+        "icon": "milestone",
+        "keywords": "Layout stepper wizard steps multi-step form progress next back validate data-linear data-validate data-optional data-next data-prev tsunami:stepchange tsunami:stepcomplete attributes events"
       },
       {
         "label": "Table",

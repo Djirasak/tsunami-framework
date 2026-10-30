@@ -249,7 +249,7 @@
   },
   "index": {
     "title": "Overview",
-    "description": "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, 53 components, and a core with no dependencies.",
+    "description": "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, 64 components, and a core with no dependencies.",
     "libs": []
   },
   "field": {
@@ -290,6 +290,56 @@
   "otp": {
     "title": "One-time code",
     "description": "A row of single-character boxes for a verification code. Moves on as you type, spreads a paste or an SMS autofill, and sends one joined value with the form.",
+    "libs": []
+  },
+  "bulk-bar": {
+    "title": "Bulk action bar",
+    "description": "A sticky bar that shows how many table rows are selected and offers actions and a clear button.",
+    "libs": []
+  },
+  "description-list": {
+    "title": "Description list",
+    "description": "A semantic dl for label and value pairs on detail pages, in stacked, inline and grid layouts.",
+    "libs": []
+  },
+  "segmented": {
+    "title": "Segmented control",
+    "description": "A compact group of two to four exclusive options built on native radio inputs, lighter than tabs and working in forms without JavaScript.",
+    "libs": []
+  },
+  "status-dot": {
+    "title": "Status dot",
+    "description": "A small coloured dot with an optional label for online, health and sync status, with an optional pulse for live states.",
+    "libs": []
+  },
+  "copy-button": {
+    "title": "Copy button",
+    "description": "A button that copies text to the clipboard from an attribute or another element and shows a check for a moment.",
+    "libs": []
+  },
+  "filter-bar": {
+    "title": "Filter bar and chips",
+    "description": "A chip is a small pill with a remove button; a filter bar is a wrapping row of chips with a Clear all button that tells the page when a filter is removed.",
+    "libs": []
+  },
+  "tag-input": {
+    "title": "Tag input",
+    "description": "An input that holds tags: Enter or comma adds one, Backspace removes the last, a paste is split, and a form gets one comma-separated value.",
+    "libs": []
+  },
+  "stepper": {
+    "title": "Stepper",
+    "description": "A multi-step form wizard with a step header, one panel at a time, Next and Back buttons, optional validation before each step and events for step changes.",
+    "libs": []
+  },
+  "phone-input": {
+    "title": "Phone input",
+    "description": "A phone number field with a searchable country button (flag and dial code) that sends the full international number; it formats and joins, it does not validate.",
+    "libs": []
+  },
+  "time-picker": {
+    "title": "Time picker",
+    "description": "A time field with separate hour, minute, second and AM or PM segments you type into or step with the arrow keys, sending HH:MM in a form.",
     "libs": []
   }
 }
