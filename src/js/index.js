@@ -6,6 +6,7 @@ import "./sidebar.js";
 import "./save-bar.js";
 import "./slider.js";
 import "./image-field.js";
+import "./dropzone.js";
 import "./select.js";
 import "./table.js";
 import "./tree.js";
