@@ -36,7 +36,7 @@ Or self-hosted:
 <script src="dist/tsunami.min.js"></script>
 ```
 
-Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed: the `Build Dist` workflow rebuilds it on every push to `main` that changes the source, so a tag made after that carries the built files. Monaco (the code editor) loads from jsDelivr too: `@v0.1.2/dist/monaco/vs/loader.js`, before the Tsunami script.
+Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed: the `Build Framework` workflow rebuilds it on every push to `main` that changes the source, so a tag made after that carries the built files. Monaco (the code editor) loads from jsDelivr too: `@v0.1.2/dist/monaco/vs/loader.js`, before the Tsunami script.
 
 ## Use
 

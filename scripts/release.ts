@@ -2,7 +2,7 @@
 // Sets the version in package.json, points the jsDelivr links in README.md at
 // the new tag, builds dist/, commits it all as "Release X.Y.Z" and prints the
 // release notes for the GitHub release form. It does not push or tag: push,
-// wait for the "Build Dist" workflow, then publish the release.
+// wait for the "Build Framework" workflow, then publish the release.
 // With --dry nothing is written; it only shows what would happen.
 import { $ } from "bun";
 
@@ -102,7 +102,7 @@ console.log(notes.replace(/^/gm, "  "));
 console.log(`
   ${bold("Next")}
   1. git push origin main
-  2. wait for the "Build Dist" workflow
+  2. wait for the "Build Framework" workflow
   3. create the release: tag v${version}, target main, paste the notes
   ${dim('"Deploy Docs" and "Clear CDN Cache" run when it is published.')}
 `);

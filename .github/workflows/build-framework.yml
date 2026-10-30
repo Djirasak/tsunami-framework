@@ -1,4 +1,4 @@
-name: Build Dist
+name: Build Framework
 
 # dist/ is committed, so jsDelivr can serve it from a tag:
 # https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@<tag>/dist/tsunami.min.css
@@ -22,7 +22,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: build-dist
+  group: build-framework
   cancel-in-progress: false
 
 jobs:
