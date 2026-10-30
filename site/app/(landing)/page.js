@@ -1,3 +1,4 @@
+import LandingScript from "../_components/LandingScript";
 import { HOME_TITLE, SITE_NAME } from "../_lib/seo";
 
 const description =
@@ -26,24 +27,6 @@ export const metadata = {
 
 const REPO = "https://github.com/Djirasak/tsunami-framework";
 
-// A flat wave band: `period` is one wave, 2400 / period of them fill the
-// viewBox, and half of the band is a whole number of waves, so the CSS slide
-// of -50% loops without a jump.
-function wave(period, amplitude, base) {
-  let d = `M0,${base}`;
-  for (let x = 0; x < 2400; x += period)
-    d += x === 0
-      ? ` Q${period / 4},${base - amplitude} ${period / 2},${base} T${period},${base}`
-      : ` T${x + period / 2},${base} T${x + period},${base}`;
-  return `${d} L2400,200 L0,200 Z`;
-}
-
-const waves = [
-  { name: "back", d: wave(600, 46, 90) },
-  { name: "mid", d: wave(400, 34, 120) },
-  { name: "front", d: wave(300, 22, 150) },
-];
-
 const features = [
   {
     icon: "layers",
@@ -67,85 +50,151 @@ const features = [
   },
 ];
 
+const orders = [
+  ["#1042", "Emma Wilson", "Paid", "ok", "$74.00"],
+  ["#1041", "Noah Brown", "Pending", "warning", "$129.50"],
+  ["#1040", "Mia Chen", "Shipped", "info", "$48.00"],
+  ["#1039", "Lucas Meyer", "Refunded", "danger", "$215.00"],
+];
+
 export default function Landing() {
   return (
     <>
-      <header className="landing-header">
-        <a href="/" className="landing-brand">
-          <img src="/docs/favicon.svg" alt="" width="28" height="28" />
-          <span>Tsunami</span>
-        </a>
-        <nav aria-label="Main">
-          <a href="/docs" className="link" data-variant="muted">
-            Docs
-          </a>
-          <a href={REPO} className="link" data-variant="muted">
-            GitHub
-          </a>
-          <div className="theme-switcher" role="group" aria-label="Theme">
-            <button
-              type="button"
-              data-theme-toggle="light"
-              aria-label="Light"
-              suppressHydrationWarning
-            >
-              <i className="icon icon-sun" aria-hidden="true"></i>
-            </button>
-            <button
-              type="button"
-              data-theme-toggle="dark"
-              aria-label="Dark"
-              suppressHydrationWarning
-            >
-              <i className="icon icon-moon" aria-hidden="true"></i>
-            </button>
-            <button
-              type="button"
-              data-theme-toggle="system"
-              aria-label="System"
-              suppressHydrationWarning
-            >
-              <i className="icon icon-monitor" aria-hidden="true"></i>
-            </button>
-          </div>
-        </nav>
-      </header>
+      <LandingScript />
+      <section className="landing-stage">
+        <canvas className="landing-sea" aria-hidden="true"></canvas>
+        <span className="landing-kanji" aria-hidden="true">
+          津波
+        </span>
 
-      <div className="landing-sea" aria-hidden="true">
-        {waves.map((w) => (
-          <svg
-            key={w.name}
-            className={`wave wave-${w.name}`}
-            viewBox="0 0 2400 200"
-            preserveAspectRatio="none"
-          >
-            <path d={w.d} />
-          </svg>
-        ))}
-      </div>
+        <header className="landing-header">
+          <a href="/" className="landing-brand">
+            <img src="/docs/favicon.svg" alt="" width="28" height="28" />
+            <span>Tsunami</span>
+          </a>
+          <nav aria-label="Main">
+            <a href="/docs" className="link" data-variant="muted">
+              Docs
+            </a>
+            <a href={REPO} className="link" data-variant="muted">
+              GitHub
+            </a>
+            <div className="theme-switcher" role="group" aria-label="Theme">
+              <button
+                type="button"
+                data-theme-toggle="light"
+                aria-label="Light"
+                suppressHydrationWarning
+              >
+                <i className="icon icon-sun" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                data-theme-toggle="dark"
+                aria-label="Dark"
+                suppressHydrationWarning
+              >
+                <i className="icon icon-moon" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                data-theme-toggle="system"
+                aria-label="System"
+                suppressHydrationWarning
+              >
+                <i className="icon icon-monitor" aria-hidden="true"></i>
+              </button>
+            </div>
+          </nav>
+        </header>
 
-      <main className="landing">
-        <section className="landing-hero">
-          <span className="badge">53 components</span>
+        <div className="landing-hero">
+          <span className="badge landing-rise" style={{ "--i": 0 }}>
+            53 components
+          </span>
           <h1>
-            A quiet UI framework
-            <br />
-            for back-office apps
+            <span className="landing-rise" style={{ "--i": 1 }}>
+              A quiet UI framework
+            </span>
+            <span className="landing-rise" style={{ "--i": 2 }}>
+              for back-office apps
+            </span>
           </h1>
-          <p className="landing-lead">
+          <p className="landing-lead landing-rise" style={{ "--i": 3 }}>
             Semantic HTML, <code>data-*</code> attributes and a little vanilla
             JS. One class names the component, one attribute picks the variant.
           </p>
-          <div className="landing-actions">
-            <a className="btn" data-variant="primary" data-size="lg" href="/docs">
+          <div className="landing-actions landing-rise" style={{ "--i": 4 }}>
+            <a className="btn" data-variant="primary" data-size="xl" href="/docs">
               Read the docs
               <i className="icon icon-arrow-right" aria-hidden="true"></i>
             </a>
-            <a className="btn" data-size="lg" href={REPO}>
+            <a className="btn" data-size="xl" href={REPO}>
               GitHub
             </a>
           </div>
-        </section>
+        </div>
+      </section>
+
+      <main className="landing">
+        <div className="landing-device" aria-hidden="true">
+          <div className="landing-device-bar">
+            <i></i>
+            <i></i>
+            <i></i>
+            <span>tsunami.zercoms.com / orders</span>
+          </div>
+          <div className="landing-device-body">
+            <dl className="stat">
+              <div>
+                <dt>Revenue</dt>
+                <dd>$12,840</dd>
+                <dd data-variant="ok">+12.4% from last month</dd>
+              </div>
+              <div>
+                <dt>Orders</dt>
+                <dd>1,284</dd>
+                <dd>+3.1%</dd>
+              </div>
+              <div>
+                <dt>Refunds</dt>
+                <dd>18</dd>
+                <dd data-variant="danger">+2 orders</dd>
+              </div>
+            </dl>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Order</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" data-align="end">
+                    Total
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map(([id, name, status, variant, total]) => (
+                  <tr key={id}>
+                    <th scope="row">{id}</th>
+                    <td>{name}</td>
+                    <td>
+                      <span className="badge" data-variant={variant}>
+                        {status}
+                      </span>
+                    </td>
+                    <td data-align="end">{total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="landing-device-note alert" data-variant="ok">
+            <i className="icon icon-circle-check" aria-hidden="true"></i>
+            <strong>Payment captured</strong>
+            <p>$74.00 for order #1042</p>
+          </div>
+        </div>
 
         <section className="landing-grid" aria-label="Features">
           {features.map((f) => (
