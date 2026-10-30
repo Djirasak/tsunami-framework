@@ -9,7 +9,7 @@ export default {
   turbopack: { root: import.meta.dirname },
   async redirects() {
     return [
-      { source: "/", destination: "/docs", permanent: false },
+      { source: "/", destination: "/docs", permanent: true },
       // Old page names.
       { source: "/docs/btn", destination: "/docs/button", permanent: true },
       { source: "/docs/empty", destination: "/docs/empty-state", permanent: true },
