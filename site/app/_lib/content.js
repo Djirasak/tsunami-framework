@@ -12,15 +12,16 @@ export const pages = json("pages.json");
 export const nav = json("nav.json");
 
 // The framework's version, from the root package.json: content writes it as
-// {{version}} (the CDN links in the install section).
-const version = JSON.parse(
-  readFileSync(join(process.cwd(), "..", "package.json"), "utf8"),
-).version;
+// {{version}} (the badge and the CDN links). It is read on every call, so a
+// bump shows in `bun run docs` without a restart.
+const version = () =>
+  JSON.parse(readFileSync(join(process.cwd(), "..", "package.json"), "utf8"))
+    .version;
 
 export const html = (slug) =>
   readFileSync(join(dir, `${slug}.html`), "utf8").replaceAll(
     "{{version}}",
-    version,
+    version(),
   );
 
 // The date of the last commit that touched a page's HTML, for the sitemap.
