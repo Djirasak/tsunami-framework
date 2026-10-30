@@ -1,6 +1,7 @@
-import { html, pages } from "../../../_lib/content";
+import { html } from "../../../_lib/content";
+import { pageMetadata } from "../../../_lib/seo";
 
-export const metadata = { title: `${pages["workspace-full"].title} | Tsunami` };
+export const metadata = pageMetadata("workspace-full");
 
 // A full-page example without the docs chrome: the content is the whole body.
 export default function Page() {

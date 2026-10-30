@@ -14,7 +14,6 @@ export default function Root({ libs = [], docs = true, children }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="/dist/tsunami.min.css" />
-        <link rel="icon" href="/docs/favicon.svg" type="image/svg+xml" />
         {docs && <link rel="stylesheet" href="/docs/docs.css" />}
         {libs.map((src) => (
           <script src={src} key={src}></script>

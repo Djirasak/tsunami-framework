@@ -244,7 +244,8 @@
     "title": "Workspace example",
     "description": "A full-page example of the Tsunami workspace layout with no docs chrome: a store settings screen with a top bar, side panels and a scrolling work area.",
     "libs": [],
-    "bare": true
+    "bare": true,
+    "noindex": true
   },
   "index": {
     "title": "Overview",

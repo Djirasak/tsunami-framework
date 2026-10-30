@@ -1,5 +1,6 @@
 import Shell from "../../../_components/Shell";
-import { pages, plainSlugs } from "../../../_lib/content";
+import { plainSlugs } from "../../../_lib/content";
+import { pageMetadata } from "../../../_lib/seo";
 
 export const dynamicParams = false;
 
@@ -8,7 +9,7 @@ export const generateStaticParams = () =>
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  return { title: `${pages[slug].title} | Tsunami` };
+  return pageMetadata(slug);
 }
 
 export default async function Page({ params }) {

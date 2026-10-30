@@ -1,10 +1,11 @@
 import Shell from "../_components/Shell";
 import { pages } from "./content";
+import { pageMetadata } from "./seo";
 
 // A docs page: its metadata and its component, for the page file of a slug.
 export function docsPage(slug) {
   return {
-    metadata: { title: `${pages[slug].title} | Tsunami` },
+    metadata: pageMetadata(slug),
     Page: () => <Shell slug={slug} />,
   };
 }
