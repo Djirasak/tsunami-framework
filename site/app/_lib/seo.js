@@ -40,11 +40,8 @@ export const siteViewport = {
   ],
 };
 
-// The metadata of one docs page.
-export function pageMetadata(slug) {
-  const { title, description, noindex } = pages[slug];
-  const home = slug === "index";
-  const path = pagePath(slug);
+// Page metadata from its own fields: title, description, path and flags.
+function metadataFor({ title, description, path, noindex, home }) {
   const shown = home ? HOME_TITLE : `${title} – ${SITE_NAME}`;
   return {
     title: home ? { absolute: HOME_TITLE } : title,
@@ -67,4 +64,23 @@ export function pageMetadata(slug) {
       images: [IMAGE.url],
     },
   };
+}
+
+// The metadata of one docs page.
+export function pageMetadata(slug) {
+  const { title, description, noindex } = pages[slug];
+  return metadataFor({
+    title,
+    description,
+    noindex,
+    home: slug === "index",
+    path: pagePath(slug),
+  });
+}
+
+export const examplePath = (slug) => `/examples/${slug}`;
+
+// The metadata of one full-page example.
+export function exampleMetadata(slug, { title, description }) {
+  return metadataFor({ title, description, path: examplePath(slug) });
 }
