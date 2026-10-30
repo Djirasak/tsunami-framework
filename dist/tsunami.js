@@ -1,4 +1,4 @@
-/* tsunami v0.1.4 */
+/* tsunami v0.2.0 */
 // src/js/theme.js
 var KEY = "tsunami-theme";
 var root = document.documentElement;
@@ -182,7 +182,40 @@ document.addEventListener("command", (e) => {
   if (e.target.matches?.(".sidebar"))
     commands[e.command]?.(e.target);
 }, true);
-(window.tsunami ??= {}).sidebar = { collapse, expand, toggle: toggle2 };
+var KEEP = ".sidebar[data-keep-scroll]";
+var kept = new WeakSet;
+var key = (el) => `tsunami:sidebar:${el.id || "sidebar"}`;
+function mount(root = document) {
+  for (const el of root.querySelectorAll(KEEP)) {
+    if (kept.has(el))
+      continue;
+    kept.add(el);
+    try {
+      el.scrollTop = Number(sessionStorage.getItem(key(el))) || 0;
+    } catch {}
+    el.querySelector('[aria-current="page"]')?.scrollIntoView({
+      block: "nearest"
+    });
+    el.addEventListener("scroll", () => {
+      try {
+        sessionStorage.setItem(key(el), String(el.scrollTop));
+      } catch {}
+    }, { passive: true });
+  }
+}
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => mount(), { once: true });
+else
+  mount();
+new MutationObserver((records) => {
+  if (document.readyState === "loading")
+    return;
+  for (const r of records)
+    for (const n of r.addedNodes)
+      if (n.nodeType === 1 && (n.matches(KEEP) || n.querySelector(KEEP)))
+        return mount();
+}).observe(document.documentElement, { childList: true, subtree: true });
+(window.tsunami ??= {}).sidebar = { collapse, expand, toggle: toggle2, mount };
 
 // src/js/save-bar.js
 var SKIP = "button, fieldset, output, object, [type=submit], [type=reset], [type=button], [type=image], dialog *, .select [role=combobox], [data-save-bar-ignore]";
@@ -1269,7 +1302,7 @@ function destroy(root) {
   S2.delete(root);
   off.add(root);
 }
-function mount(root, opts = {}) {
+function mount2(root, opts = {}) {
   destroy(root);
   off.delete(root);
   build2(root, opts.source);
@@ -1415,7 +1448,7 @@ function pick(root, i) {
   }));
   st.picking = false;
 }
-(window.tsunami ??= {}).autocomplete = { mount, destroy };
+(window.tsunami ??= {}).autocomplete = { mount: mount2, destroy };
 var scan2 = () => document.querySelectorAll(ROOT2).forEach((root) => build2(root));
 new MutationObserver(scan2).observe(document.documentElement, {
   childList: true,
@@ -2535,7 +2568,7 @@ function destroy2(el) {
   delete el.dataset.editorReady;
   state.editor?.remove();
 }
-function mount2(el, options = {}) {
+function mount3(el, options = {}) {
   if (!window.tinymce)
     throw new Error("A textarea.editor needs TinyMCE: load dist/tinymce.min.js with its own <script> before the Tsunami script.");
   destroy2(el);
@@ -2550,7 +2583,7 @@ function mount2(el, options = {}) {
 }
 var upgrade2 = (el) => {
   if (!states2.has(el))
-    mount2(el);
+    mount3(el);
 };
 var all2 = (root) => root.querySelectorAll?.("textarea.editor").forEach(upgrade2);
 var scan3 = () => {
@@ -2580,7 +2613,7 @@ document.addEventListener("tsunami:themechange", () => {
     if (!state.editor)
       continue;
     state.editor.save();
-    mount2(el, state.options);
+    mount3(el, state.options);
   }
 });
 document.addEventListener("submit", (e) => {
@@ -2612,7 +2645,7 @@ document.addEventListener("focusin", (e) => {
     states2.get(e.target)?.editor?.focus();
 });
 (window.tsunami ??= {}).editor = {
-  mount: mount2,
+  mount: mount3,
   get: (el) => states2.get(el)?.editor ?? null,
   destroy: destroy2
 };
@@ -2985,7 +3018,7 @@ function spread(el, from, text) {
   if (value.length === all.length)
     el.dispatchEvent(new CustomEvent("tsunami:otpcomplete", { bubbles: true, detail: { value } }));
 }
-function mount3(root = document) {
+function mount4(root = document) {
   for (const el of root.querySelectorAll(OTP)) {
     if (el.dataset.mounted)
       continue;
@@ -3084,19 +3117,19 @@ document.addEventListener("reset", (e) => setTimeout(() => {
   }
 }));
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", () => mount3(), { once: true });
+  document.addEventListener("DOMContentLoaded", () => mount4(), { once: true });
 else
-  mount3();
+  mount4();
 new MutationObserver((records) => {
   if (document.readyState === "loading")
     return;
   for (const r of records)
     for (const n of r.addedNodes)
       if (n.nodeType === 1 && (n.matches(OTP) || n.querySelector(OTP)))
-        return mount3();
+        return mount4();
 }).observe(document.documentElement, { childList: true, subtree: true });
 (window.tsunami ??= {}).otp = {
-  mount: mount3,
+  mount: mount4,
   value: (el) => sync6(el),
   set(el, text) {
     for (const b of boxes(el))
@@ -3111,8 +3144,1254 @@ new MutationObserver((records) => {
   }
 };
 
-// src/js/sortable.js
+// src/js/bulk-bar.js
+var BAR = ".bulk-bar";
+function tableOf(bar) {
+  const id = bar.getAttribute("data-table");
+  if (id)
+    return document.getElementById(id);
+  return bar.parentElement?.querySelector(".table") ?? null;
+}
+var rowsOf2 = (table) => window.tsunami?.table?.selected(table) ?? [...table.querySelectorAll('tbody td:first-child > input[type="checkbox"]')].filter((box) => box.checked).map((box) => box.closest("tr"));
+function paint2(bar, count) {
+  bar.dataset.active = String(count > 0);
+  for (const el of bar.querySelectorAll("[data-bulk-count]"))
+    el.textContent = String(count);
+}
+function update3(bar) {
+  const table = tableOf(bar);
+  if (table)
+    paint2(bar, rowsOf2(table).length);
+}
+function clear(bar) {
+  const table = tableOf(bar);
+  if (table)
+    window.tsunami.table.select(table, rowsOf2(table), false);
+}
+document.addEventListener("tsunami:select", (e) => {
+  for (const bar of document.querySelectorAll(BAR)) {
+    const table = tableOf(bar);
+    if (table && table === e.target)
+      paint2(bar, e.detail.count);
+  }
+});
+document.addEventListener("click", (e) => {
+  const button = e.target.closest?.("[data-bulk-clear]");
+  const bar = button?.closest(BAR);
+  if (bar)
+    clear(bar);
+});
+var init2 = (root) => {
+  if (root.matches?.(BAR))
+    update3(root);
+  for (const bar of root.querySelectorAll(BAR))
+    update3(bar);
+};
+var start2 = () => {
+  init2(document);
+  new MutationObserver((records) => {
+    for (const r of records)
+      for (const node of r.addedNodes)
+        if (node.nodeType === 1)
+          init2(node);
+  }).observe(document.body, { childList: true, subtree: true });
+};
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", start2);
+else
+  start2();
+(window.tsunami ??= {}).bulkBar = { update: update3, clear };
+
+// src/js/copy.js
+var RESET = 1500;
+var timers = new WeakMap;
+var region;
+function announce3(msg) {
+  if (!region || !region.isConnected) {
+    region = document.createElement("span");
+    region.setAttribute("role", "status");
+    region.setAttribute("aria-live", "polite");
+    region.style.cssText = "position:fixed;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap";
+    document.body.append(region);
+  }
+  region.textContent = "";
+  setTimeout(() => region.textContent = msg, 50);
+}
+function legacy(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+  document.body.append(ta);
+  const prev = document.activeElement;
+  ta.select();
+  let ok;
+  try {
+    ok = document.execCommand("copy");
+  } catch {
+    ok = false;
+  }
+  ta.remove();
+  prev?.focus?.();
+  return ok;
+}
+async function copy(text) {
+  text = String(text ?? "");
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {}
+  }
+  return legacy(text);
+}
+function source2(btn) {
+  if (btn.dataset.copy !== undefined)
+    return btn.dataset.copy;
+  const el = document.querySelector(btn.dataset.copyTarget || "");
+  if (!el)
+    return null;
+  return "value" in el ? el.value : el.textContent.trim();
+}
+document.addEventListener("click", async (e) => {
+  const btn = e.target.closest?.("[data-copy], [data-copy-target]");
+  if (!btn || btn.disabled)
+    return;
+  const text = source2(btn);
+  if (text === null)
+    return;
+  if (!await copy(text))
+    return;
+  btn.setAttribute("data-copied", "");
+  clearTimeout(timers.get(btn));
+  timers.set(btn, setTimeout(() => btn.removeAttribute("data-copied"), RESET));
+  announce3("Copied");
+  const label = btn.dataset.copyToast;
+  if (label !== undefined)
+    window.tsunami?.toast?.(label || "Copied");
+  btn.dispatchEvent(new CustomEvent("tsunami:copy", { bubbles: true, detail: { text } }));
+});
+(window.tsunami ??= {}).copy = copy;
+
+// src/js/filter-bar.js
+var BAR2 = ".filter-bar";
+var chips = (bar) => [...bar.querySelectorAll(":scope > .chip")];
+var values = (bar) => chips(bar).map((c) => c.dataset.value ?? c.textContent.trim());
+function refresh4(bar) {
+  const clear = bar.querySelector(":scope > [data-clear]");
+  if (clear)
+    clear.hidden = !chips(bar).length;
+}
+function changed(bar) {
+  refresh4(bar);
+  bar.dispatchEvent(new CustomEvent("tsunami:filterchange", {
+    bubbles: true,
+    detail: { values: values(bar) }
+  }));
+}
+function remove(bar, chip) {
+  const next = chip.nextElementSibling;
+  const ok = chip.dispatchEvent(new CustomEvent("tsunami:chipremove", {
+    bubbles: true,
+    cancelable: true,
+    detail: {
+      value: chip.dataset.value ?? chip.textContent.trim(),
+      label: chip.textContent.trim()
+    }
+  }));
+  if (!ok)
+    return;
+  chip.remove();
+  changed(bar);
+  (next?.querySelector("button") ?? chips(bar).at(-1)?.querySelector("button"))?.focus();
+}
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest?.(`${BAR2} > .chip > button, ${BAR2} > [data-clear]`);
+  if (!btn)
+    return;
+  const bar = btn.closest(BAR2);
+  if (btn.matches("[data-clear]")) {
+    for (const c of chips(bar))
+      c.remove();
+    changed(bar);
+  } else
+    remove(bar, btn.parentElement);
+});
+function mount5(root = document) {
+  for (const bar of root.querySelectorAll(BAR2))
+    refresh4(bar);
+}
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => mount5(), { once: true });
+else
+  mount5();
+new MutationObserver((records) => {
+  if (document.readyState === "loading")
+    return;
+  for (const r of records)
+    for (const n of r.addedNodes)
+      if (n.nodeType === 1 && (n.matches(BAR2) || n.querySelector(BAR2)))
+        return mount5();
+}).observe(document.documentElement, { childList: true, subtree: true });
+(window.tsunami ??= {}).filterBar = {
+  mount: mount5,
+  values: (bar) => values(bar),
+  clear(bar) {
+    for (const c of chips(bar))
+      c.remove();
+    changed(bar);
+  }
+};
+
+// src/js/tag-input.js
+var TAGS = ".tag-input";
+var tags = (el) => el._tags ??= [];
+var text = (el) => el.querySelector('input[type="text"]');
+function split(s) {
+  return s.split(/[,\n\r]/).map((t) => t.trim()).filter(Boolean);
+}
+function chip(el, tag) {
+  const c = document.createElement("span");
+  c.className = "chip";
+  c.append(tag);
+  const b = document.createElement("button");
+  b.type = "button";
+  b.setAttribute("aria-label", `Remove ${tag}`);
+  b.innerHTML = '<i class="icon icon-x" aria-hidden="true"></i>';
+  c.append(b);
+  return c;
+}
+function render2(el) {
+  for (const c of el.querySelectorAll(":scope > .chip"))
+    c.remove();
+  const input = text(el);
+  for (const t of tags(el))
+    el.insertBefore(chip(el, t), input);
+  const hidden = el.querySelector('input[type="hidden"]');
+  if (hidden)
+    hidden.value = tags(el).join(",");
+}
+function change(el) {
+  render2(el);
+  el.dispatchEvent(new CustomEvent("tsunami:tagschange", {
+    bubbles: true,
+    detail: { value: [...tags(el)] }
+  }));
+}
+function add(el, list) {
+  const max = Number(el.dataset.max) || Infinity;
+  let added = false;
+  for (const t of list) {
+    if (tags(el).length >= max)
+      break;
+    if (tags(el).includes(t))
+      continue;
+    tags(el).push(t);
+    added = true;
+  }
+  if (added)
+    change(el);
+  return added;
+}
+function setDisabled(el) {
+  const off = "disabled" in el.dataset;
+  text(el).disabled = off;
+}
+function start3(el) {
+  const list = split(el.dataset.value ?? "");
+  el._tags = [];
+  for (const t of list)
+    if (!el._tags.includes(t))
+      el._tags.push(t);
+  render2(el);
+}
+function mount6(root = document) {
+  for (const el of root.querySelectorAll(TAGS)) {
+    if (el.dataset.mounted)
+      continue;
+    el.dataset.mounted = "";
+    if (!text(el)) {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.autocomplete = "off";
+      if (el.getAttribute("aria-label"))
+        input.setAttribute("aria-label", el.getAttribute("aria-label"));
+      el.append(input);
+    }
+    if (el.dataset.name && !el.querySelector('input[type="hidden"]')) {
+      const hidden = document.createElement("input");
+      hidden.type = "hidden";
+      hidden.name = el.dataset.name;
+      el.append(hidden);
+    }
+    setDisabled(el);
+    start3(el);
+  }
+}
+var field = (e) => e.target.closest?.(`${TAGS} > input[type="text"]`);
+document.addEventListener("keydown", (e) => {
+  const input = field(e);
+  if (!input || e.isComposing)
+    return;
+  const el = input.closest(TAGS);
+  if (e.key === "Enter" || e.key === ",") {
+    e.preventDefault();
+    if (add(el, split(input.value)))
+      input.value = "";
+    else if (input.value.trim() && tags(el).includes(input.value.trim()))
+      input.value = "";
+  } else if (e.key === "Backspace" && !input.value && tags(el).length) {
+    tags(el).pop();
+    change(el);
+  }
+});
+document.addEventListener("paste", (e) => {
+  const input = field(e);
+  if (!input)
+    return;
+  const el = input.closest(TAGS);
+  const pasted = e.clipboardData.getData("text");
+  if (!/[,\n\r]/.test(pasted))
+    return;
+  e.preventDefault();
+  add(el, split(input.value + pasted));
+  input.value = "";
+});
+document.addEventListener("focusout", (e) => {
+  const input = field(e);
+  if (!input || !input.value.trim())
+    return;
+  const el = input.closest(TAGS);
+  add(el, split(input.value));
+  input.value = "";
+});
+document.addEventListener("click", (e) => {
+  const el = e.target.closest?.(TAGS);
+  if (!el || "disabled" in el.dataset)
+    return;
+  const btn = e.target.closest("button");
+  if (btn && btn.parentElement.matches(".chip") && btn.closest(TAGS) === el) {
+    const chips = [...el.querySelectorAll(":scope > .chip")];
+    tags(el).splice(chips.indexOf(btn.parentElement), 1);
+    change(el);
+    text(el).focus();
+  } else if (!btn)
+    text(el).focus();
+});
+document.addEventListener("reset", (e) => setTimeout(() => {
+  for (const el of e.target.querySelectorAll(TAGS)) {
+    text(el).value = "";
+    start3(el);
+  }
+}));
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => mount6(), { once: true });
+else
+  mount6();
+new MutationObserver((records) => {
+  if (document.readyState === "loading")
+    return;
+  for (const r of records)
+    for (const n of r.addedNodes)
+      if (n.nodeType === 1 && (n.matches(TAGS) || n.querySelector(TAGS)))
+        return mount6();
+}).observe(document.documentElement, { childList: true, subtree: true });
+(window.tsunami ??= {}).tagInput = {
+  mount: mount6,
+  value: (el) => [...tags(el)],
+  set(el, list) {
+    el._tags = [];
+    add(el, list.map((t) => String(t).trim()).filter(Boolean));
+    change(el);
+  },
+  clear(el) {
+    el._tags = [];
+    change(el);
+  }
+};
+
+// src/js/stepper.js
+var FIELD3 = "input, select, textarea";
+var root2 = (el) => (typeof el === "string" ? document.querySelector(el) : el)?.closest?.(".stepper");
+var itemsOf = (s) => [...s.querySelectorAll(":scope > ol > li")];
+var panelsOf = (s) => [...s.querySelectorAll(":scope > section")];
+var current2 = new WeakMap;
+var uid4 = 0;
+var index = (el) => {
+  const s = root2(el);
+  return s ? current2.get(s) ?? 0 : -1;
+};
+function render3(s, i, focus) {
+  const items = itemsOf(s);
+  const panels = panelsOf(s);
+  const linear = s.hasAttribute("data-linear");
+  items.forEach((li, n) => {
+    const b = li.querySelector(":scope > button");
+    if (!b)
+      return;
+    b.dataset.state = n < i ? "done" : n === i ? "current" : "upcoming";
+    if (n === i)
+      b.setAttribute("aria-current", "step");
+    else
+      b.removeAttribute("aria-current");
+    if (linear && n > i)
+      b.setAttribute("aria-disabled", "true");
+    else
+      b.removeAttribute("aria-disabled");
+    const p = panels[n];
+    if (!p)
+      return;
+    p.hidden = n !== i;
+    b.id ||= `stepper-${++uid4}`;
+    p.setAttribute("role", "group");
+    p.setAttribute("aria-labelledby", b.id);
+  });
+  if (!focus)
+    return;
+  const p = panels[i];
+  const target = p?.querySelector("h2, h3, h4, h5, h6") ?? [...p?.querySelectorAll(FIELD3) ?? []].find((f) => f.type !== "hidden") ?? p;
+  if (target && !target.matches(FIELD3))
+    target.tabIndex = -1;
+  target?.focus();
+}
+function valid(s) {
+  const p = panelsOf(s)[index(s)];
+  if (!p || !s.hasAttribute("data-validate") || p.hasAttribute("data-optional"))
+    return true;
+  for (const f of p.querySelectorAll(FIELD3)) {
+    if (!f.willValidate)
+      continue;
+    if (!f.reportValidity())
+      return false;
+  }
+  return true;
+}
+function show3(s, i, focus) {
+  touched.add(s);
+  current2.set(s, i);
+  render3(s, i, focus);
+  s.dispatchEvent(new CustomEvent("tsunami:stepchange", {
+    bubbles: true,
+    detail: { index: i, step: itemsOf(s)[i], panel: panelsOf(s)[i] }
+  }));
+}
+function go(el, to, focus = true) {
+  const s = root2(el);
+  const last = s ? itemsOf(s).length - 1 : -1;
+  if (!s || !Number.isInteger(to) || to < 0 || to > last)
+    return false;
+  const from = index(s);
+  if (to === from)
+    return true;
+  if (to < from)
+    return show3(s, to, focus), true;
+  if (!s.hasAttribute("data-linear")) {
+    if (!valid(s))
+      return false;
+    return show3(s, to, focus), true;
+  }
+  for (let i = from;i < to; i++) {
+    if (!valid(s))
+      return false;
+    show3(s, i + 1, focus);
+  }
+  return true;
+}
+function next(el, focus = true) {
+  const s = root2(el);
+  if (!s)
+    return false;
+  const i = index(s);
+  if (i < itemsOf(s).length - 1)
+    return go(s, i + 1, focus);
+  if (!valid(s))
+    return false;
+  s.dispatchEvent(new CustomEvent("tsunami:stepcomplete", { bubbles: true, detail: { index: i } }));
+  return true;
+}
+var prev = (el, focus = true) => {
+  const s = root2(el);
+  return s ? go(s, index(s) - 1, focus) : false;
+};
+document.addEventListener("click", (e) => {
+  const b = e.target.closest?.(".stepper > ol > li > button, .stepper [data-next], .stepper [data-prev]");
+  if (!b)
+    return;
+  const s = b.closest(".stepper");
+  if (b.matches("[data-next]")) {
+    if (!next(s) && b.type === "submit")
+      e.preventDefault();
+  } else if (b.matches("[data-prev]")) {
+    e.preventDefault();
+    prev(s);
+  } else {
+    e.preventDefault();
+    if (b.getAttribute("aria-disabled") !== "true")
+      go(s, itemsOf(s).indexOf(b.parentElement));
+  }
+});
+document.addEventListener("keydown", (e) => {
+  const f = e.target.closest?.(".stepper > section input, .stepper > section select");
+  if (e.key === "Enter" && f && /^(?!checkbox|radio|submit|button)/.test(f.type)) {
+    const p = f.closest(".stepper > section");
+    if (p.querySelector('[type="submit"]'))
+      return;
+    e.preventDefault();
+    next(p);
+    return;
+  }
+  const b = e.target.closest?.(".stepper > ol > li > button");
+  if (!b)
+    return;
+  const keys = ["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"];
+  if (!keys.includes(e.key))
+    return;
+  const all = [...b.closest("ol").querySelectorAll(":scope > li > button")].filter((x) => x.getAttribute("aria-disabled") !== "true");
+  const n = all.indexOf(b);
+  const forward = e.key === "ArrowRight" || e.key === "ArrowDown";
+  const rtl = getComputedStyle(b).direction === "rtl";
+  const step = e.key === "ArrowUp" || e.key === "ArrowDown" ? forward ? 1 : -1 : e.key === "ArrowRight" !== rtl ? 1 : -1;
+  const to = e.key === "Home" ? all[0] : e.key === "End" ? all.at(-1) : all[(n + step + all.length) % all.length];
+  e.preventDefault();
+  to?.focus();
+});
+var touched = new WeakSet;
+function setup(node) {
+  if (node.nodeType !== 1)
+    return;
+  for (const s of node.matches(".stepper") ? [node] : node.querySelectorAll(".stepper")) {
+    if (touched.has(s))
+      continue;
+    const i = itemsOf(s).findIndex((li) => li.querySelector(':scope > button:is([data-state="current"], [aria-current="step"])'));
+    current2.set(s, Math.max(i, 0));
+    render3(s, Math.max(i, 0), false);
+  }
+}
+function start4() {
+  setup(document.documentElement);
+  new MutationObserver((records) => {
+    for (const r of records) {
+      const s = r.target.closest?.(".stepper");
+      if (s)
+        setup(s);
+      r.addedNodes.forEach(setup);
+    }
+  }).observe(document.documentElement, { childList: true, subtree: true });
+}
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", start4, { once: true });
+else
+  start4();
+(window.tsunami ??= {}).stepper = { go, next, prev, index };
+
+// src/js/phone-input.js
+var ROOT3 = ".phone-input";
+var DATA = "93AF 355AL 213DZ 1684AS 376AD 244AO 1264AI 1268AG 54AR 374AM 297AW 61AU 43AT 994AZ 1242BS 973BH 880BD 1246BB 375BY 32BE 501BZ 229BJ 1441BM 975BT 591BO 599CW 599BQ 387BA 267BW 55BR 246IO 1284VG 673BN 359BG 226BF 257BI 855KH 237CM 1US 1CA 238CV 1345KY 236CF 235TD 56CL 86CN 61CX 61CC 57CO 269KM 242CG 243CD 682CK 506CR 225CI 385HR 53CU 357CY 420CZ 45DK 253DJ 1767DM 1809DO 1829DO 1849DO 593EC 20EG 503SV 240GQ 291ER 372EE 268SZ 251ET 500FK 298FO 679FJ 358FI 33FR 594GF 689PF 241GA 220GM 995GE 49DE 233GH 350GI 30GR 299GL 1473GD 590GP 1671GU 502GT 44GB 44GG 224GN 245GW 592GY 509HT 504HN 852HK 36HU 354IS 91IN 62ID 98IR 964IQ 353IE 44IM 972IL 39IT 1876JM 81JP 44JE 962JO 7RU 7KZ 254KE 686KI 383XK 965KW 996KG 856LA 371LV 961LB 266LS 231LR 218LY 423LI 370LT 352LU 853MO 261MG 265MW 60MY 960MV 223ML 356MT 692MH 596MQ 222MR 230MU 262RE 262YT 52MX 691FM 373MD 377MC 976MN 382ME 1664MS 212MA 258MZ 95MM 264NA 674NR 977NP 31NL 687NC 64NZ 505NI 227NE 234NG 683NU 672NF 850KP 389MK 1670MP 47NO 968OM 92PK 680PW 970PS 507PA 675PG 595PY 51PE 63PH 48PL 351PT 1787PR 1939PR 974QA 40RO 250RW 590BL 290SH 1869KN 1758LC 590MF 508PM 1784VC 685WS 378SM 239ST 966SA 221SN 381RS 248SC 232SL 65SG 1721SX 421SK 386SI 677SB 252SO 27ZA 82KR 211SS 34ES 94LK 249SD 597SR 47SJ 46SE 41CH 963SY 886TW 992TJ 255TZ 66TH 670TL 228TG 690TK 676TO 1868TT 216TN 90TR 993TM 1649TC 688TV 1340VI 256UG 380UA 971AE 598UY 998UZ 678VU 379VA 58VE 84VN 681WF 212EH 967YE 260ZM 263ZW 358AX";
+var TRUNK = new Set("TH VN ID MY PH IN JP KR TR ZA AU NZ FR DE AT CH NL BE GB GG JE IM IE IL EG SA AE PK BD LK KE NG".split(" "));
+var S3 = new WeakMap;
+var byCode = new Map;
+var dials = new Map;
+var list;
+var uid5 = 0;
+function h5(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs))
+    el.setAttribute(k, v);
+  el.append(...kids);
+  return el;
+}
+var flag2 = (c) => h5("span", { class: `flag flag-${c.toLowerCase()}`, "aria-hidden": "true" });
+var show4 = (c) => `+${c.dial.length === 4 && c.dial[0] === "1" ? `1 ${c.dial.slice(1)}` : c.dial}`;
+function countries() {
+  if (list)
+    return list;
+  let names;
+  try {
+    names = new Intl.DisplayNames([document.documentElement.lang || "en"], {
+      type: "region"
+    });
+  } catch {}
+  for (const [, dial, code] of DATA.matchAll(/(\d+)([A-Z]{2})/g)) {
+    if (!dials.has(dial))
+      dials.set(dial, code);
+    if (!byCode.has(code))
+      byCode.set(code, { code, dial, name: names?.of(code) || code });
+  }
+  list = [...byCode.values()].sort((a, b) => a.name.localeCompare(b.name));
+  return list;
+}
+function match(digits) {
+  for (let n = Math.min(4, digits.length);n > 0; n--) {
+    const code = dials.get(digits.slice(0, n));
+    if (code)
+      return { code, rest: digits.slice(n) };
+  }
+  return null;
+}
+var country = (root) => byCode.get(root.dataset.country) ?? byCode.get("US");
+function value2(root) {
+  const c = country(root);
+  let digits = S3.get(root).input.value.replace(/\D/g, "");
+  if (TRUNK.has(c.code) && digits[0] === "0")
+    digits = digits.slice(1);
+  return {
+    country: c.code,
+    dial: `+${c.dial}`,
+    number: digits,
+    value: digits ? `+${c.dial}${digits}` : ""
+  };
+}
+function sync7(root, emit) {
+  const st = S3.get(root);
+  const v = value2(root);
+  const c = country(root);
+  st.flag.className = `flag flag-${c.code.toLowerCase()}`;
+  st.dial.textContent = show4(c);
+  st.btn.setAttribute("aria-label", `Country: ${c.name} ${show4(c)}`);
+  if (st.hidden)
+    st.hidden.value = v.value;
+  const key = `${v.country}${v.value}`;
+  if (key === st.last)
+    return;
+  st.last = key;
+  if (!emit)
+    return;
+  if (st.hidden) {
+    st.hidden.dispatchEvent(new Event("input", { bubbles: true }));
+    st.hidden.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+  root.dispatchEvent(new CustomEvent("tsunami:phonechange", { bubbles: true, detail: v }));
+}
+function typed2(root, final) {
+  const { input } = S3.get(root);
+  const v = input.value.trim();
+  if (v[0] !== "+")
+    return;
+  const m = match(v.replace(/\D/g, ""));
+  if (!m || !final && !m.rest)
+    return;
+  input.value = m.rest;
+  root.dataset.country = m.code;
+}
+function setFrom(root, text, emit = false) {
+  S3.get(root).input.value = text;
+  typed2(root, true);
+  sync7(root, emit);
+}
+function build3(root) {
+  if (S3.has(root))
+    return;
+  const group = root.querySelector(".input-group");
+  const input = group?.querySelector('input:not([type="hidden"])');
+  if (!input)
+    return;
+  countries();
+  const id = `phone-input-${++uid5}`;
+  const fl = flag2("US");
+  const dial = h5("span");
+  const btn = h5("button", { type: "button", popovertarget: `${id}-pop`, "aria-haspopup": "listbox" }, fl, dial);
+  const search = h5("input", {
+    type: "text",
+    role: "combobox",
+    autocomplete: "off",
+    placeholder: "Search country or code",
+    "aria-label": "Search countries",
+    "aria-controls": `${id}-list`,
+    "aria-expanded": "true"
+  });
+  const box = h5("div", {
+    role: "listbox",
+    id: `${id}-list`,
+    "aria-label": "Countries"
+  });
+  const none = h5("p", { hidden: "" }, "No country found");
+  const pop = h5("div", { popover: "auto", id: `${id}-pop` }, search, box, none);
+  const hidden = root.dataset.name ? h5("input", { type: "hidden", name: root.dataset.name }) : null;
+  group.prepend(btn);
+  if (hidden)
+    input.after(hidden);
+  root.append(pop);
+  S3.set(root, {
+    input,
+    btn,
+    flag: fl,
+    dial,
+    search,
+    box,
+    none,
+    pop,
+    hidden,
+    initial: root.dataset.country || "US",
+    last: null
+  });
+  if (!input.hasAttribute("autocomplete"))
+    input.setAttribute("autocomplete", "tel-national");
+  disable(root);
+  setFrom(root, input.value);
+}
+function disable(root) {
+  const st = S3.get(root);
+  st.btn.disabled = st.input.disabled;
+  if (st.hidden)
+    st.hidden.disabled = st.input.disabled;
+}
+function render4(root, q = "") {
+  const st = S3.get(root);
+  const term = q.trim().toLowerCase().replace(/^\+/, "");
+  const cur = country(root).code;
+  const frag = document.createDocumentFragment();
+  for (const c of list) {
+    if (term && !`${c.name} ${c.code} ${c.dial}`.toLowerCase().includes(term))
+      continue;
+    const el = h5("div", {
+      role: "option",
+      id: `${st.box.id}-${c.code}`,
+      "aria-selected": String(c.code === cur)
+    }, flag2(c.code), h5("span", {}, c.name), h5("small", {}, show4(c)));
+    el.code = c.code;
+    frag.append(el);
+  }
+  st.box.replaceChildren(frag);
+  st.none.hidden = st.box.children.length > 0;
+  activate3(root, st.box.querySelector('[aria-selected="true"]') ?? st.box.firstElementChild);
+}
+function activate3(root, el) {
+  const st = S3.get(root);
+  st.box.querySelector("[data-active]")?.removeAttribute("data-active");
+  if (!el)
+    return st.search.removeAttribute("aria-activedescendant");
+  el.setAttribute("data-active", "");
+  st.search.setAttribute("aria-activedescendant", el.id);
+  el.scrollIntoView({ block: "nearest" });
+}
+function place4(root) {
+  const { pop } = S3.get(root);
+  const r = root.querySelector(".input-group").getBoundingClientRect();
+  const width = Math.min(320, innerWidth - 32);
+  const above = r.bottom + 330 > innerHeight && r.top > 330;
+  Object.assign(pop.style, {
+    width: `${width}px`,
+    left: `${Math.max(16, Math.min(r.left, innerWidth - width - 16))}px`,
+    top: above ? "auto" : `${r.bottom + 4}px`,
+    bottom: above ? `${innerHeight - r.top + 4}px` : "auto"
+  });
+}
+function choose3(root, code) {
+  const st = S3.get(root);
+  st.pop.hidePopover();
+  root.dataset.country = code;
+  sync7(root, true);
+  st.input.focus();
+}
+var rootOf4 = (el) => el?.closest?.(ROOT3);
+var ready2 = (el) => {
+  const root = rootOf4(el);
+  return root && S3.has(root) ? root : null;
+};
+var OPTION = `${ROOT3} [role="option"]`;
+function toggled(e) {
+  const root = e.target.matches?.(`${ROOT3} > [popover]`) && ready2(e.target);
+  if (!root || e.newState !== "open")
+    return;
+  if (e.type === "beforetoggle")
+    return place4(root);
+  const { search } = S3.get(root);
+  search.value = "";
+  render4(root);
+  search.focus();
+}
+document.addEventListener("beforetoggle", toggled, true);
+document.addEventListener("toggle", toggled, true);
+document.addEventListener("input", (e) => {
+  const root = ready2(e.target);
+  if (!root)
+    return;
+  const st = S3.get(root);
+  if (e.target === st.search)
+    render4(root, st.search.value);
+  else if (e.target === st.input) {
+    typed2(root, false);
+    sync7(root, true);
+  }
+});
+document.addEventListener("change", (e) => {
+  const root = ready2(e.target);
+  if (root && e.target === S3.get(root).input) {
+    typed2(root, true);
+    sync7(root, true);
+  }
+});
+document.addEventListener("click", (e) => {
+  const opt = e.target.closest?.(OPTION);
+  const root = ready2(opt);
+  if (root)
+    choose3(root, opt.code);
+});
+document.addEventListener("mouseover", (e) => {
+  const opt = e.target.closest?.(OPTION);
+  const root = ready2(opt);
+  if (root && !opt.hasAttribute("data-active"))
+    activate3(root, opt);
+});
+document.addEventListener("keydown", (e) => {
+  const root = ready2(e.target);
+  if (!root)
+    return;
+  const st = S3.get(root);
+  if (e.target === st.btn && e.key === "ArrowDown" && !st.btn.disabled) {
+    e.preventDefault();
+    st.pop.showPopover();
+  }
+  if (e.target !== st.search)
+    return;
+  const opts = [...st.box.children];
+  const at = opts.findIndex((o) => o.hasAttribute("data-active"));
+  const go = {
+    ArrowDown: at + 1,
+    ArrowUp: at - 1,
+    Home: 0,
+    End: opts.length - 1
+  }[e.key];
+  if (go !== undefined) {
+    e.preventDefault();
+    activate3(root, opts[Math.max(0, Math.min(opts.length - 1, go))]);
+  } else if (e.key === "Enter") {
+    e.preventDefault();
+    if (opts[at])
+      choose3(root, opts[at].code);
+  }
+});
+document.addEventListener("reset", (e) => {
+  setTimeout(() => {
+    e.target.querySelectorAll(ROOT3).forEach((root) => {
+      const st = S3.get(root);
+      if (!st)
+        return;
+      root.dataset.country = st.initial;
+      setFrom(root, st.input.value);
+    });
+  });
+});
+function get2(el) {
+  const root = rootOf4(el) ?? el;
+  return S3.has(root) ? value2(root) : null;
+}
+function set3(el, v) {
+  const root = rootOf4(el) ?? el;
+  if (!S3.has(root))
+    return;
+  if (typeof v === "string")
+    return setFrom(root, v, true);
+  if (v.country && byCode.has(String(v.country).toUpperCase()))
+    root.dataset.country = String(v.country).toUpperCase();
+  setFrom(root, String(v.number ?? ""), true);
+}
+var buildAll = (r = document) => r.querySelectorAll(ROOT3).forEach(build3);
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => buildAll());
+else
+  buildAll();
+new MutationObserver((records) => {
+  for (const r of records) {
+    if (r.type === "attributes") {
+      const root = ready2(r.target);
+      if (root && r.target === S3.get(root).input)
+        disable(root);
+      continue;
+    }
+    for (const n of r.addedNodes) {
+      if (n.nodeType !== 1)
+        continue;
+      if (n.matches(ROOT3))
+        build3(n);
+      else
+        buildAll(n);
+    }
+  }
+}).observe(document.documentElement, {
+  childList: true,
+  subtree: true,
+  attributes: true,
+  attributeFilter: ["disabled"]
+});
+(window.tsunami ??= {}).phoneInput = { get: get2, set: set3 };
+
+// src/js/time-picker.js
+var ROOT4 = ".time-picker";
+var SEGMENT = `${ROOT4} > input[role="spinbutton"]`;
 var states3 = new WeakMap;
+var TIME = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/;
+var pad = (n) => String(n).padStart(2, "0");
+function parse3(text) {
+  const m = TIME.exec(String(text ?? "").trim());
+  if (!m)
+    return null;
+  const t = [Number(m[1]), Number(m[2]), Number(m[3] ?? 0)];
+  return t[0] < 24 && t[1] < 60 && t[2] < 60 ? t : null;
+}
+var seconds = (t) => t[0] * 3600 + t[1] * 60 + t[2];
+function mount7(root) {
+  if (states3.has(root))
+    return;
+  const withSeconds = root.hasAttribute("data-seconds");
+  const hour12 = root.hasAttribute("data-hour12");
+  const hidden = root.querySelector(':scope > input[type="hidden"]') ?? root.appendChild(Object.assign(document.createElement("input"), {
+    type: "hidden",
+    name: root.dataset.name ?? ""
+  }));
+  const start = hidden.defaultValue || root.getAttribute("value") || "";
+  const keys = ["h", "m", ...withSeconds ? ["s"] : [], ...hour12 ? ["p"] : []];
+  const spec = {
+    h: { label: "Hour", min: hour12 ? 1 : 0, max: hour12 ? 12 : 23 },
+    m: { label: "Minute", min: 0, max: 59 },
+    s: { label: "Second", min: 0, max: 59 },
+    p: { label: "AM or PM", min: 0, max: 1 }
+  };
+  const state = {
+    root,
+    hidden,
+    start,
+    withSeconds,
+    hour12,
+    keys,
+    spec,
+    f: { h: null, m: null, s: null, p: null },
+    buf: "",
+    last: "",
+    segs: {}
+  };
+  states3.set(root, state);
+  root.setAttribute("role", "group");
+  if (!root.hasAttribute("aria-label"))
+    root.setAttribute("aria-label", "Time");
+  const parts = [];
+  for (const key of keys) {
+    const el = document.createElement("input");
+    el.type = "text";
+    el.autocomplete = "off";
+    el.spellcheck = false;
+    el.setAttribute("role", "spinbutton");
+    el.setAttribute("aria-label", spec[key].label);
+    el.setAttribute("aria-valuemin", spec[key].min);
+    el.setAttribute("aria-valuemax", spec[key].max);
+    el.dataset.segment = key;
+    if (key === "p")
+      el.readOnly = true;
+    else
+      el.inputMode = "numeric";
+    state.segs[key] = el;
+    if (key === "m" || key === "s")
+      parts.push(Object.assign(document.createElement("span"), { textContent: ":" }));
+    if (key === "p")
+      parts.push(Object.assign(document.createElement("span"), { textContent: " " }));
+    parts.push(el);
+  }
+  for (const span of parts)
+    if (span.localName === "span")
+      span.setAttribute("aria-hidden", "true");
+  root.prepend(...parts);
+  root.setAttribute("data-time-picker-initialized", "true");
+  Object.defineProperty(root, "value", {
+    configurable: true,
+    get: () => state.last,
+    set(v) {
+      assign(state, parse3(v));
+    }
+  });
+  assign(state, parse3(start), true);
+  disable2(state);
+}
+function destroy3(root) {
+  const state = states3.get(root);
+  if (!state)
+    return;
+  for (const el of root.querySelectorAll(':scope > [role="spinbutton"], :scope > span'))
+    el.remove();
+  delete root.value;
+  root.removeAttribute("data-time-picker-initialized");
+  states3.delete(root);
+}
+var disable2 = (state) => {
+  for (const el of Object.values(state.segs))
+    el.disabled = state.root.hasAttribute("disabled");
+};
+function assign(state, t, quiet = false) {
+  const { f, hour12 } = state;
+  if (!t)
+    Object.assign(f, { h: null, m: null, s: null, p: null });
+  else {
+    f.h = hour12 ? t[0] % 12 || 12 : t[0];
+    f.m = t[1];
+    f.s = t[2];
+    f.p = hour12 ? t[0] >= 12 : null;
+  }
+  state.buf = "";
+  write2(state, quiet);
+}
+function time(state) {
+  const { f, hour12, withSeconds, keys } = state;
+  if (keys.some((k) => f[k] === null))
+    return null;
+  const h = hour12 ? f.h % 12 + (f.p ? 12 : 0) : f.h;
+  return [h, f.m, withSeconds ? f.s : 0];
+}
+function fill(state) {
+  const { f, hour12, keys } = state;
+  if (keys.every((k) => f[k] === null))
+    return;
+  for (const k of keys)
+    if (f[k] === null)
+      f[k] = k === "h" ? hour12 ? 12 : 0 : k === "p" ? false : 0;
+}
+function limits2(state) {
+  const { min, max } = state.root.dataset;
+  return [min && parse3(min), max && parse3(max)];
+}
+function clamp(state) {
+  const t = time(state);
+  if (!t)
+    return;
+  const [lo, hi] = limits2(state);
+  if (lo && seconds(t) < seconds(lo))
+    assign(state, lo);
+  else if (hi && seconds(t) > seconds(hi))
+    assign(state, hi);
+}
+function write2(state, quiet) {
+  const { root, hidden, f, keys, segs, spec } = state;
+  for (const key of keys) {
+    const el = segs[key];
+    const v = f[key];
+    const empty = v === null;
+    const text = key === "p" ? v ? "PM" : "AM" : pad(v ?? 0);
+    el.value = empty ? "--" : text;
+    el.setAttribute("aria-valuetext", empty ? "Empty" : text);
+    if (empty)
+      el.removeAttribute("aria-valuenow");
+    else
+      el.setAttribute("aria-valuenow", key === "p" ? Number(v) : v);
+    el.setAttribute("aria-valuemin", spec[key].min);
+    el.setAttribute("aria-valuemax", spec[key].max);
+  }
+  const t = time(state);
+  const value = t ? `${pad(t[0])}:${pad(t[1])}${state.withSeconds ? `:${pad(t[2])}` : ""}` : "";
+  if (value === state.last)
+    return;
+  state.last = value;
+  hidden.value = value;
+  if (quiet)
+    return;
+  hidden.dispatchEvent(new Event("input", { bubbles: true }));
+  hidden.dispatchEvent(new Event("change", { bubbles: true }));
+  root.dispatchEvent(new CustomEvent("tsunami:timechange", { bubbles: true, detail: { value } }));
+}
+function bump(state, key, dir) {
+  const { f, spec } = state;
+  if (key === "p")
+    f.p = f.p === null ? dir < 0 : !f.p;
+  else {
+    const { min, max } = spec[key];
+    const step = key === "m" ? Math.max(1, Number(state.root.dataset.step) || 1) : 1;
+    const top = Math.floor((max - min) / step) * step + min;
+    let v = f[key];
+    if (v === null)
+      v = dir > 0 ? min : top;
+    else {
+      v = dir > 0 ? (Math.floor((v - min) / step) + 1) * step + min : (Math.ceil((v - min) / step) - 1) * step + min;
+      if (v > top)
+        v = min;
+      else if (v < min)
+        v = top;
+    }
+    f[key] = v;
+  }
+  fill(state);
+  state.buf = "";
+  clamp(state);
+  write2(state);
+}
+function set4(state, key, v) {
+  state.f[key] = v;
+  fill(state);
+  state.buf = "";
+  write2(state);
+}
+function type(state, key, digit) {
+  const { min, max } = state.spec[key];
+  const buf = state.bufKey === key && state.buf.length < 2 ? state.buf + digit : digit;
+  const n = Math.min(max, Math.max(min, Number(buf)));
+  const done = buf.length === 2 || Number(buf) * 10 > max;
+  state.f[key] = n;
+  fill(state);
+  write2(state);
+  state.buf = done ? "" : buf;
+  state.bufKey = key;
+  if (done)
+    move(state, key, 1);
+}
+function move(state, key, by) {
+  const next = state.keys[state.keys.indexOf(key) + by];
+  if (next)
+    state.segs[next].focus();
+}
+var of = (el) => {
+  const root = el?.closest?.(ROOT4);
+  return root && states3.get(root);
+};
+document.addEventListener("focusin", (e) => {
+  if (!e.target.matches?.(SEGMENT))
+    return;
+  const state = of(e.target);
+  if (state) {
+    state.buf = "";
+    e.target.select();
+  }
+});
+document.addEventListener("click", (e) => {
+  if (e.target.matches?.(SEGMENT))
+    e.target.select();
+  else if (e.target.matches?.(ROOT4))
+    states3.get(e.target)?.segs.h.focus();
+});
+document.addEventListener("focusout", (e) => {
+  const state = of(e.target);
+  if (!state || !e.target.matches(SEGMENT))
+    return;
+  state.buf = "";
+  if (!state.root.contains(e.relatedTarget))
+    clamp(state);
+});
+document.addEventListener("keydown", (e) => {
+  if (!e.target.matches?.(SEGMENT) || e.ctrlKey || e.metaKey || e.altKey)
+    return;
+  const state = of(e.target);
+  if (!state)
+    return;
+  const key = e.target.dataset.segment;
+  const { min, max } = state.spec[key];
+  const handled = (fn) => {
+    e.preventDefault();
+    fn();
+  };
+  switch (e.key) {
+    case "ArrowUp":
+      return handled(() => bump(state, key, 1));
+    case "ArrowDown":
+      return handled(() => bump(state, key, -1));
+    case "ArrowLeft":
+      return handled(() => move(state, key, -1));
+    case "ArrowRight":
+      return handled(() => move(state, key, 1));
+    case "Home":
+      return handled(() => key === "p" ? set4(state, key, false) : set4(state, key, min));
+    case "End":
+      return handled(() => key === "p" ? set4(state, key, true) : set4(state, key, max));
+    case "Backspace":
+    case "Delete":
+      return handled(() => {
+        state.f[key] = null;
+        state.buf = "";
+        write2(state);
+      });
+    case ":":
+    case ".":
+    case ",":
+    case " ":
+      return handled(() => move(state, key, 1));
+    case "a":
+    case "A":
+    case "p":
+    case "P":
+      if (key === "p")
+        handled(() => set4(state, key, e.key.toLowerCase() === "p"));
+      else
+        e.preventDefault();
+  }
+});
+document.addEventListener("beforeinput", (e) => {
+  if (!e.target.matches?.(SEGMENT))
+    return;
+  const state = of(e.target);
+  if (!state || e.inputType.startsWith("insertFromPaste"))
+    return;
+  e.preventDefault();
+  const key = e.target.dataset.segment;
+  if (e.inputType.startsWith("delete")) {
+    state.f[key] = null;
+    write2(state);
+  } else
+    for (const ch of e.data ?? "")
+      if (/\d/.test(ch))
+        type(state, key, ch);
+});
+document.addEventListener("paste", (e) => {
+  if (!e.target.matches?.(SEGMENT))
+    return;
+  const state = of(e.target);
+  const text = (e.clipboardData?.getData("text") ?? "").trim();
+  const m = /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(am|pm)?$/i.exec(text);
+  if (!state || !m)
+    return e.preventDefault();
+  e.preventDefault();
+  let h = Number(m[1]);
+  if (m[4])
+    h = h % 12 + (m[4].toLowerCase() === "pm" ? 12 : 0);
+  const t = parse3(`${h}:${m[2]}:${m[3] ?? "00"}`);
+  if (t) {
+    assign(state, t);
+    clamp(state);
+  }
+});
+document.addEventListener("reset", (e) => {
+  setTimeout(() => {
+    for (const root of e.target.querySelectorAll(ROOT4)) {
+      const state = states3.get(root);
+      if (state)
+        assign(state, parse3(state.start));
+    }
+  });
+});
+var mountAll = (scope = document) => {
+  if (scope.matches?.(ROOT4))
+    mount7(scope);
+  for (const root of scope.querySelectorAll(ROOT4))
+    mount7(root);
+};
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => mountAll());
+else
+  mountAll();
+new MutationObserver((records) => {
+  for (const r of records) {
+    if (r.type === "attributes") {
+      const state = states3.get(r.target);
+      if (state)
+        disable2(state);
+      continue;
+    }
+    for (const n of r.addedNodes)
+      if (n.nodeType === 1)
+        mountAll(n);
+  }
+}).observe(document.documentElement, {
+  childList: true,
+  subtree: true,
+  attributes: true,
+  attributeFilter: ["disabled"]
+});
+(window.tsunami ??= {}).timePicker = {
+  mount: mount7,
+  destroy: destroy3,
+  get: (el) => states3.get(el)?.last ?? null,
+  set: (el, value) => {
+    const state = states3.get(el);
+    if (state)
+      assign(state, parse3(value));
+  }
+};
+
+// src/js/sortable.js
+var states4 = new WeakMap;
 var mounted2 = new Set;
 var status = null;
 var MEMBERS = ["toArray", "sort", "disabled", "sortable"];
@@ -3134,26 +4413,26 @@ var fromData2 = (el) => {
     return {};
   }
 };
-function destroy3(el) {
-  const state = states3.get(el);
+function destroy4(el) {
+  const state = states4.get(el);
   if (!state)
     return;
-  states3.delete(el);
+  states4.delete(el);
   mounted2.delete(el);
   for (const name of MEMBERS)
     delete el[name];
   state.sortable.destroy();
 }
-function mount4(el, options = {}) {
+function mount8(el, options = {}) {
   if (!window.Sortable)
     throw new Error("A .sortable needs SortableJS: load dist/sortable.min.js with its own <script> before the Tsunami script.");
-  destroy3(el);
+  destroy4(el);
   const sortable = new window.Sortable(el, {
     ...defaults(el),
     ...fromData2(el),
     ...options
   });
-  states3.set(el, { sortable });
+  states4.set(el, { sortable });
   mounted2.add(el);
   Object.defineProperties(el, {
     toArray: { configurable: true, value: () => sortable.toArray() },
@@ -3170,10 +4449,10 @@ function mount4(el, options = {}) {
   });
 }
 var upgrade4 = (el) => {
-  if (states3.has(el) || el.closest(".sortable-fallback"))
+  if (states4.has(el) || el.closest(".sortable-fallback"))
     return;
   try {
-    mount4(el);
+    mount8(el);
   } catch (error) {
     console.error(error.message, el);
   }
@@ -3192,7 +4471,7 @@ new MutationObserver((list) => list.forEach((m) => {
   if (document.readyState === "loading")
     return;
   if (m.type === "attributes") {
-    const state = states3.get(m.target);
+    const state = states4.get(m.target);
     if (state)
       state.sortable.option("disabled", m.target.hasAttribute("data-disabled"));
     return;
@@ -3207,7 +4486,7 @@ new MutationObserver((list) => list.forEach((m) => {
       return;
     for (const el of mounted2)
       if (!el.isConnected)
-        destroy3(el);
+        destroy4(el);
   });
 })).observe(document.documentElement, {
   childList: true,
@@ -3219,23 +4498,23 @@ var reorder = (el, item, oldIndex, newIndex) => el.dispatchEvent(new CustomEvent
   bubbles: true,
   detail: {
     item,
-    id: item.getAttribute(states3.get(el).sortable.option("dataIdAttr")),
+    id: item.getAttribute(states4.get(el).sortable.option("dataIdAttr")),
     oldIndex,
     newIndex
   }
 }));
 document.addEventListener("update", (e) => {
-  if (e.from && e.target === e.from && states3.has(e.from))
+  if (e.from && e.target === e.from && states4.has(e.from))
     reorder(e.from, e.item, e.oldDraggableIndex, e.newDraggableIndex);
 });
 document.addEventListener("choose", (e) => {
-  if (!states3.has(e.target))
+  if (!states4.has(e.target))
     return;
   for (const cell of e.item.cells ?? [])
     cell.style.width = `${cell.getBoundingClientRect().width}px`;
 });
 document.addEventListener("unchoose", (e) => {
-  if (!states3.has(e.target))
+  if (!states4.has(e.target))
     return;
   for (const cell of e.item.cells ?? []) {
     cell.style.width = "";
@@ -3248,7 +4527,7 @@ document.addEventListener("keydown", (e) => {
   const step = STEP[e.key];
   const handle = step && e.target.closest?.(".sortable-handle");
   const list = handle?.closest(".sortable");
-  const state = list && states3.get(list);
+  const state = list && states4.get(list);
   if (!state || state.sortable.option("disabled"))
     return;
   const rows = [...list.children].filter((c) => window.Sortable.utils.closest(c, state.sortable.option("draggable"), list, false) === c);
@@ -3272,32 +4551,32 @@ document.addEventListener("keydown", (e) => {
   status.textContent = `${handle.getAttribute("aria-label") || row.textContent.trim()}, moved to position ${to + 1} of ${rows.length}`;
   reorder(list, row, from, to);
 });
-var ready2 = (el) => {
-  if (!states3.has(el))
-    mount4(el);
+var ready3 = (el) => {
+  if (!states4.has(el))
+    mount8(el);
   return el;
 };
 (window.tsunami ??= {}).sortable = {
-  mount: mount4,
-  get: (el) => states3.get(el)?.sortable ?? null,
-  destroy: destroy3,
-  toArray: (el) => ready2(el).toArray(),
-  sort: (el, order) => ready2(el).sort(order),
+  mount: mount8,
+  get: (el) => states4.get(el)?.sortable ?? null,
+  destroy: destroy4,
+  toArray: (el) => ready3(el).toArray(),
+  sort: (el, order) => ready3(el).sort(order),
   disabled(el, value) {
     if (value !== undefined)
-      ready2(el).disabled = value;
-    return Boolean(ready2(el).disabled);
+      ready3(el).disabled = value;
+    return Boolean(ready3(el).disabled);
   }
 };
 
 // src/js/date-picker.js
-var ROOT3 = ".date-picker";
+var ROOT5 = ".date-picker";
 var TO = " to ";
-var states4 = new WeakMap;
+var states5 = new WeakMap;
 var mounted3 = new Set;
 var open2 = new Set;
 var MEMBERS2 = ["value", "open", "close", "calendar"];
-var uid4 = 0;
+var uid6 = 0;
 var formats = {
   long: new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -3318,11 +4597,43 @@ var isDate = (text) => {
   const date = new Date(`${text}T00:00:00Z`);
   return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === text;
 };
-function parse3(text, count) {
+function parse4(text, count) {
   const parts = text.trim() === "" ? [] : text.split(TO).map((s) => s.trim());
   if (parts.length !== 0 && parts.length !== count)
     return null;
   return parts.every(isDate) ? parts.sort() : null;
+}
+var iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+function shift(d, days) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate() + days);
+}
+var PRESETS = {
+  today: (t) => [t, t],
+  yesterday: (t) => [shift(t, -1), shift(t, -1)],
+  tomorrow: (t) => [shift(t, 1), shift(t, 1)],
+  "last-7-days": (t) => [shift(t, -6), t],
+  "last-30-days": (t) => [shift(t, -29), t],
+  "last-90-days": (t) => [shift(t, -89), t],
+  "this-week": (t) => [shift(t, -((t.getDay() + 6) % 7)), t],
+  "this-month": (t) => [new Date(t.getFullYear(), t.getMonth(), 1), t],
+  "last-month": (t) => [
+    new Date(t.getFullYear(), t.getMonth() - 1, 1),
+    new Date(t.getFullYear(), t.getMonth(), 0)
+  ],
+  "this-year": (t) => [new Date(t.getFullYear(), 0, 1), t],
+  "last-year": (t) => [
+    new Date(t.getFullYear() - 1, 0, 1),
+    new Date(t.getFullYear() - 1, 11, 31)
+  ]
+};
+function presetValue(name, count) {
+  const [from, to] = PRESETS[name]?.(new Date) ?? [];
+  if (!from)
+    return "";
+  const [a, b] = [iso(from), iso(to)];
+  if (count === 2)
+    return `${a}${TO}${b}`;
+  return a === b ? a : "";
 }
 var parts4 = (root) => ({
   text: root.querySelector(':scope > input:not([type="hidden"])'),
@@ -3331,11 +4642,11 @@ var parts4 = (root) => ({
   panel: root.querySelector(":scope > [data-popover]")
 });
 var wide = () => matchMedia("(min-width: 48rem)").matches;
-function destroy4(root) {
-  const state = states4.get(root);
+function destroy5(root) {
+  const state = states5.get(root);
   if (!state)
     return;
-  states4.delete(root);
+  states5.delete(root);
   mounted3.delete(root);
   open2.delete(root);
   for (const name of MEMBERS2)
@@ -3355,14 +4666,14 @@ function destroy4(root) {
   control.removeAttribute("aria-expanded");
   root.removeAttribute("data-date-picker-initialized");
 }
-function mount5(root, options = {}) {
+function mount9(root, options = {}) {
   if (!window.VanillaCalendarPro?.Calendar)
     throw new Error("A .date-picker needs Vanilla Calendar Pro: load dist/vanilla-calendar.min.js with its own <script> before the Tsunami script.");
   const { text, button, hidden, panel } = parts4(root);
   const span = button?.querySelector(":scope > span");
   if (!panel || !text && !span)
     throw new Error("A .date-picker needs a text input, or a button holding a span, and a [data-popover] panel.", { cause: root });
-  destroy4(root);
+  destroy5(root);
   const control = text ?? button;
   const range = root.dataset.mode === "range";
   const count = range ? 2 : 1;
@@ -3378,7 +4689,7 @@ function mount5(root, options = {}) {
     calendar: null
   };
   panel.prepend(state.host);
-  panel.id ||= `date-picker-${++uid4}`;
+  panel.id ||= `date-picker-${++uid6}`;
   panel.setAttribute("popover", "manual");
   panel.setAttribute("role", "dialog");
   panel.setAttribute("aria-label", range ? "Choose dates" : "Choose a date");
@@ -3407,9 +4718,16 @@ function mount5(root, options = {}) {
     root.toggleAttribute("data-empty", dates.length === 0);
     if (hidden)
       hidden.value = value();
-    for (const preset of panel.querySelectorAll("[data-presets] button"))
-      preset.setAttribute("aria-pressed", String(preset.value === value()));
+    presets();
     sync();
+  }
+  function presets() {
+    for (const preset of panel.querySelectorAll("[data-presets] button")) {
+      const name = preset.dataset.preset;
+      if (name)
+        preset.value = presetValue(name, count);
+      preset.setAttribute("aria-pressed", String(preset.value === value()));
+    }
   }
   function sync() {
     const first = dates[0];
@@ -3468,6 +4786,7 @@ function mount5(root, options = {}) {
   function show() {
     if (open2.has(root) || control.disabled)
       return;
+    presets();
     if ((range && wide() ? 2 : 1) !== months)
       build();
     else
@@ -3485,21 +4804,22 @@ function mount5(root, options = {}) {
     panel.setAttribute("aria-hidden", "true");
     button?.setAttribute("aria-expanded", "false");
   }
-  Object.assign(state, { commit, show, close, parse: (t) => parse3(t, count) });
-  states4.set(root, state);
+  Object.assign(state, { commit, show, close, parse: (t) => parse4(t, count) });
+  states5.set(root, state);
   mounted3.add(root);
   build();
-  const start = parse3(hidden?.value || text?.value || "", count);
+  const start = parse4(hidden?.value || text?.value || "", count);
   if (start) {
     dates = start;
     paint();
-  }
+  } else
+    presets();
   Object.defineProperties(root, {
     value: {
       configurable: true,
       get: () => value(),
       set(next) {
-        commit(parse3(String(next ?? ""), count) ?? []);
+        commit(parse4(String(next ?? ""), count) ?? []);
       }
     },
     open: { configurable: true, value: show },
@@ -3509,15 +4829,15 @@ function mount5(root, options = {}) {
   root.setAttribute("data-date-picker-initialized", "true");
 }
 var upgrade5 = (root) => {
-  if (states4.has(root))
+  if (states5.has(root))
     return;
   try {
-    mount5(root);
+    mount9(root);
   } catch (error) {
     console.error(error.message, root);
   }
 };
-var all5 = (node) => node.querySelectorAll?.(ROOT3).forEach(upgrade5);
+var all5 = (node) => node.querySelectorAll?.(ROOT5).forEach(upgrade5);
 var scan6 = () => {
   if (document.readyState === "loading")
     document.addEventListener("DOMContentLoaded", () => all5(document), {
@@ -3533,7 +4853,7 @@ new MutationObserver((list) => list.forEach((m) => {
   for (const n of m.addedNodes) {
     if (n.nodeType !== 1 || n.closest("[data-vc]"))
       continue;
-    if (n.matches(ROOT3))
+    if (n.matches(ROOT5))
       upgrade5(n);
     all5(n);
   }
@@ -3541,15 +4861,15 @@ new MutationObserver((list) => list.forEach((m) => {
     if (!n.isConnected) {
       for (const root of mounted3)
         if (!root.isConnected)
-          destroy4(root);
+          destroy5(root);
     }
 })).observe(document.documentElement, { childList: true, subtree: true });
-var rootOf4 = (el) => el.closest?.(ROOT3);
+var rootOf5 = (el) => el.closest?.(ROOT5);
 var stateOf = (el) => {
-  const root = rootOf4(el);
-  return root && states4.has(root) ? [root, states4.get(root)] : [];
+  const root = rootOf5(el);
+  return root && states5.has(root) ? [root, states5.get(root)] : [];
 };
-var choose3 = (state, dates) => {
+var choose4 = (state, dates) => {
   state.commit(dates);
   state.quiet = true;
   state.control.focus();
@@ -3575,7 +4895,7 @@ document.addEventListener("click", (e) => {
   }
   const preset = e.target.closest("[data-presets] button");
   if (preset && state.panel.contains(preset))
-    choose3(state, state.parse(preset.value) ?? []);
+    choose4(state, state.parse(preset.value) ?? []);
 });
 document.addEventListener("change", (e) => {
   const [root, state] = stateOf(e.target);
@@ -3593,7 +4913,7 @@ document.addEventListener("change", (e) => {
 document.addEventListener("pointerdown", (e) => {
   for (const root of [...open2])
     if (!root.contains(e.target))
-      states4.get(root).close();
+      states5.get(root).close();
 });
 document.addEventListener("focusout", (e) => {
   const [root, state] = stateOf(e.target);
@@ -3614,9 +4934,9 @@ document.addEventListener("keydown", (e) => {
   state.quiet = false;
 }, true);
 (window.tsunami ??= {}).datePicker = {
-  mount: mount5,
-  get: (el) => states4.get(el)?.calendar ?? null,
-  destroy: destroy4
+  mount: mount9,
+  get: (el) => states5.get(el)?.calendar ?? null,
+  destroy: destroy5
 };
 
 // src/js/chart.js
@@ -3629,10 +4949,10 @@ var PALETTE = [
 ];
 var SLICES = ["pie", "doughnut", "polarArea"];
 var RADIAL = [...SLICES, "radar"];
-var states5 = new Map;
-var root2 = document.documentElement;
+var states6 = new Map;
+var root3 = document.documentElement;
 var reduce = matchMedia("(prefers-reduced-motion: reduce)");
-var token = (name) => getComputedStyle(root2).getPropertyValue(name).trim();
+var token = (name) => getComputedStyle(root3).getPropertyValue(name).trim();
 var isObject = (v) => v && typeof v === "object" && !Array.isArray(v);
 function merge(base, extra) {
   for (const [key, value] of Object.entries(extra ?? {}))
@@ -3654,12 +4974,12 @@ function alpha(color, a) {
     return `rgba(${r}, ${g}, ${b}, ${a})`;
   });
 }
-var px = (value) => value.endsWith("rem") ? parseFloat(value) * parseFloat(getComputedStyle(root2).fontSize) : parseFloat(value);
-var ready3 = false;
-var setup = () => {
-  if (ready3)
+var px = (value) => value.endsWith("rem") ? parseFloat(value) * parseFloat(getComputedStyle(root3).fontSize) : parseFloat(value);
+var ready4 = false;
+var setup2 = () => {
+  if (ready4)
     return;
-  ready3 = true;
+  ready4 = true;
   window.Chart.Tooltip.positioners.pointer = (_items, point) => point;
 };
 var separator = {
@@ -3840,18 +5160,18 @@ function config(options) {
     total: datasets.some((d) => d._total)
   };
 }
-function destroy5(el) {
-  const state = states5.get(el);
+function destroy6(el) {
+  const state = states6.get(el);
   if (!state)
     return;
-  states5.delete(el);
+  states6.delete(el);
   state.chart.destroy();
   delete el.dataset.chartInitialized;
 }
 function draw2(el, options, quiet) {
-  const old = states5.get(el);
+  const old = states6.get(el);
   if (old) {
-    states5.delete(el);
+    states6.delete(el);
     old.chart.destroy();
   }
   const { total, ...cfg } = config(options);
@@ -3859,10 +5179,10 @@ function draw2(el, options, quiet) {
     cfg.options.animation = false;
   const chart = new window.Chart(el, cfg);
   chart.$total = total;
-  states5.set(el, { chart, options });
+  states6.set(el, { chart, options });
   const family = chart.options.font.family;
   if (!document.fonts.check(`1em ${family}`))
-    document.fonts.load(`1em ${family}`).then(() => states5.get(el)?.chart === chart && chart.update("none"));
+    document.fonts.load(`1em ${family}`).then(() => states6.get(el)?.chart === chart && chart.update("none"));
   el.dataset.chartInitialized = "true";
   el.dispatchEvent(new CustomEvent("tsunami:chartready", { bubbles: true, detail: { chart } }));
   return chart;
@@ -3870,7 +5190,7 @@ function draw2(el, options, quiet) {
 function chart(target, options = {}) {
   if (!window.Chart)
     throw new Error("A chart needs Chart.js: load dist/chart.min.js with its own <script> before the Tsunami script.");
-  setup();
+  setup2();
   const el = typeof target === "string" ? document.querySelector(target) : target;
   if (!(el instanceof HTMLCanvasElement))
     throw new Error("A chart needs a <canvas> to draw in.", { cause: target });
@@ -3879,20 +5199,20 @@ function chart(target, options = {}) {
 new MutationObserver((list) => list.forEach((m) => m.removedNodes.forEach((n) => {
   if (n.isConnected)
     return;
-  for (const el of states5.keys())
+  for (const el of states6.keys())
     if (!el.isConnected)
-      destroy5(el);
+      destroy6(el);
 }))).observe(document.documentElement, { childList: true, subtree: true });
 document.addEventListener("tsunami:themechange", () => {
-  for (const [el, state] of [...states5])
+  for (const [el, state] of [...states6])
     draw2(el, state.options, true);
 });
-chart.get = (el) => states5.get(el)?.chart ?? null;
-chart.destroy = destroy5;
+chart.get = (el) => states6.get(el)?.chart ?? null;
+chart.destroy = destroy6;
 (window.tsunami ??= {}).chart = chart;
 
 // src/js/code-editor.js
-var ROOT4 = ".code-editor";
+var ROOT6 = ".code-editor";
 var LANGUAGES = ["html", "css", "scss", "javascript", "json"];
 var NO_SERVICE = {
   completionItems: false,
@@ -3909,11 +5229,11 @@ var NO_SERVICE = {
   codeActions: false,
   inlayHints: false
 };
-var states6 = new WeakMap;
+var states7 = new WeakMap;
 var mounted4 = new Set;
 var loading = null;
-var root3 = document.documentElement;
-var token2 = (name) => getComputedStyle(root3).getPropertyValue(name).trim();
+var root4 = document.documentElement;
+var token2 = (name) => getComputedStyle(root4).getPropertyValue(name).trim();
 var pixel = document.createElement("canvas").getContext("2d", {
   willReadFrequently: true
 });
@@ -4038,14 +5358,14 @@ var defaults2 = () => ({
   hideCursorInOverviewRuler: true,
   scrollbar: { useShadows: false }
 });
-var files = (box) => [...box.querySelectorAll("textarea")].filter((t) => t.closest(ROOT4) === box);
+var files = (box) => [...box.querySelectorAll("textarea")].filter((t) => t.closest(ROOT6) === box);
 var shown = (box) => files(box).find((t) => !t.hidden) ?? null;
 var language = (box, ta) => {
   const name = ta.dataset.language ?? box.dataset.language;
   return LANGUAGES.includes(name) ? name : "plaintext";
 };
-var text = (id) => document.getElementById(id)?.textContent.trim() ?? "";
-var labelOf2 = (box, ta) => ta.getAttribute("aria-label") || [...ta.labels ?? []].map((l) => l.textContent.trim()).join(" ") || (ta.getAttribute("aria-labelledby") ?? "").split(/\s+/).map(text).join(" ").trim() || box.getAttribute("aria-label") || "Code editor";
+var text2 = (id) => document.getElementById(id)?.textContent.trim() ?? "";
+var labelOf2 = (box, ta) => ta.getAttribute("aria-label") || [...ta.labels ?? []].map((l) => l.textContent.trim()).join(" ") || (ta.getAttribute("aria-labelledby") ?? "").split(/\s+/).map(text2).join(" ").trim() || box.getAttribute("aria-label") || "Code editor";
 function track(box, state, ta) {
   const model = state.monaco.editor.createModel(ta.value, language(box, ta));
   const file = { model, view: null };
@@ -4057,7 +5377,7 @@ function track(box, state, ta) {
   });
   state.files.set(ta, file);
 }
-function refresh4(box, state) {
+function refresh5(box, state) {
   const { editor, monaco } = state;
   const list = files(box);
   for (const [ta, file] of state.files)
@@ -4095,9 +5415,9 @@ function refresh4(box, state) {
     ...state.options
   });
 }
-function start2(box, state) {
+function start5(box, state) {
   load2().then((monaco) => {
-    if (states6.get(box) !== state)
+    if (states7.get(box) !== state)
       return;
     const host = document.createElement("div");
     host.className = "code-editor-host";
@@ -4112,9 +5432,9 @@ function start2(box, state) {
       ...state.options
     });
     monaco.editor.setTheme(themeName());
-    refresh4(box, state);
+    refresh5(box, state);
     box.dataset.loaded = "";
-    state.observer = new MutationObserver(() => refresh4(box, state));
+    state.observer = new MutationObserver(() => refresh5(box, state));
     state.observer.observe(box, {
       childList: true,
       subtree: true,
@@ -4133,11 +5453,11 @@ function start2(box, state) {
     }));
   }, (error) => console.error("Tsunami code editor could not start:", error));
 }
-function destroy6(box) {
-  const state = states6.get(box);
+function destroy7(box) {
+  const state = states7.get(box);
   if (!state)
     return;
-  states6.delete(box);
+  states7.delete(box);
   mounted4.delete(box);
   delete box.editor;
   delete box.dataset.loaded;
@@ -4152,9 +5472,9 @@ function destroy6(box) {
   state.editor.dispose();
   state.host.remove();
 }
-function mount6(box, options = {}) {
+function mount10(box, options = {}) {
   load2();
-  destroy6(box);
+  destroy7(box);
   const state = {
     editor: null,
     options,
@@ -4162,19 +5482,19 @@ function mount6(box, options = {}) {
     current: null,
     quiet: false
   };
-  states6.set(box, state);
+  states7.set(box, state);
   mounted4.add(box);
   Object.defineProperty(box, "editor", {
     configurable: true,
     get: () => state.editor
   });
-  start2(box, state);
+  start5(box, state);
 }
 var upgrade6 = (box) => {
-  if (!states6.has(box))
-    mount6(box);
+  if (!states7.has(box))
+    mount10(box);
 };
-var all6 = (node) => node.querySelectorAll?.(ROOT4).forEach(upgrade6);
+var all6 = (node) => node.querySelectorAll?.(ROOT6).forEach(upgrade6);
 if (document.readyState === "loading")
   document.addEventListener("DOMContentLoaded", () => all6(document), {
     once: true
@@ -4184,15 +5504,15 @@ else
 new MutationObserver((list) => list.forEach((m) => {
   if (document.readyState === "loading")
     return;
-  m.addedNodes.forEach((n) => n.matches?.(ROOT4) ? upgrade6(n) : all6(n));
+  m.addedNodes.forEach((n) => n.matches?.(ROOT6) ? upgrade6(n) : all6(n));
   if (m.removedNodes.length) {
     for (const box of mounted4)
       if (!box.isConnected)
-        destroy6(box);
+        destroy7(box);
   }
-})).observe(root3, { childList: true, subtree: true });
+})).observe(root4, { childList: true, subtree: true });
 document.addEventListener("tsunami:themechange", () => {
-  const state = [...mounted4].map((b) => states6.get(b)).find((s) => s.monaco);
+  const state = [...mounted4].map((b) => states7.get(b)).find((s) => s.monaco);
   if (!state)
     return;
   defineTheme(state.monaco);
@@ -4201,7 +5521,7 @@ document.addEventListener("tsunami:themechange", () => {
 document.addEventListener("reset", (e) => {
   setTimeout(() => {
     for (const box of mounted4) {
-      const state = states6.get(box);
+      const state = states7.get(box);
       if (!state.editor || box.closest("form") !== e.target)
         continue;
       state.quiet = true;
@@ -4212,12 +5532,12 @@ document.addEventListener("reset", (e) => {
   });
 });
 document.addEventListener("focusin", (e) => {
-  const box = e.target.closest?.(`${ROOT4}[data-loaded]`);
+  const box = e.target.closest?.(`${ROOT6}[data-loaded]`);
   if (box && e.target.matches("textarea"))
-    states6.get(box)?.editor?.focus();
+    states7.get(box)?.editor?.focus();
 });
 (window.tsunami ??= {}).codeEditor = {
-  mount: mount6,
-  get: (box) => states6.get(box)?.editor ?? null,
-  destroy: destroy6
+  mount: mount10,
+  get: (box) => states7.get(box)?.editor ?? null,
+  destroy: destroy7
 };

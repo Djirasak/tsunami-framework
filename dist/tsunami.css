@@ -1,4 +1,4 @@
-/* tsunami v0.1.4 */
+/* tsunami v0.2.0 */
 @charset "UTF-8";
 @layer tokens, base, components;
 @layer tokens {
@@ -9110,6 +9110,1552 @@
   }
 }
 @layer components {
+  :where(.bulk-bar) {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  :where(.bulk-bar:not([data-active=true])) {
+    visibility: hidden;
+    opacity: 0;
+  }
+  :where(.bulk-bar > p) {
+    margin: 0;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  :where(.bulk-bar > p > [data-bulk-count]) {
+    color: var(--fg);
+    font-weight: 600;
+  }
+  :where(.bulk-bar > div) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  :where(.bulk-bar > [data-bulk-clear]) {
+    margin-left: auto;
+  }
+  @media (width < 40rem) {
+    :where(.bulk-bar) {
+      padding-inline: var(--space-4);
+    }
+  }
+}
+@layer components {
+  :where(.desc) {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+  }
+  :where(.desc > div) {
+    min-width: 0;
+  }
+  :where(.desc dt) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+  :where(.desc dd) {
+    min-width: 0;
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+  :where(.desc dd:empty, .desc dd[data-empty])::before {
+    content: "—";
+    color: var(--muted);
+  }
+  :where(.desc[data-layout=inline] > div) {
+    display: grid;
+    grid-template-columns: minmax(6rem, 10rem) minmax(0, 1fr);
+    align-items: baseline;
+    gap: var(--space-4);
+  }
+  :where(.desc[data-layout=grid]) {
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: var(--space-4) var(--space-5);
+  }
+  :where(.desc[data-divided]) {
+    gap: 0;
+  }
+  :where(.desc[data-divided] > div) {
+    padding-block: var(--space-3);
+    border-top: 1px solid var(--line);
+  }
+  :where(.desc[data-divided]:not([data-layout=grid]) > div:first-child) {
+    padding-top: 0;
+    border-top: 0;
+  }
+  @media (width < 40rem) {
+    :where(.desc[data-layout=inline] > div) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+    }
+  }
+}
+@layer components {
+  :where(.segmented) {
+    display: inline-flex;
+    gap: 2px;
+    max-width: 100%;
+    padding: 2px;
+    border-radius: var(--radius-md);
+    background: var(--neutral-bg);
+    justify-self: start;
+  }
+  :where(.segmented > label) {
+    position: relative;
+    display: inline-flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: 1.75rem;
+    padding: 0 var(--space-3);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  :where(.segmented > label > input) {
+    appearance: none;
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    border-radius: inherit;
+    opacity: 0;
+    cursor: inherit;
+  }
+  :where(.segmented > label:hover) {
+    color: var(--fg);
+  }
+  :where(.segmented > label:has(> input:checked)) {
+    border-color: var(--line);
+    background: var(--surface);
+    color: var(--fg);
+  }
+  :where(.segmented > label:has(> input:focus-visible)) {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+  :where(.segmented > label:has(> input:disabled)) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  :where(.segmented[data-size=sm] > label) {
+    height: 1.5rem;
+    padding: 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+}
+@layer components {
+  :where(.dot) {
+    --dot: var(--neutral-fg);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    line-height: 1;
+  }
+  :where(.dot)::before {
+    content: "";
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--dot);
+  }
+  :where(.dot[data-status=success]) {
+    --dot: var(--ok-fg);
+  }
+  :where(.dot[data-status=warning]) {
+    --dot: var(--warning-fg);
+  }
+  :where(.dot[data-status=danger]) {
+    --dot: var(--danger-fg);
+  }
+  :where(.dot[data-status=info]) {
+    --dot: var(--info-fg);
+  }
+  :where(.dot[data-pulse])::before {
+    box-shadow: 0 0 0 0 var(--dot);
+    animation: tsunami-dot-pulse 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  @keyframes tsunami-dot-pulse {
+    70%, 100% {
+      box-shadow: 0 0 0 0.375rem transparent;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :where(.dot[data-pulse])::before {
+      animation: none;
+    }
+  }
+}
+@layer components {
+  :where(.btn:not([data-copied]) > [data-done]) {
+    display: none;
+  }
+  :where(.btn[data-copied] > [data-idle]) {
+    display: none;
+  }
+  :where(.btn[data-copied]) {
+    color: var(--ok-fg);
+  }
+  :where(.code-block) {
+    position: relative;
+  }
+  :where(.code-block > pre) {
+    padding-right: 3rem;
+  }
+  :where(.code-block > .btn) {
+    position: absolute;
+    top: calc(var(--space-4) + 0.8 * var(--text-sm) - 0.875rem);
+    right: var(--space-2);
+  }
+  :where(.code-block > .btn:not(:hover, :focus-visible)) {
+    background: var(--subtle);
+  }
+}
+@layer components {
+  :where(.chip) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    height: 1.5rem;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--subtle);
+    color: var(--fg);
+    font-size: var(--text-sm);
+    line-height: 1;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  :where(.chip[data-variant=accent]) {
+    border-color: var(--accent);
+    background: transparent;
+    color: var(--accent);
+  }
+  :where(.chip[data-variant=muted]) {
+    border-style: dashed;
+    background: transparent;
+    color: var(--muted);
+  }
+  :where(.chip > b) {
+    font-weight: 500;
+  }
+  :where(.chip > button) {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    margin-inline: 0 calc(var(--space-1) * -1);
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  :where(.chip > button:hover) {
+    color: var(--fg);
+  }
+  :where(.chip > button > .icon) {
+    font-size: 0.75rem;
+    vertical-align: 0;
+  }
+  :where(.filter-bar) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  :where(.filter-bar > [data-clear]) {
+    margin-inline-start: var(--space-1);
+  }
+}
+@layer components {
+  :where(.tag-input) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    width: 100%;
+    min-height: 2.25rem;
+    padding: calc(var(--space-1) - 1px) var(--space-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-base);
+    cursor: text;
+  }
+  :where(.tag-input:focus-within) {
+    border-color: var(--accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  :where(.tag-input[aria-invalid=true]) {
+    border-color: var(--danger-fg);
+  }
+  :where(.tag-input > input[type=text]) {
+    flex: 1 1 6rem;
+    min-width: 0;
+    height: 1.75rem;
+    padding: 0 var(--space-1);
+    border: 0;
+    outline: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+  }
+  :where(.tag-input > input::placeholder) {
+    color: var(--muted);
+    opacity: 1;
+  }
+  :where(.tag-input[data-disabled]) {
+    background: var(--subtle);
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+  :where(.tag-input[data-disabled] > .chip > button) {
+    display: none;
+  }
+}
+@layer components {
+  :where(.stepper) {
+    display: grid;
+    gap: var(--space-5);
+    min-width: 0;
+  }
+  :where(.stepper > ol) {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    counter-reset: step;
+    list-style: none;
+  }
+  :where(.stepper > ol > li) {
+    min-width: 0;
+    border-top: 2px solid var(--line);
+    counter-increment: step;
+    transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  :where(.stepper > ol > li:has(> [data-state=done], > [data-state=current])) {
+    border-top-color: var(--accent);
+  }
+  :where(.stepper > ol > li > button) {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    width: 100%;
+    padding: var(--space-3) 0 0;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    text-align: start;
+    cursor: pointer;
+  }
+  :where(.stepper > ol > li > button[aria-disabled=true]) {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  :where(.stepper > ol > li > button)::before {
+    content: counter(step);
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    line-height: 1;
+    transition-property: background-color, border-color, color;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  :where(.stepper > ol > li > button[data-state=current]) {
+    color: var(--fg);
+  }
+  :where(.stepper > ol > li > button[data-state=current])::before {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  :where(.stepper > ol > li > button[data-state=done]) {
+    color: var(--fg);
+  }
+  :where(.stepper > ol > li > button[data-state=done])::before {
+    content: "\e06c";
+    font-family: "lucide";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    border-color: var(--accent);
+    background: var(--surface);
+    color: var(--accent);
+  }
+  :where(.stepper > ol > li > button:not([aria-disabled=true]):hover) {
+    color: var(--fg);
+  }
+  :where(.stepper > ol > li > button:focus-visible) {
+    outline-offset: 2px;
+  }
+  :where(.stepper > ol > li > button > span) {
+    display: grid;
+    min-width: 0;
+  }
+  :where(.stepper > ol > li > button strong) {
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+  :where(.stepper > ol > li > button small) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+  :where(.stepper > section) {
+    min-width: 0;
+  }
+  :where(.stepper > section:focus-visible, .stepper > section :is(h2, h3, h4):focus-visible) {
+    outline-offset: 4px;
+  }
+  :where(.stepper > section > footer) {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: flex-end;
+    margin-top: var(--space-5);
+  }
+  :where(.stepper[data-orientation=vertical] > ol) {
+    grid-auto-flow: row;
+    gap: 0;
+  }
+  :where(.stepper[data-orientation=vertical] > ol > li) {
+    border-top: 0;
+    border-inline-start: 2px solid var(--line);
+    padding-inline-start: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+  :where(.stepper[data-orientation=vertical] > ol > li:has(> [data-state=done], > [data-state=current])) {
+    border-inline-start-color: var(--accent);
+  }
+  :where(.stepper[data-orientation=vertical] > ol > li > button) {
+    padding-top: 0;
+  }
+  @media (width < 40rem) {
+    :where(.stepper > ol) {
+      grid-auto-flow: row;
+      gap: 0;
+    }
+    :where(.stepper > ol > li) {
+      border-top: 0;
+      border-inline-start: 2px solid var(--line);
+      padding-inline-start: var(--space-3);
+      padding-bottom: var(--space-3);
+    }
+    :where(.stepper > ol > li:has(> [data-state=done], > [data-state=current])) {
+      border-inline-start-color: var(--accent);
+    }
+    :where(.stepper > ol > li > button) {
+      padding-top: 0;
+    }
+    :where(.stepper > section > footer) {
+      flex-direction: column-reverse;
+    }
+  }
+}
+@layer components {
+  :where(.flag) {
+    display: inline-block;
+    flex-shrink: 0;
+    height: 1rem;
+    aspect-ratio: 4/3;
+    vertical-align: -0.2em;
+    border-radius: 2px;
+    background: center/cover no-repeat;
+    outline: 1px solid var(--line);
+    outline-offset: -1px;
+  }
+  :where(.flag[data-size=sm]) {
+    height: 0.75rem;
+  }
+  :where(.flag[data-size=lg]) {
+    height: 1.5rem;
+  }
+  :where(.flag[data-size=xl]) {
+    height: 2rem;
+  }
+  :where(.flag-ad) {
+    background-image: url("../flags/ad.svg");
+  }
+  :where(.flag-ae) {
+    background-image: url("../flags/ae.svg");
+  }
+  :where(.flag-af) {
+    background-image: url("../flags/af.svg");
+  }
+  :where(.flag-ag) {
+    background-image: url("../flags/ag.svg");
+  }
+  :where(.flag-ai) {
+    background-image: url("../flags/ai.svg");
+  }
+  :where(.flag-al) {
+    background-image: url("../flags/al.svg");
+  }
+  :where(.flag-am) {
+    background-image: url("../flags/am.svg");
+  }
+  :where(.flag-ao) {
+    background-image: url("../flags/ao.svg");
+  }
+  :where(.flag-aq) {
+    background-image: url("../flags/aq.svg");
+  }
+  :where(.flag-ar) {
+    background-image: url("../flags/ar.svg");
+  }
+  :where(.flag-arab) {
+    background-image: url("../flags/arab.svg");
+  }
+  :where(.flag-as) {
+    background-image: url("../flags/as.svg");
+  }
+  :where(.flag-asean) {
+    background-image: url("../flags/asean.svg");
+  }
+  :where(.flag-at) {
+    background-image: url("../flags/at.svg");
+  }
+  :where(.flag-au) {
+    background-image: url("../flags/au.svg");
+  }
+  :where(.flag-aw) {
+    background-image: url("../flags/aw.svg");
+  }
+  :where(.flag-ax) {
+    background-image: url("../flags/ax.svg");
+  }
+  :where(.flag-az) {
+    background-image: url("../flags/az.svg");
+  }
+  :where(.flag-ba) {
+    background-image: url("../flags/ba.svg");
+  }
+  :where(.flag-bb) {
+    background-image: url("../flags/bb.svg");
+  }
+  :where(.flag-bd) {
+    background-image: url("../flags/bd.svg");
+  }
+  :where(.flag-be) {
+    background-image: url("../flags/be.svg");
+  }
+  :where(.flag-bf) {
+    background-image: url("../flags/bf.svg");
+  }
+  :where(.flag-bg) {
+    background-image: url("../flags/bg.svg");
+  }
+  :where(.flag-bh) {
+    background-image: url("../flags/bh.svg");
+  }
+  :where(.flag-bi) {
+    background-image: url("../flags/bi.svg");
+  }
+  :where(.flag-bj) {
+    background-image: url("../flags/bj.svg");
+  }
+  :where(.flag-bl) {
+    background-image: url("../flags/bl.svg");
+  }
+  :where(.flag-bm) {
+    background-image: url("../flags/bm.svg");
+  }
+  :where(.flag-bn) {
+    background-image: url("../flags/bn.svg");
+  }
+  :where(.flag-bo) {
+    background-image: url("../flags/bo.svg");
+  }
+  :where(.flag-bq) {
+    background-image: url("../flags/bq.svg");
+  }
+  :where(.flag-br) {
+    background-image: url("../flags/br.svg");
+  }
+  :where(.flag-bs) {
+    background-image: url("../flags/bs.svg");
+  }
+  :where(.flag-bt) {
+    background-image: url("../flags/bt.svg");
+  }
+  :where(.flag-bv) {
+    background-image: url("../flags/bv.svg");
+  }
+  :where(.flag-bw) {
+    background-image: url("../flags/bw.svg");
+  }
+  :where(.flag-by) {
+    background-image: url("../flags/by.svg");
+  }
+  :where(.flag-bz) {
+    background-image: url("../flags/bz.svg");
+  }
+  :where(.flag-ca) {
+    background-image: url("../flags/ca.svg");
+  }
+  :where(.flag-cc) {
+    background-image: url("../flags/cc.svg");
+  }
+  :where(.flag-cd) {
+    background-image: url("../flags/cd.svg");
+  }
+  :where(.flag-cefta) {
+    background-image: url("../flags/cefta.svg");
+  }
+  :where(.flag-cf) {
+    background-image: url("../flags/cf.svg");
+  }
+  :where(.flag-cg) {
+    background-image: url("../flags/cg.svg");
+  }
+  :where(.flag-ch) {
+    background-image: url("../flags/ch.svg");
+  }
+  :where(.flag-ci) {
+    background-image: url("../flags/ci.svg");
+  }
+  :where(.flag-ck) {
+    background-image: url("../flags/ck.svg");
+  }
+  :where(.flag-cl) {
+    background-image: url("../flags/cl.svg");
+  }
+  :where(.flag-cm) {
+    background-image: url("../flags/cm.svg");
+  }
+  :where(.flag-cn) {
+    background-image: url("../flags/cn.svg");
+  }
+  :where(.flag-co) {
+    background-image: url("../flags/co.svg");
+  }
+  :where(.flag-cp) {
+    background-image: url("../flags/cp.svg");
+  }
+  :where(.flag-cr) {
+    background-image: url("../flags/cr.svg");
+  }
+  :where(.flag-cu) {
+    background-image: url("../flags/cu.svg");
+  }
+  :where(.flag-cv) {
+    background-image: url("../flags/cv.svg");
+  }
+  :where(.flag-cw) {
+    background-image: url("../flags/cw.svg");
+  }
+  :where(.flag-cx) {
+    background-image: url("../flags/cx.svg");
+  }
+  :where(.flag-cy) {
+    background-image: url("../flags/cy.svg");
+  }
+  :where(.flag-cz) {
+    background-image: url("../flags/cz.svg");
+  }
+  :where(.flag-de) {
+    background-image: url("../flags/de.svg");
+  }
+  :where(.flag-dg) {
+    background-image: url("../flags/dg.svg");
+  }
+  :where(.flag-dj) {
+    background-image: url("../flags/dj.svg");
+  }
+  :where(.flag-dk) {
+    background-image: url("../flags/dk.svg");
+  }
+  :where(.flag-dm) {
+    background-image: url("../flags/dm.svg");
+  }
+  :where(.flag-do) {
+    background-image: url("../flags/do.svg");
+  }
+  :where(.flag-dz) {
+    background-image: url("../flags/dz.svg");
+  }
+  :where(.flag-eac) {
+    background-image: url("../flags/eac.svg");
+  }
+  :where(.flag-ec) {
+    background-image: url("../flags/ec.svg");
+  }
+  :where(.flag-ee) {
+    background-image: url("../flags/ee.svg");
+  }
+  :where(.flag-eg) {
+    background-image: url("../flags/eg.svg");
+  }
+  :where(.flag-eh) {
+    background-image: url("../flags/eh.svg");
+  }
+  :where(.flag-er) {
+    background-image: url("../flags/er.svg");
+  }
+  :where(.flag-es) {
+    background-image: url("../flags/es.svg");
+  }
+  :where(.flag-es-ct) {
+    background-image: url("../flags/es-ct.svg");
+  }
+  :where(.flag-es-ga) {
+    background-image: url("../flags/es-ga.svg");
+  }
+  :where(.flag-es-pv) {
+    background-image: url("../flags/es-pv.svg");
+  }
+  :where(.flag-et) {
+    background-image: url("../flags/et.svg");
+  }
+  :where(.flag-eu) {
+    background-image: url("../flags/eu.svg");
+  }
+  :where(.flag-fi) {
+    background-image: url("../flags/fi.svg");
+  }
+  :where(.flag-fj) {
+    background-image: url("../flags/fj.svg");
+  }
+  :where(.flag-fk) {
+    background-image: url("../flags/fk.svg");
+  }
+  :where(.flag-fm) {
+    background-image: url("../flags/fm.svg");
+  }
+  :where(.flag-fo) {
+    background-image: url("../flags/fo.svg");
+  }
+  :where(.flag-fr) {
+    background-image: url("../flags/fr.svg");
+  }
+  :where(.flag-ga) {
+    background-image: url("../flags/ga.svg");
+  }
+  :where(.flag-gb) {
+    background-image: url("../flags/gb.svg");
+  }
+  :where(.flag-gb-eng) {
+    background-image: url("../flags/gb-eng.svg");
+  }
+  :where(.flag-gb-nir) {
+    background-image: url("../flags/gb-nir.svg");
+  }
+  :where(.flag-gb-sct) {
+    background-image: url("../flags/gb-sct.svg");
+  }
+  :where(.flag-gb-wls) {
+    background-image: url("../flags/gb-wls.svg");
+  }
+  :where(.flag-gd) {
+    background-image: url("../flags/gd.svg");
+  }
+  :where(.flag-ge) {
+    background-image: url("../flags/ge.svg");
+  }
+  :where(.flag-gf) {
+    background-image: url("../flags/gf.svg");
+  }
+  :where(.flag-gg) {
+    background-image: url("../flags/gg.svg");
+  }
+  :where(.flag-gh) {
+    background-image: url("../flags/gh.svg");
+  }
+  :where(.flag-gi) {
+    background-image: url("../flags/gi.svg");
+  }
+  :where(.flag-gl) {
+    background-image: url("../flags/gl.svg");
+  }
+  :where(.flag-gm) {
+    background-image: url("../flags/gm.svg");
+  }
+  :where(.flag-gn) {
+    background-image: url("../flags/gn.svg");
+  }
+  :where(.flag-gp) {
+    background-image: url("../flags/gp.svg");
+  }
+  :where(.flag-gq) {
+    background-image: url("../flags/gq.svg");
+  }
+  :where(.flag-gr) {
+    background-image: url("../flags/gr.svg");
+  }
+  :where(.flag-gs) {
+    background-image: url("../flags/gs.svg");
+  }
+  :where(.flag-gt) {
+    background-image: url("../flags/gt.svg");
+  }
+  :where(.flag-gu) {
+    background-image: url("../flags/gu.svg");
+  }
+  :where(.flag-gw) {
+    background-image: url("../flags/gw.svg");
+  }
+  :where(.flag-gy) {
+    background-image: url("../flags/gy.svg");
+  }
+  :where(.flag-hk) {
+    background-image: url("../flags/hk.svg");
+  }
+  :where(.flag-hm) {
+    background-image: url("../flags/hm.svg");
+  }
+  :where(.flag-hn) {
+    background-image: url("../flags/hn.svg");
+  }
+  :where(.flag-hr) {
+    background-image: url("../flags/hr.svg");
+  }
+  :where(.flag-ht) {
+    background-image: url("../flags/ht.svg");
+  }
+  :where(.flag-hu) {
+    background-image: url("../flags/hu.svg");
+  }
+  :where(.flag-ic) {
+    background-image: url("../flags/ic.svg");
+  }
+  :where(.flag-id) {
+    background-image: url("../flags/id.svg");
+  }
+  :where(.flag-ie) {
+    background-image: url("../flags/ie.svg");
+  }
+  :where(.flag-il) {
+    background-image: url("../flags/il.svg");
+  }
+  :where(.flag-im) {
+    background-image: url("../flags/im.svg");
+  }
+  :where(.flag-in) {
+    background-image: url("../flags/in.svg");
+  }
+  :where(.flag-io) {
+    background-image: url("../flags/io.svg");
+  }
+  :where(.flag-iq) {
+    background-image: url("../flags/iq.svg");
+  }
+  :where(.flag-ir) {
+    background-image: url("../flags/ir.svg");
+  }
+  :where(.flag-is) {
+    background-image: url("../flags/is.svg");
+  }
+  :where(.flag-it) {
+    background-image: url("../flags/it.svg");
+  }
+  :where(.flag-je) {
+    background-image: url("../flags/je.svg");
+  }
+  :where(.flag-jm) {
+    background-image: url("../flags/jm.svg");
+  }
+  :where(.flag-jo) {
+    background-image: url("../flags/jo.svg");
+  }
+  :where(.flag-jp) {
+    background-image: url("../flags/jp.svg");
+  }
+  :where(.flag-ke) {
+    background-image: url("../flags/ke.svg");
+  }
+  :where(.flag-kg) {
+    background-image: url("../flags/kg.svg");
+  }
+  :where(.flag-kh) {
+    background-image: url("../flags/kh.svg");
+  }
+  :where(.flag-ki) {
+    background-image: url("../flags/ki.svg");
+  }
+  :where(.flag-km) {
+    background-image: url("../flags/km.svg");
+  }
+  :where(.flag-kn) {
+    background-image: url("../flags/kn.svg");
+  }
+  :where(.flag-kp) {
+    background-image: url("../flags/kp.svg");
+  }
+  :where(.flag-kr) {
+    background-image: url("../flags/kr.svg");
+  }
+  :where(.flag-kw) {
+    background-image: url("../flags/kw.svg");
+  }
+  :where(.flag-ky) {
+    background-image: url("../flags/ky.svg");
+  }
+  :where(.flag-kz) {
+    background-image: url("../flags/kz.svg");
+  }
+  :where(.flag-la) {
+    background-image: url("../flags/la.svg");
+  }
+  :where(.flag-lb) {
+    background-image: url("../flags/lb.svg");
+  }
+  :where(.flag-lc) {
+    background-image: url("../flags/lc.svg");
+  }
+  :where(.flag-li) {
+    background-image: url("../flags/li.svg");
+  }
+  :where(.flag-lk) {
+    background-image: url("../flags/lk.svg");
+  }
+  :where(.flag-lr) {
+    background-image: url("../flags/lr.svg");
+  }
+  :where(.flag-ls) {
+    background-image: url("../flags/ls.svg");
+  }
+  :where(.flag-lt) {
+    background-image: url("../flags/lt.svg");
+  }
+  :where(.flag-lu) {
+    background-image: url("../flags/lu.svg");
+  }
+  :where(.flag-lv) {
+    background-image: url("../flags/lv.svg");
+  }
+  :where(.flag-ly) {
+    background-image: url("../flags/ly.svg");
+  }
+  :where(.flag-ma) {
+    background-image: url("../flags/ma.svg");
+  }
+  :where(.flag-mc) {
+    background-image: url("../flags/mc.svg");
+  }
+  :where(.flag-md) {
+    background-image: url("../flags/md.svg");
+  }
+  :where(.flag-me) {
+    background-image: url("../flags/me.svg");
+  }
+  :where(.flag-mf) {
+    background-image: url("../flags/mf.svg");
+  }
+  :where(.flag-mg) {
+    background-image: url("../flags/mg.svg");
+  }
+  :where(.flag-mh) {
+    background-image: url("../flags/mh.svg");
+  }
+  :where(.flag-mk) {
+    background-image: url("../flags/mk.svg");
+  }
+  :where(.flag-ml) {
+    background-image: url("../flags/ml.svg");
+  }
+  :where(.flag-mm) {
+    background-image: url("../flags/mm.svg");
+  }
+  :where(.flag-mn) {
+    background-image: url("../flags/mn.svg");
+  }
+  :where(.flag-mo) {
+    background-image: url("../flags/mo.svg");
+  }
+  :where(.flag-mp) {
+    background-image: url("../flags/mp.svg");
+  }
+  :where(.flag-mq) {
+    background-image: url("../flags/mq.svg");
+  }
+  :where(.flag-mr) {
+    background-image: url("../flags/mr.svg");
+  }
+  :where(.flag-ms) {
+    background-image: url("../flags/ms.svg");
+  }
+  :where(.flag-mt) {
+    background-image: url("../flags/mt.svg");
+  }
+  :where(.flag-mu) {
+    background-image: url("../flags/mu.svg");
+  }
+  :where(.flag-mv) {
+    background-image: url("../flags/mv.svg");
+  }
+  :where(.flag-mw) {
+    background-image: url("../flags/mw.svg");
+  }
+  :where(.flag-mx) {
+    background-image: url("../flags/mx.svg");
+  }
+  :where(.flag-my) {
+    background-image: url("../flags/my.svg");
+  }
+  :where(.flag-mz) {
+    background-image: url("../flags/mz.svg");
+  }
+  :where(.flag-na) {
+    background-image: url("../flags/na.svg");
+  }
+  :where(.flag-nc) {
+    background-image: url("../flags/nc.svg");
+  }
+  :where(.flag-ne) {
+    background-image: url("../flags/ne.svg");
+  }
+  :where(.flag-nf) {
+    background-image: url("../flags/nf.svg");
+  }
+  :where(.flag-ng) {
+    background-image: url("../flags/ng.svg");
+  }
+  :where(.flag-ni) {
+    background-image: url("../flags/ni.svg");
+  }
+  :where(.flag-nl) {
+    background-image: url("../flags/nl.svg");
+  }
+  :where(.flag-no) {
+    background-image: url("../flags/no.svg");
+  }
+  :where(.flag-np) {
+    background-image: url("../flags/np.svg");
+  }
+  :where(.flag-nr) {
+    background-image: url("../flags/nr.svg");
+  }
+  :where(.flag-nu) {
+    background-image: url("../flags/nu.svg");
+  }
+  :where(.flag-nz) {
+    background-image: url("../flags/nz.svg");
+  }
+  :where(.flag-om) {
+    background-image: url("../flags/om.svg");
+  }
+  :where(.flag-pa) {
+    background-image: url("../flags/pa.svg");
+  }
+  :where(.flag-pc) {
+    background-image: url("../flags/pc.svg");
+  }
+  :where(.flag-pe) {
+    background-image: url("../flags/pe.svg");
+  }
+  :where(.flag-pf) {
+    background-image: url("../flags/pf.svg");
+  }
+  :where(.flag-pg) {
+    background-image: url("../flags/pg.svg");
+  }
+  :where(.flag-ph) {
+    background-image: url("../flags/ph.svg");
+  }
+  :where(.flag-pk) {
+    background-image: url("../flags/pk.svg");
+  }
+  :where(.flag-pl) {
+    background-image: url("../flags/pl.svg");
+  }
+  :where(.flag-pm) {
+    background-image: url("../flags/pm.svg");
+  }
+  :where(.flag-pn) {
+    background-image: url("../flags/pn.svg");
+  }
+  :where(.flag-pr) {
+    background-image: url("../flags/pr.svg");
+  }
+  :where(.flag-ps) {
+    background-image: url("../flags/ps.svg");
+  }
+  :where(.flag-pt) {
+    background-image: url("../flags/pt.svg");
+  }
+  :where(.flag-pw) {
+    background-image: url("../flags/pw.svg");
+  }
+  :where(.flag-py) {
+    background-image: url("../flags/py.svg");
+  }
+  :where(.flag-qa) {
+    background-image: url("../flags/qa.svg");
+  }
+  :where(.flag-re) {
+    background-image: url("../flags/re.svg");
+  }
+  :where(.flag-ro) {
+    background-image: url("../flags/ro.svg");
+  }
+  :where(.flag-rs) {
+    background-image: url("../flags/rs.svg");
+  }
+  :where(.flag-ru) {
+    background-image: url("../flags/ru.svg");
+  }
+  :where(.flag-rw) {
+    background-image: url("../flags/rw.svg");
+  }
+  :where(.flag-sa) {
+    background-image: url("../flags/sa.svg");
+  }
+  :where(.flag-sb) {
+    background-image: url("../flags/sb.svg");
+  }
+  :where(.flag-sc) {
+    background-image: url("../flags/sc.svg");
+  }
+  :where(.flag-sd) {
+    background-image: url("../flags/sd.svg");
+  }
+  :where(.flag-se) {
+    background-image: url("../flags/se.svg");
+  }
+  :where(.flag-sg) {
+    background-image: url("../flags/sg.svg");
+  }
+  :where(.flag-sh) {
+    background-image: url("../flags/sh.svg");
+  }
+  :where(.flag-sh-ac) {
+    background-image: url("../flags/sh-ac.svg");
+  }
+  :where(.flag-sh-hl) {
+    background-image: url("../flags/sh-hl.svg");
+  }
+  :where(.flag-sh-ta) {
+    background-image: url("../flags/sh-ta.svg");
+  }
+  :where(.flag-si) {
+    background-image: url("../flags/si.svg");
+  }
+  :where(.flag-sj) {
+    background-image: url("../flags/sj.svg");
+  }
+  :where(.flag-sk) {
+    background-image: url("../flags/sk.svg");
+  }
+  :where(.flag-sl) {
+    background-image: url("../flags/sl.svg");
+  }
+  :where(.flag-sm) {
+    background-image: url("../flags/sm.svg");
+  }
+  :where(.flag-sn) {
+    background-image: url("../flags/sn.svg");
+  }
+  :where(.flag-so) {
+    background-image: url("../flags/so.svg");
+  }
+  :where(.flag-sr) {
+    background-image: url("../flags/sr.svg");
+  }
+  :where(.flag-ss) {
+    background-image: url("../flags/ss.svg");
+  }
+  :where(.flag-st) {
+    background-image: url("../flags/st.svg");
+  }
+  :where(.flag-sv) {
+    background-image: url("../flags/sv.svg");
+  }
+  :where(.flag-sx) {
+    background-image: url("../flags/sx.svg");
+  }
+  :where(.flag-sy) {
+    background-image: url("../flags/sy.svg");
+  }
+  :where(.flag-sz) {
+    background-image: url("../flags/sz.svg");
+  }
+  :where(.flag-tc) {
+    background-image: url("../flags/tc.svg");
+  }
+  :where(.flag-td) {
+    background-image: url("../flags/td.svg");
+  }
+  :where(.flag-tf) {
+    background-image: url("../flags/tf.svg");
+  }
+  :where(.flag-tg) {
+    background-image: url("../flags/tg.svg");
+  }
+  :where(.flag-th) {
+    background-image: url("../flags/th.svg");
+  }
+  :where(.flag-tj) {
+    background-image: url("../flags/tj.svg");
+  }
+  :where(.flag-tk) {
+    background-image: url("../flags/tk.svg");
+  }
+  :where(.flag-tl) {
+    background-image: url("../flags/tl.svg");
+  }
+  :where(.flag-tm) {
+    background-image: url("../flags/tm.svg");
+  }
+  :where(.flag-tn) {
+    background-image: url("../flags/tn.svg");
+  }
+  :where(.flag-to) {
+    background-image: url("../flags/to.svg");
+  }
+  :where(.flag-tr) {
+    background-image: url("../flags/tr.svg");
+  }
+  :where(.flag-tt) {
+    background-image: url("../flags/tt.svg");
+  }
+  :where(.flag-tv) {
+    background-image: url("../flags/tv.svg");
+  }
+  :where(.flag-tw) {
+    background-image: url("../flags/tw.svg");
+  }
+  :where(.flag-tz) {
+    background-image: url("../flags/tz.svg");
+  }
+  :where(.flag-ua) {
+    background-image: url("../flags/ua.svg");
+  }
+  :where(.flag-ug) {
+    background-image: url("../flags/ug.svg");
+  }
+  :where(.flag-um) {
+    background-image: url("../flags/um.svg");
+  }
+  :where(.flag-un) {
+    background-image: url("../flags/un.svg");
+  }
+  :where(.flag-us) {
+    background-image: url("../flags/us.svg");
+  }
+  :where(.flag-uy) {
+    background-image: url("../flags/uy.svg");
+  }
+  :where(.flag-uz) {
+    background-image: url("../flags/uz.svg");
+  }
+  :where(.flag-va) {
+    background-image: url("../flags/va.svg");
+  }
+  :where(.flag-vc) {
+    background-image: url("../flags/vc.svg");
+  }
+  :where(.flag-ve) {
+    background-image: url("../flags/ve.svg");
+  }
+  :where(.flag-vg) {
+    background-image: url("../flags/vg.svg");
+  }
+  :where(.flag-vi) {
+    background-image: url("../flags/vi.svg");
+  }
+  :where(.flag-vn) {
+    background-image: url("../flags/vn.svg");
+  }
+  :where(.flag-vu) {
+    background-image: url("../flags/vu.svg");
+  }
+  :where(.flag-wf) {
+    background-image: url("../flags/wf.svg");
+  }
+  :where(.flag-ws) {
+    background-image: url("../flags/ws.svg");
+  }
+  :where(.flag-xk) {
+    background-image: url("../flags/xk.svg");
+  }
+  :where(.flag-xx) {
+    background-image: url("../flags/xx.svg");
+  }
+  :where(.flag-ye) {
+    background-image: url("../flags/ye.svg");
+  }
+  :where(.flag-yt) {
+    background-image: url("../flags/yt.svg");
+  }
+  :where(.flag-za) {
+    background-image: url("../flags/za.svg");
+  }
+  :where(.flag-zm) {
+    background-image: url("../flags/zm.svg");
+  }
+  :where(.flag-zw) {
+    background-image: url("../flags/zw.svg");
+  }
+}
+@layer components {
+  :where(.phone-input) {
+    display: block;
+    position: relative;
+    min-width: 0;
+  }
+  :where(.phone-input .input-group > button) {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--space-2);
+    height: 100%;
+    margin-left: calc(var(--space-3) * -1);
+    padding: 0 var(--space-2) 0 var(--space-3);
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    background: var(--subtle);
+    color: var(--fg);
+    font: inherit;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  :where(.phone-input .input-group > button)::after {
+    content: "\e06d";
+    font-family: "lucide";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    color: var(--muted);
+  }
+  :where(.phone-input .input-group > button:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+  :where(.phone-input .input-group > button:disabled) {
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+  :where(.phone-input .input-group[data-size=sm] > button) {
+    margin-left: calc(var(--space-2) * -1);
+    padding-left: var(--space-2);
+  }
+  :where(.phone-input .input-group[data-size=lg] > button) {
+    margin-left: calc(var(--space-4) * -1);
+    padding-left: var(--space-4);
+  }
+  :where(.phone-input > [popover]) {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+  }
+  :where(.phone-input > [popover]:popover-open) {
+    display: flex;
+    flex-direction: column;
+  }
+  :where(.phone-input > [popover]) {
+    --pop-from: 0 -0.5rem;
+    transition: opacity 0.1s cubic-bezier(0.4, 0, 0.2, 1), scale 0.1s cubic-bezier(0.4, 0, 0.2, 1), translate 0.1s cubic-bezier(0.4, 0, 0.2, 1), overlay 0.1s allow-discrete, display 0.1s allow-discrete;
+  }
+  :where(.phone-input > [popover]:not(:popover-open)) {
+    opacity: 0;
+    scale: 0.95;
+    translate: var(--pop-from);
+  }
+  @starting-style {
+    :where(.phone-input > [popover]:popover-open) {
+      opacity: 0;
+      scale: 0.95;
+      translate: var(--pop-from);
+    }
+  }
+  :where(.phone-input > [popover][data-side=top]) {
+    --pop-from: 0 0.5rem;
+  }
+  :where(.phone-input > [popover][data-side=left]) {
+    --pop-from: 0.5rem 0;
+  }
+  :where(.phone-input > [popover][data-side=right]) {
+    --pop-from: -0.5rem 0;
+  }
+  :where(.phone-input > [popover] > input) {
+    height: 2.25rem;
+    padding: 0 var(--space-3);
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    outline: 0;
+    background: none;
+    color: var(--fg);
+    font: inherit;
+    font-size: var(--text-base);
+  }
+  :where(.phone-input > [popover] > input)::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+  :where(.phone-input [role=listbox]) {
+    max-height: 16rem;
+    padding: var(--space-1);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  :where(.phone-input [role=listbox]:empty) {
+    display: none;
+  }
+  :where(.phone-input [role=option]) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  :where(.phone-input [role=option] > span:not(.flag)) {
+    flex: 1;
+    min-width: 0;
+  }
+  :where(.phone-input [role=option] > small) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+  :where(.phone-input [role=option])::after {
+    content: "\e06c";
+    font-family: "lucide";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    width: 1em;
+    color: var(--accent);
+    visibility: hidden;
+  }
+  :where(.phone-input [role=option][aria-selected=true])::after {
+    visibility: visible;
+  }
+  :where(.phone-input [role=option][data-active]) {
+    background: var(--subtle);
+  }
+  :where(.phone-input > [popover] > p) {
+    padding: var(--space-2) var(--space-3);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+  :where(.phone-input > [popover] > p[hidden]) {
+    display: none;
+  }
+}
+@layer components {
+  :where(.time-picker) {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    max-width: 100%;
+    min-width: 0;
+    height: 2.25rem;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-base);
+    font-variant-numeric: tabular-nums;
+    cursor: text;
+  }
+  :where(.time-picker:focus-within) {
+    border-color: var(--accent);
+  }
+  :where(.time-picker > input) {
+    width: 2ch;
+    min-width: 0;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    outline: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: center;
+    caret-color: transparent;
+    cursor: inherit;
+  }
+  :where(.time-picker > input[data-segment=p]) {
+    width: 3ch;
+  }
+  :where(.time-picker > input:not([aria-valuenow])) {
+    color: var(--muted);
+  }
+  :where(.time-picker > input:focus) {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  :where(.time-picker > span) {
+    color: var(--muted);
+    white-space: pre;
+  }
+  :where(.time-picker[aria-invalid=true]) {
+    border-color: var(--danger-fg);
+  }
+  :where(.time-picker[disabled]) {
+    background: var(--subtle);
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+  :where(.time-picker[data-size=sm]) {
+    height: 1.75rem;
+    padding: 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+  :where(.time-picker[data-size=lg]) {
+    height: 2.5rem;
+    padding: 0 var(--space-4);
+  }
+  :where(.input-group > .time-picker) {
+    flex: none;
+    height: 100%;
+    padding: 0 0 0 var(--space-3);
+    border-width: 0 0 0 1px;
+    border-radius: 0;
+    background: none;
+  }
+  :where(.input-group > .time-picker:focus-within) {
+    border-color: var(--line);
+  }
+}
+@layer components {
   :where(.popover) {
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
@@ -9230,6 +10776,16 @@
     display: block;
     position: relative;
     min-width: 0;
+  }
+  :where(.input-group > .date-picker) {
+    flex: 1;
+  }
+  :where(.input-group > .date-picker > input) {
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: none;
   }
   :where(.date-picker > [data-popover]:not([popover])) {
     display: none;
@@ -10593,841 +12149,6 @@
   }
   :where(.avatar-group:has(> [data-variant=circle]) > [data-count]) {
     border-radius: 999px;
-  }
-}
-@layer components {
-  :where(.flag) {
-    display: inline-block;
-    flex-shrink: 0;
-    height: 1rem;
-    aspect-ratio: 4/3;
-    vertical-align: -0.2em;
-    border-radius: 2px;
-    background: center/cover no-repeat;
-    outline: 1px solid var(--line);
-    outline-offset: -1px;
-  }
-  :where(.flag[data-size=sm]) {
-    height: 0.75rem;
-  }
-  :where(.flag[data-size=lg]) {
-    height: 1.5rem;
-  }
-  :where(.flag[data-size=xl]) {
-    height: 2rem;
-  }
-  :where(.flag-ad) {
-    background-image: url("../flags/ad.svg");
-  }
-  :where(.flag-ae) {
-    background-image: url("../flags/ae.svg");
-  }
-  :where(.flag-af) {
-    background-image: url("../flags/af.svg");
-  }
-  :where(.flag-ag) {
-    background-image: url("../flags/ag.svg");
-  }
-  :where(.flag-ai) {
-    background-image: url("../flags/ai.svg");
-  }
-  :where(.flag-al) {
-    background-image: url("../flags/al.svg");
-  }
-  :where(.flag-am) {
-    background-image: url("../flags/am.svg");
-  }
-  :where(.flag-ao) {
-    background-image: url("../flags/ao.svg");
-  }
-  :where(.flag-aq) {
-    background-image: url("../flags/aq.svg");
-  }
-  :where(.flag-ar) {
-    background-image: url("../flags/ar.svg");
-  }
-  :where(.flag-arab) {
-    background-image: url("../flags/arab.svg");
-  }
-  :where(.flag-as) {
-    background-image: url("../flags/as.svg");
-  }
-  :where(.flag-asean) {
-    background-image: url("../flags/asean.svg");
-  }
-  :where(.flag-at) {
-    background-image: url("../flags/at.svg");
-  }
-  :where(.flag-au) {
-    background-image: url("../flags/au.svg");
-  }
-  :where(.flag-aw) {
-    background-image: url("../flags/aw.svg");
-  }
-  :where(.flag-ax) {
-    background-image: url("../flags/ax.svg");
-  }
-  :where(.flag-az) {
-    background-image: url("../flags/az.svg");
-  }
-  :where(.flag-ba) {
-    background-image: url("../flags/ba.svg");
-  }
-  :where(.flag-bb) {
-    background-image: url("../flags/bb.svg");
-  }
-  :where(.flag-bd) {
-    background-image: url("../flags/bd.svg");
-  }
-  :where(.flag-be) {
-    background-image: url("../flags/be.svg");
-  }
-  :where(.flag-bf) {
-    background-image: url("../flags/bf.svg");
-  }
-  :where(.flag-bg) {
-    background-image: url("../flags/bg.svg");
-  }
-  :where(.flag-bh) {
-    background-image: url("../flags/bh.svg");
-  }
-  :where(.flag-bi) {
-    background-image: url("../flags/bi.svg");
-  }
-  :where(.flag-bj) {
-    background-image: url("../flags/bj.svg");
-  }
-  :where(.flag-bl) {
-    background-image: url("../flags/bl.svg");
-  }
-  :where(.flag-bm) {
-    background-image: url("../flags/bm.svg");
-  }
-  :where(.flag-bn) {
-    background-image: url("../flags/bn.svg");
-  }
-  :where(.flag-bo) {
-    background-image: url("../flags/bo.svg");
-  }
-  :where(.flag-bq) {
-    background-image: url("../flags/bq.svg");
-  }
-  :where(.flag-br) {
-    background-image: url("../flags/br.svg");
-  }
-  :where(.flag-bs) {
-    background-image: url("../flags/bs.svg");
-  }
-  :where(.flag-bt) {
-    background-image: url("../flags/bt.svg");
-  }
-  :where(.flag-bv) {
-    background-image: url("../flags/bv.svg");
-  }
-  :where(.flag-bw) {
-    background-image: url("../flags/bw.svg");
-  }
-  :where(.flag-by) {
-    background-image: url("../flags/by.svg");
-  }
-  :where(.flag-bz) {
-    background-image: url("../flags/bz.svg");
-  }
-  :where(.flag-ca) {
-    background-image: url("../flags/ca.svg");
-  }
-  :where(.flag-cc) {
-    background-image: url("../flags/cc.svg");
-  }
-  :where(.flag-cd) {
-    background-image: url("../flags/cd.svg");
-  }
-  :where(.flag-cefta) {
-    background-image: url("../flags/cefta.svg");
-  }
-  :where(.flag-cf) {
-    background-image: url("../flags/cf.svg");
-  }
-  :where(.flag-cg) {
-    background-image: url("../flags/cg.svg");
-  }
-  :where(.flag-ch) {
-    background-image: url("../flags/ch.svg");
-  }
-  :where(.flag-ci) {
-    background-image: url("../flags/ci.svg");
-  }
-  :where(.flag-ck) {
-    background-image: url("../flags/ck.svg");
-  }
-  :where(.flag-cl) {
-    background-image: url("../flags/cl.svg");
-  }
-  :where(.flag-cm) {
-    background-image: url("../flags/cm.svg");
-  }
-  :where(.flag-cn) {
-    background-image: url("../flags/cn.svg");
-  }
-  :where(.flag-co) {
-    background-image: url("../flags/co.svg");
-  }
-  :where(.flag-cp) {
-    background-image: url("../flags/cp.svg");
-  }
-  :where(.flag-cr) {
-    background-image: url("../flags/cr.svg");
-  }
-  :where(.flag-cu) {
-    background-image: url("../flags/cu.svg");
-  }
-  :where(.flag-cv) {
-    background-image: url("../flags/cv.svg");
-  }
-  :where(.flag-cw) {
-    background-image: url("../flags/cw.svg");
-  }
-  :where(.flag-cx) {
-    background-image: url("../flags/cx.svg");
-  }
-  :where(.flag-cy) {
-    background-image: url("../flags/cy.svg");
-  }
-  :where(.flag-cz) {
-    background-image: url("../flags/cz.svg");
-  }
-  :where(.flag-de) {
-    background-image: url("../flags/de.svg");
-  }
-  :where(.flag-dg) {
-    background-image: url("../flags/dg.svg");
-  }
-  :where(.flag-dj) {
-    background-image: url("../flags/dj.svg");
-  }
-  :where(.flag-dk) {
-    background-image: url("../flags/dk.svg");
-  }
-  :where(.flag-dm) {
-    background-image: url("../flags/dm.svg");
-  }
-  :where(.flag-do) {
-    background-image: url("../flags/do.svg");
-  }
-  :where(.flag-dz) {
-    background-image: url("../flags/dz.svg");
-  }
-  :where(.flag-eac) {
-    background-image: url("../flags/eac.svg");
-  }
-  :where(.flag-ec) {
-    background-image: url("../flags/ec.svg");
-  }
-  :where(.flag-ee) {
-    background-image: url("../flags/ee.svg");
-  }
-  :where(.flag-eg) {
-    background-image: url("../flags/eg.svg");
-  }
-  :where(.flag-eh) {
-    background-image: url("../flags/eh.svg");
-  }
-  :where(.flag-er) {
-    background-image: url("../flags/er.svg");
-  }
-  :where(.flag-es) {
-    background-image: url("../flags/es.svg");
-  }
-  :where(.flag-es-ct) {
-    background-image: url("../flags/es-ct.svg");
-  }
-  :where(.flag-es-ga) {
-    background-image: url("../flags/es-ga.svg");
-  }
-  :where(.flag-es-pv) {
-    background-image: url("../flags/es-pv.svg");
-  }
-  :where(.flag-et) {
-    background-image: url("../flags/et.svg");
-  }
-  :where(.flag-eu) {
-    background-image: url("../flags/eu.svg");
-  }
-  :where(.flag-fi) {
-    background-image: url("../flags/fi.svg");
-  }
-  :where(.flag-fj) {
-    background-image: url("../flags/fj.svg");
-  }
-  :where(.flag-fk) {
-    background-image: url("../flags/fk.svg");
-  }
-  :where(.flag-fm) {
-    background-image: url("../flags/fm.svg");
-  }
-  :where(.flag-fo) {
-    background-image: url("../flags/fo.svg");
-  }
-  :where(.flag-fr) {
-    background-image: url("../flags/fr.svg");
-  }
-  :where(.flag-ga) {
-    background-image: url("../flags/ga.svg");
-  }
-  :where(.flag-gb) {
-    background-image: url("../flags/gb.svg");
-  }
-  :where(.flag-gb-eng) {
-    background-image: url("../flags/gb-eng.svg");
-  }
-  :where(.flag-gb-nir) {
-    background-image: url("../flags/gb-nir.svg");
-  }
-  :where(.flag-gb-sct) {
-    background-image: url("../flags/gb-sct.svg");
-  }
-  :where(.flag-gb-wls) {
-    background-image: url("../flags/gb-wls.svg");
-  }
-  :where(.flag-gd) {
-    background-image: url("../flags/gd.svg");
-  }
-  :where(.flag-ge) {
-    background-image: url("../flags/ge.svg");
-  }
-  :where(.flag-gf) {
-    background-image: url("../flags/gf.svg");
-  }
-  :where(.flag-gg) {
-    background-image: url("../flags/gg.svg");
-  }
-  :where(.flag-gh) {
-    background-image: url("../flags/gh.svg");
-  }
-  :where(.flag-gi) {
-    background-image: url("../flags/gi.svg");
-  }
-  :where(.flag-gl) {
-    background-image: url("../flags/gl.svg");
-  }
-  :where(.flag-gm) {
-    background-image: url("../flags/gm.svg");
-  }
-  :where(.flag-gn) {
-    background-image: url("../flags/gn.svg");
-  }
-  :where(.flag-gp) {
-    background-image: url("../flags/gp.svg");
-  }
-  :where(.flag-gq) {
-    background-image: url("../flags/gq.svg");
-  }
-  :where(.flag-gr) {
-    background-image: url("../flags/gr.svg");
-  }
-  :where(.flag-gs) {
-    background-image: url("../flags/gs.svg");
-  }
-  :where(.flag-gt) {
-    background-image: url("../flags/gt.svg");
-  }
-  :where(.flag-gu) {
-    background-image: url("../flags/gu.svg");
-  }
-  :where(.flag-gw) {
-    background-image: url("../flags/gw.svg");
-  }
-  :where(.flag-gy) {
-    background-image: url("../flags/gy.svg");
-  }
-  :where(.flag-hk) {
-    background-image: url("../flags/hk.svg");
-  }
-  :where(.flag-hm) {
-    background-image: url("../flags/hm.svg");
-  }
-  :where(.flag-hn) {
-    background-image: url("../flags/hn.svg");
-  }
-  :where(.flag-hr) {
-    background-image: url("../flags/hr.svg");
-  }
-  :where(.flag-ht) {
-    background-image: url("../flags/ht.svg");
-  }
-  :where(.flag-hu) {
-    background-image: url("../flags/hu.svg");
-  }
-  :where(.flag-ic) {
-    background-image: url("../flags/ic.svg");
-  }
-  :where(.flag-id) {
-    background-image: url("../flags/id.svg");
-  }
-  :where(.flag-ie) {
-    background-image: url("../flags/ie.svg");
-  }
-  :where(.flag-il) {
-    background-image: url("../flags/il.svg");
-  }
-  :where(.flag-im) {
-    background-image: url("../flags/im.svg");
-  }
-  :where(.flag-in) {
-    background-image: url("../flags/in.svg");
-  }
-  :where(.flag-io) {
-    background-image: url("../flags/io.svg");
-  }
-  :where(.flag-iq) {
-    background-image: url("../flags/iq.svg");
-  }
-  :where(.flag-ir) {
-    background-image: url("../flags/ir.svg");
-  }
-  :where(.flag-is) {
-    background-image: url("../flags/is.svg");
-  }
-  :where(.flag-it) {
-    background-image: url("../flags/it.svg");
-  }
-  :where(.flag-je) {
-    background-image: url("../flags/je.svg");
-  }
-  :where(.flag-jm) {
-    background-image: url("../flags/jm.svg");
-  }
-  :where(.flag-jo) {
-    background-image: url("../flags/jo.svg");
-  }
-  :where(.flag-jp) {
-    background-image: url("../flags/jp.svg");
-  }
-  :where(.flag-ke) {
-    background-image: url("../flags/ke.svg");
-  }
-  :where(.flag-kg) {
-    background-image: url("../flags/kg.svg");
-  }
-  :where(.flag-kh) {
-    background-image: url("../flags/kh.svg");
-  }
-  :where(.flag-ki) {
-    background-image: url("../flags/ki.svg");
-  }
-  :where(.flag-km) {
-    background-image: url("../flags/km.svg");
-  }
-  :where(.flag-kn) {
-    background-image: url("../flags/kn.svg");
-  }
-  :where(.flag-kp) {
-    background-image: url("../flags/kp.svg");
-  }
-  :where(.flag-kr) {
-    background-image: url("../flags/kr.svg");
-  }
-  :where(.flag-kw) {
-    background-image: url("../flags/kw.svg");
-  }
-  :where(.flag-ky) {
-    background-image: url("../flags/ky.svg");
-  }
-  :where(.flag-kz) {
-    background-image: url("../flags/kz.svg");
-  }
-  :where(.flag-la) {
-    background-image: url("../flags/la.svg");
-  }
-  :where(.flag-lb) {
-    background-image: url("../flags/lb.svg");
-  }
-  :where(.flag-lc) {
-    background-image: url("../flags/lc.svg");
-  }
-  :where(.flag-li) {
-    background-image: url("../flags/li.svg");
-  }
-  :where(.flag-lk) {
-    background-image: url("../flags/lk.svg");
-  }
-  :where(.flag-lr) {
-    background-image: url("../flags/lr.svg");
-  }
-  :where(.flag-ls) {
-    background-image: url("../flags/ls.svg");
-  }
-  :where(.flag-lt) {
-    background-image: url("../flags/lt.svg");
-  }
-  :where(.flag-lu) {
-    background-image: url("../flags/lu.svg");
-  }
-  :where(.flag-lv) {
-    background-image: url("../flags/lv.svg");
-  }
-  :where(.flag-ly) {
-    background-image: url("../flags/ly.svg");
-  }
-  :where(.flag-ma) {
-    background-image: url("../flags/ma.svg");
-  }
-  :where(.flag-mc) {
-    background-image: url("../flags/mc.svg");
-  }
-  :where(.flag-md) {
-    background-image: url("../flags/md.svg");
-  }
-  :where(.flag-me) {
-    background-image: url("../flags/me.svg");
-  }
-  :where(.flag-mf) {
-    background-image: url("../flags/mf.svg");
-  }
-  :where(.flag-mg) {
-    background-image: url("../flags/mg.svg");
-  }
-  :where(.flag-mh) {
-    background-image: url("../flags/mh.svg");
-  }
-  :where(.flag-mk) {
-    background-image: url("../flags/mk.svg");
-  }
-  :where(.flag-ml) {
-    background-image: url("../flags/ml.svg");
-  }
-  :where(.flag-mm) {
-    background-image: url("../flags/mm.svg");
-  }
-  :where(.flag-mn) {
-    background-image: url("../flags/mn.svg");
-  }
-  :where(.flag-mo) {
-    background-image: url("../flags/mo.svg");
-  }
-  :where(.flag-mp) {
-    background-image: url("../flags/mp.svg");
-  }
-  :where(.flag-mq) {
-    background-image: url("../flags/mq.svg");
-  }
-  :where(.flag-mr) {
-    background-image: url("../flags/mr.svg");
-  }
-  :where(.flag-ms) {
-    background-image: url("../flags/ms.svg");
-  }
-  :where(.flag-mt) {
-    background-image: url("../flags/mt.svg");
-  }
-  :where(.flag-mu) {
-    background-image: url("../flags/mu.svg");
-  }
-  :where(.flag-mv) {
-    background-image: url("../flags/mv.svg");
-  }
-  :where(.flag-mw) {
-    background-image: url("../flags/mw.svg");
-  }
-  :where(.flag-mx) {
-    background-image: url("../flags/mx.svg");
-  }
-  :where(.flag-my) {
-    background-image: url("../flags/my.svg");
-  }
-  :where(.flag-mz) {
-    background-image: url("../flags/mz.svg");
-  }
-  :where(.flag-na) {
-    background-image: url("../flags/na.svg");
-  }
-  :where(.flag-nc) {
-    background-image: url("../flags/nc.svg");
-  }
-  :where(.flag-ne) {
-    background-image: url("../flags/ne.svg");
-  }
-  :where(.flag-nf) {
-    background-image: url("../flags/nf.svg");
-  }
-  :where(.flag-ng) {
-    background-image: url("../flags/ng.svg");
-  }
-  :where(.flag-ni) {
-    background-image: url("../flags/ni.svg");
-  }
-  :where(.flag-nl) {
-    background-image: url("../flags/nl.svg");
-  }
-  :where(.flag-no) {
-    background-image: url("../flags/no.svg");
-  }
-  :where(.flag-np) {
-    background-image: url("../flags/np.svg");
-  }
-  :where(.flag-nr) {
-    background-image: url("../flags/nr.svg");
-  }
-  :where(.flag-nu) {
-    background-image: url("../flags/nu.svg");
-  }
-  :where(.flag-nz) {
-    background-image: url("../flags/nz.svg");
-  }
-  :where(.flag-om) {
-    background-image: url("../flags/om.svg");
-  }
-  :where(.flag-pa) {
-    background-image: url("../flags/pa.svg");
-  }
-  :where(.flag-pc) {
-    background-image: url("../flags/pc.svg");
-  }
-  :where(.flag-pe) {
-    background-image: url("../flags/pe.svg");
-  }
-  :where(.flag-pf) {
-    background-image: url("../flags/pf.svg");
-  }
-  :where(.flag-pg) {
-    background-image: url("../flags/pg.svg");
-  }
-  :where(.flag-ph) {
-    background-image: url("../flags/ph.svg");
-  }
-  :where(.flag-pk) {
-    background-image: url("../flags/pk.svg");
-  }
-  :where(.flag-pl) {
-    background-image: url("../flags/pl.svg");
-  }
-  :where(.flag-pm) {
-    background-image: url("../flags/pm.svg");
-  }
-  :where(.flag-pn) {
-    background-image: url("../flags/pn.svg");
-  }
-  :where(.flag-pr) {
-    background-image: url("../flags/pr.svg");
-  }
-  :where(.flag-ps) {
-    background-image: url("../flags/ps.svg");
-  }
-  :where(.flag-pt) {
-    background-image: url("../flags/pt.svg");
-  }
-  :where(.flag-pw) {
-    background-image: url("../flags/pw.svg");
-  }
-  :where(.flag-py) {
-    background-image: url("../flags/py.svg");
-  }
-  :where(.flag-qa) {
-    background-image: url("../flags/qa.svg");
-  }
-  :where(.flag-re) {
-    background-image: url("../flags/re.svg");
-  }
-  :where(.flag-ro) {
-    background-image: url("../flags/ro.svg");
-  }
-  :where(.flag-rs) {
-    background-image: url("../flags/rs.svg");
-  }
-  :where(.flag-ru) {
-    background-image: url("../flags/ru.svg");
-  }
-  :where(.flag-rw) {
-    background-image: url("../flags/rw.svg");
-  }
-  :where(.flag-sa) {
-    background-image: url("../flags/sa.svg");
-  }
-  :where(.flag-sb) {
-    background-image: url("../flags/sb.svg");
-  }
-  :where(.flag-sc) {
-    background-image: url("../flags/sc.svg");
-  }
-  :where(.flag-sd) {
-    background-image: url("../flags/sd.svg");
-  }
-  :where(.flag-se) {
-    background-image: url("../flags/se.svg");
-  }
-  :where(.flag-sg) {
-    background-image: url("../flags/sg.svg");
-  }
-  :where(.flag-sh) {
-    background-image: url("../flags/sh.svg");
-  }
-  :where(.flag-sh-ac) {
-    background-image: url("../flags/sh-ac.svg");
-  }
-  :where(.flag-sh-hl) {
-    background-image: url("../flags/sh-hl.svg");
-  }
-  :where(.flag-sh-ta) {
-    background-image: url("../flags/sh-ta.svg");
-  }
-  :where(.flag-si) {
-    background-image: url("../flags/si.svg");
-  }
-  :where(.flag-sj) {
-    background-image: url("../flags/sj.svg");
-  }
-  :where(.flag-sk) {
-    background-image: url("../flags/sk.svg");
-  }
-  :where(.flag-sl) {
-    background-image: url("../flags/sl.svg");
-  }
-  :where(.flag-sm) {
-    background-image: url("../flags/sm.svg");
-  }
-  :where(.flag-sn) {
-    background-image: url("../flags/sn.svg");
-  }
-  :where(.flag-so) {
-    background-image: url("../flags/so.svg");
-  }
-  :where(.flag-sr) {
-    background-image: url("../flags/sr.svg");
-  }
-  :where(.flag-ss) {
-    background-image: url("../flags/ss.svg");
-  }
-  :where(.flag-st) {
-    background-image: url("../flags/st.svg");
-  }
-  :where(.flag-sv) {
-    background-image: url("../flags/sv.svg");
-  }
-  :where(.flag-sx) {
-    background-image: url("../flags/sx.svg");
-  }
-  :where(.flag-sy) {
-    background-image: url("../flags/sy.svg");
-  }
-  :where(.flag-sz) {
-    background-image: url("../flags/sz.svg");
-  }
-  :where(.flag-tc) {
-    background-image: url("../flags/tc.svg");
-  }
-  :where(.flag-td) {
-    background-image: url("../flags/td.svg");
-  }
-  :where(.flag-tf) {
-    background-image: url("../flags/tf.svg");
-  }
-  :where(.flag-tg) {
-    background-image: url("../flags/tg.svg");
-  }
-  :where(.flag-th) {
-    background-image: url("../flags/th.svg");
-  }
-  :where(.flag-tj) {
-    background-image: url("../flags/tj.svg");
-  }
-  :where(.flag-tk) {
-    background-image: url("../flags/tk.svg");
-  }
-  :where(.flag-tl) {
-    background-image: url("../flags/tl.svg");
-  }
-  :where(.flag-tm) {
-    background-image: url("../flags/tm.svg");
-  }
-  :where(.flag-tn) {
-    background-image: url("../flags/tn.svg");
-  }
-  :where(.flag-to) {
-    background-image: url("../flags/to.svg");
-  }
-  :where(.flag-tr) {
-    background-image: url("../flags/tr.svg");
-  }
-  :where(.flag-tt) {
-    background-image: url("../flags/tt.svg");
-  }
-  :where(.flag-tv) {
-    background-image: url("../flags/tv.svg");
-  }
-  :where(.flag-tw) {
-    background-image: url("../flags/tw.svg");
-  }
-  :where(.flag-tz) {
-    background-image: url("../flags/tz.svg");
-  }
-  :where(.flag-ua) {
-    background-image: url("../flags/ua.svg");
-  }
-  :where(.flag-ug) {
-    background-image: url("../flags/ug.svg");
-  }
-  :where(.flag-um) {
-    background-image: url("../flags/um.svg");
-  }
-  :where(.flag-un) {
-    background-image: url("../flags/un.svg");
-  }
-  :where(.flag-us) {
-    background-image: url("../flags/us.svg");
-  }
-  :where(.flag-uy) {
-    background-image: url("../flags/uy.svg");
-  }
-  :where(.flag-uz) {
-    background-image: url("../flags/uz.svg");
-  }
-  :where(.flag-va) {
-    background-image: url("../flags/va.svg");
-  }
-  :where(.flag-vc) {
-    background-image: url("../flags/vc.svg");
-  }
-  :where(.flag-ve) {
-    background-image: url("../flags/ve.svg");
-  }
-  :where(.flag-vg) {
-    background-image: url("../flags/vg.svg");
-  }
-  :where(.flag-vi) {
-    background-image: url("../flags/vi.svg");
-  }
-  :where(.flag-vn) {
-    background-image: url("../flags/vn.svg");
-  }
-  :where(.flag-vu) {
-    background-image: url("../flags/vu.svg");
-  }
-  :where(.flag-wf) {
-    background-image: url("../flags/wf.svg");
-  }
-  :where(.flag-ws) {
-    background-image: url("../flags/ws.svg");
-  }
-  :where(.flag-xk) {
-    background-image: url("../flags/xk.svg");
-  }
-  :where(.flag-xx) {
-    background-image: url("../flags/xx.svg");
-  }
-  :where(.flag-ye) {
-    background-image: url("../flags/ye.svg");
-  }
-  :where(.flag-yt) {
-    background-image: url("../flags/yt.svg");
-  }
-  :where(.flag-za) {
-    background-image: url("../flags/za.svg");
-  }
-  :where(.flag-zm) {
-    background-image: url("../flags/zm.svg");
-  }
-  :where(.flag-zw) {
-    background-image: url("../flags/zw.svg");
   }
 }
 @layer components {
