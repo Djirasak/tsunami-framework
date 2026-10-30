@@ -1,0 +1,239 @@
+<header class="page-header">
+            <div>
+              <h1>Bulk action bar</h1>
+              <p>
+                A bar that appears when rows are selected in a data table: how many,
+                what to do with them, and a way to clear. Select some rows below.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Select rows to show the bar</h2>
+            <p>
+              Put the bar after a table and point it at the table with data-table.
+              It stays out of sight until a row is selected, then shows the count
+              and the actions. Clear unselects every row.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Select rows to show the bar">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="card">
+                    <div class="scroll-area" tabindex="0">
+                      <table class="table" id="bulk-demo">
+                        <thead>
+                          <tr>
+                            <th scope="col"><input type="checkbox" aria-label="Select all orders" /></th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col" data-align="end">Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td><input type="checkbox" aria-label="Select order 110963" /></td><td>#110963</td><td>Emma Wilson</td><td data-align="end">$79.00</td></tr>
+                          <tr><td><input type="checkbox" aria-label="Select order 110962" /></td><td>#110962</td><td>Olivia Brown</td><td data-align="end">$26.00</td></tr>
+                          <tr><td><input type="checkbox" aria-label="Select order 110961" /></td><td>#110961</td><td>James Carter</td><td data-align="end">$364.50</td></tr>
+                          <tr><td><input type="checkbox" aria-label="Select order 110960" /></td><td>#110960</td><td>Noah Davis</td><td data-align="end">$12.00</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="bulk-bar" data-table="bulk-demo" role="region" aria-label="Selected orders">
+                      <p aria-live="polite"><span data-bulk-count>0</span> selected</p>
+                      <div>
+                        <button type="button" class="btn" data-variant="secondary">Archive</button>
+                        <button type="button" class="btn" data-variant="danger">Delete</button>
+                      </div>
+                      <button type="button" class="btn" data-variant="ghost" data-bulk-clear>Clear</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class=&quot;card&quot;&gt;
+  &lt;div class=&quot;scroll-area&quot; tabindex=&quot;0&quot;&gt;
+    &lt;table class=&quot;table&quot; id=&quot;bulk-demo&quot;&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope=&quot;col&quot;&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select all orders&quot; /&gt;&lt;/th&gt;
+          &lt;th scope=&quot;col&quot;&gt;Order&lt;/th&gt;
+          &lt;th scope=&quot;col&quot;&gt;Customer&lt;/th&gt;
+          &lt;th scope=&quot;col&quot; data-align=&quot;end&quot;&gt;Total&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select order 110963&quot; /&gt;&lt;/td&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Emma Wilson&lt;/td&gt;&lt;td data-align=&quot;end&quot;&gt;$79.00&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select order 110962&quot; /&gt;&lt;/td&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Olivia Brown&lt;/td&gt;&lt;td data-align=&quot;end&quot;&gt;$26.00&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select order 110961&quot; /&gt;&lt;/td&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;James Carter&lt;/td&gt;&lt;td data-align=&quot;end&quot;&gt;$364.50&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select order 110960&quot; /&gt;&lt;/td&gt;&lt;td&gt;#110960&lt;/td&gt;&lt;td&gt;Noah Davis&lt;/td&gt;&lt;td data-align=&quot;end&quot;&gt;$12.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bulk-bar&quot; data-table=&quot;bulk-demo&quot; role=&quot;region&quot; aria-label=&quot;Selected orders&quot;&gt;
+    &lt;p aria-live=&quot;polite&quot;&gt;&lt;span data-bulk-count&gt;0&lt;/span&gt; selected&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;secondary&quot;&gt;Archive&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;danger&quot;&gt;Delete&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;ghost&quot; data-bulk-clear&gt;Clear&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Rows that start selected</h2>
+            <p>
+              A server-rendered selection shows the bar on load. The actions are
+              ordinary buttons: read the rows with tsunami.table.selected(table) in
+              the click handler.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Rows that start selected">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="card">
+                    <div class="scroll-area" tabindex="0">
+                      <table class="table" id="bulk-demo2">
+                        <thead>
+                          <tr>
+                            <th scope="col"><input type="checkbox" aria-label="Select all orders" /></th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col" data-align="end">Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr><td><input type="checkbox" aria-label="Select order 110963" /></td><td>#110963</td><td>Emma Wilson</td><td data-align="end">$79.00</td></tr>
+                          <tr><td><input type="checkbox" aria-label="Select order 110962" checked /></td><td>#110962</td><td>Olivia Brown</td><td data-align="end">$26.00</td></tr>
+                          <tr><td><input type="checkbox" aria-label="Select order 110961" checked /></td><td>#110961</td><td>James Carter</td><td data-align="end">$364.50</td></tr>
+                          <tr><td><input type="checkbox" aria-label="Select order 110960" /></td><td>#110960</td><td>Noah Davis</td><td data-align="end">$12.00</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="bulk-bar" data-table="bulk-demo2" role="region" aria-label="Selected orders">
+                      <p aria-live="polite"><span data-bulk-count>0</span> selected</p>
+                      <div>
+                        <button type="button" class="btn" data-variant="secondary" id="bulk-export">Export</button>
+                      </div>
+                      <button type="button" class="btn" data-variant="ghost" data-bulk-clear>Clear</button>
+                    </div>
+                  </div>
+                  <p id="bulk-log" aria-live="polite">Nothing exported yet.</p>
+                  <script>
+                    document.getElementById("bulk-export").addEventListener("click", () => {
+                      const rows = tsunami.table.selected(document.getElementById("bulk-demo2"));
+                      document.getElementById("bulk-log").textContent =
+                        "Exported " + rows.map((r) => r.cells[1].textContent).join(", ");
+                    });
+                  </script>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class=&quot;card&quot;&gt;
+  &lt;div class=&quot;scroll-area&quot; tabindex=&quot;0&quot;&gt;
+    &lt;table class=&quot;table&quot; id=&quot;bulk-demo2&quot;&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope=&quot;col&quot;&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select all orders&quot; /&gt;&lt;/th&gt;
+          &lt;th scope=&quot;col&quot;&gt;Order&lt;/th&gt;
+          &lt;th scope=&quot;col&quot;&gt;Customer&lt;/th&gt;
+          &lt;th scope=&quot;col&quot; data-align=&quot;end&quot;&gt;Total&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select order 110963&quot; /&gt;&lt;/td&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Emma Wilson&lt;/td&gt;&lt;td data-align=&quot;end&quot;&gt;$79.00&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select order 110962&quot; checked /&gt;&lt;/td&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Olivia Brown&lt;/td&gt;&lt;td data-align=&quot;end&quot;&gt;$26.00&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select order 110961&quot; checked /&gt;&lt;/td&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;James Carter&lt;/td&gt;&lt;td data-align=&quot;end&quot;&gt;$364.50&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;Select order 110960&quot; /&gt;&lt;/td&gt;&lt;td&gt;#110960&lt;/td&gt;&lt;td&gt;Noah Davis&lt;/td&gt;&lt;td data-align=&quot;end&quot;&gt;$12.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bulk-bar&quot; data-table=&quot;bulk-demo2&quot; role=&quot;region&quot; aria-label=&quot;Selected orders&quot;&gt;
+    &lt;p aria-live=&quot;polite&quot;&gt;&lt;span data-bulk-count&gt;0&lt;/span&gt; selected&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;secondary&quot; id=&quot;bulk-export&quot;&gt;Export&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;ghost&quot; data-bulk-clear&gt;Clear&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p id=&quot;bulk-log&quot; aria-live=&quot;polite&quot;&gt;Nothing exported yet.&lt;/p&gt;
+&lt;script&gt;
+  document.getElementById(&quot;bulk-export&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+    const rows = tsunami.table.selected(document.getElementById(&quot;bulk-demo2&quot;));
+    document.getElementById(&quot;bulk-log&quot;).textContent =
+      &quot;Exported &quot; + rows.map((r) =&gt; r.cells[1].textContent).join(&quot;, &quot;);
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Behavior</h2>
+            <p>
+              The bar is sticky at the bottom of its container. While nothing
+              is selected it is invisible but keeps its space, so the page does
+              not move when it appears. The count sits in
+              <code>[data-bulk-count]</code>; put
+              <code>aria-live="polite"</code> on its paragraph so screen
+              readers hear the change. Without <code>data-table</code>, the bar
+              uses the first <code>.table</code> in its parent. Selection
+              comes from the checkboxes of the Data table, so select-all,
+              filters and pages work as they do there.
+            </p>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              <code>js/bulk-bar.js</code> also works with bars added later.
+              There is no event of its own: listen for
+              <code>tsunami:select</code> on the table.
+            </p>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Methods">
+              <table class="table">
+                <thead><tr><th scope="col">Function</th><th scope="col">Description</th></tr></thead>
+                <tbody>
+<tr><td><code>tsunami.<wbr />bulkBar.<wbr />update(<wbr />bar)</code></td><td>Counts the selected rows again. Call it after a script changes the rows without a change event.</td></tr>
+<tr><td><code>tsunami.<wbr />bulkBar.<wbr />clear(<wbr />bar)</code></td><td>Unselects every row of the bar's table. Same as the Clear button.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Events">
+              <table class="table">
+                <thead><tr><th scope="col">Event</th><th scope="col">On</th><th scope="col">Detail</th></tr></thead>
+                <tbody>
+<tr><td><code>tsunami:select</code></td><td>table (bubbles)</td><td><code>{ rows, count }</code>. Fired by the Data table; the bar updates from it.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead><tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr></thead>
+                <tbody>
+<tr><td><code>.<wbr />bulk-bar</code></td><td></td><td>Sticky bar with a top border</td></tr>
+<tr><td><code>data-table</code></td><td>table id</td><td>The table whose selection the bar shows. Default: the first <code>.table</code> in the parent.</td></tr>
+<tr><td><code>data-active</code></td><td><code>true</code>, <code>false</code></td><td>Set by the script: whether any row is selected.</td></tr>
+<tr><td><code>[data-bulk-count]</code></td><td></td><td>Receives the number of selected rows.</td></tr>
+<tr><td><code>[data-bulk-clear]</code></td><td></td><td>A button that unselects every row.</td></tr>
+<tr><td><code>.<wbr />bulk-bar &gt; p</code></td><td></td><td>The count text, muted</td></tr>
+<tr><td><code>.<wbr />bulk-bar &gt; div</code></td><td></td><td>Group of action buttons</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
