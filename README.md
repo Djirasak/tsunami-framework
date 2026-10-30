@@ -6,7 +6,7 @@
 
 A small, quiet CSS framework for back-office UIs.
 Semantic HTML + `data-*` attributes. No runtime dependencies.
-51 component pages, Lucide icons and 270 country flags.
+53 component pages, Lucide icons and 270 country flags.
 
 </div>
 
@@ -53,8 +53,8 @@ The class names the component; `data-*` sets variant and size.
 | Foundations | Colors, Typography (`.typography`), Icons (Lucide)                                                                              |
 | Layout      | Stack, Card, Item, Page header, Stat, Chart, Sortable, Table, Timeline, Journey, JSON viewer, Accordion, Scroll area, Workspace |
 | Actions     | Button, Command, Dropdown, Theme switcher                                                                                       |
-| Forms       | Code editor, Color field, Date picker, Dropzone, Editor, Field, Image field, Input, Input group, Select, Save bar               |
-| Feedback    | Alert, Badge, Empty, Loader, Skeleton, Progress                                                                                 |
+| Forms       | Autocomplete, Code editor, Color field, Date picker, Dropzone, Editor, Field, Image field, Input, Input group, Select, Save bar |
+| Feedback    | Alert, Badge, Empty, Loader, Skeleton, Progress, Toast                                                                          |
 | Media       | Avatar, Flags                                                                                                                   |
 | Navigation  | Breadcrumb, Link, Pagination, Sidebar, Subnav, Tabs, Tree                                                                       |
 | Overlays    | Dialog, Drawer, Popover, Tooltip                                                                                                |
@@ -116,13 +116,15 @@ Vanilla ES modules, event delegation on `document`, no init functions. CSS works
 | `theme`                                    | light / dark / system, `tsunami.theme.get/set`               |
 | `tabs`, `tree`, `sidebar`                  | roving focus, closable tabs, tree filter, collapsed sidebar  |
 | `select`                                   | styled select over a native `<select>`, remote options, tags |
-| `table`                                    | sorting and row selection                                    |
+| `table`                                    | sorting, selection, pages, search, filters, columns, sticky  |
 | `save-bar`, `slider`, `pressed`, `journey` | form dirty state, range fill, toggle groups, journey lines   |
 | `image-field`, `json-viewer`               | image change/clear, foldable JSON tree with raw view         |
 | `date-picker`                              | field or button that opens a calendar: date, range, presets  |
 | `chart`                                    | canvas drawn by Chart.js: bar, line, doughnut, theme-aware   |
 | `code-editor`                              | Monaco over textareas: languages, several files, themes      |
 | `dropzone`                                 | drag and drop files onto an input, accept and size checks    |
+| `toast`                                    | notifications in the top layer, `tsunami.toast()`            |
+| `autocomplete`                             | suggestions for a free-text input, datalist or remote        |
 
 ## Licenses
 
