@@ -41,4 +41,11 @@ const server = Bun.serve({
   },
 });
 
-console.log(`tsunami: ${server.url}`);
+const color = process.stdout.isTTY && !process.env.NO_COLOR;
+const paint = (code: number) => (text: string) =>
+  color ? `\x1b[${code}m${text}\x1b[0m` : text;
+const [bold, dim, green, cyan] = [1, 2, 32, 36].map(paint);
+
+console.log(
+  `  ${green("➜")}  ${bold("Docs")}   ${cyan(`${server.url}docs/`)}\n     ${dim("Press Ctrl+C to stop")}\n`,
+);
