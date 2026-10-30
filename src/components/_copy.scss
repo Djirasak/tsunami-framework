@@ -1,0 +1,16 @@
+// Copy button: a .btn with data-copy or data-copy-target (behaviour in js/copy.js).
+// Children marked data-idle show normally; children marked data-done show for
+// 1.5 s after a copy, while the button has data-copied.
+@layer components {
+  :where(.btn:not([data-copied]) > [data-done]) {
+    display: none;
+  }
+
+  :where(.btn[data-copied] > [data-idle]) {
+    display: none;
+  }
+
+  :where(.btn[data-copied]) {
+    color: var(--ok-fg);
+  }
+}

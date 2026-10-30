@@ -1,0 +1,57 @@
+// Status dot: <span class="dot" data-status="success">Online</span>.
+// data-status: success | warning | danger | info | neutral (default).
+// data-pulse adds a soft ring for "live"; it stops under reduced motion.
+@use "motion";
+
+@layer components {
+  :where(.dot) {
+    --dot: var(--neutral-fg);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    line-height: 1;
+  }
+
+  :where(.dot)::before {
+    content: "";
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--dot);
+  }
+
+  :where(.dot[data-status="success"]) {
+    --dot: var(--ok-fg);
+  }
+
+  :where(.dot[data-status="warning"]) {
+    --dot: var(--warning-fg);
+  }
+
+  :where(.dot[data-status="danger"]) {
+    --dot: var(--danger-fg);
+  }
+
+  :where(.dot[data-status="info"]) {
+    --dot: var(--info-fg);
+  }
+
+  :where(.dot[data-pulse])::before {
+    box-shadow: 0 0 0 0 var(--dot);
+    animation: tsunami-dot-pulse 1.6s motion.$ease infinite;
+  }
+
+  @keyframes tsunami-dot-pulse {
+    70%,
+    100% {
+      box-shadow: 0 0 0 0.375rem transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.dot[data-pulse])::before {
+      animation: none;
+    }
+  }
+}

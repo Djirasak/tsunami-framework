@@ -1,0 +1,75 @@
+// Segmented control: 2-4 exclusive options. <div class="segmented"> holding
+// <label><input type="radio" name="…"><span>Day</span></label> items.
+// No JS: the radios give keyboard and form values. data-size="sm" on the group.
+@use "motion";
+
+@layer components {
+  :where(.segmented) {
+    display: inline-flex;
+    gap: 2px;
+    max-width: 100%;
+    padding: 2px;
+    border-radius: var(--radius-md);
+    background: var(--neutral-bg);
+    justify-self: start; // keep its own width as a grid item
+  }
+
+  :where(.segmented > label) {
+    position: relative;
+    display: inline-flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: 1.75rem;
+    padding: 0 var(--space-3);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition-property: color, background-color, border-color;
+    transition-duration: motion.$base;
+    transition-timing-function: motion.$ease;
+  }
+
+  // The radio fills the label, invisible, so a click anywhere hits it.
+  :where(.segmented > label > input) {
+    appearance: none;
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    border-radius: inherit;
+    opacity: 0;
+    cursor: inherit;
+  }
+
+  :where(.segmented > label:hover) {
+    color: var(--fg);
+  }
+
+  :where(.segmented > label:has(> input:checked)) {
+    border-color: var(--line);
+    background: var(--surface);
+    color: var(--fg);
+  }
+
+  // The input is transparent, so the ring is drawn on the label.
+  :where(.segmented > label:has(> input:focus-visible)) {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  :where(.segmented > label:has(> input:disabled)) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  :where(.segmented[data-size="sm"] > label) {
+    height: 1.5rem;
+    padding: 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+}
