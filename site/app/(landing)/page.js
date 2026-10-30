@@ -1,4 +1,5 @@
 import LandingScript from "../_components/LandingScript";
+import { version } from "../_lib/content";
 import { HOME_TITLE, SITE_NAME } from "../_lib/seo";
 
 const description =
@@ -129,9 +130,6 @@ export default function Landing() {
               Read the docs
               <i className="icon icon-arrow-right" aria-hidden="true"></i>
             </a>
-            <a className="btn" data-size="xl" href={REPO}>
-              GitHub
-            </a>
           </div>
         </div>
       </section>
@@ -234,7 +232,9 @@ export default function Landing() {
       </main>
 
       <footer className="landing-footer">
-        <span>Tsunami 津波</span>
+        <span>
+          Tsunami 津波 <span className="landing-version">v{version()}</span>
+        </span>
         <a className="link" data-variant="muted" href={REPO}>
           github.com/Djirasak/tsunami-framework
         </a>

@@ -14,7 +14,7 @@ export const nav = json("nav.json");
 // The framework's version, from the root package.json: content writes it as
 // {{version}} (the badge and the CDN links). It is read on every call, so a
 // bump shows in `bun run docs` without a restart.
-const version = () =>
+export const version = () =>
   JSON.parse(readFileSync(join(process.cwd(), "..", "package.json"), "utf8"))
     .version;
 
