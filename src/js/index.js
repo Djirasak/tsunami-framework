@@ -17,6 +17,7 @@ import "./json-viewer.js";
 import "./editor.js";
 import "./command.js";
 import "./color-field.js";
+import "./otp.js";
 import "./sortable.js";
 import "./date-picker.js";
 import "./chart.js";
