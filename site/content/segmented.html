@@ -1,0 +1,132 @@
+<header class="page-header">
+            <div>
+              <h1>Segmented control</h1>
+              <p>A compact group of two to four exclusive options, such as Day, Week and Month. It is lighter than tabs and works inside a form.</p>
+            </div>
+          </header>
+          <section>
+            <h2>Basic</h2>
+            <p>Each option is a real radio input inside a label, so the value posts with the form and the arrow keys move the choice. No script is needed. Give the group <code>role="radiogroup"</code> and an <code>aria-label</code>.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="segmented" role="radiogroup" aria-label="Range">
+                    <label><input type="radio" name="range1" value="day" /><span>Day</span></label>
+                    <label><input type="radio" name="range1" value="week" checked /><span>Week</span></label>
+                    <label><input type="radio" name="range1" value="month" /><span>Month</span></label>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="segmented" role="radiogroup" aria-label="Range"&gt;
+  &lt;label&gt;&lt;input type="radio" name="range1" value="day" /&gt;&lt;span&gt;Day&lt;/span&gt;&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="range1" value="week" checked /&gt;&lt;span&gt;Week&lt;/span&gt;&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="range1" value="month" /&gt;&lt;span&gt;Month&lt;/span&gt;&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Small and disabled</h2>
+            <p><code>data-size="sm"</code> on the group makes it 24px tall. <code>disabled</code> on an input dims that option.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="segmented" role="radiogroup" aria-label="Range" data-size="sm">
+                    <label><input type="radio" name="range2" value="list" checked /><span>List</span></label>
+                    <label><input type="radio" name="range2" value="board" /><span>Board</span></label>
+                    <label><input type="radio" name="range2" value="map" disabled /><span>Map</span></label>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="segmented" role="radiogroup" aria-label="Range" data-size="sm"&gt;
+  &lt;label&gt;&lt;input type="radio" name="range2" value="list" checked /&gt;&lt;span&gt;List&lt;/span&gt;&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="range2" value="board" /&gt;&lt;span&gt;Board&lt;/span&gt;&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="range2" value="map" disabled /&gt;&lt;span&gt;Map&lt;/span&gt;&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>In a field</h2>
+            <p>Use a <code>.field</code> with a label above, like any other input.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">Preview</button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="seg-group">Group sales by</label>
+                    <div class="segmented" id="seg-group" role="radiogroup" aria-label="Group sales by">
+                      <label><input type="radio" name="group" value="day" checked /><span>Day</span></label>
+                      <label><input type="radio" name="group" value="week" /><span>Week</span></label>
+                      <label><input type="radio" name="group" value="month" /><span>Month</span></label>
+                      <label><input type="radio" name="group" value="year" /><span>Year</span></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="seg-group"&gt;Group sales by&lt;/label&gt;
+  &lt;div class="segmented" id="seg-group" role="radiogroup" aria-label="Group sales by"&gt;
+    &lt;label&gt;&lt;input type="radio" name="group" value="day" checked /&gt;&lt;span&gt;Day&lt;/span&gt;&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="group" value="week" /&gt;&lt;span&gt;Week&lt;/span&gt;&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="group" value="month" /&gt;&lt;span&gt;Month&lt;/span&gt;&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="group" value="year" /&gt;&lt;span&gt;Year&lt;/span&gt;&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>.segmented</code></td><td></td><td>The group. Inline, with a neutral track and a raised selected option.</td></tr>
+                  <tr><td><code>&gt; label &gt; input[type=radio]</code></td><td></td><td>One option. The radio is invisible and fills the label. Share a <code>name</code> in the group.</td></tr>
+                  <tr><td><code>&gt; label &gt; span</code></td><td></td><td>The visible text. An <code>.icon</code> may go before it.</td></tr>
+                  <tr><td><code>data-size</code></td><td><code>sm</code></td><td>24px tall. The default is 28px.</td></tr>
+                  <tr><td><code>disabled</code></td><td>on an input</td><td>Dims the option and blocks it.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Events</h2>
+            <p>No Tsunami event: it is a native form control, so the save bar and form code see it as usual.</p>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Events">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Name</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>change</code></td><td>native</td><td>Fires from the radio that became checked, and bubbles. Read <code>event.target.value</code>.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Accessibility</h2>
+            <ul>
+              <li>Arrow keys move and select inside the group; Tab enters and leaves it. This is native radio behaviour.</li>
+              <li>The focus ring is drawn on the focused option.</li>
+              <li>Name the group with <code>aria-label</code> or a visible label.</li>
+              <li>Use two to four short options. For more, use a select.</li>
+            </ul>
+          </section>
