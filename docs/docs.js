@@ -1,6 +1,6 @@
 // Docs search: the sidebar button opens a command palette built from the nav,
 // so every page is listed with its icon and found by label or keyword.
-// Ctrl/Cmd+K opens it too.
+// Ctrl/Cmd+K opens it too (data-hotkey on the dialog, see command.js).
 const sidebar = document.getElementById("docs-nav");
 const attr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 
@@ -9,6 +9,7 @@ palette.id = "docs-palette";
 palette.className = "command-dialog";
 palette.setAttribute("aria-label", "Search docs");
 palette.setAttribute("closedby", "any");
+palette.dataset.hotkey = "mod+k";
 palette.innerHTML = `<div class="command">
   <header>
     <i class="icon icon-search" aria-hidden="true"></i>
@@ -30,12 +31,6 @@ palette.innerHTML = `<div class="command">
   </div>
 </div>`;
 document.body.append(palette);
-
-document.addEventListener("keydown", (e) => {
-  if (!(e.ctrlKey || e.metaKey) || e.key.toLowerCase() !== "k") return;
-  e.preventDefault();
-  palette.showModal();
-});
 
 // Code blocks: colour the markup and add a copy button.
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
