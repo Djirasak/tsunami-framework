@@ -16,6 +16,10 @@
 // on the text input sets its height.
 // The element gets value (read and set; "" clears), open(), close(), calendar
 // (the library's Calendar, read only) and data-date-picker-initialized="true".
+// A preset can name its dates instead of a value: data-preset="today |
+// yesterday | tomorrow | last-7-days | last-30-days | last-90-days | this-week
+// (from Monday) | this-month | last-month | this-year | last-year", worked out
+// from today when the panel opens. A single picker takes only the one-day names.
 // data-empty is set while there are no dates.
 // A bubbling `change` (detail { value, dates }) fires from .date-picker when the
 // dates change by a click, a preset, typing or setting value; the native change
@@ -64,6 +68,41 @@ function parse(text, count) {
   const parts = text.trim() === "" ? [] : text.split(TO).map((s) => s.trim());
   if (parts.length !== 0 && parts.length !== count) return null;
   return parts.every(isDate) ? parts.sort() : null;
+}
+
+// Named presets: data-preset="last-7-days" on a preset button sets its value
+// from today's date in the visitor's time zone.
+const iso = (d) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+function shift(d, days) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate() + days);
+}
+const PRESETS = {
+  today: (t) => [t, t],
+  yesterday: (t) => [shift(t, -1), shift(t, -1)],
+  tomorrow: (t) => [shift(t, 1), shift(t, 1)],
+  "last-7-days": (t) => [shift(t, -6), t],
+  "last-30-days": (t) => [shift(t, -29), t],
+  "last-90-days": (t) => [shift(t, -89), t],
+  "this-week": (t) => [shift(t, -((t.getDay() + 6) % 7)), t],
+  "this-month": (t) => [new Date(t.getFullYear(), t.getMonth(), 1), t],
+  "last-month": (t) => [
+    new Date(t.getFullYear(), t.getMonth() - 1, 1),
+    new Date(t.getFullYear(), t.getMonth(), 0),
+  ],
+  "this-year": (t) => [new Date(t.getFullYear(), 0, 1), t],
+  "last-year": (t) => [
+    new Date(t.getFullYear() - 1, 0, 1),
+    new Date(t.getFullYear() - 1, 11, 31),
+  ],
+};
+// A single picker takes only the one-day names; others give "".
+function presetValue(name, count) {
+  const [from, to] = PRESETS[name]?.(new Date()) ?? [];
+  if (!from) return "";
+  const [a, b] = [iso(from), iso(to)];
+  if (count === 2) return `${a}${TO}${b}`;
+  return a === b ? a : "";
 }
 
 const parts = (root) => ({
@@ -158,9 +197,17 @@ function mount(root, options = {}) {
       span.textContent = shown.join(" → ") || root.dataset.placeholder || "";
     root.toggleAttribute("data-empty", dates.length === 0);
     if (hidden) hidden.value = value();
-    for (const preset of panel.querySelectorAll("[data-presets] button"))
-      preset.setAttribute("aria-pressed", String(preset.value === value()));
+    presets();
     sync();
+  }
+
+  // Named presets get today's dates; the matching one is pressed.
+  function presets() {
+    for (const preset of panel.querySelectorAll("[data-presets] button")) {
+      const name = preset.dataset.preset;
+      if (name) preset.value = presetValue(name, count);
+      preset.setAttribute("aria-pressed", String(preset.value === value()));
+    }
   }
 
   function sync() {
@@ -224,6 +271,7 @@ function mount(root, options = {}) {
 
   function show() {
     if (open.has(root) || control.disabled) return;
+    presets(); // named presets follow today's date
     // A narrow window and a wide one show a different number of months.
     if ((range && wide() ? 2 : 1) !== months) build();
     else sync(); // drops a half-chosen range
@@ -250,7 +298,7 @@ function mount(root, options = {}) {
   if (start) {
     dates = start;
     paint();
-  }
+  } else presets();
 
   Object.defineProperties(root, {
     value: {
