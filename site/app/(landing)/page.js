@@ -2,7 +2,7 @@ import LandingScript from "../_components/LandingScript";
 import { HOME_TITLE, SITE_NAME } from "../_lib/seo";
 
 const description =
-  "Tsunami is a quiet UI framework for back-office apps: semantic HTML, data attributes and a little vanilla JS, 53 components, no dependencies.";
+  "Tsunami is a quiet UI framework for back-office apps: semantic HTML, data attributes and a little vanilla JS, 53 components, and a core with no dependencies.";
 
 export const metadata = {
   title: { absolute: HOME_TITLE },
@@ -45,8 +45,8 @@ const features = [
   },
   {
     icon: "package",
-    title: "No dependencies",
-    text: "Plain CSS and vanilla JS from one CDN link. Heavy parts such as the editor load only when used.",
+    title: "A light core",
+    text: "Two files, CSS and vanilla JS, with no dependencies. The editor, chart, date picker and drag and drop each load a library, only on the pages that use them.",
   },
 ];
 

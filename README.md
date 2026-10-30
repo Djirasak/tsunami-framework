@@ -5,7 +5,7 @@
 # Tsunami 津波
 
 A quiet UI framework for back-office apps.
-Semantic HTML + `data-*` attributes. No runtime dependencies.
+Semantic HTML + `data-*` attributes. The core (`tsunami.min.css` and `tsunami.min.js`) has no runtime dependencies; five components load a library of their own, only on the pages that use them: Editor (TinyMCE), Code editor (Monaco), Chart (Chart.js), Date picker (Vanilla Calendar Pro) and Sortable (SortableJS).
 53 component pages, Lucide icons and 270 country flags.
 
 </div>
