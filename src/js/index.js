@@ -14,3 +14,4 @@ import "./json-viewer.js";
 import "./editor.js";
 import "./command.js";
 import "./color-field.js";
+import "./sortable.js";
