@@ -30,6 +30,7 @@ const steps: [string[], () => Promise<unknown>][] = [
       "sortable.min.js",
       "vanilla-calendar.min.js",
       "chart.min.js",
+      "monaco/vs/loader.js",
     ],
     () => $`bun scripts/build-vendor.ts`,
   ],

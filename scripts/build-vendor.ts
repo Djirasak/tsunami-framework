@@ -2,7 +2,7 @@
 // TinyMCE: join the vendored files into one script, dist/tinymce.min.js.
 // Core first, then icons, model, theme, plugins and skins, which register
 // themselves with the core, so the editor never loads anything else.
-import { mkdirSync } from "node:fs";
+import { cpSync, mkdirSync, rmSync } from "node:fs";
 
 const root = new URL("..", import.meta.url).pathname;
 const vendor = `${root}vendor/tinymce`;
@@ -54,3 +54,10 @@ await Bun.write(
   Bun.file(`${root}vendor/chart/chart.min.js`),
 );
 console.log("dist/chart.min.js");
+
+// Monaco Editor is an AMD build of many files: vendor/monaco/vs is copied to
+// dist/monaco/vs, and the page loads dist/monaco/vs/loader.js, which finds
+// everything else next to itself.
+rmSync(`${root}dist/monaco`, { recursive: true, force: true });
+cpSync(`${root}vendor/monaco/vs`, `${root}dist/monaco/vs`, { recursive: true });
+console.log("dist/monaco/vs");
