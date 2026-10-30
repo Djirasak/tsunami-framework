@@ -9,10 +9,10 @@
         "keywords": "Get started index"
       },
       {
-        "label": "JavaScript API",
-        "href": "/docs/javascript-api",
+        "label": "JavaScript",
+        "href": "/docs/javascript",
         "icon": "braces",
-        "keywords": "Start javascript api window.tsunami events tsunami: mount destroy get set listen detail ready reference modules"
+        "keywords": "Start javascript api reference window.tsunami events tsunami: mount destroy get set listen detail ready reference modules"
       }
     ]
   },
