@@ -286,5 +286,10 @@
     "title": "Scroll area",
     "description": "A scrolling region inside a fixed-height box with a thin scrollbar. Vertical, horizontal and both directions, with the markup and CSS to copy.",
     "libs": []
+  },
+  "otp": {
+    "title": "One-time code",
+    "description": "A row of single-character boxes for a verification code. Moves on as you type, spreads a paste or an SMS autofill, and sends one joined value with the form.",
+    "libs": []
   }
 }

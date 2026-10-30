@@ -1,0 +1,255 @@
+<header class="page-header">
+            <div>
+              <h1>One-time code</h1>
+              <p>
+                A row of single-character boxes for a verification code. Typing
+                moves on, a paste or an SMS autofill fills them all, and a form
+                gets the joined value.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Six digits, one value for the form</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Six digits, one value for the form">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="field">
+                    <label id="otp-label">Verification code</label>
+                    <div class="otp" role="group" aria-labelledby="otp-label" data-name="code"></div>
+                    <small>We sent a 6-digit code to your phone.</small>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label id="otp-label"&gt;Verification code&lt;/label&gt;
+  &lt;div class="otp" role="group" aria-labelledby="otp-label" data-name="code"&gt;&lt;/div&gt;
+  &lt;small&gt;We sent a 6-digit code to your phone.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Know when the code is complete</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Know when the code is complete">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <form class="stack" id="otp-form">
+                    <div class="otp" role="group" aria-label="Verification code" data-name="code"></div>
+                    <small id="otp-out" aria-live="polite">Type or paste a code.</small>
+                  </form>
+                  <script>
+                    document.getElementById("otp-form").addEventListener("tsunami:otpcomplete", (e) => {
+                      document.getElementById("otp-out").textContent = "Code " + e.detail.value + " is complete.";
+                    });
+                  </script>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;form class="stack" id="otp-form"&gt;
+  &lt;div class="otp" role="group" aria-label="Verification code" data-name="code"&gt;&lt;/div&gt;
+  &lt;small id="otp-out" aria-live="polite"&gt;Type or paste a code.&lt;/small&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  document.getElementById("otp-form").addEventListener("tsunami:otpcomplete", (e) =&gt; {
+    document.getElementById("otp-out").textContent = "Code " + e.detail.value + " is complete.";
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Letters and digits, a different length</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Letters and digits, a different length">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">Preview</button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="otp" role="group" aria-label="Invite code" data-length="4" data-type="text" data-name="invite"></div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="otp" role="group" aria-label="Invite code" data-length="4" data-type="text" data-name="invite"&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Invalid and disabled</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Invalid and disabled">
+                <button type="button" role="tab" id="ex4-tp" aria-selected="true" aria-controls="ex4-p">Preview</button>
+                <button type="button" role="tab" id="ex4-tc" aria-selected="false" aria-controls="ex4-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex4-p" aria-labelledby="ex4-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="otp" role="group" aria-label="Wrong code" aria-invalid="true" data-length="4" data-name="wrong"></div>
+                    <div class="otp" role="group" aria-label="Locked code" data-length="4" data-disabled></div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex4-c" aria-labelledby="ex4-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="otp" role="group" aria-label="Wrong code" aria-invalid="true" data-length="4" data-name="wrong"&gt;&lt;/div&gt;
+&lt;div class="otp" role="group" aria-label="Locked code" data-length="4" data-disabled&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A smaller size</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A smaller size">
+                <button type="button" role="tab" id="ex5-tp" aria-selected="true" aria-controls="ex5-p">Preview</button>
+                <button type="button" role="tab" id="ex5-tc" aria-selected="false" aria-controls="ex5-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex5-p" aria-labelledby="ex5-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="otp" role="group" aria-label="Code" data-size="sm" data-length="6"></div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex5-c" aria-labelledby="ex5-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="otp" role="group" aria-label="Code" data-size="sm" data-length="6"&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Behavior</h2>
+            <ul>
+              <li>Typing a character moves to the next box. A character that is not allowed is ignored.</li>
+              <li>A paste, or a code your phone offers from an SMS, is spread over the boxes. A whole code replaces what is there; a shorter one goes in from the box you are in.</li>
+              <li>The first box carries <code>autocomplete="one-time-code"</code>, so a phone can offer the code from a message.</li>
+              <li>The hidden input named by <code>data-name</code> holds the joined value, so the form sends one field.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              <code>.otp</code> is started on load, also one added later when
+              you call <code>tsunami.otp.mount()</code>. A form reset empties the
+              boxes.
+            </p>
+            <h3>Methods</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Methods">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Method</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.otp.mount(root?)</code></td>
+                    <td>Starts every <code>.otp</code> inside <code>root</code> (default: the document) that is not started yet.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.otp.value(el)</code></td>
+                    <td>The joined value of the <code>.otp</code> element, as a string.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.otp.set(el, text)</code></td>
+                    <td>Replaces the value. Characters that are not allowed are dropped and extra ones are cut.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.otp.clear(el)</code></td>
+                    <td>Empties the boxes and focuses the first.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Events">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Event</th><th scope="col">On</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:otpcomplete</code></td>
+                    <td>the <code>.otp</code>, bubbles</td>
+                    <td>Sent when every box is filled. <code>event.detail.value</code> is the code.</td>
+                  </tr>
+                  <tr>
+                    <td><code>input</code></td>
+                    <td>a box, bubbles</td>
+                    <td>The browser's own, sent as each box changes.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Keyboard">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Key</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>Backspace</kbd></td>
+                    <td>Clears the box. In an empty box it goes back to the one before and clears that.</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>←</kbd> <kbd>→</kbd></td>
+                    <td>Moves to the previous or next box.</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Home</kbd> <kbd>End</kbd></td>
+                    <td>Moves to the first or the last box.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.otp</code></td>
+                    <td>on a <code>div</code></td>
+                    <td>The row. Give it <code>role="group"</code> and an <code>aria-label</code> or <code>aria-labelledby</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-length</code></td>
+                    <td>a number (default 6)</td>
+                    <td>How many boxes the script adds. Leave it out when the boxes are in the markup.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-type</code></td>
+                    <td><code>text</code> (none = digits)</td>
+                    <td>Accepts letters and digits. The boxes get a text keyboard on a phone.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-name</code></td>
+                    <td>a field name</td>
+                    <td>Adds the hidden input that holds the joined value.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td><code>sm</code></td>
+                    <td>Smaller boxes.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-disabled</code></td>
+                    <td>present or absent</td>
+                    <td>Disables the boxes the script adds. For boxes in the markup, put <code>disabled</code> on each.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>On <code>.otp</code>: the boxes get a red border.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

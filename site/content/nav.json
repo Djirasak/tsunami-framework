@@ -150,6 +150,12 @@
         "keywords": "Forms input-group data-size data-variant aria-invalid disabled aria-hidden"
       },
       {
+        "label": "One-time code",
+        "href": "/docs/otp",
+        "icon": "key-round",
+        "keywords": "Forms otp one-time code verification pin sms two-factor 2fa input data-length data-type data-name tsunami:otpcomplete autocomplete one-time-code paste"
+      },
+      {
         "label": "Save bar",
         "href": "/docs/save-bar",
         "icon": "save",
