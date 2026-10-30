@@ -50,6 +50,7 @@
 @use "components/drawer";
 @use "components/popover";
 @use "components/dropdown";
+@use "components/command";
 @use "components/tooltip";
 
 // Composites that place other components (buttons with tooltips) inside them.
