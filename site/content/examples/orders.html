@@ -153,6 +153,63 @@
         </div>
       </header>
 
+      <div class="stack" data-gap="sm">
+        <div class="stack" data-direction="row" data-gap="sm">
+          <div class="input-group">
+            <span><i class="icon icon-search" aria-hidden="true"></i></span>
+            <input
+              type="search"
+              placeholder="Search orders, customers"
+              aria-label="Search orders"
+              data-table-search="orders"
+            />
+          </div>
+          <div class="select" id="status-filter" data-placeholder="All statuses">
+            <select aria-label="Status">
+              <option value="">All statuses</option>
+              <option value="paid">Paid</option>
+              <option value="pending">Pending</option>
+              <option value="shipped">Shipped</option>
+              <option value="refunded">Refunded</option>
+            </select>
+          </div>
+          <div
+            class="date-picker"
+            id="date-filter"
+            data-mode="range"
+            data-format="medium"
+            data-placeholder="Any date"
+          >
+            <button type="button" class="btn" aria-expanded="false">
+              <span>Any date</span
+              ><i class="icon icon-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div data-popover aria-hidden="true">
+              <div data-presets role="group" aria-label="Period">
+                <button type="button" data-preset="last-7-days">
+                  Last 7 days
+                </button>
+                <button type="button" data-preset="last-30-days">
+                  Last 30 days
+                </button>
+                <button type="button" data-preset="this-month">
+                  This month
+                </button>
+                <button type="button" data-preset="last-month">
+                  Last month
+                </button>
+              </div>
+            </div>
+            <input type="hidden" name="period" />
+          </div>
+        </div>
+        <div class="filter-bar" id="order-filters" role="group" aria-label="Active filters">
+          <button type="button" class="btn" data-variant="ghost" data-size="sm" data-clear>
+            Clear all
+          </button>
+        </div>
+      </div>
+
     </main>
   </div>
 </div>
