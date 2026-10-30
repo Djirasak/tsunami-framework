@@ -18,3 +18,4 @@ import "./color-field.js";
 import "./sortable.js";
 import "./date-picker.js";
 import "./chart.js";
+import "./code-editor.js";
