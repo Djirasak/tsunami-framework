@@ -25,8 +25,8 @@ Semantic HTML + `data-*` attributes. The core (`tsunami.min.css` and `tsunami.mi
 From jsDelivr (each release tag; replace the version):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.3/dist/tsunami.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.3/dist/tsunami.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.4/dist/tsunami.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.4/dist/tsunami.min.js"></script>
 ```
 
 Or self-hosted:
