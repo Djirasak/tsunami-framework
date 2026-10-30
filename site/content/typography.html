@@ -675,6 +675,44 @@
             </div>
           </section>
           <section>
+            <h2>Code block with a copy button</h2>
+            <p>
+              Wrap the block in <code>.code-block</code> and put a
+              <a href="/docs/copy-button">copy button</a> after the
+              <code>pre</code>; it sits in the top right corner.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Code block with a copy button">
+                <button type="button" role="tab" id="ex9b-tp" aria-selected="true" aria-controls="ex9b-p">Preview</button>
+                <button type="button" role="tab" id="ex9b-tc" aria-selected="false" aria-controls="ex9b-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex9b-p" aria-labelledby="ex9b-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="typography">
+                    <div class="code-block">
+                      <pre><code id="cb-install">npm install @tsunami/ui</code></pre>
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#cb-install" aria-label="Copy the code">
+                        <i class="icon icon-copy" data-idle aria-hidden="true"></i>
+                        <i class="icon icon-check" data-done aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex9b-c" aria-labelledby="ex9b-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;div class="code-block"&gt;
+    &lt;pre&gt;&lt;code id="cb-install"&gt;npm install @tsunami/ui&lt;/code&gt;&lt;/pre&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#cb-install" aria-label="Copy the code"&gt;
+      &lt;i class="icon icon-copy" data-idle aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;i class="icon icon-check" data-done aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>Horizontal line</h2>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Horizontal line">

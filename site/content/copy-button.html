@@ -63,6 +63,43 @@
             </div>
           </section>
           <section>
+            <h2>Copy a code block</h2>
+            <p>
+              In a <code>.code-block</code> the button sits in the top right
+              corner of the <code>pre</code>, for commands and snippets.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Copy a code block">
+                <button type="button" role="tab" id="ex2b-tp" aria-selected="true" aria-controls="ex2b-p">Preview</button>
+                <button type="button" role="tab" id="ex2b-tc" aria-selected="false" aria-controls="ex2b-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2b-p" aria-labelledby="ex2b-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="typography">
+                    <div class="code-block">
+                      <pre><code id="cb-install">npm install @tsunami/ui</code></pre>
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#cb-install" aria-label="Copy the code">
+                        <i class="icon icon-copy" data-idle aria-hidden="true"></i>
+                        <i class="icon icon-check" data-done aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2b-c" aria-labelledby="ex2b-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;div class="code-block"&gt;
+    &lt;pre&gt;&lt;code id="cb-install"&gt;npm install @tsunami/ui&lt;/code&gt;&lt;/pre&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#cb-install" aria-label="Copy the code"&gt;
+      &lt;i class="icon icon-copy" data-idle aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;i class="icon icon-check" data-done aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>With a toast</h2>
             <p><code>data-copy-toast</code> also shows a toast. Leave it empty for "Copied", or give your own message.</p>
             <div class="tabs" data-tabs>
