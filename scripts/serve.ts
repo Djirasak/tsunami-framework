@@ -34,7 +34,10 @@ const server = Bun.serve({
       return notFound();
 
     const f = Bun.file(file);
-    return (await f.exists()) ? new Response(f) : notFound();
+    // no-cache: the browser always revalidates, so a rebuilt dist/ shows at once.
+    return (await f.exists())
+      ? new Response(f, { headers: { "Cache-Control": "no-cache" } })
+      : notFound();
   },
 });
 
