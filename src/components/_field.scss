@@ -116,6 +116,16 @@ $check: "input:is([type='checkbox'], [type='radio'])";
     font-weight: 400;
   }
 
+  // A group that is a child of a card is a section like the others: the group
+  // above resets padding and border, and it comes later than the card.
+  :where(.card > .field-group) {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  :where(.card > * + .field-group) {
+    border-top: 1px solid var(--line);
+  }
+
   // A plain div inside a group lays its fields out in equal columns.
   :where(.field-group > div:not([class])) {
     display: grid;
