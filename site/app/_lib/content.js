@@ -1,7 +1,8 @@
 // Reads site/content at build time: pages.json (title and library scripts per
 // page), nav.json (the sidebar and the search palette) and <name>.html (the
 // inner HTML of <main>, the source to edit).
-import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import { readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const dir = join(process.cwd(), "content");
@@ -11,6 +12,21 @@ export const pages = json("pages.json");
 export const nav = json("nav.json");
 
 export const html = (slug) => readFileSync(join(dir, `${slug}.html`), "utf8");
+
+// The date of the last commit that touched a page's HTML, for the sitemap.
+// Falls back to the page's file time when git is not available (for example
+// in a build from an exported tarball).
+export function lastModified(slug) {
+  const file = join(dir, `${slug}.html`);
+  try {
+    const out = execFileSync("git", ["log", "-1", "--format=%cI", "--", file], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    if (out) return new Date(out);
+  } catch {}
+  return statSync(file).mtime;
+}
 
 // Pages rendered inside the docs shell, without a page of their own in app/.
 export const plainSlugs = Object.keys(pages).filter(
