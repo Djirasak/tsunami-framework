@@ -1,0 +1,167 @@
+<header class="page-header">
+            <div>
+              <h1>Tag input</h1>
+              <p>
+                A box that looks like an input and holds tags. Type a word and press Enter or comma to add it; Backspace takes the last one away. A form gets the tags as one comma-separated value.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Tags in a form</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Tags in a form">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="field">
+                    <label id="ti-label" for="ti-text">Labels</label>
+                    <div class="tag-input" role="group" aria-labelledby="ti-label" data-name="labels" data-value="design,billing">
+                      <input type="text" id="ti-text" placeholder="Add a label" />
+                    </div>
+                    <small>Press Enter or comma to add. Backspace removes the last.</small>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label id="ti-label" for="ti-text"&gt;Labels&lt;/label&gt;
+  &lt;div class="tag-input" role="group" aria-labelledby="ti-label" data-name="labels" data-value="design,billing"&gt;
+    &lt;input type="text" id="ti-text" placeholder="Add a label" /&gt;
+  &lt;/div&gt;
+  &lt;small&gt;Press Enter or comma to add. Backspace removes the last.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A limit, and a change event</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A limit, and a change event">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="tag-input" id="ti2" role="group" aria-label="Recipients" data-max="3" data-name="to">
+                      <input type="text" placeholder="Up to 3 emails" />
+                    </div>
+                    <small id="ti2-out" aria-live="polite">No tags yet.</small>
+                  </div>
+                  <script>
+                    document.getElementById("ti2").addEventListener("tsunami:tagschange", (e) => {
+                      document.getElementById("ti2-out").textContent = e.detail.value.length + " of 3: " + e.detail.value.join(", ");
+                    });
+                  </script>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="tag-input" id="ti2" role="group" aria-label="Recipients" data-max="3" data-name="to"&gt;
+  &lt;input type="text" placeholder="Up to 3 emails" /&gt;
+&lt;/div&gt;
+&lt;small id="ti2-out" aria-live="polite"&gt;No tags yet.&lt;/small&gt;
+&lt;script&gt;
+  document.getElementById("ti2").addEventListener("tsunami:tagschange", (e) =&gt; {
+    document.getElementById("ti2-out").textContent = e.detail.value.length + " of 3: " + e.detail.value.join(", ");
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Invalid and disabled</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Invalid and disabled">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">Preview</button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="tag-input" role="group" aria-label="Invalid tags" aria-invalid="true" data-value="not-an-email"></div>
+                    <div class="tag-input" role="group" aria-label="Locked tags" data-value="read,only" data-disabled></div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="tag-input" role="group" aria-label="Invalid tags" aria-invalid="true" data-value="not-an-email"&gt;&lt;/div&gt;
+&lt;div class="tag-input" role="group" aria-label="Locked tags" data-value="read,only" data-disabled&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Behavior</h2>
+            <ul>
+              <li>Enter or comma adds the typed text as a tag. Enter never submits the form from this box.</li>
+              <li>Backspace in the empty box removes the last tag. The remove button on a tag does the same for that tag.</li>
+              <li>A paste with commas or new lines is split into tags. A paste of one plain word goes into the box as usual.</li>
+              <li>Leaving the box with text in it adds that text as a tag.</li>
+              <li>A tag that is already there is ignored, and nothing is added past <code>data-max</code>.</li>
+              <li>The text box is added if the markup has none. Add your own when a <code>label</code> needs an <code>id</code> to point at.</li>
+              <li>The hidden input named by <code>data-name</code> holds the tags joined with commas. A form reset restores the start tags.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              <code>.tag-input</code> is started on load, and so is one added to the page later.
+            </p>
+            <h3>Methods</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Methods">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Method</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>tsunami.tagInput.mount(root?)</code></td><td>Starts every <code>.tag-input</code> inside <code>root</code> (default: the document) that is not started yet.</td></tr>
+                  <tr><td><code>tsunami.tagInput.value(el)</code></td><td>The tags as an array of strings.</td></tr>
+                  <tr><td><code>tsunami.tagInput.set(el, list)</code></td><td>Replaces the tags. Duplicates are dropped and <code>data-max</code> applies.</td></tr>
+                  <tr><td><code>tsunami.tagInput.clear(el)</code></td><td>Removes every tag.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Events">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Event</th><th scope="col">On</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>tsunami:tagschange</code></td><td>the <code>.tag-input</code>, bubbles</td><td>Sent when a tag is added or removed. <code>event.detail.value</code> is the array of tags.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Keyboard">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Key</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><kbd>Enter</kbd> <kbd>,</kbd></td><td>Adds the typed text as a tag.</td></tr>
+                  <tr><td><kbd>Backspace</kbd></td><td>In the empty box, removes the last tag.</td></tr>
+                  <tr><td><kbd>Tab</kbd></td><td>Moves from the box to the remove buttons and on.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>.tag-input</code></td><td>on a <code>div</code></td><td>The box. Give it <code>role="group"</code> and an <code>aria-label</code> or <code>aria-labelledby</code>.</td></tr>
+                  <tr><td><code>data-value</code></td><td>comma-separated text</td><td>The tags to start with.</td></tr>
+                  <tr><td><code>data-max</code></td><td>a number</td><td>The most tags allowed. No limit when left out.</td></tr>
+                  <tr><td><code>data-name</code></td><td>a field name</td><td>Adds the hidden input that holds the joined value.</td></tr>
+                  <tr><td><code>data-disabled</code></td><td>present or absent</td><td>Disables the text box and hides the remove buttons.</td></tr>
+                  <tr><td><code>aria-invalid</code></td><td><code>true</code></td><td>On <code>.tag-input</code>: a red border.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
