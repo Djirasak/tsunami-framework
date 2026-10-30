@@ -82,6 +82,7 @@ export default function Shell({ slug }) {
                 type="button"
                 key={value}
                 data-theme-toggle={value}
+                suppressHydrationWarning /* tsunami sets aria-pressed first */
                 aria-label={label}
               >
                 <i className={`icon icon-${icon}`} aria-hidden="true"></i>
