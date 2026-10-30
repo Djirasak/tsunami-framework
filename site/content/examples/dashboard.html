@@ -1,0 +1,456 @@
+<div style="display: flex">
+  <aside class="sidebar" id="dash-nav" popover>
+    <nav aria-label="Main">
+      <header>
+        <a href="/examples/dashboard"
+          ><span class="avatar" data-size="sm"><span>HM</span></span
+          ><span>Harbor &amp; Mill</span></a
+        >
+      </header>
+      <section>
+        <div role="group">
+          <ul>
+            <li>
+              <a href="/examples/dashboard" aria-current="page"
+                ><i class="icon icon-house" aria-hidden="true"></i
+                ><span>Dashboard</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div role="group" aria-labelledby="dash-sell">
+          <h3 id="dash-sell">Sell</h3>
+          <ul>
+            <li>
+              <a href="/examples/orders"
+                ><i class="icon icon-receipt" aria-hidden="true"></i
+                ><span>Orders</span><span class="badge">12</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="icon icon-users" aria-hidden="true"></i
+                ><span>Customers</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="icon icon-undo-2" aria-hidden="true"></i
+                ><span>Returns</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div role="group" aria-labelledby="dash-catalog">
+          <h3 id="dash-catalog">Catalog</h3>
+          <ul>
+            <li>
+              <a href="#"
+                ><i class="icon icon-package" aria-hidden="true"></i
+                ><span>Products</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="icon icon-tag" aria-hidden="true"></i
+                ><span>Offers</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div role="group" aria-labelledby="dash-money">
+          <h3 id="dash-money">Money</h3>
+          <ul>
+            <li>
+              <a href="#"
+                ><i class="icon icon-wallet" aria-hidden="true"></i
+                ><span>Payouts</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="icon icon-chart-column" aria-hidden="true"></i
+                ><span>Reports</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <hr />
+        <div role="group">
+          <ul>
+            <li>
+              <a href="/examples/settings"
+                ><i class="icon icon-settings" aria-hidden="true"></i
+                ><span>Settings</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <button
+          type="button"
+          class="btn"
+          data-variant="ghost"
+          data-size="icon"
+          commandfor="dash-nav"
+          command="--toggle-collapsed"
+          aria-label="Collapse or expand sidebar"
+        >
+          <i class="icon icon-panel-left" aria-hidden="true"></i>
+        </button>
+      </footer>
+    </nav>
+  </aside>
+
+  <div style="flex: 1; min-width: 0">
+    <header
+      class="page-header"
+      style="padding: var(--space-2) var(--space-4); border-bottom: 1px solid var(--line)"
+    >
+      <button
+        type="button"
+        class="btn sidebar-toggle"
+        data-variant="ghost"
+        data-size="icon"
+        popovertarget="dash-nav"
+        aria-label="Open menu"
+      >
+        <i class="icon icon-menu" aria-hidden="true"></i>
+      </button>
+      <h1>Dashboard</h1>
+      <div>
+        <div class="theme-switcher" role="group" aria-label="Theme">
+          <button type="button" data-theme-toggle="light" aria-label="Light">
+            <i class="icon icon-sun" aria-hidden="true"></i>
+          </button>
+          <button type="button" data-theme-toggle="dark" aria-label="Dark">
+            <i class="icon icon-moon" aria-hidden="true"></i>
+          </button>
+          <button type="button" data-theme-toggle="system" aria-label="System">
+            <i class="icon icon-monitor" aria-hidden="true"></i>
+          </button>
+        </div>
+        <button
+          type="button"
+          class="btn"
+          data-variant="ghost"
+          data-size="icon"
+          popovertarget="dash-user"
+          aria-label="Account menu"
+        >
+          <span class="avatar" data-variant="circle" data-size="sm"
+            ><span>MK</span></span
+          >
+        </button>
+        <div class="dropdown" id="dash-user" popover data-align="end">
+          <a href="/examples/settings"
+            ><i class="icon icon-user" aria-hidden="true"></i>Profile</a
+          >
+          <a href="/examples/settings"
+            ><i class="icon icon-settings" aria-hidden="true"></i>Settings</a
+          >
+          <a href="#"
+            ><i class="icon icon-life-buoy" aria-hidden="true"></i>Support</a
+          >
+          <hr />
+          <button
+            type="button"
+            popovertarget="dash-user"
+            popovertargetaction="hide"
+          >
+            <i class="icon icon-log-out" aria-hidden="true"></i>Sign out
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main style="padding: var(--space-5) var(--space-4)">
+      <div class="stack">
+        <header class="page-header">
+          <div>
+            <h2>Overview</h2>
+            <p>
+              How Harbor &amp; Mill is selling, compared with the period before.
+            </p>
+          </div>
+          <div>
+            <div
+              class="segmented"
+              role="radiogroup"
+              aria-label="Range"
+              data-size="sm"
+              id="dash-range"
+            >
+              <label
+                ><input type="radio" name="dash-range" value="day" />
+                <span>Day</span></label
+              >
+              <label
+                ><input type="radio" name="dash-range" value="week" />
+                <span>Week</span></label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="dash-range"
+                  value="month"
+                  checked
+                />
+                <span>Month</span></label
+              >
+            </div>
+            <a href="/examples/orders" class="btn" data-variant="primary"
+              ><i class="icon icon-plus" aria-hidden="true"></i>New order</a
+            >
+          </div>
+        </header>
+
+        <div class="card">
+          <div class="stat-group" id="dash-stats" aria-live="polite">
+            <div class="stat">
+              <span>Revenue</span>
+              <strong data-k="revenue">$48,260</strong>
+              <span data-trend="up" data-k="revenueDelta"
+                ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                ><span>8.4%</span></span
+              >
+            </div>
+            <div class="stat">
+              <span>Orders</span>
+              <strong data-k="orders">1,284</strong>
+              <span data-trend="up" data-k="ordersDelta"
+                ><i class="icon icon-arrow-up" aria-hidden="true"></i
+                ><span>5.1%</span></span
+              >
+            </div>
+            <div class="stat">
+              <span>New customers</span>
+              <strong data-k="customers">392</strong>
+              <span data-trend="down" data-k="customersDelta"
+                ><i class="icon icon-arrow-down" aria-hidden="true"></i
+                ><span>2.3%</span></span
+              >
+            </div>
+            <div class="stat" data-reverse>
+              <span>Refunds</span>
+              <strong data-k="refunds">$1,940</strong>
+              <span data-trend="down" data-k="refundsDelta"
+                ><i class="icon icon-arrow-down" aria-hidden="true"></i
+                ><span>12.0%</span></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="stack" data-direction="row" style="align-items: stretch">
+          <div class="card" style="flex: 2 1 28rem">
+            <header>
+              <h2>Revenue</h2>
+              <p id="dash-revenue-sub">Last 30 days</p>
+            </header>
+            <div>
+              <div class="chart">
+                <canvas
+                  id="dash-revenue"
+                  aria-label="Revenue over the selected range"
+                ></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="flex: 1 1 16rem">
+            <header>
+              <h2>Orders by channel</h2>
+              <p>Share of orders</p>
+            </header>
+            <div>
+              <div class="chart">
+                <canvas id="dash-channels" aria-label="Orders by channel"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack" data-direction="row" style="align-items: flex-start">
+          <div class="card" style="flex: 2 1 28rem">
+            <header>
+              <h2>Recent orders</h2>
+              <p>The last 8 orders in the store</p>
+              <aside><a href="/examples/orders">View all</a></aside>
+            </header>
+            <div class="scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Order</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date</th>
+                    <th scope="col" data-align="end">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="/examples/orders">#10428</a></td>
+                    <td><span class="avatar" data-variant="circle" data-size="sm"><span>NA</span></span>Nadia Aksoy</td>
+                    <td><span class="badge" data-variant="ok">Paid</span></td>
+                    <td>Oct 30</td>
+                    <td data-align="end">$184.00</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/examples/orders">#10427</a></td>
+                    <td><span class="avatar" data-variant="circle" data-size="sm"><span>LB</span></span>Leo Brandt</td>
+                    <td><span class="badge" data-variant="warning">Pending</span></td>
+                    <td>Oct 30</td>
+                    <td data-align="end">$62.50</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/examples/orders">#10426</a></td>
+                    <td><span class="avatar" data-variant="circle" data-size="sm"><span>MO</span></span>Mei Ono</td>
+                    <td><span class="badge" data-variant="ok">Paid</span></td>
+                    <td>Oct 29</td>
+                    <td data-align="end">$329.90</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/examples/orders">#10425</a></td>
+                    <td><span class="avatar" data-variant="circle" data-size="sm"><span>TR</span></span>Tomas Reyes</td>
+                    <td><span class="badge" data-variant="info">Shipped</span></td>
+                    <td>Oct 29</td>
+                    <td data-align="end">$97.25</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/examples/orders">#10424</a></td>
+                    <td><span class="avatar" data-variant="circle" data-size="sm"><span>IH</span></span>Ingrid Holm</td>
+                    <td><span class="badge" data-variant="danger">Refunded</span></td>
+                    <td>Oct 29</td>
+                    <td data-align="end">$45.00</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/examples/orders">#10423</a></td>
+                    <td><span class="avatar" data-variant="circle" data-size="sm"><span>KS</span></span>Kofi Sarpong</td>
+                    <td><span class="badge" data-variant="ok">Paid</span></td>
+                    <td>Oct 28</td>
+                    <td data-align="end">$212.40</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/examples/orders">#10422</a></td>
+                    <td><span class="avatar" data-variant="circle" data-size="sm"><span>AV</span></span>Alma Vidal</td>
+                    <td><span class="badge" data-variant="info">Shipped</span></td>
+                    <td>Oct 28</td>
+                    <td data-align="end">$78.80</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/examples/orders">#10421</a></td>
+                    <td><span class="avatar" data-variant="circle" data-size="sm"><span>DP</span></span>Dev Patel</td>
+                    <td><span class="badge" data-variant="warning">Pending</span></td>
+                    <td>Oct 27</td>
+                    <td data-align="end">$151.60</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="stack" style="flex: 1 1 16rem">
+            <div class="card">
+              <header>
+                <h2>System status</h2>
+                <p>Updated a minute ago</p>
+              </header>
+              <div class="stack" data-gap="sm">
+                <span class="dot" data-status="success" data-pulse>API: operational</span>
+                <span class="dot" data-status="warning">Webhooks: delayed by 4 minutes</span>
+                <span class="dot" data-status="success">Payouts: on schedule</span>
+              </div>
+            </div>
+            <div class="card">
+              <header>
+                <h2>Activity</h2>
+              </header>
+              <div>
+                <ol class="timeline">
+                  <li>
+                    Order #10428 paid
+                    <time datetime="2026-10-30T09:12">09:12</time>
+                  </li>
+                  <li>
+                    Payout of $3,420.00 sent
+                    <time datetime="2026-10-30T07:00">07:00</time>
+                  </li>
+                  <li>
+                    Refund issued for #10424
+                    <time datetime="2026-10-29T14:30">Yesterday</time>
+                  </li>
+                  <li>
+                    Offer "Autumn 15%" started
+                    <time datetime="2026-10-28T00:00">Oct 28</time>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  const money = (n) => "$" + Math.round(n).toLocaleString("en-US");
+  const range = {
+    day: {
+      sub: "Last 24 hours",
+      revenue: 3180, orders: 86, customers: 27, refunds: 120,
+      deltas: [3.2, 1.8, -4.5, -8.0],
+      points: 24, label: (i) => String(i).padStart(2, "0") + ":00", scale: 230,
+      channels: [38, 24, 14, 10],
+    },
+    week: {
+      sub: "Last 7 days",
+      revenue: 11760, orders: 312, customers: 94, refunds: 430,
+      deltas: [6.1, 4.0, 1.2, -3.5],
+      points: 7, label: (i) => ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu"][i], scale: 1700,
+      channels: [162, 96, 54, 31],
+    },
+    month: {
+      sub: "Last 30 days",
+      revenue: 48260, orders: 1284, customers: 392, refunds: 1940,
+      deltas: [8.4, 5.1, -2.3, -12.0],
+      points: 30, label: (i) => "Oct " + (i + 1), scale: 1600,
+      channels: [640, 380, 164, 100],
+    },
+  };
+  const show = (key) => {
+    const r = range[key];
+    const set = (k, text) => (document.querySelector('[data-k="' + k + '"]').textContent = text);
+    set("revenue", money(r.revenue));
+    set("orders", r.orders.toLocaleString("en-US"));
+    set("customers", r.customers);
+    set("refunds", money(r.refunds));
+    ["revenueDelta", "ordersDelta", "customersDelta", "refundsDelta"].forEach((k, i) => {
+      const d = r.deltas[i];
+      const el = document.querySelector('[data-k="' + k + '"]');
+      el.dataset.trend = d >= 0 ? "up" : "down";
+      el.querySelector(".icon").className = "icon icon-arrow-" + (d >= 0 ? "up" : "down");
+      el.querySelector("span").textContent = Math.abs(d).toFixed(1) + "%";
+    });
+    document.getElementById("dash-revenue-sub").textContent = r.sub;
+    tsunami.chart("#dash-revenue", {
+      type: key === "month" ? "line" : "bar",
+      data: Array.from({ length: r.points }, (_, i) => ({
+        label: r.label(i),
+        revenue: Math.round(r.scale * (1 + 0.35 * Math.sin(i * 0.9) + 0.002 * i * r.points)),
+      })),
+      series: { revenue: { label: "Revenue", surface: true } },
+      options: { plugins: { tooltip: { callbacks: { label: (c) => money(c.parsed.y) } } } },
+    });
+    tsunami.chart("#dash-channels", {
+      type: "bar",
+      data: ["Online store", "Mobile app", "Marketplace", "In person"].map((label, i) => ({ label, orders: r.channels[i] })),
+      series: { orders: { label: "Orders" } },
+      options: { indexAxis: "y" },
+    });
+  };
+  document.getElementById("dash-range").addEventListener("change", (e) => show(e.target.value));
+  show("month");
+</script>
