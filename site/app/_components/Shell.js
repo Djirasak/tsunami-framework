@@ -20,7 +20,7 @@ export default function Shell({ slug }) {
         <button
           type="button"
           className="btn docs-search"
-          commandfor="docs-palette"
+          commandFor="docs-palette"
           command="show-modal"
         >
           <i className="icon icon-search" aria-hidden="true"></i>
@@ -66,7 +66,7 @@ export default function Shell({ slug }) {
             className="btn sidebar-toggle"
             data-variant="ghost"
             data-size="icon"
-            popovertarget="docs-nav"
+            popoverTarget="docs-nav"
             aria-label="Open menu"
           >
             <i className="icon icon-menu" aria-hidden="true"></i>

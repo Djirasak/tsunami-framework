@@ -9,8 +9,8 @@
     "prebuild": "bun scripts/sync.ts --build",
     "build": "next build",
     "start": "next start",
-    "preview": "bun run build && opennextjs-cloudflare build --skipNextBuild && opennextjs-cloudflare preview",
-    "deploy": "bun run build && opennextjs-cloudflare build --skipNextBuild && opennextjs-cloudflare deploy"
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "1.20.13",
