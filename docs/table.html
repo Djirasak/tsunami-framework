@@ -607,7 +607,7 @@
               <h1>Table</h1>
               <p>
                 A quiet table: small gray headers, row dividers and tabular
-                numbers. Sort columns and select rows with
+                numbers. Sort, select, filter, page and hide columns with
                 <code>table.js</code>.
               </p>
             </div>
@@ -1360,6 +1360,2594 @@
             </div>
           </section>
           <section>
+            <h2>Pages</h2>
+            <p>
+              Put <code>data-page-size</code> on the table and the script shows
+              that many rows at a time. A <code>nav.pagination</code> with
+              <code>data-pagination-for="table-id"</code> is filled with buttons
+              (with no value, the one in the same card is used).
+              <code>data-table-info</code> shows the range and a
+              <code>select</code> with <code>data-table-page-size</code> changes
+              the size. Rows are hidden, never re-created, so it stays quick up
+              to a couple of thousand rows.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Pages">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <div class="scroll-area" tabindex="0">
+                      <table
+                        class="table"
+                        style="min-width: 60rem"
+                        id="pg-demo"
+                        data-page-size="5"
+                      >
+                        <thead>
+                          <tr>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Order</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Customer</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Status</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Payment</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Date</button>
+                            </th>
+                            <th scope="col" data-align="end" aria-sort="none">
+                              <button type="button">Total</button>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>#110963</td>
+                            <td>Liam Nguyen</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 28, 2026</td>
+                            <td data-align="end">$90.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110962</td>
+                            <td>Lucas Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Mar 27, 2026</td>
+                            <td data-align="end">$178.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110961</td>
+                            <td>Mark Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 26, 2026</td>
+                            <td data-align="end">$285.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110960</td>
+                            <td>James Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 25, 2026</td>
+                            <td data-align="end">$318.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110959</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 24, 2026</td>
+                            <td data-align="end">$308.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110958</td>
+                            <td>Zoe Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 23, 2026</td>
+                            <td data-align="end">$58.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110957</td>
+                            <td>Zoe Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 22, 2026</td>
+                            <td data-align="end">$325.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110956</td>
+                            <td>Mark Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 21, 2026</td>
+                            <td data-align="end">$152.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110955</td>
+                            <td>Mark Clark</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 20, 2026</td>
+                            <td data-align="end">$306.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110954</td>
+                            <td>James Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 19, 2026</td>
+                            <td data-align="end">$29.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110953</td>
+                            <td>Grace Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 18, 2026</td>
+                            <td data-align="end">$319.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110952</td>
+                            <td>Zoe Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 17, 2026</td>
+                            <td data-align="end">$316.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110951</td>
+                            <td>Zoe Wilson</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 16, 2026</td>
+                            <td data-align="end">$258.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110950</td>
+                            <td>Zoe Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Mar 15, 2026</td>
+                            <td data-align="end">$27.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110949</td>
+                            <td>Henry Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 14, 2026</td>
+                            <td data-align="end">$173.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110948</td>
+                            <td>Noah Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 13, 2026</td>
+                            <td data-align="end">$156.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110947</td>
+                            <td>Henry Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 12, 2026</td>
+                            <td data-align="end">$277.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110946</td>
+                            <td>Lucas Wilson</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 11, 2026</td>
+                            <td data-align="end">$68.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110945</td>
+                            <td>James Clark</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 10, 2026</td>
+                            <td data-align="end">$238.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110944</td>
+                            <td>Lucas Miller</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 9, 2026</td>
+                            <td data-align="end">$246.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110943</td>
+                            <td>Emma Khan</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 8, 2026</td>
+                            <td data-align="end">$60.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110942</td>
+                            <td>Chloe Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 7, 2026</td>
+                            <td data-align="end">$88.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110941</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 6, 2026</td>
+                            <td data-align="end">$306.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110940</td>
+                            <td>Liam Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 5, 2026</td>
+                            <td data-align="end">$252.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110939</td>
+                            <td>Sofia Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 4, 2026</td>
+                            <td data-align="end">$21.25</td>
+                          </tr>
+                        </tbody>
+                        <template data-table-empty
+                          ><p>No orders match your filters.</p></template
+                        >
+                      </table>
+                    </div>
+                    <footer>
+                      <p data-table-info="pg-demo" aria-live="polite"></p>
+                      <select
+                        class="select"
+                        data-size="sm"
+                        aria-label="Rows per page"
+                        data-table-page-size="pg-demo"
+                      >
+                        <option>5</option>
+                        <option>10</option>
+                        <option>25</option>
+                      </select>
+                      <nav
+                        class="pagination"
+                        data-size="sm"
+                        aria-label="Pages"
+                        data-pagination-for="pg-demo"
+                      ></nav>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;div class="scroll-area" tabindex="0"&gt;
+    &lt;table class="table" style="min-width: 60rem" id="pg-demo" data-page-size="5"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Order&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Customer&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Status&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Payment&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Date&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;Total&lt;/button&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Liam Nguyen&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bank transfer&lt;/td&gt;&lt;td&gt;Mar 28, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$90.00&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Lucas Garcia&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apple Pay&lt;/td&gt;&lt;td&gt;Mar 27, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$178.50&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;Mark Moore&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Visa •••• 4417&lt;/td&gt;&lt;td&gt;Mar 26, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$285.25&lt;/td&gt;&lt;/tr&gt;
+        &lt;!-- more rows --&gt;
+      &lt;/tbody&gt;
+      &lt;template data-table-empty&gt;&lt;p&gt;No orders match your filters.&lt;/p&gt;&lt;/template&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  &lt;footer&gt;
+    &lt;p data-table-info="pg-demo" aria-live="polite"&gt;&lt;/p&gt;
+    &lt;select class="select" data-size="sm" aria-label="Rows per page" data-table-page-size="pg-demo"&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;10&lt;/option&gt;&lt;option&gt;25&lt;/option&gt;&lt;/select&gt;
+    &lt;nav class="pagination" data-size="sm" aria-label="Pages" data-pagination-for="pg-demo"&gt;&lt;/nav&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Search</h2>
+            <p>
+              An <code>input[data-table-search="table-id"]</code> keeps the rows
+              that contain the text in any cell, ignoring case. It waits 150 ms
+              after typing. When nothing matches, the content of
+              <code>template[data-table-empty]</code> is shown in one cell that
+              spans the visible columns.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Search">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="input-group">
+                      <span
+                        ><i
+                          class="icon icon-search"
+                          aria-hidden="true"
+                        ></i></span
+                      ><input
+                        type="search"
+                        placeholder="Search orders"
+                        aria-label="Search orders"
+                        data-table-search="search-demo"
+                      />
+                    </div>
+                    <div class="card">
+                      <div class="scroll-area" tabindex="0">
+                        <table
+                          class="table"
+                          style="min-width: 60rem"
+                          id="search-demo"
+                        >
+                          <thead>
+                            <tr>
+                              <th scope="col" aria-sort="none">
+                                <button type="button">Order</button>
+                              </th>
+                              <th scope="col" aria-sort="none">
+                                <button type="button">Customer</button>
+                              </th>
+                              <th scope="col" aria-sort="none">
+                                <button type="button">Status</button>
+                              </th>
+                              <th scope="col" aria-sort="none">
+                                <button type="button">Payment</button>
+                              </th>
+                              <th scope="col" aria-sort="none">
+                                <button type="button">Date</button>
+                              </th>
+                              <th scope="col" data-align="end" aria-sort="none">
+                                <button type="button">Total</button>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>#110963</td>
+                              <td>Liam Nguyen</td>
+                              <td>
+                                <span class="badge" data-variant="warning"
+                                  >Pending</span
+                                >
+                              </td>
+                              <td>Bank transfer</td>
+                              <td>Mar 28, 2026</td>
+                              <td data-align="end">$90.00</td>
+                            </tr>
+                            <tr>
+                              <td>#110962</td>
+                              <td>Lucas Garcia</td>
+                              <td>
+                                <span class="badge" data-variant="ok"
+                                  >Paid</span
+                                >
+                              </td>
+                              <td>Apple Pay</td>
+                              <td>Mar 27, 2026</td>
+                              <td data-align="end">$178.50</td>
+                            </tr>
+                            <tr>
+                              <td>#110961</td>
+                              <td>Mark Moore</td>
+                              <td>
+                                <span class="badge" data-variant="ok"
+                                  >Paid</span
+                                >
+                              </td>
+                              <td>Visa •••• 4417</td>
+                              <td>Mar 26, 2026</td>
+                              <td data-align="end">$285.25</td>
+                            </tr>
+                            <tr>
+                              <td>#110960</td>
+                              <td>James Lopez</td>
+                              <td>
+                                <span class="badge" data-variant="ok"
+                                  >Paid</span
+                                >
+                              </td>
+                              <td>Mastercard •••• 8034</td>
+                              <td>Mar 25, 2026</td>
+                              <td data-align="end">$318.75</td>
+                            </tr>
+                            <tr>
+                              <td>#110959</td>
+                              <td>Ethan Miller</td>
+                              <td>
+                                <span class="badge" data-variant="warning"
+                                  >Pending</span
+                                >
+                              </td>
+                              <td>PayPal</td>
+                              <td>Mar 24, 2026</td>
+                              <td data-align="end">$308.25</td>
+                            </tr>
+                            <tr>
+                              <td>#110958</td>
+                              <td>Zoe Miller</td>
+                              <td>
+                                <span class="badge" data-variant="warning"
+                                  >Pending</span
+                                >
+                              </td>
+                              <td>PayPal</td>
+                              <td>Mar 23, 2026</td>
+                              <td data-align="end">$58.25</td>
+                            </tr>
+                            <tr>
+                              <td>#110957</td>
+                              <td>Zoe Brown</td>
+                              <td>
+                                <span class="badge" data-variant="ok"
+                                  >Paid</span
+                                >
+                              </td>
+                              <td>Visa •••• 2290</td>
+                              <td>Mar 22, 2026</td>
+                              <td data-align="end">$325.25</td>
+                            </tr>
+                            <tr>
+                              <td>#110956</td>
+                              <td>Mark Brown</td>
+                              <td>
+                                <span class="badge" data-variant="ok"
+                                  >Paid</span
+                                >
+                              </td>
+                              <td>Visa •••• 4417</td>
+                              <td>Mar 21, 2026</td>
+                              <td data-align="end">$152.50</td>
+                            </tr>
+                            <tr>
+                              <td>#110955</td>
+                              <td>Mark Clark</td>
+                              <td>
+                                <span class="badge" data-variant="danger"
+                                  >Refunded</span
+                                >
+                              </td>
+                              <td>Bank transfer</td>
+                              <td>Mar 20, 2026</td>
+                              <td data-align="end">$306.00</td>
+                            </tr>
+                            <tr>
+                              <td>#110954</td>
+                              <td>James Jensen</td>
+                              <td>
+                                <span class="badge" data-variant="danger"
+                                  >Refunded</span
+                                >
+                              </td>
+                              <td>Visa •••• 4417</td>
+                              <td>Mar 19, 2026</td>
+                              <td data-align="end">$29.75</td>
+                            </tr>
+                            <tr>
+                              <td>#110953</td>
+                              <td>Grace Lopez</td>
+                              <td>
+                                <span class="badge" data-variant="ok"
+                                  >Paid</span
+                                >
+                              </td>
+                              <td>Bank transfer</td>
+                              <td>Mar 18, 2026</td>
+                              <td data-align="end">$319.25</td>
+                            </tr>
+                            <tr>
+                              <td>#110952</td>
+                              <td>Zoe Moore</td>
+                              <td>
+                                <span class="badge" data-variant="ok"
+                                  >Paid</span
+                                >
+                              </td>
+                              <td>PayPal</td>
+                              <td>Mar 17, 2026</td>
+                              <td data-align="end">$316.00</td>
+                            </tr>
+                          </tbody>
+                          <template data-table-empty
+                            ><p>No orders match your filters.</p></template
+                          >
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="input-group"&gt;&lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;&lt;input type="search" placeholder="Search orders" aria-label="Search orders" data-table-search="search-demo" /&gt;&lt;/div&gt;
+&lt;div class="card"&gt;
+  &lt;div class="scroll-area" tabindex="0"&gt;
+    &lt;table class="table" style="min-width: 60rem" id="search-demo"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Order&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Customer&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Status&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Payment&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Date&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;Total&lt;/button&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Liam Nguyen&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bank transfer&lt;/td&gt;&lt;td&gt;Mar 28, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$90.00&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Lucas Garcia&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apple Pay&lt;/td&gt;&lt;td&gt;Mar 27, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$178.50&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;Mark Moore&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Visa •••• 4417&lt;/td&gt;&lt;td&gt;Mar 26, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$285.25&lt;/td&gt;&lt;/tr&gt;
+        &lt;!-- more rows --&gt;
+      &lt;/tbody&gt;
+      &lt;template data-table-empty&gt;&lt;p&gt;No orders match your filters.&lt;/p&gt;&lt;/template&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Column filters</h2>
+            <p>
+              A second header row, <code>tr[data-filters]</code>, can hold an
+              input or a select under any column; the cell must sit at that
+              column's index. An input keeps rows whose cell contains the text
+              and a select keeps rows whose cell equals the chosen option (the
+              empty option clears it). Filters combine with the search and send
+              the table back to page 1.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Column filters">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <div class="scroll-area" tabindex="0">
+                      <table
+                        class="table"
+                        style="min-width: 60rem"
+                        id="filter-demo"
+                      >
+                        <thead>
+                          <tr>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Order</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Customer</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Status</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Payment</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Date</button>
+                            </th>
+                            <th scope="col" data-align="end" aria-sort="none">
+                              <button type="button">Total</button>
+                            </th>
+                          </tr>
+                          <tr data-filters>
+                            <th>
+                              <input
+                                class="input"
+                                data-size="sm"
+                                type="search"
+                                aria-label="Filter by order"
+                                placeholder="Filter"
+                              />
+                            </th>
+                            <th>
+                              <input
+                                class="input"
+                                data-size="sm"
+                                type="search"
+                                aria-label="Filter by customer"
+                                placeholder="Filter"
+                              />
+                            </th>
+                            <th>
+                              <select
+                                class="select"
+                                data-size="sm"
+                                aria-label="Filter by status"
+                              >
+                                <option value="">All</option>
+                                <option>Paid</option>
+                                <option>Pending</option>
+                                <option>Refunded</option>
+                              </select>
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>#110963</td>
+                            <td>Liam Nguyen</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 28, 2026</td>
+                            <td data-align="end">$90.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110962</td>
+                            <td>Lucas Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Mar 27, 2026</td>
+                            <td data-align="end">$178.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110961</td>
+                            <td>Mark Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 26, 2026</td>
+                            <td data-align="end">$285.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110960</td>
+                            <td>James Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 25, 2026</td>
+                            <td data-align="end">$318.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110959</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 24, 2026</td>
+                            <td data-align="end">$308.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110958</td>
+                            <td>Zoe Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 23, 2026</td>
+                            <td data-align="end">$58.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110957</td>
+                            <td>Zoe Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 22, 2026</td>
+                            <td data-align="end">$325.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110956</td>
+                            <td>Mark Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 21, 2026</td>
+                            <td data-align="end">$152.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110955</td>
+                            <td>Mark Clark</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 20, 2026</td>
+                            <td data-align="end">$306.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110954</td>
+                            <td>James Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 19, 2026</td>
+                            <td data-align="end">$29.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110953</td>
+                            <td>Grace Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 18, 2026</td>
+                            <td data-align="end">$319.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110952</td>
+                            <td>Zoe Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 17, 2026</td>
+                            <td data-align="end">$316.00</td>
+                          </tr>
+                        </tbody>
+                        <template data-table-empty
+                          ><p>No orders match your filters.</p></template
+                        >
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;div class="scroll-area" tabindex="0"&gt;
+    &lt;table class="table" style="min-width: 60rem" id="filter-demo"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Order&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Customer&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Status&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Payment&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Date&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;Total&lt;/button&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr data-filters&gt;
+          &lt;th&gt;&lt;input class="input" data-size="sm" type="search" aria-label="Filter by order" placeholder="Filter" /&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;input class="input" data-size="sm" type="search" aria-label="Filter by customer" placeholder="Filter" /&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;select class="select" data-size="sm" aria-label="Filter by status"&gt;&lt;option value=""&gt;All&lt;/option&gt;&lt;option&gt;Paid&lt;/option&gt;&lt;option&gt;Pending&lt;/option&gt;&lt;option&gt;Refunded&lt;/option&gt;&lt;/select&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Liam Nguyen&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bank transfer&lt;/td&gt;&lt;td&gt;Mar 28, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$90.00&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Lucas Garcia&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apple Pay&lt;/td&gt;&lt;td&gt;Mar 27, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$178.50&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;Mark Moore&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Visa •••• 4417&lt;/td&gt;&lt;td&gt;Mar 26, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$285.25&lt;/td&gt;&lt;/tr&gt;
+        &lt;!-- more rows --&gt;
+      &lt;/tbody&gt;
+      &lt;template data-table-empty&gt;&lt;p&gt;No orders match your filters.&lt;/p&gt;&lt;/template&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Column visibility</h2>
+            <p>
+              A <code>.dropdown</code> with
+              <code>data-table-columns="table-id"</code> lists the columns. If
+              it has no checkboxes the script writes one per header (value =
+              column index, label = header text); you can also write them
+              yourself. An unchecked column gets <code>hidden</code> on its
+              <code>th</code> and <code>td</code>, and the last visible column
+              cannot be hidden. Add <code>data-table-remember</code> to a table
+              with an <code>id</code> to keep the choice in
+              <code>localStorage</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Column visibility">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <header>
+                      <h2>Orders</h2>
+                      <aside>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-size="sm"
+                          popovertarget="cols-menu"
+                        >
+                          <i class="icon icon-columns-3" aria-hidden="true"></i
+                          >Columns
+                        </button>
+                        <div
+                          class="dropdown"
+                          id="cols-menu"
+                          data-table-columns="cols-demo"
+                          popover
+                        ></div>
+                      </aside>
+                    </header>
+                    <div class="scroll-area" tabindex="0">
+                      <table
+                        class="table"
+                        style="min-width: 60rem"
+                        id="cols-demo"
+                        data-table-remember
+                      >
+                        <thead>
+                          <tr>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Order</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Customer</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Status</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Payment</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Date</button>
+                            </th>
+                            <th scope="col" data-align="end" aria-sort="none">
+                              <button type="button">Total</button>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>#110963</td>
+                            <td>Liam Nguyen</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 28, 2026</td>
+                            <td data-align="end">$90.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110962</td>
+                            <td>Lucas Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Mar 27, 2026</td>
+                            <td data-align="end">$178.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110961</td>
+                            <td>Mark Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 26, 2026</td>
+                            <td data-align="end">$285.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110960</td>
+                            <td>James Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 25, 2026</td>
+                            <td data-align="end">$318.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110959</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 24, 2026</td>
+                            <td data-align="end">$308.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110958</td>
+                            <td>Zoe Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 23, 2026</td>
+                            <td data-align="end">$58.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110957</td>
+                            <td>Zoe Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 22, 2026</td>
+                            <td data-align="end">$325.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110956</td>
+                            <td>Mark Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 21, 2026</td>
+                            <td data-align="end">$152.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110955</td>
+                            <td>Mark Clark</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 20, 2026</td>
+                            <td data-align="end">$306.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110954</td>
+                            <td>James Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 19, 2026</td>
+                            <td data-align="end">$29.75</td>
+                          </tr>
+                        </tbody>
+                        <template data-table-empty
+                          ><p>No orders match your filters.</p></template
+                        >
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Orders&lt;/h2&gt;
+    &lt;aside&gt;
+      &lt;button type="button" class="btn" data-size="sm" popovertarget="cols-menu"&gt;&lt;i class="icon icon-columns-3" aria-hidden="true"&gt;&lt;/i&gt;Columns&lt;/button&gt;
+      &lt;!-- Empty: a checkbox per header is added for you --&gt;
+      &lt;div class="dropdown" id="cols-menu" data-table-columns="cols-demo" popover&gt;&lt;/div&gt;
+    &lt;/aside&gt;
+  &lt;/header&gt;
+  &lt;div class="scroll-area" tabindex="0"&gt;
+    &lt;table class="table" style="min-width: 60rem" id="cols-demo" data-table-remember&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Order&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Customer&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Status&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Payment&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Date&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;Total&lt;/button&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Liam Nguyen&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bank transfer&lt;/td&gt;&lt;td&gt;Mar 28, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$90.00&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Lucas Garcia&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apple Pay&lt;/td&gt;&lt;td&gt;Mar 27, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$178.50&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;Mark Moore&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Visa •••• 4417&lt;/td&gt;&lt;td&gt;Mar 26, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$285.25&lt;/td&gt;&lt;/tr&gt;
+        &lt;!-- more rows --&gt;
+      &lt;/tbody&gt;
+      &lt;template data-table-empty&gt;&lt;p&gt;No orders match your filters.&lt;/p&gt;&lt;/template&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sticky header</h2>
+            <p>
+              <code>data-sticky</code> keeps the header (and the filter row) at
+              the top of its scroll container: a <code>.scroll-area</code> with
+              a <code>max-height</code>, or the page.
+              <code>data-sticky="both"</code> also keeps the first column at the
+              left edge when the table scrolls sideways.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Sticky header">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tp"
+                  aria-selected="true"
+                  aria-controls="ex11-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tc"
+                  aria-selected="false"
+                  aria-controls="ex11-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-p"
+                aria-labelledby="ex11-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <div
+                      class="scroll-area"
+                      tabindex="0"
+                      style="max-height: 16rem"
+                    >
+                      <table
+                        class="table"
+                        style="min-width: 60rem"
+                        id="sticky-demo"
+                        data-sticky
+                      >
+                        <thead>
+                          <tr>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Order</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Customer</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Status</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Payment</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Date</button>
+                            </th>
+                            <th scope="col" data-align="end" aria-sort="none">
+                              <button type="button">Total</button>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>#110963</td>
+                            <td>Liam Nguyen</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 28, 2026</td>
+                            <td data-align="end">$90.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110962</td>
+                            <td>Lucas Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Mar 27, 2026</td>
+                            <td data-align="end">$178.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110961</td>
+                            <td>Mark Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 26, 2026</td>
+                            <td data-align="end">$285.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110960</td>
+                            <td>James Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 25, 2026</td>
+                            <td data-align="end">$318.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110959</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 24, 2026</td>
+                            <td data-align="end">$308.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110958</td>
+                            <td>Zoe Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 23, 2026</td>
+                            <td data-align="end">$58.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110957</td>
+                            <td>Zoe Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 22, 2026</td>
+                            <td data-align="end">$325.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110956</td>
+                            <td>Mark Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 21, 2026</td>
+                            <td data-align="end">$152.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110955</td>
+                            <td>Mark Clark</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 20, 2026</td>
+                            <td data-align="end">$306.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110954</td>
+                            <td>James Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 19, 2026</td>
+                            <td data-align="end">$29.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110953</td>
+                            <td>Grace Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 18, 2026</td>
+                            <td data-align="end">$319.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110952</td>
+                            <td>Zoe Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 17, 2026</td>
+                            <td data-align="end">$316.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110951</td>
+                            <td>Zoe Wilson</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 16, 2026</td>
+                            <td data-align="end">$258.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110950</td>
+                            <td>Zoe Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Mar 15, 2026</td>
+                            <td data-align="end">$27.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110949</td>
+                            <td>Henry Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 14, 2026</td>
+                            <td data-align="end">$173.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110948</td>
+                            <td>Noah Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 13, 2026</td>
+                            <td data-align="end">$156.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110947</td>
+                            <td>Henry Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 12, 2026</td>
+                            <td data-align="end">$277.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110946</td>
+                            <td>Lucas Wilson</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 11, 2026</td>
+                            <td data-align="end">$68.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110945</td>
+                            <td>James Clark</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 10, 2026</td>
+                            <td data-align="end">$238.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110944</td>
+                            <td>Lucas Miller</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 9, 2026</td>
+                            <td data-align="end">$246.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110943</td>
+                            <td>Emma Khan</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 8, 2026</td>
+                            <td data-align="end">$60.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110942</td>
+                            <td>Chloe Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 7, 2026</td>
+                            <td data-align="end">$88.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110941</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 6, 2026</td>
+                            <td data-align="end">$306.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110940</td>
+                            <td>Liam Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 5, 2026</td>
+                            <td data-align="end">$252.00</td>
+                          </tr>
+                          <tr>
+                            <td>#110939</td>
+                            <td>Sofia Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 4, 2026</td>
+                            <td data-align="end">$21.25</td>
+                          </tr>
+                          <tr>
+                            <td>#110938</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 3, 2026</td>
+                            <td data-align="end">$343.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110937</td>
+                            <td>Sofia Clark</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Feb 28, 2026</td>
+                            <td data-align="end">$89.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110936</td>
+                            <td>Grace Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>PayPal</td>
+                            <td>Feb 27, 2026</td>
+                            <td data-align="end">$12.50</td>
+                          </tr>
+                          <tr>
+                            <td>#110935</td>
+                            <td>Daniel Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Feb 26, 2026</td>
+                            <td data-align="end">$161.75</td>
+                          </tr>
+                          <tr>
+                            <td>#110934</td>
+                            <td>Mark Patel</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Feb 25, 2026</td>
+                            <td data-align="end">$17.00</td>
+                          </tr>
+                        </tbody>
+                        <template data-table-empty
+                          ><p>No orders match your filters.</p></template
+                        >
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-c"
+                aria-labelledby="ex11-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;div class="scroll-area" tabindex="0" style="max-height: 16rem"&gt;
+    &lt;table class="table" style="min-width: 60rem" id="sticky-demo" data-sticky&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Order&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Customer&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Status&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Payment&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Date&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;Total&lt;/button&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Liam Nguyen&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bank transfer&lt;/td&gt;&lt;td&gt;Mar 28, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$90.00&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Lucas Garcia&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apple Pay&lt;/td&gt;&lt;td&gt;Mar 27, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$178.50&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;Mark Moore&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Visa •••• 4417&lt;/td&gt;&lt;td&gt;Mar 26, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$285.25&lt;/td&gt;&lt;/tr&gt;
+        &lt;!-- more rows --&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Everything together</h2>
+            <p>
+              Sorting works on the whole filtered set before it is cut into
+              pages. The select-all box selects every row that matches the
+              filter, on all pages, not only the visible one. After any change
+              the table fires <code>tsunami:tablechange</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Everything together">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tp"
+                  aria-selected="true"
+                  aria-controls="ex12-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tc"
+                  aria-selected="false"
+                  aria-controls="ex12-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-p"
+                aria-labelledby="ex12-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <header>
+                      <h2>Orders</h2>
+                      <p data-table-info="orders-demo" aria-live="polite"></p>
+                      <aside>
+                        <div class="input-group">
+                          <span
+                            ><i
+                              class="icon icon-search"
+                              aria-hidden="true"
+                            ></i></span
+                          ><input
+                            type="search"
+                            placeholder="Search orders"
+                            aria-label="Search orders"
+                            data-table-search="orders-demo"
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-size="sm"
+                          popovertarget="orders-cols"
+                        >
+                          <i class="icon icon-columns-3" aria-hidden="true"></i
+                          >Columns
+                        </button>
+                        <div
+                          class="dropdown"
+                          id="orders-cols"
+                          data-table-columns="orders-demo"
+                          popover
+                        ></div>
+                      </aside>
+                    </header>
+                    <div
+                      class="scroll-area"
+                      tabindex="0"
+                      style="max-height: 26rem"
+                    >
+                      <table
+                        class="table"
+                        style="min-width: 60rem"
+                        id="orders-demo"
+                        data-page-size="10"
+                        data-sticky
+                        data-table-remember
+                      >
+                        <thead>
+                          <tr>
+                            <th scope="col">
+                              <input
+                                type="checkbox"
+                                aria-label="Select all orders"
+                              />
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Order</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Customer</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Status</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Payment</button>
+                            </th>
+                            <th scope="col" aria-sort="none">
+                              <button type="button">Date</button>
+                            </th>
+                            <th scope="col" data-align="end" aria-sort="none">
+                              <button type="button">Total</button>
+                            </th>
+                          </tr>
+                          <tr data-filters>
+                            <th></th>
+                            <th>
+                              <input
+                                class="input"
+                                data-size="sm"
+                                type="search"
+                                aria-label="Filter by order"
+                                placeholder="Filter"
+                              />
+                            </th>
+                            <th>
+                              <input
+                                class="input"
+                                data-size="sm"
+                                type="search"
+                                aria-label="Filter by customer"
+                                placeholder="Filter"
+                              />
+                            </th>
+                            <th>
+                              <select
+                                class="select"
+                                data-size="sm"
+                                aria-label="Filter by status"
+                              >
+                                <option value="">All</option>
+                                <option>Paid</option>
+                                <option>Pending</option>
+                                <option>Refunded</option>
+                              </select>
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110963"
+                              />
+                            </td>
+                            <td>#110963</td>
+                            <td>Liam Nguyen</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 28, 2026</td>
+                            <td data-align="end">$90.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110962"
+                              />
+                            </td>
+                            <td>#110962</td>
+                            <td>Lucas Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Mar 27, 2026</td>
+                            <td data-align="end">$178.50</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110961"
+                              />
+                            </td>
+                            <td>#110961</td>
+                            <td>Mark Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 26, 2026</td>
+                            <td data-align="end">$285.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110960"
+                              />
+                            </td>
+                            <td>#110960</td>
+                            <td>James Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 25, 2026</td>
+                            <td data-align="end">$318.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110959"
+                              />
+                            </td>
+                            <td>#110959</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 24, 2026</td>
+                            <td data-align="end">$308.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110958"
+                              />
+                            </td>
+                            <td>#110958</td>
+                            <td>Zoe Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 23, 2026</td>
+                            <td data-align="end">$58.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110957"
+                              />
+                            </td>
+                            <td>#110957</td>
+                            <td>Zoe Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 22, 2026</td>
+                            <td data-align="end">$325.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110956"
+                              />
+                            </td>
+                            <td>#110956</td>
+                            <td>Mark Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 21, 2026</td>
+                            <td data-align="end">$152.50</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110955"
+                              />
+                            </td>
+                            <td>#110955</td>
+                            <td>Mark Clark</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 20, 2026</td>
+                            <td data-align="end">$306.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110954"
+                              />
+                            </td>
+                            <td>#110954</td>
+                            <td>James Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Visa •••• 4417</td>
+                            <td>Mar 19, 2026</td>
+                            <td data-align="end">$29.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110953"
+                              />
+                            </td>
+                            <td>#110953</td>
+                            <td>Grace Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 18, 2026</td>
+                            <td data-align="end">$319.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110952"
+                              />
+                            </td>
+                            <td>#110952</td>
+                            <td>Zoe Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 17, 2026</td>
+                            <td data-align="end">$316.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110951"
+                              />
+                            </td>
+                            <td>#110951</td>
+                            <td>Zoe Wilson</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 16, 2026</td>
+                            <td data-align="end">$258.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110950"
+                              />
+                            </td>
+                            <td>#110950</td>
+                            <td>Zoe Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Mar 15, 2026</td>
+                            <td data-align="end">$27.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110949"
+                              />
+                            </td>
+                            <td>#110949</td>
+                            <td>Henry Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 14, 2026</td>
+                            <td data-align="end">$173.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110948"
+                              />
+                            </td>
+                            <td>#110948</td>
+                            <td>Noah Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 13, 2026</td>
+                            <td data-align="end">$156.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110947"
+                              />
+                            </td>
+                            <td>#110947</td>
+                            <td>Henry Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 12, 2026</td>
+                            <td data-align="end">$277.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110946"
+                              />
+                            </td>
+                            <td>#110946</td>
+                            <td>Lucas Wilson</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 11, 2026</td>
+                            <td data-align="end">$68.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110945"
+                              />
+                            </td>
+                            <td>#110945</td>
+                            <td>James Clark</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Mar 10, 2026</td>
+                            <td data-align="end">$238.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110944"
+                              />
+                            </td>
+                            <td>#110944</td>
+                            <td>Lucas Miller</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 9, 2026</td>
+                            <td data-align="end">$246.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110943"
+                              />
+                            </td>
+                            <td>#110943</td>
+                            <td>Emma Khan</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Mar 8, 2026</td>
+                            <td data-align="end">$60.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110942"
+                              />
+                            </td>
+                            <td>#110942</td>
+                            <td>Chloe Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 7, 2026</td>
+                            <td data-align="end">$88.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110941"
+                              />
+                            </td>
+                            <td>#110941</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Mar 6, 2026</td>
+                            <td data-align="end">$306.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110940"
+                              />
+                            </td>
+                            <td>#110940</td>
+                            <td>Liam Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 5, 2026</td>
+                            <td data-align="end">$252.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110939"
+                              />
+                            </td>
+                            <td>#110939</td>
+                            <td>Sofia Brown</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 4, 2026</td>
+                            <td data-align="end">$21.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110938"
+                              />
+                            </td>
+                            <td>#110938</td>
+                            <td>Ethan Miller</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Mar 3, 2026</td>
+                            <td data-align="end">$343.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110937"
+                              />
+                            </td>
+                            <td>#110937</td>
+                            <td>Sofia Clark</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Feb 28, 2026</td>
+                            <td data-align="end">$89.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110936"
+                              />
+                            </td>
+                            <td>#110936</td>
+                            <td>Grace Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>PayPal</td>
+                            <td>Feb 27, 2026</td>
+                            <td data-align="end">$12.50</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110935"
+                              />
+                            </td>
+                            <td>#110935</td>
+                            <td>Daniel Jensen</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Feb 26, 2026</td>
+                            <td data-align="end">$161.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110934"
+                              />
+                            </td>
+                            <td>#110934</td>
+                            <td>Mark Patel</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Feb 25, 2026</td>
+                            <td data-align="end">$17.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110933"
+                              />
+                            </td>
+                            <td>#110933</td>
+                            <td>Olivia Clark</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Feb 24, 2026</td>
+                            <td data-align="end">$306.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110932"
+                              />
+                            </td>
+                            <td>#110932</td>
+                            <td>Emma Lopez</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Feb 23, 2026</td>
+                            <td data-align="end">$216.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110931"
+                              />
+                            </td>
+                            <td>#110931</td>
+                            <td>Ava Taylor</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Refunded</span
+                              >
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Feb 22, 2026</td>
+                            <td data-align="end">$112.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110930"
+                              />
+                            </td>
+                            <td>#110930</td>
+                            <td>Lucas Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>PayPal</td>
+                            <td>Feb 21, 2026</td>
+                            <td data-align="end">$102.25</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110929"
+                              />
+                            </td>
+                            <td>#110929</td>
+                            <td>Olivia Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>PayPal</td>
+                            <td>Feb 20, 2026</td>
+                            <td data-align="end">$15.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110928"
+                              />
+                            </td>
+                            <td>#110928</td>
+                            <td>Henry Carter</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Feb 19, 2026</td>
+                            <td data-align="end">$111.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110927"
+                              />
+                            </td>
+                            <td>#110927</td>
+                            <td>Liam Carter</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Bank transfer</td>
+                            <td>Feb 18, 2026</td>
+                            <td data-align="end">$387.50</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110926"
+                              />
+                            </td>
+                            <td>#110926</td>
+                            <td>Ava Miller</td>
+                            <td>
+                              <span class="badge" data-variant="warning"
+                                >Pending</span
+                              >
+                            </td>
+                            <td>Apple Pay</td>
+                            <td>Feb 17, 2026</td>
+                            <td data-align="end">$70.00</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110925"
+                              />
+                            </td>
+                            <td>#110925</td>
+                            <td>Liam Garcia</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Visa •••• 2290</td>
+                            <td>Feb 16, 2026</td>
+                            <td data-align="end">$287.75</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select order 110924"
+                              />
+                            </td>
+                            <td>#110924</td>
+                            <td>Ava Moore</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td>Mastercard •••• 8034</td>
+                            <td>Feb 15, 2026</td>
+                            <td data-align="end">$96.50</td>
+                          </tr>
+                        </tbody>
+                        <template data-table-empty
+                          ><p>No orders match your filters.</p></template
+                        >
+                      </table>
+                    </div>
+                    <footer>
+                      <p id="orders-selected" aria-live="polite">0 selected</p>
+                      <select
+                        class="select"
+                        data-size="sm"
+                        aria-label="Rows per page"
+                        data-table-page-size="orders-demo"
+                      >
+                        <option>10</option>
+                        <option>20</option>
+                        <option>40</option>
+                      </select>
+                      <nav
+                        class="pagination"
+                        data-size="sm"
+                        aria-label="Pages"
+                        data-pagination-for="orders-demo"
+                      ></nav>
+                    </footer>
+                    <script>
+                      document
+                        .getElementById("orders-demo")
+                        .addEventListener("tsunami:select", (e) => {
+                          document.getElementById(
+                            "orders-selected",
+                          ).textContent = `${e.detail.count} selected`;
+                        });
+                    </script>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-c"
+                aria-labelledby="ex12-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Orders&lt;/h2&gt;
+    &lt;p data-table-info="orders-demo" aria-live="polite"&gt;&lt;/p&gt;
+    &lt;aside&gt;
+      &lt;div class="input-group"&gt;&lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;&lt;input type="search" placeholder="Search orders" aria-label="Search orders" data-table-search="orders-demo" /&gt;&lt;/div&gt;
+      &lt;button type="button" class="btn" data-size="sm" popovertarget="orders-cols"&gt;&lt;i class="icon icon-columns-3" aria-hidden="true"&gt;&lt;/i&gt;Columns&lt;/button&gt;
+      &lt;div class="dropdown" id="orders-cols" data-table-columns="orders-demo" popover&gt;&lt;/div&gt;
+    &lt;/aside&gt;
+  &lt;/header&gt;
+  &lt;div class="scroll-area" tabindex="0" style="max-height: 26rem"&gt;
+    &lt;table class="table" style="min-width: 60rem" id="orders-demo" data-page-size="10" data-sticky data-table-remember&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col"&gt;&lt;input type="checkbox" aria-label="Select all orders" /&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Order&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Customer&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Status&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Payment&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" aria-sort="none"&gt;&lt;button type="button"&gt;Date&lt;/button&gt;&lt;/th&gt;
+          &lt;th scope="col" data-align="end" aria-sort="none"&gt;&lt;button type="button"&gt;Total&lt;/button&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr data-filters&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;input class="input" data-size="sm" type="search" aria-label="Filter by order" placeholder="Filter" /&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;input class="input" data-size="sm" type="search" aria-label="Filter by customer" placeholder="Filter" /&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;select class="select" data-size="sm" aria-label="Filter by status"&gt;&lt;option value=""&gt;All&lt;/option&gt;&lt;option&gt;Paid&lt;/option&gt;&lt;option&gt;Pending&lt;/option&gt;&lt;option&gt;Refunded&lt;/option&gt;&lt;/select&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="Select order 110963" /&gt;&lt;/td&gt;&lt;td&gt;#110963&lt;/td&gt;&lt;td&gt;Liam Nguyen&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Bank transfer&lt;/td&gt;&lt;td&gt;Mar 28, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$90.00&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="Select order 110962" /&gt;&lt;/td&gt;&lt;td&gt;#110962&lt;/td&gt;&lt;td&gt;Lucas Garcia&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Apple Pay&lt;/td&gt;&lt;td&gt;Mar 27, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$178.50&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;&lt;input type="checkbox" aria-label="Select order 110961" /&gt;&lt;/td&gt;&lt;td&gt;#110961&lt;/td&gt;&lt;td&gt;Mark Moore&lt;/td&gt;&lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Visa •••• 4417&lt;/td&gt;&lt;td&gt;Mar 26, 2026&lt;/td&gt;&lt;td data-align="end"&gt;$285.25&lt;/td&gt;&lt;/tr&gt;
+        &lt;!-- more rows --&gt;
+      &lt;/tbody&gt;
+      &lt;template data-table-empty&gt;&lt;p&gt;No orders match your filters.&lt;/p&gt;&lt;/template&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  &lt;footer&gt;
+    &lt;p id="orders-selected" aria-live="polite"&gt;0 selected&lt;/p&gt;
+    &lt;select class="select" data-size="sm" aria-label="Rows per page" data-table-page-size="orders-demo"&gt;&lt;option&gt;10&lt;/option&gt;&lt;option&gt;20&lt;/option&gt;&lt;option&gt;40&lt;/option&gt;&lt;/select&gt;
+    &lt;nav class="pagination" data-size="sm" aria-label="Pages" data-pagination-for="orders-demo"&gt;&lt;/nav&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("orders-demo").addEventListener("tsunami:select", (e) =&gt; {
+    document.getElementById("orders-selected").textContent = `${e.detail.count} selected`;
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>Attributes</h2>
             <div class="card">
               <div class="scroll-area" tabindex="0">
@@ -1489,6 +4077,99 @@
                       <td>Set by JS from the row's checkbox</td>
                     </tr>
                     <tr>
+                      <td><code>data-page-size</code></td>
+                      <td>A number</td>
+                      <td>
+                        On the table: rows per page. Rows outside the page get
+                        <code>hidden</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>nav.pagination[data-pagination-for]</code></td>
+                      <td>
+                        Table id; omit the value to use the table in the same
+                        card
+                      </td>
+                      <td>
+                        Filled with prev, page numbers (with …), next as
+                        buttons. Hidden when there is one page
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>[data-table-info]</code></td>
+                      <td>Table id</td>
+                      <td>Shows the range, such as <code>1–10 of 42</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>select[data-table-page-size]</code></td>
+                      <td>Table id</td>
+                      <td>
+                        Changes <code>data-page-size</code> and goes back to
+                        page 1
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>input[data-table-search]</code></td>
+                      <td>Table id</td>
+                      <td>
+                        Global search: rows whose cells contain the text,
+                        ignoring case (150 ms debounce)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>thead tr[data-filters]</code></td>
+                      <td></td>
+                      <td>
+                        Row of column filters. An <code>input</code> in a cell
+                        filters by contains, a <code>select</code> by equals, on
+                        the column at the cell's index
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>template[data-table-empty]</code></td>
+                      <td>Optional table id</td>
+                      <td>
+                        Content for the row shown when no row matches, spanning
+                        the visible columns. A
+                        <code>tr[data-table-empty]</code> in
+                        <code>tbody</code> works too
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>[data-table-columns]</code></td>
+                      <td>Table id</td>
+                      <td>
+                        A <code>.dropdown</code> of column checkboxes (value =
+                        column index). Written from the headers when empty.
+                        Columns are hidden with <code>hidden</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>data-table-remember</code></td>
+                      <td>(boolean)</td>
+                      <td>
+                        On a table with an <code>id</code>: keep the hidden
+                        columns in <code>localStorage</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>data-sticky</code></td>
+                      <td><code>both</code>; omit for the header only</td>
+                      <td>
+                        On the table: sticky header inside its scroll container.
+                        <code>both</code> adds the first column
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>data-enhanced</code></td>
+                      <td></td>
+                      <td>
+                        Set by JS on a table that pages or filters; rows then
+                        draw their divider on top so a hidden last row leaves no
+                        stray line
+                      </td>
+                    </tr>
+                    <tr>
                       <td>
                         <code
                           >.card &gt; .table, .card &gt; .scroll-area &gt;
@@ -1517,6 +4198,8 @@
               <code>src/js/table.js</code> uses event delegation on
               <code>document</code>, so it works on tables added later right
               away. The functions live at <code>window.tsunami.table</code>.
+              Sorting, filtering and paging work together: the rows are sorted,
+              filtered, then cut into pages.
             </p>
             <div class="card">
               <div class="scroll-area" tabindex="0">
@@ -1570,6 +4253,48 @@
                         Resets <code>aria-selected</code> and the select-all
                         checkbox state after you change checkboxes yourself
                         (runs on page load automatically)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>refresh(table)</code></td>
+                      <td><code>table</code>: element</td>
+                      <td>
+                        Reads the rows again after you add, remove or change
+                        them, and redraws the page
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>page(table, n)</code></td>
+                      <td><code>n</code>: page number (kept within range)</td>
+                      <td>Shows page <code>n</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>filter(table, text)</code></td>
+                      <td>
+                        <code>text</code>: the search text;
+                        <code>""</code> clears it
+                      </td>
+                      <td>
+                        Sets the global search (and the search input), goes to
+                        page 1
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>tsunami:tablechange</code></td>
+                      <td>
+                        <code
+                          >{ page, pageSize, total, filtered, sort, hidden
+                          }</code
+                        >
+                      </td>
+                      <td>
+                        Fired on the <code>table</code> after a page, filter,
+                        sort or column change. Bubbles.
+                        <code>total</code> counts all rows,
+                        <code>filtered</code> those matching;
+                        <code>sort</code> is
+                        <code>{ column, direction }</code> or <code>null</code>;
+                        <code>hidden</code> lists hidden column indexes
                       </td>
                     </tr>
                     <tr>
