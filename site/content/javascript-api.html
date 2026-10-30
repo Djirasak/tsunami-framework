@@ -1,0 +1,274 @@
+<header class="page-header">
+            <div>
+              <h1>JavaScript API</h1>
+              <p>
+                Every component works from its HTML. The API is for when code
+                has to open, read or change one, and the events are how a page
+                hears about it.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>The tsunami object</h2>
+            <p>
+              Each script that has an API adds one module to
+              <code>window.tsunami</code>. Call a method with the
+              <strong>root element of the component</strong>, the one that has
+              the class (<code>.otp</code>, <code>.table</code>,
+              <code>.stepper</code>), not a child of it.
+            </p>
+            <pre><code>const otp = document.querySelector(".otp");
+
+tsunami.otp.value(otp);        // "123456"
+tsunami.otp.set(otp, "654321"); // fills the boxes
+tsunami.otp.clear(otp);        // empties them and focuses the first</code></pre>
+            <p>
+              A few modules are a function, such as
+              <code>tsunami.toast({ title: "Saved" })</code> and
+              <code>tsunami.copy("text")</code>; the rest of that module hangs
+              off the function (<code>tsunami.toast.clear()</code>).
+            </p>
+          </section>
+          <section>
+            <h2>Components added later</h2>
+            <p>
+              Components start on their own when the page loads and when you
+              add markup later. Where a component also has <code>mount(el)</code>
+              and <code>destroy(el)</code>, use them to start or stop one by
+              hand, for example with options the markup cannot carry.
+            </p>
+            <p>
+              Components built on a library (Editor, Code editor, Chart, Date
+              picker, Sortable) need that library's script on the page. Their
+              API returns <code>null</code> until the library is ready; wait for
+              the ready event, <code>tsunami:editorready</code> and its
+              siblings.
+            </p>
+            <pre><code>document.addEventListener("tsunami:chartready", (e) =&gt; {
+  const chart = tsunami.chart.get(e.target); // the Chart.js instance
+});</code></pre>
+          </section>
+          <section>
+            <h2>Events</h2>
+            <p>
+              Events are named <code>tsunami:&lt;name&gt;</code>, bubble, and
+              carry their data in <code>event.detail</code>. Listen on the
+              component, an ancestor or <code>document</code>;
+              <code>event.target</code> is the component that sent it.
+              A few can be cancelled with <code>preventDefault()</code>; the
+              component's page says which.
+            </p>
+            <pre><code>document.addEventListener("tsunami:otpcomplete", (e) =&gt; {
+  verify(e.detail.value);
+});
+
+form.addEventListener("tsunami:tagschange", (e) =&gt; {
+  console.log(e.detail.value); // ["design", "billing"]
+});</code></pre>
+            <p>
+              Form controls keep sending the browser's own
+              <code>input</code> and <code>change</code> too, so a form, the
+              Save bar and your own listeners keep working.
+            </p>
+          </section>
+          <section>
+            <h2>Reading a component's API section</h2>
+            <p>
+              Each component page ends with the same few tables. Read them in
+              this order:
+            </p>
+            <ul>
+              <li>
+                <strong>Attributes</strong>: what you set in the HTML, with the
+                element it goes on. Start here; most pages need nothing more.
+              </li>
+              <li>
+                <strong>Methods</strong>: what you call on
+                <code>tsunami.&lt;module&gt;</code>. The first argument is the
+                component's root element unless the table says otherwise.
+              </li>
+              <li>
+                <strong>Events</strong>: the name, the element it is sent on
+                and what <code>event.detail</code> holds.
+              </li>
+              <li>
+                <strong>Keyboard</strong>: the keys the component handles, for
+                testing and for accessibility.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>All modules</h2>
+            <p>
+              The short version of every API. The component page has the
+              arguments, return values and examples.
+            </p>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="All modules">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Module</th>
+                    <th scope="col">Component</th>
+                    <th scope="col">Calls</th>
+                    <th scope="col">Events</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.theme</code></td>
+                    <td><a href="/docs/theme-switcher">Theme switcher</a></td>
+                    <td><code>get, set, toggle</code></td>
+                    <td><code>tsunami:themechange</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.toast</code></td>
+                    <td><a href="/docs/toast">Toast</a></td>
+                    <td><code>toast(), toast.clear()</code></td>
+                    <td><code>tsunami:toast</code>, <code>tsunami:toastclose</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.copy</code></td>
+                    <td><a href="/docs/copy-button">Copy button</a></td>
+                    <td><code>copy()</code></td>
+                    <td><code>tsunami:copy</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.sidebar</code></td>
+                    <td><a href="/docs/sidebar">Sidebar</a></td>
+                    <td><code>collapse, expand, toggle, mount</code></td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.tabs</code></td>
+                    <td><a href="/docs/tabs">Tabs</a></td>
+                    <td><code>select, close</code></td>
+                    <td><code>tsunami:closetab</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.select</code></td>
+                    <td><a href="/docs/select">Select</a></td>
+                    <td><code>open, close, value, refresh</code></td>
+                    <td><code>tsunami:select</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.autocomplete</code></td>
+                    <td><a href="/docs/autocomplete">Autocomplete</a></td>
+                    <td><code>mount, destroy</code></td>
+                    <td><code>tsunami:autocomplete</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.table</code></td>
+                    <td><a href="/docs/table">Table</a></td>
+                    <td><code>sort, select, selected, sync, refresh, page, filter</code></td>
+                    <td><code>tsunami:sort</code>, <code>tsunami:select</code>, <code>tsunami:tablechange</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.bulkBar</code></td>
+                    <td><a href="/docs/bulk-bar">Bulk action bar</a></td>
+                    <td><code>update, clear</code></td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.tree</code></td>
+                    <td><a href="/docs/tree">Tree</a></td>
+                    <td><code>filter</code></td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.journey</code></td>
+                    <td><a href="/docs/journey">Journey</a></td>
+                    <td><code>pick, draw</code></td>
+                    <td><code>tsunami:pick</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.saveBar</code></td>
+                    <td><a href="/docs/save-bar">Save bar</a></td>
+                    <td><code>check, markClean</code></td>
+                    <td><code>tsunami:dirty</code>, <code>tsunami:clean</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.sortable</code></td>
+                    <td><a href="/docs/sortable">Sortable</a></td>
+                    <td><code>mount, get, destroy, toArray, sort, disabled</code></td>
+                    <td><code>tsunami:reorder</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.datePicker</code></td>
+                    <td><a href="/docs/date-picker">Date picker</a></td>
+                    <td><code>mount, get, destroy</code></td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.timePicker</code></td>
+                    <td><a href="/docs/time-picker">Time picker</a></td>
+                    <td><code>mount, destroy, get, set</code></td>
+                    <td><code>tsunami:timechange</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.phoneInput</code></td>
+                    <td><a href="/docs/phone-input">Phone input</a></td>
+                    <td><code>get, set</code></td>
+                    <td><code>tsunami:phonechange</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.otp</code></td>
+                    <td><a href="/docs/otp">One-time code</a></td>
+                    <td><code>mount, value, set, clear</code></td>
+                    <td><code>tsunami:otpcomplete</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.tagInput</code></td>
+                    <td><a href="/docs/tag-input">Tag input</a></td>
+                    <td><code>mount, value, set, clear</code></td>
+                    <td><code>tsunami:tagschange</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.filterBar</code></td>
+                    <td><a href="/docs/filter-bar">Filter bar</a></td>
+                    <td><code>mount, values, clear</code></td>
+                    <td><code>tsunami:chipremove</code>, <code>tsunami:filterchange</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.stepper</code></td>
+                    <td><a href="/docs/stepper">Stepper</a></td>
+                    <td><code>go, next, prev, index</code></td>
+                    <td><code>tsunami:stepchange</code>, <code>tsunami:stepcomplete</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.editor</code></td>
+                    <td><a href="/docs/editor">Editor</a></td>
+                    <td><code>mount, get, destroy</code></td>
+                    <td><code>tsunami:editorready</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.codeEditor</code></td>
+                    <td><a href="/docs/code-editor">Code editor</a></td>
+                    <td><code>mount, get, destroy</code></td>
+                    <td><code>tsunami:codeeditorready</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.chart</code></td>
+                    <td><a href="/docs/chart">Chart</a></td>
+                    <td><code>chart(), chart.get, chart.destroy</code></td>
+                    <td><code>tsunami:chartready</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.jsonViewer</code></td>
+                    <td><a href="/docs/json-viewer">JSON viewer</a></td>
+                    <td><code>expand, collapse, view, value</code></td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.slider</code></td>
+                    <td><a href="/docs/field">Field</a></td>
+                    <td><code>sync</code></td>
+                    <td>—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The Pressed script has no methods; it sends
+              <code>tsunami:pressedchange</code> when a toggle button changes.
+            </p>
+          </section>
