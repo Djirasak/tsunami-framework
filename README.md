@@ -74,7 +74,7 @@ bun run lint       # eslint src/js
 bun run audit      # bun audit
 ```
 
-Docs are plain HTML in `docs/` with clean URLs (`/docs/btn`); there is no build step for them. Only `/docs`, `/dist`, `/fonts` and `/flags` are served, on `127.0.0.1`.
+Docs are plain HTML in `docs/` with clean URLs (`/docs/btn`); there is no build step for them. Only `/docs`, `/dist`, `/fonts` and `/flags` are served, on `0.0.0.0`, so the docs open from `localhost` and from other devices on the same network.
 
 ## Structure
 

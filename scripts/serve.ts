@@ -1,4 +1,5 @@
-// Local static server: 127.0.0.1 only, serves /docs /dist /fonts /flags.
+// Static server on 0.0.0.0 (this machine and the local network), serves /docs /dist /fonts /flags.
+import { networkInterfaces } from "node:os";
 import { resolve, sep } from "node:path";
 
 const root = resolve(import.meta.dir, "..");
@@ -6,7 +7,7 @@ const allowed = new Set(["docs", "dist", "fonts", "flags"]);
 const notFound = () => new Response("Not found", { status: 404 });
 
 const server = Bun.serve({
-  hostname: "127.0.0.1",
+  hostname: "0.0.0.0",
   port: Number(Bun.env.PORT ?? 5477),
   async fetch(req) {
     let path: string;
@@ -46,6 +47,13 @@ const paint = (code: number) => (text: string) =>
   color ? `\x1b[${code}m${text}\x1b[0m` : text;
 const [bold, dim, green, cyan] = [1, 2, 32, 36].map(paint);
 
-console.log(
-  `  ${green("➜")}  ${bold("Docs")}   ${cyan(`${server.url}docs/`)}\n     ${dim("Press Ctrl+C to stop")}\n`,
-);
+const lan = Object.values(networkInterfaces())
+  .flat()
+  .filter((i) => i?.family === "IPv4" && !i.internal)
+  .map((i) => i!.address);
+const link = (host: string) => cyan(`http://${host}:${server.port}/docs/`);
+
+console.log(`  ${green("➜")}  ${bold("Local")}    ${link("localhost")}`);
+for (const address of lan)
+  console.log(`  ${green("➜")}  ${bold("Network")}  ${link(address)}`);
+console.log(`\n     ${dim("Press Ctrl+C to stop")}\n`);
