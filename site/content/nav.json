@@ -268,6 +268,12 @@
         "keywords": "Layout chart canvas aria-label tsunami.chart Chart.js type labelKey data series legend legendAlign tooltip options surface total axis line bar doughnut pie polarArea radar tsunami:chartready data-chart-initialized"
       },
       {
+        "label": "Container",
+        "href": "/docs/container",
+        "icon": "box",
+        "keywords": "Layout container width max-width center centre page wrapper gutter data-size sm md lg xl bootstrap"
+      },
+      {
         "label": "Description list",
         "href": "/docs/description-list",
         "icon": "list",

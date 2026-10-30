@@ -1,0 +1,115 @@
+<header class="page-header">
+            <div>
+              <h1>Container</h1>
+              <p>
+                Centres the content of a page and keeps it from stretching to
+                the full width of a wide screen.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Four widths</h2>
+            <p>
+              <code>data-size</code> sets the widest the container grows. The
+              preview is only as wide as this page, so the larger ones fill it;
+              on a wide screen they stop at their own width and centre.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Four widths">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="container" data-size="sm"><div class="card"><section>sm: 36rem</section></div></div>
+                    <div class="container" data-size="md"><div class="card"><section>md: 48rem</section></div></div>
+                    <div class="container"><div class="card"><section>default: 64rem</section></div></div>
+                    <div class="container" data-size="xl"><div class="card"><section>xl: 80rem</section></div></div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="container" data-size="sm"&gt;&lt;div class="card"&gt;&lt;section&gt;sm: 36rem&lt;/section&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="container" data-size="md"&gt;&lt;div class="card"&gt;&lt;section&gt;md: 48rem&lt;/section&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="container"&gt;&lt;div class="card"&gt;&lt;section&gt;default: 64rem&lt;/section&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="container" data-size="xl"&gt;&lt;div class="card"&gt;&lt;section&gt;xl: 80rem&lt;/section&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A page</h2>
+            <p>
+              Put the page content in one container: a page header and cards
+              on a form page, a dashboard in <code>xl</code>. On a small screen
+              it has a gutter at the sides.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A page">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div style="border: 1px solid var(--line); border-radius: var(--radius-md); padding-block: var(--space-4)">
+                  <div class="container" data-size="md">
+                    <header class="page-header">
+                      <div>
+                        <h1>Set up your store</h1>
+                        <p>Four short steps.</p>
+                      </div>
+                    </header>
+                    <div class="card">
+                      <section>The form goes here.</section>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;main class="container" data-size="md"&gt;
+  &lt;header class="page-header"&gt;
+    &lt;div&gt;
+      &lt;h1&gt;Set up your store&lt;/h1&gt;
+      &lt;p&gt;Four short steps.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;div class="card"&gt;
+    &lt;section&gt;The form goes here.&lt;/section&gt;
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With a Workspace</h2>
+            <p>
+              Inside a <code>.workspace</code> the <code>main</code> already has
+              padding, so a container directly in it adds none and only limits
+              the width and centres.
+            </p>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Attribute</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.container</code></td>
+                    <td>on any element</td>
+                    <td>Full width up to 64rem, centred, with a gutter of 16px at the sides.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td><code>sm</code> 36rem, <code>md</code> 48rem, <code>xl</code> 80rem (none = 64rem)</td>
+                    <td>The widest the container grows. <code>sm</code> suits a sign-in or a short form, <code>xl</code> a dashboard or a wide table.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

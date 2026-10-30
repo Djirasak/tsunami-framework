@@ -266,6 +266,12 @@ This file gives one short example per component. The full page for each is `site
 <div class="bulk-bar" data-table="orders" role="region" aria-label="Selected orders"><p aria-live="polite"><span data-bulk-count>0</span> selected</p><div><button type="button" class="btn">Archive</button></div><button type="button" class="btn" data-variant="ghost" data-bulk-clear>Clear</button></div>
 ```
 
+**Container** (`container`): centres a page's content and limits its width. Attrs: `data-size="sm|md|xl"` (sm 36rem, md 48rem, default 64rem, xl 80rem). Side gutter of `--space-4`, none directly inside a `.workspace > main`.
+
+```html
+<main class="container" data-size="md">…</main>
+```
+
 **Description list** (`desc`): `<dl class="desc">` of `<div><dt>label</dt><dd>value</dd></div>` pairs, pure CSS. Attrs: `data-layout="inline|grid"` (default stacked; inline stacks under 40rem), `data-divided` (lines between rows), `dd[data-empty]` or an empty `dd` shows a muted dash. Long values wrap.
 
 ```html

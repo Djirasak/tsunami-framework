@@ -3,7 +3,7 @@ import { version } from "../_lib/content";
 import { HOME_TITLE, SITE_NAME } from "../_lib/seo";
 
 const description =
-  "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, 64 components, and a core with no dependencies.";
+  "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, 65 components, and a core with no dependencies.";
 
 export const metadata = {
   title: { absolute: HOME_TITLE },
@@ -134,7 +134,7 @@ export default function Landing() {
 
         <div className="landing-hero">
           <span className="badge landing-rise" style={{ "--i": 0 }}>
-            64 components
+            65 components
           </span>
           <h1>
             <span className="landing-rise" style={{ "--i": 1 }}>

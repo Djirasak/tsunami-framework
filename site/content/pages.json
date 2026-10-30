@@ -249,7 +249,7 @@
   },
   "index": {
     "title": "Overview",
-    "description": "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, 64 components, and a core with no dependencies.",
+    "description": "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, 65 components, and a core with no dependencies.",
     "libs": []
   },
   "field": {
@@ -345,6 +345,11 @@
   "javascript": {
     "title": "JavaScript",
     "description": "How to call the tsunami object, listen for tsunami: events, wait for library components, and read the API section of a component page, with a table of every module.",
+    "libs": []
+  },
+  "container": {
+    "title": "Container",
+    "description": "Centres a page's content and limits its width, in four sizes, so a form or a dashboard does not stretch across a wide screen.",
     "libs": []
   }
 }
