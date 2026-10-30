@@ -7,12 +7,20 @@ import DocsScript from "./DocsScript";
 // first paint. Pages are plain HTML with full page loads (plain <a> links, no
 // client router), so inline <script> blocks in the content run in the browser's
 // HTML parser, in order, exactly as in a static page.
-export default function Root({ libs = [], docs = true, children }) {
+export default function Root({
+  libs = [],
+  docs = true,
+  styles = [],
+  children,
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="stylesheet" href="/dist/tsunami.min.css" />
         {docs && <link rel="stylesheet" href="/docs/docs.css" />}
+        {styles.map((href) => (
+          <link rel="stylesheet" href={href} key={href} />
+        ))}
         {libs.map((src) => (
           <script src={src} key={src}></script>
         ))}
