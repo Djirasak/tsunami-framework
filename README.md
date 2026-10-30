@@ -6,7 +6,7 @@
 
 A small, quiet CSS framework for back-office UIs.
 Semantic HTML + `data-*` attributes. No runtime dependencies.
-49 component pages, Lucide icons and 270 country flags.
+51 component pages, Lucide icons and 270 country flags.
 
 </div>
 
@@ -48,16 +48,16 @@ The class names the component; `data-*` sets variant and size.
 
 ## Components
 
-| Group       | Components                                                                                                            |
-| ----------- | --------------------------------------------------------------------------------------------------------------------- |
-| Foundations | Colors, Typography (`.typography`), Icons (Lucide)                                                                    |
-| Layout      | Stack, Card, Item, Page header, Stat, Chart, Table, Timeline, Journey, JSON viewer, Accordion, Scroll area, Workspace |
-| Actions     | Button, Dropdown, Theme switcher                                                                                      |
-| Forms       | Date picker, Field, Image field, Input, Input group, Select, Save bar                                                 |
-| Feedback    | Alert, Badge, Empty, Loader, Skeleton, Progress                                                                       |
-| Media       | Avatar, Flags                                                                                                         |
-| Navigation  | Breadcrumb, Link, Pagination, Sidebar, Subnav, Tabs, Tree                                                             |
-| Overlays    | Dialog, Drawer, Popover, Tooltip                                                                                      |
+| Group       | Components                                                                                                                      |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Foundations | Colors, Typography (`.typography`), Icons (Lucide)                                                                              |
+| Layout      | Stack, Card, Item, Page header, Stat, Chart, Sortable, Table, Timeline, Journey, JSON viewer, Accordion, Scroll area, Workspace |
+| Actions     | Button, Command, Dropdown, Theme switcher                                                                                       |
+| Forms       | Code editor, Color field, Date picker, Dropzone, Editor, Field, Image field, Input, Input group, Select, Save bar               |
+| Feedback    | Alert, Badge, Empty, Loader, Skeleton, Progress                                                                                 |
+| Media       | Avatar, Flags                                                                                                                   |
+| Navigation  | Breadcrumb, Link, Pagination, Sidebar, Subnav, Tabs, Tree                                                                       |
+| Overlays    | Dialog, Drawer, Popover, Tooltip                                                                                                |
 
 Every component has a docs page with live examples, a Code tab and an attributes table.
 
@@ -94,7 +94,8 @@ vendor/tinymce/         TinyMCE 8 release files (the build joins them into dist/
 vendor/sortable/        SortableJS 1.15 (copied to dist/sortable.min.js)
 vendor/vanilla-calendar/ Vanilla Calendar Pro 3.4 (copied to dist/vanilla-calendar.min.js)
 vendor/chart/           Chart.js 4.5 (copied to dist/chart.min.js)
-scripts/                build.ts, serve.ts, stamp-version.ts, build-vendor.ts, lucide.ts, flags.ts, tinymce.ts
+vendor/monaco/          Monaco Editor 0.57, trimmed (copied to dist/monaco/)
+scripts/                build.ts, serve.ts, stamp-version.ts, build-vendor.ts, lucide.ts, flags.ts, tinymce.ts, monaco.ts
 ```
 
 ## Tokens
@@ -120,6 +121,8 @@ Vanilla ES modules, event delegation on `document`, no init functions. CSS works
 | `image-field`, `json-viewer`               | image change/clear, foldable JSON tree with raw view         |
 | `date-picker`                              | field or button that opens a calendar: date, range, presets  |
 | `chart`                                    | canvas drawn by Chart.js: bar, line, doughnut, theme-aware   |
+| `code-editor`                              | Monaco over textareas: languages, several files, themes      |
+| `dropzone`                                 | drag and drop files onto an input, accept and size checks    |
 
 ## Licenses
 
@@ -130,4 +133,5 @@ Vanilla ES modules, event delegation on `document`, no init functions. CSS works
 - SortableJS (drag to reorder): MIT (`vendor/sortable/LICENSE.txt`). Not part of `tsunami.min.js`; load `dist/sortable.min.js` before it when a page has a `.sortable`.
 - Vanilla Calendar Pro (the date picker's calendar): MIT (`vendor/vanilla-calendar/LICENSE.txt`). Not part of `tsunami.min.js`; load `dist/vanilla-calendar.min.js` before it when a page has a `.date-picker`. Its own CSS is not shipped: `tsunami.css` draws the calendar.
 - Chart.js (the chart): MIT (`vendor/chart/LICENSE.txt`). Not part of `tsunami.min.js`; load `dist/chart.min.js` before it when a page has a chart.
+- Monaco Editor (the code editor): MIT (`vendor/monaco/LICENSE.txt`, `ThirdPartyNotices.txt`). Not part of `tsunami.min.js`; load `dist/monaco/vs/loader.js` before it when a page has a `.code-editor`, and load libraries that use `define` (Chart.js, Vanilla Calendar) before the loader.
 - TinyMCE (the editor): GPL-2.0-or-later or the Tiny Self-Hosted License (`vendor/tinymce/LICENSE.md`). It is not part of `tsunami.min.js`; load `dist/tinymce.min.js` (one file, nothing else to host) before the Tsunami script when a page has an editor.
