@@ -36,7 +36,7 @@ Or self-hosted:
 <script src="dist/tsunami.min.js"></script>
 ```
 
-Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed: the `Build Framework` workflow rebuilds it on every push to `main` that changes the source, so a tag made after that carries the built files. Monaco (the code editor) loads from jsDelivr too: `@v0.1.2/dist/monaco/vs/loader.js`, before the Tsunami script.
+Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed only by the `Release` workflow, so every tag carries the files built for its version. Monaco (the code editor) loads from jsDelivr too: `@v0.1.2/dist/monaco/vs/loader.js`, before the Tsunami script.
 
 ## Use
 
@@ -83,7 +83,7 @@ bun run lint       # eslint src/js
 bun run audit      # bun audit
 ```
 
-The docs are a Next.js app in `site/`, deployed to Cloudflare Workers with the OpenNext adapter. It is a separate package: its dependencies (`site/package.json`, `site/bun.lock`) never touch `dist/`. Each page is HTML in `site/content/<name>.html` (the inner HTML of `<main>`; edit that), its title and library scripts are in `site/content/pages.json`, and the sidebar and search come from `site/content/nav.json`. Pages are prerendered, with clean URLs (`/docs/button`) and plain links (full page loads), so inline `<script>` blocks in the examples run as in a static page. `bun run docs` installs the `site/` packages, builds `dist/`, copies `dist/`, `fonts/` and `flags/` into `site/public/`, and starts `next dev`. In `site/`, `bun run preview` runs the Workers build locally and `bun run deploy` deploys it; the `Deploy Docs` workflow does that when a release is published (secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
+The docs are a Next.js app in `site/`, deployed to Cloudflare Workers with the OpenNext adapter. It is a separate package: its dependencies (`site/package.json`, `site/bun.lock`) never touch `dist/`. Each page is HTML in `site/content/<name>.html` (the inner HTML of `<main>`; edit that), its title and library scripts are in `site/content/pages.json`, and the sidebar and search come from `site/content/nav.json`. Pages are prerendered, with clean URLs (`/docs/button`) and plain links (full page loads), so inline `<script>` blocks in the examples run as in a static page. `bun run docs` installs the `site/` packages, builds `dist/`, copies `dist/`, `fonts/` and `flags/` into `site/public/`, and starts `next dev`. In `site/`, `bun run preview` runs the Workers build locally and `bun run deploy` deploys it; the `Deploy Docs` workflow does that on every push to `main` that changes the framework or the docs, and the `Release` workflow calls it for a new tag (secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
 
 ## Structure
 
