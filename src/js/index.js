@@ -15,3 +15,4 @@ import "./editor.js";
 import "./command.js";
 import "./color-field.js";
 import "./sortable.js";
+import "./date-picker.js";
