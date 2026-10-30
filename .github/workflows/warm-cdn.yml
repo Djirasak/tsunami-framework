@@ -1,4 +1,4 @@
-name: Warm the CDN
+name: Clear CDN Cache
 
 # jsDelivr reads a GitHub tag the first time a file is asked for. Now and then
 # that first read fails ("Failed to fetch version info") and jsDelivr keeps the

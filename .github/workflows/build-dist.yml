@@ -1,4 +1,4 @@
-name: Build dist
+name: Build Dist
 
 # dist/ is committed, so jsDelivr can serve it from a tag:
 # https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@<tag>/dist/tsunami.min.css
