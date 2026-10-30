@@ -69,7 +69,7 @@ Requires [Bun](https://bun.sh) `>=1.4.3`.
 bun install --frozen-lockfile
 bun run build      # dist/tsunami(.min).css + dist/tsunami(.min).js
 bun run dev        # sass --watch -> dist/tsunami.css
-bun run serve      # docs at http://localhost:5477/docs/
+bun run serve      # build, then docs at http://localhost:5477/docs/
 bun run lint       # eslint src/js
 bun run audit      # bun audit
 ```
