@@ -1,0 +1,56 @@
+// One-time code: a row of single-character inputs; otp.js moves between them
+// and keeps the joined value in a hidden input. The boxes look like .input.
+@layer components {
+  :where(.otp) {
+    display: flex;
+    gap: var(--space-2);
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  :where(.otp > input[type="text"]) {
+    flex: none;
+    width: 2.5rem;
+    min-width: 0;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-lg);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+
+  :where(.otp > input:focus-visible) {
+    border-color: var(--accent);
+    outline-offset: 0;
+  }
+
+  :where(.otp[aria-invalid="true"] > input) {
+    border-color: var(--danger-fg);
+  }
+
+  :where(.otp > input:disabled) {
+    background: var(--subtle);
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
+  :where(.otp[data-size="sm"] > input[type="text"]) {
+    width: 2rem;
+    height: 2.25rem;
+    font-size: var(--text-base);
+  }
+
+  @media (width < 24rem) {
+    :where(.otp) {
+      gap: var(--space-1);
+    }
+
+    :where(.otp > input[type="text"]) {
+      width: 2.25rem;
+    }
+  }
+}
