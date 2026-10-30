@@ -8,6 +8,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="docs.css" />
     <script src="../dist/tinymce.min.js"></script>
+    <script src="../dist/monaco/vs/loader.js"></script>
     <script src="../dist/tsunami.min.js"></script>
     <script type="module" src="docs.js"></script>
   </head>
@@ -632,6 +633,19 @@
               If a <code>textarea.editor</code> is on a page and TinyMCE is not
               loaded, the script throws an error that says so.
             </p>
+            <h3>Source code in a code editor</h3>
+            <p>
+              The code button opens TinyMCE's own dialog, a plain textarea. If
+              the page also loads Monaco, the button opens a dialog with a
+              <a href="code-editor">code editor</a> instead: coloured HTML, line
+              numbers and the page's theme, and Save sets the HTML back. The
+              editors on this page do that. Monaco is about 7 MB, so a page that
+              does not need it leaves it out and keeps the plain dialog. Load
+              Monaco's loader after TinyMCE and before the Tsunami script.
+            </p>
+            <pre><code>&lt;script src="../dist/tinymce.min.js"&gt;&lt;/script&gt;
+&lt;script src="../dist/monaco/vs/loader.js"&gt;&lt;/script&gt;
+&lt;script src="../dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
           </section>
 
           <section>
