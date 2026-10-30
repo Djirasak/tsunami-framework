@@ -1,0 +1,140 @@
+<header class="page-header">
+            <div>
+              <h1>Copy button</h1>
+              <p>A button that copies text to the clipboard and shows a check for a moment. Use it for API keys, order numbers and links.</p>
+            </div>
+          </header>
+          <section>
+            <h2>Copy a fixed text</h2>
+            <p>Add <code>data-copy</code> to a <code>.btn</code>. Children marked <code>data-idle</code> show normally, and children marked <code>data-done</code> show for 1.5 seconds after the copy.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <button type="button" class="btn" data-copy="ORD-110963">
+                    <i class="icon icon-copy" data-idle aria-hidden="true"></i>
+                    <i class="icon icon-check" data-done aria-hidden="true"></i>
+                    <span data-idle>Copy order number</span>
+                    <span data-done>Copied</span>
+                  </button>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;button type="button" class="btn" data-copy="ORD-110963"&gt;
+  &lt;i class="icon icon-copy" data-idle aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;i class="icon icon-check" data-done aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;span data-idle&gt;Copy order number&lt;/span&gt;
+  &lt;span data-done&gt;Copied&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Copy from an element</h2>
+            <p><code>data-copy-target</code> takes a selector. An input or textarea copies its value; any other element copies its text.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="input-group">
+                    <input class="input" id="copy-key" value="tsu_live_9Xk2mQp7LdVw4RbN8sEh3TyA" readonly aria-label="API key" />
+                    <button type="button" class="btn" data-size="icon" data-copy-target="#copy-key" aria-label="Copy API key">
+                      <i class="icon icon-copy" data-idle aria-hidden="true"></i>
+                      <i class="icon icon-check" data-done aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="input-group"&gt;
+  &lt;input class="input" id="copy-key" value="tsu_live_9Xk2mQp7LdVw4RbN8sEh3TyA" readonly aria-label="API key" /&gt;
+  &lt;button type="button" class="btn" data-size="icon" data-copy-target="#copy-key" aria-label="Copy API key"&gt;
+    &lt;i class="icon icon-copy" data-idle aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;i class="icon icon-check" data-done aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With a toast</h2>
+            <p><code>data-copy-toast</code> also shows a toast. Leave it empty for "Copied", or give your own message.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">Preview</button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <button type="button" class="btn" data-variant="ghost" data-copy="https://shop.example.com/orders/110963" data-copy-toast="Link copied">
+                    <i class="icon icon-link" aria-hidden="true"></i>
+                    Copy link
+                  </button>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;button type="button" class="btn" data-variant="ghost" data-copy="https://shop.example.com/orders/110963" data-copy-toast="Link copied"&gt;
+  &lt;i class="icon icon-link" aria-hidden="true"&gt;&lt;/i&gt;
+  Copy link
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="API">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Name</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>tsunami.copy(text)</code></td><td>string</td><td>Copies the text and returns a promise of <code>true</code> or <code>false</code>. It uses <code>navigator.clipboard</code> and falls back to <code>document.execCommand("copy")</code> on pages that are not a secure context.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Events</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Events">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Name</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>tsunami:copy</code></td><td><code>detail.text</code></td><td>Bubbles from the button after a successful copy.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>data-copy</code></td><td>text</td><td>The text to copy.</td></tr>
+                  <tr><td><code>data-copy-target</code></td><td>CSS selector</td><td>Copies the <code>value</code> of an input or textarea, or the text of any other element. Used when there is no <code>data-copy</code>.</td></tr>
+                  <tr><td><code>data-copy-toast</code></td><td>message (may be empty)</td><td>Shows a toast too. Empty means <code>Copied</code>.</td></tr>
+                  <tr><td><code>data-copied</code></td><td>set by the script</td><td>On the button for 1.5 s after a copy. Use it to style the state.</td></tr>
+                  <tr><td><code>[data-idle]</code></td><td>child</td><td>Hidden while the button has <code>data-copied</code>.</td></tr>
+                  <tr><td><code>[data-done]</code></td><td>child</td><td>Shown only while the button has <code>data-copied</code>.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Accessibility</h2>
+            <ul>
+              <li>Every copy is announced as <code>Copied</code> in a polite live region, so the icon swap is not the only signal.</li>
+              <li>An icon-only button needs an <code>aria-label</code>.</li>
+              <li>Nothing happens if the clipboard is blocked or the target is missing; the button stays as it was.</li>
+            </ul>
+          </section>
