@@ -1,0 +1,47 @@
+// Color field: an .input-group with a native colour picker before a text field.
+// <div class="input-group color-field"><span><input type="color"></span><input type="text">.
+// The text field is what the form sends; color-field.js keeps the two in step.
+// data-empty (set by the script) hides the picker's swatch while the text is empty.
+@layer components {
+  :where(.color-field input[type="color"]) {
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    outline: 0;
+    background: var(--subtle);
+    cursor: pointer;
+    appearance: none;
+  }
+
+  :where(.color-field input[type="color"]:disabled) {
+    cursor: not-allowed;
+  }
+
+  :where(.color-field input[type="color"])::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  :where(.color-field input[type="color"])::-webkit-color-swatch {
+    border: 0;
+  }
+
+  :where(.color-field input[type="color"])::-moz-color-swatch {
+    border: 0;
+  }
+
+  :where(.color-field[data-empty] input[type="color"])::-webkit-color-swatch {
+    opacity: 0;
+  }
+
+  :where(.color-field[data-empty] input[type="color"])::-moz-color-swatch {
+    opacity: 0;
+  }
+
+  :where(.color-field input[type="text"]) {
+    font-family: var(--font-mono);
+  }
+}
