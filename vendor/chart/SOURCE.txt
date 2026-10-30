@@ -1,0 +1,5 @@
+Chart.js 4.5.1 (released 2025-10-13), self-hosted build.
+Source: https://registry.npmjs.org/chart.js/-/chart.js-4.5.1.tgz
+integrity: sha512-GIjfiT9dbmHRiYi6Nl2yFCq7kkwdkp1W/lp2J99rX0yo9tgJGn3lKQATztIjb5tVtevcBtIdICNWqlq5+E8/Pw== (sha1 19dd1a9a386a3f6397691672231cb5fc9c052c35), checked against the npm registry.
+Files: package/dist/chart.umd.min.js (UMD build, global Chart) copied as chart.min.js, so the formatter leaves it alone; package/LICENSE.md as LICENSE.txt (MIT).
+Update: unpack the new tarball in an empty directory, copy the two files again and edit this file.
