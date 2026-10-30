@@ -1416,6 +1416,131 @@
           </section>
 
           <section>
+            <h2>Open it with a key</h2>
+            <p>
+              <code>data-hotkey</code> on the
+              <code>dialog.command-dialog</code> opens it from the keyboard, and
+              the same key closes it. Write the keys joined by <code>+</code>:
+              <code>mod</code> is Ctrl or Cmd, then <code>ctrl</code>,
+              <code>meta</code>, <code>alt</code> and <code>shift</code>, and
+              last the key, such as <code>mod+k</code>,
+              <code>ctrl+shift+p</code> or <code>/</code>. Separate several keys
+              with spaces. A key with no modifier is ignored while you type in a
+              field. Try Alt K here.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Open it with a key">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="cmd-hotkey"
+                    command="show-modal"
+                  >
+                    Open <kbd class="kbd">Alt K</kbd>
+                  </button>
+                  <dialog
+                    id="cmd-hotkey"
+                    class="command-dialog"
+                    aria-label="Command menu"
+                    closedby="any"
+                    data-hotkey="alt+k"
+                  >
+                    <div class="command">
+                      <header>
+                        <i class="icon icon-search" aria-hidden="true"></i>
+                        <input
+                          type="text"
+                          id="cmd-hotkey-input"
+                          placeholder="Type a command or search..."
+                          autocomplete="off"
+                          autocorrect="off"
+                          spellcheck="false"
+                          aria-autocomplete="list"
+                          role="combobox"
+                          aria-expanded="true"
+                          aria-controls="cmd-hotkey-menu"
+                        />
+                      </header>
+                      <div
+                        role="menu"
+                        id="cmd-hotkey-menu"
+                        aria-orientation="vertical"
+                        data-empty="No results found."
+                      >
+                        <div role="group" aria-labelledby="cmd-hotkey-go">
+                          <span role="heading" id="cmd-hotkey-go">Go to</span>
+                          <a role="menuitem" href="#" data-label="Orders"
+                            ><i
+                              class="icon icon-shopping-bag"
+                              aria-hidden="true"
+                            ></i
+                            ><span>Orders</span></a
+                          >
+                          <a role="menuitem" href="#" data-label="Customers"
+                            ><i class="icon icon-user" aria-hidden="true"></i
+                            ><span>Customers</span></a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="cmd-hotkey" command="show-modal"&gt;Open &lt;kbd class="kbd"&gt;Alt K&lt;/kbd&gt;&lt;/button&gt;
+&lt;dialog id="cmd-hotkey" class="command-dialog" aria-label="Command menu" closedby="any" data-hotkey="alt+k"&gt;
+  &lt;div class="command"&gt;
+    &lt;header&gt;
+      &lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;input type="text" id="cmd-hotkey-input" placeholder="Type a command or search..." autocomplete="off" autocorrect="off" spellcheck="false" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-controls="cmd-hotkey-menu"&gt;
+    &lt;/header&gt;
+    &lt;div role="menu" id="cmd-hotkey-menu" aria-orientation="vertical" data-empty="No results found."&gt;
+      &lt;div role="group" aria-labelledby="cmd-hotkey-go"&gt;
+        &lt;span role="heading" id="cmd-hotkey-go"&gt;Go to&lt;/span&gt;
+        &lt;a role="menuitem" href="#" data-label="Orders"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/a&gt;
+        &lt;a role="menuitem" href="#" data-label="Customers"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
             <h2>API</h2>
             <p>
               The command has no methods and sends no events of its own. Each
@@ -1467,6 +1592,13 @@
                     <td>
                       On an item with <code>data-tab-filter</code>: chooses that
                       filter and empties the field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Hotkey</kbd></td>
+                    <td>
+                      The <code>data-hotkey</code> of a command dialog: opens
+                      it, or closes it when it is open.
                     </td>
                   </tr>
                   <tr>
@@ -1684,6 +1816,18 @@
                     <td>
                       Tab on the active item chooses that filter and empties the
                       field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-hotkey</code></td>
+                    <td>
+                      keys such as <code>mod+k</code>, on a
+                      <code>dialog.command-dialog</code>
+                    </td>
+                    <td>
+                      Opens the dialog from the keyboard; the same keys close
+                      it. <code>mod</code> is Ctrl or Cmd. Several keys are
+                      separated by spaces. Default: none.
                     </td>
                   </tr>
                   <tr>
