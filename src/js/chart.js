@@ -222,10 +222,14 @@ function config(options) {
           useBorderRadius: true,
           borderRadius: 2,
           padding: 16,
+          // Pie, doughnut and polarArea name the slices; the generic one names
+          // the datasets, so ask the chart type's own first.
           generateLabels: (chart) =>
-            window.Chart.defaults.plugins.legend.labels
-              .generateLabels(chart)
-              .map((item) => ({ ...item, lineDash: [] })),
+            (
+              window.Chart.overrides?.[chart.config.type]?.plugins?.legend
+                ?.labels?.generateLabels ??
+              window.Chart.defaults.plugins.legend.labels.generateLabels
+            )(chart).map((item) => ({ ...item, lineDash: [] })),
         },
       },
       tooltip: {
