@@ -1,46 +1,56 @@
 {
   "workspace": {
     "title": "Workspace",
+    "description": "A full-window layout for one task that needs room. The top bar, side panels and work area scroll on their own. See four examples with code.",
     "libs": []
   },
   "badge": {
     "title": "Badge",
+    "description": "A short status label with a light fill and dark text, for tables, card headers and page titles. Tones, sizes, icons and dots, with HTML for each.",
     "libs": []
   },
   "item": {
     "title": "Item",
+    "description": "One row made of a figure (icon, image or avatar), a section with title and description, and an aside for buttons or trailing info. Examples and markup.",
     "libs": []
   },
   "breadcrumb": {
     "title": "Breadcrumb",
+    "description": "A breadcrumb trail that shows where the current page sits in the site, with links back up each level. Separators, truncation and the markup to copy.",
     "libs": []
   },
   "date-picker": {
     "title": "Date picker",
+    "description": "A field or button that opens a calendar. Choose one date or a range, type a date, or take a preset. Built on Vanilla Calendar Pro with Tsunami styling.",
     "libs": [
       "/dist/vanilla-calendar.min.js"
     ]
   },
   "code-editor": {
     "title": "Code editor",
+    "description": "A code editor on a plain textarea, powered by Monaco and loaded by the page, with Tsunami colours and fonts. Languages, themes, read-only mode and options.",
     "libs": [
       "/dist/monaco/vs/loader.js"
     ]
   },
   "save-bar": {
     "title": "Save bar",
+    "description": "A sticky bottom bar that appears when a form is edited and hides again when the values match the saved ones. Try editing the forms in the live examples.",
     "libs": []
   },
   "page-header": {
     "title": "Page header",
+    "description": "The top of a page: a breadcrumb, a back button, the page title and actions on the right. Variants with badges, tabs and subtitles, with copyable HTML.",
     "libs": []
   },
   "tooltip": {
     "title": "Tooltip",
+    "description": "One line of text on hover or keyboard focus, set from a single attribute. No script needed. Placement, delay and how to use tooltips accessibly.",
     "libs": []
   },
   "editor": {
     "title": "Editor",
+    "description": "A rich text editor on a textarea, powered by TinyMCE and loaded by the page, with a quiet toolbar that follows the Tsunami theme. Setup, options and examples.",
     "libs": [
       "/dist/tinymce.min.js",
       "/dist/monaco/vs/loader.js"
@@ -48,187 +58,232 @@
   },
   "button": {
     "title": "Button",
+    "description": "Buttons are outline by default; use primary only for the main action on a page. Variants, sizes, icon buttons, button groups, pressed and disabled states.",
     "libs": []
   },
   "loader": {
     "title": "Loader",
+    "description": "A spinner for waiting states that takes the colour of the surrounding text, so it fits inside buttons and text. Sizes, usage and a link to Skeleton.",
     "libs": []
   },
   "empty-state": {
     "title": "Empty state",
+    "description": "An empty state for when there is no data yet: an icon, a title, a description, starting actions and a learn-more link. Layouts for pages, cards and tables.",
     "libs": []
   },
   "journey": {
     "title": "Journey",
+    "description": "Shows the path sessions take, step by step. Pick a page in each step and a line links it to the next step. Markup and data attributes for the journey view.",
     "libs": []
   },
   "drawer": {
     "title": "Drawer",
+    "description": "A native dialog element that slides in from an edge of the window, opened and closed with commandfor and command attributes. Sides, sizes and examples.",
     "libs": []
   },
   "image-field": {
     "title": "Image field",
+    "description": "An image input with change and clear buttons; the form sends the file. Preview shapes, sizes, empty and filled states, with the markup for each.",
     "libs": []
   },
   "skeleton": {
     "title": "Skeleton",
+    "description": "Softly pulsing grey blocks that stand in for loading content. Match the shape of the real content so the page does not jump when data arrives.",
     "libs": []
   },
   "pagination": {
     "title": "Pagination",
+    "description": "Move between pages of a long list with previous and next links and page numbers. Compact and full forms, current page and disabled states, with HTML.",
     "libs": []
   },
   "color-field": {
     "title": "Color field",
+    "description": "A colour picker beside a text field. The text field holds the colour value and is what the form sends. Swatches, presets, disabled state and markup.",
     "libs": []
   },
   "stack": {
     "title": "Stack",
+    "description": "A layout helper that spaces out its child elements, vertical by default. Horizontal direction, gaps, alignment and wrapping, with live examples and HTML.",
     "libs": []
   },
   "subnav": {
     "title": "Subnav",
+    "description": "Section links beside the content, for moving between related pages such as settings sections. Active state, groups, icons and the markup to copy.",
     "libs": []
   },
   "command": {
     "title": "Command",
+    "description": "A command menu: a search field over a list of items, with groups, filters and keyboard control. Use it stand-alone or inside a dialog as a palette.",
     "libs": []
   },
   "alert": {
     "title": "Alert",
+    "description": "An inline message with an icon, title, body and actions. Neutral by default, with status variants in a light fill with dark text. Examples and markup.",
     "libs": []
   },
   "dialog": {
     "title": "Dialog",
+    "description": "A native modal dialog element, opened and closed by buttons with the commandfor and command attributes. No script needed. Sizes, forms and confirm dialogs.",
     "libs": []
   },
   "accordion": {
     "title": "Accordion",
+    "description": "Collapsible items built on the browser's details element, with no JavaScript needed. Single and multiple open items, icons, nesting and the markup to copy.",
     "libs": []
   },
   "theme-switcher": {
     "title": "Theme switcher",
+    "description": "The theme lives in data-theme on the html element. Theme buttons remember the choice in localStorage and set aria-pressed for you. Light, dark and system.",
     "libs": []
   },
   "card": {
     "title": "Card",
+    "description": "A box with a 1px border where each direct child (header, section, table, footer) is a part, separated by a line. Examples with forms, tables and actions.",
     "libs": []
   },
   "icons": {
     "title": "Icons",
+    "description": "Icons from the Lucide icon font, sized by data-size or the font size and coloured like the surrounding text. Search the full icon set and copy the class.",
     "libs": []
   },
   "input": {
     "title": "Input",
+    "description": "Text, file and textarea inputs. Use the input class on its own, or put the input in a field with no class. Sizes, states, validation and markup to copy.",
     "libs": []
   },
   "tabs": {
     "title": "Tabs",
+    "description": "Switch between panels in one place. Arrow keys, Home and End select a tab. Underline and pill styles, icons, badges and accessible markup to copy.",
     "libs": []
   },
   "tree": {
     "title": "Tree",
+    "description": "Nested folders and files built on details elements, so no JavaScript is needed. Icons, selected state and deep nesting, with the HTML for a file tree.",
     "libs": []
   },
   "popover": {
     "title": "Popover",
+    "description": "A native popover opened by its button with popovertarget and placed beside it with CSS anchor positioning. No script needed. Placement and examples.",
     "libs": []
   },
   "link": {
     "title": "Link",
+    "description": "Links in text and data: a bare a is the accent colour, while the link class takes the text colour. Hover, visited, external and disabled links with HTML.",
     "libs": []
   },
   "chart": {
     "title": "Chart",
+    "description": "Line, bar, doughnut and other charts drawn on a canvas by Chart.js, in the colours and type of the rest of the page. Setup, options and live examples.",
     "libs": [
       "/dist/chart.min.js"
     ]
   },
   "sidebar": {
     "title": "Sidebar",
+    "description": "App navigation on the left that collapses to icons. Groups, headings, badges, active items and the markup for a back-office sidebar, with live examples.",
     "libs": []
   },
   "typography": {
     "title": "Typography",
+    "description": "One typeface, Google Sans, for both Thai and Latin, at a 14px base size and 1.55 line height. The typography class adds spacing, lists and quotes to content.",
     "libs": []
   },
   "sortable": {
     "title": "Sortable",
+    "description": "Drag the rows of a list, table or grid into a new order, or move them with the arrow keys. A thin layer over SortableJS with Tsunami styling.",
     "libs": [
       "/dist/sortable.min.js"
     ]
   },
   "timeline": {
     "title": "Timeline",
+    "description": "A vertical list of events for an order or a job, built with ol and time elements. Status markers, icons, timestamps and comments, with copyable HTML.",
     "libs": []
   },
   "stat": {
     "title": "Stat",
+    "description": "A single figure with a label, a value and a change indicator. Use it alone, in a card, or in a row with stat-group. Trends, icons and examples.",
     "libs": []
   },
   "table": {
     "title": "Table",
+    "description": "A quiet table with small grey headers, row dividers and tabular numbers. Sort, select, filter, page and hide columns with table.js. Examples and markup.",
     "libs": []
   },
   "avatar": {
     "title": "Avatar",
+    "description": "A photo, logo or initials in a rounded frame. Sizes, shapes, fallback initials, status dots and avatar groups, with the HTML for each variant.",
     "libs": []
   },
   "input-group": {
     "title": "Input group",
+    "description": "One box holding an input with text or icons at the start and end, styled like the plain input. Prefixes, suffixes, buttons and the markup to copy.",
     "libs": []
   },
   "dropdown": {
     "title": "Dropdown",
+    "description": "A menu of actions in a native popover, opened by its button with no script. Items, icons, groups, dividers and destructive actions, with HTML.",
     "libs": []
   },
   "dropzone": {
     "title": "Dropzone",
+    "description": "A box that takes files dropped on it or chosen with a click, and the form sends the files. File list, limits, states and the markup to copy.",
     "libs": []
   },
   "flags": {
     "title": "Flags",
+    "description": "Country flags at a 4:3 ratio from flag-icons, one class per flag. Search the full set, see sizes and copy the class name for any country.",
     "libs": []
   },
   "json-viewer": {
     "title": "JSON viewer",
+    "description": "A foldable tree drawn from a textarea that holds the JSON. Without the script the textarea is all there is. Options, depth and examples.",
     "libs": []
   },
   "workspace-full": {
     "title": "Workspace example",
+    "description": "A full-page example of the Tsunami workspace layout with no docs chrome: a store settings screen with a top bar, side panels and a scrolling work area.",
     "libs": [],
     "bare": true
   },
   "index": {
     "title": "Overview",
+    "description": "Tsunami is a small CSS framework for back-office screens: semantic HTML and data attributes, 43 components, Lucide icons and flags, no dependencies.",
     "libs": []
   },
   "field": {
     "title": "Field",
+    "description": "Labels, inputs and hints, plus checkbox, radio, switch and slider rows. Layouts, required marks, error and disabled states, with the HTML for each.",
     "libs": []
   },
   "toast": {
     "title": "Toast",
+    "description": "A short message after an action, such as a save or a delete. It stacks in a corner, shows above dialogs in the top layer and closes on its own.",
     "libs": []
   },
   "autocomplete": {
     "title": "Autocomplete",
+    "description": "A text input with suggestions. The value is free text: any typed text is kept and a suggestion only saves typing. Data sources, filtering and markup.",
     "libs": []
   },
   "colors": {
     "title": "Colors",
+    "description": "The Tsunami colours are CSS variables that change value with the theme, and components only use these variables. Palette, tones and light and dark values.",
     "libs": []
   },
   "select": {
     "title": "Select",
+    "description": "Pick from a list with a native select, or one with a styled list; the real select still submits the value. Search, groups and multiple choice, with HTML.",
     "libs": []
   },
   "progress": {
     "title": "Progress",
+    "description": "A progress bar made of one track with one span per part, where a span's width is its share. Sizes, tones, labels and multi-part bars, with markup.",
     "libs": []
   },
   "scroll-area": {
     "title": "Scroll area",
+    "description": "A scrolling region inside a fixed-height box with a thin scrollbar. Vertical, horizontal and both directions, with the markup and CSS to copy.",
     "libs": []
   }
 }
