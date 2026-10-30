@@ -1,10 +1,12 @@
 name: Warm the CDN
 
-# jsDelivr reads a GitHub tag the first time a file is asked for. When a page
-# asks for dozens of files at once (the code editor does), some of those first
-# reads can fail and jsDelivr keeps the 404 for ten minutes. After a release
-# this workflow asks for every file in dist/ one at a time, so the cache is
-# warm before anyone loads the page.
+# jsDelivr reads a GitHub tag the first time a file is asked for. Now and then
+# that first read fails ("Failed to fetch version info") and jsDelivr keeps the
+# 404 for ten minutes, so a page that asks for dozens of files at once (the code
+# editor) can break for its first visitors. After a release this workflow asks
+# for every file in dist/ one at a time and, when one answers with an error,
+# purges it and asks again, so the cache holds good answers before anyone loads
+# the page.
 
 on:
   release:
@@ -35,10 +37,11 @@ jobs:
           for file in $(git ls-files dist); do
             url="https://cdn.jsdelivr.net/gh/${REPO}@${TAG}/${file}"
             ok=0
-            for attempt in 1 2 3 4 5 6; do
+            for attempt in 1 2 3 4 5 6 7 8; do
               code=$(curl -s -o /dev/null -w '%{http_code}' "$url")
               if [ "$code" = 200 ]; then ok=1; break; fi
-              sleep 15
+              curl -s -o /dev/null "https://purge.jsdelivr.net/gh/${REPO}@${TAG}/${file}"
+              sleep 10
             done
             if [ "$ok" = 0 ]; then echo "::error::$file still answers $code"; failed=1; fi
           done
