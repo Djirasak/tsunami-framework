@@ -131,7 +131,19 @@ document.addEventListener("click", (e) => {
 
 document.addEventListener("keydown", (e) => {
   const f = e.target.closest?.(".stepper > section input, .stepper > section select");
-  if (e.key === "Enter" && f && /^(?!checkbox|radio|submit|button)/.test(f.type)) {
+  // Enter in a plain field means Next. A field that is part of a component
+  // (tag input, phone input, time picker, select or autocomplete search) uses
+  // Enter itself, and so does a key press another handler already took.
+  const own = f?.closest(
+    ".tag-input, .phone-input, .time-picker, .select, .autocomplete, .date-picker",
+  );
+  if (
+    e.key === "Enter" &&
+    f &&
+    !own &&
+    !e.defaultPrevented &&
+    /^(?!checkbox|radio|submit|button)/.test(f.type)
+  ) {
     const p = f.closest(".stepper > section");
     if (p.querySelector('[type="submit"]')) return;
     e.preventDefault();
