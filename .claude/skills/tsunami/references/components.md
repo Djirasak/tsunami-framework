@@ -658,7 +658,7 @@ This file gives one short example per component. The full page for each is `site
 </nav>
 ```
 
-**Sidebar** (`sidebar`): the app navigation. Attrs: `data-collapsed="true"`, and `command="--toggle-collapsed"` on a button.
+**Sidebar** (`sidebar`): the app navigation. Attrs: `data-collapsed="true"`, `data-keep-scroll` (needs an `id`; keeps the scroll position between full page loads and scrolls the `aria-current="page"` link into view), and `command="--toggle-collapsed"` on a button.
 
 ```html
 <aside class="sidebar" id="nav">

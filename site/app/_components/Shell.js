@@ -1,19 +1,6 @@
 import { html, nav, pages } from "../_lib/content";
 import { jsonLdText } from "../_lib/jsonld";
 
-// Links are full page loads, so the sidebar would start from the top on every
-// page. This keeps its scroll position between pages and makes sure the
-// current page is in view. It runs right after the sidebar, before first paint.
-const KEEP_SCROLL = `(() => {
-  const nav = document.getElementById("docs-nav");
-  const key = "docs-nav-scroll";
-  try { nav.scrollTop = Number(sessionStorage.getItem(key)) || 0; } catch {}
-  nav.querySelector('[aria-current="page"]')?.scrollIntoView({ block: "nearest" });
-  nav.addEventListener("scroll", () => {
-    try { sessionStorage.setItem(key, nav.scrollTop); } catch {}
-  }, { passive: true });
-})();`;
-
 const id = (title) => `nav-${title.toLowerCase().replace(/\W+/g, "-")}`;
 
 // The docs chrome: sidebar built from content/nav.json, top bar with the
@@ -26,7 +13,7 @@ export default function Shell({ slug }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdText(slug) }}
       />
-      <aside className="sidebar" id="docs-nav" popover="">
+      <aside className="sidebar" id="docs-nav" popover="" data-keep-scroll>
         <a className="docs-brand" href="/docs">
           <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
             <rect x="1" y="1" width="30" height="30" rx="7" />
@@ -77,7 +64,6 @@ export default function Shell({ slug }) {
           </section>
         </nav>
       </aside>
-      <script dangerouslySetInnerHTML={{ __html: KEEP_SCROLL }} />
       <div className="docs-body">
         <header className="docs-top">
           <button
