@@ -10,6 +10,9 @@
 // fires when it has. Edits send a bubbling `input` event from the textarea,
 // so the save bar sees them. Theme changes switch the skin and the content.
 // API: window.tsunami.editor = { mount(el, options?), get(el), destroy(el) }.
+// Source code: when the page has also loaded Monaco (see code-editor.js), the
+// code button opens a dialog with a code editor; without it TinyMCE's own
+// dialog stays.
 
 // The HTML may be rendered by other apps, so the editor only produces a short
 // list of elements, attributes, styles and link protocols. Everything else is
@@ -163,6 +166,32 @@ function theme(editor) {
   editor.getDoc().documentElement.dataset.theme = window.tsunami.theme.get();
 }
 
+const monaco = () => typeof window.require?.config === "function";
+
+// The source code dialog: HTML in a code editor, set back on Save.
+function source(editor) {
+  const id = `editor-source-${++serial}`;
+  const dialog = document.createElement("dialog");
+  dialog.className = "dialog";
+  dialog.dataset.size = "xl";
+  dialog.setAttribute("aria-labelledby", `${id}-title`);
+  dialog.innerHTML = `<header><h2 id="${id}-title">Source code</h2><button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Close" commandfor="${id}" command="close"><i class="icon icon-x" aria-hidden="true"></i></button></header><div class="code-editor" data-language="html" style="height: 24rem"><textarea aria-label="Source code" spellcheck="false"></textarea></div><footer><button type="button" class="btn" commandfor="${id}" command="close">Cancel</button><button type="button" class="btn" data-variant="primary" data-save>Save</button></footer>`;
+  dialog.id = id;
+  const box = dialog.querySelector(".code-editor");
+  const area = box.querySelector("textarea");
+  area.value = editor.getContent({ source_view: true });
+  dialog.querySelector("[data-save]").addEventListener("click", () => {
+    editor.undoManager.transact(() => editor.setContent(area.value));
+    dialog.close();
+  });
+  dialog.addEventListener("close", () => {
+    dialog.remove();
+    editor.focus();
+  });
+  document.body.append(dialog);
+  dialog.showModal();
+}
+
 function start(el, state) {
   const tinymce = window.tinymce;
   const isDark = dark();
@@ -183,6 +212,11 @@ function start(el, state) {
         if (states.get(el) !== state) return editor.remove();
         state.editor = editor;
         theme(editor);
+        const plain = editor.editorCommands.commands.exec.mcecodeeditor;
+        if (plain)
+          editor.addCommand("mceCodeEditor", (...args) =>
+            monaco() ? source(editor) : plain.apply(editor, args),
+          );
         // The editor writes tidy HTML; take it as the default too, so Reset
         // and the save bar compare the same text.
         if (el.value === el.defaultValue)
