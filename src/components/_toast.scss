@@ -1,0 +1,116 @@
+// Toast: short messages stacked in a <section class="toaster" popover="manual">,
+// which the script creates and keeps in the top layer (above open dialogs).
+// data-position on .toaster: bottom-end (default), top-end, bottom-center, top-center.
+// A toast holds an optional icon, a body (title + text), an optional action
+// button and a close button. data-variant colours the icon like .alert.
+// Leaving toasts get data-leaving; the script removes them after the fade.
+@use "motion";
+
+@layer components {
+  :where(.toaster) {
+    inset: auto;
+    inset-block-end: var(--space-4);
+    inset-inline-end: var(--space-4);
+    width: min(24rem, 100vw - 2 * var(--space-4));
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  :where(.toaster:popover-open) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  :where(.toaster[data-position="top-end"], .toaster[data-position="top-center"]) {
+    inset-block: var(--space-4) auto;
+    flex-direction: column-reverse;
+  }
+
+  :where(.toaster[data-position="top-center"], .toaster[data-position="bottom-center"]) {
+    inset-inline: 0;
+    margin-inline: auto;
+  }
+
+  // Narrow screens: a full-width strip at the bottom.
+  @media (max-width: 40rem) {
+    :where(.toaster) {
+      inset: auto var(--space-3) var(--space-3);
+      width: auto;
+      margin: 0;
+      flex-direction: column;
+    }
+  }
+
+  :where(.toast) {
+    --toast-from: 0 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    color: var(--fg);
+    pointer-events: auto;
+    transition:
+      opacity motion.$base motion.$ease,
+      translate motion.$base motion.$ease;
+
+    @starting-style {
+      opacity: 0;
+      translate: var(--toast-from);
+    }
+  }
+
+  // Top stacks slide in from above (not on narrow screens, where they sit at the bottom).
+  @media (min-width: 40.0625rem) {
+    :where(.toaster[data-position^="top"] .toast) {
+      --toast-from: 0 -0.5rem;
+    }
+  }
+
+  :where(.toast[data-leaving]) {
+    opacity: 0;
+    translate: var(--toast-from);
+  }
+
+  :where(.toast > .icon) {
+    flex: none;
+    margin-top: 0.2em;
+    color: var(--neutral-fg);
+  }
+
+  :where(.toast > div) {
+    display: grid;
+    flex: 1;
+    gap: var(--space-1);
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  :where(.toast strong) {
+    font-size: var(--text-base);
+    font-weight: 600;
+  }
+
+  :where(.toast p) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.toast > .btn) {
+    flex: none;
+  }
+
+  @each $v in (ok, danger, warning, info) {
+    :where(.toast[data-variant="#{$v}"] > .icon) {
+      color: var(--#{$v}-fg);
+    }
+  }
+}
