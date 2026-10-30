@@ -1,0 +1,288 @@
+<header class="page-header">
+            <div>
+              <h1>Time picker</h1>
+              <p>
+                A time field made of separate segments for hour, minute and,
+                if you want them, seconds and AM or PM. It has no popup: you
+                type or use the arrow keys.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Hour and minute, with a starting time</h2>
+            <p>Each part is its own segment. Type digits, or use the arrow keys. The form sends the time as <code>HH:MM</code> under <code>data-name</code>.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Hour and minute, with a starting time">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="time-picker" data-name="start" value="09:30" aria-label="Start time"></div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="time-picker" data-name="start" value="09:30" aria-label="Start time"&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>An empty field</h2>
+            <p>Without a <code>value</code> the segments show <code>--</code> and the form sends nothing. The first change fills the other segments with 00.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="An empty field">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="time-picker" data-name="opens" aria-label="Opening time"></div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="time-picker" data-name="opens" aria-label="Opening time"&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-seconds adds seconds</h2>
+            <p>The value becomes <code>HH:MM:SS</code>.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="data-seconds adds seconds">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="time-picker" data-name="logged" data-seconds value="14:05:09" aria-label="Logged at"></div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="time-picker" data-name="logged" data-seconds value="14:05:09" aria-label="Logged at"&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-hour12 shows 1 to 12 and AM or PM</h2>
+            <p>Only what is shown changes: the value is still 24 hour, so <code>3:15 PM</code> is sent as <code>15:15</code>. Press <kbd>A</kbd> or <kbd>P</kbd> on the last segment.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="data-hour12 shows 1 to 12 and AM or PM">
+                <button type="button" role="tab" id="ex4-tp" aria-selected="true" aria-controls="ex4-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex4-tc" aria-selected="false" aria-controls="ex4-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex4-p" aria-labelledby="ex4-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="time-picker" data-name="meeting" data-hour12 value="15:15" aria-label="Meeting time"></div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex4-c" aria-labelledby="ex4-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="time-picker" data-name="meeting" data-hour12 value="15:15" aria-label="Meeting time"&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-min, data-max and data-step</h2>
+            <p>Minutes move in steps of <code>data-step</code>. A time outside the limits is moved to the nearest one when focus leaves the field.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="data-min, data-max and data-step">
+                <button type="button" role="tab" id="ex5-tp" aria-selected="true" aria-controls="ex5-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex5-tc" aria-selected="false" aria-controls="ex5-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex5-p" aria-labelledby="ex5-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="time-picker" data-name="slot" data-min="09:00" data-max="17:30" data-step="15" value="09:00" aria-label="Appointment time"></div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex5-c" aria-labelledby="ex5-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="time-picker" data-name="slot" data-min="09:00" data-max="17:30" data-step="15" value="09:00" aria-label="Appointment time"&gt;&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Date and time in one input group</h2>
+            <p>Put a Date picker and a time picker in one <code>.input-group</code>. The date field uses <code>data-variant="ghost"</code> so the group draws the only box.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Date and time in one input group">
+                <button type="button" role="tab" id="ex6-tp" aria-selected="true" aria-controls="ex6-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex6-tc" aria-selected="false" aria-controls="ex6-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex6-p" aria-labelledby="ex6-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="input-group" style="max-width: 24rem">
+                    <span><i class="icon icon-calendar" aria-hidden="true"></i></span>
+                    <div class="date-picker" data-min="2026-01-01">
+                      <input type="text" class="input" data-variant="ghost" placeholder="YYYY-MM-DD" aria-label="Date" />
+                      <div data-popover aria-hidden="true"></div>
+                      <input type="hidden" name="date" />
+                    </div>
+                    <div class="time-picker" data-name="time" value="10:00" aria-label="Time"></div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex6-c" aria-labelledby="ex6-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="input-group" style="max-width: 24rem"&gt;
+  &lt;span&gt;&lt;i class="icon icon-calendar" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;div class="date-picker" data-min="2026-01-01"&gt;
+    &lt;input type="text" class="input" data-variant="ghost" placeholder="YYYY-MM-DD" aria-label="Date" /&gt;
+    &lt;div data-popover aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;input type="hidden" name="date" /&gt;
+  &lt;/div&gt;
+  &lt;div class="time-picker" data-name="time" value="10:00" aria-label="Time"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sizes, invalid and disabled</h2>
+            <p><code>data-size</code> sets the height like an input. <code>aria-invalid="true"</code> draws the red border. <code>disabled</code> dims the field and turns the segments off.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Sizes, invalid and disabled">
+                <button type="button" role="tab" id="ex7-tp" aria-selected="true" aria-controls="ex7-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex7-tc" aria-selected="false" aria-controls="ex7-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex7-p" aria-labelledby="ex7-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg" style="flex-wrap: wrap">
+                    <div class="time-picker" data-size="sm" data-name="a" value="08:00" aria-label="Small"></div>
+                    <div class="time-picker" data-size="lg" data-name="b" value="08:00" aria-label="Large"></div>
+                    <div class="time-picker" data-name="c" value="25:00" aria-invalid="true" aria-label="Invalid"></div>
+                    <div class="time-picker" data-name="d" value="08:00" disabled aria-label="Disabled"></div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex7-c" aria-labelledby="ex7-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg" style="flex-wrap: wrap"&gt;
+  &lt;div class="time-picker" data-size="sm" data-name="a" value="08:00" aria-label="Small"&gt;&lt;/div&gt;
+  &lt;div class="time-picker" data-size="lg" data-name="b" value="08:00" aria-label="Large"&gt;&lt;/div&gt;
+  &lt;div class="time-picker" data-name="c" value="25:00" aria-invalid="true" aria-label="Invalid"&gt;&lt;/div&gt;
+  &lt;div class="time-picker" data-name="d" value="08:00" disabled aria-label="Disabled"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Behavior</h2>
+            <p>
+              <code>.time-picker</code> is an empty element. The script fills it
+              with the segments and a hidden input named by
+              <code>data-name</code>, and keeps that input in the form's
+              format: <code>HH:MM</code>, or <code>HH:MM:SS</code> with
+              <code>data-seconds</code>. It is <code>""</code> while a segment is
+              empty. You can also write your own
+              <code>&lt;input type="hidden"&gt;</code> inside; its name and
+              value are used. A form reset puts the starting time back.
+            </p>
+            <p>
+              Arrow keys wrap inside a segment and never carry into the next
+              one. Typed digits are limited to the segment's range, and a
+              segment moves on once it cannot take another digit. Pasting
+              <code>HH:MM</code> into any segment fills the whole field.
+            </p>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              The script starts every <code>.time-picker</code> on the page,
+              also one added later. On the element, <code>value</code> is read
+              and set (<code>""</code> or an invalid time clears it).
+            </p>
+            <h3>Methods</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Methods">
+              <table class="table">
+                <thead><tr><th scope="col">Method</th><th scope="col">Description</th></tr></thead>
+                <tbody>
+<tr><td><code>window.tsunami.timePicker.get(el)</code></td><td>Returns the value, <code>HH:MM</code> or <code>HH:MM:SS</code>, or <code>&quot;&quot;</code>.</td></tr>
+<tr><td><code>window.tsunami.timePicker.set(el, value)</code></td><td>Sets the time and sends the events. An empty or invalid value clears it.</td></tr>
+<tr><td><code>window.tsunami.timePicker.mount(el)</code></td><td>Starts one element, for one made with a script before the page finished loading.</td></tr>
+<tr><td><code>window.tsunami.timePicker.destroy(el)</code></td><td>Removes the segments.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Events">
+              <table class="table">
+                <thead><tr><th scope="col">Event</th><th scope="col">On</th><th scope="col">Description</th></tr></thead>
+                <tbody>
+<tr><td><code>tsunami:timechange</code></td><td><code>.time-picker</code>, bubbles</td><td>Sent when the value changes. <code>detail.value</code> is the new value, <code>&quot;&quot;</code> when cleared.</td></tr>
+<tr><td><code>input</code>, <code>change</code></td><td>the hidden input, bubble</td><td>Sent with it, so a form and the save bar hear the change.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Keyboard">
+              <table class="table">
+                <thead><tr><th scope="col">Key</th><th scope="col">Description</th></tr></thead>
+                <tbody>
+<tr><td><kbd>Tab</kbd></td><td>Moves to the next segment, then out of the field.</td></tr>
+<tr><td><kbd>←</kbd>, <kbd>→</kbd>, <kbd>:</kbd></td><td>Move to the previous or next segment.</td></tr>
+<tr><td><kbd>↑</kbd>, <kbd>↓</kbd></td><td>Add or take one, wrapping. Minutes follow <code>data-step</code>. On an empty segment, start from the lowest or the highest.</td></tr>
+<tr><td><kbd>0</kbd>–<kbd>9</kbd></td><td>Type the value. A segment moves on after two digits, or one that cannot take a second.</td></tr>
+<tr><td><kbd>Home</kbd>, <kbd>End</kbd></td><td>Lowest or highest value of the segment.</td></tr>
+<tr><td><kbd>A</kbd>, <kbd>P</kbd></td><td>On the AM or PM segment, set AM or PM.</td></tr>
+<tr><td><kbd>Backspace</kbd>, <kbd>Delete</kbd></td><td>Empty the segment.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Accessibility</h2>
+            <p>
+              The field is a <code>role="group"</code> named by its
+              <code>aria-label</code> (default <code>Time</code>). Each segment
+              is a <code>role="spinbutton"</code> with its own
+              <code>aria-label</code> (Hour, Minute, Second, AM or PM),
+              <code>aria-valuemin</code>, <code>aria-valuemax</code>,
+              <code>aria-valuenow</code> and <code>aria-valuetext</code>
+              (<code>Empty</code> while empty). Give the field an
+              <code>aria-label</code> or a label that says what the time is for.
+            </p>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead><tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr></thead>
+                <tbody>
+<tr><td><code>.time-picker</code></td><td>an empty <code>div</code></td><td>The field. The script adds the segments.</td></tr>
+<tr><td><code>data-name</code></td><td>a name</td><td>The name of the hidden input a form sends.</td></tr>
+<tr><td><code>value</code></td><td><code>HH:MM</code> or <code>HH:MM:SS</code></td><td>The starting time. Without it the field is empty.</td></tr>
+<tr><td><code>data-seconds</code></td><td>present or absent</td><td>Adds a seconds segment.</td></tr>
+<tr><td><code>data-hour12</code></td><td>present or absent</td><td>Shows 1 to 12 and an AM or PM segment. The value stays 24 hour.</td></tr>
+<tr><td><code>data-min</code>, <code>data-max</code></td><td><code>HH:MM</code></td><td>The earliest and latest time. A time outside is moved to the nearest limit when focus leaves, or on an arrow key.</td></tr>
+<tr><td><code>data-step</code></td><td>minutes, such as <code>15</code></td><td>How far the arrow keys move the minute segment.</td></tr>
+<tr><td><code>data-size</code></td><td><code>sm</code>, <code>lg</code></td><td>The height of the field: 28px, 36px (default) or 40px.</td></tr>
+<tr><td><code>aria-invalid</code></td><td><code>true</code></td><td>Draws the red border.</td></tr>
+<tr><td><code>disabled</code></td><td>present or absent</td><td>Dims the field and turns the segments off.</td></tr>
+<tr><td><code>aria-label</code></td><td>text</td><td>Names the group. Defaults to <code>Time</code>.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
