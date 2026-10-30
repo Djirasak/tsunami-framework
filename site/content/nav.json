@@ -7,6 +7,12 @@
         "href": "/docs",
         "icon": "house",
         "keywords": "Get started index"
+      },
+      {
+        "label": "JavaScript API",
+        "href": "/docs/javascript-api",
+        "icon": "braces",
+        "keywords": "Start javascript api window.tsunami events tsunami: mount destroy get set listen detail ready reference modules"
       }
     ]
   },

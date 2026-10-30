@@ -341,5 +341,10 @@
     "title": "Time picker",
     "description": "A time field with separate hour, minute, second and AM or PM segments you type into or step with the arrow keys, sending HH:MM in a form.",
     "libs": []
+  },
+  "javascript-api": {
+    "title": "JavaScript API",
+    "description": "How to call the tsunami object, listen for tsunami: events, wait for library components, and read the API section of a component page, with a table of every module.",
+    "libs": []
   }
 }
