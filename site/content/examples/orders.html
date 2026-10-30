@@ -1,0 +1,158 @@
+<div style="display: flex">
+  <aside class="sidebar" id="app-nav" popover data-keep-scroll>
+    <nav aria-label="Main">
+      <header>
+        <a href="/examples/dashboard"
+          ><span class="avatar" data-size="sm"><span>HM</span></span
+          ><span>Harbor &amp; Mill</span></a
+        >
+      </header>
+      <section>
+        <div role="group">
+          <ul>
+            <li>
+              <a href="/examples/dashboard"
+                ><i class="icon icon-house" aria-hidden="true"></i
+                ><span>Dashboard</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div role="group" aria-labelledby="nav-sell">
+          <h3 id="nav-sell">Sell</h3>
+          <ul>
+            <li>
+              <a href="/examples/orders" aria-current="page"
+                ><i class="icon icon-receipt" aria-hidden="true"></i
+                ><span>Orders</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="icon icon-truck" aria-hidden="true"></i
+                ><span>Shipments</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="icon icon-users" aria-hidden="true"></i
+                ><span>Customers</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div role="group" aria-labelledby="nav-catalog">
+          <h3 id="nav-catalog">Catalog</h3>
+          <ul>
+            <li>
+              <a href="#"
+                ><i class="icon icon-package" aria-hidden="true"></i
+                ><span>Products</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="icon icon-tag" aria-hidden="true"></i
+                ><span>Discounts</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <hr />
+        <div role="group">
+          <ul>
+            <li>
+              <a href="/examples/settings"
+                ><i class="icon icon-settings" aria-hidden="true"></i
+                ><span>Settings</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+      <footer>
+        <button
+          type="button"
+          class="btn"
+          data-variant="ghost"
+          data-size="icon"
+          commandfor="app-nav"
+          command="--toggle-collapsed"
+          aria-label="Collapse or expand the menu"
+        >
+          <i class="icon icon-panel-left" aria-hidden="true"></i>
+        </button>
+      </footer>
+    </nav>
+  </aside>
+  <div class="workspace" style="flex: 1; min-width: 0">
+    <header>
+      <button
+        type="button"
+        class="btn sidebar-toggle"
+        data-variant="ghost"
+        data-size="icon"
+        popovertarget="app-nav"
+        aria-label="Open the menu"
+      >
+        <i class="icon icon-menu" aria-hidden="true"></i>
+      </button>
+      <h1>Orders</h1>
+        <div class="theme-switcher" role="group" aria-label="Theme">
+          <button type="button" data-theme-toggle="light" aria-label="Light">
+            <i class="icon icon-sun" aria-hidden="true"></i>
+          </button>
+          <button type="button" data-theme-toggle="dark" aria-label="Dark">
+            <i class="icon icon-moon" aria-hidden="true"></i>
+          </button>
+          <button type="button" data-theme-toggle="system" aria-label="System">
+            <i class="icon icon-monitor" aria-hidden="true"></i>
+          </button>
+        </div>
+        <button
+          type="button"
+          class="btn"
+          data-variant="ghost"
+          data-size="icon"
+          commandfor="user-menu"
+          command="toggle-popover"
+          aria-label="Account menu"
+        >
+          <span class="avatar" data-size="sm"><span>JK</span></span>
+        </button>
+        <div class="dropdown" id="user-menu" popover>
+          <a href="#"
+            ><i class="icon icon-user" aria-hidden="true"></i>Profile</a
+          >
+          <a href="/examples/settings"
+            ><i class="icon icon-settings" aria-hidden="true"></i>Settings</a
+          >
+          <hr />
+          <button
+            type="button"
+            commandfor="user-menu"
+            command="hide-popover"
+          >
+            <i class="icon icon-log-out" aria-hidden="true"></i>Sign out
+          </button>
+        </div>
+    </header>
+    <main class="stack">
+      <header class="page-header">
+        <div>
+          <h2>All orders</h2>
+          <p>Everything customers have bought, across all your channels.</p>
+        </div>
+        <div>
+          <button type="button" class="btn" data-variant="secondary">
+            <i class="icon icon-download" aria-hidden="true"></i>Export
+          </button>
+          <button type="button" class="btn" data-variant="primary">
+            <i class="icon icon-plus" aria-hidden="true"></i>New order
+          </button>
+        </div>
+      </header>
+
+    </main>
+  </div>
+</div>
