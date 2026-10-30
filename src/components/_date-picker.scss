@@ -1,0 +1,439 @@
+// Date picker: .date-picker holds a text input.input or a button (with a span
+// that shows the dates), an empty [data-popover] panel and an optional hidden
+// input. src/js/date-picker.js opens the panel (a native manual popover,
+// anchored to the .date-picker) and puts Vanilla Calendar Pro in it. The
+// library's own CSS is not shipped: this file styles its data-vc-* markup.
+// data-mode="range" shows two months side by side from 768px. A
+// [data-presets] group in the panel is a column beside the calendar from 768px,
+// two columns under it below. The script sets data-empty while there are no dates.
+@use "popover";
+@use "motion";
+@use "icon";
+
+$day: 2rem;
+
+@layer components {
+  :where(.date-picker) {
+    display: block;
+    position: relative;
+    min-width: 0;
+  }
+
+  // The panel stays hidden until the script has made it a popover.
+  :where(.date-picker > [data-popover]:not([popover])) {
+    display: none;
+  }
+
+  // A button as the control: the dates on the left, a chevron on the right.
+  :where(.date-picker > button) {
+    width: 100%;
+    justify-content: space-between;
+    font-weight: 400;
+  }
+
+  :where(.date-picker[data-empty] > button > span) {
+    color: var(--muted);
+  }
+
+  :where(.date-picker > button > .icon) {
+    color: var(--muted);
+  }
+
+  @supports (anchor-name: --date-picker) {
+    :where(.date-picker) {
+      anchor-name: --date-picker;
+      anchor-scope: --date-picker;
+    }
+
+    :where(.date-picker > [data-popover]) {
+      position-anchor: --date-picker;
+    }
+  }
+
+  :where(.date-picker > [data-popover]) {
+    @include popover.anchored;
+    width: max-content;
+    max-width: calc(100vw - 2rem);
+    padding: 0;
+    overflow: visible;
+  }
+
+  :where(.date-picker > [data-popover]:popover-open) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include popover.positions(".date-picker > [data-popover]");
+  @include motion.pop(".date-picker > [data-popover]");
+
+  // Presets: two columns under the calendar, a column beside it from 768px.
+  :where(.date-picker [data-presets]) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    padding: var(--space-2);
+    border-top: 1px solid var(--line);
+  }
+
+  :where(.date-picker [data-presets] > button) {
+    padding: var(--space-2) var(--space-3);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--fg);
+    font-size: var(--text-base);
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  :where(.date-picker [data-presets] > button:hover) {
+    background: var(--subtle);
+  }
+
+  :where(.date-picker [data-presets] > button[aria-pressed="true"]) {
+    background: var(--subtle);
+    font-weight: 600;
+  }
+
+  @media (min-width: 48rem) {
+    :where(.date-picker > [data-popover]:popover-open:has(> [data-presets])) {
+      flex-direction: row;
+    }
+
+    :where(.date-picker [data-presets]) {
+      display: flex;
+      flex-direction: column;
+      min-width: 9rem;
+      border-top: 0;
+      border-left: 1px solid var(--line);
+    }
+  }
+
+  // The calendar. Arrows sit in a bar over the header row.
+  :where(.date-picker [data-vc="calendar"]) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: var(--space-3);
+    color: var(--fg);
+    font-size: var(--text-base);
+    user-select: none;
+  }
+
+  :where(.date-picker [data-vc="calendar"]:focus-visible) {
+    outline-offset: -2px;
+  }
+
+  :where(.date-picker [data-vc="controls"]) {
+    position: absolute;
+    inset: var(--space-3) var(--space-3) auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  :where(.date-picker [data-vc-arrow]) {
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  :where(.date-picker [data-vc-arrow]:hover) {
+    background: var(--subtle);
+    color: var(--fg);
+  }
+
+  :where(.date-picker [data-vc-arrow]:disabled) {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  :where(.date-picker [data-vc-arrow="prev"])::before {
+    @include icon.glyph("chevron-left");
+  }
+
+  :where(.date-picker [data-vc-arrow="next"])::before {
+    @include icon.glyph("chevron-right");
+  }
+
+  :where(.date-picker [data-vc="grid"]) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+  }
+
+  :where(.date-picker [data-vc="column"]) {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  // One month: the arrows are in the header. Several: the controls bar has them.
+  :where(.date-picker [data-vc="header"]) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-2);
+  }
+
+  :where(.date-picker [data-vc-header="content"]) {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    min-height: 1.75rem;
+  }
+
+  :where(.date-picker [data-vc-type="multiple"] [data-vc-header="content"]) {
+    padding: 0 2rem;
+  }
+
+  :where(.date-picker [data-vc="month"], .date-picker [data-vc="year"]) {
+    padding: var(--space-1) var(--space-2);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--fg);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  :where(
+    .date-picker [data-vc="month"]:hover,
+    .date-picker [data-vc="year"]:hover
+  ) {
+    background: var(--subtle);
+  }
+
+  :where(
+    .date-picker [data-vc="month"]:disabled,
+    .date-picker [data-vc="year"]:disabled
+  ) {
+    pointer-events: none;
+  }
+
+  :where(.date-picker [data-vc="content"], .date-picker [data-vc="wrapper"]) {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  :where(.date-picker [data-vc="content"]) {
+    flex-direction: column;
+  }
+
+  :where(.date-picker [data-vc="week"], .date-picker [data-vc-dates="row"]) {
+    display: grid;
+    grid-template-columns: repeat(7, $day);
+    justify-items: center;
+  }
+
+  :where(.date-picker [data-vc-week-day]) {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: $day;
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+
+  :where(.date-picker [data-vc="dates"]) {
+    display: grid;
+    align-content: start;
+  }
+
+  :where(.date-picker [data-vc-date]) {
+    display: grid;
+    width: 100%;
+  }
+
+  :where(.date-picker [data-vc-date-btn]) {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: $day;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--fg);
+    font-size: var(--text-base);
+    cursor: pointer;
+  }
+
+  :where(.date-picker [data-vc-date-btn]:hover) {
+    background: var(--subtle);
+  }
+
+  // Today: bold, with a line round it.
+  :where(.date-picker [data-vc-date][data-vc-date-today] [data-vc-date-btn]) {
+    border-color: var(--line);
+    font-weight: 600;
+  }
+
+  :where(
+    .date-picker
+      [data-vc-date]:is(
+        [data-vc-date-month="prev"],
+        [data-vc-date-month="next"]
+      )
+      [data-vc-date-btn]
+  ) {
+    color: var(--muted);
+  }
+
+  :where(
+    .date-picker [data-vc-date][data-vc-date-disabled] [data-vc-date-btn]
+  ) {
+    background: none;
+    color: var(--muted);
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // The range being chosen, under the pointer.
+  :where(.date-picker [data-vc-date][data-vc-date-hover] [data-vc-date-btn]) {
+    border-radius: 0;
+    background: var(--subtle);
+  }
+
+  :where(
+    .date-picker [data-vc-date][data-vc-date-selected] [data-vc-date-btn]
+  ) {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  // Range: the ends are accent, the days between are quiet.
+  :where(
+    .date-picker
+      [data-vc-date][data-vc-date-selected="middle"]
+      [data-vc-date-btn]
+  ) {
+    border-radius: 0;
+    background: var(--subtle);
+    color: var(--fg);
+  }
+
+  :where(
+    .date-picker
+      [data-vc-date][data-vc-date-selected="middle"]
+      [data-vc-date-btn]:hover
+  ) {
+    background: var(--line);
+  }
+
+  :where(
+    .date-picker
+      [data-vc-date][data-vc-date-selected="first"]
+      [data-vc-date-btn]
+  ) {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  :where(
+    .date-picker [data-vc-date][data-vc-date-selected="last"] [data-vc-date-btn]
+  ) {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+
+  :where(
+    .date-picker
+      [data-vc-date]:is(
+        [data-vc-date-selected="first"],
+        [data-vc-date-selected="last"],
+        [data-vc-date-selected="first-and-last"]
+      )
+      [data-vc-date-btn]:focus-visible
+  ) {
+    border-radius: var(--radius-sm);
+  }
+
+  :where(.date-picker [data-vc-date-btn]:focus-visible) {
+    outline-offset: -2px;
+    border-radius: var(--radius-sm);
+  }
+
+  // Month and year pickers, opened from the header.
+  :where(.date-picker [data-vc="months"], .date-picker [data-vc="years"]) {
+    display: grid;
+    flex-grow: 1;
+    gap: var(--space-1);
+  }
+
+  :where(
+    .date-picker [data-vc-months="row"],
+    .date-picker [data-vc-years="row"]
+  ) {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  :where(.date-picker [data-vc-months="row"]) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  :where(.date-picker [data-vc-years="row"]) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  :where(
+    .date-picker [data-vc-months-month],
+    .date-picker [data-vc-years-year]
+  ) {
+    height: 2.25rem;
+    padding: 0 var(--space-1);
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--fg);
+    font-size: var(--text-base);
+    cursor: pointer;
+  }
+
+  :where(
+    .date-picker [data-vc-months-month]:hover,
+    .date-picker [data-vc-years-year]:hover
+  ) {
+    background: var(--subtle);
+  }
+
+  :where(
+    .date-picker [data-vc-months-month]:disabled,
+    .date-picker [data-vc-years-year]:disabled
+  ) {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  :where(
+    .date-picker [data-vc-months-month][data-vc-months-month-selected],
+    .date-picker [data-vc-years-year][data-vc-years-year-selected]
+  ) {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :where(
+    .date-picker :is([data-vc-months-month], [data-vc-years-year]):focus-visible
+  ) {
+    outline-offset: -2px;
+  }
+}
