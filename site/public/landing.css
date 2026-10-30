@@ -261,6 +261,11 @@ body {
   .landing-device-note {
     display: none;
   }
+
+  /* Stack the three stats: two and a half cells in a row look ragged. */
+  .landing-device dl.stat > * {
+    flex-basis: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

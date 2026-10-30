@@ -193,6 +193,14 @@
     min-width: max-content;
   }
 
+  // On a narrow screen every cell takes a row of its own: cells that wrap
+  // by their content get different widths, and their lines do not line up.
+  @media (width < 40rem) {
+    :where(.stat-group:not([data-even]) > .stat) {
+      flex-basis: 100%;
+    }
+  }
+
   :where(.card > .stat-group) {
     padding: 0;
   }
