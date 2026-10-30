@@ -1,4 +1,5 @@
 import { html, nav, pages } from "../_lib/content";
+import { jsonLdText } from "../_lib/jsonld";
 
 const id = (title) => `nav-${title.toLowerCase().replace(/\W+/g, "-")}`;
 
@@ -8,6 +9,10 @@ export default function Shell({ slug }) {
   const href = slug === "index" ? "/docs" : `/docs/${slug}`;
   return (
     <div className="docs">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdText(slug) }}
+      />
       <aside className="sidebar" id="docs-nav" popover="">
         <a className="docs-brand" href="/docs">
           <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
