@@ -1,0 +1,103 @@
+// Sortable: rows that are dragged into a new order. The drag is SortableJS,
+// started by src/js/sortable.js on .sortable; this file only draws it.
+// .sortable-handle is a button inside a row; with no handle the whole row drags.
+// SortableJS adds .sortable-chosen / .sortable-ghost (the gap) and, in the
+// fallback mode used here, .sortable-fallback (the row under the pointer).
+@use "motion";
+
+@layer components {
+  :where(.sortable-handle) {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--muted);
+    cursor: grab;
+    touch-action: none;
+    transition:
+      color motion.$base motion.$ease,
+      background-color motion.$base motion.$ease;
+  }
+
+  :where(.sortable-handle:hover) {
+    color: var(--fg);
+  }
+
+  :where(.sortable-handle > .icon) {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  // Over a picture: the handle covers it and shows under the pointer or the focus.
+  :where(.sortable-handle[data-variant="overlay"]) {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    opacity: 0;
+    transition: opacity motion.$base motion.$ease;
+  }
+
+  :where(
+    .sortable-handle[data-variant="overlay"]:hover,
+    .sortable-handle[data-variant="overlay"]:focus-visible
+  ) {
+    opacity: 0.85;
+  }
+
+  :where(.sortable-handle[data-variant="overlay"] > .icon) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  // A list with no handle drags by its rows.
+  :where(.sortable:not([data-disabled]) > :not(:has(.sortable-handle))) {
+    cursor: grab;
+  }
+
+  // The place the row will land.
+  :where(.sortable-ghost) {
+    background: var(--subtle);
+    opacity: 0.5;
+  }
+
+  // The row under the pointer (fallback mode).
+  :where(.sortable-fallback) {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    cursor: grabbing;
+    opacity: 1;
+  }
+
+  :where(.sortable-fallback .sortable-handle) {
+    cursor: grabbing;
+  }
+
+  :where(.sortable[data-disabled] .sortable-handle) {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  // The live region that speaks a move made with the keys.
+  :where(.sortable-status) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
