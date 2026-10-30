@@ -1,46 +1,40 @@
-// Docs sidebar search: Ctrl/Cmd+K focuses it; filters nav links by data-label and data-keywords.
+// Docs search: the sidebar button opens a command palette built from the nav,
+// so every page is listed with its icon and found by label or keyword.
+// Ctrl/Cmd+K opens it too.
 const sidebar = document.getElementById("docs-nav");
-const input = sidebar.querySelector('input[type="search"]');
-const links = [...sidebar.querySelectorAll("nav a")];
-const groups = [...sidebar.querySelectorAll('nav [role="group"]')];
+const attr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 
-function filter() {
-  const terms = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  for (const a of links) {
-    const text = `${a.dataset.label} ${a.dataset.keywords}`.toLowerCase();
-    a.closest("li").hidden = !terms.every((t) => text.includes(t));
-  }
-  // Hide a group when none of its links match.
-  for (const g of groups) {
-    g.hidden = !g.querySelector("li:not([hidden])");
-  }
-}
-
-input.addEventListener("input", filter);
-
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    // Prefer a link whose label matches over a keyword-only match.
-    const q = input.value.trim().toLowerCase();
-    const shown = links.filter((a) => !a.closest("li").hidden);
-    (
-      shown.find((a) => a.dataset.label.toLowerCase().includes(q)) ?? shown[0]
-    )?.click();
-  }
-  if (e.key === "Escape" && input.value) {
-    e.preventDefault();
-    input.value = "";
-    filter();
-  }
-});
+const palette = document.createElement("dialog");
+palette.id = "docs-palette";
+palette.className = "command-dialog";
+palette.setAttribute("aria-label", "Search docs");
+palette.setAttribute("closedby", "any");
+palette.innerHTML = `<div class="command">
+  <header>
+    <i class="icon icon-search" aria-hidden="true"></i>
+    <input type="text" id="docs-palette-input" placeholder="Search docs..." autocomplete="off" autocorrect="off" spellcheck="false" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-controls="docs-palette-menu">
+  </header>
+  <div role="menu" id="docs-palette-menu" aria-orientation="vertical" data-empty="No results found.">
+    ${[...sidebar.querySelectorAll('nav [role="group"]')]
+      .map((group, i) => {
+        const title = group.querySelector("h3")?.textContent ?? "Get started";
+        const rows = [...group.querySelectorAll("a")]
+          .map((a) => {
+            const icon = a.querySelector(".icon").className;
+            return `<a role="menuitem" href="${attr(a.getAttribute("href"))}" data-label="${attr(a.dataset.label)}" data-keywords="${attr(a.dataset.keywords)}"><i class="${icon}" aria-hidden="true"></i><span>${a.dataset.label}</span></a>`;
+          })
+          .join("");
+        return `<div role="group" aria-labelledby="docs-palette-g${i}"><span role="heading" id="docs-palette-g${i}">${title}</span>${rows}</div>`;
+      })
+      .join("")}
+  </div>
+</div>`;
+document.body.append(palette);
 
 document.addEventListener("keydown", (e) => {
   if (!(e.ctrlKey || e.metaKey) || e.key.toLowerCase() !== "k") return;
   e.preventDefault();
-  // Below 48rem the sidebar is a closed popover.
-  if (!sidebar.checkVisibility()) sidebar.showPopover();
-  input.focus();
-  input.select();
+  palette.showModal();
 });
 
 // Code blocks: colour the markup and add a copy button.
