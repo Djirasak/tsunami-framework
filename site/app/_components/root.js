@@ -11,8 +11,6 @@ export default function Root({ libs = [], docs = true, children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="/dist/tsunami.min.css" />
         {docs && <link rel="stylesheet" href="/docs/docs.css" />}
         {libs.map((src) => (
