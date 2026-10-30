@@ -91,7 +91,8 @@ docs/                   docs site (plain HTML)
 fonts/                  Google Sans + Lucide (woff2, licenses, CHECKSUMS.txt)
 flags/                  flag-icons 4x3 SVGs (MIT)
 vendor/tinymce/         TinyMCE 8 release files (the build joins them into dist/tinymce.min.js)
-scripts/                serve.ts, stamp-version.ts, bundle-tinymce.ts, lucide.ts, flags.ts, tinymce.ts
+vendor/sortable/        SortableJS 1.15 (copied to dist/sortable.min.js)
+scripts/                serve.ts, stamp-version.ts, build-vendor.ts, lucide.ts, flags.ts, tinymce.ts
 ```
 
 ## Tokens
@@ -122,4 +123,5 @@ Vanilla ES modules, event delegation on `document`, no init functions. CSS works
 - Google Sans: SIL OFL 1.1 (`fonts/GoogleSans-OFL.txt`).
 - Lucide icons: ISC (`fonts/Lucide-LICENSE.txt`).
 - Flags: flag-icons, MIT (`flags/LICENSE.txt`).
+- SortableJS (drag to reorder): MIT (`vendor/sortable/LICENSE.txt`). Not part of `tsunami.min.js`; load `dist/sortable.min.js` before it when a page has a `.sortable`.
 - TinyMCE (the editor): GPL-2.0-or-later or the Tiny Self-Hosted License (`vendor/tinymce/LICENSE.md`). It is not part of `tsunami.min.js`; load `dist/tinymce.min.js` (one file, nothing else to host) before the Tsunami script when a page has an editor.
