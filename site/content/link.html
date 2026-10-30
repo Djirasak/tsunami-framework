@@ -1,0 +1,358 @@
+<header class="page-header">
+            <div>
+              <h1>Link</h1>
+              <p>
+                Links in text and data. A bare <code>a</code> is the accent
+                colour; <code>.link</code> takes the text colour.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Default: the text colour, underlined in accent on hover</h2>
+            <p>
+              Use it for links mixed into data, so the page is not full of
+              colour.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <a href="/docs" class="link">Order #100482</a>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;a href="#" class="link"&gt;Order #100482&lt;/a&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Primary: the text is the accent colour too</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <a href="/docs" class="link" data-variant="primary"
+                    >emma.wilson@example.com</a
+                  >
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;a href="#" class="link" data-variant="primary"&gt;emma.wilson@example.com&lt;/a&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Weight makes a name stand out in a sentence or a list</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <p>
+                    Placed by
+                    <a href="/docs" class="link" data-weight="medium"
+                      >Emma Wilson</a
+                    >
+                    on Oct 8, 2026
+                  </p>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;p&gt;Placed by &lt;a href="#" class="link" data-weight="medium"&gt;Emma Wilson&lt;/a&gt; on Oct 8, 2026&lt;/p&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              In a table: the row's own link is medium weight, links to other
+              records are not
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Order</th>
+                          <th scope="col">Customer</th>
+                          <th scope="col" data-align="end">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <a href="/docs" class="link" data-weight="medium"
+                              >#100482</a
+                            >
+                          </td>
+                          <td><a href="/docs" class="link">Emma Wilson</a></td>
+                          <td data-align="end">$129.00</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a href="/docs" class="link" data-weight="medium"
+                              >#100481</a
+                            >
+                          </td>
+                          <td><a href="/docs" class="link">James Carter</a></td>
+                          <td data-align="end">$64.50</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th scope="col"&gt;Order&lt;/th&gt;&lt;th scope="col"&gt;Customer&lt;/th&gt;&lt;th scope="col" data-align="end"&gt;Total&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;&lt;a href="#" class="link" data-weight="medium"&gt;#100482&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="#" class="link"&gt;Emma Wilson&lt;/a&gt;&lt;/td&gt;&lt;td data-align="end"&gt;$129.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;&lt;a href="#" class="link" data-weight="medium"&gt;#100481&lt;/a&gt;&lt;/td&gt;&lt;td&gt;&lt;a href="#" class="link"&gt;James Carter&lt;/a&gt;&lt;/td&gt;&lt;td data-align="end"&gt;$64.50&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Muted</h2>
+            <p>
+              For secondary links that should not draw the eye, such as help
+              links.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <a href="/docs" class="link" data-variant="muted"
+                    >How refunds work<i
+                      class="icon icon-external-link"
+                      aria-hidden="true"
+                    ></i
+                  ></a>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;a href="#" class="link" data-variant="muted"&gt;How refunds work&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>a</code></td>
+                    <td>no class</td>
+                    <td>
+                      Accent colour, underlined on hover. For links in body
+                      text.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.link</code></td>
+                    <td><code>a</code></td>
+                    <td>
+                      Takes the surrounding text colour, underlined in accent on
+                      hover
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>
+                      unset (default) text colour · <code>primary</code> accent
+                      · <code>muted</code> gray
+                    </td>
+                    <td>Link colour</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-weight</code></td>
+                    <td>unset (default) normal · <code>medium</code></td>
+                    <td>
+                      Medium weight, for a name that should stand out or a row's
+                      own link in a table
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.link &gt; .icon</code></td>
+                    <td>child</td>
+                    <td>
+                      Trailing icon such as <code>icon-external-link</code>,
+                      spaced for you
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

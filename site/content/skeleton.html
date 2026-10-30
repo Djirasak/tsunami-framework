@@ -1,0 +1,247 @@
+<header class="page-header">
+            <div>
+              <h1>Skeleton</h1>
+              <p>
+                Softly pulsing grey blocks that stand in for loading content.
+                Match the shape of the real content so the page does not jump
+                when data arrives.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Grey blocks where the content will be</h2>
+            <p>
+              Set <code>width</code> / <code>height</code> to match the content
+              that will replace it. Use <code>data-variant="circle"</code> for a
+              circle.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" aria-hidden="true">
+                    <span class="skeleton" data-variant="circle"></span>
+                    <div class="stack" data-gap="sm">
+                      <span class="skeleton" style="width: 15rem"></span>
+                      <span class="skeleton" style="width: 12rem"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" aria-hidden="true"&gt;
+  &lt;span class="skeleton" data-variant="circle"&gt;&lt;/span&gt;
+  &lt;div class="stack" data-gap="sm"&gt;
+    &lt;span class="skeleton" style="width: 15rem"&gt;&lt;/span&gt;
+    &lt;span class="skeleton" style="width: 12rem"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>In a card</h2>
+            <p>
+              Add <code>aria-busy="true"</code> and an
+              <code>aria-label</code> to the card while it loads.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <article
+                    class="card"
+                    aria-busy="true"
+                    aria-label="Loading order"
+                  >
+                    <header>
+                      <span class="skeleton" style="width: 10rem"></span>
+                    </header>
+                    <div class="stack" data-gap="sm">
+                      <span class="skeleton"></span>
+                      <span class="skeleton" style="width: 80%"></span>
+                      <span class="skeleton" style="width: 60%"></span>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;article class="card" aria-busy="true" aria-label="Loading order"&gt;
+  &lt;header&gt;
+    &lt;span class="skeleton" style="width: 10rem"&gt;&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;div class="stack" data-gap="sm"&gt;
+    &lt;span class="skeleton"&gt;&lt;/span&gt;
+    &lt;span class="skeleton" style="width: 80%"&gt;&lt;/span&gt;
+    &lt;span class="skeleton" style="width: 60%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>One line</h2>
+            <p>
+              Stands in for a single line of text, such as a customer name in a
+              table.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <span
+                    class="skeleton"
+                    style="width: 10rem"
+                    aria-hidden="true"
+                  ></span>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;span class="skeleton" style="width: 10rem" aria-hidden="true"&gt;&lt;/span&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.skeleton</code></td>
+                    <td></td>
+                    <td>
+                      Block, 1em tall, full width, neutral fill, 4px corners.
+                      Pulses every 1.5s (2.5s with reduced motion). Set
+                      <code>width</code> / <code>height</code> yourself.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td><code>circle</code> (omit for a block)</td>
+                    <td>40px circle for avatars. Does not shrink in flex.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-hidden</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      On a skeleton or skeleton group that carries no meaning.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-busy</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      On the loading container, with an
+                      <code>aria-label</code>. Remove it once the content
+                      arrives.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

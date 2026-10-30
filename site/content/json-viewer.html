@@ -1,0 +1,592 @@
+<header class="page-header">
+            <div>
+              <h1>JSON viewer</h1>
+              <p>
+                A foldable tree drawn from a textarea that holds the JSON.
+                Without the script the textarea is all there is.
+              </p>
+            </div>
+          </header>
+
+          <section>
+            <h2>A foldable tree of the JSON</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A foldable tree of the JSON">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="json-viewer" id="jv-main">
+                    <textarea
+                      class="input"
+                      readonly
+                      aria-label="Raw post params"
+                    >
+{"transaction": {"amount": 12900, "currency_code": "USD", "email": "emma.wilson@example.com", "billing_address": {"name": "Emma Wilson", "address1": "48 Harbor Street", "address2": "", "city": "Portland", "state": "ME", "zip": "04101", "country": "US", "phone": null}, "retain_on_success": true, "gateway_specific_fields": {"shopper_reference": "CUS_100482", "splits": [{"type": "BalanceAccount", "amount": {"currency": "USD", "value": 12513}}, {"type": "Commission", "amount": {"currency": "USD", "value": 387}, "description": "Fixed Fee"}]}}}</textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="json-viewer" id="jv-main"&gt;
+  &lt;textarea class="input" readonly aria-label="Raw post params"&gt;{"transaction": {"amount": 12900, "currency_code": "USD", "email": "emma.wilson@example.com", "billing_address": {"name": "Emma Wilson", "address1": "48 Harbor Street", "address2": "", "city": "Portland", "state": "ME", "zip": "04101", "country": "US", "phone": null}, "retain_on_success": true, "gateway_specific_fields": {"shopper_reference": "CUS_100482", "splits": [{"type": "BalanceAccount", "amount": {"currency": "USD", "value": 12513}}, {"type": "Commission", "amount": {"currency": "USD", "value": 387}, "description": "Fixed Fee"}]}}}&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>The markup is a textarea holding the JSON</h2>
+            <p>
+              The page writes the box and the textarea. The script adds the
+              buttons and draws the tree.
+            </p>
+            <pre><code>&lt;div class="json-viewer"&gt;
+  &lt;textarea class="input" readonly&gt;{"amount": 12900, "currency_code": "USD"}&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+          </section>
+
+          <section>
+            <h2>
+              <code>data-collapsed</code> starts the tree folded to its top
+              level
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-collapsed starts the tree folded to its top level"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="json-viewer" id="jv-collapsed" data-collapsed>
+                    <textarea class="input" readonly aria-label="Order">
+{"number": "110963", "status": "open", "total": "259.96", "lines": [{"sku": "LAMP-BLK", "quantity": 2}, {"sku": "SHEET-TWIN", "quantity": 1}], "shipping": {"method": "Standard", "tracking": null}}</textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="json-viewer" id="jv-collapsed" data-collapsed&gt;
+  &lt;textarea class="input" readonly aria-label="Order"&gt;{"number": "110963", "status": "open", "total": "259.96", "lines": [{"sku": "LAMP-BLK", "quantity": 2}, {"sku": "SHEET-TWIN", "quantity": 1}], "shipping": {"method": "Standard", "tracking": null}}&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2><code>data-view="raw"</code> starts on the textarea</h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label='data-view="raw" starts on the textarea'
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="json-viewer" id="jv-raw" data-view="raw">
+                    <textarea class="input" readonly aria-label="Order">
+{"number": "110963", "status": "open", "total": "259.96", "lines": [{"sku": "LAMP-BLK", "quantity": 2}, {"sku": "SHEET-TWIN", "quantity": 1}], "shipping": {"method": "Standard", "tracking": null}}</textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="json-viewer" id="jv-raw" data-view="raw"&gt;
+  &lt;textarea class="input" readonly aria-label="Order"&gt;{"number": "110963", "status": "open", "total": "259.96", "lines": [{"sku": "LAMP-BLK", "quantity": 2}, {"sku": "SHEET-TWIN", "quantity": 1}], "shipping": {"method": "Standard", "tracking": null}}&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              Without <code>readonly</code> the raw view can be edited, and text
+              that is not JSON is marked invalid
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Without readonly the raw view can be edited, and text that is not JSON is marked invalid"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="jv-edit-input">Metadata</label>
+                    <div class="json-viewer" id="jv-edit" data-view="raw">
+                      <textarea
+                        class="input"
+                        id="jv-edit-input"
+                        name="metadata"
+                      >
+{
+  "gift_wrap": true,
+  "note": "Leave at the side door",
+  "priority": 2
+}</textarea>
+                    </div>
+                    <small
+                      >Show parsed draws the tree from what is typed. The form
+                      sends the textarea.</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="jv-edit-input"&gt;Metadata&lt;/label&gt;
+  &lt;div class="json-viewer" id="jv-edit" data-view="raw"&gt;
+    &lt;textarea class="input" id="jv-edit-input" name="metadata"&gt;{
+  "gift_wrap": true,
+  "note": "Leave at the side door",
+  "priority": 2
+}&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;small&gt;Show parsed draws the tree from what is typed. The form sends the textarea.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              The page folds the tree with <code>collapse()</code> and
+              <code>expand()</code>, and replaces the JSON through
+              <code>value()</code>
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="The page folds the tree with collapse() and expand(), and replaces the JSON through value()"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        onclick="
+                          tsunami.jsonViewer.collapse(
+                            document.getElementById('jv-script'),
+                          )
+                        "
+                      >
+                        collapse()
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        onclick="
+                          tsunami.jsonViewer.expand(
+                            document.getElementById('jv-script'),
+                          )
+                        "
+                      >
+                        expand()
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        onclick="
+                          tsunami.jsonViewer.value(
+                            document.getElementById('jv-script'),
+                            {
+                              refunded: true,
+                              amount: 4500,
+                              lines: ['LAMP-BLK'],
+                            },
+                          )
+                        "
+                      >
+                        Set value
+                      </button>
+                    </div>
+                    <div class="json-viewer" id="jv-script">
+                      <textarea class="input" readonly aria-label="Order">
+{"number": "110963", "status": "open", "total": "259.96", "lines": [{"sku": "LAMP-BLK", "quantity": 2}, {"sku": "SHEET-TWIN", "quantity": 1}], "shipping": {"method": "Standard", "tracking": null}}</textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="button" class="btn" data-size="sm" onclick="tsunami.jsonViewer.collapse(document.getElementById('jv-script'))"&gt;collapse()&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" onclick="tsunami.jsonViewer.expand(document.getElementById('jv-script'))"&gt;expand()&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" onclick="tsunami.jsonViewer.value(document.getElementById('jv-script'), { refunded: true, amount: 4500, lines: ['LAMP-BLK'] })"&gt;Set value&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="json-viewer" id="jv-script"&gt;
+    &lt;textarea class="input" readonly aria-label="Order"&gt;{"number": "110963", "status": "open", "total": "259.96", "lines": [{"sku": "LAMP-BLK", "quantity": 2}, {"sku": "SHEET-TWIN", "quantity": 1}], "shipping": {"method": "Standard", "tracking": null}}&lt;/textarea&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              The functions live on <code>window.tsunami.jsonViewer</code> and
+              take the <code>.json-viewer</code> element. Tsugi puts the same
+              members on the element itself; the second column maps them.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Tsugi member</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.jsonViewer.expand(el)</code></td>
+                    <td><code>el.expand()</code></td>
+                    <td>Unfolds every object and list.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.jsonViewer.collapse(el)</code></td>
+                    <td><code>el.collapse()</code></td>
+                    <td>
+                      Folds every object and list inside the outermost one,
+                      which stays open so its keys can be read.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.jsonViewer.view(el, v?)</code></td>
+                    <td><code>el.view</code></td>
+                    <td>
+                      Returns <code>"parsed"</code> or <code>"raw"</code>. With
+                      <code>v</code>: <code>"raw"</code> shows the textarea,
+                      anything else draws the tree.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.jsonViewer.value(el, v?)</code></td>
+                    <td><code>el.value</code></td>
+                    <td>
+                      Returns the textarea's text. With <code>v</code>: takes
+                      JSON text, or an object or list, and draws it.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>Tab</kbd></td>
+                    <td>
+                      Through the buttons, then through each object and list in
+                      the tree.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Enter</kbd> or <kbd>Space</kbd></td>
+                    <td>
+                      On an object or a list: folds or unfolds it. This is the
+                      browser's own behaviour for <code>details</code>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The JSON viewer sends no events of its own. The textarea sends its
+              own <code>input</code> and <code>change</code> events when it is
+              edited.
+            </p>
+            <p>
+              Show raw indents the JSON by two spaces. Text that is not JSON is
+              left as typed.
+            </p>
+            <p>
+              Keys use the text colour in semibold and strings the ok colour.
+              Numbers and booleans use the info colour. <code>null</code> uses
+              the danger colour.
+            </p>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.json-viewer</code></td>
+                    <td></td>
+                    <td>
+                      The box around the textarea. The script adds the toolbar
+                      before it and the tree after it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-view</code></td>
+                    <td><code>parsed</code> (default), <code>raw</code></td>
+                    <td>
+                      On <code>.json-viewer</code>. <code>raw</code> starts on
+                      the textarea. The script keeps it up to date as the view
+                      changes.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-collapsed</code></td>
+                    <td>present</td>
+                    <td>
+                      On <code>.json-viewer</code>. The tree starts folded to
+                      its top level; the outermost object or list is open.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; textarea.input</code></td>
+                    <td></td>
+                    <td>
+                      Holds the JSON and gives it the input look, so it reads as
+                      a field before the script runs.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; textarea[readonly]</code></td>
+                    <td>present</td>
+                    <td>
+                      The JSON cannot be edited in the raw view. Without it the
+                      textarea is an ordinary field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; textarea[name]</code></td>
+                    <td>text</td>
+                    <td>Sends the JSON with the form.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      On the textarea, set by the script when Show parsed finds
+                      text that is not JSON; the viewer stays on the textarea.
+                      Removed on the next keystroke.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.json-viewer-toolbar</code></td>
+                    <td></td>
+                    <td>
+                      Added by the script: Show raw / Show parsed, Collapse all
+                      and Expand all. The fold buttons are hidden in the raw
+                      view.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-json-viewer</code></td>
+                    <td>
+                      <code>toggle</code>, <code>collapse</code>,
+                      <code>expand</code>
+                    </td>
+                    <td>On each toolbar button; the click handler reads it.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.json-viewer-tree</code></td>
+                    <td></td>
+                    <td>
+                      Added by the script: a <code>ul</code> with one
+                      <code>li</code> per value. Objects and lists are a
+                      <code>details</code> whose <code>summary</code> is
+                      <code>key: {</code>, followed by the closing bracket.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>details[open]</code></td>
+                    <td>present</td>
+                    <td>
+                      Set by the script while that object or list is unfolded.
+                      Folded, it reads <code>key: {…}</code> on one line.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-kind</code></td>
+                    <td><code>object</code>, <code>array</code></td>
+                    <td>On each <code>details</code> in the tree.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.json-viewer-key</code>, <code>-string</code>,
+                      <code>-number</code>, <code>-boolean</code>,
+                      <code>-null</code>, <code>-close</code>
+                    </td>
+                    <td></td>
+                    <td>The spans that colour each part of a line.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

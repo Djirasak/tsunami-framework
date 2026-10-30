@@ -1,0 +1,485 @@
+<header class="page-header">
+            <div>
+              <h1>Accordion</h1>
+              <p>
+                Collapsible items built on the browser's
+                <code>&lt;details&gt;</code>. No JS needed.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              Each item is a <code>&lt;details&gt;</code> with a
+              <code>&lt;summary&gt;</code>, which gets its own arrow. Give them
+              all the same <code>name</code> so only one opens at a time:
+              opening one closes the other. Add <code>open</code> to the item
+              that starts open.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Usage">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="accordion">
+                    <details name="faq" open>
+                      <summary>How long is shipping?</summary>
+                      <p>2-3 business days within the US.</p>
+                    </details>
+                    <details name="faq">
+                      <summary>Can I return items?</summary>
+                      <p>Yes, within 30 days of delivery.</p>
+                    </details>
+                    <details name="faq">
+                      <summary>Which payment methods do you accept?</summary>
+                      <p>Card, PayPal and bank transfer.</p>
+                    </details>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="accordion"&gt;
+  &lt;details name="faq" open&gt;
+    &lt;summary&gt;How long is shipping?&lt;/summary&gt;
+    &lt;p&gt;2-3 business days within the US.&lt;/p&gt;
+  &lt;/details&gt;
+  &lt;details name="faq"&gt;
+    &lt;summary&gt;Can I return items?&lt;/summary&gt;
+    &lt;p&gt;Yes, within 30 days of delivery.&lt;/p&gt;
+  &lt;/details&gt;
+  &lt;details name="faq"&gt;
+    &lt;summary&gt;Which payment methods do you accept?&lt;/summary&gt;
+    &lt;p&gt;Card, PayPal and bank transfer.&lt;/p&gt;
+  &lt;/details&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Several open at once</h2>
+            <p>
+              Without <code>name</code>, each item opens and closes on its own.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Several open at once">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="accordion">
+                    <details open>
+                      <summary>Product details</summary>
+                      <p>100% cotton T-shirt, $24.00</p>
+                    </details>
+                    <details open>
+                      <summary>Shipping</summary>
+                      <p>Free shipping on orders over $50.</p>
+                    </details>
+                    <details>
+                      <summary>Care</summary>
+                      <p>Machine wash cold.</p>
+                    </details>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="accordion"&gt;
+  &lt;details open&gt;
+    &lt;summary&gt;Product details&lt;/summary&gt;
+    &lt;p&gt;100% cotton T-shirt, $24.00&lt;/p&gt;
+  &lt;/details&gt;
+  &lt;details open&gt;
+    &lt;summary&gt;Shipping&lt;/summary&gt;
+    &lt;p&gt;Free shipping on orders over $50.&lt;/p&gt;
+  &lt;/details&gt;
+  &lt;details&gt;
+    &lt;summary&gt;Care&lt;/summary&gt;
+    &lt;p&gt;Machine wash cold.&lt;/p&gt;
+  &lt;/details&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A disabled item</h2>
+            <p>
+              Add <code>aria-disabled="true"</code> to the
+              <code>&lt;details&gt;</code> and <code>tabindex="-1"</code> to the
+              <code>&lt;summary&gt;</code>. The item turns grey and cannot be
+              clicked or reached with Tab.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A disabled item">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="accordion">
+                    <details name="pay">
+                      <summary>Credit card</summary>
+                      <p>Visa, Mastercard, JCB</p>
+                    </details>
+                    <details name="pay" aria-disabled="true">
+                      <summary tabindex="-1">
+                        Cash on delivery (not available)
+                      </summary>
+                      <p>Not supported yet.</p>
+                    </details>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="accordion"&gt;
+  &lt;details name="pay"&gt;
+    &lt;summary&gt;Credit card&lt;/summary&gt;
+    &lt;p&gt;Visa, Mastercard, JCB&lt;/p&gt;
+  &lt;/details&gt;
+  &lt;details name="pay" aria-disabled="true"&gt;
+    &lt;summary tabindex="-1"&gt;Cash on delivery (not available)&lt;/summary&gt;
+    &lt;p&gt;Not supported yet.&lt;/p&gt;
+  &lt;/details&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Listen for toggle</h2>
+            <p>
+              <code>toggle</code> is a browser event that a
+              <code>&lt;details&gt;</code> fires each time it opens or closes.
+              It does not bubble, so listen in the capture phase on the
+              container (or on each details). Read the state from
+              <code>event.newState</code> or <code>details.open</code>. To open
+              or close one in code, set <code>details.open = true</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Listen for toggle">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div class="accordion" id="acc-events">
+                      <details name="ship">
+                        <summary>UPS Ground</summary>
+                        <p>1-2 days, $9.00</p>
+                      </details>
+                      <details name="ship">
+                        <summary>USPS</summary>
+                        <p>2-4 days, $6.00</p>
+                      </details>
+                    </div>
+                    <p id="acc-events-output">Nothing opened yet</p>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="acc-events-open"
+                      >
+                        Open the first in code
+                      </button>
+                    </div>
+                  </div>
+                  <script type="module">
+                    const accordion = document.getElementById("acc-events");
+                    const output = document.getElementById("acc-events-output");
+                    // toggle does not bubble: listen in the capture phase.
+                    accordion.addEventListener(
+                      "toggle",
+                      () => {
+                        const open = accordion.querySelector(
+                          "details[open] > summary",
+                        );
+                        output.textContent = open
+                          ? `Open: ${open.textContent}`
+                          : "All closed";
+                      },
+                      { capture: true },
+                    );
+                    document
+                      .getElementById("acc-events-open")
+                      .addEventListener("click", () => {
+                        accordion.querySelector("details").open = true;
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div class="accordion" id="acc-events"&gt;
+    &lt;details name="ship"&gt;
+      &lt;summary&gt;UPS Ground&lt;/summary&gt;
+      &lt;p&gt;1-2 days, $9.00&lt;/p&gt;
+    &lt;/details&gt;
+    &lt;details name="ship"&gt;
+      &lt;summary&gt;USPS&lt;/summary&gt;
+      &lt;p&gt;2-4 days, $6.00&lt;/p&gt;
+    &lt;/details&gt;
+  &lt;/div&gt;
+  &lt;p id="acc-events-output"&gt;Nothing opened yet&lt;/p&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="acc-events-open"&gt;
+      Open the first in code
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  const accordion = document.getElementById("acc-events");
+  const output = document.getElementById("acc-events-output");
+  // toggle does not bubble: listen in the capture phase.
+  accordion.addEventListener(
+    "toggle",
+    () =&gt; {
+      const open = accordion.querySelector("details[open] &gt; summary");
+      output.textContent = open ? `Open: ${open.textContent}` : "All closed";
+    },
+    { capture: true },
+  );
+  document.getElementById("acc-events-open").addEventListener("click", () =&gt; {
+    accordion.querySelector("details").open = true;
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              Accordion has no JS of its own. Use the properties and events of
+              <code>&lt;details&gt;</code> directly.
+            </p>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Property / event / key</th>
+                    <th scope="col">Values / detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>details.open</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td>
+                      Read it, or set it to open or close the item in code
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>toggle</code></td>
+                    <td>
+                      <code>event.oldState</code>, <code>event.newState</code>:
+                      <code>"open"</code> / <code>"closed"</code>
+                    </td>
+                    <td>
+                      Fired by <code>details</code> after it opens or closes.
+                      Does not bubble (listen with
+                      <code>{ capture: true }</code> on <code>.accordion</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Enter</kbd>, <kbd>Space</kbd></td>
+                    <td></td>
+                    <td>
+                      On a summary: open or close the item (native browser
+                      behavior)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.accordion</code></td>
+                    <td></td>
+                    <td>Bordered box with a divider between items</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; details</code></td>
+                    <td></td>
+                    <td>One item</td>
+                  </tr>
+                  <tr>
+                    <td><code>details[name]</code></td>
+                    <td>Text; none = several can be open (default)</td>
+                    <td>
+                      Same name across the group: one open at a time (the
+                      browser closes the others)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>details[open]</code></td>
+                    <td>Present / absent; absent = closed (default)</td>
+                    <td>
+                      The item is open. The browser adds and removes it. Set it
+                      in markup to start open.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>details[aria-disabled]</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      Disabled: the summary is grey and cannot be clicked. Also
+                      add <code>tabindex="-1"</code> to the summary.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>summary</code></td>
+                    <td></td>
+                    <td>
+                      Heading with an arrow on the right that turns when open
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>details &gt; :not(summary)</code></td>
+                    <td></td>
+                    <td>
+                      Content (<code>p</code>, <code>div</code>,
+                      <code>section</code> ...) in grey, indented to line up
+                      with the heading
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

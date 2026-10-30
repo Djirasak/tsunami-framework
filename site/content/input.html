@@ -1,0 +1,683 @@
+<header class="page-header">
+            <div>
+              <h1>Input</h1>
+              <p>
+                Text, file and textarea inputs. Use <code>.input</code> on its
+                own, or drop the input into a <code>.field</code> with no class.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Standalone input</h2>
+            <p>
+              Outside a <code>.field</code>, add <code>class="input"</code> and
+              an <code>aria-label</code>, since there is no visible label.
+              Inside a <code>.field</code> the input gets the same look with no
+              class.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <input
+                      class="input"
+                      type="email"
+                      placeholder="Customer email"
+                      aria-label="Customer email"
+                    />
+                    <div class="field">
+                      <label for="in-sku">SKU</label>
+                      <input id="in-sku" type="text" value="TS-001-BLK" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;input class="input" type="email" placeholder="Customer email" aria-label="Customer email" /&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="in-sku"&gt;SKU&lt;/label&gt;
+    &lt;input id="in-sku" type="text" value="TS-001-BLK" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sizes: sm, default and lg</h2>
+            <p>
+              <code>data-size</code> works on <code>.input</code> and on inputs
+              inside a <code>.field</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <input
+                      class="input"
+                      data-size="sm"
+                      type="text"
+                      placeholder="Small"
+                      aria-label="Small input"
+                    />
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Default"
+                      aria-label="Default input"
+                    />
+                    <input
+                      class="input"
+                      data-size="lg"
+                      type="text"
+                      placeholder="Large"
+                      aria-label="Large input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;input class="input" data-size="sm" type="text" placeholder="Small" aria-label="Small input" /&gt;
+  &lt;input class="input" type="text" placeholder="Default" aria-label="Default input" /&gt;
+  &lt;input class="input" data-size="lg" type="text" placeholder="Large" aria-label="Large input" /&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Each size beside a button of the same size</h2>
+            <p>
+              An input is as tall as a <code>.btn</code> of the same size (26,
+              32, 40px), so they line up in a row.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <input
+                        class="input"
+                        data-size="sm"
+                        type="text"
+                        placeholder="Discount code"
+                        aria-label="Discount code"
+                        style="width: 14rem"
+                      />
+                      <button type="button" class="btn" data-size="sm">
+                        Apply
+                      </button>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Discount code"
+                        aria-label="Discount code"
+                        style="width: 14rem"
+                      />
+                      <button type="button" class="btn">Apply</button>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <input
+                        class="input"
+                        data-size="lg"
+                        type="text"
+                        placeholder="Discount code"
+                        aria-label="Discount code"
+                        style="width: 14rem"
+                      />
+                      <button type="button" class="btn" data-size="lg">
+                        Apply
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;input class="input" data-size="sm" type="text" placeholder="Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;Apply&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;input class="input" type="text" placeholder="Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn"&gt;Apply&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;input class="input" data-size="lg" type="text" placeholder="Discount code" aria-label="Discount code" style="width: 14rem" /&gt;
+    &lt;button type="button" class="btn" data-size="lg"&gt;Apply&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Disabled</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <input
+                      class="input"
+                      type="email"
+                      value="emma.wilson@example.com"
+                      aria-label="Email"
+                      disabled
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;input class="input" type="email" value="emma.wilson@example.com" aria-label="Email" disabled /&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>File</h2>
+            <p>
+              The browser's file button sits flush inside the border. Use
+              <code>accept</code> and <code>multiple</code> as usual.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <input
+                      class="input"
+                      type="file"
+                      accept="image/*"
+                      aria-label="Upload product image"
+                    />
+                    <div class="field">
+                      <label for="in-csv">Import products (CSV)</label>
+                      <input
+                        id="in-csv"
+                        type="file"
+                        accept=".csv"
+                        aria-describedby="in-csv-hint"
+                      />
+                      <small id="in-csv-hint">Up to 5 MB</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;input class="input" type="file" accept="image/*" aria-label="Upload product image" /&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="in-csv"&gt;Import products (CSV)&lt;/label&gt;
+    &lt;input id="in-csv" type="file" accept=".csv" aria-describedby="in-csv-hint" /&gt;
+    &lt;small id="in-csv-hint"&gt;Up to 5 MB&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With an icon and text beside the input</h2>
+            <p>
+              Use <code>.input-group</code>. A <code>&lt;span&gt;</code> before
+              or after the input sits at the start or end, following the HTML
+              order. See <a href="/docs/input-group">Input group</a>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <div class="input-group">
+                      <span
+                        ><i class="icon icon-search" aria-hidden="true"></i
+                      ></span>
+                      <input
+                        type="search"
+                        placeholder="Search orders"
+                        aria-label="Search orders"
+                      />
+                      <span>12 results</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;div class="input-group"&gt;
+    &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input type="search" placeholder="Search orders" aria-label="Search orders" /&gt;
+    &lt;span&gt;12 results&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Ghost, for a search field in a card header</h2>
+            <p>
+              <code>data-variant="ghost"</code> has no border or background, so
+              it blends into the card header. An accent border shows on focus.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <header>
+                      <div class="input-group" data-variant="ghost">
+                        <span
+                          ><i class="icon icon-search" aria-hidden="true"></i
+                        ></span>
+                        <input
+                          type="search"
+                          placeholder="Search by product title"
+                          aria-label="Search by product title"
+                        />
+                      </div>
+                    </header>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Product</th>
+                          <th scope="col">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>T-shirt</td>
+                          <td>$24.00</td>
+                        </tr>
+                        <tr>
+                          <td>Tote bag</td>
+                          <td>$18.00</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;div class="input-group" data-variant="ghost"&gt;
+      &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;input type="search" placeholder="Search by product title" aria-label="Search by product title" /&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;th scope="col"&gt;Product&lt;/th&gt;&lt;th scope="col"&gt;Price&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;T-shirt&lt;/td&gt;&lt;td&gt;$24.00&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Tote bag&lt;/td&gt;&lt;td&gt;$18.00&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Textarea</h2>
+            <p>
+              <code>&lt;textarea class="input"&gt;</code> is at least 5rem tall
+              and can be resized vertically. Set the starting height with
+              <code>rows</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <textarea
+                      class="input"
+                      placeholder="Type your message here"
+                      aria-label="Message"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;textarea class="input" placeholder="Type your message here" aria-label="Message"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>.<wbr />input</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      On an input, select or textarea outside a
+                      <code>.field</code>. Inputs inside a
+                      <code>.field</code> get the same look without it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, <code>lg</code> (none = default 36px)
+                    </td>
+                    <td>
+                      Height 26 / 32 / 40px, matching a
+                      <code>.btn</code> of the same size
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td><code>ghost</code> (none = bordered)</td>
+                    <td>No border or background. Accent border on focus</td>
+                  </tr>
+                  <tr>
+                    <td><code>type="file"</code></td>
+                    <td></td>
+                    <td>File button flush left inside the border</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>textarea.<wbr />input</code>
+                    </td>
+                    <td></td>
+                    <td>At least 5rem tall, resizes vertically</td>
+                  </tr>
+                  <tr>
+                    <td><code>placeholder</code></td>
+                    <td></td>
+                    <td>Muted sample text. Not a replacement for a label</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td></td>
+                    <td>
+                      Required when there is no visible
+                      <code>&lt;label&gt;</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>Danger border</td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td></td>
+                    <td>Subtle background, muted text, cursor not-allowed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

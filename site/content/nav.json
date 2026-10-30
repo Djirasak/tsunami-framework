@@ -1,0 +1,371 @@
+[
+  {
+    "title": null,
+    "items": [
+      {
+        "label": "Overview",
+        "href": "/docs",
+        "icon": "house",
+        "keywords": "Get started index"
+      }
+    ]
+  },
+  {
+    "title": "Actions",
+    "items": [
+      {
+        "label": "Button",
+        "href": "/docs/btn",
+        "icon": "mouse-pointer-click",
+        "keywords": "Actions btn data-variant data-size aria-label icon aria-pressed disabled aria-disabled btn-group data-pressed dropdown"
+      },
+      {
+        "label": "Command",
+        "href": "/docs/command",
+        "icon": "command",
+        "keywords": "Actions command dialog command-dialog palette search menu data-label data-keywords data-results data-filter data-filters data-suggested data-filter-list data-filter-badge data-limit data-more data-hint data-description data-tab-filter data-shortcut aria-busy aria-disabled role menuitem"
+      },
+      {
+        "label": "Dropdown",
+        "href": "/docs/dropdown",
+        "icon": "chevron-down",
+        "keywords": "Actions dropdown popover id button a label input h2 h3 h4 hr kbd"
+      },
+      {
+        "label": "Theme switcher",
+        "href": "/docs/theme-switcher",
+        "icon": "sun-moon",
+        "keywords": "Actions theme-switcher html data-theme data-theme-toggle aria-pressed aria-label data-theme-show tsunami-theme"
+      }
+    ]
+  },
+  {
+    "title": "Feedback",
+    "items": [
+      {
+        "label": "Alert",
+        "href": "/docs/alert",
+        "icon": "triangle-alert",
+        "keywords": "Feedback alert data-variant icon strong h2 h3 h4 p section footer role"
+      },
+      {
+        "label": "Badge",
+        "href": "/docs/badge",
+        "icon": "badge",
+        "keywords": "Feedback badge data-variant data-size icon button"
+      },
+      {
+        "label": "Empty state",
+        "href": "/docs/empty",
+        "icon": "inbox",
+        "keywords": "Feedback empty header figure h3 p footer div a link"
+      },
+      {
+        "label": "Loader",
+        "href": "/docs/loader",
+        "icon": "loader-circle",
+        "keywords": "Feedback loader data-size role aria-label aria-hidden aria-busy true"
+      },
+      {
+        "label": "Progress",
+        "href": "/docs/progress",
+        "icon": "gauge",
+        "keywords": "Feedback progress data-size span data-variant role aria-valuenow aria-valuemin aria-valuemax aria-valuetext aria-label aria-labelledby header ul li"
+      },
+      {
+        "label": "Skeleton",
+        "href": "/docs/skeleton",
+        "icon": "square-dashed",
+        "keywords": "Feedback skeleton data-variant aria-hidden aria-busy"
+      },
+      {
+        "label": "Toast",
+        "href": "/docs/toast",
+        "icon": "bell",
+        "keywords": "Feedback toast notification snackbar toaster popover data-toast data-toast-variant data-toast-title data-position duration action tsunami:toast tsunami:toastclose role status alert aria-live"
+      }
+    ]
+  },
+  {
+    "title": "Forms",
+    "items": [
+      {
+        "label": "Autocomplete",
+        "href": "/docs/autocomplete",
+        "icon": "text-search",
+        "keywords": "Forms autocomplete suggestions combobox datalist input free text data-url data-min-length data-limit mark listbox tsunami:autocomplete source mount destroy"
+      },
+      {
+        "label": "Color field",
+        "href": "/docs/color-field",
+        "icon": "pipette",
+        "keywords": "Forms color-field input-group input type color text hex data-empty disabled"
+      },
+      {
+        "label": "Code editor",
+        "href": "/docs/code-editor",
+        "icon": "code",
+        "keywords": "Forms code-editor textarea monaco code data-language html css scss javascript json readonly aria-label data-loaded hidden files tabs"
+      },
+      {
+        "label": "Date picker",
+        "href": "/docs/date-picker",
+        "icon": "calendar",
+        "keywords": "Forms date-picker calendar date range input button data-popover data-mode data-format data-min data-max data-placeholder data-presets aria-pressed value hidden change open close vanilla-calendar"
+      },
+      {
+        "label": "Dropzone",
+        "href": "/docs/dropzone",
+        "icon": "upload",
+        "keywords": "Forms dropzone drag drop file upload input accept multiple data-max-size data-dragging data-size tile change rejected aria-invalid disabled"
+      },
+      {
+        "label": "Editor",
+        "href": "/docs/editor",
+        "icon": "type",
+        "keywords": "Forms editor textarea tinymce rich text toolbar data-toolbar data-min-height data-max-height data-menubar data-statusbar placeholder required readonly disabled aria-invalid"
+      },
+      {
+        "label": "Field",
+        "href": "/docs/field",
+        "icon": "text-cursor-input",
+        "keywords": "Forms field checkbox radio switch toggle slider range indeterminate label hint fieldset field-group aria-invalid disabled data-variant role data-gap"
+      },
+      {
+        "label": "Image field",
+        "href": "/docs/image-field",
+        "icon": "image",
+        "keywords": "Forms image-field data-fit data-empty data-change data-clear img input file checkbox"
+      },
+      {
+        "label": "Input",
+        "href": "/docs/input",
+        "icon": "text-cursor",
+        "keywords": "Forms input data-size data-variant type file placeholder aria-label aria-invalid disabled"
+      },
+      {
+        "label": "Input group",
+        "href": "/docs/input-group",
+        "icon": "text-cursor-input",
+        "keywords": "Forms input-group data-size data-variant aria-invalid disabled aria-hidden"
+      },
+      {
+        "label": "Save bar",
+        "href": "/docs/save-bar",
+        "icon": "save",
+        "keywords": "Forms save-bar data-form hidden data-warn-on-leave data-dirty role region aria-label a href data-save-bar-ignore"
+      },
+      {
+        "label": "Select",
+        "href": "/docs/select",
+        "icon": "list-filter",
+        "keywords": "Forms select div data-size data-placeholder data-search data-input data-tags data-url data-empty header code wrapper td tr multiple optgroup label option value selected disabled hidden data-label data-text data-avatar data-badge data-tag data-ready data-has-value role combobox"
+      }
+    ]
+  },
+  {
+    "title": "Foundations",
+    "items": [
+      {
+        "label": "Colors",
+        "href": "/docs/colors",
+        "icon": "palette",
+        "keywords": "Foundations colors --bg --surface --subtle --fg --muted --line --accent --on-accent --ok-bg --ok-fg --warning-bg --warning-fg --danger-bg --danger-fg --info-bg --info-fg --neutral-bg --neutral-fg --overlay"
+      },
+      {
+        "label": "Icons",
+        "href": "/docs/icons",
+        "icon": "shapes",
+        "keywords": "Foundations icons class data-size aria-hidden color include icon glyph name"
+      },
+      {
+        "label": "Typography",
+        "href": "/docs/typography",
+        "icon": "type",
+        "keywords": "Foundations typography heading h1 h2 h3 h4 h5 h6 p data-variant small ul ol li dl dt dd blockquote pre code hr kbd"
+      }
+    ]
+  },
+  {
+    "title": "Layout",
+    "items": [
+      {
+        "label": "Accordion",
+        "href": "/docs/accordion",
+        "icon": "list-collapse",
+        "keywords": "Layout accordion details name open aria-disabled summary not"
+      },
+      {
+        "label": "Card",
+        "href": "/docs/card",
+        "icon": "square",
+        "keywords": "Layout card header h2 h3 p aside strong data-trend section div footer empty stat stat-group data-variant data-direction"
+      },
+      {
+        "label": "Chart",
+        "href": "/docs/chart",
+        "icon": "chart-column",
+        "keywords": "Layout chart canvas aria-label tsunami.chart Chart.js type labelKey data series legend legendAlign tooltip options surface total axis line bar doughnut pie polarArea radar tsunami:chartready data-chart-initialized"
+      },
+      {
+        "label": "Item",
+        "href": "/docs/item",
+        "icon": "rows-3",
+        "keywords": "Layout item figure section h3 p aside data-variant data-size item-group hr"
+      },
+      {
+        "label": "Journey",
+        "href": "/docs/journey",
+        "icon": "route",
+        "keywords": "Layout journey data-orientation data-view ol li header ul button aria-pressed span small data data-outcomes svg"
+      },
+      {
+        "label": "JSON viewer",
+        "href": "/docs/json-viewer",
+        "icon": "braces",
+        "keywords": "Layout json-viewer data-view data-collapsed textarea readonly aria-invalid details expand collapse value"
+      },
+      {
+        "label": "Page header",
+        "href": "/docs/page-header",
+        "icon": "panel-top",
+        "keywords": "Layout page-header nav btn h1 hgroup div first-child last-child p"
+      },
+      {
+        "label": "Scroll area",
+        "href": "/docs/scroll-area",
+        "icon": "scroll",
+        "keywords": "Layout scroll-area height code max-height tabindex aria-label"
+      },
+      {
+        "label": "Sortable",
+        "href": "/docs/sortable",
+        "icon": "arrow-down-up",
+        "keywords": "Layout sortable drag reorder sortable-handle data-id data-disabled data-options data-sortable-ignore SortableJS"
+      },
+      {
+        "label": "Stack",
+        "href": "/docs/stack",
+        "icon": "layers",
+        "keywords": "Layout stack data-direction data-gap"
+      },
+      {
+        "label": "Stat",
+        "href": "/docs/stat",
+        "icon": "chart-column",
+        "keywords": "Layout stat span first-child strong data-trend loader aria-busy aria-pressed data-reverse data-variant data-size stat-group data-even dl"
+      },
+      {
+        "label": "Table",
+        "href": "/docs/table",
+        "icon": "table",
+        "keywords": "Layout table caption thead th tbody scope row tfoot data-align data-truncate td avatar img first-child aria-sort button data-sort-type data-sort-value tr aria-selected scroll-area"
+      },
+      {
+        "label": "Timeline",
+        "href": "/docs/timeline",
+        "icon": "history",
+        "keywords": "Layout timeline ol li data-variant aria-busy time details summary dl dt dd article footer form code textarea"
+      },
+      {
+        "label": "Workspace",
+        "href": "/docs/workspace",
+        "icon": "layout-dashboard",
+        "keywords": "Layout workspace data-panel header h1 popovertarget aside code main td tr popover id"
+      }
+    ]
+  },
+  {
+    "title": "Media",
+    "items": [
+      {
+        "label": "Avatar",
+        "href": "/docs/avatar",
+        "icon": "circle-user",
+        "keywords": "Media avatar img span data-size data-variant data-count data-status avatar-group"
+      },
+      {
+        "label": "Flags",
+        "href": "/docs/flags",
+        "icon": "flag",
+        "keywords": "Media flags flag data-size role aria-label aria-hidden"
+      }
+    ]
+  },
+  {
+    "title": "Navigation",
+    "items": [
+      {
+        "label": "Breadcrumb",
+        "href": "/docs/breadcrumb",
+        "icon": "chevrons-right",
+        "keywords": "Navigation breadcrumb ol li a aria-current"
+      },
+      {
+        "label": "Link",
+        "href": "/docs/link",
+        "icon": "link",
+        "keywords": "Navigation link a data-variant data-weight icon"
+      },
+      {
+        "label": "Pagination",
+        "href": "/docs/pagination",
+        "icon": "chevrons-left-right",
+        "keywords": "Navigation pagination ul li a span aria-current aria-disabled data-size"
+      },
+      {
+        "label": "Sidebar",
+        "href": "/docs/sidebar",
+        "icon": "panel-left",
+        "keywords": "Navigation sidebar popover id data-collapsed nav header section footer role group h2 h3 ul li a badge hr aria-current"
+      },
+      {
+        "label": "Subnav",
+        "href": "/docs/subnav",
+        "icon": "menu",
+        "keywords": "Navigation subnav h2 ul li a aria-current sidebar data-collapsed true"
+      },
+      {
+        "label": "Tabs",
+        "href": "/docs/tabs",
+        "icon": "panel-top-dashed",
+        "keywords": "Navigation tabs role tablist data-variant data-size aria-orientation tab aria-controls aria-selected disabled aria-disabled popovertarget data-close tabpanel"
+      },
+      {
+        "label": "Tree",
+        "href": "/docs/tree",
+        "icon": "list-tree",
+        "keywords": "Navigation tree ul li details summary open a span icon aria-current input type search p hidden"
+      }
+    ]
+  },
+  {
+    "title": "Overlays",
+    "items": [
+      {
+        "label": "Dialog",
+        "href": "/docs/dialog",
+        "icon": "app-window",
+        "keywords": "Overlays dialog closedby commandfor command value autofocus header figure div footer"
+      },
+      {
+        "label": "Drawer",
+        "href": "/docs/drawer",
+        "icon": "panel-right",
+        "keywords": "Overlays drawer closedby commandfor command value header div footer"
+      },
+      {
+        "label": "Popover",
+        "href": "/docs/popover",
+        "icon": "message-square",
+        "keywords": "Overlays popover id header autofocus"
+      },
+      {
+        "label": "Tooltip",
+        "href": "/docs/tooltip",
+        "icon": "message-square-text",
+        "keywords": "Overlays tooltip"
+      }
+    ]
+  }
+]

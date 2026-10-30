@@ -1,0 +1,256 @@
+<header class="page-header">
+            <div>
+              <h1>Icons</h1>
+              <p>
+                Icons from the Lucide icon font. Sized by data-size or the font
+                size, and coloured like the surrounding text.
+              </p>
+            </div>
+          </header>
+          <div class="alert" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <div>
+              <strong>Icons come from Lucide</strong>
+              <p>
+                Lucide icon font version 1.61.0 (<a
+                  href="https://lucide.dev"
+                  rel="noopener"
+                  >lucide.dev</a
+                >, ISC license), bundled in a single font file,
+                <code>fonts/lucide.woff2</code>. It has 2,191 names for 1,926
+                glyphs (some glyphs have several names).
+              </p>
+            </div>
+          </div>
+          <section>
+            <h2>An icon is sized by its box and takes the text colour</h2>
+            <p>
+              An icon is one glyph from an icon font, so its size comes from
+              <code>font-size</code>. By default it is 1.15em of the surrounding
+              text, or set <code>data-size</code> to <code>sm</code> (16px),
+              <code>lg</code> (20px) or <code>xl</code> (24px). The colour comes
+              from the text <code>color</code> (<code>currentColor</code>), so
+              it is the accent colour in a link and grey in
+              <code>.link[data-variant="muted"]</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="An icon is sized by its box and takes the text colour"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <i
+                      class="icon icon-webhook"
+                      data-size="sm"
+                      aria-hidden="true"
+                    ></i>
+                    <i class="icon icon-webhook" aria-hidden="true"></i>
+                    <i
+                      class="icon icon-webhook"
+                      data-size="lg"
+                      aria-hidden="true"
+                    ></i>
+                    <i
+                      class="icon icon-webhook"
+                      data-size="xl"
+                      aria-hidden="true"
+                    ></i>
+                    <a href="/docs" aria-label="Webhooks"
+                      ><i
+                        class="icon icon-webhook"
+                        data-size="xl"
+                        aria-hidden="true"
+                      ></i
+                    ></a>
+                    <a
+                      class="link"
+                      data-variant="muted"
+                      href="/docs"
+                      aria-label="Webhooks"
+                      ><i
+                        class="icon icon-webhook"
+                        data-size="xl"
+                        aria-hidden="true"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;i class="icon icon-webhook" data-size="sm" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;i class="icon icon-webhook" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;i class="icon icon-webhook" data-size="lg" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;i class="icon icon-webhook" data-size="xl" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;a href="#" aria-label="Webhooks"&gt;&lt;i class="icon icon-webhook" data-size="xl" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;a class="link" data-variant="muted" href="#" aria-label="Webhooks"&gt;&lt;i class="icon icon-webhook" data-size="xl" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>In a button</h2>
+            <p>
+              The button spaces the icon and text with gap. No margin needed.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="In a button">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button type="button" class="btn">
+                    <i class="icon icon-plus" aria-hidden="true"></i>
+                    Add product
+                  </button>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn"&gt;&lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;Add product&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>class</code></td>
+                    <td><code>icon icon-{name}</code></td>
+                    <td>
+                      Both classes are required. Pick the name from the list
+                      below (Lucide).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, <code>lg</code>, <code>xl</code> (omit =
+                      follow the text, default)
+                    </td>
+                    <td>
+                      16, 20 or 24px. Defaults to 1.15em of the surrounding
+                      text.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-hidden</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      Always set. Icons are decorative. Put text or an
+                      aria-label on the button or link instead.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>color</code></td>
+                    <td><code>currentColor</code></td>
+                    <td>
+                      No data-variant. The colour comes from the parent's color.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>@include icon.glyph(name)</code></td>
+                    <td>Sass mixin</td>
+                    <td>
+                      Draws an icon in another component's ::before / ::after.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>All icons</h2>
+            <p>
+              Lucide 1.61.0 (ISC). Some icons have several names. Search by name
+              or tag. Click an icon to copy its HTML.
+            </p>
+            <div class="input-group docs-narrow">
+              <span><i class="icon icon-search" aria-hidden="true"></i></span>
+              <input
+                id="icon-search"
+                type="search"
+                placeholder="Search icons"
+                aria-label="Search icons"
+                autocomplete="off"
+              />
+              <span id="icon-count" aria-live="polite"></span>
+            </div>
+            <div id="icon-grid" class="docs-icons"></div>
+          </section>
+          <script type="module" src="/docs/icons.js"></script>

@@ -1,0 +1,673 @@
+<header class="page-header">
+            <div>
+              <h1>Tree</h1>
+              <p>
+                Nested folders and files. A folder is a <code>details</code>, so
+                no JS is needed.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage, with a search field</h2>
+            <p>
+              An <code>input[type="search"]</code> inside
+              <code>.tree</code> filters files as you type. Matching files stay
+              visible and their folders open. The last <code>p</code> shows when
+              nothing matches.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav
+                    class="tree"
+                    aria-label="Theme files"
+                    style="max-width: 18rem"
+                  >
+                    <input
+                      type="search"
+                      placeholder="Search"
+                      aria-label="Search theme files"
+                    />
+                    <ul>
+                      <li>
+                        <details>
+                          <summary>
+                            <i class="icon icon-folder" aria-hidden="true"></i
+                            ><span>assets</span>
+                          </summary>
+                          <ul>
+                            <li>
+                              <a href="/docs"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>js/cart.js</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="/docs"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>img/hero.jpg</span></a
+                              >
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                      <li>
+                        <details>
+                          <summary>
+                            <i class="icon icon-folder" aria-hidden="true"></i
+                            ><span>layouts</span>
+                          </summary>
+                          <ul>
+                            <li>
+                              <a href="/docs"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>base.html</span></a
+                              >
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                      <li>
+                        <details open>
+                          <summary>
+                            <i class="icon icon-folder" aria-hidden="true"></i
+                            ><span>templates</span>
+                          </summary>
+                          <ul>
+                            <li>
+                              <a href="/docs"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>cart.html</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="/docs" aria-current="page"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>index.html</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="/docs"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>product.html</span></a
+                              >
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                    </ul>
+                    <p hidden>No files found.</p>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="tree" aria-label="Theme files" style="max-width: 18rem"&gt;
+  &lt;input type="search" placeholder="Search" aria-label="Search theme files" /&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;details&gt;
+        &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;assets&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;js/cart.js&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;img/hero.jpg&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;details&gt;
+        &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;layouts&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;base.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;details open&gt;
+        &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;templates&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;cart.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;index.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;product.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;p hidden&gt;No files found.&lt;/p&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Folders can nest, links can sit outside any folder, and icons are
+              optional
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav
+                    class="tree"
+                    aria-label="Help articles"
+                    style="max-width: 18rem"
+                  >
+                    <ul>
+                      <li>
+                        <details open>
+                          <summary><span>Orders</span></summary>
+                          <ul>
+                            <li>
+                              <a href="/docs"><span>Refund an order</span></a>
+                            </li>
+                            <li>
+                              <details>
+                                <summary>
+                                  <span>Fulfillment</span>
+                                </summary>
+                                <ul>
+                                  <li>
+                                    <a href="/docs"
+                                      ><span>Split a shipment</span></a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a href="/docs"
+                                      ><span>Print a packing slip</span></a
+                                    >
+                                  </li>
+                                </ul>
+                              </details>
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                      <li>
+                        <a href="/docs"><span>Contact support</span></a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="tree" aria-label="Help articles" style="max-width: 18rem"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;details open&gt;
+        &lt;summary&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Refund an order&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;
+            &lt;details&gt;
+              &lt;summary&gt;&lt;span&gt;Fulfillment&lt;/span&gt;&lt;/summary&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Split a shipment&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Print a packing slip&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/details&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Contact support&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              aria-current marks the open file, and open on its details shows it
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav
+                    class="tree"
+                    aria-label="Templates"
+                    style="max-width: 18rem"
+                  >
+                    <ul>
+                      <li>
+                        <details open>
+                          <summary>
+                            <i class="icon icon-folder" aria-hidden="true"></i
+                            ><span>templates</span>
+                          </summary>
+                          <ul>
+                            <li>
+                              <a href="/docs"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>cart.html</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="/docs" aria-current="page"
+                                ><i
+                                  class="icon icon-file"
+                                  aria-hidden="true"
+                                ></i
+                                ><span>index.html</span></a
+                              >
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="tree" aria-label="Templates" style="max-width: 18rem"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;details open&gt;
+        &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;templates&lt;/span&gt;&lt;/summary&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;cart.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;index.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/details&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A script filters the files with filter()</h2>
+            <p>
+              An empty query shows every file and restores each folder's open
+              state.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" style="max-width: 18rem">
+                    <nav class="tree" id="tr-filter" aria-label="Partials">
+                      <ul>
+                        <li>
+                          <details>
+                            <summary>
+                              <i class="icon icon-folder" aria-hidden="true"></i
+                              ><span>partials</span>
+                            </summary>
+                            <ul>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-file"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>footer.html</span></a
+                                >
+                              </li>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-file"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>header.html</span></a
+                                >
+                              </li>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-file"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>product_card.html</span></a
+                                >
+                              </li>
+                            </ul>
+                          </details>
+                        </li>
+                      </ul>
+                      <p hidden>No files found.</p>
+                    </nav>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="tr-filter-er"
+                      >
+                        Files with "er"
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="tr-filter-all"
+                      >
+                        Every file
+                      </button>
+                    </div>
+                  </div>
+                  <script type="module">
+                    const tree = document.getElementById("tr-filter");
+                    document
+                      .getElementById("tr-filter-er")
+                      .addEventListener("click", () =>
+                        tsunami.tree.filter(tree, "er"),
+                      );
+                    document
+                      .getElementById("tr-filter-all")
+                      .addEventListener("click", () =>
+                        tsunami.tree.filter(tree, ""),
+                      );
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" style="max-width: 18rem"&gt;
+  &lt;nav class="tree" id="tr-filter" aria-label="Partials"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;details&gt;
+          &lt;summary&gt;&lt;i class="icon icon-folder" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;partials&lt;/span&gt;&lt;/summary&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;footer.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;header.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-file" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;product_card.html&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/details&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p hidden&gt;No files found.&lt;/p&gt;
+  &lt;/nav&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tr-filter-er"&gt;Files with "er"&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tr-filter-all"&gt;Every file&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  const tree = document.getElementById("tr-filter");
+  document.getElementById("tr-filter-er").addEventListener("click", () =&gt; tsunami.tree.filter(tree, "er"));
+  document.getElementById("tr-filter-all").addEventListener("click", () =&gt; tsunami.tree.filter(tree, ""));
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              Lives in <code>js/tree.js</code>. A tree without a search field
+              needs no JS. It fires no events of its own;
+              <code>details</code> fires the browser's <code>toggle</code>.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.tree.filter(tree, query)</code></td>
+                    <td>
+                      <code>tree</code>: element <code>.tree</code>,
+                      <code>query</code>: string
+                    </td>
+                    <td>
+                      Shows only files whose name contains <code>query</code>
+                      (case-insensitive). Hides folders with no match and opens
+                      folders with one. An empty query shows every file and
+                      restores the folders.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input[type="search"]</code></td>
+                    <td>in <code>.tree</code></td>
+                    <td>Calls <code>filter()</code> as you type</td>
+                  </tr>
+                  <tr>
+                    <td><code>Tab / Enter / Space</code></td>
+                    <td>keyboard</td>
+                    <td>
+                      Native browser behaviour: move between folders and files,
+                      open and close folders, follow links
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.tree</code></td>
+                    <td><code>nav</code></td>
+                    <td>
+                      Add an <code>aria-label</code> (<code>ul.tree</code> also
+                      works)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>ul &gt; li</code></td>
+                    <td>child</td>
+                    <td>
+                      One item each. A <code>ul</code> nested in an
+                      <code>li</code> is indented on a guide line.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>details &gt; summary</code></td>
+                    <td>in <code>li</code></td>
+                    <td>
+                      Folder. The chevron turns when open. Followed by a
+                      <code>ul</code> of files.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>open</code></td>
+                    <td>on <code>details</code></td>
+                    <td>Folder is open (native)</td>
+                  </tr>
+                  <tr>
+                    <td><code>a / span</code></td>
+                    <td>in <code>li</code></td>
+                    <td>
+                      File (link) or a non-link item. The label in its
+                      <code>span</code> truncates with … when long.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.icon</code></td>
+                    <td>in <code>summary</code> / <code>a</code></td>
+                    <td>
+                      Optional, such as <code>icon-folder</code>,
+                      <code>icon-file</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-current</code></td>
+                    <td><code>page</code></td>
+                    <td>On a link: the open file</td>
+                  </tr>
+                  <tr>
+                    <td><code>input[type="search"]</code></td>
+                    <td>direct child of <code>.tree</code></td>
+                    <td>Search field, filters as you type</td>
+                  </tr>
+                  <tr>
+                    <td><code>p</code></td>
+                    <td>direct child of <code>.tree</code></td>
+                    <td>
+                      Message when no file matches. Start it
+                      <code>hidden</code>; JS shows and hides it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>hidden</code></td>
+                    <td>on <code>li</code></td>
+                    <td>Set by JS on files and folders that do not match</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

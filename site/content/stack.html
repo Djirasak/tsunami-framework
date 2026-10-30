@@ -1,0 +1,323 @@
+<header class="page-header">
+            <div>
+              <h1>Stack</h1>
+              <p>Spaces out child elements. Vertical by default.</p>
+            </div>
+          </header>
+          <section>
+            <h2>Vertical</h2>
+            <p>
+              Children run top to bottom, 16px apart. Use it to lay out page
+              sections or forms without margins.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Vertical">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <p>First line</p>
+                    <p>Second line</p>
+                    <p>Third line</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;p&gt;First line&lt;/p&gt;
+  &lt;p&gt;Second line&lt;/p&gt;
+  &lt;p&gt;Third line&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Row: data-direction="row"</h2>
+            <p>
+              Lays children out in a row, centered vertically, and wraps when
+              space runs out. Good for button groups or badges.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label='Row: data-direction="row"'>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn">Save draft</button>
+                    <button type="button" class="btn" data-variant="primary">
+                      Publish
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn"&gt;Save draft&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="primary"&gt;Publish&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Gap sizes: data-gap</h2>
+            <p><code>sm</code> 8px, default 16px, <code>lg</code> 32px</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Gap sizes: data-gap">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="lg">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <strong>sm · 8px</strong>
+                      <span class="badge">New</span>
+                      <span class="badge">Bestseller</span>
+                      <span class="badge">Sale</span>
+                    </div>
+                    <div class="stack" data-direction="row">
+                      <strong>Default · 16px</strong>
+                      <span class="badge">New</span>
+                      <span class="badge">Bestseller</span>
+                      <span class="badge">Sale</span>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="lg">
+                      <strong>lg · 32px</strong>
+                      <span class="badge">New</span>
+                      <span class="badge">Bestseller</span>
+                      <span class="badge">Sale</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="lg"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;strong&gt;sm · 8px&lt;/strong&gt;
+    &lt;span class="badge"&gt;New&lt;/span&gt;
+    &lt;span class="badge"&gt;Bestseller&lt;/span&gt;
+    &lt;span class="badge"&gt;Sale&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row"&gt;
+    &lt;strong&gt;Default · 16px&lt;/strong&gt;
+    &lt;span class="badge"&gt;New&lt;/span&gt;
+    &lt;span class="badge"&gt;Bestseller&lt;/span&gt;
+    &lt;span class="badge"&gt;Sale&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+    &lt;strong&gt;lg · 32px&lt;/strong&gt;
+    &lt;span class="badge"&gt;New&lt;/span&gt;
+    &lt;span class="badge"&gt;Bestseller&lt;/span&gt;
+    &lt;span class="badge"&gt;Sale&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Nested in a form</h2>
+            <p>
+              Stacks can nest, such as a vertical form with a row of buttons at
+              the bottom.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Nested in a form">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form class="stack docs-narrow">
+                    <div class="field">
+                      <label for="st-name">Product name</label>
+                      <input id="st-name" value="Cotton T-shirt" />
+                    </div>
+                    <div class="field">
+                      <label for="st-price">Price ($)</label>
+                      <input id="st-price" type="number" value="24" />
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button type="submit" class="btn" data-variant="primary">
+                        Save
+                      </button>
+                      <button type="reset" class="btn">Cancel</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form class="stack docs-narrow"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="st-name"&gt;Product name&lt;/label&gt;
+    &lt;input id="st-name" value="Cotton T-shirt" /&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="st-price"&gt;Price ($)&lt;/label&gt;
+    &lt;input id="st-price" type="number" value="24" /&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="submit" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;button type="reset" class="btn"&gt;Cancel&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.stack</code></td>
+                    <td></td>
+                    <td>
+                      Vertical flex with 16px between children. Works on any
+                      element (<code>div</code>, <code>form</code>,
+                      <code>section</code> ...)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-direction</code></td>
+                    <td><code>row</code>; omit for vertical (default)</td>
+                    <td>Horizontal, wraps, and centers items vertically</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-gap</code></td>
+                    <td>
+                      <code>sm</code>, <code>lg</code>; omit for 16px (default)
+                    </td>
+                    <td>8px or 32px gap</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

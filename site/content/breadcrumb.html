@@ -1,0 +1,104 @@
+<header class="page-header">
+            <div>
+              <h1>Breadcrumb</h1>
+              <p>Shows where this page sits, with links back up.</p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              CSS draws the separator between each <code>li</code>. The current
+              page is a <code>span</code> with <code>aria-current="page"</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                      <li><a href="/docs">Home</a></li>
+                      <li><a href="/docs">Orders</a></li>
+                      <li><span aria-current="page">#100482</span></li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Orders&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span aria-current="page"&gt;#100482&lt;/span&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.breadcrumb</code></td>
+                    <td><code>nav</code></td>
+                    <td>Add <code>aria-label="Breadcrumb"</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>ol &gt; li</code></td>
+                    <td>child</td>
+                    <td>One step each. The separator is added for you.</td>
+                  </tr>
+                  <tr>
+                    <td><code>a</code></td>
+                    <td>in <code>li</code></td>
+                    <td>Link to a parent page. Gray, darker on hover.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-current</code></td>
+                    <td><code>page</code></td>
+                    <td>On the last <code>span</code>: the current page</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

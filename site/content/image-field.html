@@ -1,0 +1,545 @@
+<header class="page-header">
+            <div>
+              <h1>Image field</h1>
+              <p>
+                An image with change and clear buttons. The form sends the file.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Point at the image to show the change and clear buttons</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Point at the image to show the change and clear buttons"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="if-icon">Store icon</label>
+                    <div class="image-field">
+                      <img src="/docs/img/logo-acme.svg" alt="Current store icon" />
+                      <i class="icon icon-image" aria-hidden="true"></i>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        id="if-icon"
+                        data-change
+                        aria-label="Change store icon"
+                        data-tooltip="Change"
+                      >
+                        <i class="icon icon-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        data-clear
+                        aria-label="Clear store icon"
+                        data-tooltip="Clear"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                      <input type="file" name="icon" accept="image/*" />
+                    </div>
+                    <small>Shown in browser tabs and bookmarks.</small>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="if-icon"&gt;Store icon&lt;/label&gt;
+  &lt;div class="image-field"&gt;
+    &lt;img src="img/logo-acme.svg" alt="Current store icon"&gt;
+    &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-icon" data-change aria-label="Change store icon" data-tooltip="Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="Clear store icon" data-tooltip="Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;input type="file" name="icon" accept="image/*"&gt;
+  &lt;/div&gt;
+  &lt;small&gt;Shown in browser tabs and bookmarks.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-fit=&quot;contain&quot;: the whole image in a wide box, for a
+              logo
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label='data-fit="contain": the whole image in a wide box, for a logo'
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="if-logo">Store logo</label>
+                    <div
+                      class="image-field"
+                      data-fit="contain"
+                      style="width: 18rem"
+                    >
+                      <img src="/docs/img/logo-acme.svg" alt="Current store logo" />
+                      <i class="icon icon-image" aria-hidden="true"></i>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        id="if-logo"
+                        data-change
+                        aria-label="Change store logo"
+                        data-tooltip="Change"
+                      >
+                        <i class="icon icon-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        data-clear
+                        aria-label="Clear store logo"
+                        data-tooltip="Clear"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                      <input type="file" name="logo" accept="image/*" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="if-logo"&gt;Store logo&lt;/label&gt;
+  &lt;div class="image-field" data-fit="contain" style="width: 18rem"&gt;
+    &lt;img src="img/logo-acme.svg" alt="Current store logo"&gt;
+    &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-logo" data-change aria-label="Change store logo" data-tooltip="Change"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="Clear store logo" data-tooltip="Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;input type="file" name="logo" accept="image/*"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-empty: no image yet, so only the icon and change button
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-empty: no image yet, so only the icon and change button"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="if-empty">Category image</label>
+                    <div class="image-field" data-empty>
+                      <img alt="Current category image" />
+                      <i class="icon icon-image" aria-hidden="true"></i>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        id="if-empty"
+                        data-change
+                        aria-label="Choose a category image"
+                        data-tooltip="Choose"
+                      >
+                        <i class="icon icon-pencil" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon-xs"
+                        data-clear
+                        aria-label="Clear category image"
+                        data-tooltip="Clear"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                      <input type="file" name="image" accept="image/*" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="if-empty"&gt;Category image&lt;/label&gt;
+  &lt;div class="image-field" data-empty&gt;
+    &lt;img alt="Current category image"&gt;
+    &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" id="if-empty" data-change aria-label="Choose a category image" data-tooltip="Choose"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon-xs" data-clear aria-label="Clear category image" data-tooltip="Clear"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;input type="file" name="image" accept="image/*"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              A checkbox is ticked while the image is cleared, and the form
+              hears change
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A checkbox is ticked while the image is cleared, and the form hears change"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form class="stack" data-gap="sm" id="if-form">
+                    <div class="field">
+                      <label for="if-form-icon">Store icon</label>
+                      <div class="image-field">
+                        <img src="/docs/img/logo-acme.svg" alt="Current store icon" />
+                        <i class="icon icon-image" aria-hidden="true"></i>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-size="icon-xs"
+                          id="if-form-icon"
+                          data-change
+                          aria-label="Change store icon"
+                          data-tooltip="Change"
+                        >
+                          <i class="icon icon-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-size="icon-xs"
+                          data-clear
+                          aria-label="Clear store icon"
+                          data-tooltip="Clear"
+                        >
+                          <i class="icon icon-x" aria-hidden="true"></i>
+                        </button>
+                        <input type="file" name="icon" accept="image/*" />
+                        <input type="checkbox" name="icon-clear" />
+                      </div>
+                    </div>
+                    <output id="if-result">icon-clear: not sent</output>
+                  </form>
+                  <script>
+                    document
+                      .getElementById("if-form")
+                      .addEventListener("change", (event) => {
+                        const sent = new FormData(event.currentTarget).get(
+                          "icon-clear",
+                        );
+                        document.getElementById("if-result").textContent =
+                          "icon-clear: " + (sent ?? "not sent");
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form class="stack" data-gap="sm" id="if-form"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="if-form-icon"&gt;Store icon&lt;/label&gt;
+    &lt;div class="image-field"&gt;
+      &lt;img src="img/logo-acme.svg" alt="Current store icon" /&gt;
+      &lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;button
+        type="button"
+        class="btn"
+        data-size="icon-xs"
+        id="if-form-icon"
+        data-change
+        aria-label="Change store icon"
+        data-tooltip="Change"
+      &gt;
+        &lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;button
+        type="button"
+        class="btn"
+        data-size="icon-xs"
+        data-clear
+        aria-label="Clear store icon"
+        data-tooltip="Clear"
+      &gt;
+        &lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;input type="file" name="icon" accept="image/*" /&gt;
+      &lt;input type="checkbox" name="icon-clear" /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;output id="if-result"&gt;icon-clear: not sent&lt;/output&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  document.getElementById("if-form").addEventListener("change", (event) =&gt; {
+    const sent = new FormData(event.currentTarget).get("icon-clear");
+    document.getElementById("if-result").textContent = "icon-clear: " + (sent ?? "not sent");
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              The field never uploads. Its form sends the file. Read the file
+              from the input.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>input</code>, <code>change</code></td>
+                    <td><code>input[type=file]</code>, bubbles</td>
+                    <td>
+                      Fired when a file is chosen (by the browser) and when the
+                      image is cleared. After a clear,
+                      <code>event.target.files</code> is empty.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>Tab</code></td>
+                    <td>
+                      Moves to the change button, then the clear button. Both
+                      show while either has focus.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Enter</code>, <code>Space</code></td>
+                    <td>
+                      Change opens the file picker. Clear empties the field and
+                      moves focus to change.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.image-field</code></td>
+                    <td></td>
+                    <td>
+                      A 96px square box around the img, icon, buttons and
+                      inputs.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-fit</code></td>
+                    <td><code>contain</code></td>
+                    <td>
+                      Shows the whole image in a 2:1 box. By default (unset) the
+                      image fills the box and is cropped.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-empty</code></td>
+                    <td>present</td>
+                    <td>
+                      Set by the script while there is no image. Add it yourself
+                      so it is right before the script runs.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; img[src]</code></td>
+                    <td>URL</td>
+                    <td>
+                      The starting image. Without <code>src</code> the field is
+                      empty.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; .icon</code></td>
+                    <td></td>
+                    <td>Shown while empty, e.g. <code>icon-image</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; [data-change]</code></td>
+                    <td>button</td>
+                    <td>Opens the file picker. Required.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; [data-clear]</code></td>
+                    <td>button</td>
+                    <td>
+                      Clears the image. Leave it out if the image cannot be
+                      removed.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; input[type=file]</code></td>
+                    <td><code>name</code>, <code>accept</code></td>
+                    <td>Sends the chosen file with the form.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; input[type=checkbox]</code></td>
+                    <td><code>name</code></td>
+                    <td>
+                      Optional. Ticked while cleared, to tell the server to
+                      delete the file.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code>, <code>data-tooltip</code></td>
+                    <td>text</td>
+                    <td>On both icon buttons.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

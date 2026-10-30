@@ -1,0 +1,1980 @@
+<header class="page-header">
+            <div>
+              <h1>Sortable</h1>
+              <p>
+                Drag the rows of a list, a table or a grid into a new order, or
+                move them with the arrow keys. A thin layer over SortableJS.
+              </p>
+            </div>
+          </header>
+
+          <section>
+            <h2>A handle drags its row</h2>
+            <p>
+              Put <code>sortable</code> on the element that holds the rows. A
+              <code>.sortable-handle</code> inside a row is the only place that
+              drags it, and it is a button, so the arrow keys move its row too.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A handle drags its row">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="item-group sortable"
+                    id="so-main"
+                    style="max-width: 28rem"
+                  >
+                    <article
+                      class="item"
+                      data-variant="outline"
+                      data-id="color"
+                    >
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Color"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Color</h3></section>
+                    </article>
+                    <article class="item" data-variant="outline" data-id="size">
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Size"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Size</h3></section>
+                    </article>
+                    <article
+                      class="item"
+                      data-variant="outline"
+                      data-id="material"
+                    >
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Material"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Material</h3></section>
+                    </article>
+                    <article
+                      class="item"
+                      data-variant="outline"
+                      data-id="price"
+                    >
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Price"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Price</h3></section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item-group sortable" id="so-main" style="max-width: 28rem"&gt;
+  &lt;article class="item" data-variant="outline" data-id="color"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Color"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Color&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="size"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Size"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Size&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="material"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Material"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Material&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="price"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Price"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Price&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>A page loads SortableJS itself, before the Tsunami script</h2>
+            <p>
+              The drag is
+              <a href="https://github.com/SortableJS/Sortable">SortableJS</a>
+              1.15.7 (MIT licence). It is not in <code>tsunami.min.js</code>: a
+              page that has a <code>.sortable</code> loads
+              <code>dist/sortable.min.js</code> with its own
+              <code>&lt;script&gt;</code> first. A page with no sortable list
+              does not load it and is not affected. With the script missing,
+              each <code>.sortable</code> logs an error and stays a plain list.
+            </p>
+            <pre><code>&lt;script src="../dist/sortable.min.js"&gt;&lt;/script&gt;
+&lt;script src="../dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+          </section>
+
+          <section>
+            <h2>A list with no handle is dragged by its rows</h2>
+            <p>
+              Without a handle there are no keys: the rows move by pointer only.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A list with no handle is dragged by its rows"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ul class="item-group sortable" style="max-width: 28rem">
+                    <li class="item" data-variant="outline" data-id="home">
+                      <section><h3>Home</h3></section>
+                    </li>
+                    <li class="item" data-variant="outline" data-id="shop">
+                      <section><h3>Shop</h3></section>
+                    </li>
+                    <li class="item" data-variant="outline" data-id="support">
+                      <section><h3>Support</h3></section>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ul class="item-group sortable" style="max-width: 28rem"&gt;
+  &lt;li class="item" data-variant="outline" data-id="home"&gt;&lt;section&gt;&lt;h3&gt;Home&lt;/h3&gt;&lt;/section&gt;&lt;/li&gt;
+  &lt;li class="item" data-variant="outline" data-id="shop"&gt;&lt;section&gt;&lt;h3&gt;Shop&lt;/h3&gt;&lt;/section&gt;&lt;/li&gt;
+  &lt;li class="item" data-variant="outline" data-id="support"&gt;&lt;section&gt;&lt;h3&gt;Support&lt;/h3&gt;&lt;/section&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>On a tbody, the rows of a table are reordered</h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="On a tbody, the rows of a table are reordered"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card scroll-area">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th
+                            scope="col"
+                            style="width: 1px"
+                            aria-label="Reorder"
+                          ></th>
+                          <th scope="col">Label</th>
+                          <th scope="col">Source</th>
+                        </tr>
+                      </thead>
+                      <tbody class="sortable" id="so-table">
+                        <tr data-id="color">
+                          <td style="width: 1px">
+                            <button
+                              type="button"
+                              class="sortable-handle"
+                              aria-label="Reorder Color"
+                            >
+                              <i
+                                class="icon icon-grip-vertical"
+                                aria-hidden="true"
+                              ></i>
+                            </button>
+                          </td>
+                          <td>Color</td>
+                          <td>Product attribute</td>
+                        </tr>
+                        <tr data-id="availability">
+                          <td style="width: 1px">
+                            <button
+                              type="button"
+                              class="sortable-handle"
+                              aria-label="Reorder Availability"
+                            >
+                              <i
+                                class="icon icon-grip-vertical"
+                                aria-hidden="true"
+                              ></i>
+                            </button>
+                          </td>
+                          <td>Availability</td>
+                          <td>Standard</td>
+                        </tr>
+                        <tr data-id="price">
+                          <td style="width: 1px">
+                            <button
+                              type="button"
+                              class="sortable-handle"
+                              aria-label="Reorder Price"
+                            >
+                              <i
+                                class="icon icon-grip-vertical"
+                                aria-hidden="true"
+                              ></i>
+                            </button>
+                          </td>
+                          <td>Price</td>
+                          <td>Standard</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card scroll-area"&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col" style="width: 1px" aria-label="Reorder"&gt;&lt;/th&gt;
+        &lt;th scope="col"&gt;Label&lt;/th&gt;
+        &lt;th scope="col"&gt;Source&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody class="sortable" id="so-table"&gt;
+      &lt;tr data-id="color"&gt;
+        &lt;td style="width: 1px"&gt;&lt;button type="button" class="sortable-handle" aria-label="Reorder Color"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;Color&lt;/td&gt;
+        &lt;td&gt;Product attribute&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr data-id="availability"&gt;
+        &lt;td style="width: 1px"&gt;&lt;button type="button" class="sortable-handle" aria-label="Reorder Availability"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;Availability&lt;/td&gt;
+        &lt;td&gt;Standard&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr data-id="price"&gt;
+        &lt;td style="width: 1px"&gt;&lt;button type="button" class="sortable-handle" aria-label="Reorder Price"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/td&gt;
+        &lt;td&gt;Price&lt;/td&gt;
+        &lt;td&gt;Standard&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              <code>data-sortable-ignore</code> on a control keeps a press on it
+              from starting a drag
+            </h2>
+            <p>
+              In a list with no handle, a button or a link would otherwise start
+              a drag. Its own click still happens.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-sortable-ignore on a control keeps a press on it from starting a drag"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ul class="item-group sortable" style="max-width: 28rem">
+                    <li class="item" data-variant="outline" data-id="visa">
+                      <section><h3>Visa</h3></section>
+                      <aside>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-variant="outline"
+                          data-size="sm"
+                          data-sortable-ignore
+                        >
+                          Edit
+                        </button>
+                      </aside>
+                    </li>
+                    <li class="item" data-variant="outline" data-id="paypal">
+                      <section><h3>PayPal</h3></section>
+                      <aside>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-variant="outline"
+                          data-size="sm"
+                          data-sortable-ignore
+                        >
+                          Edit
+                        </button>
+                      </aside>
+                    </li>
+                    <li class="item" data-variant="outline" data-id="klarna">
+                      <section><h3>Klarna</h3></section>
+                      <aside>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-variant="outline"
+                          data-size="sm"
+                          data-sortable-ignore
+                        >
+                          Edit
+                        </button>
+                      </aside>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ul class="item-group sortable" style="max-width: 28rem"&gt;
+  &lt;li class="item" data-variant="outline" data-id="visa"&gt;
+    &lt;section&gt;&lt;h3&gt;Visa&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;button type="button" class="btn" data-variant="outline" data-size="sm" data-sortable-ignore&gt;Edit&lt;/button&gt;&lt;/aside&gt;
+  &lt;/li&gt;
+  &lt;li class="item" data-variant="outline" data-id="paypal"&gt;
+    &lt;section&gt;&lt;h3&gt;PayPal&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;button type="button" class="btn" data-variant="outline" data-size="sm" data-sortable-ignore&gt;Edit&lt;/button&gt;&lt;/aside&gt;
+  &lt;/li&gt;
+  &lt;li class="item" data-variant="outline" data-id="klarna"&gt;
+    &lt;section&gt;&lt;h3&gt;Klarna&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;button type="button" class="btn" data-variant="outline" data-size="sm" data-sortable-ignore&gt;Edit&lt;/button&gt;&lt;/aside&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2><code>data-disabled</code> keeps the rows where they are</h2>
+            <p>
+              The rows stay put by pointer and by key, and the handles are
+              dimmed.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-disabled keeps the rows where they are"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="item-group sortable"
+                    style="max-width: 28rem"
+                    data-disabled
+                  >
+                    <article
+                      class="item"
+                      data-variant="outline"
+                      data-id="standard"
+                    >
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Standard"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Standard</h3></section>
+                    </article>
+                    <article
+                      class="item"
+                      data-variant="outline"
+                      data-id="express"
+                    >
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Express"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Express</h3></section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item-group sortable" style="max-width: 28rem" data-disabled&gt;
+  &lt;article class="item" data-variant="outline" data-id="standard"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Standard"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Standard&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="express"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Express"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Express&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              <code>data-variant="overlay"</code> lays the handle over a
+              picture: it shows under the pointer
+            </h2>
+            <p>
+              The arrow keys move a picture along the grid, left and right as
+              well as up and down.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label='data-variant="overlay" lays the handle over a picture: it shows under the pointer'
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ul
+                    class="sortable"
+                    style="
+                      display: grid;
+                      grid-template-columns: repeat(3, 1fr);
+                      gap: var(--space-3);
+                      max-width: 28rem;
+                    "
+                  >
+                    <li style="position: relative" data-id="watch">
+                      <img
+                        src="/docs/img/product-watch.svg"
+                        alt=""
+                        style="
+                          display: block;
+                          width: 100%;
+                          aspect-ratio: 1;
+                          border: 1px solid var(--line);
+                          border-radius: var(--radius-md);
+                          object-fit: cover;
+                        "
+                      />
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        data-variant="overlay"
+                        aria-label="Reorder watch"
+                      >
+                        <i class="icon icon-move" aria-hidden="true"></i>
+                      </button>
+                    </li>
+                    <li style="position: relative" data-id="mug">
+                      <img
+                        src="/docs/img/product-mug.svg"
+                        alt=""
+                        style="
+                          display: block;
+                          width: 100%;
+                          aspect-ratio: 1;
+                          border: 1px solid var(--line);
+                          border-radius: var(--radius-md);
+                          object-fit: cover;
+                        "
+                      />
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        data-variant="overlay"
+                        aria-label="Reorder mug"
+                      >
+                        <i class="icon icon-move" aria-hidden="true"></i>
+                      </button>
+                    </li>
+                    <li style="position: relative" data-id="headphones">
+                      <img
+                        src="/docs/img/product-headphones.svg"
+                        alt=""
+                        style="
+                          display: block;
+                          width: 100%;
+                          aspect-ratio: 1;
+                          border: 1px solid var(--line);
+                          border-radius: var(--radius-md);
+                          object-fit: cover;
+                        "
+                      />
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        data-variant="overlay"
+                        aria-label="Reorder headphones"
+                      >
+                        <i class="icon icon-move" aria-hidden="true"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ul class="sortable" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); max-width: 28rem"&gt;
+  &lt;li style="position: relative" data-id="watch"&gt;
+    &lt;img src="img/product-watch.svg" alt="" style="display: block; width: 100%; aspect-ratio: 1; border: 1px solid var(--line); border-radius: var(--radius-md); object-fit: cover" /&gt;
+    &lt;button type="button" class="sortable-handle" data-variant="overlay" aria-label="Reorder watch"&gt;&lt;i class="icon icon-move" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/li&gt;
+  &lt;li style="position: relative" data-id="mug"&gt;
+    &lt;img src="img/product-mug.svg" alt="" style="display: block; width: 100%; aspect-ratio: 1; border: 1px solid var(--line); border-radius: var(--radius-md); object-fit: cover" /&gt;
+    &lt;button type="button" class="sortable-handle" data-variant="overlay" aria-label="Reorder mug"&gt;&lt;i class="icon icon-move" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/li&gt;
+  &lt;li style="position: relative" data-id="headphones"&gt;
+    &lt;img src="img/product-headphones.svg" alt="" style="display: block; width: 100%; aspect-ratio: 1; border: 1px solid var(--line); border-radius: var(--radius-md); object-fit: cover" /&gt;
+    &lt;button type="button" class="sortable-handle" data-variant="overlay" aria-label="Reorder headphones"&gt;&lt;i class="icon icon-move" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              <code>data-options</code> takes any SortableJS option as JSON:
+              here a 600ms animation
+            </h2>
+            <p>
+              The options are laid over the component's own (animation 150,
+              <code>forceFallback</code> true). Under
+              <code>prefers-reduced-motion</code> the default animation is 0, so
+              set it here only when you mean it.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="data-options takes any SortableJS option as JSON: here a 600ms animation"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="item-group sortable"
+                    style="max-width: 28rem"
+                    data-options='{"animation":600}'
+                  >
+                    <article
+                      class="item"
+                      data-variant="outline"
+                      data-id="monday"
+                    >
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Monday"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Monday</h3></section>
+                    </article>
+                    <article
+                      class="item"
+                      data-variant="outline"
+                      data-id="tuesday"
+                    >
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Tuesday"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Tuesday</h3></section>
+                    </article>
+                    <article
+                      class="item"
+                      data-variant="outline"
+                      data-id="wednesday"
+                    >
+                      <button
+                        type="button"
+                        class="sortable-handle"
+                        aria-label="Reorder Wednesday"
+                      >
+                        <i
+                          class="icon icon-grip-vertical"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <section><h3>Wednesday</h3></section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item-group sortable" style="max-width: 28rem" data-options='{"animation":600}'&gt;
+  &lt;article class="item" data-variant="outline" data-id="monday"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Monday"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Monday&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="tuesday"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Tuesday"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Tuesday&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="wednesday"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Wednesday"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Wednesday&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              The <code>tsunami:reorder</code> event gives the row and its old
+              and new place, and <code>toArray()</code> the new order
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="The tsunami:reorder event gives the row and its old and new place, and toArray() the new order"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    style="display: grid; gap: var(--space-3); max-width: 28rem"
+                  >
+                    <div class="item-group sortable" id="so-event">
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="email"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Email"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Email</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="phone"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Phone"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Phone</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="address"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Address"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Address</h3></section>
+                      </article>
+                    </div>
+                    <p id="so-event-output">Move a row.</p>
+                  </div>
+                  <script>
+                    document
+                      .getElementById("so-event")
+                      .addEventListener("tsunami:reorder", (event) => {
+                        const { id, oldIndex, newIndex } = event.detail;
+                        document.getElementById("so-event-output").textContent =
+                          `${id} moved from ${oldIndex} to ${newIndex}. Order: ${event.target.toArray().join(", ")}`;
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div style="display: grid; gap: var(--space-3); max-width: 28rem"&gt;
+&lt;div class="item-group sortable" id="so-event"&gt;
+  &lt;article class="item" data-variant="outline" data-id="email"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Email"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Email&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="phone"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Phone"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Phone&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="address"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Address"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Address&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;
+  &lt;p id="so-event-output"&gt;Move a row.&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("so-event").addEventListener("tsunami:reorder", (event) =&gt; {
+    const { id, oldIndex, newIndex } = event.detail;
+    document.getElementById("so-event-output").textContent =
+      `${id} moved from ${oldIndex} to ${newIndex}. Order: ${event.target.toArray().join(", ")}`;
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              The page reverses the order with <code>toArray()</code> and
+              <code>sort()</code>, and turns sorting off with
+              <code>disabled</code>
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="The page reverses the order with toArray() and sort(), and turns sorting off with disabled"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    style="display: grid; gap: var(--space-3); max-width: 28rem"
+                  >
+                    <div class="item-group sortable" id="so-methods">
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="first"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder First"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>First</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="second"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Second"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Second</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="third"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Third"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Third</h3></section>
+                      </article>
+                    </div>
+                    <div style="display: flex; gap: var(--space-2)">
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="so-reverse"
+                      >
+                        Reverse the order
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="so-toggle"
+                        aria-pressed="false"
+                      >
+                        Turn sorting off
+                      </button>
+                    </div>
+                  </div>
+                  <script>
+                    const methods = document.getElementById("so-methods");
+                    document
+                      .getElementById("so-reverse")
+                      .addEventListener("click", () => {
+                        methods.sort(methods.toArray().reverse());
+                      });
+                    document
+                      .getElementById("so-toggle")
+                      .addEventListener("click", (event) => {
+                        methods.disabled = !methods.disabled;
+                        event.target.setAttribute(
+                          "aria-pressed",
+                          methods.disabled,
+                        );
+                        event.target.textContent = methods.disabled
+                          ? "Turn sorting on"
+                          : "Turn sorting off";
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div style="display: grid; gap: var(--space-3); max-width: 28rem"&gt;
+&lt;div class="item-group sortable" id="so-methods"&gt;
+  &lt;article class="item" data-variant="outline" data-id="first"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder First"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;First&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="second"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Second"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Second&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="third"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Third"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Third&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;
+  &lt;div style="display: flex; gap: var(--space-2)"&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="so-reverse"&gt;Reverse the order&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="so-toggle" aria-pressed="false"&gt;Turn sorting off&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const methods = document.getElementById("so-methods");
+  document.getElementById("so-reverse").addEventListener("click", () =&gt; {
+    methods.sort(methods.toArray().reverse());
+  });
+  document.getElementById("so-toggle").addEventListener("click", (event) =&gt; {
+    methods.disabled = !methods.disabled;
+    event.target.setAttribute("aria-pressed", methods.disabled);
+    event.target.textContent = methods.disabled ? "Turn sorting on" : "Turn sorting off";
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              A list started by <code>mount()</code> takes callbacks:
+              <code>onMove</code> keeps the pinned row first,
+              <code>onEnd</code> reports the drop
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A list started by mount() takes callbacks: onMove keeps the pinned row first, onEnd reports the drop"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    style="display: grid; gap: var(--space-3); max-width: 28rem"
+                  >
+                    <div class="item-group" id="so-mount">
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="pinned"
+                      >
+                        <i
+                          class="icon icon-pin"
+                          aria-hidden="true"
+                          style="width: 1.5rem; color: var(--muted)"
+                        ></i>
+                        <section><h3>Pinned, always first</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="orders"
+                        data-movable
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Orders"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Orders</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="customers"
+                        data-movable
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Customers"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Customers</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="products"
+                        data-movable
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Products"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Products</h3></section>
+                      </article>
+                    </div>
+                    <p id="so-mount-output">Drag a row.</p>
+                  </div>
+                  <script>
+                    const mounted = document.getElementById("so-mount");
+                    const output = document.getElementById("so-mount-output");
+                    tsunami.sortable.mount(mounted, {
+                      // Only the marked rows move.
+                      draggable: "[data-movable]",
+                      // Called while a row is over another one. Returning false refuses that place.
+                      onMove: (event) =>
+                        event.related.hasAttribute("data-movable"),
+                      // Called when the row is let go, moved or not.
+                      onEnd: (event) => {
+                        output.textContent = `onEnd: ${event.item.dataset.id} went from ${event.oldDraggableIndex} to ${event.newDraggableIndex}`;
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div style="display: grid; gap: var(--space-3); max-width: 28rem"&gt;
+  &lt;div class="item-group" id="so-mount"&gt;
+  &lt;article class="item" data-variant="outline" data-id="pinned"&gt;
+    &lt;i class="icon icon-pin" aria-hidden="true" style="width: 1.5rem; color: var(--muted)"&gt;&lt;/i&gt;
+    &lt;section&gt;&lt;h3&gt;Pinned, always first&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="orders" data-movable&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Orders"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Orders&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="customers" data-movable&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Customers"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Customers&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="products" data-movable&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Products"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Products&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;/div&gt;
+  &lt;p id="so-mount-output"&gt;Drag a row.&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const mounted = document.getElementById("so-mount");
+  const output = document.getElementById("so-mount-output");
+  tsunami.sortable.mount(mounted, {
+    // Only the marked rows move.
+    draggable: "[data-movable]",
+    // Called while a row is over another one. Returning false refuses that place.
+    onMove: (event) =&gt; event.related.hasAttribute("data-movable"),
+    // Called when the row is let go, moved or not.
+    onEnd: (event) =&gt; {
+      output.textContent = `onEnd: ${event.item.dataset.id} went from ${event.oldDraggableIndex} to ${event.newDraggableIndex}`;
+    },
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              <code>sortable</code> is the SortableJS instance: here the page
+              changes one of its options
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="sortable is the SortableJS instance: here the page changes one of its options"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tp"
+                  aria-selected="true"
+                  aria-controls="ex11-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tc"
+                  aria-selected="false"
+                  aria-controls="ex11-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-p"
+                aria-labelledby="ex11-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    style="display: grid; gap: var(--space-3); max-width: 28rem"
+                  >
+                    <div class="item-group sortable" id="so-instance">
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="draft"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Draft"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Draft</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="review"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Review"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Review</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="published"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Published"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Published</h3></section>
+                      </article>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      id="so-instance-button"
+                      style="justify-self: start"
+                    >
+                      Set the animation to 600ms
+                    </button>
+                  </div>
+                  <script>
+                    document
+                      .getElementById("so-instance-button")
+                      .addEventListener("click", (event) => {
+                        const list = document.getElementById("so-instance");
+                        list.sortable.option("animation", 600);
+                        event.target.textContent = `Animation is ${list.sortable.option("animation")}ms`;
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-c"
+                aria-labelledby="ex11-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div style="display: grid; gap: var(--space-3); max-width: 28rem"&gt;
+&lt;div class="item-group sortable" id="so-instance"&gt;
+  &lt;article class="item" data-variant="outline" data-id="draft"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Draft"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Draft&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="review"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Review"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Review&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="published"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Published"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Published&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;
+  &lt;button type="button" class="btn" data-size="sm" id="so-instance-button" style="justify-self: start"&gt;Set the animation to 600ms&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("so-instance-button").addEventListener("click", (event) =&gt; {
+    const list = document.getElementById("so-instance");
+    list.sortable.option("animation", 600);
+    event.target.textContent = `Animation is ${list.sortable.option("animation")}ms`;
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              A page tells the save bar about a new order by writing it to a
+              hidden input
+            </h2>
+            <p>
+              A move sends no <code>input</code> event, because the order is not
+              a form value. The page keeps the order in a hidden field and calls
+              <code>tsunami.saveBar.check(form)</code>; the bar then shows until
+              the form is saved.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A page tells the save bar about a new order by writing it to a hidden input"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tp"
+                  aria-selected="true"
+                  aria-controls="ex12-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tc"
+                  aria-selected="false"
+                  aria-controls="ex12-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-p"
+                aria-labelledby="ex12-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form
+                    id="so-form"
+                    style="display: grid; gap: var(--space-3); max-width: 28rem"
+                  >
+                    <input
+                      type="hidden"
+                      name="order"
+                      value="first,second,third"
+                    />
+                    <div class="item-group sortable" id="so-form-list">
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="first"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder First"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>First</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="second"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Second"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Second</h3></section>
+                      </article>
+                      <article
+                        class="item"
+                        data-variant="outline"
+                        data-id="third"
+                      >
+                        <button
+                          type="button"
+                          class="sortable-handle"
+                          aria-label="Reorder Third"
+                        >
+                          <i
+                            class="icon icon-grip-vertical"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <section><h3>Third</h3></section>
+                      </article>
+                    </div>
+                  </form>
+                  <div
+                    class="save-bar"
+                    data-form="so-form"
+                    role="region"
+                    aria-label="Unsaved changes"
+                    hidden
+                  >
+                    <p>Unsaved changes</p>
+                    <div>
+                      <button
+                        type="submit"
+                        form="so-form"
+                        class="btn"
+                        data-variant="primary"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                  <script>
+                    const form = document.getElementById("so-form");
+                    document
+                      .getElementById("so-form-list")
+                      .addEventListener("tsunami:reorder", (event) => {
+                        form.elements.order.value = event.target
+                          .toArray()
+                          .join(",");
+                        tsunami.saveBar.check(form);
+                      });
+                    form.addEventListener("submit", (event) => {
+                      event.preventDefault();
+                      form.elements.order.defaultValue =
+                        form.elements.order.value;
+                      tsunami.saveBar.markClean(form);
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-c"
+                aria-labelledby="ex12-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form id="so-form" style="display: grid; gap: var(--space-3); max-width: 28rem"&gt;
+  &lt;input type="hidden" name="order" value="first,second,third" /&gt;
+&lt;div class="item-group sortable" id="so-form-list"&gt;
+  &lt;article class="item" data-variant="outline" data-id="first"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder First"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;First&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="second"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Second"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Second&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-id="third"&gt;
+    &lt;button type="button" class="sortable-handle" aria-label="Reorder Third"&gt;&lt;i class="icon icon-grip-vertical" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;section&gt;&lt;h3&gt;Third&lt;/h3&gt;&lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;div class="save-bar" data-form="so-form" role="region" aria-label="Unsaved changes" hidden&gt;
+  &lt;p&gt;Unsaved changes&lt;/p&gt;
+  &lt;div&gt;
+    &lt;button type="submit" form="so-form" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const form = document.getElementById("so-form");
+  document.getElementById("so-form-list").addEventListener("tsunami:reorder", (event) =&gt; {
+    form.elements.order.value = event.target.toArray().join(",");
+    tsunami.saveBar.check(form);
+  });
+  form.addEventListener("submit", (event) =&gt; {
+    event.preventDefault();
+    form.elements.order.defaultValue = form.elements.order.value;
+    tsunami.saveBar.markClean(form);
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>A page saves the order itself</h2>
+            <p>
+              The component sends nothing to a server. A page posts the order
+              from its <code>tsunami:reorder</code> listener.
+            </p>
+            <pre><code>list.addEventListener("tsunami:reorder", (event) =&gt; {
+  fetch("/filters/order/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ order: event.target.toArray() }),
+  });
+});</code></pre>
+          </section>
+
+          <section>
+            <h2>API</h2>
+            <p>
+              The functions live on <code>window.tsunami.sortable</code>, and
+              the list element carries the same members.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function / member</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.sortable.mount(el, options?)</code></td>
+                    <td>
+                      Starts SortableJS on a list, with or without the class,
+                      and starts it again if it already has one.
+                      <code>options</code> are SortableJS options, laid over
+                      <code>data-options</code>, and can hold functions. Throws
+                      when SortableJS is not loaded.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.sortable.get(el)</code></td>
+                    <td>The SortableJS instance, or <code>null</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.sortable.destroy(el)</code></td>
+                    <td>
+                      Stops the list and gives the element back. Removing the
+                      list from the page does this itself.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>tsunami.sortable.toArray(el)</code> /
+                      <code>el.toArray()</code>
+                    </td>
+                    <td>
+                      Returns every row's <code>data-id</code>, in the current
+                      order.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>tsunami.sortable.sort(el, order)</code> /
+                      <code>el.sort(order)</code>
+                    </td>
+                    <td>
+                      Puts the rows in the order of a list of
+                      <code>data-id</code> values. It sends no
+                      <code>tsunami:reorder</code> event.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>tsunami.sortable.disabled(el, value?)</code> /
+                      <code>el.disabled</code>
+                    </td>
+                    <td>Reads and sets <code>data-disabled</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>el.sortable</code></td>
+                    <td>
+                      The SortableJS instance, for anything the component does
+                      not cover (read only).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events</h3>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:reorder</code></td>
+                    <td>The list; it bubbles</td>
+                    <td><code>{ item, id, oldIndex, newIndex }</code></td>
+                    <td>
+                      Sent after a row is moved, by pointer or by key.
+                      <code>item</code> is the row, <code>id</code> its
+                      <code>data-id</code>, and the indexes count rows from 0.
+                      It is not sent for <code>sort()</code> or for a row moved
+                      to another list (SortableJS sends its own
+                      <code>add</code> and <code>remove</code>).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>Arrow Up</kbd>, <kbd>Arrow Left</kbd></td>
+                    <td>On a handle, moves its row up (or back) one place.</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Arrow Down</kbd>, <kbd>Arrow Right</kbd></td>
+                    <td>
+                      On a handle, moves its row down (or forward) one place.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Tab</kbd></td>
+                    <td>
+                      Moves to the next handle. A handle is a button, so this is
+                      the browser's own.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              A list with no <code>.sortable-handle</code> is dragged by its
+              rows, and has no keys.
+            </p>
+            <p>
+              A move made with the keys is spoken through a live region: the
+              handle's <code>aria-label</code>, then
+              <code>moved to position N of M</code>.
+            </p>
+            <p>
+              SortableJS sends its own events on the same element:
+              <code>start</code>, <code>end</code>, <code>update</code> and the
+              rest. The component adds only <code>tsunami:reorder</code>.
+            </p>
+            <p>
+              Under <code>prefers-reduced-motion</code> the animation is 0. The
+              drag uses SortableJS's fallback mode (a copy of the row follows
+              the pointer), which also works on touch screens; the handle has
+              <code>touch-action: none</code>.
+            </p>
+            <p>
+              The order is not a form value, so a move sends no
+              <code>input</code> event. To mark a form changed, write the order
+              to a hidden input and call
+              <code>tsunami.saveBar.check(form)</code>, as in the example above.
+            </p>
+            <p>
+              <a href="https://github.com/SortableJS/Sortable">SortableJS</a>
+              1.15.7 is MIT licensed (<code>vendor/sortable/LICENSE.txt</code>).
+              It is a separate file, <code>dist/sortable.min.js</code>, not part
+              of <code>tsunami.min.js</code>.
+            </p>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.sortable</code></td>
+                    <td></td>
+                    <td>
+                      On the element that holds the rows: a <code>ul</code>, a
+                      <code>tbody</code>, an item group or a grid. Its children
+                      are the rows. A list inside a row is its own sortable.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-id</code></td>
+                    <td>text</td>
+                    <td>
+                      On a row. Names the row: <code>toArray()</code> returns it
+                      and the <code>tsunami:reorder</code> event carries it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.sortable-handle</code></td>
+                    <td></td>
+                    <td>
+                      A button inside a row. With one in the list, only the
+                      handle drags, and the arrow keys move the row. The default
+                      icon is <code>icon-grip-vertical</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>text</td>
+                    <td>
+                      On a <code>.sortable-handle</code>. Names the handle for a
+                      screen reader, for example <code>Reorder Color</code>. A
+                      move made with the keys is spoken with it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td><code>overlay</code></td>
+                    <td>
+                      On a <code>.sortable-handle</code>. Lays the handle over a
+                      picture in a <code>position: relative</code> row; it shows
+                      under the pointer and on focus.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-sortable-ignore</code></td>
+                    <td>present</td>
+                    <td>
+                      On a control inside a row. A press on it never starts a
+                      drag. Its own click still happens.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-disabled</code></td>
+                    <td>present</td>
+                    <td>
+                      On <code>.sortable</code>. Keeps the rows where they are,
+                      by pointer and by key, and dims the handles. Adding or
+                      removing it later is followed.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-options</code></td>
+                    <td>JSON</td>
+                    <td>
+                      On <code>.sortable</code>. Any SortableJS option. It is
+                      laid over the component's own: <code>animation</code> 150
+                      (0 under reduced motion), <code>forceFallback</code> true,
+                      <code>filter</code> <code>[data-sortable-ignore]</code>,
+                      <code>handle</code> <code>.sortable-handle</code> when the
+                      list has one.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.sortable-ghost</code>,
+                      <code>.sortable-fallback</code>,
+                      <code>.sortable-chosen</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Added by SortableJS while a row is dragged: the gap where
+                      it will land, the copy under the pointer and the row
+                      itself.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.sortable-status</code></td>
+                    <td></td>
+                    <td>
+                      Added by the script on first key move: a visually hidden
+                      live region that speaks the move.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

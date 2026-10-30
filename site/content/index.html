@@ -1,0 +1,240 @@
+<section class="docs-hero">
+            <span class="badge">v0.1.0</span>
+            <h1>Tsunami <span>津波</span></h1>
+            <p class="docs-lead">
+              A small CSS framework for back-office screens. Quiet and
+              practical, with 43 component pages, Lucide icons and country
+              flags. Written with semantic HTML and data attributes, with no
+              runtime dependencies.
+            </p>
+            <div class="stack" data-direction="row" data-gap="sm">
+              <a class="btn" data-variant="primary" href="/docs#install"
+                >Get started</a
+              >
+              <a class="btn" href="/docs/btn">Browse components</a>
+            </div>
+          </section>
+          <section>
+            <h2>Principles</h2>
+            <div class="docs-grid">
+              <article class="card">
+                <header>
+                  <h2>Native first</h2>
+                </header>
+                <div>
+                  <p>
+                    Reach for <code>dialog</code>, <code>popover</code>,
+                    <code>details</code> and <code>button</code> first. A small
+                    vanilla script adds only what HTML cannot: theme, tabs,
+                    select, tree, table, journey and a few more.
+                  </p>
+                </div>
+              </article>
+              <article class="card">
+                <header>
+                  <h2>Zero specificity</h2>
+                </header>
+                <div>
+                  <p>
+                    Every selector sits in <code>@layer components</code> and
+                    <code>:where()</code>, so your CSS overrides it right away.
+                  </p>
+                </div>
+              </article>
+              <article class="card">
+                <header>
+                  <h2>Light / Dark</h2>
+                </header>
+                <div>
+                  <p>
+                    Themes switch through CSS custom properties, following the
+                    system or the user's choice, with no flash on load.
+                  </p>
+                </div>
+              </article>
+              <article class="card">
+                <header>
+                  <h2>Thai + Latin</h2>
+                </header>
+                <div>
+                  <p>
+                    One self-hosted woff2 Google Sans for both Thai and Latin.
+                    Table numbers use tabular-nums.
+                  </p>
+                  <p lang="th">ภาษาไทยกับ Latin ในบรรทัดเดียวกัน 1,234.50</p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section id="install">
+            <h2>Install</h2>
+            <p>
+              Add the files from <code>dist/</code>. Load the script in
+              <code>&lt;head&gt;</code> as a plain script, not
+              <code>type="module"</code>: it then applies the saved theme before
+              the first paint, so there is no flash and no inline script to add.
+            </p>
+            <pre><code>&lt;link rel="stylesheet" href="dist/tsunami.min.css"&gt;
+&lt;script src="dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+          </section>
+          <section>
+            <h2>Example</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <dl class="stat">
+                      <div>
+                        <dt>Revenue</dt>
+                        <dd>$12,840</dd>
+                        <dd data-variant="ok">+12.4% from last month</dd>
+                      </div>
+                      <div>
+                        <dt>Orders</dt>
+                        <dd>1,284</dd>
+                        <dd>+3.1%</dd>
+                      </div>
+                      <div>
+                        <dt>Refunds</dt>
+                        <dd>18</dd>
+                        <dd data-variant="danger">+2 orders</dd>
+                      </div>
+                      <div>
+                        <dt>New customers</dt>
+                        <dd>342</dd>
+                        <dd>Flat</dd>
+                      </div>
+                    </dl>
+                    <div class="card">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Order</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" data-align="end">Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>#1042</td>
+                            <td>Emma Wilson</td>
+                            <td>
+                              <span class="badge" data-variant="ok">Paid</span>
+                            </td>
+                            <td data-align="end">$129.00</td>
+                          </tr>
+                          <tr>
+                            <td>#1041</td>
+                            <td>James Carter</td>
+                            <td><span class="badge">Pending</span></td>
+                            <td data-align="end">$84.50</td>
+                          </tr>
+                          <tr>
+                            <td>#1040</td>
+                            <td>Olivia Brown</td>
+                            <td>
+                              <span class="badge" data-variant="danger"
+                                >Cancelled</span
+                              >
+                            </td>
+                            <td data-align="end">$246.00</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;dl class="stat"&gt;
+  &lt;div&gt;
+    &lt;dt&gt;Revenue&lt;/dt&gt;
+    &lt;dd&gt;$12,840&lt;/dd&gt;
+    &lt;dd data-variant="ok"&gt;+12.4% from last month&lt;/dd&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;dt&gt;Orders&lt;/dt&gt;
+    &lt;dd&gt;1,284&lt;/dd&gt;
+    &lt;dd&gt;+3.1%&lt;/dd&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;dt&gt;Refunds&lt;/dt&gt;
+    &lt;dd&gt;18&lt;/dd&gt;
+    &lt;dd data-variant="danger"&gt;+2 orders&lt;/dd&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;dt&gt;New customers&lt;/dt&gt;
+    &lt;dd&gt;342&lt;/dd&gt;
+    &lt;dd&gt;Flat&lt;/dd&gt;
+  &lt;/div&gt;
+&lt;/dl&gt;
+&lt;div class="card"&gt;
+&lt;table class="table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Order&lt;/th&gt;
+      &lt;th scope="col"&gt;Customer&lt;/th&gt;
+      &lt;th scope="col"&gt;Status&lt;/th&gt;
+      &lt;th scope="col" data-align="end"&gt;Total&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;#1042&lt;/td&gt;
+      &lt;td&gt;Emma Wilson&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;
+      &lt;td data-align="end"&gt;$129.00&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;#1041&lt;/td&gt;
+      &lt;td&gt;James Carter&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge"&gt;Pending&lt;/span&gt;&lt;/td&gt;
+      &lt;td data-align="end"&gt;$84.50&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;#1040&lt;/td&gt;
+      &lt;td&gt;Olivia Brown&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge" data-variant="danger"&gt;Cancelled&lt;/span&gt;&lt;/td&gt;
+      &lt;td data-align="end"&gt;$246.00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>

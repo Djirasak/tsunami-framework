@@ -1,0 +1,778 @@
+<header class="page-header">
+            <div>
+              <h1>Colors</h1>
+              <p>
+                The colours are CSS variables that change value with the theme.
+                Components only use these variables.
+              </p>
+            </div>
+          </header>
+          <div class="alert" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <div>
+              <strong>Light and dark columns are static</strong>
+              <p>
+                The variables live on <code>:root</code> only, and
+                <code>data-theme</code> goes on <code>&lt;html&gt;</code>, not
+                on a child element. So the two swatch columns are drawn from the
+                hex values of both themes for comparison. Every Preview uses the
+                current theme.
+              </p>
+            </div>
+          </div>
+          <section>
+            <h2>Surfaces</h2>
+            <p>The page, and the panels that sit on it.</p>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #fcfcfc">
+                    <code>--bg</code><span>#fcfcfc</span>
+                  </div>
+                  <div style="--c: #fff">
+                    <code>--surface</code><span>#fff</span>
+                  </div>
+                  <div style="--c: #f4f6f7">
+                    <code>--subtle</code><span>#f4f6f7</span>
+                  </div>
+                  <div style="--c: rgb(18 25 29 / 0.4)">
+                    <code>--overlay</code><span>rgb(18 25 29 / 0.4)</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #0d1316">
+                    <code>--bg</code><span>#0d1316</span>
+                  </div>
+                  <div style="--c: #12191d">
+                    <code>--surface</code><span>#12191d</span>
+                  </div>
+                  <div style="--c: #182126">
+                    <code>--subtle</code><span>#182126</span>
+                  </div>
+                  <div style="--c: rgb(0 0 0 / 0.6)">
+                    <code>--overlay</code><span>rgb(0 0 0 / 0.6)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Actions and emphasis</h2>
+            <p>
+              Main and secondary text, and the one accent for links, the primary
+              button and focus only. The default button is an outline with no
+              fill of its own.
+            </p>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #12191d">
+                    <code>--fg</code><span>#12191d</span>
+                  </div>
+                  <div style="--c: #5f6e75">
+                    <code>--muted</code><span>#5f6e75</span>
+                  </div>
+                  <div style="--c: #2b7f93">
+                    <code>--accent</code><span>#2b7f93</span>
+                  </div>
+                  <div style="--c: #fff">
+                    <code>--on-accent</code><span>#fff</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #e7eef0">
+                    <code>--fg</code><span>#e7eef0</span>
+                  </div>
+                  <div style="--c: #8b9ba2">
+                    <code>--muted</code><span>#8b9ba2</span>
+                  </div>
+                  <div style="--c: #6cc0d3">
+                    <code>--accent</code><span>#6cc0d3</span>
+                  </div>
+                  <div style="--c: #0d1316">
+                    <code>--on-accent</code><span>#0d1316</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Status</h2>
+            <p>
+              Each status is a <code>-bg</code> and <code>-fg</code> pair. Use
+              them together for a light fill with dark text (badge, alert), or
+              use <code>-fg</code> alone for text, icons and bars. progress Each
+              status is a soft fill and a dark text pair.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Status">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <span class="badge" data-variant="ok">Paid</span>
+                    <span class="badge" data-variant="warning">Review</span>
+                    <span class="badge" data-variant="danger">Cancelled</span>
+                    <span class="badge" data-variant="info">Shipping</span>
+                    <span class="badge">Draft</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;
+  &lt;span class="badge" data-variant="warning"&gt;Review&lt;/span&gt;
+  &lt;span class="badge" data-variant="danger"&gt;Cancelled&lt;/span&gt;
+  &lt;span class="badge" data-variant="info"&gt;Shipping&lt;/span&gt;
+  &lt;span class="badge"&gt;Draft&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #e4f5ec">
+                    <code>--ok-bg</code><span>#e4f5ec</span>
+                  </div>
+                  <div style="--c: #17724a">
+                    <code>--ok-fg</code><span>#17724a</span>
+                  </div>
+                  <div style="--c: #fdf3dc">
+                    <code>--warning-bg</code><span>#fdf3dc</span>
+                  </div>
+                  <div style="--c: #8a5a00">
+                    <code>--warning-fg</code><span>#8a5a00</span>
+                  </div>
+                  <div style="--c: #fde8e8">
+                    <code>--danger-bg</code><span>#fde8e8</span>
+                  </div>
+                  <div style="--c: #b42323">
+                    <code>--danger-fg</code><span>#b42323</span>
+                  </div>
+                  <div style="--c: #e3f0fb">
+                    <code>--info-bg</code><span>#e3f0fb</span>
+                  </div>
+                  <div style="--c: #1f5f99">
+                    <code>--info-fg</code><span>#1f5f99</span>
+                  </div>
+                  <div style="--c: #eceff1">
+                    <code>--neutral-bg</code><span>#eceff1</span>
+                  </div>
+                  <div style="--c: #4a585e">
+                    <code>--neutral-fg</code><span>#4a585e</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #12301f">
+                    <code>--ok-bg</code><span>#12301f</span>
+                  </div>
+                  <div style="--c: #6fd3a0">
+                    <code>--ok-fg</code><span>#6fd3a0</span>
+                  </div>
+                  <div style="--c: #33270f">
+                    <code>--warning-bg</code><span>#33270f</span>
+                  </div>
+                  <div style="--c: #f0c060">
+                    <code>--warning-fg</code><span>#f0c060</span>
+                  </div>
+                  <div style="--c: #3a1717">
+                    <code>--danger-bg</code><span>#3a1717</span>
+                  </div>
+                  <div style="--c: #f08a8a">
+                    <code>--danger-fg</code><span>#f08a8a</span>
+                  </div>
+                  <div style="--c: #12263a">
+                    <code>--info-bg</code><span>#12263a</span>
+                  </div>
+                  <div style="--c: #7fb8ea">
+                    <code>--info-fg</code><span>#7fb8ea</span>
+                  </div>
+                  <div style="--c: #1e292f">
+                    <code>--neutral-bg</code><span>#1e292f</span>
+                  </div>
+                  <div style="--c: #a9b8be">
+                    <code>--neutral-fg</code><span>#a9b8be</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Lines and fields</h2>
+            <p>
+              Form fields have no colour variables of their own. They use
+              <code>--line</code> for the border, <code>--surface</code> for the
+              fill and a 2px <code>--accent</code> focus ring, like every
+              element.
+            </p>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #e3e8ea">
+                    <code>--line</code><span>Field border</span
+                    ><span>#e3e8ea</span>
+                  </div>
+                  <div style="--c: #fff">
+                    <code>--surface</code><span>Field fill</span
+                    ><span>#fff</span>
+                  </div>
+                  <div style="--c: #2b7f93">
+                    <code>--accent</code><span>Focus border and ring</span
+                    ><span>#2b7f93</span>
+                  </div>
+                  <div style="--c: #b42323">
+                    <code>--danger-fg</code><span>Invalid border</span
+                    ><span>#b42323</span>
+                  </div>
+                  <div style="--c: #f4f6f7">
+                    <code>--subtle</code><span>Disabled fill</span
+                    ><span>#f4f6f7</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #25333a">
+                    <code>--line</code><span>Field border</span
+                    ><span>#25333a</span>
+                  </div>
+                  <div style="--c: #12191d">
+                    <code>--surface</code><span>Field fill</span
+                    ><span>#12191d</span>
+                  </div>
+                  <div style="--c: #6cc0d3">
+                    <code>--accent</code><span>Focus border and ring</span
+                    ><span>#6cc0d3</span>
+                  </div>
+                  <div style="--c: #f08a8a">
+                    <code>--danger-fg</code><span>Invalid border</span
+                    ><span>#f08a8a</span>
+                  </div>
+                  <div style="--c: #182126">
+                    <code>--subtle</code><span>Disabled fill</span
+                    ><span>#182126</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Charts</h2>
+            <p>
+              Tsunami has no chart colour variables of its own. A
+              <a href="/docs/chart">chart</a> takes the accent and the status
+              <code>-fg</code> colours in turn. For simple comparison bars, use
+              <code>progress</code> with <code>--fg</code> and the status
+              <code>-fg</code> colours.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Charts">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <label for="ch-1">Storefront $18,240</label>
+                    <progress
+                      id="ch-1"
+                      class="progress"
+                      value="182400"
+                      max="250000"
+                    >
+                      73%
+                    </progress>
+                    <label for="ch-2">Marketplace $9,625</label>
+                    <progress
+                      id="ch-2"
+                      class="progress"
+                      data-variant="ok"
+                      value="96250"
+                      max="250000"
+                    >
+                      39%
+                    </progress>
+                    <label for="ch-3">Refunds $1,290</label>
+                    <progress
+                      id="ch-3"
+                      class="progress"
+                      data-variant="danger"
+                      value="12900"
+                      max="250000"
+                    >
+                      5%
+                    </progress>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;label for="ch-1"&gt;Storefront $18,240&lt;/label&gt;
+  &lt;progress id="ch-1" class="progress" value="182400" max="250000"&gt;73%&lt;/progress&gt;
+  &lt;label for="ch-2"&gt;Marketplace $9,625&lt;/label&gt;
+  &lt;progress id="ch-2" class="progress" data-variant="ok" value="96250" max="250000"&gt;39%&lt;/progress&gt;
+  &lt;label for="ch-3"&gt;Refunds $1,290&lt;/label&gt;
+  &lt;progress id="ch-3" class="progress" data-variant="danger" value="12900" max="250000"&gt;5%&lt;/progress&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sidebar</h2>
+            <p>
+              The sidebar and subnav reuse the page variables:
+              <code>--subtle</code> for the fill and
+              <code>--neutral-bg</code> for the current and hovered items.
+            </p>
+            <div class="docs-grid">
+              <div class="stack" data-gap="sm">
+                <h3>Light</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #f4f6f7">
+                    <code>--subtle</code><span>Sidebar fill</span
+                    ><span>#f4f6f7</span>
+                  </div>
+                  <div style="--c: #eceff1">
+                    <code>--neutral-bg</code><span>Current and hover</span
+                    ><span>#eceff1</span>
+                  </div>
+                  <div style="--c: #e3e8ea">
+                    <code>--line</code><span>Right border</span
+                    ><span>#e3e8ea</span>
+                  </div>
+                  <div style="--c: #5f6e75">
+                    <code>--muted</code><span>Group labels, icons</span
+                    ><span>#5f6e75</span>
+                  </div>
+                  <div style="--c: #2b7f93">
+                    <code>--accent</code><span>focus ring</span
+                    ><span>#2b7f93</span>
+                  </div>
+                </div>
+              </div>
+              <div class="stack" data-gap="sm">
+                <h3>Dark</h3>
+                <div class="docs-swatches">
+                  <div style="--c: #182126">
+                    <code>--subtle</code><span>Sidebar fill</span
+                    ><span>#182126</span>
+                  </div>
+                  <div style="--c: #1e292f">
+                    <code>--neutral-bg</code><span>Current and hover</span
+                    ><span>#1e292f</span>
+                  </div>
+                  <div style="--c: #25333a">
+                    <code>--line</code><span>Right border</span
+                    ><span>#25333a</span>
+                  </div>
+                  <div style="--c: #8b9ba2">
+                    <code>--muted</code><span>Group labels, icons</span
+                    ><span>#8b9ba2</span>
+                  </div>
+                  <div style="--c: #6cc0d3">
+                    <code>--accent</code><span>focus ring</span
+                    ><span>#6cc0d3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>States of each colour</h2>
+            <p>
+              Each state as the components draw it. There is no separate
+              <code>:active</code> colour; it uses the hover colour. Hover and
+              press Tab in the Preview to try it.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="States of each colour">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button type="button" class="btn" data-variant="primary">
+                        Save
+                      </button>
+                      <button type="button" class="btn">Export</button>
+                      <button type="button" class="btn" data-variant="ghost">
+                        Cancel
+                      </button>
+                      <button type="button" class="btn" data-variant="danger">
+                        Delete
+                      </button>
+                      <button type="button" class="btn" disabled>
+                        Disabled
+                      </button>
+                    </div>
+                    <div class="stack" data-direction="row">
+                      <a href="/docs">View order</a>
+                      <a class="link" data-variant="muted" href="/docs">History</a>
+                    </div>
+                    <div class="stack docs-narrow" data-gap="sm">
+                      <div class="field">
+                        <label for="st-1">SKU</label>
+                        <input id="st-1" type="text" value="TS-1042" />
+                      </div>
+                      <div class="field">
+                        <label for="st-2">Price</label>
+                        <input
+                          id="st-2"
+                          type="text"
+                          value="-$90"
+                          aria-invalid="true"
+                          aria-describedby="st-2-hint"
+                        />
+                        <small id="st-2-hint">Price must be above 0</small>
+                      </div>
+                      <div class="field">
+                        <label for="st-3">Store ID</label>
+                        <input id="st-3" type="text" value="emma-01" disabled />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="button" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;button type="button" class="btn"&gt;Export&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="ghost"&gt;Cancel&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="danger"&gt;Delete&lt;/button&gt;
+    &lt;button type="button" class="btn" disabled&gt;Disabled&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row"&gt;
+    &lt;a href="#"&gt;View order&lt;/a&gt;
+    &lt;a class="link" data-variant="muted" href="#"&gt;History&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="stack docs-narrow" data-gap="sm"&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="st-1"&gt;SKU&lt;/label&gt;
+      &lt;input id="st-1" type="text" value="TS-1042" /&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="st-2"&gt;Price&lt;/label&gt;
+      &lt;input id="st-2" type="text" value="-$90" aria-invalid="true" aria-describedby="st-2-hint" /&gt;
+      &lt;small id="st-2-hint"&gt;Price must be above 0&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="st-3"&gt;Store ID&lt;/label&gt;
+      &lt;input id="st-3" type="text" value="emma-01" disabled /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="States of each colour"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Colour · state</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Used in</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Accent · Rest</td>
+                    <td><code>--accent</code> + <code>--on-accent</code></td>
+                    <td>Primary button</td>
+                  </tr>
+                  <tr>
+                    <td>Accent · Hover</td>
+                    <td><code>filter: brightness(0.94)</code></td>
+                    <td>Primary button</td>
+                  </tr>
+                  <tr>
+                    <td>Accent · Text</td>
+                    <td><code>--accent</code>, underline on hover</td>
+                    <td>Links</td>
+                  </tr>
+                  <tr>
+                    <td>Accent · Focus</td>
+                    <td>outline 2px <code>--accent</code></td>
+                    <td>Every focusable element, field border</td>
+                  </tr>
+                  <tr>
+                    <td>Outline · Rest</td>
+                    <td>
+                      <code>--surface</code> + <code>--line</code> border +
+                      <code>--fg</code>
+                    </td>
+                    <td>Default button</td>
+                  </tr>
+                  <tr>
+                    <td>Outline · Hover</td>
+                    <td><code>--subtle</code></td>
+                    <td>Default and ghost buttons</td>
+                  </tr>
+                  <tr>
+                    <td>Muted · Hover</td>
+                    <td><code>--muted</code> → <code>--fg</code></td>
+                    <td>Muted link</td>
+                  </tr>
+                  <tr>
+                    <td>Neutral · Hover / current</td>
+                    <td><code>--neutral-bg</code></td>
+                    <td>Sidebar and subnav items</td>
+                  </tr>
+                  <tr>
+                    <td>Danger · Rest</td>
+                    <td><code>--danger-fg</code></td>
+                    <td>Danger button, invalid field border</td>
+                  </tr>
+                  <tr>
+                    <td>Danger · Hover</td>
+                    <td><code>--danger-bg</code></td>
+                    <td>Danger button</td>
+                  </tr>
+                  <tr>
+                    <td>Ok / warning / info / danger · Soft</td>
+                    <td><code>--*-bg</code> + <code>--*-fg</code></td>
+                    <td>badge, alert</td>
+                  </tr>
+                  <tr>
+                    <td>Ok / warning / info / danger · Text</td>
+                    <td><code>--*-fg</code></td>
+                    <td>Stat, progress, icons</td>
+                  </tr>
+                  <tr>
+                    <td>All · Disabled</td>
+                    <td>
+                      <code>opacity: 0.5</code> (buttons),
+                      <code>--subtle</code> (field)
+                    </td>
+                    <td>Buttons, fields</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>CSS variables</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="CSS variables"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Variable</th>
+                    <th scope="col">Light / Dark</th>
+                    <th scope="col">Used for</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>--bg</code></td>
+                    <td><code>#fcfcfc / #0d1316</code></td>
+                    <td>Page background</td>
+                  </tr>
+                  <tr>
+                    <td><code>--surface</code></td>
+                    <td><code>#fff / #12191d</code></td>
+                    <td>Cards, inputs, dialogs, popovers, dropdowns</td>
+                  </tr>
+                  <tr>
+                    <td><code>--subtle</code></td>
+                    <td><code>#f4f6f7 / #182126</code></td>
+                    <td>
+                      Quiet fills: sidebar, button hover, code, disabled fields
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>--fg</code></td>
+                    <td><code>#12191d / #e7eef0</code></td>
+                    <td>Main text, default progress bar</td>
+                  </tr>
+                  <tr>
+                    <td><code>--muted</code></td>
+                    <td><code>#5f6e75 / #8b9ba2</code></td>
+                    <td>Secondary text, labels, table headers</td>
+                  </tr>
+                  <tr>
+                    <td><code>--line</code></td>
+                    <td><code>#e3e8ea / #25333a</code></td>
+                    <td>1px borders and dividers</td>
+                  </tr>
+                  <tr>
+                    <td><code>--accent</code></td>
+                    <td><code>#2b7f93 / #6cc0d3</code></td>
+                    <td>
+                      Links, primary buttons, focus ring, checked checkboxes
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>--on-accent</code></td>
+                    <td><code>#fff / #0d1316</code></td>
+                    <td>Text on an accent fill</td>
+                  </tr>
+                  <tr>
+                    <td><code>--ok-bg</code></td>
+                    <td><code>#e4f5ec / #12301f</code></td>
+                    <td>Success fill</td>
+                  </tr>
+                  <tr>
+                    <td><code>--ok-fg</code></td>
+                    <td><code>#17724a / #6fd3a0</code></td>
+                    <td>Success text and icons</td>
+                  </tr>
+                  <tr>
+                    <td><code>--warning-bg</code></td>
+                    <td><code>#fdf3dc / #33270f</code></td>
+                    <td>Warning fill</td>
+                  </tr>
+                  <tr>
+                    <td><code>--warning-fg</code></td>
+                    <td><code>#8a5a00 / #f0c060</code></td>
+                    <td>Warning text</td>
+                  </tr>
+                  <tr>
+                    <td><code>--danger-bg</code></td>
+                    <td><code>#fde8e8 / #3a1717</code></td>
+                    <td>Error fill, danger button hover</td>
+                  </tr>
+                  <tr>
+                    <td><code>--danger-fg</code></td>
+                    <td><code>#b42323 / #f08a8a</code></td>
+                    <td>Error text, invalid field border</td>
+                  </tr>
+                  <tr>
+                    <td><code>--info-bg</code></td>
+                    <td><code>#e3f0fb / #12263a</code></td>
+                    <td>Info fill</td>
+                  </tr>
+                  <tr>
+                    <td><code>--info-fg</code></td>
+                    <td><code>#1f5f99 / #7fb8ea</code></td>
+                    <td>Info text</td>
+                  </tr>
+                  <tr>
+                    <td><code>--neutral-bg</code></td>
+                    <td><code>#eceff1 / #1e292f</code></td>
+                    <td>Neutral fill: default badge, active sidebar item</td>
+                  </tr>
+                  <tr>
+                    <td><code>--neutral-fg</code></td>
+                    <td><code>#4a585e / #a9b8be</code></td>
+                    <td>Neutral text: default badge</td>
+                  </tr>
+                  <tr>
+                    <td><code>--overlay</code></td>
+                    <td><code>rgb(18 25 29 / 0.4) / rgb(0 0 0 / 0.6)</code></td>
+                    <td>Backdrop behind dialogs and drawers</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

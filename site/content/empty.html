@@ -1,0 +1,171 @@
+<header class="page-header">
+            <div>
+              <h1>Empty</h1>
+              <p>
+                An empty state for when there is no data yet: icon, title,
+                description, starting actions and a learn-more link.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              <code>&lt;header&gt;</code> holds the icon figure, title and
+              description. <code>&lt;footer&gt;</code> holds a row of buttons
+              followed by a link.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <section class="empty">
+                    <header>
+                      <figure>
+                        <i class="icon icon-package" aria-hidden="true"></i>
+                      </figure>
+                      <h3>No products yet</h3>
+                      <p>
+                        You have not added any products. Create your first
+                        product or import them from a CSV file.
+                      </p>
+                    </header>
+                    <footer>
+                      <div>
+                        <button
+                          type="button"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          Add product
+                        </button>
+                        <button type="button" class="btn">Import</button>
+                      </div>
+                      <a href="/docs" class="link" data-variant="muted"
+                        >Learn more<i
+                          class="icon icon-arrow-up-right"
+                          aria-hidden="true"
+                        ></i
+                      ></a>
+                    </footer>
+                  </section>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;section class="empty"&gt;
+  &lt;header&gt;
+    &lt;figure&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;h3&gt;No products yet&lt;/h3&gt;
+    &lt;p&gt;You have not added any products. Create your first product or import them from a CSV file.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;footer&gt;
+    &lt;div&gt;
+      &lt;button type="button" class="btn" data-variant="primary"&gt;Add product&lt;/button&gt;
+      &lt;button type="button" class="btn"&gt;Import&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;a href="#" class="link" data-variant="muted"&gt;Learn more&lt;i class="icon icon-arrow-up-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/footer&gt;
+&lt;/section&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.empty</code></td>
+                    <td></td>
+                    <td>
+                      Centred box with 32px padding top and bottom. Use on
+                      <code>&lt;section&gt;</code> or <code>&lt;div&gt;</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; header</code></td>
+                    <td></td>
+                    <td>Groups the icon, title and description.</td>
+                  </tr>
+                  <tr>
+                    <td><code>figure</code></td>
+                    <td></td>
+                    <td>
+                      40px icon frame with a subtle fill. Put an
+                      <code>.icon</code> inside.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>h3</code></td>
+                    <td></td>
+                    <td>Title, 16px bold.</td>
+                  </tr>
+                  <tr>
+                    <td><code>p</code></td>
+                    <td></td>
+                    <td>Muted description, max 28rem wide.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer</code></td>
+                    <td></td>
+                    <td>Optional. Stacks the buttons and link vertically.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer &gt; div</code></td>
+                    <td></td>
+                    <td>
+                      Button row that can wrap. The main button uses
+                      <code>data-variant="primary"</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer &gt; a.link</code></td>
+                    <td><code>data-variant="muted"</code></td>
+                    <td>Muted learn-more link below the button row.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

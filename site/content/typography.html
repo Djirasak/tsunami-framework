@@ -1,0 +1,1074 @@
+<header class="page-header">
+            <div>
+              <h1>Typography</h1>
+              <p>
+                One typeface, Google Sans, for both Thai and Latin. Base size
+                14px, line-height 1.55. Wrap long content in
+                <code>.typography</code> to get spacing, lists and quotes.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Headings: h1 to h6</h2>
+            <p>
+              The base style resets the margin of every element. Add
+              <code>class="typography"</code> to a wrapper to give headings,
+              paragraphs and lists article spacing.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Headings: h1 to h6">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;h1&gt;Heading 1&lt;/h1&gt;
+  &lt;h2&gt;Heading 2&lt;/h2&gt;
+  &lt;h3&gt;Heading 3&lt;/h3&gt;
+  &lt;h4&gt;Heading 4&lt;/h4&gt;
+  &lt;h5&gt;Heading 5&lt;/h5&gt;
+  &lt;h6&gt;Heading 6&lt;/h6&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Heading classes: h1 to h6 on any element</h2>
+            <p>
+              <code>class="h1"</code> to <code>class="h6"</code> give any
+              element the size and weight of that heading, without changing the
+              element. Use them when the page outline and the look differ: a
+              section title that is an <code>h2</code> but looks like an
+              <code>h4</code>, or a card title that is a <code>p</code> or a
+              <code>div</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Heading classes: h1 to h6 on any element"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1a-tp"
+                  aria-selected="true"
+                  aria-controls="ex1a-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1a-tc"
+                  aria-selected="false"
+                  aria-controls="ex1a-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1a-p"
+                aria-labelledby="ex1a-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <p class="h1">Class h1 on a paragraph</p>
+                    <p class="h2">Class h2 on a paragraph</p>
+                    <p class="h3">Class h3 on a paragraph</p>
+                    <p class="h4">Class h4 on a paragraph</p>
+                    <p class="h5">Class h5 on a paragraph</p>
+                    <p class="h6">Class h6 on a paragraph</p>
+                    <h2 class="h4">An h2 that looks like an h4</h2>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1a-c"
+                aria-labelledby="ex1a-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;p class="h1"&gt;Class h1 on a paragraph&lt;/p&gt;
+&lt;p class="h2"&gt;Class h2 on a paragraph&lt;/p&gt;
+&lt;p class="h3"&gt;Class h3 on a paragraph&lt;/p&gt;
+&lt;p class="h4"&gt;Class h4 on a paragraph&lt;/p&gt;
+&lt;p class="h5"&gt;Class h5 on a paragraph&lt;/p&gt;
+&lt;p class="h6"&gt;Class h6 on a paragraph&lt;/p&gt;
+&lt;h2 class="h4"&gt;An h2 that looks like an h4&lt;/h2&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Paragraphs: lead, default, muted and small</h2>
+            <p>
+              Add <code>data-variant="lead"</code> or <code>"muted"</code> to a
+              <code>&lt;p&gt;</code>. Use <code>&lt;small&gt;</code> for small
+              text.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Paragraphs: lead, default, muted and small"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <p data-variant="lead">
+                      Lead paragraph. One or two sentences that open the page
+                      and say what it is for.
+                    </p>
+                    <p>
+                      Paragraph. An order moves from Pending to Processing once
+                      payment is captured, and to Fulfilled once every item has
+                      shipped.
+                    </p>
+                    <p data-variant="muted">
+                      Muted paragraph. Extra detail for the text above.
+                    </p>
+                    <p>
+                      <small
+                        >Small text. Last edited Oct 2, 2026 at 02:39.</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;p data-variant="lead"&gt;Lead paragraph. One or two sentences that open the page and say what it is for.&lt;/p&gt;
+  &lt;p&gt;Paragraph. An order moves from Pending to Processing once payment is captured, and to Fulfilled once every item has shipped.&lt;/p&gt;
+  &lt;p data-variant="muted"&gt;Muted paragraph. Extra detail for the text above.&lt;/p&gt;
+  &lt;p&gt;&lt;small&gt;Small text. Last edited Oct 2, 2026 at 02:39.&lt;/small&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Inline text: strong, emphasis, link, mark, deleted, inserted,
+              abbreviation, code, key, subscript and superscript
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Inline text: strong, emphasis, link, mark, deleted, inserted, abbreviation, code, key, subscript and superscript"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <p><strong>Strong</strong> for the most important text.</p>
+                    <p><em>Emphasis</em> stresses a word.</p>
+                    <p><a href="/docs">Link</a> to another page.</p>
+                    <p><mark>Mark</mark> highlights a search match.</p>
+                    <p><del>$39.00</del> <ins>$29.00</ins> shows a change.</p>
+                    <p>
+                      <abbr title="Stock keeping unit">SKU</abbr> is an
+                      abbreviation. Hover to see what it means.
+                    </p>
+                    <p>
+                      <code>order_status</code> for field names, values or
+                      commands.
+                    </p>
+                    <p>Press <kbd>Ctrl</kbd> <kbd>K</kbd> to search.</p>
+                    <p>
+                      Subscript H<sub>2</sub>O and superscript m<sup>2</sup>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;p&gt;&lt;strong&gt;Strong&lt;/strong&gt; for the most important text.&lt;/p&gt;
+  &lt;p&gt;&lt;em&gt;Emphasis&lt;/em&gt; stresses a word.&lt;/p&gt;
+  &lt;p&gt;&lt;a href="#"&gt;Link&lt;/a&gt; to another page.&lt;/p&gt;
+  &lt;p&gt;&lt;mark&gt;Mark&lt;/mark&gt; highlights a search match.&lt;/p&gt;
+  &lt;p&gt;&lt;del&gt;$39.00&lt;/del&gt; &lt;ins&gt;$29.00&lt;/ins&gt; shows a change.&lt;/p&gt;
+  &lt;p&gt;&lt;abbr title="Stock keeping unit"&gt;SKU&lt;/abbr&gt; is an abbreviation. Hover to see what it means.&lt;/p&gt;
+  &lt;p&gt;&lt;code&gt;order_status&lt;/code&gt; for field names, values or commands.&lt;/p&gt;
+  &lt;p&gt;Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; &lt;kbd&gt;K&lt;/kbd&gt; to search.&lt;/p&gt;
+  &lt;p&gt;Subscript H&lt;sub&gt;2&lt;/sub&gt;O and superscript m&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Keyboard keys</h2>
+            <p>
+              Use <code>class="kbd"</code> outside <code>.typography</code>.
+              Inside <code>.typography</code>, a plain
+              <code>&lt;kbd&gt;</code> is enough.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Keyboard keys">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <kbd class="kbd">⌘</kbd>
+                      <kbd class="kbd">⇧</kbd>
+                      <kbd class="kbd">⌥</kbd>
+                      <kbd class="kbd">⌃</kbd>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <kbd class="kbd">Ctrl</kbd>
+                      <span>+</span>
+                      <kbd class="kbd">B</kbd>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;kbd class="kbd"&gt;⌘&lt;/kbd&gt;
+    &lt;kbd class="kbd"&gt;⇧&lt;/kbd&gt;
+    &lt;kbd class="kbd"&gt;⌥&lt;/kbd&gt;
+    &lt;kbd class="kbd"&gt;⌃&lt;/kbd&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;kbd class="kbd"&gt;Ctrl&lt;/kbd&gt;
+    &lt;span&gt;+&lt;/span&gt;
+    &lt;kbd class="kbd"&gt;B&lt;/kbd&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Unordered list, with a nested list</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Unordered list, with a nested list"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <ul>
+                      <li>Products</li>
+                      <li>
+                        Orders
+                        <ul>
+                          <li>Open carts</li>
+                          <li>Returns</li>
+                        </ul>
+                      </li>
+                      <li>Customers</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Products&lt;/li&gt;
+    &lt;li&gt;Orders
+      &lt;ul&gt;
+        &lt;li&gt;Open carts&lt;/li&gt;
+        &lt;li&gt;Returns&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Customers&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Ordered list</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Ordered list">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <ol>
+                      <li>Create the product.</li>
+                      <li>Add its variants.</li>
+                      <li>Set it to public.</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Create the product.&lt;/li&gt;
+    &lt;li&gt;Add its variants.&lt;/li&gt;
+    &lt;li&gt;Set it to public.&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Description list: terms and their values</h2>
+            <p>
+              <code>&lt;dt&gt;</code> is a grey label on the left.
+              <code>&lt;dd&gt;</code> is the value on the right.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Description list: terms and their values"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <dl>
+                      <dt>Method</dt>
+                      <dd>Express</dd>
+                      <dt>Source</dt>
+                      <dd>Checkout Flow</dd>
+                      <dt>Date</dt>
+                      <dd>Sep 3, 2026 at 00:35</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;Method&lt;/dt&gt;
+    &lt;dd&gt;Express&lt;/dd&gt;
+    &lt;dt&gt;Source&lt;/dt&gt;
+    &lt;dd&gt;Checkout Flow&lt;/dd&gt;
+    &lt;dt&gt;Date&lt;/dt&gt;
+    &lt;dd&gt;Sep 3, 2026 at 00:35&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Blockquote</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Blockquote">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <blockquote>
+                      <p>
+                        Tell us anything we should know when delivering your
+                        order.
+                      </p>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Tell us anything we should know when delivering your order.&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Code block</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Code block">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <pre><code>&lt;script src="https://payments.example.com/js/v1/payment.js?env_key=YOUR_ENV_KEY"&gt;&lt;/script&gt;</code></pre>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;pre&gt;&lt;code&gt;&amp;lt;script src="https://payments.example.com/js/v1/payment.js?env_key=YOUR_ENV_KEY"&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Horizontal line</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Horizontal line">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <p>Text above the line.</p>
+                    <hr />
+                    <p>Text below the line.</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;p&gt;Text above the line.&lt;/p&gt;
+  &lt;hr /&gt;
+  &lt;p&gt;Text below the line.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A full article</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A full article">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tp"
+                  aria-selected="true"
+                  aria-controls="ex11-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tc"
+                  aria-selected="false"
+                  aria-controls="ex11-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-p"
+                aria-labelledby="ex11-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <article class="typography">
+                    <h1>Shipping protection</h1>
+                    <p data-variant="lead">
+                      Cover orders that are lost, stolen or damaged on the way
+                      to the customer.
+                    </p>
+                    <h2>How it works</h2>
+                    <p>
+                      Customers add protection at checkout for $2.99. If a
+                      parcel does not arrive, the customer opens a claim from
+                      the <a href="/docs">order status page</a> and chooses a refund
+                      or a reshipment.
+                    </p>
+                    <h3>What is covered</h3>
+                    <ul>
+                      <li>Parcels marked as delivered that never arrived</li>
+                      <li>Items damaged in transit</li>
+                      <li>Parcels lost by the carrier</li>
+                    </ul>
+                    <blockquote>
+                      <p>
+                        Claims can be opened within 30 days of the ship date.
+                      </p>
+                    </blockquote>
+                    <h3>Setting it up</h3>
+                    <ol>
+                      <li>
+                        Open <strong>Settings</strong> and go to
+                        <strong>Shipping</strong>.
+                      </li>
+                      <li>Turn on protection and set the price.</li>
+                      <li>
+                        Save. A <code>shipping-protection</code> product is
+                        created for you.
+                      </li>
+                    </ol>
+                  </article>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-c"
+                aria-labelledby="ex11-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;article class="typography"&gt;
+  &lt;h1&gt;Shipping protection&lt;/h1&gt;
+  &lt;p data-variant="lead"&gt;
+    Cover orders that are lost, stolen or damaged on the way to the customer.
+  &lt;/p&gt;
+  &lt;h2&gt;How it works&lt;/h2&gt;
+  &lt;p&gt;
+    Customers add protection at checkout for $2.99. If a parcel does not arrive, the customer opens
+    a claim from the &lt;a href="#"&gt;order status page&lt;/a&gt; and chooses a refund or a reshipment.
+  &lt;/p&gt;
+  &lt;h3&gt;What is covered&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Parcels marked as delivered that never arrived&lt;/li&gt;
+    &lt;li&gt;Items damaged in transit&lt;/li&gt;
+    &lt;li&gt;Parcels lost by the carrier&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Claims can be opened within 30 days of the ship date.&lt;/p&gt;
+  &lt;/blockquote&gt;
+  &lt;h3&gt;Setting it up&lt;/h3&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Open &lt;strong&gt;Settings&lt;/strong&gt; and go to &lt;strong&gt;Shipping&lt;/strong&gt;.&lt;/li&gt;
+    &lt;li&gt;Turn on protection and set the price.&lt;/li&gt;
+    &lt;li&gt;Save. A &lt;code&gt;shipping-protection&lt;/code&gt; product is created for you.&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/article&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Thai and Latin</h2>
+            <p>
+              Google Sans covers both scripts, so Thai and Latin share one
+              baseline and line-height. Mark Thai text with
+              <code>lang="th"</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Thai and Latin">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tp"
+                  aria-selected="true"
+                  aria-controls="ex12-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex12-tc"
+                  aria-selected="false"
+                  aria-controls="ex12-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-p"
+                aria-labelledby="ex12-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="typography">
+                    <h3><span lang="th">คำสั่งซื้อ</span> Orders</h3>
+                    <p lang="th">
+                      คำสั่งซื้อเปลี่ยนเป็น Fulfilled
+                      เมื่อจัดส่งสินค้าครบทุกรายการ
+                    </p>
+                    <p>
+                      An order becomes Fulfilled once every item has shipped.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex12-c"
+                aria-labelledby="ex12-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="typography"&gt;
+  &lt;h3&gt;&lt;span lang="th"&gt;คำสั่งซื้อ&lt;/span&gt; Orders&lt;/h3&gt;
+  &lt;p lang="th"&gt;คำสั่งซื้อเปลี่ยนเป็น Fulfilled เมื่อจัดส่งสินค้าครบทุกรายการ&lt;/p&gt;
+  &lt;p&gt;An order becomes Fulfilled once every item has shipped.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.typography</code></td>
+                    <td><code>class</code></td>
+                    <td>
+                      Wrapper for long content. Adds spacing between blocks and
+                      styles h1-h6, list markers, quotes, pre and hr.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>p[data-variant]</code></td>
+                    <td>
+                      <code>lead</code>, <code>muted</code> (omit for default)
+                    </td>
+                    <td>lead: 16px grey, muted: grey. Used in .typography.</td>
+                  </tr>
+                  <tr>
+                    <td><code>small</code></td>
+                    <td></td>
+                    <td>12px grey in .typography.</td>
+                  </tr>
+                  <tr>
+                    <td><code>ul, ol, li</code></td>
+                    <td></td>
+                    <td>
+                      Markers disc / circle (nested) / decimal in --muted.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>dl > dt, dd</code></td>
+                    <td></td>
+                    <td>Two columns: dt is a grey label, dd is the value.</td>
+                  </tr>
+                  <tr>
+                    <td><code>blockquote</code></td>
+                    <td></td>
+                    <td>2px --line on the left, grey text.</td>
+                  </tr>
+                  <tr>
+                    <td><code>pre > code</code></td>
+                    <td></td>
+                    <td>Code block on --subtle. Scrolls horizontally.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code
+                        >code, mark, del, ins, abbr[title], sub, sup, a,
+                        strong</code
+                      >
+                    </td>
+                    <td></td>
+                    <td>
+                      Inline styles in .typography (underlined links, mark on
+                      --warning-bg).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>hr</code></td>
+                    <td></td>
+                    <td>
+                      1px --line with 24px space above and below in .typography.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.kbd</code></td>
+                    <td><code>class</code></td>
+                    <td>
+                      Keyboard key that works anywhere. In .typography, a plain
+                      <code>&lt;kbd&gt;</code> works.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>CSS variables</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="CSS variables"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Variable</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>--font-sans</code></td>
+                    <td>
+                      <code
+                        >"Google Sans", system-ui, -apple-system, "Segoe UI",
+                        sans-serif</code
+                      >
+                    </td>
+                    <td>
+                      Main typeface for Thai and Latin (the same in every
+                      theme).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>--font-mono</code></td>
+                    <td>
+                      <code
+                        >ui-monospace, "SF Mono", Menlo, Consolas,
+                        monospace</code
+                      >
+                    </td>
+                    <td>code, kbd, pre</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-sm</code></td>
+                    <td><code>0.75rem (12px)</code></td>
+                    <td>label, small, h5, h6, kbd</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-base</code></td>
+                    <td><code>0.875rem (14px)</code></td>
+                    <td>Body, h3, h4</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-lg</code></td>
+                    <td><code>1rem (16px)</code></td>
+                    <td>h2, lead</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-xl</code></td>
+                    <td><code>1.5rem (24px)</code></td>
+                    <td>h1, page title</td>
+                  </tr>
+                  <tr>
+                    <td><code>--leading</code></td>
+                    <td><code>1.55</code></td>
+                    <td>Base line-height. Headings use 1.25.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--fg</code></td>
+                    <td>
+                      <code>#12191d</code> light<br /><code>#e7eef0</code> dark
+                    </td>
+                    <td>Main text colour.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--muted</code></td>
+                    <td>
+                      <code>#5f6e75</code> light<br /><code>#8b9ba2</code> dark
+                    </td>
+                    <td>
+                      Secondary text colour: hints, captions, placeholders.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

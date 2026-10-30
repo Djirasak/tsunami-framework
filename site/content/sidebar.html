@@ -1,0 +1,510 @@
+<header class="page-header">
+            <div>
+              <h1>Sidebar</h1>
+              <p>App navigation on the left, collapsible to icons.</p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              The <code>nav</code> splits into <code>header</code> /
+              <code>section</code> / <code>footer</code>. Each group is a
+              <code>[role="group"]</code> with an <code>h3</code> and a
+              <code>ul</code>. Sub-links are a <code>ul</code> nested in an
+              <code>li</code>. The footer button collapses or expands with
+              <code>command="--toggle-collapsed"</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div>
+                    <aside class="sidebar" id="sb-usage" style="height: 34rem">
+                      <nav aria-label="Main">
+                        <header>
+                          <a href="/docs"
+                            ><span class="avatar" data-size="sm"
+                              ><span>AS</span></span
+                            ><span>Acme Store</span></a
+                          >
+                        </header>
+                        <section>
+                          <div role="group">
+                            <ul>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-house"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>Dashboard</span></a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                          <div role="group" aria-labelledby="sb-usage-sell">
+                            <h3 id="sb-usage-sell">Sell</h3>
+                            <ul>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-receipt"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>Orders</span></a
+                                >
+                                <ul>
+                                  <li>
+                                    <a href="/docs"><span>Open carts</span></a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-users"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>Customers</span></a
+                                >
+                              </li>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-repeat"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>Subscriptions</span
+                                  ><span class="badge">New</span></a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                          <div role="group" aria-labelledby="sb-usage-catalog">
+                            <h3 id="sb-usage-catalog">Catalog</h3>
+                            <ul>
+                              <li>
+                                <a href="/docs" aria-current="page"
+                                  ><i
+                                    class="icon icon-package"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>Products</span></a
+                                >
+                                <ul>
+                                  <li>
+                                    <a href="/docs"><span>Categories</span></a>
+                                  </li>
+                                  <li>
+                                    <a href="/docs"><span>Inventory</span></a>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-tag"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>Offers</span></a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                          <hr />
+                          <div role="group">
+                            <ul>
+                              <li>
+                                <a href="/docs"
+                                  ><i
+                                    class="icon icon-settings"
+                                    aria-hidden="true"
+                                  ></i
+                                  ><span>Settings</span></a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </section>
+                        <footer>
+                          <button
+                            type="button"
+                            class="btn"
+                            data-variant="ghost"
+                            data-size="icon"
+                            commandfor="sb-usage"
+                            command="--toggle-collapsed"
+                            aria-label="Collapse or expand sidebar"
+                          >
+                            <i
+                              class="icon icon-panel-left"
+                              aria-hidden="true"
+                            ></i>
+                          </button>
+                        </footer>
+                      </nav>
+                    </aside>
+                    <div class="empty">
+                      <p>Page content</p>
+                      <button
+                        type="button"
+                        class="btn"
+                        commandfor="sb-usage"
+                        command="--toggle-collapsed"
+                      >
+                        Toggle
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div&gt;
+  &lt;aside class="sidebar" id="sb-usage" style="height: 34rem"&gt;
+    &lt;nav aria-label="Main"&gt;
+      &lt;header&gt;
+        &lt;a href="#"&gt;&lt;span class="avatar" data-size="sm"&gt;&lt;span&gt;AS&lt;/span&gt;&lt;/span&gt;&lt;span&gt;Acme Store&lt;/span&gt;&lt;/a&gt;
+      &lt;/header&gt;
+      &lt;section&gt;
+        &lt;div role="group"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Dashboard&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div role="group" aria-labelledby="sb-usage-sell"&gt;
+          &lt;h3 id="sb-usage-sell"&gt;Sell&lt;/h3&gt;
+          &lt;ul&gt;
+            &lt;li&gt;
+              &lt;a href="#"&gt;&lt;i class="icon icon-receipt" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/a&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Open carts&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-users" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-repeat" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Subscriptions&lt;/span&gt;&lt;span class="badge"&gt;New&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div role="group" aria-labelledby="sb-usage-catalog"&gt;
+          &lt;h3 id="sb-usage-catalog"&gt;Catalog&lt;/h3&gt;
+          &lt;ul&gt;
+            &lt;li&gt;
+              &lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Products&lt;/span&gt;&lt;/a&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Categories&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;&lt;span&gt;Inventory&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Offers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;hr /&gt;
+        &lt;div role="group"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Settings&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+      &lt;footer&gt;
+        &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" commandfor="sb-usage" command="--toggle-collapsed" aria-label="Collapse or expand sidebar"&gt;&lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+  &lt;div class="empty"&gt;
+    &lt;p&gt;Page content&lt;/p&gt;
+    &lt;button type="button" class="btn" commandfor="sb-usage" command="--toggle-collapsed"&gt;Toggle&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Collapsed to icons, with tooltips</h2>
+            <p>
+              <code>data-collapsed="true"</code> hides headings, sub-links and
+              badges. The link label in its <code>span</code> becomes a tooltip
+              on hover or focus, so every top-level link should have an icon.
+              Pairs well with Subnav.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <aside
+                    class="sidebar"
+                    data-collapsed="true"
+                    style="height: 18rem"
+                  >
+                    <nav aria-label="Main">
+                      <ul>
+                        <li>
+                          <a href="/docs"
+                            ><i class="icon icon-house" aria-hidden="true"></i
+                            ><span>Home</span></a
+                          >
+                        </li>
+                        <li>
+                          <a href="/docs" aria-current="page"
+                            ><i class="icon icon-package" aria-hidden="true"></i
+                            ><span>Products</span></a
+                          >
+                        </li>
+                        <li>
+                          <a href="/docs"
+                            ><i
+                              class="icon icon-shopping-bag"
+                              aria-hidden="true"
+                            ></i
+                            ><span>Orders</span></a
+                          >
+                        </li>
+                        <li>
+                          <a href="/docs"
+                            ><i class="icon icon-user" aria-hidden="true"></i
+                            ><span>Customers</span></a
+                          >
+                        </li>
+                      </ul>
+                    </nav>
+                  </aside>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;aside class="sidebar" data-collapsed="true" style="height: 18rem"&gt;
+  &lt;nav aria-label="Main"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#" aria-current="page"&gt;&lt;i class="icon icon-package" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Products&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              Lives in <code>js/sidebar.js</code>. The sidebar fires no events
+              of its own. Read the state from <code>data-collapsed</code>.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.sidebar.collapse(sidebar)</code></td>
+                    <td><code>sidebar</code>: element <code>.sidebar</code></td>
+                    <td>
+                      Collapse to icons (sets
+                      <code>data-collapsed="true"</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.sidebar.expand(sidebar)</code></td>
+                    <td><code>sidebar</code>: element</td>
+                    <td>
+                      Back to full width (<code>data-collapsed="false"</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.sidebar.toggle(sidebar)</code></td>
+                    <td><code>sidebar</code>: element</td>
+                    <td>Toggle collapsed / expanded</td>
+                  </tr>
+                  <tr>
+                    <td><code>command="--toggle-collapsed"</code></td>
+                    <td>Button with <code>commandfor="sidebar-id"</code></td>
+                    <td>
+                      Toggle from a button anywhere, no JS needed. Also
+                      <code>--collapse</code> and <code>--expand</code>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.sidebar</code></td>
+                    <td><code>aside</code></td>
+                    <td>
+                      15rem wide, full height, scrolls on its own. Sits in a row
+                      with the next element automatically.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>popover + id</code></td>
+                    <td>on <code>.sidebar</code></td>
+                    <td>
+                      Below 48rem it is a drawer opened by a
+                      <code>.sidebar-toggle[popovertarget]</code> button. From
+                      48rem it is always shown.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-collapsed</code></td>
+                    <td>
+                      unset / <code>false</code> (default) full ·
+                      <code>true</code> icons
+                    </td>
+                    <td>
+                      Collapse to a 3.5rem icon column. Link labels become
+                      tooltips.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>nav</code></td>
+                    <td>child</td>
+                    <td>
+                      Add an <code>aria-label</code>. Hold links and an
+                      <code>h2</code>
+                      directly, or split into header / section / footer.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>nav &gt; header</code></td>
+                    <td>child</td>
+                    <td>
+                      Top area, such as the store name with an
+                      <code>.avatar</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>nav &gt; section</code></td>
+                    <td>child</td>
+                    <td>Menu groups, spaced apart</td>
+                  </tr>
+                  <tr>
+                    <td><code>nav &gt; footer</code></td>
+                    <td>child</td>
+                    <td>Pinned to the bottom, such as the collapse button</td>
+                  </tr>
+                  <tr>
+                    <td><code>[role="group"]</code></td>
+                    <td><code>div</code></td>
+                    <td>
+                      Link group. Add <code>aria-labelledby</code> pointing to
+                      the <code>h3</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>h2, h3</code></td>
+                    <td>in <code>nav</code></td>
+                    <td>Group heading, small and gray</td>
+                  </tr>
+                  <tr>
+                    <td><code>ul &gt; li &gt; a</code></td>
+                    <td>in <code>nav</code></td>
+                    <td>
+                      Link: a 16px <code>.icon</code> or <code>img</code>, then
+                      the label in a <code>span</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>li &gt; ul</code></td>
+                    <td>sub-links</td>
+                    <td>Indented on a guide line. Hidden when collapsed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.badge</code></td>
+                    <td>in <code>a</code></td>
+                    <td>Trailing label such as New. Hidden when collapsed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>hr</code></td>
+                    <td>in <code>section</code></td>
+                    <td>Divider between groups</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-current</code></td>
+                    <td><code>page</code></td>
+                    <td>
+                      On <code>a</code>: the current page. Gray background,
+                      medium weight.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

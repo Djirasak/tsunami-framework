@@ -1,0 +1,1386 @@
+<header class="page-header">
+            <div>
+              <h1>Chart</h1>
+              <p>
+                Line, bar, doughnut and other charts drawn on a canvas by
+                Chart.js, in the colours and type of the rest of the page.
+              </p>
+            </div>
+          </header>
+
+          <section>
+            <h2>A line chart takes rows and a series</h2>
+            <p>
+              Each chart is a <code>canvas</code> with an
+              <code>aria-label</code> inside a <code>.chart</code> box, and one
+              call to <code>tsunami.chart()</code> draws it. A series with
+              <code>surface: true</code> fills a flat, translucent area under
+              its line.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A line chart takes rows and a series"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart">
+                    <canvas
+                      id="ch-line"
+                      aria-label="Monthly sales, January to June"
+                    ></canvas>
+                  </div>
+                  <script>
+                    tsunami.chart("#ch-line", {
+                      type: "line",
+                      data: [
+                        { label: "Jan", sales: 4200 },
+                        { label: "Feb", sales: 5100 },
+                        { label: "Mar", sales: 4800 },
+                        { label: "Apr", sales: 6300 },
+                        { label: "May", sales: 7000 },
+                        { label: "Jun", sales: 6600 },
+                      ],
+                      series: { sales: { label: "Sales", surface: true } },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart"&gt;&lt;canvas id="ch-line" aria-label="Monthly sales, January to June"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+tsunami.chart('#ch-line', {
+  type: 'line',
+  data: [
+    { label: 'Jan', sales: 4200 },
+    { label: 'Feb', sales: 5100 },
+    { label: 'Mar', sales: 4800 },
+    { label: 'Apr', sales: 6300 },
+    { label: 'May', sales: 7000 },
+    { label: 'Jun', sales: 6600 },
+  ],
+  series: { sales: { label: 'Sales', surface: true } },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Bars with a legend</h2>
+            <p>
+              <code>legend: true</code> shows the legend under the chart. The
+              default type is <code>bar</code>; the series take the colours of
+              the palette in turn.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Bars with a legend">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart">
+                    <canvas
+                      id="ch-bars"
+                      aria-label="Orders and returns by month"
+                    ></canvas>
+                  </div>
+                  <script>
+                    tsunami.chart("#ch-bars", {
+                      legend: true,
+                      data: [
+                        { label: "Jan", orders: 320, returns: 24 },
+                        { label: "Feb", orders: 410, returns: 31 },
+                        { label: "Mar", orders: 380, returns: 22 },
+                        { label: "Apr", orders: 470, returns: 36 },
+                        { label: "May", orders: 520, returns: 29 },
+                        { label: "Jun", orders: 495, returns: 33 },
+                      ],
+                      series: {
+                        orders: { label: "Orders" },
+                        returns: { label: "Returns" },
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart"&gt;&lt;canvas id="ch-bars" aria-label="Orders and returns by month"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+tsunami.chart('#ch-bars', {
+  legend: true,
+  data: [
+    { label: 'Jan', orders: 320, returns: 24 },
+    { label: 'Feb', orders: 410, returns: 31 },
+    { label: 'Mar', orders: 380, returns: 22 },
+    { label: 'Apr', orders: 470, returns: 36 },
+    { label: 'May', orders: 520, returns: 29 },
+    { label: 'Jun', orders: 495, returns: 33 },
+  ],
+  series: {
+    orders: { label: 'Orders' },
+    returns: { label: 'Returns' },
+  },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>The legend aligns to the start, center or end</h2>
+            <p>
+              <code>legendAlign</code> places the legend under the chart:
+              <code>start</code>, <code>center</code> (the default) or
+              <code>end</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="The legend aligns to the start, center or end"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: repeat(
+                        auto-fit,
+                        minmax(15rem, 1fr)
+                      );
+                      gap: 1rem;
+                    "
+                  >
+                    <div class="chart" style="aspect-ratio: 4 / 3">
+                      <canvas
+                        id="ch-align-start"
+                        aria-label="Orders by quarter, legend at the start"
+                      ></canvas>
+                    </div>
+                    <div class="chart" style="aspect-ratio: 4 / 3">
+                      <canvas
+                        id="ch-align-center"
+                        aria-label="Orders by quarter, legend at the center"
+                      ></canvas>
+                    </div>
+                    <div class="chart" style="aspect-ratio: 4 / 3">
+                      <canvas
+                        id="ch-align-end"
+                        aria-label="Orders by quarter, legend at the end"
+                      ></canvas>
+                    </div>
+                  </div>
+                  <script>
+                    const rows = [
+                      { label: "Q1", orders: 1110 },
+                      { label: "Q2", orders: 1485 },
+                      { label: "Q3", orders: 1320 },
+                      { label: "Q4", orders: 1760 },
+                    ];
+                    for (const legendAlign of ["start", "center", "end"]) {
+                      tsunami.chart("#ch-align-" + legendAlign, {
+                        data: rows,
+                        legend: true,
+                        legendAlign,
+                        series: { orders: { label: "Orders" } },
+                      });
+                    }
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem"&gt;
+&lt;div class="chart" style="aspect-ratio: 4 / 3"&gt;&lt;canvas id="ch-align-start" aria-label="Orders by quarter, legend at the start"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;div class="chart" style="aspect-ratio: 4 / 3"&gt;&lt;canvas id="ch-align-center" aria-label="Orders by quarter, legend at the center"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;div class="chart" style="aspect-ratio: 4 / 3"&gt;&lt;canvas id="ch-align-end" aria-label="Orders by quarter, legend at the end"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const rows = [
+  { label: 'Q1', orders: 1110 },
+  { label: 'Q2', orders: 1485 },
+  { label: 'Q3', orders: 1320 },
+  { label: 'Q4', orders: 1760 },
+];
+for (const legendAlign of ['start', 'center', 'end']) {
+  tsunami.chart('#ch-align-' + legendAlign, {
+    data: rows,
+    legend: true,
+    legendAlign,
+    series: { orders: { label: 'Orders' } },
+  });
+}
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Two lines: this year against last year</h2>
+            <p>
+              A <code>color</code> takes any CSS colour or
+              <code>var(--ok-fg)</code>. <code>dataset</code> goes straight to
+              Chart.js, here to draw the comparison dashed.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Two lines: this year against last year"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart">
+                    <canvas
+                      id="ch-two"
+                      aria-label="Sales this year and last year by month"
+                    ></canvas>
+                  </div>
+                  <script>
+                    tsunami.chart("#ch-two", {
+                      type: "line",
+                      legend: true,
+                      data: [
+                        { label: "Jan", thisYear: 4200, lastYear: 3600 },
+                        { label: "Feb", thisYear: 5100, lastYear: 4000 },
+                        { label: "Mar", thisYear: 4800, lastYear: 4300 },
+                        { label: "Apr", thisYear: 6300, lastYear: 4700 },
+                        { label: "May", thisYear: 7000, lastYear: 5200 },
+                        { label: "Jun", thisYear: 6600, lastYear: 5600 },
+                      ],
+                      series: {
+                        thisYear: { label: "This year" },
+                        lastYear: {
+                          label: "Last year",
+                          color: "var(--muted)",
+                          dataset: { borderDash: [4, 4] },
+                        },
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart"&gt;&lt;canvas id="ch-two" aria-label="Sales this year and last year by month"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+tsunami.chart('#ch-two', {
+  type: 'line',
+  legend: true,
+  data: [
+    { label: 'Jan', thisYear: 4200, lastYear: 3600 },
+    { label: 'Feb', thisYear: 5100, lastYear: 4000 },
+    { label: 'Mar', thisYear: 4800, lastYear: 4300 },
+    { label: 'Apr', thisYear: 6300, lastYear: 4700 },
+    { label: 'May', thisYear: 7000, lastYear: 5200 },
+    { label: 'Jun', thisYear: 6600, lastYear: 5600 },
+  ],
+  series: {
+    thisYear: { label: 'This year' },
+    lastYear: {
+      label: 'Last year',
+      color: 'var(--muted)',
+      dataset: { borderDash: [4, 4] },
+    },
+  },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Stacked bars</h2>
+            <p>
+              Stacking is a Chart.js option: set <code>stacked</code> on both
+              scales through <code>options</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Stacked bars">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart">
+                    <canvas
+                      id="ch-stack"
+                      aria-label="Sales by payment method, stacked by month"
+                    ></canvas>
+                  </div>
+                  <script>
+                    tsunami.chart("#ch-stack", {
+                      legend: true,
+                      data: [
+                        {
+                          label: "Jan",
+                          card: 2400,
+                          paypal: 1100,
+                          transfer: 700,
+                        },
+                        {
+                          label: "Feb",
+                          card: 2900,
+                          paypal: 1300,
+                          transfer: 900,
+                        },
+                        {
+                          label: "Mar",
+                          card: 2700,
+                          paypal: 1200,
+                          transfer: 900,
+                        },
+                        {
+                          label: "Apr",
+                          card: 3500,
+                          paypal: 1600,
+                          transfer: 1200,
+                        },
+                        {
+                          label: "May",
+                          card: 3900,
+                          paypal: 1800,
+                          transfer: 1300,
+                        },
+                        {
+                          label: "Jun",
+                          card: 3700,
+                          paypal: 1700,
+                          transfer: 1200,
+                        },
+                      ],
+                      series: {
+                        card: { label: "Card" },
+                        paypal: { label: "PayPal" },
+                        transfer: { label: "Bank transfer" },
+                      },
+                      options: {
+                        scales: { x: { stacked: true }, y: { stacked: true } },
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart"&gt;&lt;canvas id="ch-stack" aria-label="Sales by payment method, stacked by month"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+tsunami.chart('#ch-stack', {
+  legend: true,
+  data: [
+    { label: 'Jan', card: 2400, paypal: 1100, transfer: 700 },
+    { label: 'Feb', card: 2900, paypal: 1300, transfer: 900 },
+    { label: 'Mar', card: 2700, paypal: 1200, transfer: 900 },
+    { label: 'Apr', card: 3500, paypal: 1600, transfer: 1200 },
+    { label: 'May', card: 3900, paypal: 1800, transfer: 1300 },
+    { label: 'Jun', card: 3700, paypal: 1700, transfer: 1200 },
+  ],
+  series: {
+    card: { label: 'Card' },
+    paypal: { label: 'PayPal' },
+    transfer: { label: 'Bank transfer' },
+  },
+  options: { scales: { x: { stacked: true }, y: { stacked: true } } },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Bars with a line on a second axis</h2>
+            <p>
+              A series with its own <code>type</code> is drawn as that type, and
+              an <code>axis</code> such as <code>y1</code> gives it a scale of
+              its own on the right.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Bars with a line on a second axis"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart">
+                    <canvas
+                      id="ch-combo"
+                      aria-label="Orders by month as bars, average order value as a line"
+                    ></canvas>
+                  </div>
+                  <script>
+                    tsunami.chart("#ch-combo", {
+                      legend: true,
+                      data: [
+                        { label: "Jan", orders: 320, aov: 62 },
+                        { label: "Feb", orders: 410, aov: 58 },
+                        { label: "Mar", orders: 380, aov: 64 },
+                        { label: "Apr", orders: 470, aov: 67 },
+                        { label: "May", orders: 520, aov: 71 },
+                        { label: "Jun", orders: 495, aov: 69 },
+                      ],
+                      series: {
+                        orders: { label: "Orders" },
+                        aov: {
+                          label: "Average order value",
+                          type: "line",
+                          axis: "y1",
+                          color: "var(--warning-fg)",
+                        },
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart"&gt;&lt;canvas id="ch-combo" aria-label="Orders by month as bars, average order value as a line"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+tsunami.chart('#ch-combo', {
+  legend: true,
+  data: [
+    { label: 'Jan', orders: 320, aov: 62 },
+    { label: 'Feb', orders: 410, aov: 58 },
+    { label: 'Mar', orders: 380, aov: 64 },
+    { label: 'Apr', orders: 470, aov: 67 },
+    { label: 'May', orders: 520, aov: 71 },
+    { label: 'Jun', orders: 495, aov: 69 },
+  ],
+  series: {
+    orders: { label: 'Orders' },
+    aov: {
+      label: 'Average order value',
+      type: 'line',
+      axis: 'y1',
+      color: 'var(--warning-fg)',
+    },
+  },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A doughnut: each row is a slice</h2>
+            <p>
+              <code>pie</code>, <code>doughnut</code> and
+              <code>polarArea</code> take one series. Each row is a slice, named
+              by <code>labelKey</code>, and a row may carry its own
+              <code>color</code>; the others take the palette in turn.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A doughnut: each row is a slice">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart" style="max-width: 24rem; aspect-ratio: 1">
+                    <canvas
+                      id="ch-donut"
+                      aria-label="Orders by payment method"
+                    ></canvas>
+                  </div>
+                  <script>
+                    tsunami.chart("#ch-donut", {
+                      type: "doughnut",
+                      legend: true,
+                      data: [
+                        { label: "Card", orders: 1840 },
+                        { label: "PayPal", orders: 920 },
+                        {
+                          label: "Bank transfer",
+                          orders: 410,
+                          color: "var(--muted)",
+                        },
+                        { label: "Cash on delivery", orders: 230 },
+                      ],
+                      series: { orders: { label: "Orders" } },
+                      options: { cutout: "65%" },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart" style="max-width: 24rem; aspect-ratio: 1"&gt;&lt;canvas id="ch-donut" aria-label="Orders by payment method"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+tsunami.chart('#ch-donut', {
+  type: 'doughnut',
+  legend: true,
+  data: [
+    { label: 'Card', orders: 1840 },
+    { label: 'PayPal', orders: 920 },
+    { label: 'Bank transfer', orders: 410, color: 'var(--muted)' },
+    { label: 'Cash on delivery', orders: 230 },
+  ],
+  series: { orders: { label: 'Orders' } },
+  options: { cutout: '65%' },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Performance: stacked bars and a total line</h2>
+            <p>
+              A series with <code>total: true</code> is listed last in the
+              tooltip, under a line. Chart.js options format the axis and the
+              tooltip.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Performance: stacked bars and a total line"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart">
+                    <canvas
+                      id="ch-perf"
+                      aria-label="Sales, returns and net revenue by month in US dollars"
+                    ></canvas>
+                  </div>
+                  <script>
+                    const usd = (n) =>
+                      new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        maximumFractionDigits: 0,
+                      }).format(n);
+
+                    tsunami.chart("#ch-perf", {
+                      legend: true,
+                      data: [
+                        { label: "Jan", sales: 4200, returns: -300, net: 3900 },
+                        { label: "Feb", sales: 5100, returns: -420, net: 4680 },
+                        { label: "Mar", sales: 4800, returns: -260, net: 4540 },
+                        { label: "Apr", sales: 6300, returns: -510, net: 5790 },
+                        { label: "May", sales: 7000, returns: -380, net: 6620 },
+                        { label: "Jun", sales: 6600, returns: -450, net: 6150 },
+                      ],
+                      series: {
+                        sales: { label: "Sales", color: "var(--accent)" },
+                        returns: {
+                          label: "Returns",
+                          color: "var(--danger-fg)",
+                        },
+                        net: {
+                          label: "Net revenue",
+                          type: "line",
+                          color: "var(--fg)",
+                          total: true,
+                        },
+                      },
+                      options: {
+                        scales: {
+                          x: { stacked: true },
+                          y: {
+                            stacked: true,
+                            ticks: { callback: (v) => usd(v) },
+                          },
+                        },
+                        plugins: {
+                          tooltip: {
+                            callbacks: {
+                              label: (c) =>
+                                c.dataset.label + ": " + usd(c.parsed.y),
+                            },
+                          },
+                        },
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart"&gt;&lt;canvas id="ch-perf" aria-label="Sales, returns and net revenue by month in US dollars"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+const usd = (n) =&gt;
+  new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(n);
+
+tsunami.chart('#ch-perf', {
+  legend: true,
+  data: [
+    { label: 'Jan', sales: 4200, returns: -300, net: 3900 },
+    { label: 'Feb', sales: 5100, returns: -420, net: 4680 },
+    { label: 'Mar', sales: 4800, returns: -260, net: 4540 },
+    { label: 'Apr', sales: 6300, returns: -510, net: 5790 },
+    { label: 'May', sales: 7000, returns: -380, net: 6620 },
+    { label: 'Jun', sales: 6600, returns: -450, net: 6150 },
+  ],
+  series: {
+    sales: { label: 'Sales', color: 'var(--accent)' },
+    returns: { label: 'Returns', color: 'var(--danger-fg)' },
+    net: {
+      label: 'Net revenue',
+      type: 'line',
+      color: 'var(--fg)',
+      total: true,
+    },
+  },
+  options: {
+    scales: {
+      x: { stacked: true },
+      y: { stacked: true, ticks: { callback: (v) =&gt; usd(v) } },
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: (c) =&gt; c.dataset.label + ': ' + usd(c.parsed.y),
+        },
+      },
+    },
+  },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A wide box</h2>
+            <p>
+              The box is 16:9. Another ratio is an inline
+              <code>aspect-ratio</code> on the <code>.chart</code> wrapper; the
+              canvas fills it.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A wide box">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart" style="aspect-ratio: 4 / 1">
+                    <canvas
+                      id="ch-wide"
+                      aria-label="Visitors by month, wide"
+                    ></canvas>
+                  </div>
+                  <script>
+                    tsunami.chart("#ch-wide", {
+                      type: "line",
+                      data: [
+                        { label: "Jan", visitors: 8200 },
+                        { label: "Feb", visitors: 9100 },
+                        { label: "Mar", visitors: 8700 },
+                        { label: "Apr", visitors: 10400 },
+                        { label: "May", visitors: 11800 },
+                        { label: "Jun", visitors: 11200 },
+                        { label: "Jul", visitors: 12600 },
+                        { label: "Aug", visitors: 12100 },
+                      ],
+                      series: {
+                        visitors: {
+                          label: "Visitors",
+                          surface: true,
+                          color: "var(--info-fg)",
+                        },
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart" style="aspect-ratio: 4 / 1"&gt;&lt;canvas id="ch-wide" aria-label="Visitors by month, wide"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+tsunami.chart('#ch-wide', {
+  type: 'line',
+  data: [
+    { label: 'Jan', visitors: 8200 },
+    { label: 'Feb', visitors: 9100 },
+    { label: 'Mar', visitors: 8700 },
+    { label: 'Apr', visitors: 10400 },
+    { label: 'May', visitors: 11800 },
+    { label: 'Jun', visitors: 11200 },
+    { label: 'Jul', visitors: 12600 },
+    { label: 'Aug', visitors: 12100 },
+  ],
+  series: {
+    visitors: { label: 'Visitors', surface: true, color: 'var(--info-fg)' },
+  },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Calling it again redraws the chart</h2>
+            <p>
+              A second call on the same canvas replaces the data and returns a
+              new Chart.js instance. Here two buttons choose the year.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Calling it again redraws the chart"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="2">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="primary"
+                      data-size="sm"
+                      data-chart-year="2026"
+                    >
+                      2026
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="outline"
+                      data-size="sm"
+                      data-chart-year="2025"
+                    >
+                      2025
+                    </button>
+                  </div>
+                  <div class="chart">
+                    <canvas
+                      id="ch-redraw"
+                      aria-label="Sales by month for the chosen year"
+                    ></canvas>
+                  </div>
+                  <script>
+                    const years = {
+                      2026: [4200, 5100, 4800, 6300, 7000, 6600],
+                      2025: [3600, 4000, 4300, 4700, 5200, 5600],
+                    };
+                    const draw = (year) =>
+                      tsunami.chart("#ch-redraw", {
+                        data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map(
+                          (label, i) => ({
+                            label,
+                            sales: years[year][i],
+                          }),
+                        ),
+                        series: { sales: { label: "Sales " + year } },
+                        legend: true,
+                      });
+                    draw(2026);
+                    document.addEventListener("click", (e) => {
+                      const button = e.target.closest("[data-chart-year]");
+                      if (!button) return;
+                      for (const b of document.querySelectorAll(
+                        "[data-chart-year]",
+                      ))
+                        b.dataset.variant =
+                          b === button ? "primary" : "outline";
+                      draw(button.dataset.chartYear);
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="2"&gt;
+  &lt;button type="button" class="btn" data-variant="primary" data-size="sm" data-chart-year="2026"&gt;2026&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="outline" data-size="sm" data-chart-year="2025"&gt;2025&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="chart"&gt;&lt;canvas id="ch-redraw" aria-label="Sales by month for the chosen year"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+const years = {
+  2026: [4200, 5100, 4800, 6300, 7000, 6600],
+  2025: [3600, 4000, 4300, 4700, 5200, 5600],
+};
+const draw = (year) =&gt;
+  tsunami.chart('#ch-redraw', {
+    data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((label, i) =&gt; ({
+      label,
+      sales: years[year][i],
+    })),
+    series: { sales: { label: 'Sales ' + year } },
+    legend: true,
+  });
+draw(2026);
+document.addEventListener('click', (e) =&gt; {
+  const button = e.target.closest('[data-chart-year]');
+  if (!button) return;
+  for (const b of document.querySelectorAll('[data-chart-year]'))
+    b.dataset.variant = b === button ? 'primary' : 'outline';
+  draw(button.dataset.chartYear);
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>A page loads Chart.js itself, before the Tsunami script</h2>
+            <p>
+              The drawing is
+              <a href="https://www.chartjs.org">Chart.js</a> 4.5.1 (MIT
+              licence). It is not in <code>tsunami.min.js</code>: a page that
+              has a chart loads <code>dist/chart.min.js</code> with its own
+              <code>&lt;script&gt;</code> first. A page with no chart does not
+              load it and is not affected. With the script missing,
+              <code>tsunami.chart()</code> throws an error that says so.
+            </p>
+            <pre><code>&lt;script src="../dist/chart.min.js"&gt;&lt;/script&gt;
+&lt;script src="../dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+          </section>
+
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.chart</code></td>
+                    <td></td>
+                    <td>
+                      The box. It is 16:9 with a minimum height of 10rem.
+                      Another ratio is an inline <code>aspect-ratio</code>. The
+                      canvas fills it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>canvas</code></td>
+                    <td></td>
+                    <td>
+                      The element Chart.js draws in. It is the first argument of
+                      <code>tsunami.chart()</code>, as an element or a selector.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>text</td>
+                    <td>
+                      On the canvas. Names the chart for a screen reader; every
+                      canvas needs one.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-chart-initialized</code></td>
+                    <td><code>true</code></td>
+                    <td>Set by the script once the chart is drawn.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2>Options</h2>
+            <p>
+              <code>tsunami.chart(selector | element, options)</code> takes
+              these options.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Option</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Default</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>type</code></td>
+                    <td>
+                      bar, line, pie, doughnut, polarArea, radar, any Chart.js
+                      type
+                    </td>
+                    <td><code>bar</code></td>
+                    <td>The chart type.</td>
+                  </tr>
+                  <tr>
+                    <td><code>labelKey</code></td>
+                    <td>a field of the rows</td>
+                    <td><code>label</code></td>
+                    <td>
+                      The field that names a row: a point on the category axis,
+                      or a slice.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data</code></td>
+                    <td>array of objects</td>
+                    <td><code>[]</code></td>
+                    <td>
+                      One object per point or slice. Its other fields hold the
+                      values to draw.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>series</code></td>
+                    <td>object</td>
+                    <td>every field but the label and <code>color</code></td>
+                    <td>
+                      One entry per field to draw, keyed by the field name.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>legend</code></td>
+                    <td>true, false</td>
+                    <td><code>false</code></td>
+                    <td>Shows the legend under the chart.</td>
+                  </tr>
+                  <tr>
+                    <td><code>legendAlign</code></td>
+                    <td>start, center, end</td>
+                    <td><code>center</code></td>
+                    <td>Where the legend sits under the chart.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tooltip</code></td>
+                    <td>true, false</td>
+                    <td><code>true</code></td>
+                    <td>Shows the tooltip at the pointer.</td>
+                  </tr>
+                  <tr>
+                    <td><code>options</code></td>
+                    <td>Chart.js options object</td>
+                    <td></td>
+                    <td>
+                      Merged over the defaults at any depth. Arrays and
+                      functions replace.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Series</h3>
+            <p>
+              Each entry of <code>series</code> takes these options. With no
+              <code>series</code>, every field of the rows but the label and
+              <code>color</code> is drawn.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Series option</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Default</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>label</code></td>
+                    <td>text</td>
+                    <td>the field name</td>
+                    <td>The name in the legend and the tooltip.</td>
+                  </tr>
+                  <tr>
+                    <td><code>color</code></td>
+                    <td>any CSS colour, <code>var(--ok-fg)</code></td>
+                    <td>the palette in turn</td>
+                    <td>
+                      The palette is <code>--accent</code>,
+                      <code>--info-fg</code>, <code>--ok-fg</code>,
+                      <code>--warning-fg</code>, <code>--danger-fg</code>. A
+                      <code>var()</code> is resolved from the computed style.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>type</code></td>
+                    <td>a Chart.js type</td>
+                    <td>the chart type</td>
+                    <td>
+                      Draws this series as another type, for example a line over
+                      bars.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>axis</code></td>
+                    <td>a scale id, for example y1</td>
+                    <td></td>
+                    <td>Puts the series on a second scale, on the right.</td>
+                  </tr>
+                  <tr>
+                    <td><code>surface</code></td>
+                    <td>true</td>
+                    <td></td>
+                    <td>A flat translucent area under a line.</td>
+                  </tr>
+                  <tr>
+                    <td><code>total</code></td>
+                    <td>true</td>
+                    <td></td>
+                    <td>
+                      Lists the series last in the tooltip, under a line, and
+                      not with the others.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>dataset</code></td>
+                    <td>Chart.js dataset object</td>
+                    <td></td>
+                    <td>
+                      Passed to Chart.js, for example
+                      <code>{ borderDash: [4, 4] }</code>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Pie, doughnut and polar area charts have one series. Each row is a
+              slice, and a row's own <code>color</code> field colours it.
+            </p>
+          </section>
+
+          <section>
+            <h2>API</h2>
+            <p>
+              <code>tsunami.chart(selector | element, options)</code> draws the
+              chart and returns the Chart.js instance. Calling it again on the
+              same canvas destroys that chart and draws a new one.
+            </p>
+            <ul>
+              <li>
+                <code>tsunami.chart.get(el)</code> returns the Chart.js instance
+                on a canvas, or <code>null</code>.
+              </li>
+              <li>
+                <code>tsunami.chart.destroy(el)</code> destroys the chart and
+                removes <code>data-chart-initialized</code>.
+              </li>
+            </ul>
+            <p>
+              A chart is destroyed by itself when its canvas leaves the page.
+              Colours are read from the CSS variables when a chart is drawn, so
+              on
+              <code>tsunami:themechange</code> every chart is drawn again, with
+              no animation. Under <code>prefers-reduced-motion</code> the
+              animation is off.
+            </p>
+          </section>
+
+          <section>
+            <h2>Events</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:chartready</code></td>
+                    <td><code>{ chart }</code></td>
+                    <td>
+                      Bubbles from the canvas every time the chart is drawn,
+                      including a redraw and a redraw after a theme change.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2>Accessibility</h2>
+            <p>
+              A canvas has no text of its own: give every one an
+              <code>aria-label</code> that says what the chart shows, and put
+              the figures that matter in the page as text or a table. The
+              tooltip is drawn on the canvas, so it is for the pointer.
+            </p>
+          </section>

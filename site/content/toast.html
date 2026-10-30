@@ -1,0 +1,997 @@
+<header class="page-header">
+            <div>
+              <h1>Toast</h1>
+              <p>
+                A short message after an action, such as a save or a delete. It
+                stacks in a corner, shows in the top layer above dialogs and
+                closes on its own.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Basic</h2>
+            <p>
+              Call <code>tsunami.toast()</code> with a message. A plain string
+              becomes the title. It closes after 5 seconds.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn" data-demo="basic">
+                      Show toast
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" id="show"&gt;Show toast&lt;/button&gt;
+&lt;script&gt;
+  document.getElementById("show").addEventListener("click", () =&gt; {
+    tsunami.toast("Order archived");
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Variants</h2>
+            <p>
+              <code>variant</code> adds an icon and colours it like the alert.
+              Danger toasts use <code>role="alert"</code> and stay until closed.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn" data-demo="v-ok">
+                      Ok</button
+                    ><button type="button" class="btn" data-demo="v-info">
+                      Info</button
+                    ><button type="button" class="btn" data-demo="v-warning">
+                      Warning</button
+                    ><button type="button" class="btn" data-demo="v-danger">
+                      Danger</button
+                    ><button type="button" class="btn" data-demo="v-neutral">
+                      Neutral
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>tsunami.toast({ variant: "ok", title: "Order saved" });
+tsunami.toast({ variant: "info", title: "Rates updated" });
+tsunami.toast({ variant: "warning", title: "Low stock" });
+tsunami.toast({ variant: "danger", title: "Payment failed" }); // stays
+tsunami.toast({ variant: "neutral", title: "Draft restored" });</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Title and text</h2>
+            <p>Add <code>text</code> for a second, quieter line.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn" data-demo="text">
+                      Show toast
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>tsunami.toast({
+  variant: "ok",
+  title: "Customer imported",
+  text: "128 rows added, 3 skipped.",
+});</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Action</h2>
+            <p>
+              <code>action</code> adds a button. Clicking it runs
+              <code>onClick</code> and closes the toast with reason
+              <code>action</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn" data-demo="action">
+                      Delete order
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>tsunami.toast({
+  title: "Order deleted",
+  action: { label: "Undo", onClick: () =&gt; restoreOrder() },
+});</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sticky</h2>
+            <p>
+              <code>duration: 0</code> keeps the toast until the user closes it
+              or code dismisses it.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn" data-demo="sticky">
+                      Show sticky toast</button
+                    ><button type="button" class="btn" data-demo="clear">
+                      Clear all
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>const t = tsunami.toast({ title: "Sync in progress", duration: 0 });
+// later
+t.dismiss();
+// or remove every toast
+tsunami.toast.clear();</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Replace by id</h2>
+            <p>
+              A new toast with the same <code>id</code> replaces the old one, so
+              repeated actions do not pile up.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn" data-demo="id">
+                      Save draft
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>tsunami.toast({ id: "draft", title: "Draft saved at " + new Date().toLocaleTimeString() });</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Positions</h2>
+            <p>
+              Set <code>data-position</code> on the
+              <code>.toaster</code> element: <code>bottom-end</code> (default),
+              <code>top-end</code>, <code>bottom-center</code>,
+              <code>top-center</code>. Narrow screens always use a full-width
+              strip at the bottom.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-demo="pos-bottom-end"
+                    >
+                      bottom-end</button
+                    ><button type="button" class="btn" data-demo="pos-top-end">
+                      top-end</button
+                    ><button
+                      type="button"
+                      class="btn"
+                      data-demo="pos-bottom-center"
+                    >
+                      bottom-center</button
+                    ><button
+                      type="button"
+                      class="btn"
+                      data-demo="pos-top-center"
+                    >
+                      top-center
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>const toast = tsunami.toast("Moved to the top");
+toast.parentElement.dataset.position = "top-end";
+
+// or write the container yourself
+// &lt;section class="toaster" popover="manual" aria-live="polite" data-position="top-end"&gt;&lt;/section&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Declarative</h2>
+            <p>
+              Put <code>data-toast</code> on a button. Add
+              <code>data-toast-variant</code> and
+              <code>data-toast-title</code> as needed. With a title, the
+              attribute value is the text.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn" data-toast="Link copied">
+                      Copy link</button
+                    ><button
+                      type="button"
+                      class="btn"
+                      data-toast="Changes were sent to 3 customers."
+                      data-toast-title="Email sent"
+                      data-toast-variant="ok"
+                    >
+                      Send email
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" data-toast="Link copied"&gt;Copy link&lt;/button&gt;
+
+&lt;button
+  type="button"
+  class="btn"
+  data-toast="Changes were sent to 3 customers."
+  data-toast-title="Email sent"
+  data-toast-variant="ok"
+&gt;
+  Send email
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>After a save</h2>
+            <p>
+              Pair it with the <a href="/docs/save-bar">save bar</a>: save, mark the
+              form clean, then confirm with a toast.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form
+                      id="tt-form"
+                      class="stack docs-narrow"
+                      method="dialog"
+                    >
+                      <div class="field">
+                        <label for="tt-title">Product title</label>
+                        <input
+                          id="tt-title"
+                          name="title"
+                          type="text"
+                          value="T-shirt"
+                        />
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="tt-form"
+                      role="region"
+                      aria-label="Unsaved changes"
+                      hidden
+                    >
+                      <p>Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="tt-form"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="tt-form"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form id="product-form" method="dialog"&gt;...&lt;/form&gt;
+&lt;div class="save-bar" data-form="product-form" role="region" aria-label="Unsaved changes" hidden&gt;
+  ...
+&lt;/div&gt;
+&lt;script&gt;
+  const form = document.getElementById("product-form");
+  form.addEventListener("submit", async () =&gt; {
+    await save(new FormData(form));
+    tsunami.saveBar.markClean(form);
+    tsunami.toast({ variant: "ok", title: "Product saved" });
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Inside a dialog</h2>
+            <p>
+              The toaster sits in the top layer above open dialogs. While a
+              modal dialog is open the script moves it into the dialog, so its
+              close and action buttons are not blocked by the inert page.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="tt-dialog"
+                    command="show-modal"
+                  >
+                    Edit note
+                  </button>
+                  <dialog
+                    class="dialog"
+                    id="tt-dialog"
+                    data-size="sm"
+                    aria-labelledby="tt-dialog-title"
+                  >
+                    <header>
+                      <h2 id="tt-dialog-title">Order note</h2>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        commandfor="tt-dialog"
+                        command="close"
+                        aria-label="Close"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <div>
+                      <p>
+                        The toast shows above this dialog and its buttons stay
+                        usable.
+                      </p>
+                    </div>
+                    <footer>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="primary"
+                        data-demo="dialog"
+                      >
+                        Save note
+                      </button>
+                    </footer>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" data-toast="Note saved" data-toast-variant="ok"&gt;Save note&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.toast(options)</code></td>
+                    <td>
+                      <code
+                        >{ title, text, variant, duration, action, id }</code
+                      >
+                    </td>
+                    <td>
+                      Shows a toast and returns its element, which has
+                      <code>.dismiss()</code>. A string is shorthand for
+                      <code>{ title }</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>title</code></td>
+                    <td>string</td>
+                    <td>Bold first line.</td>
+                  </tr>
+                  <tr>
+                    <td><code>text</code></td>
+                    <td>string</td>
+                    <td>Second, quieter line.</td>
+                  </tr>
+                  <tr>
+                    <td><code>variant</code></td>
+                    <td>
+                      <code>ok</code>, <code>danger</code>,
+                      <code>warning</code>, <code>info</code>,
+                      <code>neutral</code>
+                    </td>
+                    <td>
+                      Icon and colour. Omit for no icon.
+                      <code>danger</code> uses <code>role="alert"</code>; the
+                      rest use <code>role="status"</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>duration</code></td>
+                    <td>milliseconds</td>
+                    <td>
+                      Time before it closes. Default 5000. <code>0</code> stays.
+                      Danger defaults to <code>0</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>action</code></td>
+                    <td><code>{ label, onClick }</code></td>
+                    <td>
+                      Adds a small button. Clicking it calls
+                      <code>onClick(toast)</code> and closes the toast.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>id</code></td>
+                    <td>string</td>
+                    <td>A toast with the same id is replaced.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.dismiss()</code></td>
+                    <td></td>
+                    <td>Closes that toast (reason <code>api</code>).</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.toast.clear()</code></td>
+                    <td></td>
+                    <td>Closes every toast.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Events</h2>
+            <p>Listen on <code>document</code> or on the toast itself.</p>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Events"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:toast</code></td>
+                    <td><code>detail: {}</code></td>
+                    <td>Bubbles from the toast when it is shown.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami:toastclose</code></td>
+                    <td><code>detail.reason</code></td>
+                    <td>
+                      Bubbles from the toast when it is dismissed. Reason:
+                      <code>timeout</code>, <code>close</code> (close button),
+                      <code>action</code> (action button) or
+                      <code>api</code> (<code>dismiss()</code>,
+                      <code>clear()</code>, replaced by id, or pushed out by the
+                      limit of 3).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.toaster</code></td>
+                    <td></td>
+                    <td>
+                      Container:
+                      <code
+                        >&lt;section popover="manual"
+                        aria-live="polite"&gt;</code
+                      >. The script creates it when missing and shows it with
+                      <code>showPopover()</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-position</code></td>
+                    <td>
+                      <code>bottom-end</code> (default), <code>top-end</code>,
+                      <code>bottom-center</code>, <code>top-center</code>
+                    </td>
+                    <td>
+                      Set on <code>.toaster</code>. Under 40rem wide the stack
+                      is a full-width strip at the bottom.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.toast</code></td>
+                    <td></td>
+                    <td>
+                      One message: icon, body, optional action, close button. A
+                      1px border separates it; there is no shadow.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>
+                      <code>ok</code>, <code>danger</code>,
+                      <code>warning</code>, <code>info</code>,
+                      <code>neutral</code>
+                    </td>
+                    <td>Icon and its colour, as on <code>.alert</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-toast</code></td>
+                    <td>message</td>
+                    <td>
+                      On a button: shows a toast with this message on click.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-toast-title</code></td>
+                    <td>string</td>
+                    <td>
+                      Makes <code>data-toast</code> the text and this the title.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-toast-variant</code></td>
+                    <td>as <code>data-variant</code></td>
+                    <td>Variant of the declarative toast.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-leaving</code></td>
+                    <td></td>
+                    <td>Set by the script while a toast fades out.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Accessibility</h2>
+            <ul>
+              <li>
+                Normal toasts are <code>role="status"</code> inside a polite
+                live region. Danger toasts are <code>role="alert"</code> and
+                stay until closed.
+              </li>
+              <li>
+                The timer pauses while the pointer is over a toast, while focus
+                is inside it, and while the page is hidden, so nobody loses a
+                message or an Undo button.
+              </li>
+              <li>
+                The close button has <code>aria-label="Close"</code>. Icons are
+                <code>aria-hidden</code>.
+              </li>
+              <li>
+                Keep toasts short. Do not put the only copy of an important
+                result in one: also update the page.
+              </li>
+              <li>At most 3 toasts show at once; the oldest leaves first.</li>
+              <li>
+                Motion is a short fade and slide, and stops under
+                <code>prefers-reduced-motion</code>.
+              </li>
+            </ul>
+          </section>
+        
+<script>
+      {
+        const T = tsunami.toast;
+        const demos = {
+          basic: () => T("Order archived"),
+          text: () =>
+            T({
+              variant: "ok",
+              title: "Customer imported",
+              text: "128 rows added, 3 skipped.",
+            }),
+          action: () =>
+            T({
+              title: "Order deleted",
+              action: { label: "Undo", onClick: () => T("Order restored") },
+            }),
+          sticky: () => T({ title: "Sync in progress", duration: 0 }),
+          clear: () => T.clear(),
+          id: () =>
+            T({
+              id: "draft",
+              title: "Draft saved at " + new Date().toLocaleTimeString(),
+            }),
+          dialog: () => T({ variant: "ok", title: "Note saved" }),
+        };
+        const titles = {
+          ok: "Order saved",
+          info: "Rates updated",
+          warning: "Low stock",
+          danger: "Payment failed",
+          neutral: "Draft restored",
+        };
+        for (const [v, title] of Object.entries(titles))
+          demos["v-" + v] = () => T({ variant: v, title });
+        for (const p of [
+          "bottom-end",
+          "top-end",
+          "bottom-center",
+          "top-center",
+        ])
+          demos["pos-" + p] = () =>
+            (T("Position: " + p).parentElement.dataset.position = p);
+        document.addEventListener("click", (e) => {
+          const b = e.target.closest("[data-demo]");
+          if (b) demos[b.dataset.demo]?.();
+        });
+        document.getElementById("tt-form").addEventListener("submit", () => {
+          tsunami.saveBar.markClean(document.getElementById("tt-form"));
+          T({ variant: "ok", title: "Product saved" });
+        });
+      }
+    </script>

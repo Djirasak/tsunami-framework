@@ -1,0 +1,97 @@
+<header class="page-header">
+            <div>
+              <h1>Workspace</h1>
+              <p>
+                A full-window layout for one task that needs room. The top bar,
+                side panels and work area scroll on their own.
+              </p>
+            </div>
+            <a href="/docs/workspace-full" class="btn" data-size="sm" target="_blank"
+              >Open full page</a
+            >
+          </header>
+          <section>
+            <h2>A workspace is the whole page</h2>
+            <p>
+              <code>.workspace</code> fills the window height
+              (<code>100dvh</code>). Use it instead of the app shell (the app
+              sidebar) for a single task, such as editing a theme. Its children
+              are a <code>&lt;header&gt;</code> top bar (back button,
+              <code>&lt;h1&gt;</code> task name, controls, and the primary
+              button last), an <code>&lt;aside&gt;</code> side panel and a
+              <code>&lt;main&gt;</code> work area. On this docs page the example
+              box has a capped height. See the real thing:
+              <a href="/docs/workspace-full" target="_blank">Open full page</a>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A workspace is the whole page">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="workspace">
+                    <header>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-panel"
+                        aria-label="Open the panel"
+                      >
+                        <i class="icon icon-panel-left" aria-hidden="true"></i>
+                      </button>
+                      <a
+                        href="/docs"
+                        class="btn"
+                        data-size="icon"
+                        aria-label="Back to themes"
+                      >
+                        <i class="icon icon-arrow-left" aria-hidden="true"></i>
+                      </a>
+                      <h1>Summer theme</h1>
+                      <button type="button" class="btn" data-size="sm">
+                        Preview
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="primary"
+                        data-size="sm"
+                      >
+                        Save
+                      </button>
+                    </header>
+                    <aside id="ws-panel" popover aria-label="Sections">
+                      <nav class="subnav" aria-label="Sections">
+                        <a href="/docs" aria-current="page">Typography</a>
+                        <a href="/docs">Navigation</a>
+                        <a href="/docs">Homepage</a>
+                        <a href="/docs">Footer</a>
+                      </nav>
+                    </aside>
+                    <main>
+                      <p>The work area</p>

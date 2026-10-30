@@ -1,0 +1,630 @@
+<header class="page-header">
+            <div>
+              <h1>Color field</h1>
+              <p>
+                A colour picker beside a text field. The text field holds the
+                colour and is what the form sends.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>A text field with a colour, and the picker beside it</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A text field with a colour, and the picker beside it"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field" style="max-width: 20rem">
+                    <label for="cf-text">Text color</label>
+                    <div class="input-group color-field">
+                      <span
+                        ><input type="color" aria-label="Pick the text color"
+                      /></span>
+                      <input
+                        type="text"
+                        id="cf-text"
+                        name="text_color"
+                        value="#595d69"
+                      />
+                    </div>
+                    <small>The color of body text.</small>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" style="max-width: 20rem"&gt;
+  &lt;label for="cf-text"&gt;Text color&lt;/label&gt;
+  &lt;div class="input-group color-field"&gt;
+    &lt;span&gt;&lt;input type="color" aria-label="Pick the text color"&gt;&lt;/span&gt;
+    &lt;input type="text" id="cf-text" name="text_color" value="#595d69"&gt;
+  &lt;/div&gt;
+  &lt;small&gt;The color of body text.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              An empty text field sends no colour, and the picker shows none
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="An empty text field sends no colour, and the picker shows none"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field" style="max-width: 20rem">
+                    <label for="cf-empty">Link color</label>
+                    <div class="input-group color-field">
+                      <span
+                        ><input type="color" aria-label="Pick the link color"
+                      /></span>
+                      <input
+                        type="text"
+                        id="cf-empty"
+                        name="link_color"
+                        placeholder="Inherits the accent color"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" style="max-width: 20rem"&gt;
+  &lt;label for="cf-empty"&gt;Link color&lt;/label&gt;
+  &lt;div class="input-group color-field"&gt;
+    &lt;span&gt;&lt;input type="color" aria-label="Pick the link color"&gt;&lt;/span&gt;
+    &lt;input type="text" id="cf-empty" name="link_color" placeholder="Inherits the accent color"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A three digit value sets the picker too</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A three digit value sets the picker too"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field" style="max-width: 20rem">
+                    <label for="cf-short">Background color</label>
+                    <div class="input-group color-field">
+                      <span
+                        ><input
+                          type="color"
+                          aria-label="Pick the background color"
+                      /></span>
+                      <input
+                        type="text"
+                        id="cf-short"
+                        name="background_color"
+                        value="#000"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" style="max-width: 20rem"&gt;
+  &lt;label for="cf-short"&gt;Background color&lt;/label&gt;
+  &lt;div class="input-group color-field"&gt;
+    &lt;span&gt;&lt;input type="color" aria-label="Pick the background color"&gt;&lt;/span&gt;
+    &lt;input type="text" id="cf-short" name="background_color" value="#000"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>disabled on both inputs dims the field</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="disabled on both inputs dims the field"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field" style="max-width: 20rem">
+                    <label for="cf-disabled">Footer color</label>
+                    <div class="input-group color-field">
+                      <span
+                        ><input
+                          type="color"
+                          aria-label="Pick the footer color"
+                          disabled
+                      /></span>
+                      <input
+                        type="text"
+                        id="cf-disabled"
+                        name="footer_color"
+                        value="#191a1f"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" style="max-width: 20rem"&gt;
+  &lt;label for="cf-disabled"&gt;Footer color&lt;/label&gt;
+  &lt;div class="input-group color-field"&gt;
+    &lt;span&gt;&lt;input type="color" aria-label="Pick the footer color" disabled&gt;&lt;/span&gt;
+    &lt;input type="text" id="cf-disabled" name="footer_color" value="#191a1f" disabled&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              The form hears input when a colour is picked or typed, and sends
+              the text field
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="The form hears input when a colour is picked or typed, and sends the text field"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form
+                    class="stack"
+                    data-gap="sm"
+                    style="max-width: 20rem"
+                    id="cf-form"
+                    oninput="
+                      document.getElementById('cf-result').textContent =
+                        new FormData(this).get('button_color')
+                    "
+                  >
+                    <div class="field">
+                      <label for="cf-button">Button color</label>
+                      <div class="input-group color-field">
+                        <span
+                          ><input
+                            type="color"
+                            aria-label="Pick the button color"
+                        /></span>
+                        <input
+                          type="text"
+                          id="cf-button"
+                          name="button_color"
+                          value="#0a7f6e"
+                        />
+                      </div>
+                    </div>
+                    <pre id="cf-result">#0a7f6e</pre>
+                  </form>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form class="stack" data-gap="sm" style="max-width: 20rem" id="cf-form" oninput="document.getElementById('cf-result').textContent = new FormData(this).get('button_color')"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="cf-button"&gt;Button color&lt;/label&gt;
+    &lt;div class="input-group color-field"&gt;
+      &lt;span&gt;&lt;input type="color" aria-label="Pick the button color"&gt;&lt;/span&gt;
+      &lt;input type="text" id="cf-button" name="button_color" value="#0a7f6e"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;pre id="cf-result"&gt;#0a7f6e&lt;/pre&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With opacity</h2>
+            <p>
+              Add <code>data-alpha</code> to accept an opacity. The text may
+              then be <code>#rgba</code>, <code>#rrggbbaa</code> or
+              <code>rgb()</code> / <code>rgba()</code>, and the slider in the
+              last <code>span</code> sets it. The picker shows the colour and
+              its swatch fades with the opacity. The text is written as
+              <code>#rrggbb</code>, or <code>#rrggbbaa</code> when the opacity
+              is below 100%. A browser's colour dialog has no opacity of its
+              own.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="With opacity">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field" style="max-width: 24rem">
+                    <label for="cf-alpha">Overlay color</label>
+                    <div class="input-group color-field" data-alpha>
+                      <span
+                        ><input
+                          type="color"
+                          aria-label="Pick the overlay color"
+                      /></span>
+                      <input
+                        type="text"
+                        id="cf-alpha"
+                        name="overlay_color"
+                        value="#1a73e880"
+                      />
+                      <span
+                        ><input
+                          type="range"
+                          class="slider"
+                          min="0"
+                          max="100"
+                          aria-label="Opacity"
+                      /></span>
+                    </div>
+                    <small
+                      >Type #rgba, #rrggbbaa or rgba(26, 115, 232, 0.5), or use
+                      the opacity slider.</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" style="max-width: 24rem"&gt;
+  &lt;label for="cf-alpha"&gt;Overlay color&lt;/label&gt;
+  &lt;div class="input-group color-field" data-alpha&gt;
+    &lt;span&gt;&lt;input type="color" aria-label="Pick the overlay color"&gt;&lt;/span&gt;
+    &lt;input type="text" id="cf-alpha" name="overlay_color" value="#1a73e880"&gt;
+    &lt;span&gt;&lt;input type="range" class="slider" min="0" max="100" aria-label="Opacity"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;small&gt;Type #rgba, #rrggbbaa or rgba(26, 115, 232, 0.5), or use the opacity slider.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              The colour field has no methods and sends no events of its own:
+              the text field sends the browser's own <code>input</code> and
+              <code>change</code>, and they bubble. It starts every
+              <code>.color-field</code> on the page, also one added later. A
+              form reset puts the original text back and the picker follows.
+            </p>
+            <h3>Events</h3>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Events"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>input</code></td>
+                    <td>the <code>input[type=text]</code>, bubbles</td>
+                    <td>
+                      Sent when a colour is picked, as it is when you type in
+                      the text field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>change</code></td>
+                    <td>the <code>input[type=text]</code>, bubbles</td>
+                    <td>
+                      Sent when the browser's colour dialog closes with a new
+                      colour, or when the text field loses focus after typing.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Keyboard"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>Tab</kbd></td>
+                    <td>
+                      Moves from the picker to the text field. This is the
+                      browser's own.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Enter</kbd>, <kbd>Space</kbd></td>
+                    <td>
+                      On the picker, opens the browser's colour dialog. This is
+                      the browser's own.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.color-field</code></td>
+                    <td>on an <code>.input-group</code></td>
+                    <td>
+                      Marks the group as a colour field. It holds a
+                      <code>span</code> with the picker, then the text field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input[type=color]</code></td>
+                    <td>in the first <code>span</code></td>
+                    <td>
+                      The browser's picker. Give it an <code>aria-label</code>;
+                      the text field has the visible label. Add
+                      <code>disabled</code> together with the text field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input[type=text]</code></td>
+                    <td>
+                      <code>value</code>: <code>#rgb</code>,
+                      <code>#rrggbb</code> or empty; <code>name</code>
+                    </td>
+                    <td>
+                      The colour a form sends. The picker shows it. Empty sends
+                      no colour. Add <code>placeholder</code> to say what an
+                      empty field means.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-alpha</code></td>
+                    <td>present or absent, on <code>.color-field</code></td>
+                    <td>
+                      Accepts an opacity: the text may be <code>#rgba</code>,
+                      <code>#rrggbbaa</code> or <code>rgb()</code> /
+                      <code>rgba()</code>. Without it only <code>#rgb</code> and
+                      <code>#rrggbb</code> are colours. The text is written as
+                      <code>#rrggbbaa</code> when the opacity is below 100%.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input[type=range]</code></td>
+                    <td>
+                      class <code>slider</code>, in a last <code>span</code>,
+                      with <code>data-alpha</code>
+                    </td>
+                    <td>
+                      The opacity from 0 to 100. Give it an
+                      <code>aria-label</code>. Add
+                      <code>disabled</code> together with the other inputs.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-empty</code></td>
+                    <td>present or absent, set by the script</td>
+                    <td>
+                      Present on the group while the text field is empty. The
+                      picker then shows no colour.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      On the text field: the group gets a red border, as in an
+                      input group.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

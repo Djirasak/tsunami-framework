@@ -1,0 +1,370 @@
+<header class="page-header">
+            <div>
+              <h1>Alert</h1>
+              <p>
+                An inline message with an icon, title, body and actions. Neutral
+                by default. Status variants use a light fill with dark text.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Status</h2>
+            <p>
+              Use the default for general information. Use
+              <code>data-variant</code> when the message has a status. Use
+              <code>role="alert"</code> only for errors that must be announced
+              right away.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div class="alert" role="status">
+                      <i class="icon icon-terminal" aria-hidden="true"></i>
+                      <strong>Order received</strong>
+                      <p>Order #1042 is awaiting payment confirmation.</p>
+                    </div>
+                    <div class="alert" data-variant="info" role="status">
+                      <i class="icon icon-info" aria-hidden="true"></i>
+                      <strong>Shipping rates updated</strong>
+                      <p>New carrier rates apply from today.</p>
+                    </div>
+                    <div class="alert" data-variant="ok" role="status">
+                      <i class="icon icon-circle-check" aria-hidden="true"></i>
+                      <strong>Payment captured</strong>
+                      <p>$79.00 captured. Ready to fulfil.</p>
+                    </div>
+                    <div class="alert" data-variant="warning" role="status">
+                      <i
+                        class="icon icon-triangle-alert"
+                        aria-hidden="true"
+                      ></i>
+                      <strong>Low stock</strong>
+                      <p>3 variants are below their reorder point.</p>
+                    </div>
+                    <div class="alert" data-variant="danger" role="alert">
+                      <i class="icon icon-circle-alert" aria-hidden="true"></i>
+                      <strong>Payment failed</strong>
+                      <p>
+                        The card was declined. Ask the customer to use another
+                        method.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div class="alert" role="status"&gt;
+    &lt;i class="icon icon-terminal" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;Order received&lt;/strong&gt;
+    &lt;p&gt;Order #1042 is awaiting payment confirmation.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="alert" data-variant="info" role="status"&gt;
+    &lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;Shipping rates updated&lt;/strong&gt;
+    &lt;p&gt;New carrier rates apply from today.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="alert" data-variant="ok" role="status"&gt;
+    &lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;Payment captured&lt;/strong&gt;
+    &lt;p&gt;$79.00 captured. Ready to fulfil.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="alert" data-variant="warning" role="status"&gt;
+    &lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;Low stock&lt;/strong&gt;
+    &lt;p&gt;3 variants are below their reorder point.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="alert" data-variant="danger" role="alert"&gt;
+    &lt;i class="icon icon-circle-alert" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;strong&gt;Payment failed&lt;/strong&gt;
+    &lt;p&gt;The card was declined. Ask the customer to use another method.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With actions</h2>
+            <p>
+              Put buttons in a <code>&lt;footer&gt;</code> below the body. Use
+              small buttons.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="alert" data-variant="warning" role="status">
+                    <i class="icon icon-triangle-alert" aria-hidden="true"></i>
+                    <strong>Subscription ends in 3 days</strong>
+                    <p>Renew to keep fulfilment automations running.</p>
+                    <footer>
+                      <button type="button" class="btn" data-size="sm">
+                        Renew
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="sm"
+                      >
+                        Remind me later
+                      </button>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="alert" data-variant="warning" role="status"&gt;
+  &lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;strong&gt;Subscription ends in 3 days&lt;/strong&gt;
+  &lt;p&gt;Renew to keep fulfilment automations running.&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;Renew&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="sm"&gt;Remind me later&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Title only</h2>
+            <p>For short messages that need no extra detail.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="alert" data-variant="ok" role="status">
+                    <i class="icon icon-circle-check" aria-hidden="true"></i>
+                    <strong>Changes saved</strong>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="alert" data-variant="ok" role="status"&gt;
+  &lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;strong&gt;Changes saved&lt;/strong&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Without icon</h2>
+            <p>Without an icon, the text takes the full width.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="alert" data-variant="info" role="note">
+                    <strong>Scheduled maintenance</strong>
+                    <p>The Admin API is read-only on Sunday 02:00-04:00.</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="alert" data-variant="info" role="note"&gt;
+  &lt;strong&gt;Scheduled maintenance&lt;/strong&gt;
+  &lt;p&gt;The Admin API is read-only on Sunday 02:00-04:00.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.alert</code></td>
+                    <td></td>
+                    <td>
+                      Alert box. A two-column grid with the icon on the left and
+                      all other children in the right column.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>
+                      <code>ok</code>, <code>warning</code>, <code>info</code>,
+                      <code>danger</code> (omit for neutral)
+                    </td>
+                    <td>
+                      Light fill and text colour for the status. The default has
+                      a surface fill and a 1px border.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; .icon</code></td>
+                    <td></td>
+                    <td>
+                      Optional. The first icon. Without it, the text takes the
+                      full width.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; strong, &gt; h2, h3, h4</code></td>
+                    <td></td>
+                    <td>Title, 14px bold.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; p, &gt; section</code></td>
+                    <td></td>
+                    <td>Body text.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; footer</code></td>
+                    <td></td>
+                    <td>Button row, 8px below the body.</td>
+                  </tr>
+                  <tr>
+                    <td><code>role</code></td>
+                    <td>
+                      <code>status</code>, <code>alert</code>, <code>note</code>
+                    </td>
+                    <td>
+                      <code>status</code> for general notices,
+                      <code>alert</code> for errors that must be announced at
+                      once, <code>note</code> for static text on the page.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

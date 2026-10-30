@@ -1,0 +1,680 @@
+<header class="page-header">
+            <div>
+              <h1>Theme switcher</h1>
+              <p>
+                The theme lives in <code>data-theme</code> on
+                <code>&lt;html&gt;</code>. Theme buttons remember the choice in
+                localStorage and set aria-pressed for you.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>The theme is data-theme on html</h2>
+            <p>
+              <code>&lt;html data-theme="dark"&gt;</code> or
+              <code>"light"</code> means a theme is chosen. Without the
+              attribute, the system theme (prefers-color-scheme) applies.
+              <code>data-theme-toggle</code> buttons change this value and save
+              it in localStorage under the key <code>tsunami-theme</code>. Every
+              colour variable has a second value for dark.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="The theme is data-theme on html">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="theme-switcher" role="group" aria-label="Theme">
+                    <button
+                      type="button"
+                      data-theme-toggle="light"
+                      aria-label="Light"
+                    >
+                      <i class="icon icon-sun" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      data-theme-toggle="dark"
+                      aria-label="Dark"
+                    >
+                      <i class="icon icon-moon" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      data-theme-toggle="system"
+                      aria-label="System"
+                    >
+                      <i class="icon icon-monitor" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;html lang="en" data-theme="dark"&gt;
+  ...
+  &lt;div class="theme-switcher" role="group" aria-label="Theme"&gt;
+    &lt;button type="button" data-theme-toggle="light" aria-label="Light"&gt;&lt;i class="icon icon-sun" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" data-theme-toggle="dark" aria-label="Dark"&gt;&lt;i class="icon icon-moon" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" data-theme-toggle="system" aria-label="System"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Toggle</h2>
+            <p>
+              <code>data-theme-toggle</code> with no value switches between
+              light and dark, based on the current theme.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Toggle">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button type="button" class="btn" data-theme-toggle>
+                    Toggle theme
+                  </button>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" data-theme-toggle&gt;Toggle theme&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>No flash on load</h2>
+            <p>
+              The script applies the saved theme as soon as it runs, so load it
+              as a plain script in <code>&lt;head&gt;</code>. With
+              <code>type="module"</code> or <code>defer</code> it runs after the
+              first paint, and people who chose dark see a white flash. If
+              localStorage is blocked, the theme still changes but is only kept
+              for that page.
+            </p>
+            <pre><code>&lt;script src="dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+          </section>
+          <section>
+            <h2>Icon and label follow the theme</h2>
+            <p>
+              <code>data-theme-show="dark"</code> shows only in dark and
+              <code>"light"</code> only in light. It is pure CSS (it reads
+              <code>html[data-theme]</code> or prefers-color-scheme), so it is
+              correct before JS loads.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Icon and label follow the theme">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="ghost"
+                      data-size="icon-sm"
+                      data-theme-toggle
+                      aria-label="Toggle theme"
+                    >
+                      <i
+                        class="icon icon-sun"
+                        data-theme-show="dark"
+                        aria-hidden="true"
+                      ></i>
+                      <i
+                        class="icon icon-moon"
+                        data-theme-show="light"
+                        aria-hidden="true"
+                      ></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      data-theme-toggle
+                    >
+                      <i
+                        class="icon icon-sun"
+                        data-theme-show="dark"
+                        aria-hidden="true"
+                      ></i>
+                      <i
+                        class="icon icon-moon"
+                        data-theme-show="light"
+                        aria-hidden="true"
+                      ></i>
+                      <span data-theme-show="dark">Light mode</span>
+                      <span data-theme-show="light">Dark mode</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-theme-toggle aria-label="Toggle theme"&gt;
+    &lt;i class="icon icon-sun" data-theme-show="dark" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;i class="icon icon-moon" data-theme-show="light" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="sm" data-theme-toggle&gt;
+    &lt;i class="icon icon-sun" data-theme-show="dark" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;i class="icon icon-moon" data-theme-show="light" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;span data-theme-show="dark"&gt;Light mode&lt;/span&gt;
+    &lt;span data-theme-show="light"&gt;Dark mode&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>set() picks a theme by name</h2>
+            <p>
+              <code>window.tsunami.theme.set(name)</code> takes
+              <code>"light"</code>, <code>"dark"</code> or
+              <code>"system"</code>. Use it to change the theme from code, for
+              example after a user saves their account settings.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="set() picks a theme by name">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      onclick="window.tsunami.theme.set('light')"
+                    >
+                      <i class="icon icon-sun" aria-hidden="true"></i>Light
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      onclick="window.tsunami.theme.set('dark')"
+                    >
+                      <i class="icon icon-moon" aria-hidden="true"></i>Dark
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="sm"
+                      onclick="window.tsunami.theme.set('system')"
+                    >
+                      <i class="icon icon-monitor" aria-hidden="true"></i>System
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-size="sm" onclick="window.tsunami.theme.set('light')"&gt;&lt;i class="icon icon-sun" aria-hidden="true"&gt;&lt;/i&gt;Light&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="sm" onclick="window.tsunami.theme.set('dark')"&gt;&lt;i class="icon icon-moon" aria-hidden="true"&gt;&lt;/i&gt;Dark&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="sm" onclick="window.tsunami.theme.set('system')"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;System&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Read with get(), listen for a change</h2>
+            <p>
+              <code>get()</code> returns <code>"dark"</code> or
+              <code>"light"</code>, whichever is showing. The event fires on
+              <code>document</code> on every <code>set()</code> /
+              <code>toggle()</code> / button click, and when the system theme
+              changes while system is chosen.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Read with get(), listen for a change"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        onclick="window.tsunami.theme.toggle()"
+                      >
+                        Toggle
+                      </button>
+                    </div>
+                    <p id="theme-result"></p>
+                  </div>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      const result = document.getElementById("theme-result");
+                      result.textContent =
+                        "get() returns " + window.tsunami.theme.get();
+                      document.addEventListener("tsunami:themechange", (e) => {
+                        result.textContent =
+                          "tsunami:themechange: theme = " +
+                          e.detail.theme +
+                          ", choice = " +
+                          e.detail.choice;
+                      });
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-size="sm" onclick="window.tsunami.theme.toggle()"&gt;
+      Toggle
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;p id="theme-result"&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.addEventListener("DOMContentLoaded", () =&gt; {
+    const result = document.getElementById("theme-result");
+    result.textContent = "get() returns " + window.tsunami.theme.get();
+    document.addEventListener("tsunami:themechange", (e) =&gt; {
+      result.textContent =
+        "tsunami:themechange: theme = " + e.detail.theme + ", choice = " + e.detail.choice;
+    });
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Components redraw on a change</h2>
+            <p>
+              CSS updates colours on its own. A canvas or iframe that the page
+              draws itself must listen for <code>tsunami:themechange</code>,
+              read the new colour variables and redraw.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Components redraw on a change">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <canvas
+                    id="theme-chart"
+                    style="width: 100%; max-width: 20rem; height: 7.5rem"
+                    aria-label="Sales, last 7 days"
+                    role="img"
+                  ></canvas>
+                  <script>
+                    (() => {
+                      const canvas = document.getElementById("theme-chart");
+                      const sales = [12, 18, 9, 22, 16, 27, 20];
+                      function draw() {
+                        const css = getComputedStyle(canvas);
+                        const w = canvas.clientWidth;
+                        const h = canvas.clientHeight;
+                        canvas.width = w * devicePixelRatio;
+                        canvas.height = h * devicePixelRatio;
+                        const ctx = canvas.getContext("2d");
+                        ctx.scale(devicePixelRatio, devicePixelRatio);
+                        ctx.fillStyle = css.getPropertyValue("--subtle");
+                        ctx.fillRect(0, 0, w, h);
+                        const bar = w / sales.length;
+                        ctx.fillStyle = css.getPropertyValue("--accent");
+                        sales.forEach((v, i) => {
+                          const y = h - (v / 30) * h;
+                          ctx.fillRect(i * bar + 4, y, bar - 8, h - y);
+                        });
+                      }
+                      document.addEventListener("tsunami:themechange", draw);
+                      draw();
+                    })();
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;canvas id="theme-chart" style="width: 100%; max-width: 20rem; height: 7.5rem" aria-label="Sales, last 7 days" role="img"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  (() =&gt; {
+    const canvas = document.getElementById("theme-chart");
+    const sales = [12, 18, 9, 22, 16, 27, 20];
+    function draw() {
+      const css = getComputedStyle(canvas);
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      canvas.width = w * devicePixelRatio;
+      canvas.height = h * devicePixelRatio;
+      const ctx = canvas.getContext("2d");
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      ctx.fillStyle = css.getPropertyValue("--subtle");
+      ctx.fillRect(0, 0, w, h);
+      const bar = w / sales.length;
+      ctx.fillStyle = css.getPropertyValue("--accent");
+      sales.forEach((v, i) =&gt; {
+        const y = h - (v / 30) * h;
+        ctx.fillRect(i * bar + 4, y, bar - 8, h - y);
+      });
+    }
+    document.addEventListener("tsunami:themechange", draw);
+    draw();
+  })();
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>html[data-theme]</code></td>
+                    <td>
+                      (none = system, default), <code>light</code>,
+                      <code>dark</code>
+                    </td>
+                    <td>
+                      The chosen theme, set by JS and the head script. Without
+                      it, prefers-color-scheme applies.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.theme-switcher</code></td>
+                    <td>
+                      <code>div</code> + <code>role="group"</code>,
+                      <code>aria-label</code>
+                    </td>
+                    <td>
+                      Segmented frame for theme buttons. Children are
+                      <code>&lt;button&gt;</code>s with icons.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-theme-toggle</code></td>
+                    <td>
+                      (empty), <code>light</code>, <code>dark</code>,
+                      <code>system</code>
+                    </td>
+                    <td>
+                      Works on any button. Empty = toggle light / dark, any
+                      other value = <code>set(value)</code>;
+                      <code>system</code> clears the saved choice.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-pressed</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td>
+                      JS sets it on the <code>data-theme-toggle</code> button
+                      whose value matches the current choice (system when there
+                      is no data-theme).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>text</td>
+                    <td>Required on icon-only buttons.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-theme-show</code></td>
+                    <td><code>light</code>, <code>dark</code></td>
+                    <td>Shows the element only in that theme. Pure CSS.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami-theme</code></td>
+                    <td><code>light</code>, <code>dark</code></td>
+                    <td>
+                      localStorage key that holds the choice. Removed when
+                      system is chosen.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>Functions live on <code>window.tsunami.theme</code>.</p>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function / event</th>
+                    <th scope="col">Arguments / detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>theme.get()</code></td>
+                    <td>-</td>
+                    <td>
+                      Returns <code>"dark"</code> or <code>"light"</code> for
+                      the theme on screen (including when it follows the
+                      system).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>theme.set(name)</code></td>
+                    <td>
+                      <code>name</code>: <code>"light"</code>,
+                      <code>"dark"</code>, <code>"system"</code>
+                    </td>
+                    <td>
+                      Sets and saves the theme. Any value other than light /
+                      dark counts as system.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>theme.toggle()</code></td>
+                    <td>-</td>
+                    <td>Switches to the other theme from the one on screen.</td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami:themechange</code></td>
+                    <td><code>{ theme, choice }</code></td>
+                    <td>
+                      Fires on <code>document</code> after every
+                      <code>set()</code> / <code>toggle()</code> / button click
+                      (even if the value is unchanged), and when the system
+                      theme changes while system is chosen. <code>theme</code> =
+                      <code>"dark"</code> | <code>"light"</code>,
+                      <code>choice</code> = <code>"light"</code> |
+                      <code>"dark"</code> | <code>"system"</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

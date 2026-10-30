@@ -1,0 +1,1124 @@
+<header class="page-header">
+            <div>
+              <h1>Save bar</h1>
+              <p>
+                A sticky bottom bar that shows when a form is edited and hides
+                when the values match again. Try editing the forms below.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>The bar</h2>
+            <p>
+              A message on the left, buttons on the right. Discard is a
+              <code>type="reset"</code> button that restores the original values
+              natively. Save is <code>type="submit"</code>. Both point at the
+              form with <code>form="id"</code>, so the bar can sit outside the
+              form.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="save-bar"
+                    role="region"
+                    aria-label="Unsaved changes"
+                  >
+                    <p>Unsaved changes</p>
+                    <div>
+                      <button type="button" class="btn" data-variant="ghost">
+                        Discard
+                      </button>
+                      <button type="button" class="btn" data-variant="primary">
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="save-bar" role="region" aria-label="Unsaved changes"&gt;
+  &lt;p&gt;Unsaved changes&lt;/p&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-variant="ghost"&gt;Discard&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>The bar names its form with data-form</h2>
+            <p>
+              <code>data-form</code> is the id of the form the bar watches.
+              Place the bar after the form and start it with
+              <code>hidden</code>. The examples on this page use
+              <code>method="dialog"</code> so saving does not reload the page.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form
+                      id="sb-form"
+                      class="stack docs-narrow"
+                      method="dialog"
+                    >
+                      <div class="field">
+                        <label for="sb-title">Product title</label>
+                        <input
+                          id="sb-title"
+                          name="title"
+                          type="text"
+                          value="T-shirt"
+                        />
+                      </div>
+                      <div class="field">
+                        <input id="sb-visible" name="visible" type="checkbox" />
+                        <label for="sb-visible">Visible in store</label>
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-form"
+                      role="region"
+                      aria-label="Unsaved changes"
+                      hidden
+                    >
+                      <p>Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-form"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-form"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;form id="sb-form" class="stack docs-narrow" method="dialog"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sb-title"&gt;Product title&lt;/label&gt;
+    &lt;input id="sb-title" name="title" type="text" value="T-shirt" /&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="sb-visible" name="visible" type="checkbox" /&gt;
+    &lt;label for="sb-visible"&gt;Visible in store&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-form" role="region" aria-label="Unsaved changes" hidden&gt;
+    &lt;p&gt;Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-form" class="btn" data-variant="ghost"&gt;Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-form" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Shows on change, hides when undone, stays at the bottom</h2>
+            <p>
+              The bar uses <code>position: sticky; bottom: 0</code>, so it
+              sticks to the bottom of its scroll container (or the viewport).
+              Edit the title and the bar appears. Type "Tote bag" back and it
+              goes away.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="scroll-area"
+                    tabindex="0"
+                    aria-label="Product form"
+                    style="height: 18rem"
+                  >
+                    <form id="sb-scroll" class="stack" method="dialog">
+                      <div class="field">
+                        <label for="sb-scroll-title">Product title</label>
+                        <input
+                          id="sb-scroll-title"
+                          name="title"
+                          type="text"
+                          value="Tote bag"
+                          aria-describedby="sb-scroll-hint"
+                        />
+                        <small id="sb-scroll-hint"
+                          >Change it, then type it back</small
+                        >
+                      </div>
+                      <div class="field">
+                        <label for="sb-scroll-meta">Meta description</label>
+                        <textarea
+                          id="sb-scroll-meta"
+                          name="meta"
+                          rows="12"
+                        ></textarea>
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-scroll"
+                      role="region"
+                      aria-label="Unsaved changes"
+                      hidden
+                    >
+                      <p>Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-scroll"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-scroll"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="scroll-area" tabindex="0" aria-label="Product form" style="height: 18rem"&gt;
+  &lt;form id="sb-scroll" class="stack" method="dialog"&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-scroll-title"&gt;Product title&lt;/label&gt;
+      &lt;input id="sb-scroll-title" name="title" type="text" value="Tote bag" aria-describedby="sb-scroll-hint" /&gt;
+      &lt;small id="sb-scroll-hint"&gt;Change it, then type it back&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-scroll-meta"&gt;Meta description&lt;/label&gt;
+      &lt;textarea id="sb-scroll-meta" name="meta" rows="12"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-scroll" role="region" aria-label="Unsaved changes" hidden&gt;
+    &lt;p&gt;Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-scroll" class="btn" data-variant="ghost"&gt;Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-scroll" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Every kind of field is compared</h2>
+            <p>
+              Checkboxes, radios and switches compare their checked state.
+              Selects compare the selected options (multiple too). File inputs
+              compare the chosen files. Other fields compare their value
+              (sliders too). The original value is the one written in the HTML.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form id="sb-kinds" class="field-group" method="dialog">
+                      <div>
+                        <div class="field">
+                          <input
+                            id="sb-kinds-public"
+                            name="public"
+                            type="checkbox"
+                            role="switch"
+                            checked
+                          />
+                          <label for="sb-kinds-public">Is public</label>
+                        </div>
+                        <div class="field">
+                          <input id="sb-kinds-tax" name="tax" type="checkbox" />
+                          <label for="sb-kinds-tax">Includes tax</label>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="field">
+                          <label for="sb-kinds-status">Status</label>
+                          <select id="sb-kinds-status" name="status">
+                            <option>Draft</option>
+                            <option selected>Active</option>
+                            <option>Archived</option>
+                          </select>
+                        </div>
+                        <div class="field">
+                          <label for="sb-kinds-colour">Colour</label>
+                          <select id="sb-kinds-colour" name="colour">
+                            <option value="blue" selected>Blue</option>
+                            <option value="white">White</option>
+                            <option value="grey">Grey</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="field">
+                          <label for="sb-kinds-file">Size chart</label>
+                          <input id="sb-kinds-file" name="chart" type="file" />
+                        </div>
+                        <div class="field">
+                          <label for="sb-kinds-stock"
+                            >Min stock:
+                            <output for="sb-kinds-stock">10</output></label
+                          >
+                          <input
+                            id="sb-kinds-stock"
+                            name="stock"
+                            class="slider"
+                            type="range"
+                            min="0"
+                            max="50"
+                            value="10"
+                          />
+                        </div>
+                      </div>
+                      <fieldset class="field-group" data-gap="sm">
+                        <legend>Shipping</legend>
+                        <div class="field">
+                          <input
+                            id="sb-kinds-std"
+                            name="ship"
+                            type="radio"
+                            value="std"
+                            checked
+                          />
+                          <label for="sb-kinds-std">Standard</label>
+                        </div>
+                        <div class="field">
+                          <input
+                            id="sb-kinds-exp"
+                            name="ship"
+                            type="radio"
+                            value="exp"
+                          />
+                          <label for="sb-kinds-exp">Express</label>
+                        </div>
+                      </fieldset>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-kinds"
+                      role="region"
+                      aria-label="Unsaved changes"
+                      hidden
+                    >
+                      <p>Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-kinds"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-kinds"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;form id="sb-kinds" class="field-group" method="dialog"&gt;
+  &lt;div&gt;
+    &lt;div class="field"&gt;
+      &lt;input id="sb-kinds-public" name="public" type="checkbox" role="switch" checked /&gt;
+      &lt;label for="sb-kinds-public"&gt;Is public&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;input id="sb-kinds-tax" name="tax" type="checkbox" /&gt;
+      &lt;label for="sb-kinds-tax"&gt;Includes tax&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-kinds-status"&gt;Status&lt;/label&gt;
+      &lt;select id="sb-kinds-status" name="status"&gt;
+        &lt;option&gt;Draft&lt;/option&gt;
+        &lt;option selected&gt;Active&lt;/option&gt;
+        &lt;option&gt;Archived&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-kinds-colour"&gt;Colour&lt;/label&gt;
+      &lt;select id="sb-kinds-colour" name="colour"&gt;
+        &lt;option value="blue" selected&gt;Blue&lt;/option&gt;
+        &lt;option value="white"&gt;White&lt;/option&gt;
+        &lt;option value="grey"&gt;Grey&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-kinds-file"&gt;Size chart&lt;/label&gt;
+      &lt;input id="sb-kinds-file" name="chart" type="file" /&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-kinds-stock"&gt;Min stock: &lt;output for="sb-kinds-stock"&gt;10&lt;/output&gt;&lt;/label&gt;
+      &lt;input id="sb-kinds-stock" name="stock" class="slider" type="range" min="0" max="50" value="10" /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;fieldset class="field-group" data-gap="sm"&gt;
+    &lt;legend&gt;Shipping&lt;/legend&gt;
+    &lt;div class="field"&gt;
+      &lt;input id="sb-kinds-std" name="ship" type="radio" value="std" checked /&gt;
+      &lt;label for="sb-kinds-std"&gt;Standard&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;input id="sb-kinds-exp" name="ship" type="radio" value="exp" /&gt;
+      &lt;label for="sb-kinds-exp"&gt;Express&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-kinds" role="region" aria-label="Unsaved changes" hidden&gt;
+    &lt;p&gt;Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-kinds" class="btn" data-variant="ghost"&gt;Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-kinds" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A bar without hidden stays up</h2>
+            <p>
+              Use this for a new record that has never been saved, or after a
+              failed save. The script still sets <code>data-dirty</code> but
+              never hides the bar.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form id="sb-new" class="stack docs-narrow" method="dialog">
+                      <div class="field">
+                        <label for="sb-new-title">Product title</label>
+                        <input
+                          id="sb-new-title"
+                          name="title"
+                          type="text"
+                          placeholder="New product"
+                        />
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-new"
+                      role="region"
+                      aria-label="Unsaved changes"
+                    >
+                      <p>Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-new"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-new"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;form id="sb-new" class="stack docs-narrow" method="dialog"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sb-new-title"&gt;Product title&lt;/label&gt;
+    &lt;input id="sb-new-title" name="title" type="text" placeholder="New product" /&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-new" role="region" aria-label="Unsaved changes"&gt;
+    &lt;p&gt;Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-new" class="btn" data-variant="ghost"&gt;Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-new" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-warn-on-leave asks before leaving with unsaved changes</h2>
+            <p>
+              Edit this field, then reload or follow a link. The browser asks
+              first (beforeunload). Discard, Save and links inside the bar do
+              not ask.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <form
+                      id="sb-warn"
+                      class="stack docs-narrow"
+                      method="dialog"
+                    >
+                      <div class="field">
+                        <label for="sb-warn-title">Product title</label>
+                        <input
+                          id="sb-warn-title"
+                          name="title"
+                          type="text"
+                          value="Timeless Watch"
+                        />
+                      </div>
+                    </form>
+                    <div
+                      class="save-bar"
+                      data-form="sb-warn"
+                      data-warn-on-leave
+                      role="region"
+                      aria-label="Unsaved changes"
+                      hidden
+                    >
+                      <p>Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="sb-warn"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="sb-warn"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+&lt;form id="sb-warn" class="stack docs-narrow" method="dialog"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sb-warn-title"&gt;Product title&lt;/label&gt;
+    &lt;input id="sb-warn-title" name="title" type="text" value="Timeless Watch" /&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+  &lt;div class="save-bar" data-form="sb-warn" data-warn-on-leave role="region" aria-label="Unsaved changes" hidden&gt;
+    &lt;p&gt;Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-warn" class="btn" data-variant="ghost"&gt;Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-warn" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Events and markClean() after saving without a page load</h2>
+            <p>
+              The form gets <code>tsunami:dirty</code> when it starts to differ
+              from the saved values and <code>tsunami:clean</code> when it
+              matches again. After saving with fetch, call
+              <code>tsunami.saveBar.markClean(form)</code> to make the current
+              values the saved ones.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <form id="sb-events" method="dialog">
+                      <div class="field">
+                        <label for="sb-events-title">Product title</label>
+                        <input
+                          id="sb-events-title"
+                          name="title"
+                          type="text"
+                          value="Bollard Lamp"
+                        />
+                      </div>
+                    </form>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="sb-events-clean"
+                      >
+                        markClean()
+                      </button>
+                      <small id="sb-events-result" aria-live="polite"
+                        >No changes</small
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="save-bar"
+                    data-form="sb-events"
+                    role="region"
+                    aria-label="Unsaved changes"
+                    hidden
+                  >
+                    <p>Unsaved changes</p>
+                    <div>
+                      <button
+                        type="reset"
+                        form="sb-events"
+                        class="btn"
+                        data-variant="ghost"
+                      >
+                        Discard
+                      </button>
+                      <button
+                        type="submit"
+                        form="sb-events"
+                        class="btn"
+                        data-variant="primary"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                  <script>
+                    {
+                      const form = document.getElementById("sb-events");
+                      const result =
+                        document.getElementById("sb-events-result");
+                      form.addEventListener("tsunami:dirty", () => {
+                        result.textContent = "dirty: unsaved changes";
+                      });
+                      form.addEventListener("tsunami:clean", () => {
+                        result.textContent = "clean: matches the saved values";
+                      });
+                      document
+                        .getElementById("sb-events-clean")
+                        .addEventListener("click", () => {
+                          window.tsunami.saveBar.markClean(form);
+                        });
+                    }
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;form id="sb-events" method="dialog"&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="sb-events-title"&gt;Product title&lt;/label&gt;
+      &lt;input id="sb-events-title" name="title" type="text" value="Bollard Lamp" /&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="sb-events-clean"&gt;markClean()&lt;/button&gt;
+    &lt;small id="sb-events-result" aria-live="polite"&gt;No changes&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;div class="save-bar" data-form="sb-events" role="region" aria-label="Unsaved changes" hidden&gt;
+    &lt;p&gt;Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="sb-events" class="btn" data-variant="ghost"&gt;Discard&lt;/button&gt;
+      &lt;button type="submit" form="sb-events" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;script&gt;
+  {
+    const form = document.getElementById("sb-events");
+    const result = document.getElementById("sb-events-result");
+    form.addEventListener("tsunami:dirty", () =&gt; {
+      result.textContent = "dirty: unsaved changes";
+    });
+    form.addEventListener("tsunami:clean", () =&gt; {
+      result.textContent = "clean: matches the saved values";
+    });
+    document.getElementById("sb-events-clean").addEventListener("click", () =&gt; {
+      window.tsunami.saveBar.markClean(form);
+    });
+  }
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              <code>js/save-bar.js</code>
+              also works with bars and forms added later. No init call needed.
+            </p>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code
+                        >tsunami.<wbr />saveBar.<wbr />check(<wbr />target)</code
+                      >
+                    </td>
+                    <td><code>target</code>: .save-bar or form</td>
+                    <td>
+                      Compares the form now, shows or hides the bar, sets
+                      data-dirty and fires an event if the state changed.
+                      Returns <code>true</code> if there are changes. Call it
+                      after a script changes a field without firing
+                      input/change.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code
+                        >tsunami.<wbr />saveBar.<wbr />markClean(<wbr />target)</code
+                      >
+                    </td>
+                    <td><code>target</code>: .save-bar or form</td>
+                    <td>
+                      Makes the current values the saved ones (updates
+                      defaultValue / defaultChecked / defaultSelected, so reset
+                      keeps working), then hides the bar.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:dirty</code></td>
+                    <td>form (bubbles)</td>
+                    <td>
+                      <code>{ form, bars }</code>
+                      Fired when the form starts to differ from the saved
+                      values.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami:clean</code></td>
+                    <td>form (bubbles)</td>
+                    <td>
+                      <code>{ form, bars }</code>
+                      Fired when the form matches the saved values again, by
+                      undoing an edit, reset, submit or markClean().
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              How fields are compared: checkbox/radio compare
+              <code>checked</code> with <code>defaultChecked</code>, select
+              compares <code>selected</code> with <code>defaultSelected</code>,
+              file compares the chosen files, input type=hidden compares with
+              its value when the script first saw the form, and other fields
+              compare <code>value</code> with <code>defaultValue</code>. A
+              change in the number of fields (rows added or removed) also counts
+              as an edit; a script that adds rows must fire an input event on
+              the form. Not compared: buttons, fieldset, output, fields inside a
+              dialog, the select search box and
+              <code>[data-save-bar-ignore]</code>. After submit, the values
+              count as saved.
+            </p>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>.<wbr />save-bar</code>
+                    </td>
+                    <td></td>
+                    <td>Sticky bottom bar with a 1px top border</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />save-bar &gt; p</code>
+                    </td>
+                    <td></td>
+                    <td>Muted message on the left</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />save-bar &gt; div</code>
+                    </td>
+                    <td></td>
+                    <td>Button group on the right</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-form</code></td>
+                    <td>form id</td>
+                    <td>
+                      The form the bar watches. Without it, the script leaves
+                      the bar alone.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>hidden</code></td>
+                    <td>present / absent</td>
+                    <td>
+                      Add it to start hidden and let the script toggle the bar.
+                      Without it, the bar is always shown.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-warn-on-leave</code></td>
+                    <td>present / absent (default absent)</td>
+                    <td>
+                      Asks before leaving the page with unsaved changes
+                      (beforeunload). Discard, Save and links inside the bar do
+                      not ask.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-dirty</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td>
+                      Set by the script: whether the form has unsaved changes.
+                      Use it in CSS or read it from a script.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>role="region" + aria-label</code></td>
+                    <td></td>
+                    <td>Lets screen readers find the bar</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>button[type=reset]<wbr />[form]</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Discard restores the original values natively; the bar
+                      hides itself
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>button[type=submit]<wbr />[form]</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Save submits the form from outside it. After submit, the
+                      values count as saved.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>a[href=""]</code></td>
+                    <td></td>
+                    <td>
+                      Alternative Discard: reloads the page to restore the saved
+                      values, without asking first
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-save-bar-ignore</code></td>
+                    <td></td>
+                    <td>
+                      On a form field: leave it out of the comparison (e.g. a
+                      filter box that is not saved)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

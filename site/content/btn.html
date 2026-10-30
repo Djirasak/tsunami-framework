@@ -1,0 +1,899 @@
+<header class="page-header">
+            <div>
+              <h1>Button</h1>
+              <p>
+                Buttons are outline by default. Use primary only for the main
+                action on a page.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Variants</h2>
+            <p>
+              Without <code>data-variant</code> a button is outline. Use one
+              <code>primary</code> button per page.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Variants">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn">Cancel</button>
+                    <button type="button" class="btn" data-variant="primary">
+                      Save
+                    </button>
+                    <button type="button" class="btn" data-variant="ghost">
+                      Skip
+                    </button>
+                    <button type="button" class="btn" data-variant="danger">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn"&gt;Cancel&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="ghost"&gt;Skip&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="danger"&gt;Delete&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sizes</h2>
+            <p>
+              Icon-only buttons use <code>data-size="icon"</code> or
+              <code>icon-sm</code> and need an <code>aria-label</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Sizes">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button type="button" class="btn" data-size="sm">
+                      Small
+                    </button>
+                    <button type="button" class="btn">Default</button>
+                    <button type="button" class="btn" data-size="lg">
+                      Large
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="Settings"
+                    >
+                      <i class="icon icon-settings" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon-sm"
+                      aria-label="Add"
+                    >
+                      <i class="icon icon-plus" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-size="sm"&gt;Small&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Default&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="lg"&gt;Large&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="Settings"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon-sm" aria-label="Add"&gt;&lt;i class="icon icon-plus" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Icon and disabled</h2>
+            <p>
+              Put the icon before the text. Disabled links use
+              <code>aria-disabled="true"</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Icon and disabled">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <a class="btn" href="/docs"
+                      ><i class="icon icon-external-link" aria-hidden="true"></i
+                      >Open store</a
+                    >
+                    <button type="button" class="btn" disabled>Export</button>
+                    <a class="btn" aria-disabled="true">View receipt</a>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;a class="btn" href="#"&gt;&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;Open store&lt;/a&gt;
+  &lt;button type="button" class="btn" disabled&gt;Export&lt;/button&gt;
+  &lt;a class="btn" aria-disabled="true"&gt;View receipt&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Delete icon button</h2>
+            <p>
+              A red trash icon in an outline frame, or ghost (<code
+                >data-variant="ghost danger"</code
+              >) for table rows.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Delete icon button">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="danger"
+                      data-size="icon-sm"
+                      aria-label="Delete"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="danger"
+                      data-size="icon"
+                      aria-label="Delete"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="ghost danger"
+                      data-size="icon-sm"
+                      aria-label="Delete"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-variant="danger" data-size="icon-sm" aria-label="Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="ghost danger" data-size="icon-sm" aria-label="Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Delete at the end of a row of fields</h2>
+            <p>
+              The button does not shrink in a narrow row (<code
+                >flex-shrink: 0</code
+              >), so it always keeps its size at the end of the row.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Delete at the end of a row of fields"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <div class="field" style="width: min(10rem, 35%)">
+                        <select aria-label="Metafield">
+                          <option value="">--------</option>
+                          <option value="agent">Agent</option>
+                          <option value="funnel">Funnel</option>
+                        </select>
+                      </div>
+                      <div class="field" style="width: min(16rem, 45%)">
+                        <input
+                          type="text"
+                          aria-label="Value"
+                          value="Downtown store"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="danger"
+                        data-size="icon"
+                        aria-label="Delete field"
+                      >
+                        <i class="icon icon-trash-2" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <div class="field" style="width: min(10rem, 35%)">
+                        <select aria-label="Metafield">
+                          <option value="">--------</option>
+                          <option value="agent">Agent</option>
+                          <option value="funnel" selected>Funnel</option>
+                        </select>
+                      </div>
+                      <div class="field" style="width: min(16rem, 45%)">
+                        <input
+                          type="text"
+                          aria-label="Value"
+                          value="flash-sale-11"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="danger"
+                        data-size="icon"
+                        aria-label="Delete field"
+                      >
+                        <i class="icon icon-trash-2" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;div class="field" style="width: min(10rem, 35%)"&gt;
+      &lt;select aria-label="Metafield"&gt;
+        &lt;option value=""&gt;--------&lt;/option&gt;
+        &lt;option value="agent"&gt;Agent&lt;/option&gt;
+        &lt;option value="funnel"&gt;Funnel&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class="field" style="width: min(16rem, 45%)"&gt;
+      &lt;input type="text" aria-label="Value" value="Downtown store" /&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="Delete field"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;div class="field" style="width: min(10rem, 35%)"&gt;
+      &lt;select aria-label="Metafield"&gt;
+        &lt;option value=""&gt;--------&lt;/option&gt;
+        &lt;option value="agent"&gt;Agent&lt;/option&gt;
+        &lt;option value="funnel" selected&gt;Funnel&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class="field" style="width: min(16rem, 45%)"&gt;
+      &lt;input type="text" aria-label="Value" value="flash-sale-11" /&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="btn" data-variant="danger" data-size="icon" aria-label="Delete field"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Button group</h2>
+            <p>
+              <code>.btn-group</code> joins buttons into one set. Add
+              <code>role="group"</code> and an <code>aria-label</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Button group">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Order actions"
+                  >
+                    <button type="button" class="btn">Archive</button>
+                    <button type="button" class="btn">Report</button>
+                    <button type="button" class="btn">Print</button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="btn-group" role="group" aria-label="Order actions"&gt;
+  &lt;button type="button" class="btn"&gt;Archive&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Report&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Print&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Pressed toggle buttons</h2>
+            <p>
+              <code>aria-pressed="true"</code> gives a button a grey background
+              to show it is on. Put <code>data-pressed="single"</code> on the
+              group to allow one button at a time, or <code>multiple</code> to
+              let each button toggle on its own (needs JS).
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Pressed toggle buttons">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Preview width"
+                      data-pressed="single"
+                    >
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon"
+                        aria-pressed="true"
+                        aria-label="Desktop"
+                      >
+                        <i class="icon icon-monitor" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon"
+                        aria-pressed="false"
+                        aria-label="Tablet"
+                      >
+                        <i class="icon icon-tablet" aria-hidden="true"></i>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon"
+                        aria-pressed="false"
+                        aria-label="Mobile"
+                      >
+                        <i class="icon icon-smartphone" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Product filters"
+                      data-pressed="multiple"
+                    >
+                      <button type="button" class="btn" aria-pressed="true">
+                        Ready to ship
+                      </button>
+                      <button type="button" class="btn" aria-pressed="false">
+                        On sale
+                      </button>
+                      <button type="button" class="btn" aria-pressed="false">
+                        New
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;div class="btn-group" role="group" aria-label="Preview width" data-pressed="single"&gt;
+    &lt;button type="button" class="btn" data-size="icon" aria-pressed="true" aria-label="Desktop"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon" aria-pressed="false" aria-label="Tablet"&gt;&lt;i class="icon icon-tablet" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon" aria-pressed="false" aria-label="Mobile"&gt;&lt;i class="icon icon-smartphone" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="btn-group" role="group" aria-label="Product filters" data-pressed="multiple"&gt;
+    &lt;button type="button" class="btn" aria-pressed="true"&gt;Ready to ship&lt;/button&gt;
+    &lt;button type="button" class="btn" aria-pressed="false"&gt;On sale&lt;/button&gt;
+    &lt;button type="button" class="btn" aria-pressed="false"&gt;New&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Button group with a menu</h2>
+            <p>
+              The last button in the group opens a
+              <a href="/docs/dropdown">dropdown</a> with <code>popovertarget</code>.
+              The popover can sit inside the group without affecting the
+              buttons' rounded corners.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Button group with a menu">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="Go back"
+                    >
+                      <i class="icon icon-arrow-left" aria-hidden="true"></i>
+                    </button>
+                    <div class="btn-group" role="group" aria-label="Manage">
+                      <button type="button" class="btn">Archive</button>
+                      <button type="button" class="btn">Report</button>
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Snooze">
+                      <button type="button" class="btn">Snooze</button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="icon"
+                        popovertarget="btn-more"
+                        aria-label="More options"
+                      >
+                        <i class="icon icon-ellipsis" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown" id="btn-more" popover>
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-mail-check" aria-hidden="true"></i
+                          >Mark as read
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-archive" aria-hidden="true"></i
+                          >Archive
+                        </button>
+                        <hr />
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-clock" aria-hidden="true"></i
+                          >Snooze
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-calendar" aria-hidden="true"></i
+                          >Add to calendar
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i
+                            class="icon icon-list-filter-plus"
+                            aria-hidden="true"
+                          ></i
+                          >Add to list
+                        </button>
+                        <hr />
+                        <button
+                          type="button"
+                          data-variant="danger"
+                          popovertarget="btn-more"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-trash-2" aria-hidden="true"></i
+                          >Trash
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="Go back"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;div class="btn-group" role="group" aria-label="Manage"&gt;
+    &lt;button type="button" class="btn"&gt;Archive&lt;/button&gt;
+    &lt;button type="button" class="btn"&gt;Report&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="btn-group" role="group" aria-label="Snooze"&gt;
+    &lt;button type="button" class="btn"&gt;Snooze&lt;/button&gt;
+    &lt;button type="button" class="btn" data-size="icon" popovertarget="btn-more" aria-label="More options"&gt;&lt;i class="icon icon-ellipsis" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;div class="dropdown" id="btn-more" popover&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-mail-check" aria-hidden="true"&gt;&lt;/i&gt;Mark as read&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-archive" aria-hidden="true"&gt;&lt;/i&gt;Archive&lt;/button&gt;
+      &lt;hr /&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-clock" aria-hidden="true"&gt;&lt;/i&gt;Snooze&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-calendar" aria-hidden="true"&gt;&lt;/i&gt;Add to calendar&lt;/button&gt;
+      &lt;button type="button" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-list-filter-plus" aria-hidden="true"&gt;&lt;/i&gt;Add to list&lt;/button&gt;
+      &lt;hr /&gt;
+      &lt;button type="button" data-variant="danger" popovertarget="btn-more" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;Trash&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.btn</code></td>
+                    <td><code>button</code>, <code>a</code></td>
+                    <td>
+                      A button. Use on
+                      <code>&lt;button type="button"&gt;</code> or a link.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>
+                      (none = outline, default), <code>primary</code>,
+                      <code>secondary</code>, <code>ghost</code>,
+                      <code>danger</code>,
+                      <code>ghost danger</code>
+                    </td>
+                    <td>
+                      Button style. Takes several values separated by spaces,
+                      e.g. <code>ghost danger</code> is a red ghost button.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      (none = 36px, default), <code>sm</code> (28px),
+                      <code>lg</code> (40px), <code>xl</code> (48px),
+                      <code>icon</code>, <code>icon-sm</code>
+                    </td>
+                    <td>
+                      <code>icon</code> / <code>icon-sm</code> are 36px / 28px
+                      square buttons for a single icon.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>text</td>
+                    <td>Required on icon-only buttons.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.icon</code></td>
+                    <td><code>i</code>, Lucide icon name</td>
+                    <td>
+                      Icon inside a button. Always add
+                      <code>aria-hidden="true"</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-pressed</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td>
+                      Toggle button. <code>true</code> shows a grey background.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td>boolean</td>
+                    <td>Disables the button.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-disabled</code></td>
+                    <td><code>true</code></td>
+                    <td>Disables an <code>a.btn</code> link.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.btn-group</code></td>
+                    <td><code>div</code></td>
+                    <td>
+                      Joined group of buttons. Children are <code>.btn</code>.
+                      Add <code>role="group"</code> and an
+                      <code>aria-label</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-pressed</code></td>
+                    <td><code>single</code>, <code>multiple</code></td>
+                    <td>
+                      Put on <code>.btn-group</code> (or any element) so JS
+                      toggles <code>aria-pressed</code> on the buttons inside:
+                      one at a time, or each on its own.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.dropdown</code></td>
+                    <td><code>popover</code>, <code>id</code></td>
+                    <td>
+                      The group's menu. It can sit inside
+                      <code>.btn-group</code> and opens from a group button with
+                      <code>popovertarget</code>. It does not count as a button
+                      for the rounded corners.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              No functions. Buttons in a <code>[data-pressed]</code> group work
+              through event delegation, so buttons added later work too.
+            </p>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:pressedchange</code></td>
+                    <td><code>{ button, pressed }</code></td>
+                    <td>
+                      Fires from the element with
+                      <code>data-pressed</code> (bubbles) after a button click.
+                      <code>button</code> is the clicked button,
+                      <code>pressed</code> is its new state.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

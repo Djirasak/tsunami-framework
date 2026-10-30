@@ -1,0 +1,85 @@
+<div class="workspace">
+      <header>
+        <button
+          type="button"
+          class="btn"
+          data-variant="ghost"
+          data-size="icon"
+          popovertarget="wsf-pages"
+          aria-label="Open the pages"
+        >
+          <i class="icon icon-panel-left" aria-hidden="true"></i>
+        </button>
+        <a
+          href="/docs/workspace"
+          class="btn"
+          data-size="icon"
+          aria-label="Back to the docs"
+        >
+          <i class="icon icon-arrow-left" aria-hidden="true"></i>
+        </a>
+        <h1>Summer theme</h1>
+        <button type="button" class="btn" data-size="sm">Preview</button>
+        <button type="button" class="btn" data-variant="primary" data-size="sm">
+          Save
+        </button>
+        <button
+          type="button"
+          class="btn"
+          data-variant="ghost"
+          data-size="icon"
+          popovertarget="wsf-help"
+          aria-label="Open help"
+        >
+          <i class="icon icon-panel-right" aria-hidden="true"></i>
+        </button>
+      </header>
+      <aside id="wsf-pages" popover aria-label="Sections">
+        <nav class="subnav" aria-label="Sections">
+          <h2>Sections</h2>
+          <a href="/docs" aria-current="page">Typography</a>
+          <a href="/docs">Navigation</a>
+          <a href="/docs">Homepage</a>
+          <a href="/docs">Product page</a>
+          <a href="/docs">Footer</a>
+        </nav>
+      </aside>
+      <main>
+        <div class="stack">
+          <div class="card">
+            <header>
+              <h2>Typography</h2>
+              <p>Fonts used across the store</p>
+            </header>
+            <div class="stack" data-gap="sm">
+              <div class="field">
+                <label for="wsf-heading">Heading font</label>
+                <input id="wsf-heading" value="Google Sans" />
+              </div>
+              <div class="field">
+                <label for="wsf-body">Body font</label>
+                <input id="wsf-body" value="Google Sans" />
+              </div>
+              <div class="field">
+                <label for="wsf-size">Base size (px)</label>
+                <input id="wsf-size" type="number" value="14" />
+              </div>
+            </div>
+          </div>
+          <p>
+            The side panels and the work area scroll on their own. Narrow the
+            window below 768px to see the panel buttons in the top bar.
+          </p>
+        </div>
+      </main>
+      <aside id="wsf-help" popover aria-label="Help">
+        <div class="stack" data-gap="sm">
+          <h2>Help</h2>
+          <p>
+            The heading font applies to h1 to h4. The body font applies to text,
+            buttons and forms.
+          </p>
+          <p>Changes show up in the preview after you save.</p>
+        </div>
+      </aside>
+    </div>

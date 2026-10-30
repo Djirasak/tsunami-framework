@@ -1,0 +1,1109 @@
+<header class="page-header">
+            <div>
+              <h1>Field</h1>
+              <p>
+                Labels, inputs and hints, plus checkbox, radio, switch and
+                slider rows.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Shipping address form</h2>
+            <p>
+              Long forms use <code>.field-group</code> (a borderless fieldset)
+              to stack fields. Wrap fields in a <code>&lt;div&gt;</code> inside
+              the group to split them into equal columns. The columns fold into
+              one on narrow screens.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form class="card" method="dialog">
+                    <header>
+                      <h2 id="ad-title">Edit shipping address</h2>
+                    </header>
+                    <fieldset class="field-group" aria-labelledby="ad-title">
+                      <div class="field">
+                        <label for="ad-country">Country *</label>
+                        <select
+                          id="ad-country"
+                          aria-describedby="ad-country-hint"
+                          autocomplete="country"
+                          required
+                        >
+                          <option value="US" selected>United States</option>
+                          <option value="CA">Canada</option>
+                          <option value="GB">United Kingdom</option>
+                        </select>
+                        <small id="ad-country-hint">Destination country</small>
+                      </div>
+                      <div>
+                        <div class="field">
+                          <label for="ad-first">First name *</label>
+                          <input
+                            id="ad-first"
+                            type="text"
+                            value="Emma"
+                            autocomplete="given-name"
+                            required
+                          />
+                        </div>
+                        <div class="field">
+                          <label for="ad-last">Last name *</label>
+                          <input
+                            id="ad-last"
+                            type="text"
+                            value="Wilson"
+                            autocomplete="family-name"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label for="ad-line1">Address line 1 *</label>
+                        <div class="input-group">
+                          <span
+                            ><i class="icon icon-map-pin" aria-hidden="true"></i
+                          ></span>
+                          <input
+                            id="ad-line1"
+                            type="text"
+                            value="742 Congress Ave"
+                            autocomplete="address-line1"
+                            aria-describedby="ad-line1-hint"
+                            required
+                          />
+                        </div>
+                        <small id="ad-line1-hint"
+                          >House number and street</small
+                        >
+                      </div>
+                      <div class="field">
+                        <label for="ad-line2">Address line 2</label>
+                        <input
+                          id="ad-line2"
+                          type="text"
+                          placeholder="Optional"
+                          autocomplete="address-line2"
+                        />
+                      </div>
+                      <div>
+                        <div class="field">
+                          <label for="ad-city">City *</label>
+                          <input
+                            id="ad-city"
+                            type="text"
+                            value="Austin"
+                            autocomplete="address-level2"
+                            required
+                          />
+                        </div>
+                        <div class="field">
+                          <label for="ad-province">State *</label>
+                          <select
+                            id="ad-province"
+                            autocomplete="address-level1"
+                            required
+                          >
+                            <option selected>Texas</option>
+                            <option>California</option>
+                            <option>New York</option>
+                          </select>
+                        </div>
+                        <div class="field">
+                          <label for="ad-zip">ZIP *</label>
+                          <input
+                            id="ad-zip"
+                            type="text"
+                            inputmode="numeric"
+                            value="78701"
+                            autocomplete="postal-code"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label for="ad-phone">Phone</label>
+                        <input
+                          id="ad-phone"
+                          type="tel"
+                          value="+1 512 555 0142"
+                          autocomplete="tel"
+                        />
+                      </div>
+                      <div class="field">
+                        <label for="ad-notes">Delivery instructions</label>
+                        <textarea
+                          id="ad-notes"
+                          rows="3"
+                          aria-describedby="ad-notes-hint"
+                        ></textarea>
+                        <small id="ad-notes-hint"
+                          >e.g. leave at the front desk</small
+                        >
+                      </div>
+                    </fieldset>
+                    <footer>
+                      <button type="button" class="btn">Close</button>
+                      <button type="submit" class="btn" data-variant="primary">
+                        Save
+                      </button>
+                    </footer>
+                  </form>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form class="card" method="dialog"&gt;
+  &lt;header&gt;&lt;h2 id="ad-title"&gt;Edit shipping address&lt;/h2&gt;&lt;/header&gt;
+  &lt;fieldset class="field-group" aria-labelledby="ad-title"&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="ad-country"&gt;Country *&lt;/label&gt;
+      &lt;select id="ad-country" aria-describedby="ad-country-hint" autocomplete="country" required&gt;
+        &lt;option value="US" selected&gt;United States&lt;/option&gt;
+        &lt;option value="CA"&gt;Canada&lt;/option&gt;
+        &lt;option value="GB"&gt;United Kingdom&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;small id="ad-country-hint"&gt;Destination country&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class="field"&gt;
+        &lt;label for="ad-first"&gt;First name *&lt;/label&gt;
+        &lt;input id="ad-first" type="text" value="Emma" autocomplete="given-name" required /&gt;
+      &lt;/div&gt;
+      &lt;div class="field"&gt;
+        &lt;label for="ad-last"&gt;Last name *&lt;/label&gt;
+        &lt;input id="ad-last" type="text" value="Wilson" autocomplete="family-name" required /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="ad-line1"&gt;Address line 1 *&lt;/label&gt;
+      &lt;div class="input-group"&gt;
+        &lt;span&gt;&lt;i class="icon icon-map-pin" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;input id="ad-line1" type="text" value="742 Congress Ave" autocomplete="address-line1" aria-describedby="ad-line1-hint" required /&gt;
+      &lt;/div&gt;
+      &lt;small id="ad-line1-hint"&gt;House number and street&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="ad-line2"&gt;Address line 2&lt;/label&gt;
+      &lt;input id="ad-line2" type="text" placeholder="Optional" autocomplete="address-line2" /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class="field"&gt;
+        &lt;label for="ad-city"&gt;City *&lt;/label&gt;
+        &lt;input id="ad-city" type="text" value="Austin" autocomplete="address-level2" required /&gt;
+      &lt;/div&gt;
+      &lt;div class="field"&gt;
+        &lt;label for="ad-province"&gt;State *&lt;/label&gt;
+        &lt;select id="ad-province" autocomplete="address-level1" required&gt;
+          &lt;option selected&gt;Texas&lt;/option&gt;
+          &lt;option&gt;California&lt;/option&gt;
+          &lt;option&gt;New York&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+      &lt;div class="field"&gt;
+        &lt;label for="ad-zip"&gt;ZIP *&lt;/label&gt;
+        &lt;input id="ad-zip" type="text" inputmode="numeric" value="78701" autocomplete="postal-code" required /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="ad-phone"&gt;Phone&lt;/label&gt;
+      &lt;input id="ad-phone" type="tel" value="+1 512 555 0142" autocomplete="tel" /&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label for="ad-notes"&gt;Delivery instructions&lt;/label&gt;
+      &lt;textarea id="ad-notes" rows="3" aria-describedby="ad-notes-hint"&gt;&lt;/textarea&gt;
+      &lt;small id="ad-notes-hint"&gt;e.g. leave at the front desk&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+  &lt;footer&gt;
+    &lt;button type="button" class="btn"&gt;Close&lt;/button&gt;
+    &lt;button type="submit" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Invalid field and a checkbox beside its label</h2>
+            <p>
+              Set <code>aria-invalid="true"</code> on the input to turn its
+              border and hint danger. Link the error with
+              <code>aria-describedby</code>. A checkbox placed before its label
+              in a <code>.field</code> lays out as a row.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <fieldset class="field-group docs-narrow">
+                    <legend>Billing address</legend>
+                    <div class="field">
+                      <label for="bl-zip">ZIP *</label>
+                      <input
+                        id="bl-zip"
+                        type="text"
+                        inputmode="numeric"
+                        value="1011"
+                        aria-invalid="true"
+                        aria-describedby="bl-zip-error"
+                        required
+                      />
+                      <small id="bl-zip-error">Enter a 5 digit ZIP code</small>
+                    </div>
+                    <div class="field">
+                      <input id="bl-same" type="checkbox" />
+                      <label for="bl-same">Same as shipping address</label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;fieldset class="field-group docs-narrow"&gt;
+  &lt;legend&gt;Billing address&lt;/legend&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="bl-zip"&gt;ZIP *&lt;/label&gt;
+    &lt;input id="bl-zip" type="text" inputmode="numeric" value="1011" aria-invalid="true" aria-describedby="bl-zip-error" required /&gt;
+    &lt;small id="bl-zip-error"&gt;Enter a 5 digit ZIP code&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="bl-same" type="checkbox" /&gt;
+    &lt;label for="bl-same"&gt;Same as shipping address&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Checkbox: plain, with help text, disabled, whole row as label
+            </h2>
+            <p>
+              For longer text, put the label and a <code>&lt;small&gt;</code> in
+              a <code>&lt;div&gt;</code> after the checkbox. To make the whole
+              row clickable, wrap it all in
+              <code>&lt;label class="field"&gt;</code>. Add
+              <code>data-variant="card"</code> for a border.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="field-group docs-narrow"
+                    role="group"
+                    aria-label="Options"
+                  >
+                    <div class="field">
+                      <input id="cb-terms" type="checkbox" />
+                      <label for="cb-terms">Accept terms and conditions</label>
+                    </div>
+                    <div class="field">
+                      <input
+                        id="cb-terms-2"
+                        type="checkbox"
+                        aria-describedby="cb-terms-2-hint"
+                        checked
+                      />
+                      <div>
+                        <label for="cb-terms-2"
+                          >Accept terms and conditions</label
+                        >
+                        <small id="cb-terms-2-hint"
+                          >By ticking this you agree to the terms</small
+                        >
+                      </div>
+                    </div>
+                    <div class="field">
+                      <input id="cb-notify" type="checkbox" disabled />
+                      <label for="cb-notify">Enable notifications</label>
+                    </div>
+                    <label class="field" data-variant="card">
+                      <input
+                        type="checkbox"
+                        aria-describedby="cb-notify-2-hint"
+                      />
+                      <div>
+                        <h3>Enable order notifications</h3>
+                        <small id="cb-notify-2-hint"
+                          >You can turn this on or off at any time</small
+                        >
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field-group docs-narrow" role="group" aria-label="Options"&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="cb-terms" type="checkbox" /&gt;
+    &lt;label for="cb-terms"&gt;Accept terms and conditions&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="cb-terms-2" type="checkbox" aria-describedby="cb-terms-2-hint" checked /&gt;
+    &lt;div&gt;
+      &lt;label for="cb-terms-2"&gt;Accept terms and conditions&lt;/label&gt;
+      &lt;small id="cb-terms-2-hint"&gt;By ticking this you agree to the terms&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="cb-notify" type="checkbox" disabled /&gt;
+    &lt;label for="cb-notify"&gt;Enable notifications&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;label class="field" data-variant="card"&gt;
+    &lt;input type="checkbox" aria-describedby="cb-notify-2-hint" /&gt;
+    &lt;div&gt;
+      &lt;h3&gt;Enable order notifications&lt;/h3&gt;
+      &lt;small id="cb-notify-2-hint"&gt;You can turn this on or off at any time&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Partly ticked (select all)</h2>
+            <p>
+              HTML cannot set the indeterminate state. A script has to set
+              <code>checkbox.indeterminate = true</code>. This example is a
+              select-all checkbox that controls a product's variants. The
+              browser draws the dash itself.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="field-group docs-narrow"
+                    data-gap="sm"
+                    id="pt-group"
+                    role="group"
+                    aria-label="Variants"
+                  >
+                    <div class="field">
+                      <input
+                        id="pt-all"
+                        type="checkbox"
+                        aria-controls="pt-1 pt-2 pt-3"
+                        aria-describedby="pt-all-hint"
+                      />
+                      <div>
+                        <label for="pt-all">Timeless Watch</label>
+                        <small id="pt-all-hint">1 of 3 variants selected</small>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <input id="pt-1" type="checkbox" checked />
+                      <label for="pt-1">Silver · $149.00</label>
+                    </div>
+                    <div class="field">
+                      <input id="pt-2" type="checkbox" />
+                      <label for="pt-2">Gold · $169.00</label>
+                    </div>
+                    <div class="field">
+                      <input id="pt-3" type="checkbox" />
+                      <label for="pt-3">Black · $149.00</label>
+                    </div>
+                  </div>
+                  <script>
+                    {
+                      const all = document.getElementById("pt-all");
+                      const rows = ["pt-1", "pt-2", "pt-3"].map((id) =>
+                        document.getElementById(id),
+                      );
+                      const hint = document.getElementById("pt-all-hint");
+                      const sync = () => {
+                        const n = rows.filter((r) => r.checked).length;
+                        all.checked = n === rows.length;
+                        all.indeterminate = n > 0 && n < rows.length;
+                        hint.textContent =
+                          n + " of " + rows.length + " variants selected";
+                      };
+                      all.addEventListener("change", () => {
+                        for (const r of rows) r.checked = all.checked;
+                        sync();
+                      });
+                      for (const r of rows) r.addEventListener("change", sync);
+                      sync();
+                    }
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field-group docs-narrow" data-gap="sm" id="pt-group" role="group" aria-label="Variants"&gt;
+  &lt;div class="field"&gt;
+    &lt;input
+      id="pt-all"
+      type="checkbox"
+      aria-controls="pt-1 pt-2 pt-3"
+      aria-describedby="pt-all-hint"
+    /&gt;
+    &lt;div&gt;
+      &lt;label for="pt-all"&gt;Timeless Watch&lt;/label&gt;
+      &lt;small id="pt-all-hint"&gt;1 of 3 variants selected&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="pt-1" type="checkbox" checked /&gt;
+    &lt;label for="pt-1"&gt;Silver · $149.00&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="pt-2" type="checkbox" /&gt;
+    &lt;label for="pt-2"&gt;Gold · $169.00&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="pt-3" type="checkbox" /&gt;
+    &lt;label for="pt-3"&gt;Black · $149.00&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  {
+    const all = document.getElementById("pt-all");
+    const rows = ["pt-1", "pt-2", "pt-3"].map((id) =&gt; document.getElementById(id));
+    const hint = document.getElementById("pt-all-hint");
+    const sync = () =&gt; {
+      const n = rows.filter((r) =&gt; r.checked).length;
+      all.checked = n === rows.length;
+      all.indeterminate = n &gt; 0 &amp;&amp; n &lt; rows.length;
+      hint.textContent = n + " of " + rows.length + " variants selected";
+    };
+    all.addEventListener("change", () =&gt; {
+      for (const r of rows) r.checked = all.checked;
+      sync();
+    });
+    for (const r of rows) r.addEventListener("change", sync);
+    sync();
+  }
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Radio</h2>
+            <p>
+              Wrap radios in
+              <code>&lt;fieldset class="field-group" data-gap="sm"&gt;</code>
+              with a <code>&lt;legend&gt;</code> so screen readers announce the
+              group name. Arrow keys move between options natively.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <fieldset class="field-group" data-gap="sm">
+                    <legend>Table density</legend>
+                    <div class="field">
+                      <input
+                        id="rd-default"
+                        type="radio"
+                        name="rd-density"
+                        value="default"
+                      />
+                      <label for="rd-default">Default</label>
+                    </div>
+                    <div class="field">
+                      <input
+                        id="rd-comfortable"
+                        type="radio"
+                        name="rd-density"
+                        value="comfortable"
+                        checked
+                      />
+                      <label for="rd-comfortable">Comfortable</label>
+                    </div>
+                    <div class="field">
+                      <input
+                        id="rd-compact"
+                        type="radio"
+                        name="rd-density"
+                        value="compact"
+                      />
+                      <label for="rd-compact">Compact</label>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;fieldset class="field-group" data-gap="sm"&gt;
+  &lt;legend&gt;Table density&lt;/legend&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="rd-default" type="radio" name="rd-density" value="default" /&gt;
+    &lt;label for="rd-default"&gt;Default&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="rd-comfortable" type="radio" name="rd-density" value="comfortable" checked /&gt;
+    &lt;label for="rd-comfortable"&gt;Comfortable&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="rd-compact" type="radio" name="rd-density" value="compact" /&gt;
+    &lt;label for="rd-compact"&gt;Compact&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Switch</h2>
+            <p>
+              A checkbox with <code>role="switch"</code> draws as a switch. Use
+              it for settings that apply at once. It works inside a
+              <code>.field</code> or on its own.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="field-group docs-narrow"
+                    data-gap="sm"
+                    role="group"
+                    aria-label="Store settings"
+                  >
+                    <div class="field">
+                      <input
+                        id="sw-open"
+                        type="checkbox"
+                        role="switch"
+                        checked
+                      />
+                      <label for="sw-open">Store open</label>
+                    </div>
+                    <div class="field">
+                      <input
+                        id="sw-cod"
+                        type="checkbox"
+                        role="switch"
+                        aria-describedby="sw-cod-hint"
+                      />
+                      <div>
+                        <label for="sw-cod">Cash on delivery</label>
+                        <small id="sw-cod-hint">$2.00 fee per order</small>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <input
+                        id="sw-intl"
+                        type="checkbox"
+                        role="switch"
+                        disabled
+                      />
+                      <label for="sw-intl">International shipping</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field-group docs-narrow" data-gap="sm" role="group" aria-label="Store settings"&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="sw-open" type="checkbox" role="switch" checked /&gt;
+    &lt;label for="sw-open"&gt;Store open&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="sw-cod" type="checkbox" role="switch" aria-describedby="sw-cod-hint" /&gt;
+    &lt;div&gt;
+      &lt;label for="sw-cod"&gt;Cash on delivery&lt;/label&gt;
+      &lt;small id="sw-cod-hint"&gt;$2.00 fee per order&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="sw-intl" type="checkbox" role="switch" disabled /&gt;
+    &lt;label for="sw-intl"&gt;International shipping&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Slider</h2>
+            <p>
+              <code>&lt;input type="range" class="slider"&gt;</code> uses its
+              own min, max, step and value as usual. The script fills the track
+              up to the thumb and writes the value into any
+              <code>&lt;output for="id"&gt;</code> that points to it.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <div class="field">
+                      <label for="sl-discount"
+                        >Discount: <output for="sl-discount">15</output>%</label
+                      >
+                      <input
+                        id="sl-discount"
+                        class="slider"
+                        type="range"
+                        min="0"
+                        max="50"
+                        step="5"
+                        value="15"
+                      />
+                    </div>
+                    <div class="field">
+                      <label for="sl-stock"
+                        >Low stock alert:
+                        <output for="sl-stock">20</output> units</label
+                      >
+                      <input
+                        id="sl-stock"
+                        class="slider"
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="20"
+                      />
+                    </div>
+                    <input
+                      class="slider"
+                      type="range"
+                      min="0"
+                      max="100"
+                      value="60"
+                      aria-label="Alert volume"
+                      disabled
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sl-discount"&gt;Discount: &lt;output for="sl-discount"&gt;15&lt;/output&gt;%&lt;/label&gt;
+    &lt;input id="sl-discount" class="slider" type="range" min="0" max="50" step="5" value="15" /&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="sl-stock"&gt;Low stock alert: &lt;output for="sl-stock"&gt;20&lt;/output&gt; units&lt;/label&gt;
+    &lt;input id="sl-stock" class="slider" type="range" min="0" max="100" value="20" /&gt;
+  &lt;/div&gt;
+  &lt;input class="slider" type="range" min="0" max="100" value="60" aria-label="Alert volume" disabled /&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              The slider uses <code>js/slider.js</code> (other fields need no
+              JS). It also works on <code>.slider</code> elements added later.
+            </p>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Member</th>
+                    <th scope="col">Args</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>--value</code></td>
+                    <td></td>
+                    <td>
+                      Custom property on the input: the current value as a
+                      percentage (e.g. <code>30%</code>). The accent fill is
+                      this wide. Set it in <code>style</code> yourself if you
+                      don't load the JS.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>output[for]</code></td>
+                    <td></td>
+                    <td>
+                      The script writes <code>value</code> into every
+                      <code>&lt;output&gt;</code> whose <code>for</code>
+                      contains the slider's id.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code
+                        >window.<wbr />tsunami.<wbr />slider.<wbr />sync(<wbr />el)</code
+                      >
+                    </td>
+                    <td><code>el</code></td>
+                    <td>
+                      <code>el</code> is an input.slider. Redraws the fill and
+                      outputs. Call it after setting <code>el.value</code> from
+                      script (script changes don't fire an input event).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input</code></td>
+                    <td></td>
+                    <td>
+                      The input's own event. The script redraws on every move
+                      and after a form reset.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>.<wbr />field</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Wraps a label, input and hint in a vertical stack. With a
+                      checkbox or radio as the first child, it lays out as a
+                      row.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />field &gt; label</code>
+                    </td>
+                    <td></td>
+                    <td>Small muted label (normal colour in a checkbox row)</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />field &gt; small</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Hint or error text. Link it to the input with
+                      <code>aria-describedby</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />field &gt; input / select / textarea</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Styled like <code>.input</code> without the class (see the
+                      Input page).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />field &gt; div</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      In a checkbox row: stacks the label and small (or h3).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>On the input: border and small turn danger</td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td></td>
+                    <td>
+                      On the input: row label turns muted, cursor not-allowed
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td><code>card</code> (none = default)</td>
+                    <td>
+                      On <code>label.field</code>: a border around the whole
+                      row. The background changes when ticked.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>role</code></td>
+                    <td><code>switch</code></td>
+                    <td>
+                      On <code>input type=checkbox</code>: draws a switch. Works
+                      anywhere.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />slider</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      On <code>input[type=range]</code>: track and thumb use the
+                      colour variables. See the API above.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />field-group</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Borderless fieldset or div[role=group]. Stacks fields
+                      space-4 apart.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />field-group &gt; legend</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Group heading (bold). With
+                      <code>data-gap="sm"</code> it is a small muted label.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />field-group &gt; div</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      A div with no class splits its fields into equal columns,
+                      each at least 9rem wide.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-gap</code></td>
+                    <td><code>sm</code> (none = space-4)</td>
+                    <td>
+                      On .field-group: tight spacing for checkbox, radio and
+                      switch lists.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

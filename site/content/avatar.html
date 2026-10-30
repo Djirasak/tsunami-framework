@@ -1,0 +1,570 @@
+<header class="page-header">
+            <div>
+              <h1>Avatar</h1>
+              <p>Photo, logo or initials in a rounded frame.</p>
+            </div>
+          </header>
+          <section>
+            <h2>Sizes</h2>
+            <p>
+              The image sits on top of the initials. If the image has not loaded
+              or is missing, the initials show instead.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm"
+                      ><img src="/docs/img/person-1.svg" alt="Emma Wilson" /><span
+                        >EW</span
+                      ></span
+                    >
+                    <span class="avatar"
+                      ><img src="/docs/img/person-1.svg" alt="Emma Wilson" /><span
+                        >EW</span
+                      ></span
+                    >
+                    <span class="avatar" data-size="lg"
+                      ><img src="/docs/img/person-1.svg" alt="Emma Wilson" /><span
+                        >EW</span
+                      ></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm"&gt;&lt;img src="img/person-1.svg" alt="Emma Wilson" /&gt;&lt;span&gt;EW&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/person-1.svg" alt="Emma Wilson" /&gt;&lt;span&gt;EW&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/person-1.svg" alt="Emma Wilson" /&gt;&lt;span&gt;EW&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Initials when there is no image</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm"><span>LN</span></span>
+                    <span class="avatar"><span>LN</span></span>
+                    <span class="avatar" data-size="lg"><span>LN</span></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm"&gt;&lt;span&gt;LN&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;span&gt;LN&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;span&gt;LN&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              A logo with a transparent background sits on white, in light and
+              dark
+            </h2>
+            <p>
+              Avatar images always have a white background, so dark logos stay
+              readable in dark mode.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm"
+                      ><img src="/docs/img/logo-acme.svg" alt="Acme"
+                    /></span>
+                    <span class="avatar"
+                      ><img src="/docs/img/logo-acme.svg" alt="Acme"
+                    /></span>
+                    <span class="avatar" data-size="lg"
+                      ><img src="/docs/img/logo-acme.svg" alt="Acme"
+                    /></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm"&gt;&lt;img src="img/logo-acme.svg" alt="Acme" /&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/logo-acme.svg" alt="Acme" /&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/logo-acme.svg" alt="Acme" /&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Circle</h2>
+            <p>
+              Use it for people, such as customers or staff. The rounded square
+              is the default, for products and logos.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm" data-variant="circle"
+                      ><img src="/docs/img/person-2.svg" alt="Olivia Brown" /><span
+                        >OB</span
+                      ></span
+                    >
+                    <span class="avatar" data-variant="circle"
+                      ><img src="/docs/img/person-2.svg" alt="Olivia Brown" /><span
+                        >OB</span
+                      ></span
+                    >
+                    <span class="avatar" data-size="lg" data-variant="circle"
+                      ><img src="/docs/img/person-2.svg" alt="Olivia Brown" /><span
+                        >OB</span
+                      ></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm" data-variant="circle"&gt;&lt;img src="img/person-2.svg" alt="Olivia Brown" /&gt;&lt;span&gt;OB&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-variant="circle"&gt;&lt;img src="img/person-2.svg" alt="Olivia Brown" /&gt;&lt;span&gt;OB&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg" data-variant="circle"&gt;&lt;img src="img/person-2.svg" alt="Olivia Brown" /&gt;&lt;span&gt;OB&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Group</h2>
+            <p>
+              Overlapping avatars with a ring in the background colour. End with
+              the remaining count in
+              <code>data-count</code>
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="avatar-group">
+                    <span class="avatar"
+                      ><img src="/docs/img/person-1.svg" alt="Emma Wilson" /><span
+                        >EW</span
+                      ></span
+                    >
+                    <span class="avatar"
+                      ><img src="/docs/img/person-2.svg" alt="Olivia Brown" /><span
+                        >OB</span
+                      ></span
+                    >
+                    <span class="avatar"
+                      ><img src="/docs/img/person-3.svg" alt="James Carter" /><span
+                        >JC</span
+                      ></span
+                    >
+                    <span data-count>+4</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="avatar-group"&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/person-1.svg" alt="Emma Wilson" /&gt;&lt;span&gt;EW&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/person-2.svg" alt="Olivia Brown" /&gt;&lt;span&gt;OB&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/person-3.svg" alt="James Carter" /&gt;&lt;span&gt;JC&lt;/span&gt;&lt;/span&gt;
+  &lt;span data-count&gt;+4&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              A count on the corner, such as the quantity of an order line
+            </h2>
+            <p>If a product has no image, use an icon instead of initials.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="lg"
+                      ><img src="/docs/img/product-watch.svg" alt="Watch" /><span
+                        data-count
+                        >1</span
+                      ></span
+                    >
+                    <span class="avatar" data-size="lg"
+                      ><img
+                        src="/docs/img/product-headphones.svg"
+                        alt="Headphones"
+                      /><span data-count>12</span></span
+                    >
+                    <span class="avatar" data-size="lg"
+                      ><span
+                        ><i
+                          class="icon icon-image"
+                          aria-hidden="true"
+                        ></i></span
+                      ><span data-count>3</span></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/product-watch.svg" alt="Watch" /&gt;&lt;span data-count&gt;1&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/product-headphones.svg" alt="Headphones" /&gt;&lt;span data-count&gt;12&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;span&gt;&lt;i class="icon icon-image" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;&lt;span data-count&gt;3&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              A status dot on the corner, such as a product's availability
+            </h2>
+            <p>
+              The dot is only colour, so give it <code>role="img"</code> and an
+              <code>aria-label</code> that names the status.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span class="avatar" data-size="sm"
+                      ><img src="/docs/img/product-mug.svg" alt="Mug" /><span
+                        data-status="ok"
+                        role="img"
+                        aria-label="Available"
+                      ></span
+                    ></span>
+                    <span class="avatar"
+                      ><img src="/docs/img/product-watch.svg" alt="Watch" /><span
+                        data-status="warning"
+                        role="img"
+                        aria-label="Low stock"
+                      ></span
+                    ></span>
+                    <span class="avatar" data-size="lg"
+                      ><img
+                        src="/docs/img/product-headphones.svg"
+                        alt="Headphones" /><span
+                        data-status="danger"
+                        role="img"
+                        aria-label="Unavailable"
+                      ></span
+                    ></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="avatar" data-size="sm"&gt;&lt;img src="img/product-mug.svg" alt="Mug" /&gt;&lt;span data-status="ok" role="img" aria-label="Available"&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar"&gt;&lt;img src="img/product-watch.svg" alt="Watch" /&gt;&lt;span data-status="warning" role="img" aria-label="Low stock"&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="avatar" data-size="lg"&gt;&lt;img src="img/product-headphones.svg" alt="Headphones" /&gt;&lt;span data-status="danger" role="img" aria-label="Unavailable"&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.avatar</code></td>
+                    <td><code>span</code></td>
+                    <td>Rounded avatar frame. Initials are grey.</td>
+                  </tr>
+                  <tr>
+                    <td><code>img</code></td>
+                    <td>child</td>
+                    <td>
+                      Photo or logo, on top of the initials, always on white.
+                      Set <code>alt</code> to the name.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>span</code></td>
+                    <td>child</td>
+                    <td>Initials or an icon, shown when there is no image.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code> 24px · none (default) 32px ·
+                      <code>lg</code> 40px
+                    </td>
+                    <td>Size.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>none (default) rounded · <code>circle</code></td>
+                    <td>Circle, for people.</td>
+                  </tr>
+                  <tr>
+                    <td><code>span[data-count]</code></td>
+                    <td>number</td>
+                    <td>
+                      Inside <code>.avatar</code>: a count on the top-right
+                      corner, such as a quantity.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>span[data-status]</code></td>
+                    <td>
+                      <code>ok</code> · <code>warning</code> ·
+                      <code>danger</code> · <code>info</code> · empty (default)
+                      grey
+                    </td>
+                    <td>
+                      Status dot on the bottom-right corner. Needs
+                      <code>role="img"</code> +
+                      <code>aria-label</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.avatar-group</code></td>
+                    <td><code>div</code></td>
+                    <td>
+                      Overlapping avatars, separated by a ring in the background
+                      colour.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.avatar-group &gt; [data-count]</code></td>
+                    <td>text, e.g. <code>+4</code></td>
+                    <td>Remaining count at the end of the group.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

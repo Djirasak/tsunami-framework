@@ -1,0 +1,234 @@
+{
+  "workspace": {
+    "title": "Workspace",
+    "libs": []
+  },
+  "badge": {
+    "title": "Badge",
+    "libs": []
+  },
+  "item": {
+    "title": "Item",
+    "libs": []
+  },
+  "breadcrumb": {
+    "title": "Breadcrumb",
+    "libs": []
+  },
+  "date-picker": {
+    "title": "Date picker",
+    "libs": [
+      "/dist/vanilla-calendar.min.js"
+    ]
+  },
+  "code-editor": {
+    "title": "Code editor",
+    "libs": [
+      "/dist/monaco/vs/loader.js"
+    ]
+  },
+  "save-bar": {
+    "title": "Save bar",
+    "libs": []
+  },
+  "page-header": {
+    "title": "Page header",
+    "libs": []
+  },
+  "tooltip": {
+    "title": "Tooltip",
+    "libs": []
+  },
+  "editor": {
+    "title": "Editor",
+    "libs": [
+      "/dist/tinymce.min.js",
+      "/dist/monaco/vs/loader.js"
+    ]
+  },
+  "btn": {
+    "title": "Button",
+    "libs": []
+  },
+  "loader": {
+    "title": "Loader",
+    "libs": []
+  },
+  "empty": {
+    "title": "Empty state",
+    "libs": []
+  },
+  "journey": {
+    "title": "Journey",
+    "libs": []
+  },
+  "drawer": {
+    "title": "Drawer",
+    "libs": []
+  },
+  "image-field": {
+    "title": "Image field",
+    "libs": []
+  },
+  "skeleton": {
+    "title": "Skeleton",
+    "libs": []
+  },
+  "pagination": {
+    "title": "Pagination",
+    "libs": []
+  },
+  "color-field": {
+    "title": "Color field",
+    "libs": []
+  },
+  "stack": {
+    "title": "Stack",
+    "libs": []
+  },
+  "subnav": {
+    "title": "Subnav",
+    "libs": []
+  },
+  "command": {
+    "title": "Command",
+    "libs": []
+  },
+  "alert": {
+    "title": "Alert",
+    "libs": []
+  },
+  "dialog": {
+    "title": "Dialog",
+    "libs": []
+  },
+  "accordion": {
+    "title": "Accordion",
+    "libs": []
+  },
+  "theme-switcher": {
+    "title": "Theme switcher",
+    "libs": []
+  },
+  "card": {
+    "title": "Card",
+    "libs": []
+  },
+  "icons": {
+    "title": "Icons",
+    "libs": []
+  },
+  "input": {
+    "title": "Input",
+    "libs": []
+  },
+  "tabs": {
+    "title": "Tabs",
+    "libs": []
+  },
+  "tree": {
+    "title": "Tree",
+    "libs": []
+  },
+  "popover": {
+    "title": "Popover",
+    "libs": []
+  },
+  "link": {
+    "title": "Link",
+    "libs": []
+  },
+  "chart": {
+    "title": "Chart",
+    "libs": [
+      "/dist/chart.min.js"
+    ]
+  },
+  "sidebar": {
+    "title": "Sidebar",
+    "libs": []
+  },
+  "typography": {
+    "title": "Typography",
+    "libs": []
+  },
+  "sortable": {
+    "title": "Sortable",
+    "libs": [
+      "/dist/sortable.min.js"
+    ]
+  },
+  "timeline": {
+    "title": "Timeline",
+    "libs": []
+  },
+  "stat": {
+    "title": "Stat",
+    "libs": []
+  },
+  "table": {
+    "title": "Table",
+    "libs": []
+  },
+  "avatar": {
+    "title": "Avatar",
+    "libs": []
+  },
+  "input-group": {
+    "title": "Input group",
+    "libs": []
+  },
+  "dropdown": {
+    "title": "Dropdown",
+    "libs": []
+  },
+  "dropzone": {
+    "title": "Dropzone",
+    "libs": []
+  },
+  "flags": {
+    "title": "Flags",
+    "libs": []
+  },
+  "json-viewer": {
+    "title": "JSON viewer",
+    "libs": []
+  },
+  "workspace-full": {
+    "title": "Workspace example",
+    "libs": [],
+    "bare": true
+  },
+  "index": {
+    "title": "Overview",
+    "libs": []
+  },
+  "field": {
+    "title": "Field",
+    "libs": []
+  },
+  "toast": {
+    "title": "Toast",
+    "libs": []
+  },
+  "autocomplete": {
+    "title": "Autocomplete",
+    "libs": []
+  },
+  "colors": {
+    "title": "Colors",
+    "libs": []
+  },
+  "select": {
+    "title": "Select",
+    "libs": []
+  },
+  "progress": {
+    "title": "Progress",
+    "libs": []
+  },
+  "scroll-area": {
+    "title": "Scroll area",
+    "libs": []
+  }
+}

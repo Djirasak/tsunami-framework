@@ -1,0 +1,926 @@
+<header class="page-header">
+            <div>
+              <h1>Dropzone</h1>
+              <p>
+                A box that takes files dropped on it or chosen with a click. The
+                form sends the files.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>A box that takes files dropped on it or chosen with a click</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A box that takes files dropped on it or chosen with a click"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="dropzone">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      aria-label="Choose images"
+                    />
+                    <i class="icon icon-upload" aria-hidden="true"></i>
+                    <span>Drop images here or click to choose</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="dropzone"&gt;
+  &lt;input type="file" accept="image/*" multiple aria-label="Choose images"&gt;
+  &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;span&gt;Drop images here or click to choose&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A name on the input sends the files with the form</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A name on the input sends the files with the form"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="dropzone">
+                    <input
+                      type="file"
+                      name="attachments"
+                      accept="image/*"
+                      multiple
+                      aria-label="Attachments"
+                    />
+                    <i class="icon icon-upload" aria-hidden="true"></i>
+                    <span>Drop attachments here or click to choose</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="dropzone"&gt;
+  &lt;input type="file" name="attachments" accept="image/*" multiple aria-label="Attachments"&gt;
+  &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;span&gt;Drop attachments here or click to choose&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>In a field, with a size limit, a type list and help text</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="In a field, with a size limit, a type list and help text"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="dz-logo">Store logo</label>
+                    <div class="dropzone" data-max-size="1048576">
+                      <input
+                        type="file"
+                        id="dz-logo"
+                        name="logo"
+                        accept=".png,.svg"
+                        aria-describedby="dz-logo-help"
+                      />
+                      <i class="icon icon-upload" aria-hidden="true"></i>
+                      <span>Drop a PNG or SVG here, or click to choose</span>
+                    </div>
+                    <small id="dz-logo-help">One file, up to 1 MB.</small>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="dz-logo"&gt;Store logo&lt;/label&gt;
+  &lt;div class="dropzone" data-max-size="1048576"&gt;
+    &lt;input type="file" id="dz-logo" name="logo" accept=".png,.svg" aria-describedby="dz-logo-help"&gt;
+    &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;span&gt;Drop a PNG or SVG here, or click to choose&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;small id="dz-logo-help"&gt;One file, up to 1 MB.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A tile beside existing images</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A tile beside existing images">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <img
+                      src="/docs/img/product-headphones.svg"
+                      alt="Headphones"
+                      width="96"
+                      height="96"
+                    />
+                    <img
+                      src="/docs/img/product-mug.svg"
+                      alt="Mug"
+                      width="96"
+                      height="96"
+                    />
+                    <div class="dropzone" data-size="tile">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        aria-label="Add images"
+                      />
+                      <i class="icon icon-upload" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;img src="img/product-headphones.svg" alt="Headphones" width="96" height="96"&gt;
+  &lt;img src="img/product-mug.svg" alt="Mug" width="96" height="96"&gt;
+  &lt;div class="dropzone" data-size="tile"&gt;
+    &lt;input type="file" accept="image/*" multiple aria-label="Add images"&gt;
+    &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A preview of the chosen images, drawn by your own script</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A preview of the chosen images, drawn by your own script"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm" id="dz-preview">
+                    <div class="dropzone">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        aria-label="Choose images"
+                      />
+                      <i class="icon icon-upload" aria-hidden="true"></i>
+                      <span>Drop images here or click to choose</span>
+                    </div>
+                    <div
+                      class="stack"
+                      data-direction="row"
+                      data-gap="sm"
+                      id="dz-preview-list"
+                    ></div>
+                  </div>
+                  <script>
+                    document
+                      .getElementById("dz-preview")
+                      .addEventListener("change", (event) => {
+                        const list = document.getElementById("dz-preview-list");
+                        for (const img of list.querySelectorAll("img"))
+                          URL.revokeObjectURL(img.src);
+                        list.replaceChildren(
+                          ...[...event.target.files].map((file) => {
+                            const img = new Image(96, 96);
+                            img.alt = file.name;
+                            img.src = URL.createObjectURL(file);
+                            return img;
+                          }),
+                        );
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm" id="dz-preview"&gt;
+  &lt;div class="dropzone"&gt;
+    &lt;input type="file" accept="image/*" multiple aria-label="Choose images"&gt;
+    &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;span&gt;Drop images here or click to choose&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm" id="dz-preview-list"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("dz-preview").addEventListener("change", (event) =&gt; {
+    const list = document.getElementById("dz-preview-list");
+    for (const img of list.querySelectorAll("img")) URL.revokeObjectURL(img.src);
+    list.replaceChildren(
+      ...[...event.target.files].map((file) =&gt; {
+        const img = new Image(96, 96);
+        img.alt = file.name;
+        img.src = URL.createObjectURL(file);
+        return img;
+      }),
+    );
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-dragging="true" shows the drag-over state</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label='data-dragging="true" shows the drag-over state'
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="dropzone" data-dragging="true">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      aria-label="Choose images"
+                    />
+                    <i class="icon icon-upload" aria-hidden="true"></i>
+                    <span>Release to add the images</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="dropzone" data-dragging="true"&gt;
+  &lt;input type="file" accept="image/*" multiple aria-label="Choose images"&gt;
+  &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;span&gt;Release to add the images&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Disabled, and invalid with an error message</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Disabled, and invalid with an error message"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="dropzone">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        aria-label="Choose an image"
+                        disabled
+                      />
+                      <i class="icon icon-upload" aria-hidden="true"></i>
+                      <span>Uploads are turned off</span>
+                    </div>
+                    <div class="field" data-invalid>
+                      <label for="dz-invalid">Store logo</label>
+                      <div class="dropzone">
+                        <input
+                          type="file"
+                          id="dz-invalid"
+                          accept=".png,.svg"
+                          aria-invalid="true"
+                          aria-describedby="dz-invalid-error"
+                        />
+                        <i class="icon icon-upload" aria-hidden="true"></i>
+                        <span>Drop a PNG or SVG here, or click to choose</span>
+                      </div>
+                      <small id="dz-invalid-error" role="alert"
+                        >Add a logo to continue.</small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="dropzone"&gt;
+    &lt;input type="file" accept="image/*" aria-label="Choose an image" disabled&gt;
+    &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;span&gt;Uploads are turned off&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="field" data-invalid&gt;
+    &lt;label for="dz-invalid"&gt;Store logo&lt;/label&gt;
+    &lt;div class="dropzone"&gt;
+      &lt;input type="file" id="dz-invalid" accept=".png,.svg" aria-invalid="true" aria-describedby="dz-invalid-error"&gt;
+      &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;span&gt;Drop a PNG or SVG here, or click to choose&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;small id="dz-invalid-error" role="alert"&gt;Add a logo to continue.&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Reading change for accepted files and rejected for refused ones
+            </h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Reading change for accepted files and rejected for refused ones"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm" id="dz-events">
+                    <div class="dropzone" data-max-size="204800">
+                      <input
+                        type="file"
+                        accept="image/png,.jpg"
+                        multiple
+                        aria-label="Choose images"
+                      />
+                      <i class="icon icon-upload" aria-hidden="true"></i>
+                      <span>PNG or JPG, up to 200 KB each</span>
+                    </div>
+                    <output id="dz-events-result">Nothing chosen yet.</output>
+                  </div>
+                  <script>
+                    const zone = document.getElementById("dz-events");
+                    const result = document.getElementById("dz-events-result");
+                    let accepted = "none";
+                    let refused = "none";
+                    const show = () => {
+                      result.textContent =
+                        "Accepted: " +
+                        accepted +
+                        ". Rejected: " +
+                        refused +
+                        ".";
+                    };
+                    zone.addEventListener("change", (event) => {
+                      accepted =
+                        [...event.target.files]
+                          .map((file) => file.name)
+                          .join(", ") || "none";
+                      refused = "none";
+                      show();
+                    });
+                    zone.addEventListener("rejected", (event) => {
+                      refused = event.detail.rejected
+                        .map(
+                          ({ file, reason }) => file.name + " (" + reason + ")",
+                        )
+                        .join(", ");
+                      show();
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm" id="dz-events"&gt;
+  &lt;div class="dropzone" data-max-size="204800"&gt;
+    &lt;input type="file" accept="image/png,.jpg" multiple aria-label="Choose images"&gt;
+    &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;span&gt;PNG or JPG, up to 200 KB each&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;output id="dz-events-result"&gt;Nothing chosen yet.&lt;/output&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const zone = document.getElementById("dz-events");
+  const result = document.getElementById("dz-events-result");
+  let accepted = "none";
+  let refused = "none";
+  const show = () =&gt; {
+    result.textContent = "Accepted: " + accepted + ". Rejected: " + refused + ".";
+  };
+  zone.addEventListener("change", (event) =&gt; {
+    accepted = [...event.target.files].map((file) =&gt; file.name).join(", ") || "none";
+    refused = "none";
+    show();
+  });
+  zone.addEventListener("rejected", (event) =&gt; {
+    refused = event.detail.rejected
+      .map(({ file, reason }) =&gt; file.name + " (" + reason + ")")
+      .join(", ");
+    show();
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>In a form, FormData.getAll returns the files</h2>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="In a form, FormData.getAll returns the files"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form class="stack" data-gap="sm" id="dz-form">
+                    <div class="dropzone">
+                      <input
+                        type="file"
+                        name="photos"
+                        accept="image/*"
+                        multiple
+                        aria-label="Photos"
+                      />
+                      <i class="icon icon-upload" aria-hidden="true"></i>
+                      <span>Drop photos here or click to choose</span>
+                    </div>
+                    <button type="submit" class="btn">Send</button>
+                    <output id="dz-form-result">Nothing sent yet.</output>
+                  </form>
+                  <script>
+                    document
+                      .getElementById("dz-form")
+                      .addEventListener("submit", (event) => {
+                        event.preventDefault();
+                        const files = new FormData(event.currentTarget).getAll(
+                          "photos",
+                        );
+                        document.getElementById("dz-form-result").textContent =
+                          files.length +
+                          " file(s): " +
+                          files.map((file) => file.name).join(", ");
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form class="stack" data-gap="sm" id="dz-form"&gt;
+  &lt;div class="dropzone"&gt;
+    &lt;input type="file" name="photos" accept="image/*" multiple aria-label="Photos"&gt;
+    &lt;i class="icon icon-upload" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;span&gt;Drop photos here or click to choose&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn"&gt;Send&lt;/button&gt;
+  &lt;output id="dz-form-result"&gt;Nothing sent yet.&lt;/output&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  document.getElementById("dz-form").addEventListener("submit", (event) =&gt; {
+    event.preventDefault();
+    const files = new FormData(event.currentTarget).getAll("photos");
+    document.getElementById("dz-form-result").textContent =
+      files.length + " file(s): " + files.map((file) =&gt; file.name).join(", ");
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Events</h2>
+            <p>
+              The dropzone never uploads and draws no previews. Its form sends
+              the files. Read them from the input.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>input</code>, <code>change</code></td>
+                    <td><code>input[type=file]</code>, bubbles</td>
+                    <td>
+                      Fired after a pick or a drop.
+                      <code>event.target.files</code> holds the accepted files
+                      only.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>rejected</code></td>
+                    <td><code>.dropzone</code>, bubbles</td>
+                    <td>
+                      Fired when a dropped or picked file is refused.
+                      <code>event.detail.rejected</code> is a list of
+                      <code>{ file, reason }</code>, where reason is
+                      <code>"type"</code> or <code>"size"</code>. Refused files
+                      are left off the input. A drop with no accepted file
+                      leaves the files already on the input unchanged.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Keyboard</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>Tab</code></td>
+                    <td>
+                      Moves focus to the input. The box shows an accent focus
+                      ring.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Enter</code>, <code>Space</code></td>
+                    <td>Opens the file picker.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Accessibility</h2>
+            <ul>
+              <li>
+                The input is the control: give it an <code>aria-label</code>, or
+                a <code>label</code> with <code>for</code> in a field.
+              </li>
+              <li>
+                The upload icon is decoration: keep
+                <code>aria-hidden="true"</code> on it. A tile has no text, so
+                its <code>aria-label</code> is the only name.
+              </li>
+              <li>Link help text with <code>aria-describedby</code>.</li>
+              <li>
+                Set <code>aria-invalid="true"</code> on the input for the
+                invalid look. In a <code>.field[data-invalid]</code> the error
+                text shows; give it <code>role="alert"</code>.
+              </li>
+              <li>
+                Dragging is a convenience only. Everything also works by click
+                and keyboard.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.dropzone</code></td>
+                    <td></td>
+                    <td>
+                      The dashed box. It holds the input, an optional icon and a
+                      span of text.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td><code>tile</code></td>
+                    <td>
+                      A 96px square with the icon only, to sit beside
+                      thumbnails.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-max-size</code></td>
+                    <td>bytes</td>
+                    <td>
+                      The largest file accepted, on <code>.dropzone</code>.
+                      Larger files are rejected with reason <code>size</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-dragging</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      Set by the script while files are dragged over the box.
+                      Write it by hand to show the state.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; input[type=file]</code></td>
+                    <td><code>name</code></td>
+                    <td>
+                      Covers the box. A click opens the picker and the form
+                      sends its files.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>accept</code></td>
+                    <td>
+                      <code>.png</code>, <code>image/png</code>,
+                      <code>image/*</code>
+                    </td>
+                    <td>
+                      Comma separated. Checked on dropped and picked files; a
+                      mismatch is rejected with reason <code>type</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>multiple</code></td>
+                    <td>present</td>
+                    <td>
+                      Allows several files. Without it only the first dropped
+                      file is taken.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td>present</td>
+                    <td>Dims the box. It takes no files.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>Draws the border in the danger colour.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; .icon</code></td>
+                    <td></td>
+                    <td>
+                      Decoration, e.g. <code>icon-upload</code>. Keep
+                      <code>aria-hidden="true"</code>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

@@ -1,0 +1,1808 @@
+<header class="page-header">
+            <div>
+              <h1>Tabs</h1>
+              <p>
+                Switch between panels in one place. Arrow keys, Home and End
+                select a tab.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              The default is a segmented bar. The selected tab has a white
+              background and a border. Each tab points to its panel with
+              <code>aria-controls</code>; start the other panels
+              <code>hidden</code>. Tabs work as soon as they sit inside
+              <code>.tabs</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-use">
+                    <div role="tablist" aria-label="Example">
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-use-t1"
+                        aria-selected="true"
+                        aria-controls="tb-use-p1"
+                      >
+                        Account
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-use-t2"
+                        aria-selected="false"
+                        aria-controls="tb-use-p2"
+                        tabindex="-1"
+                      >
+                        Password
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-use-p1"
+                      aria-labelledby="tb-use-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Account</h3>
+                          <p>
+                            Edit the account name and email. Save when done.
+                          </p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-use-p2"
+                      aria-labelledby="tb-use-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Password</h3>
+                          <p>
+                            Change your password. You will need to sign in again
+                            after saving.
+                          </p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-use"&gt;
+  &lt;div role="tablist" aria-label="Example"&gt;
+    &lt;button type="button" role="tab" id="tb-use-t1" aria-selected="true" aria-controls="tb-use-p1"&gt;Account&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-use-t2" aria-selected="false" aria-controls="tb-use-p2" tabindex="-1"&gt;Password&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-use-p1" aria-labelledby="tb-use-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Account&lt;/h3&gt;&lt;p&gt;Edit the account name and email. Save when done.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-use-p2" aria-labelledby="tb-use-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Password&lt;/h3&gt;&lt;p&gt;Change your password. You will need to sign in again after saving.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Underlined tabs</h2>
+            <p>
+              For page-level tabs under a heading. Set
+              <code>data-variant="line"</code> on the tablist.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-line">
+                    <div
+                      role="tablist"
+                      aria-label="Example"
+                      data-variant="line"
+                    >
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-line-t1"
+                        aria-selected="true"
+                        aria-controls="tb-line-p1"
+                      >
+                        Overview
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-line-t2"
+                        aria-selected="false"
+                        aria-controls="tb-line-p2"
+                        tabindex="-1"
+                      >
+                        Analytics
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-line-t3"
+                        aria-selected="false"
+                        aria-controls="tb-line-p3"
+                        tabindex="-1"
+                      >
+                        Reports
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-line-p1"
+                      aria-labelledby="tb-line-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Overview</h3>
+                          <p>
+                            Orders, sales and returns for the selected period.
+                          </p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-line-p2"
+                      aria-labelledby="tb-line-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Analytics</h3>
+                          <p>Where visitors come from and what they buy.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-line-p3"
+                      aria-labelledby="tb-line-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Reports</h3>
+                          <p>Saved reports, ready to open or export.</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-line"&gt;
+  &lt;div role="tablist" aria-label="Example" data-variant="line"&gt;
+    &lt;button type="button" role="tab" id="tb-line-t1" aria-selected="true" aria-controls="tb-line-p1"&gt;Overview&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-line-t2" aria-selected="false" aria-controls="tb-line-p2" tabindex="-1"&gt;Analytics&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-line-t3" aria-selected="false" aria-controls="tb-line-p3" tabindex="-1"&gt;Reports&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-line-p1" aria-labelledby="tb-line-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Overview&lt;/h3&gt;&lt;p&gt;Orders, sales and returns for the selected period.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-line-p2" aria-labelledby="tb-line-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Analytics&lt;/h3&gt;&lt;p&gt;Where visitors come from and what they buy.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-line-p3" aria-labelledby="tb-line-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Reports&lt;/h3&gt;&lt;p&gt;Saved reports, ready to open or export.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Small, for a card header</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card tabs">
+                    <header class="page-header">
+                      <div><h3>Product content</h3></div>
+                      <div role="tablist" aria-label="Language" data-size="sm">
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-sm-t1"
+                          aria-selected="true"
+                          aria-controls="tb-sm-p1"
+                        >
+                          EN
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-sm-t2"
+                          aria-selected="false"
+                          aria-controls="tb-sm-p2"
+                          tabindex="-1"
+                        >
+                          FR
+                        </button>
+                      </div>
+                    </header>
+                    <p role="tabpanel" id="tb-sm-p1" aria-labelledby="tb-sm-t1">
+                      100% cotton bed sheet
+                    </p>
+                    <p
+                      role="tabpanel"
+                      id="tb-sm-p2"
+                      aria-labelledby="tb-sm-t2"
+                      hidden
+                    >
+                      Drap en coton 100 %
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card tabs"&gt;
+  &lt;header class="page-header"&gt;
+    &lt;div&gt;&lt;h3&gt;Product content&lt;/h3&gt;&lt;/div&gt;
+    &lt;div role="tablist" aria-label="Language" data-size="sm"&gt;
+      &lt;button type="button" role="tab" id="tb-sm-t1" aria-selected="true" aria-controls="tb-sm-p1"&gt;EN&lt;/button&gt;
+      &lt;button type="button" role="tab" id="tb-sm-t2" aria-selected="false" aria-controls="tb-sm-p2" tabindex="-1"&gt;FR&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;p role="tabpanel" id="tb-sm-p1" aria-labelledby="tb-sm-t1"&gt;100% cotton bed sheet&lt;/p&gt;
+  &lt;p role="tabpanel" id="tb-sm-p2" aria-labelledby="tb-sm-t2" hidden&gt;Drap en coton 100 %&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Vertical tabs beside the panels</h2>
+            <p>
+              Set <code>aria-orientation="vertical"</code>. Arrow Up / Down
+              replace Left / Right. Below 40rem the tabs sit above the panel.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-vert">
+                    <div
+                      role="tablist"
+                      aria-label="Example"
+                      aria-orientation="vertical"
+                    >
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vert-t1"
+                        aria-selected="true"
+                        aria-controls="tb-vert-p1"
+                      >
+                        General
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vert-t2"
+                        aria-selected="false"
+                        aria-controls="tb-vert-p2"
+                        tabindex="-1"
+                      >
+                        Checkout
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vert-t3"
+                        aria-selected="false"
+                        aria-controls="tb-vert-p3"
+                        tabindex="-1"
+                      >
+                        Notifications
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vert-p1"
+                      aria-labelledby="tb-vert-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>General</h3>
+                          <p>Store name, address and time zone.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vert-p2"
+                      aria-labelledby="tb-vert-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Checkout</h3>
+                          <p>What customers fill in at checkout.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vert-p3"
+                      aria-labelledby="tb-vert-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Notifications</h3>
+                          <p>Emails the store sends to customers.</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-vert"&gt;
+  &lt;div role="tablist" aria-label="Example" aria-orientation="vertical"&gt;
+    &lt;button type="button" role="tab" id="tb-vert-t1" aria-selected="true" aria-controls="tb-vert-p1"&gt;General&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-vert-t2" aria-selected="false" aria-controls="tb-vert-p2" tabindex="-1"&gt;Checkout&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-vert-t3" aria-selected="false" aria-controls="tb-vert-p3" tabindex="-1"&gt;Notifications&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vert-p1" aria-labelledby="tb-vert-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;General&lt;/h3&gt;&lt;p&gt;Store name, address and time zone.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vert-p2" aria-labelledby="tb-vert-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Checkout&lt;/h3&gt;&lt;p&gt;What customers fill in at checkout.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vert-p3" aria-labelledby="tb-vert-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Notifications&lt;/h3&gt;&lt;p&gt;Emails the store sends to customers.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Vertical, with underlined tabs</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-vline">
+                    <div
+                      role="tablist"
+                      aria-label="Example"
+                      aria-orientation="vertical"
+                      data-variant="line"
+                    >
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vline-t1"
+                        aria-selected="true"
+                        aria-controls="tb-vline-p1"
+                      >
+                        General
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vline-t2"
+                        aria-selected="false"
+                        aria-controls="tb-vline-p2"
+                        tabindex="-1"
+                      >
+                        Checkout
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-vline-t3"
+                        aria-selected="false"
+                        aria-controls="tb-vline-p3"
+                        tabindex="-1"
+                      >
+                        Notifications
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vline-p1"
+                      aria-labelledby="tb-vline-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>General</h3>
+                          <p>Store name, address and time zone.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vline-p2"
+                      aria-labelledby="tb-vline-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Checkout</h3>
+                          <p>What customers fill in at checkout.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-vline-p3"
+                      aria-labelledby="tb-vline-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Notifications</h3>
+                          <p>Emails the store sends to customers.</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-vline"&gt;
+  &lt;div role="tablist" aria-label="Example" aria-orientation="vertical" data-variant="line"&gt;
+    &lt;button type="button" role="tab" id="tb-vline-t1" aria-selected="true" aria-controls="tb-vline-p1"&gt;General&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-vline-t2" aria-selected="false" aria-controls="tb-vline-p2" tabindex="-1"&gt;Checkout&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-vline-t3" aria-selected="false" aria-controls="tb-vline-p3" tabindex="-1"&gt;Notifications&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vline-p1" aria-labelledby="tb-vline-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;General&lt;/h3&gt;&lt;p&gt;Store name, address and time zone.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vline-p2" aria-labelledby="tb-vline-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Checkout&lt;/h3&gt;&lt;p&gt;What customers fill in at checkout.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-vline-p3" aria-labelledby="tb-vline-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Notifications&lt;/h3&gt;&lt;p&gt;Emails the store sends to customers.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With icons</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-icon">
+                    <div role="tablist" aria-label="Example">
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-icon-t1"
+                        aria-selected="true"
+                        aria-controls="tb-icon-p1"
+                      >
+                        <i class="icon icon-user" aria-hidden="true"></i>Account
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-icon-t2"
+                        aria-selected="false"
+                        aria-controls="tb-icon-p2"
+                        tabindex="-1"
+                      >
+                        <i class="icon icon-lock" aria-hidden="true"></i
+                        >Security
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-icon-t3"
+                        aria-selected="false"
+                        aria-controls="tb-icon-p3"
+                        tabindex="-1"
+                      >
+                        <i class="icon icon-credit-card" aria-hidden="true"></i
+                        >Billing
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-icon-p1"
+                      aria-labelledby="tb-icon-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Account</h3>
+                          <p>Name, email and profile photo.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-icon-p2"
+                      aria-labelledby="tb-icon-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Security</h3>
+                          <p>Password and two-factor authentication.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-icon-p3"
+                      aria-labelledby="tb-icon-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Billing</h3>
+                          <p>Plan and invoices.</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-icon"&gt;
+  &lt;div role="tablist" aria-label="Example"&gt;
+    &lt;button type="button" role="tab" id="tb-icon-t1" aria-selected="true" aria-controls="tb-icon-p1"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;Account&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-icon-t2" aria-selected="false" aria-controls="tb-icon-p2" tabindex="-1"&gt;&lt;i class="icon icon-lock" aria-hidden="true"&gt;&lt;/i&gt;Security&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-icon-t3" aria-selected="false" aria-controls="tb-icon-p3" tabindex="-1"&gt;&lt;i class="icon icon-credit-card" aria-hidden="true"&gt;&lt;/i&gt;Billing&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-icon-p1" aria-labelledby="tb-icon-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Account&lt;/h3&gt;&lt;p&gt;Name, email and profile photo.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-icon-p2" aria-labelledby="tb-icon-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Security&lt;/h3&gt;&lt;p&gt;Password and two-factor authentication.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-icon-p3" aria-labelledby="tb-icon-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Billing&lt;/h3&gt;&lt;p&gt;Plan and invoices.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              A disabled tab cannot be selected, and the arrow keys skip it
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-dis">
+                    <div role="tablist" aria-label="Example">
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dis-t1"
+                        aria-selected="true"
+                        aria-controls="tb-dis-p1"
+                      >
+                        Overview
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dis-t2"
+                        aria-selected="false"
+                        aria-controls="tb-dis-p2"
+                        tabindex="-1"
+                        disabled
+                      >
+                        Analytics
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dis-t3"
+                        aria-selected="false"
+                        aria-controls="tb-dis-p3"
+                        tabindex="-1"
+                      >
+                        Reports
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dis-p1"
+                      aria-labelledby="tb-dis-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Overview</h3>
+                          <p>
+                            Orders, sales and returns for the selected period.
+                          </p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dis-p2"
+                      aria-labelledby="tb-dis-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Analytics</h3>
+                          <p>Where visitors come from and what they buy.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dis-p3"
+                      aria-labelledby="tb-dis-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Reports</h3>
+                          <p>Saved reports, ready to open or export.</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-dis"&gt;
+  &lt;div role="tablist" aria-label="Example"&gt;
+    &lt;button type="button" role="tab" id="tb-dis-t1" aria-selected="true" aria-controls="tb-dis-p1"&gt;Overview&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-dis-t2" aria-selected="false" aria-controls="tb-dis-p2" tabindex="-1" disabled&gt;Analytics&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-dis-t3" aria-selected="false" aria-controls="tb-dis-p3" tabindex="-1"&gt;Reports&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dis-p1" aria-labelledby="tb-dis-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Overview&lt;/h3&gt;&lt;p&gt;Orders, sales and returns for the selected period.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dis-p2" aria-labelledby="tb-dis-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Analytics&lt;/h3&gt;&lt;p&gt;Where visitors come from and what they buy.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dis-p3" aria-labelledby="tb-dis-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Reports&lt;/h3&gt;&lt;p&gt;Saved reports, ready to open or export.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A tab can be a dropdown: choosing an entry selects the tab</h2>
+            <p>
+              Put <code>popovertarget</code> on the tab, pointing to a
+              <code>.dropdown</code>. Clicking the tab opens the menu; clicking
+              an entry selects the tab (add
+              <code>popovertargetaction="hide"</code> to close the menu).
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-dd">
+                    <div role="tablist" aria-label="Example">
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dd-t1"
+                        aria-selected="true"
+                        aria-controls="tb-dd-p1"
+                      >
+                        Overview
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dd-t2"
+                        aria-selected="false"
+                        aria-controls="tb-dd-p2"
+                        tabindex="-1"
+                        popovertarget="tb-dd-menu"
+                      >
+                        By UTM<i
+                          class="icon icon-chevron-down"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-dd-t3"
+                        aria-selected="false"
+                        aria-controls="tb-dd-p3"
+                        tabindex="-1"
+                      >
+                        By product
+                      </button>
+                    </div>
+                    <div class="dropdown" id="tb-dd-menu" popover>
+                      <button
+                        type="button"
+                        popovertarget="tb-dd-menu"
+                        popovertargetaction="hide"
+                      >
+                        UTM Source
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="tb-dd-menu"
+                        popovertargetaction="hide"
+                      >
+                        UTM Medium
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="tb-dd-menu"
+                        popovertargetaction="hide"
+                      >
+                        UTM Campaign
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dd-p1"
+                      aria-labelledby="tb-dd-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Overview</h3>
+                          <p>All customers in the selected period.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dd-p2"
+                      aria-labelledby="tb-dd-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>By UTM</h3>
+                          <p>Customers split by the selected UTM value.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-dd-p3"
+                      aria-labelledby="tb-dd-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>By product</h3>
+                          <p>Customers split by the product they bought.</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-dd"&gt;
+  &lt;div role="tablist" aria-label="Example"&gt;
+    &lt;button type="button" role="tab" id="tb-dd-t1" aria-selected="true" aria-controls="tb-dd-p1"&gt;Overview&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-dd-t2" aria-selected="false" aria-controls="tb-dd-p2" tabindex="-1" popovertarget="tb-dd-menu"&gt;By UTM&lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-dd-t3" aria-selected="false" aria-controls="tb-dd-p3" tabindex="-1"&gt;By product&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="dropdown" id="tb-dd-menu" popover&gt;
+    &lt;button type="button" popovertarget="tb-dd-menu" popovertargetaction="hide"&gt;UTM Source&lt;/button&gt;
+    &lt;button type="button" popovertarget="tb-dd-menu" popovertargetaction="hide"&gt;UTM Medium&lt;/button&gt;
+    &lt;button type="button" popovertarget="tb-dd-menu" popovertargetaction="hide"&gt;UTM Campaign&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dd-p1" aria-labelledby="tb-dd-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Overview&lt;/h3&gt;&lt;p&gt;All customers in the selected period.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dd-p2" aria-labelledby="tb-dd-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;By UTM&lt;/h3&gt;&lt;p&gt;Customers split by the selected UTM value.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-dd-p3" aria-labelledby="tb-dd-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;By product&lt;/h3&gt;&lt;p&gt;Customers split by the product they bought.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>The page selects a tab with select()</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="tabs" id="tb-js">
+                      <div role="tablist" aria-label="Example">
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-js-t1"
+                          aria-selected="true"
+                          aria-controls="tb-js-p1"
+                        >
+                          Overview
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-js-t2"
+                          aria-selected="false"
+                          aria-controls="tb-js-p2"
+                          tabindex="-1"
+                        >
+                          Analytics
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-js-t3"
+                          aria-selected="false"
+                          aria-controls="tb-js-p3"
+                          tabindex="-1"
+                        >
+                          Reports
+                        </button>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-js-p1"
+                        aria-labelledby="tb-js-t1"
+                        tabindex="0"
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>Overview</h3>
+                            <p>
+                              Orders, sales and returns for the selected period.
+                            </p>
+                          </header>
+                        </div>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-js-p2"
+                        aria-labelledby="tb-js-t2"
+                        tabindex="0"
+                        hidden
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>Analytics</h3>
+                            <p>Where visitors come from and what they buy.</p>
+                          </header>
+                        </div>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-js-p3"
+                        aria-labelledby="tb-js-t3"
+                        tabindex="0"
+                        hidden
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>Reports</h3>
+                            <p>Saved reports, ready to open or export.</p>
+                          </header>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="tb-js-show"
+                      >
+                        Show reports
+                      </button>
+                    </div>
+                  </div>
+                  <script type="module">
+                    document
+                      .getElementById("tb-js-show")
+                      .addEventListener("click", () => {
+                        tsunami.tabs.select(
+                          document.getElementById("tb-js-t3"),
+                        );
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="tabs" id="tb-js"&gt;
+    &lt;div role="tablist" aria-label="Example"&gt;
+      &lt;button type="button" role="tab" id="tb-js-t1" aria-selected="true" aria-controls="tb-js-p1"&gt;
+        Overview
+      &lt;/button&gt;
+      &lt;button
+        type="button"
+        role="tab"
+        id="tb-js-t2"
+        aria-selected="false"
+        aria-controls="tb-js-p2"
+        tabindex="-1"
+      &gt;
+        Analytics
+      &lt;/button&gt;
+      &lt;button
+        type="button"
+        role="tab"
+        id="tb-js-t3"
+        aria-selected="false"
+        aria-controls="tb-js-p3"
+        tabindex="-1"
+      &gt;
+        Reports
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div role="tabpanel" id="tb-js-p1" aria-labelledby="tb-js-t1" tabindex="0"&gt;
+      &lt;div class="card"&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Overview&lt;/h3&gt;
+          &lt;p&gt;Orders, sales and returns for the selected period.&lt;/p&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div role="tabpanel" id="tb-js-p2" aria-labelledby="tb-js-t2" tabindex="0" hidden&gt;
+      &lt;div class="card"&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Analytics&lt;/h3&gt;
+          &lt;p&gt;Where visitors come from and what they buy.&lt;/p&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div role="tabpanel" id="tb-js-p3" aria-labelledby="tb-js-t3" tabindex="0" hidden&gt;
+      &lt;div class="card"&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Reports&lt;/h3&gt;
+          &lt;p&gt;Saved reports, ready to open or export.&lt;/p&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tb-js-show"&gt;Show reports&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  document.getElementById("tb-js-show").addEventListener("click", () =&gt; {
+    tsunami.tabs.select(document.getElementById("tb-js-t3"));
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              An element with data-close inside a tab closes it, and so does
+              Delete
+            </h2>
+            <p>
+              Closing removes the tab and its panel. If it was selected, the
+              next (or previous) tab is selected instead.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tp"
+                  aria-selected="true"
+                  aria-controls="ex10-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex10-tc"
+                  aria-selected="false"
+                  aria-controls="ex10-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-p"
+                aria-labelledby="ex10-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="tabs" id="tb-close">
+                    <div role="tablist" aria-label="Open orders">
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-close-t1"
+                        aria-selected="true"
+                        aria-controls="tb-close-p1"
+                      >
+                        Order #1042<i
+                          class="icon icon-x"
+                          data-close
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-close-t2"
+                        aria-selected="false"
+                        aria-controls="tb-close-p2"
+                        tabindex="-1"
+                      >
+                        Order #1043<i
+                          class="icon icon-x"
+                          data-close
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <button
+                        type="button"
+                        role="tab"
+                        id="tb-close-t3"
+                        aria-selected="false"
+                        aria-controls="tb-close-p3"
+                        tabindex="-1"
+                      >
+                        Order #1044<i
+                          class="icon icon-x"
+                          data-close
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-close-p1"
+                      aria-labelledby="tb-close-t1"
+                      tabindex="0"
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Order #1042</h3>
+                          <p>2 items. Paid, awaiting shipment.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-close-p2"
+                      aria-labelledby="tb-close-t2"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Order #1043</h3>
+                          <p>1 item. Shipped on Monday.</p>
+                        </header>
+                      </div>
+                    </div>
+                    <div
+                      role="tabpanel"
+                      id="tb-close-p3"
+                      aria-labelledby="tb-close-t3"
+                      tabindex="0"
+                      hidden
+                    >
+                      <div class="card">
+                        <header>
+                          <h3>Order #1044</h3>
+                          <p>3 items. Partially refunded.</p>
+                        </header>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex10-c"
+                aria-labelledby="ex10-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="tabs" id="tb-close"&gt;
+  &lt;div role="tablist" aria-label="Open orders"&gt;
+    &lt;button type="button" role="tab" id="tb-close-t1" aria-selected="true" aria-controls="tb-close-p1"&gt;Order #1042&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-close-t2" aria-selected="false" aria-controls="tb-close-p2" tabindex="-1"&gt;Order #1043&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;button type="button" role="tab" id="tb-close-t3" aria-selected="false" aria-controls="tb-close-p3" tabindex="-1"&gt;Order #1044&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-close-p1" aria-labelledby="tb-close-t1" tabindex="0"&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Order #1042&lt;/h3&gt;&lt;p&gt;2 items. Paid, awaiting shipment.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-close-p2" aria-labelledby="tb-close-t2" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Order #1043&lt;/h3&gt;&lt;p&gt;1 item. Shipped on Monday.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel" id="tb-close-p3" aria-labelledby="tb-close-t3" tabindex="0" hidden&gt;
+    &lt;div class="card"&gt;&lt;header&gt;&lt;h3&gt;Order #1044&lt;/h3&gt;&lt;p&gt;3 items. Partially refunded.&lt;/p&gt;&lt;/header&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              The page hears tsunami:closetab first, and keeps the tab with
+              preventDefault()
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tp"
+                  aria-selected="true"
+                  aria-controls="ex11-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tc"
+                  aria-selected="false"
+                  aria-controls="ex11-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-p"
+                aria-labelledby="ex11-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="tabs" id="tb-keep">
+                      <div role="tablist" aria-label="Example">
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-keep-t1"
+                          aria-selected="true"
+                          aria-controls="tb-keep-p1"
+                        >
+                          Saved draft<i
+                            class="icon icon-x"
+                            data-close
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          id="tb-keep-t2"
+                          aria-selected="false"
+                          aria-controls="tb-keep-p2"
+                          tabindex="-1"
+                          data-unsaved
+                        >
+                          Unsaved draft<i
+                            class="icon icon-x"
+                            data-close
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-keep-p1"
+                        aria-labelledby="tb-keep-t1"
+                        tabindex="0"
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>Saved draft</h3>
+                            <p>This tab can be closed.</p>
+                          </header>
+                        </div>
+                      </div>
+                      <div
+                        role="tabpanel"
+                        id="tb-keep-p2"
+                        aria-labelledby="tb-keep-t2"
+                        tabindex="0"
+                        hidden
+                      >
+                        <div class="card">
+                          <header>
+                            <h3>Unsaved draft</h3>
+                            <p>The page will not let this tab close.</p>
+                          </header>
+                        </div>
+                      </div>
+                    </div>
+                    <p id="tb-keep-log">Nothing closed yet.</p>
+                  </div>
+                  <script type="module">
+                    document
+                      .getElementById("tb-keep")
+                      .addEventListener("tsunami:closetab", (e) => {
+                        const kept = e.detail.tab.hasAttribute("data-unsaved");
+                        if (kept) e.preventDefault();
+                        document.getElementById("tb-keep-log").textContent =
+                          e.detail.tab.textContent.trim() +
+                          (kept ? " was kept open." : " was closed.");
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-c"
+                aria-labelledby="ex11-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="tabs" id="tb-keep"&gt;
+    &lt;div role="tablist" aria-label="Example"&gt;
+      &lt;button
+        type="button"
+        role="tab"
+        id="tb-keep-t1"
+        aria-selected="true"
+        aria-controls="tb-keep-p1"
+      &gt;
+        Saved draft&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;button
+        type="button"
+        role="tab"
+        id="tb-keep-t2"
+        aria-selected="false"
+        aria-controls="tb-keep-p2"
+        tabindex="-1"
+        data-unsaved
+      &gt;
+        Unsaved draft&lt;i class="icon icon-x" data-close aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div role="tabpanel" id="tb-keep-p1" aria-labelledby="tb-keep-t1" tabindex="0"&gt;
+      &lt;div class="card"&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Saved draft&lt;/h3&gt;
+          &lt;p&gt;This tab can be closed.&lt;/p&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div role="tabpanel" id="tb-keep-p2" aria-labelledby="tb-keep-t2" tabindex="0" hidden&gt;
+      &lt;div class="card"&gt;
+        &lt;header&gt;
+          &lt;h3&gt;Unsaved draft&lt;/h3&gt;
+          &lt;p&gt;The page will not let this tab close.&lt;/p&gt;
+        &lt;/header&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p id="tb-keep-log"&gt;Nothing closed yet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  document.getElementById("tb-keep").addEventListener("tsunami:closetab", (e) =&gt; {
+    const kept = e.detail.tab.hasAttribute("data-unsaved");
+    if (kept) e.preventDefault();
+    document.getElementById("tb-keep-log").textContent =
+      e.detail.tab.textContent.trim() + (kept ? " was kept open." : " was closed.");
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              Lives in <code>js/tabs.js</code>. It uses event delegation, so
+              tabs added later work too.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.tabs.select(tab)</code></td>
+                    <td><code>tab</code>: element <code>[role="tab"]</code></td>
+                    <td>
+                      Selects the tab, shows its panel and hides the others.
+                      Does nothing on a disabled tab.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.tabs.close(tab)</code></td>
+                    <td><code>tab</code>: element <code>[role="tab"]</code></td>
+                    <td>
+                      Fires <code>tsunami:closetab</code> first. If not
+                      cancelled, removes the tab and panel and, if it was
+                      selected, selects the next (or previous) tab. Returns the
+                      replacement tab (or <code>null</code>), or
+                      <code>false</code> if it was kept.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Arrow Left / Right</code></td>
+                    <td>keyboard</td>
+                    <td>
+                      Previous / next tab, wrapping, skipping disabled tabs.
+                      Vertical tabs use Arrow Up / Down.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Home / End</code></td>
+                    <td>keyboard</td>
+                    <td>First / last tab</td>
+                  </tr>
+                  <tr>
+                    <td><code>Delete</code></td>
+                    <td>keyboard</td>
+                    <td>
+                      On a tab with <code>[data-close]</code>: closes the tab
+                      and focuses its replacement
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Tab</code></td>
+                    <td>keyboard</td>
+                    <td>Only the selected tab is in the Tab order</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Events</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:closetab</code></td>
+                    <td><code>{ tab, panel }</code></td>
+                    <td>
+                      Fired on the tab before it closes. Bubbles and is
+                      cancelable:
+                      <code>preventDefault()</code> keeps the tab.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.tabs</code></td>
+                    <td><code>div</code></td>
+                    <td>
+                      Wraps the tablist and panels (<code>data-tabs</code> works
+                      too)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>[role="tablist"]</code></td>
+                    <td>child</td>
+                    <td>Row of tabs. Add an <code>aria-label</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>
+                      unset (default) segmented · <code>line</code> underlined
+                    </td>
+                    <td>On the tablist: tab style</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>unset (default) 32px · <code>sm</code> 28px</td>
+                    <td>
+                      On the tablist: size. <code>sm</code> for card headers.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-orientation</code></td>
+                    <td>
+                      <code>horizontal</code> (default) · <code>vertical</code>
+                    </td>
+                    <td>
+                      On the tablist: <code>vertical</code> puts the tabs beside
+                      the panels and uses Arrow Up / Down (the tablist must be a
+                      direct child of <code>.tabs</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>[role="tab"]</code></td>
+                    <td><code>button</code></td>
+                    <td>A tab. Can hold an <code>.icon</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-controls</code></td>
+                    <td>panel id</td>
+                    <td>On a tab: the panel it shows (required)</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-selected</code></td>
+                    <td><code>true</code> · <code>false</code></td>
+                    <td>
+                      On a tab: the selected tab. Put
+                      <code>tabindex="-1"</code> on the others. JS keeps them
+                      updated.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled / aria-disabled</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      On a tab: cannot be selected, skipped by the keyboard
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>popovertarget</code></td>
+                    <td><code>.dropdown</code> id</td>
+                    <td>
+                      On a tab: the tab is a dropdown. Click a menu entry to
+                      select the tab.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>[data-close]</code></td>
+                    <td>element in a tab</td>
+                    <td>
+                      Closable tab. Click this element or press Delete to close
+                      it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>[role="tabpanel"]</code></td>
+                    <td>element</td>
+                    <td>
+                      Content. Add <code>aria-labelledby</code> pointing to its
+                      tab, and <code>hidden</code> on all but the selected one.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

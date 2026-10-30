@@ -1,0 +1,915 @@
+<header class="page-header">
+            <div>
+              <h1>Progress</h1>
+              <p>
+                A progress bar: one track with one span per part. A span's width
+                is its share.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>The markup is a track and a span for each part</h2>
+            <p>
+              The span's inline width is its part of the track. A bar that shows
+              a single value gets <code>role="progressbar"</code> and
+              <code>aria-valuenow</code> on the track.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="Uploading"
+                    aria-valuenow="66"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <span style="width: 66%"></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="progress" role="progressbar" aria-label="Uploading" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+  &lt;span style="width: 66%"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              Height with data-size: sm 4px, default 6px, lg 12px, xl 32px
+            </h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div
+                      class="progress"
+                      data-size="sm"
+                      role="progressbar"
+                      aria-label="Small, 4 of 6 steps"
+                      aria-valuenow="66"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 66%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="Default, 4 of 6 steps"
+                      aria-valuenow="66"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 66%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      data-size="lg"
+                      role="progressbar"
+                      aria-label="Large, 4 of 6 steps"
+                      aria-valuenow="66"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 66%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      data-size="xl"
+                      role="progressbar"
+                      aria-label="Extra large, 4 of 6 steps"
+                      aria-valuenow="66"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 66%"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="progress" data-size="sm" role="progressbar" aria-label="Small, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 66%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Default, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 66%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" data-size="lg" role="progressbar" aria-label="Large, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 66%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" data-size="xl" role="progressbar" aria-label="Extra large, 4 of 6 steps" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 66%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-variant on a span sets its colour</h2>
+            <p>
+              Without it, the span uses the main text colour (accent is only for
+              links and primary buttons). The others are ok, warning, info and
+              danger.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="Product import"
+                      aria-valuenow="45"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 45%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="Storage used"
+                      aria-valuenow="30"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 30%" data-variant="ok"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="Storage used"
+                      aria-valuenow="78"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 78%" data-variant="warning"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="Stock sync"
+                      aria-valuenow="55"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 55%" data-variant="info"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-label="Storage used"
+                      aria-valuenow="96"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 96%" data-variant="danger"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Product import" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 45%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Storage used" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 30%" data-variant="ok"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Storage used" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 78%" data-variant="warning"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Stock sync" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 55%" data-variant="info"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="progressbar" aria-label="Storage used" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 96%" data-variant="danger"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A label and the value above the track</h2>
+            <p>
+              Put a <code>&lt;header&gt;</code> right before the track, with the
+              label on the left and the value on the right. Link the label with
+              <code>aria-labelledby</code> and give a readable value with
+              <code>aria-valuetext</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div>
+                    <header>
+                      <span id="pg-storage-label">Product image storage</span>
+                      <span>7.8 GB of 10 GB</span>
+                    </header>
+                    <div
+                      class="progress"
+                      role="progressbar"
+                      aria-labelledby="pg-storage-label"
+                      aria-valuenow="78"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      aria-valuetext="7.8 GB of 10 GB"
+                    >
+                      <span style="width: 78%" data-variant="warning"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div&gt;
+  &lt;header&gt;
+    &lt;span id="pg-storage-label"&gt;Product image storage&lt;/span&gt;
+    &lt;span&gt;7.8 GB of 10 GB&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;div class="progress" role="progressbar" aria-labelledby="pg-storage-label" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-valuetext="7.8 GB of 10 GB"&gt;
+    &lt;span style="width: 78%" data-variant="warning"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Several spans divide the track</h2>
+            <p>
+              Parts without a colour go from dark to light. A bar split into
+              parts uses <code>role="img"</code> and an
+              <code>aria-label</code> that names every part. Use at most 5
+              parts.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="progress"
+                    data-size="lg"
+                    role="img"
+                    aria-label="Orders by fulfillment: 62% fulfilled, 23% processing, 15% unfulfilled"
+                  >
+                    <span style="width: 62%"></span>
+                    <span style="width: 23%"></span>
+                    <span style="width: 15%"></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="progress" data-size="lg" role="img" aria-label="Orders by fulfillment: 62% fulfilled, 23% processing, 15% unfulfilled"&gt;
+  &lt;span style="width: 62%"&gt;&lt;/span&gt;
+  &lt;span style="width: 23%"&gt;&lt;/span&gt;
+  &lt;span style="width: 15%"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-variant="empty" leaves a gap</h2>
+            <p>
+              An <code>empty</code> span draws nothing, so the next part starts
+              mid-track. Good for ranges or values compared with a midpoint.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div
+                      class="progress"
+                      role="img"
+                      aria-label="Risk score raised 25.3 times"
+                    >
+                      <span data-variant="empty" style="width: 50%"></span>
+                      <span data-variant="danger" style="width: 35%"></span>
+                    </div>
+                    <div
+                      class="progress"
+                      role="img"
+                      aria-label="Risk score lowered to 0.4 times"
+                    >
+                      <span data-variant="empty" style="width: 40%"></span>
+                      <span data-variant="ok" style="width: 10%"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="progress" role="img" aria-label="Risk score raised 25.3 times"&gt;
+    &lt;span data-variant="empty" style="width: 50%"&gt;&lt;/span&gt;
+    &lt;span data-variant="danger" style="width: 35%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress" role="img" aria-label="Risk score lowered to 0.4 times"&gt;
+    &lt;span data-variant="empty" style="width: 40%"&gt;&lt;/span&gt;
+    &lt;span data-variant="ok" style="width: 10%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              The extra large track with a list under it shows how a total
+              divides
+            </h2>
+            <p>
+              A <code>&lt;ul&gt;</code> right after the track gets markers that
+              match the part in the same position. The number goes in the last
+              span of each row.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <header>
+                      <h2>Cancellations by reason</h2>
+                      <p>678 cancellations in the last 30 days</p>
+                    </header>
+                    <section>
+                      <div
+                        class="progress"
+                        data-size="xl"
+                        role="img"
+                        aria-label="Cancellations by reason: other 60%, recurring payment declined 23%, not satisfied with quality 9%, too expensive 5%, changed my mind 3%"
+                      >
+                        <span style="width: 60%"></span>
+                        <span style="width: 23%"></span>
+                        <span style="width: 9%"></span>
+                        <span style="width: 5%"></span>
+                        <span style="width: 3%"></span>
+                      </div>
+                      <ul>
+                        <li><span>Other</span><span>60%</span></li>
+                        <li>
+                          <span>Recurring payment declined</span
+                          ><span>23%</span>
+                        </li>
+                        <li>
+                          <span>Not satisfied with quality</span><span>9%</span>
+                        </li>
+                        <li><span>Too expensive</span><span>5%</span></li>
+                        <li><span>Changed my mind</span><span>3%</span></li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Cancellations by reason&lt;/h2&gt;
+    &lt;p&gt;678 cancellations in the last 30 days&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;section&gt;
+    &lt;div class="progress" data-size="xl" role="img" aria-label="Cancellations by reason: other 60%, recurring payment declined 23%, not satisfied with quality 9%, too expensive 5%, changed my mind 3%"&gt;
+      &lt;span style="width: 60%"&gt;&lt;/span&gt;
+      &lt;span style="width: 23%"&gt;&lt;/span&gt;
+      &lt;span style="width: 9%"&gt;&lt;/span&gt;
+      &lt;span style="width: 5%"&gt;&lt;/span&gt;
+      &lt;span style="width: 3%"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;span&gt;Other&lt;/span&gt;&lt;span&gt;60%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Recurring payment declined&lt;/span&gt;&lt;span&gt;23%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Not satisfied with quality&lt;/span&gt;&lt;span&gt;9%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Too expensive&lt;/span&gt;&lt;span&gt;5%&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span&gt;Changed my mind&lt;/span&gt;&lt;span&gt;3%&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              The page moves the bar by setting width and aria-valuenow together
+            </h2>
+            <p>
+              Tsunami has no JS for progress. The page sets both values itself.
+              This example uses a short inline script.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <div
+                      class="progress"
+                      id="pg-import"
+                      role="progressbar"
+                      aria-label="Importing products"
+                      aria-valuenow="10"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <span style="width: 10%"></span>
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="pg-import-add"
+                      >
+                        Add 15%
+                      </button>
+                    </div>
+                  </div>
+                  <script>
+                    document
+                      .getElementById("pg-import-add")
+                      .addEventListener("click", () => {
+                        const bar = document.getElementById("pg-import");
+                        const value = Math.min(
+                          100,
+                          Number(bar.getAttribute("aria-valuenow")) + 15,
+                        );
+                        bar.setAttribute("aria-valuenow", value);
+                        bar.querySelector("span").style.width = value + "%";
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;div class="progress" id="pg-import" role="progressbar" aria-label="Importing products" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"&gt;
+    &lt;span style="width: 10%"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="pg-import-add"&gt;Add 15%&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("pg-import-add").addEventListener("click", () =&gt; {
+    const bar = document.getElementById("pg-import");
+    const value = Math.min(100, Number(bar.getAttribute("aria-valuenow")) + 15);
+    bar.setAttribute("aria-valuenow", value);
+    bar.querySelector("span").style.width = value + "%";
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Native &lt;progress&gt;</h2>
+            <p>
+              For a simple single value, you can use
+              <code>&lt;progress class="progress"&gt;</code>. It has progressbar
+              semantics built in. Put <code>data-size</code> and
+              <code>data-variant</code> on the element.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tp"
+                  aria-selected="true"
+                  aria-controls="ex9-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex9-tc"
+                  aria-selected="false"
+                  aria-controls="ex9-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-p"
+                aria-labelledby="ex9-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <progress
+                    class="progress"
+                    data-variant="ok"
+                    value="40"
+                    max="100"
+                    aria-label="Uploading images"
+                  >
+                    40%
+                  </progress>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex9-c"
+                aria-labelledby="ex9-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;progress class="progress" data-variant="ok" value="40" max="100" aria-label="Uploading images"&gt;40%&lt;/progress&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.progress</code></td>
+                    <td></td>
+                    <td>
+                      Full-width track, 6px tall, subtle fill, 4px corners. Use
+                      on a <code>&lt;div&gt;</code> (with spans) or a
+                      <code>&lt;progress&gt;</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, <code>lg</code>, <code>xl</code> (omit
+                      for 6px)
+                    </td>
+                    <td>
+                      On the track: <code>sm</code> 4px, <code>lg</code> 12px,
+                      <code>xl</code> 32px.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; span</code></td>
+                    <td></td>
+                    <td>
+                      One part of the track. Set <code>style="width: N%"</code>.
+                      Adjacent parts have a 2px divider. Parts without a colour
+                      fade from --fg (positions 1-5).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; span[data-variant]</code></td>
+                    <td>
+                      <code>ok</code>, <code>warning</code>, <code>info</code>,
+                      <code>danger</code>, <code>empty</code> (omit for --fg)
+                    </td>
+                    <td>
+                      The part's colour. <code>empty</code> draws nothing and
+                      acts as a spacer so the next part starts mid-track.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>progress[data-variant]</code></td>
+                    <td>
+                      <code>ok</code>, <code>warning</code>, <code>info</code>,
+                      <code>danger</code>
+                    </td>
+                    <td>Colour of a native <code>&lt;progress&gt;</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>role</code></td>
+                    <td><code>progressbar</code>, <code>img</code></td>
+                    <td>
+                      On the track: <code>progressbar</code> for a single value,
+                      <code>img</code> for a bar split into parts (with an
+                      <code>aria-label</code> that names every part).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-valuenow</code></td>
+                    <td>Number</td>
+                    <td>
+                      The current value on a progressbar track. Set it together
+                      with the span's width.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-valuemin</code></td>
+                    <td><code>0</code></td>
+                    <td>Minimum value.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-valuemax</code></td>
+                    <td><code>100</code></td>
+                    <td>Maximum value.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-valuetext</code></td>
+                    <td>Text</td>
+                    <td>
+                      Optional. The value read aloud, e.g. "7.8 GB of 10 GB".
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>Text</td>
+                    <td>Name of the bar.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-labelledby</code></td>
+                    <td>id</td>
+                    <td>
+                      Use instead of <code>aria-label</code> when the label is
+                      shown in the header.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>header + .progress</code></td>
+                    <td></td>
+                    <td>
+                      <code>&lt;header&gt;</code> before the track. The first
+                      child is the label, the last child is the value, muted and
+                      right-aligned, 12px text.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.progress + ul &gt; li</code></td>
+                    <td></td>
+                    <td>
+                      List after the track. Each row gets the marker colour of
+                      the part in the same position. The last span in a row is
+                      the value, right-aligned and bold.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              Progress has no script, functions or events. The page sets the
+              span's <code>style.width</code> and
+              <code>aria-valuenow</code> (and <code>aria-valuetext</code> if
+              used) together. Width changes animate smoothly over 0.3s (no
+              animation with reduced motion).
+            </p>
+          </section>

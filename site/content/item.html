@@ -1,0 +1,611 @@
+<header class="page-header">
+            <div>
+              <h1>Item</h1>
+              <p>
+                One row: a <code>figure</code> (icon, image or avatar), a
+                <code>section</code> (title and description) and an
+                <code>aside</code> (buttons or trailing info).
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              Use <code>article.item</code> for information, or
+              <code>a.item</code> when the whole row is a link. Every part
+              except <code>section</code> is optional.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Usage">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <article class="item" data-variant="outline">
+                    <section>
+                      <h3>Standard shipping</h3>
+                      <p>Delivered in 3 to 5 business days.</p>
+                    </section>
+                    <aside>
+                      <button type="button" class="btn" data-size="sm">
+                        Edit
+                      </button>
+                    </aside>
+                  </article>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;article class="item" data-variant="outline"&gt;
+  &lt;section&gt;
+    &lt;h3&gt;Standard shipping&lt;/h3&gt;
+    &lt;p&gt;Delivered in 3 to 5 business days.&lt;/p&gt;
+  &lt;/section&gt;
+  &lt;aside&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;Edit&lt;/button&gt;
+  &lt;/aside&gt;
+&lt;/article&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Status variants: ok, warning, info and danger</h2>
+            <p>
+              A soft fill in the status color. The icon in the
+              <code>figure</code> uses the strong status color.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Status variants: ok, warning, info and danger"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="item-group">
+                    <article class="item" data-variant="ok">
+                      <figure>
+                        <i
+                          class="icon icon-circle-check"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>Payment captured</h3>
+                        <p>Charged $38.00 to the card ending in 4417.</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="warning">
+                      <figure>
+                        <i
+                          class="icon icon-triangle-alert"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>Low stock</h3>
+                        <p>Only 3 Timeless Watches left.</p>
+                      </section>
+                      <aside>
+                        <button type="button" class="btn" data-size="sm">
+                          Restock
+                        </button>
+                      </aside>
+                    </article>
+                    <article class="item" data-variant="info">
+                      <figure>
+                        <i class="icon icon-info" aria-hidden="true"></i>
+                      </figure>
+                      <section>
+                        <h3>Order on hold</h3>
+                        <p>Waiting for the customer to confirm the address.</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="danger">
+                      <figure>
+                        <i
+                          class="icon icon-circle-alert"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>Payment failed</h3>
+                        <p>The card was declined.</p>
+                      </section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item-group"&gt;
+  &lt;article class="item" data-variant="ok"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Payment captured&lt;/h3&gt;
+      &lt;p&gt;Charged $38.00 to the card ending in 4417.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="warning"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Low stock&lt;/h3&gt;
+      &lt;p&gt;Only 3 Timeless Watches left.&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;aside&gt;
+      &lt;button type="button" class="btn" data-size="sm"&gt;Restock&lt;/button&gt;
+    &lt;/aside&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="info"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-info" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Order on hold&lt;/h3&gt;
+      &lt;p&gt;Waiting for the customer to confirm the address.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="danger"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-circle-alert" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Payment failed&lt;/h3&gt;
+      &lt;p&gt;The card was declined.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Default, outline and muted</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Default, outline and muted">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="item-group">
+                    <article class="item">
+                      <section>
+                        <h3>Default</h3>
+                        <p>No border and no fill.</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="outline">
+                      <section>
+                        <h3>Outline</h3>
+                        <p>A border around the item.</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="muted">
+                      <section>
+                        <h3>Muted</h3>
+                        <p>A soft fill and no border.</p>
+                      </section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item-group"&gt;
+  &lt;article class="item"&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Default&lt;/h3&gt;
+      &lt;p&gt;No border and no fill.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline"&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Outline&lt;/h3&gt;
+      &lt;p&gt;A border around the item.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="muted"&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Muted&lt;/h3&gt;
+      &lt;p&gt;A soft fill and no border.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sizes: default, sm and xs</h2>
+            <p>
+              <code>xs</code> puts the title and description on one line. Good
+              for dense lists.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Sizes: default, sm and xs">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="item-group">
+                    <article class="item" data-variant="outline">
+                      <figure><span class="avatar">EW</span></figure>
+                      <section>
+                        <h3>Emma Wilson</h3>
+                        <p>12 orders</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="outline" data-size="sm">
+                      <figure>
+                        <span class="avatar" data-size="sm">OB</span>
+                      </figure>
+                      <section>
+                        <h3>Olivia Brown</h3>
+                        <p>4 orders</p>
+                      </section>
+                    </article>
+                    <article class="item" data-variant="outline" data-size="xs">
+                      <figure>
+                        <span class="avatar" data-size="sm">JC</span>
+                      </figure>
+                      <section>
+                        <h3>James Carter</h3>
+                        <p>1 order</p>
+                      </section>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item-group"&gt;
+  &lt;article class="item" data-variant="outline"&gt;
+    &lt;figure&gt;&lt;span class="avatar"&gt;EW&lt;/span&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Emma Wilson&lt;/h3&gt;
+      &lt;p&gt;12 orders&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-size="sm"&gt;
+    &lt;figure&gt;&lt;span class="avatar" data-size="sm"&gt;OB&lt;/span&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;Olivia Brown&lt;/h3&gt;
+      &lt;p&gt;4 orders&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article class="item" data-variant="outline" data-size="xs"&gt;
+    &lt;figure&gt;&lt;span class="avatar" data-size="sm"&gt;JC&lt;/span&gt;&lt;/figure&gt;
+    &lt;section&gt;
+      &lt;h3&gt;James Carter&lt;/h3&gt;
+      &lt;p&gt;1 order&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A list of links with lines between them</h2>
+            <p>
+              Put an <code>hr</code> between items in a group. The lines then
+              provide the spacing.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A list of links with lines between them"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <nav class="item-group" aria-label="To do">
+                    <a href="/docs" class="item">
+                      <figure>
+                        <i class="icon icon-truck" aria-hidden="true"></i>
+                      </figure>
+                      <section>
+                        <h3>6 unfulfilled orders to ship</h3>
+                      </section>
+                      <aside>
+                        <i
+                          class="icon icon-chevron-right"
+                          aria-hidden="true"
+                        ></i>
+                      </aside>
+                    </a>
+                    <hr />
+                    <a href="/docs" class="item">
+                      <figure>
+                        <i
+                          class="icon icon-shopping-bag"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>2 orders on hold</h3>
+                      </section>
+                      <aside>
+                        <i
+                          class="icon icon-chevron-right"
+                          aria-hidden="true"
+                        ></i>
+                      </aside>
+                    </a>
+                    <hr />
+                    <a href="/docs" class="item">
+                      <figure>
+                        <i
+                          class="icon icon-circle-alert"
+                          aria-hidden="true"
+                        ></i>
+                      </figure>
+                      <section>
+                        <h3>1 low stock alert needs review</h3>
+                      </section>
+                      <aside>
+                        <i
+                          class="icon icon-chevron-right"
+                          aria-hidden="true"
+                        ></i>
+                      </aside>
+                    </a>
+                  </nav>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;nav class="item-group" aria-label="To do"&gt;
+  &lt;a href="#" class="item"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;&lt;h3&gt;6 unfulfilled orders to ship&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/aside&gt;
+  &lt;/a&gt;
+  &lt;hr /&gt;
+  &lt;a href="#" class="item"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;&lt;h3&gt;2 orders on hold&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/aside&gt;
+  &lt;/a&gt;
+  &lt;hr /&gt;
+  &lt;a href="#" class="item"&gt;
+    &lt;figure&gt;&lt;i class="icon icon-circle-alert" aria-hidden="true"&gt;&lt;/i&gt;&lt;/figure&gt;
+    &lt;section&gt;&lt;h3&gt;1 low stock alert needs review&lt;/h3&gt;&lt;/section&gt;
+    &lt;aside&gt;&lt;i class="icon icon-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;&lt;/aside&gt;
+  &lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <div class="scroll-area" tabindex="0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Attribute / element</th>
+                      <th scope="col">Values</th>
+                      <th scope="col">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>.item</code></td>
+                      <td>
+                        <code>article</code>, <code>a</code>, <code>div</code>
+                      </td>
+                      <td>
+                        One flex row: figure, section, aside;
+                        <code>a.item</code> gets a gray fill on hover
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; figure</code></td>
+                      <td></td>
+                      <td>
+                        32px box for an icon; an <code>img</code> inside fills
+                        it as a circle; an <code>.avatar</code> keeps its own
+                        size (use <code>data-size="sm"</code> with sm/xs items)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; section</code></td>
+                      <td></td>
+                      <td>Text. Fills the remaining space</td>
+                    </tr>
+                    <tr>
+                      <td><code>section h3</code></td>
+                      <td></td>
+                      <td>Title, 14px, weight 500</td>
+                    </tr>
+                    <tr>
+                      <td><code>section p</code></td>
+                      <td></td>
+                      <td>Description, 12px, gray</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; aside</code></td>
+                      <td></td>
+                      <td>
+                        Buttons, icons or trailing info. Gray, does not shrink
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>data-variant</code></td>
+                      <td>
+                        omit for normal (default), <code>outline</code>,
+                        <code>muted</code>, <code>ok</code>,
+                        <code>warning</code>, <code>info</code>,
+                        <code>danger</code>
+                      </td>
+                      <td>
+                        outline adds a border on white, muted adds a gray fill,
+                        statuses use a soft fill and a status-colored icon
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>data-size</code></td>
+                      <td>
+                        omit for normal (default), <code>sm</code>,
+                        <code>xs</code>
+                      </td>
+                      <td>
+                        sm: 24px padding and figure; xs: 20px figure, title and
+                        description on one line
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>.item-group</code></td>
+                      <td>
+                        <code>div</code>, <code>nav</code>, <code>ul</code>
+                      </td>
+                      <td>Groups items, 4px apart</td>
+                    </tr>
+                    <tr>
+                      <td><code>.item-group &gt; hr</code></td>
+                      <td></td>
+                      <td>
+                        Divider between items (a group with hr has no gap)
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>

@@ -1,0 +1,512 @@
+<header class="page-header">
+            <div>
+              <h1>Input group</h1>
+              <p>
+                One box holding an input with text or icons at the start and
+                end. It looks the same as <a href="/docs/input">Input</a>.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Icon and a result count</h2>
+            <p>
+              A <code>&lt;span&gt;</code> before the input sits at the start;
+              one after it sits at the end. Give icons <code>aria-hidden</code>.
+              The input needs an <code>aria-label</code> or a label.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <div class="input-group">
+                      <span
+                        ><i class="icon icon-search" aria-hidden="true"></i
+                      ></span>
+                      <input
+                        type="search"
+                        placeholder="Search orders"
+                        aria-label="Search orders"
+                      />
+                      <span>12 results</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;div class="input-group"&gt;
+    &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input type="search" placeholder="Search orders" aria-label="Search orders" /&gt;
+    &lt;span&gt;12 results&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Prefix and suffix</h2>
+            <p>
+              Good for prices, weights, percentages or domains. It works inside
+              a <code>.field</code> with a label.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <div class="field">
+                      <label for="ig-price">Price</label>
+                      <div class="input-group">
+                        <span>$</span>
+                        <input
+                          id="ig-price"
+                          type="text"
+                          inputmode="decimal"
+                          value="129.00"
+                        />
+                        <span>USD</span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="ig-weight">Weight</label>
+                      <div class="input-group">
+                        <input
+                          id="ig-weight"
+                          type="number"
+                          min="0"
+                          step="0.1"
+                          value="0.5"
+                        />
+                        <span>kg</span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="ig-domain">Store domain</label>
+                      <div class="input-group">
+                        <span>https://</span>
+                        <input id="ig-domain" type="text" value="emmawilson" />
+                        <span>.tsunami.shop</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ig-price"&gt;Price&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+      &lt;span&gt;$&lt;/span&gt;
+      &lt;input id="ig-price" type="text" inputmode="decimal" value="129.00" /&gt;
+      &lt;span&gt;USD&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ig-weight"&gt;Weight&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+      &lt;input id="ig-weight" type="number" min="0" step="0.1" value="0.5" /&gt;
+      &lt;span&gt;kg&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ig-domain"&gt;Store domain&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+      &lt;span&gt;https://&lt;/span&gt;
+      &lt;input id="ig-domain" type="text" value="emmawilson" /&gt;
+      &lt;span&gt;.tsunami.shop&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sizes</h2>
+            <p>
+              Each <code>data-size</code> matches the height of an
+              <code>.input</code> and a <code>.btn</code> of the same size.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <div class="input-group" data-size="sm">
+                      <span
+                        ><i class="icon icon-tag" aria-hidden="true"></i
+                      ></span>
+                      <input
+                        type="text"
+                        placeholder="Tag"
+                        aria-label="Tag (small)"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <span
+                        ><i class="icon icon-tag" aria-hidden="true"></i
+                      ></span>
+                      <input
+                        type="text"
+                        placeholder="Tag"
+                        aria-label="Tag (default)"
+                      />
+                    </div>
+                    <div class="input-group" data-size="lg">
+                      <span
+                        ><i class="icon icon-tag" aria-hidden="true"></i
+                      ></span>
+                      <input
+                        type="text"
+                        placeholder="Tag"
+                        aria-label="Tag (large)"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;div class="input-group" data-size="sm"&gt;
+    &lt;span&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input type="text" placeholder="Tag" aria-label="Tag (small)" /&gt;
+  &lt;/div&gt;
+  &lt;div class="input-group"&gt;
+    &lt;span&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input type="text" placeholder="Tag" aria-label="Tag (default)" /&gt;
+  &lt;/div&gt;
+  &lt;div class="input-group" data-size="lg"&gt;
+    &lt;span&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input type="text" placeholder="Tag" aria-label="Tag (large)" /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Ghost in a card header</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <header>
+                      <div class="input-group" data-variant="ghost">
+                        <span
+                          ><i class="icon icon-search" aria-hidden="true"></i
+                        ></span>
+                        <input
+                          type="search"
+                          placeholder="Search customers"
+                          aria-label="Search customers"
+                        />
+                      </div>
+                    </header>
+                    <div>Emma Wilson · emma.wilson@example.com</div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;div class="input-group" data-variant="ghost"&gt;
+      &lt;span&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;input type="search" placeholder="Search customers" aria-label="Search customers" /&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;div&gt;Emma Wilson · emma.wilson@example.com&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Invalid and disabled</h2>
+            <p>
+              Put <code>aria-invalid</code> and <code>disabled</code> on the
+              input. The box follows on its own.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack docs-narrow">
+                    <div class="field">
+                      <label for="ig-percent">Discount</label>
+                      <div class="input-group">
+                        <input
+                          id="ig-percent"
+                          type="text"
+                          inputmode="numeric"
+                          value="120"
+                          aria-invalid="true"
+                          aria-describedby="ig-percent-error"
+                        />
+                        <span>%</span>
+                      </div>
+                      <small id="ig-percent-error">Must be 100% or less</small>
+                    </div>
+                    <div class="input-group">
+                      <span>$</span>
+                      <input
+                        type="text"
+                        value="29.00"
+                        aria-label="Original price"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack docs-narrow"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ig-percent"&gt;Discount&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+      &lt;input id="ig-percent" type="text" inputmode="numeric" value="120" aria-invalid="true" aria-describedby="ig-percent-error" /&gt;
+      &lt;span&gt;%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;small id="ig-percent-error"&gt;Must be 100% or less&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class="input-group"&gt;
+    &lt;span&gt;$&lt;/span&gt;
+    &lt;input type="text" value="29.00" aria-label="Original price" disabled /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>.<wbr />input-group</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      A bordered box around one input and its start/end spans
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />input-group &gt; input</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Borderless input that fills the remaining space. Needs a
+                      label or aria-label
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>.<wbr />input-group &gt; span</code>
+                    </td>
+                    <td></td>
+                    <td>
+                      Muted text or icon. Placed by HTML order (before the input
+                      = start, after = end)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, <code>lg</code> (none = default 36px)
+                    </td>
+                    <td>Same height as .input / .btn</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td><code>ghost</code> (none = bordered)</td>
+                    <td>
+                      No border or background. For card headers or toolbars
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>On the input: the box border turns danger</td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td></td>
+                    <td>On the input: the box background turns subtle</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-hidden</code></td>
+                    <td><code>true</code></td>
+                    <td>On decorative icons in a span</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

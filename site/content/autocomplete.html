@@ -1,0 +1,1080 @@
+<header class="page-header">
+            <div>
+              <h1>Autocomplete</h1>
+              <p>
+                A text input with suggestions. The value is free text: any typed
+                text is kept, a suggestion only saves typing.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Suggestions from a datalist</h2>
+            <p>
+              Wrap a text input in
+              <code>&lt;div class="autocomplete"&gt;</code> and give it a
+              <code>&lt;datalist&gt;</code>, linked with the input's
+              <code>list</code> attribute (or just placed in the wrapper). The
+              script replaces the native suggestions with a styled list.
+              Whatever is typed stays the value, even if it is not in the list.
+              Without the script the native datalist still works.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="autocomplete"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <input
+                      class="input"
+                      name="city"
+                      placeholder="City"
+                      aria-label="City"
+                      list="ac-cities"
+                    />
+                    <datalist id="ac-cities">
+                      <option value="Amsterdam"></option>
+                      <option value="Athens"></option>
+                      <option value="Bangkok"></option>
+                      <option value="Barcelona"></option>
+                      <option value="Berlin"></option>
+                      <option value="Brussels"></option>
+                      <option value="Budapest"></option>
+                      <option value="Cairo"></option>
+                      <option value="Copenhagen"></option>
+                      <option value="Dublin"></option>
+                      <option value="Lisbon"></option>
+                      <option value="London"></option>
+                      <option value="Madrid"></option>
+                      <option value="Paris"></option>
+                      <option value="Prague"></option>
+                      <option value="Rome"></option>
+                      <option value="Vienna"></option>
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="autocomplete" style="width: 100%; max-width: 320px"&gt;
+  &lt;input class="input" name="city" placeholder="City" aria-label="City" list="ac-cities" /&gt;
+  &lt;datalist id="ac-cities"&gt;
+    &lt;option value="Amsterdam"&gt;&lt;/option&gt;
+    &lt;option value="Athens"&gt;&lt;/option&gt;
+    &lt;option value="Bangkok"&gt;&lt;/option&gt;
+    &lt;option value="Barcelona"&gt;&lt;/option&gt;
+    &lt;option value="Berlin"&gt;&lt;/option&gt;
+    &lt;option value="Brussels"&gt;&lt;/option&gt;
+    &lt;option value="Budapest"&gt;&lt;/option&gt;
+    &lt;option value="Cairo"&gt;&lt;/option&gt;
+    &lt;option value="Copenhagen"&gt;&lt;/option&gt;
+    &lt;option value="Dublin"&gt;&lt;/option&gt;
+    &lt;option value="Lisbon"&gt;&lt;/option&gt;
+    &lt;option value="London"&gt;&lt;/option&gt;
+    &lt;option value="Madrid"&gt;&lt;/option&gt;
+    &lt;option value="Paris"&gt;&lt;/option&gt;
+    &lt;option value="Prague"&gt;&lt;/option&gt;
+    &lt;option value="Rome"&gt;&lt;/option&gt;
+    &lt;option value="Vienna"&gt;&lt;/option&gt;
+  &lt;/datalist&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>In a field with a label and a hint</h2>
+            <p>
+              The label points at the input as usual. Arrow keys move through
+              the suggestions and <kbd>Enter</kbd> picks one. With no active
+              suggestion <kbd>Enter</kbd> keeps the typed text.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field" style="width: 100%; max-width: 320px">
+                    <label for="ac-field">Home city</label>
+                    <div class="autocomplete">
+                      <input
+                        class="input"
+                        id="ac-field"
+                        name="home"
+                        list="ac-field-list"
+                        aria-describedby="ac-field-hint"
+                      />
+                      <datalist id="ac-field-list">
+                        <option value="Amsterdam"></option>
+                        <option value="Athens"></option>
+                        <option value="Bangkok"></option>
+                        <option value="Barcelona"></option>
+                        <option value="Berlin"></option>
+                        <option value="Brussels"></option>
+                        <option value="Budapest"></option>
+                        <option value="Cairo"></option>
+                        <option value="Copenhagen"></option>
+                        <option value="Dublin"></option>
+                        <option value="Lisbon"></option>
+                        <option value="London"></option>
+                        <option value="Madrid"></option>
+                        <option value="Paris"></option>
+                        <option value="Prague"></option>
+                        <option value="Rome"></option>
+                        <option value="Vienna"></option>
+                      </datalist>
+                    </div>
+                    <small id="ac-field-hint"
+                      >Pick a suggestion or type any place.</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" style="width: 100%; max-width: 320px"&gt;
+  &lt;label for="ac-field"&gt;Home city&lt;/label&gt;
+  &lt;div class="autocomplete"&gt;
+    &lt;input class="input" id="ac-field" name="home" list="ac-field-list" aria-describedby="ac-field-hint" /&gt;
+    &lt;datalist id="ac-field-list"&gt;
+      &lt;option value="Amsterdam"&gt;&lt;/option&gt;
+      &lt;option value="Athens"&gt;&lt;/option&gt;
+      &lt;option value="Bangkok"&gt;&lt;/option&gt;
+      &lt;option value="Barcelona"&gt;&lt;/option&gt;
+      &lt;option value="Berlin"&gt;&lt;/option&gt;
+      &lt;option value="Brussels"&gt;&lt;/option&gt;
+      &lt;option value="Budapest"&gt;&lt;/option&gt;
+      &lt;option value="Cairo"&gt;&lt;/option&gt;
+      &lt;option value="Copenhagen"&gt;&lt;/option&gt;
+      &lt;option value="Dublin"&gt;&lt;/option&gt;
+      &lt;option value="Lisbon"&gt;&lt;/option&gt;
+      &lt;option value="London"&gt;&lt;/option&gt;
+      &lt;option value="Madrid"&gt;&lt;/option&gt;
+      &lt;option value="Paris"&gt;&lt;/option&gt;
+      &lt;option value="Prague"&gt;&lt;/option&gt;
+      &lt;option value="Rome"&gt;&lt;/option&gt;
+      &lt;option value="Vienna"&gt;&lt;/option&gt;
+    &lt;/datalist&gt;
+  &lt;/div&gt;
+  &lt;small id="ac-field-hint"&gt;Pick a suggestion or type any place.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Show all suggestions on focus: data-min-length="0"</h2>
+            <p>
+              By default the list opens after one character
+              (<code>data-min-length="1"</code>). Set it to 0 to show the
+              suggestions as soon as the input is focused or clicked.
+              <code>data-limit</code> caps how many are shown (default 8).
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="autocomplete"
+                    data-min-length="0"
+                    data-limit="5"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <input
+                      class="input"
+                      name="city0"
+                      placeholder="Focus to see suggestions"
+                      aria-label="City"
+                      list="ac-all"
+                    />
+                    <datalist id="ac-all">
+                      <option value="Amsterdam"></option>
+                      <option value="Athens"></option>
+                      <option value="Bangkok"></option>
+                      <option value="Barcelona"></option>
+                      <option value="Berlin"></option>
+                      <option value="Brussels"></option>
+                      <option value="Budapest"></option>
+                      <option value="Cairo"></option>
+                      <option value="Copenhagen"></option>
+                      <option value="Dublin"></option>
+                      <option value="Lisbon"></option>
+                      <option value="London"></option>
+                      <option value="Madrid"></option>
+                      <option value="Paris"></option>
+                      <option value="Prague"></option>
+                      <option value="Rome"></option>
+                      <option value="Vienna"></option>
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="autocomplete" data-min-length="0" data-limit="5" style="width: 100%; max-width: 320px"&gt;
+  &lt;input class="input" name="city0" placeholder="Focus to see suggestions" aria-label="City" list="ac-all" /&gt;
+  &lt;datalist id="ac-all"&gt;
+    &lt;option value="Amsterdam"&gt;&lt;/option&gt;
+    &lt;option value="Athens"&gt;&lt;/option&gt;
+    &lt;option value="Bangkok"&gt;&lt;/option&gt;
+    &lt;option value="Barcelona"&gt;&lt;/option&gt;
+    &lt;option value="Berlin"&gt;&lt;/option&gt;
+    &lt;option value="Brussels"&gt;&lt;/option&gt;
+    &lt;option value="Budapest"&gt;&lt;/option&gt;
+    &lt;option value="Cairo"&gt;&lt;/option&gt;
+    &lt;option value="Copenhagen"&gt;&lt;/option&gt;
+    &lt;option value="Dublin"&gt;&lt;/option&gt;
+    &lt;option value="Lisbon"&gt;&lt;/option&gt;
+    &lt;option value="London"&gt;&lt;/option&gt;
+    &lt;option value="Madrid"&gt;&lt;/option&gt;
+    &lt;option value="Paris"&gt;&lt;/option&gt;
+    &lt;option value="Prague"&gt;&lt;/option&gt;
+    &lt;option value="Rome"&gt;&lt;/option&gt;
+    &lt;option value="Vienna"&gt;&lt;/option&gt;
+  &lt;/datalist&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Remote suggestions: data-url</h2>
+            <p>
+              <code>data-url</code> on the wrapper is the search URL. The script
+              sends <code>GET url?q=typed</code> (200 ms after the last key),
+              aborts the previous request and caches the reply for each query.
+              The reply is a JSON array of strings or of
+              <code>{ value, label, text }</code> objects. This page reads the
+              static file <code>data/cities.json</code>, which ignores
+              <code>q</code>, so the script also filters the list by the typed
+              text. While loading, the input and the list have
+              <code>aria-busy</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="autocomplete"
+                    data-url="data/cities.json"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <input
+                      class="input"
+                      name="city-remote"
+                      placeholder="City (from the server)"
+                      aria-label="City"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="autocomplete" data-url="data/cities.json" style="width: 100%; max-width: 320px"&gt;
+  &lt;input class="input" name="city-remote" placeholder="City (from the server)" aria-label="City" /&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Suggestions with a label and a line of text</h2>
+            <p>
+              A datalist option can carry a <code>label</code> (shown in the
+              list) and <code>data-text</code> (a muted line under it). The
+              <code>value</code> is what goes into the input. The matched part
+              of the label is wrapped in <code>&lt;mark&gt;</code>. Text is
+              searched too.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="autocomplete"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <input
+                      class="input"
+                      name="product"
+                      placeholder="Product title"
+                      aria-label="Product title"
+                      list="ac-products"
+                    />
+                    <datalist id="ac-products">
+                      <option
+                        value="Canvas tote bag"
+                        data-text="Bags, 24 in stock"
+                      ></option>
+                      <option
+                        value="Canvas backpack"
+                        data-text="Bags, 8 in stock"
+                      ></option>
+                      <option
+                        value="Cotton tee"
+                        data-text="Clothing, 120 in stock"
+                      ></option>
+                      <option
+                        value="Cotton hoodie"
+                        data-text="Clothing, 9 in stock"
+                      ></option>
+                      <option
+                        value="Ceramic mug"
+                        data-text="Home, 52 in stock"
+                      ></option>
+                      <option
+                        value="Ceramic planter"
+                        data-text="Home, 14 in stock"
+                      ></option>
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="autocomplete" style="width: 100%; max-width: 320px"&gt;
+  &lt;input class="input" name="product" placeholder="Product title" aria-label="Product title" list="ac-products" /&gt;
+  &lt;datalist id="ac-products"&gt;
+    &lt;option value="Canvas tote bag" data-text="Bags, 24 in stock"&gt;&lt;/option&gt;
+    &lt;option value="Canvas backpack" data-text="Bags, 8 in stock"&gt;&lt;/option&gt;
+    &lt;option value="Cotton tee" data-text="Clothing, 120 in stock"&gt;&lt;/option&gt;
+    &lt;option value="Cotton hoodie" data-text="Clothing, 9 in stock"&gt;&lt;/option&gt;
+    &lt;option value="Ceramic mug" data-text="Home, 52 in stock"&gt;&lt;/option&gt;
+    &lt;option value="Ceramic planter" data-text="Home, 14 in stock"&gt;&lt;/option&gt;
+  &lt;/datalist&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A custom source function</h2>
+            <p>
+              For any other lookup call
+              <code>tsunami.autocomplete.mount(el, { source })</code>. The
+              function gets the typed text and <code>{ signal }</code> and
+              returns (or resolves to) an array of strings or items. Here it
+              completes an email domain.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="autocomplete"
+                    id="ac-email"
+                    data-min-length="1"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <input
+                      class="input"
+                      type="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      aria-label="Email"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="autocomplete" id="ac-email" data-min-length="1" style="width: 100%; max-width: 320px"&gt;
+  &lt;input class="input" type="email" name="email" placeholder="you@example.com" aria-label="Email" /&gt;
+&lt;/div&gt;
+
+&lt;script type="module"&gt;
+  const domains = ["gmail.com", "outlook.com", "icloud.com", "example.org"];
+  tsunami.autocomplete.mount(document.getElementById("ac-email"), {
+    source: async (q) =&gt; {
+      const [name, domain = ""] = q.split("@");
+      if (!q.includes("@")) return [];
+      return domains
+        .filter((d) =&gt; d.startsWith(domain))
+        .map((d) =&gt; ({ value: `${name}@${d}`, label: `${name}@${d}` }));
+    },
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Inside an input group, with an icon</h2>
+            <p>
+              Put an <code>.input-group</code> inside the wrapper. The list
+              lines up with the whole box. <code>data-size</code> on the input
+              (or the group) sets the height as usual.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="autocomplete"
+                    style="width: 100%; max-width: 320px"
+                  >
+                    <div class="input-group">
+                      <i class="icon icon-map-pin" aria-hidden="true"></i>
+                      <input
+                        name="place"
+                        placeholder="Where to?"
+                        aria-label="Where to?"
+                        list="ac-group"
+                      />
+                    </div>
+                    <datalist id="ac-group">
+                      <option value="Amsterdam"></option>
+                      <option value="Athens"></option>
+                      <option value="Bangkok"></option>
+                      <option value="Barcelona"></option>
+                      <option value="Berlin"></option>
+                      <option value="Brussels"></option>
+                      <option value="Budapest"></option>
+                      <option value="Cairo"></option>
+                      <option value="Copenhagen"></option>
+                      <option value="Dublin"></option>
+                      <option value="Lisbon"></option>
+                      <option value="London"></option>
+                      <option value="Madrid"></option>
+                      <option value="Paris"></option>
+                      <option value="Prague"></option>
+                      <option value="Rome"></option>
+                      <option value="Vienna"></option>
+                    </datalist>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="autocomplete" style="width: 100%; max-width: 320px"&gt;
+  &lt;div class="input-group"&gt;
+    &lt;i class="icon icon-map-pin" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;input name="place" placeholder="Where to?" aria-label="Where to?" list="ac-group" /&gt;
+  &lt;/div&gt;
+  &lt;datalist id="ac-group"&gt;
+    &lt;option value="Amsterdam"&gt;&lt;/option&gt;
+    &lt;option value="Athens"&gt;&lt;/option&gt;
+    &lt;option value="Bangkok"&gt;&lt;/option&gt;
+    &lt;option value="Barcelona"&gt;&lt;/option&gt;
+    &lt;option value="Berlin"&gt;&lt;/option&gt;
+    &lt;option value="Brussels"&gt;&lt;/option&gt;
+    &lt;option value="Budapest"&gt;&lt;/option&gt;
+    &lt;option value="Cairo"&gt;&lt;/option&gt;
+    &lt;option value="Copenhagen"&gt;&lt;/option&gt;
+    &lt;option value="Dublin"&gt;&lt;/option&gt;
+    &lt;option value="Lisbon"&gt;&lt;/option&gt;
+    &lt;option value="London"&gt;&lt;/option&gt;
+    &lt;option value="Madrid"&gt;&lt;/option&gt;
+    &lt;option value="Paris"&gt;&lt;/option&gt;
+    &lt;option value="Prague"&gt;&lt;/option&gt;
+    &lt;option value="Rome"&gt;&lt;/option&gt;
+    &lt;option value="Vienna"&gt;&lt;/option&gt;
+  &lt;/datalist&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Disabled and read-only</h2>
+            <p>A disabled or read-only input shows no suggestions.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" style="width: 100%; max-width: 320px">
+                    <div class="autocomplete">
+                      <input
+                        class="input"
+                        placeholder="Disabled"
+                        aria-label="Disabled"
+                        list="ac-off"
+                        disabled
+                      />
+                      <datalist id="ac-off">
+                        <option value="Amsterdam"></option>
+                        <option value="Athens"></option>
+                        <option value="Bangkok"></option>
+                        <option value="Barcelona"></option>
+                        <option value="Berlin"></option>
+                        <option value="Brussels"></option>
+                        <option value="Budapest"></option>
+                        <option value="Cairo"></option>
+                        <option value="Copenhagen"></option>
+                        <option value="Dublin"></option>
+                        <option value="Lisbon"></option>
+                        <option value="London"></option>
+                        <option value="Madrid"></option>
+                        <option value="Paris"></option>
+                        <option value="Prague"></option>
+                        <option value="Rome"></option>
+                        <option value="Vienna"></option>
+                      </datalist>
+                    </div>
+                    <div class="autocomplete">
+                      <input
+                        class="input"
+                        value="Paris"
+                        aria-label="Read-only"
+                        list="ac-ro"
+                        readonly
+                      />
+                      <datalist id="ac-ro">
+                        <option value="Amsterdam"></option>
+                        <option value="Athens"></option>
+                        <option value="Bangkok"></option>
+                        <option value="Barcelona"></option>
+                        <option value="Berlin"></option>
+                        <option value="Brussels"></option>
+                        <option value="Budapest"></option>
+                        <option value="Cairo"></option>
+                        <option value="Copenhagen"></option>
+                        <option value="Dublin"></option>
+                        <option value="Lisbon"></option>
+                        <option value="London"></option>
+                        <option value="Madrid"></option>
+                        <option value="Paris"></option>
+                        <option value="Prague"></option>
+                        <option value="Rome"></option>
+                        <option value="Vienna"></option>
+                      </datalist>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" style="width: 100%; max-width: 320px"&gt;
+  &lt;div class="autocomplete"&gt;
+    &lt;input class="input" placeholder="Disabled" aria-label="Disabled" list="ac-off" disabled /&gt;
+    &lt;datalist id="ac-off"&gt;
+      &lt;option value="Amsterdam"&gt;&lt;/option&gt;
+      &lt;option value="Athens"&gt;&lt;/option&gt;
+      &lt;option value="Bangkok"&gt;&lt;/option&gt;
+      &lt;option value="Barcelona"&gt;&lt;/option&gt;
+      &lt;option value="Berlin"&gt;&lt;/option&gt;
+      &lt;option value="Brussels"&gt;&lt;/option&gt;
+      &lt;option value="Budapest"&gt;&lt;/option&gt;
+      &lt;option value="Cairo"&gt;&lt;/option&gt;
+      &lt;option value="Copenhagen"&gt;&lt;/option&gt;
+      &lt;option value="Dublin"&gt;&lt;/option&gt;
+      &lt;option value="Lisbon"&gt;&lt;/option&gt;
+      &lt;option value="London"&gt;&lt;/option&gt;
+      &lt;option value="Madrid"&gt;&lt;/option&gt;
+      &lt;option value="Paris"&gt;&lt;/option&gt;
+      &lt;option value="Prague"&gt;&lt;/option&gt;
+      &lt;option value="Rome"&gt;&lt;/option&gt;
+      &lt;option value="Vienna"&gt;&lt;/option&gt;
+    &lt;/datalist&gt;
+  &lt;/div&gt;
+  &lt;div class="autocomplete"&gt;
+    &lt;input class="input" value="Paris" aria-label="Read-only" list="ac-ro" readonly /&gt;
+    &lt;datalist id="ac-ro"&gt;
+      &lt;option value="Amsterdam"&gt;&lt;/option&gt;
+      &lt;option value="Athens"&gt;&lt;/option&gt;
+      &lt;option value="Bangkok"&gt;&lt;/option&gt;
+      &lt;option value="Barcelona"&gt;&lt;/option&gt;
+      &lt;option value="Berlin"&gt;&lt;/option&gt;
+      &lt;option value="Brussels"&gt;&lt;/option&gt;
+      &lt;option value="Budapest"&gt;&lt;/option&gt;
+      &lt;option value="Cairo"&gt;&lt;/option&gt;
+      &lt;option value="Copenhagen"&gt;&lt;/option&gt;
+      &lt;option value="Dublin"&gt;&lt;/option&gt;
+      &lt;option value="Lisbon"&gt;&lt;/option&gt;
+      &lt;option value="London"&gt;&lt;/option&gt;
+      &lt;option value="Madrid"&gt;&lt;/option&gt;
+      &lt;option value="Paris"&gt;&lt;/option&gt;
+      &lt;option value="Prague"&gt;&lt;/option&gt;
+      &lt;option value="Rome"&gt;&lt;/option&gt;
+      &lt;option value="Vienna"&gt;&lt;/option&gt;
+    &lt;/datalist&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Autocomplete or Select?</h2>
+            <p>
+              Use <a href="/docs/select">Select</a> when the value must be one of a
+              fixed set of options (even with <code>data-input</code> or
+              <code>data-tags</code>, the choice is an option of a native
+              <code>&lt;select&gt;</code>). Use Autocomplete when the value is
+              free text and the suggestions only save typing: a city, a product
+              title, an email domain, a search box.
+            </p>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              The script enhances every <code>.autocomplete</code> on load and
+              when added later. The functions are only needed for a custom
+              source.
+            </p>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Function"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Arguments</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>tsunami.autocomplete.mount(el, options)</code>
+                    </td>
+                    <td>
+                      <code>el</code>: the <code>.autocomplete</code> wrapper,
+                      <code>options.source</code>:
+                      <code>async (q, { signal }) =&gt; items</code>
+                    </td>
+                    <td>
+                      Enhances the wrapper with a source function, replacing a
+                      previous setup. Items are strings or
+                      <code>{ value, label, text }</code>. Replies are cached
+                      for each query and a new call aborts the previous one
+                      through <code>signal</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.autocomplete.destroy(el)</code></td>
+                    <td><code>el</code>: the wrapper</td>
+                    <td>
+                      Removes the list and the ARIA attributes, restores the
+                      input's <code>list</code> attribute and stops enhancing
+                      this wrapper.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Events</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Event"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Detail</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:autocomplete</code></td>
+                    <td>input, bubbles</td>
+                    <td>
+                      <code>{ value, item }</code>, where <code>item</code> is
+                      <code>{ value, label, text }</code>. Fired when a
+                      suggestion is picked, not for typed text.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input</code>, <code>change</code></td>
+                    <td>input, bubbles</td>
+                    <td>
+                      Fired after a pick, so forms and the Save bar react as if
+                      the text had been typed. Typing fires the native events as
+                      usual.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Keyboard</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Key"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>↓</kbd> <kbd>↑</kbd></td>
+                    <td>
+                      Open the list if it is closed. In the list: move the
+                      active suggestion (<code>aria-activedescendant</code>).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Enter</kbd></td>
+                    <td>
+                      Picks the active suggestion. With none active it keeps the
+                      typed text (and submits the form as usual).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Escape</kbd></td>
+                    <td>Closes the list. The text stays.</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Tab</kbd></td>
+                    <td>
+                      Leaves the input, closes the list and keeps the text.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Letters</td>
+                    <td>Filter the suggestions. Any text is a valid value.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attribute"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>data-url</code></td>
+                    <td>URL</td>
+                    <td>
+                      On the wrapper. Remote suggestions:
+                      <code>GET url?q=</code>, JSON array of strings or
+                      <code>{ value, label, text }</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-min-length</code></td>
+                    <td>number (default 1)</td>
+                    <td>
+                      On the wrapper. Characters needed before the list opens. 0
+                      shows all on focus.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-limit</code></td>
+                    <td>number (default 8)</td>
+                    <td>On the wrapper. Most suggestions shown.</td>
+                  </tr>
+                  <tr>
+                    <td><code>list</code></td>
+                    <td>datalist id</td>
+                    <td>
+                      On the input. The script removes it (the datalist stays
+                      the data source) and puts it back on <code>destroy</code>.
+                      A datalist inside the wrapper works too.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>option[value]</code></td>
+                    <td>text</td>
+                    <td>In the datalist. The text put into the input.</td>
+                  </tr>
+                  <tr>
+                    <td><code>option[label]</code></td>
+                    <td>text</td>
+                    <td>
+                      Shown in the list instead of the value. Matched and
+                      highlighted.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>option[data-text]</code></td>
+                    <td>text</td>
+                    <td>
+                      A muted line under the title. Searched, not highlighted.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>sm, lg</td>
+                    <td>
+                      On the input, as for <a href="/docs/input">Input</a>. The list
+                      follows the width of the input (or the input group).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-busy</code></td>
+                    <td>set by the script</td>
+                    <td>
+                      On the input and the listbox while remote suggestions
+                      load.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Accessibility</h2>
+            <p>
+              The input becomes an ARIA 1.2 combobox with list autocomplete:
+              <code>role="combobox"</code>,
+              <code>aria-autocomplete="list"</code>, <code>aria-expanded</code>,
+              <code>aria-controls</code> (the listbox) and
+              <code>aria-activedescendant</code> (the active option). The list
+              is a <code>role="listbox"</code> labelled by the input's
+              <code>&lt;label&gt;</code> or <code>aria-label</code>, with a
+              <code>role="option"</code> for each suggestion. Focus never leaves
+              the input. Give every input a label.
+            </p>
+          </section>

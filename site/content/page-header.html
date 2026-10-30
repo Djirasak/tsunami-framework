@@ -1,0 +1,565 @@
+<header class="page-header">
+            <div>
+              <h1>Page header</h1>
+              <p>
+                The top of a page: a breadcrumb on top, a back button, the page
+                title and actions on the right.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              An <code>h1</code> title on the left, and the last
+              <code>div</code> as a button group on the right. On narrow screens
+              the buttons wrap to a new line.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Usage">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <header class="page-header">
+                    <h1>Orders</h1>
+                    <div>
+                      <a href="/docs" class="btn">Export</a>
+                      <a href="/docs" class="btn" data-variant="primary"
+                        >New order</a
+                      >
+                    </div>
+                  </header>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;header class="page-header"&gt;
+  &lt;h1&gt;Orders&lt;/h1&gt;
+  &lt;div&gt;
+    &lt;a href="#" class="btn"&gt;Export&lt;/a&gt;
+    &lt;a href="#" class="btn" data-variant="primary"&gt;New order&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Title only</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Title only">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <header class="page-header">
+                    <h1>Overview</h1>
+                  </header>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;header class="page-header"&gt;
+  &lt;h1&gt;Overview&lt;/h1&gt;
+&lt;/header&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With a breadcrumb above the title</h2>
+            <p>
+              A direct-child <code>nav.breadcrumb</code> gets its own full-width
+              row.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="With a breadcrumb above the title"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <header class="page-header">
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                      <ol>
+                        <li><a href="/docs">Dashboard</a></li>
+                        <li>
+                          <span aria-current="page">Products</span>
+                        </li>
+                      </ol>
+                    </nav>
+                    <h1>Products</h1>
+                    <div>
+                      <a href="/docs" class="btn" data-variant="primary"
+                        >New product</a
+                      >
+                    </div>
+                  </header>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;header class="page-header"&gt;
+  &lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span aria-current="page"&gt;Products&lt;/span&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/nav&gt;
+  &lt;h1&gt;Products&lt;/h1&gt;
+  &lt;div&gt;
+    &lt;a href="#" class="btn" data-variant="primary"&gt;New product&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With a back button</h2>
+            <p>
+              For a page one level below a list. A direct-child
+              <code>.btn</code> sits before the title. Give it an
+              <code>aria-label</code> that says where it goes back to.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="With a back button">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <header class="page-header">
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                      <ol>
+                        <li><a href="/docs">Dashboard</a></li>
+                        <li><a href="/docs">Products</a></li>
+                        <li>
+                          <span aria-current="page">Crew tee</span>
+                        </li>
+                      </ol>
+                    </nav>
+                    <a
+                      href="/docs"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="Back to products"
+                      ><i class="icon icon-arrow-left" aria-hidden="true"></i
+                    ></a>
+                    <h1>Crew tee</h1>
+                    <div>
+                      <a href="/docs" class="btn" data-variant="ghost">View</a>
+                      <button type="button" class="btn" popovertarget="ph-more">
+                        More actions
+                        <i
+                          class="icon icon-chevron-down"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                      <div class="dropdown" id="ph-more" popover>
+                        <button
+                          type="button"
+                          popovertarget="ph-more"
+                          popovertargetaction="hide"
+                        >
+                          View revisions
+                        </button>
+                        <hr />
+                        <button
+                          type="button"
+                          data-variant="danger"
+                          popovertarget="ph-more"
+                          popovertargetaction="hide"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </header>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;header class="page-header"&gt;
+  &lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Products&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span aria-current="page"&gt;Crew tee&lt;/span&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/nav&gt;
+  &lt;a href="#" class="btn" data-size="icon" aria-label="Back to products"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;h1&gt;Crew tee&lt;/h1&gt;
+  &lt;div&gt;
+    &lt;a href="#" class="btn" data-variant="ghost"&gt;View&lt;/a&gt;
+    &lt;button type="button" class="btn" popovertarget="ph-more"&gt;
+      More actions
+      &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="dropdown" id="ph-more" popover&gt;
+      &lt;button type="button" popovertarget="ph-more" popovertargetaction="hide"&gt;View revisions&lt;/button&gt;
+      &lt;hr /&gt;
+      &lt;button type="button" data-variant="danger" popovertarget="ph-more" popovertargetaction="hide"&gt;Delete&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Badges inside the title, and a line under it</h2>
+            <p>
+              Put <code>.badge</code> elements right inside the <code>h1</code>.
+              Use an <code>hgroup</code> when a <code>p</code> goes under the
+              title.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Badges inside the title, and a line under it"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <header class="page-header">
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                      <ol>
+                        <li><a href="/docs">Dashboard</a></li>
+                        <li><a href="/docs">Orders</a></li>
+                        <li><span aria-current="page">#110963</span></li>
+                      </ol>
+                    </nav>
+                    <a
+                      href="/docs"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="Back to orders"
+                      ><i class="icon icon-arrow-left" aria-hidden="true"></i
+                    ></a>
+                    <hgroup>
+                      <h1>
+                        Order #110963
+                        <span class="badge" data-variant="warning">Open</span>
+                        <span class="badge">Partially fulfilled</span>
+                        <span class="badge" data-variant="ok">Paid</span>
+                      </h1>
+                      <p>
+                        <a href="/docs">Emma Wilson</a> &bull;
+                        emma.wilson@example.com &bull; (555) 234-5678
+                      </p>
+                    </hgroup>
+                    <div>
+                      <a href="/docs" class="btn" data-variant="ghost">Refund</a>
+                      <a href="/docs" class="btn">Edit</a>
+                    </div>
+                  </header>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;header class="page-header"&gt;
+  &lt;nav class="breadcrumb" aria-label="Breadcrumb"&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Orders&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;span aria-current="page"&gt;#110963&lt;/span&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/nav&gt;
+  &lt;a href="#" class="btn" data-size="icon" aria-label="Back to orders"&gt;&lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;hgroup&gt;
+    &lt;h1&gt;
+      Order #110963
+      &lt;span class="badge" data-variant="warning"&gt;Open&lt;/span&gt;
+      &lt;span class="badge"&gt;Partially fulfilled&lt;/span&gt;
+      &lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;
+    &lt;/h1&gt;
+    &lt;p&gt;&lt;a href="#"&gt;Emma Wilson&lt;/a&gt; &amp;bull; emma.wilson@example.com &amp;bull; (555) 234-5678&lt;/p&gt;
+  &lt;/hgroup&gt;
+  &lt;div&gt;
+    &lt;a href="#" class="btn" data-variant="ghost"&gt;Refund&lt;/a&gt;
+    &lt;a href="#" class="btn"&gt;Edit&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Title block in a div</h2>
+            <p>
+              The older pattern these docs pages use: the first
+              <code>div</code> holds the breadcrumb, title and description. The
+              last <code>div</code> holds the buttons.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Title block in a div">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <header class="page-header">
+                    <div>
+                      <h1>Crew tee</h1>
+                      <p>SKU TS-001, 128 in stock</p>
+                    </div>
+                    <div>
+                      <button type="button" class="btn">Duplicate</button>
+                      <button type="button" class="btn" data-variant="primary">
+                        Save
+                      </button>
+                    </div>
+                  </header>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;header class="page-header"&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Crew tee&lt;/h1&gt;
+    &lt;p&gt;SKU TS-001, 128 in stock&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card">
+              <div class="scroll-area" tabindex="0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Attribute / element</th>
+                      <th scope="col">Values</th>
+                      <th scope="col">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>.page-header</code></td>
+                      <td><code>header</code></td>
+                      <td>Wrapping flex row, centered vertically</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; nav</code></td>
+                      <td><code>nav.breadcrumb</code></td>
+                      <td>Breadcrumb on the top row, full width</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; .btn</code></td>
+                      <td></td>
+                      <td>
+                        Back button before the title. Does not grow or shrink
+                        (use <code>data-size="icon"</code> and
+                        <code>aria-label</code>)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; h1</code></td>
+                      <td></td>
+                      <td>
+                        Page title. Fills the space; a
+                        <code>.badge</code> inside follows the title
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; hgroup</code></td>
+                      <td></td>
+                      <td>
+                        An <code>h1</code> title with a gray
+                        <code>p</code> under it
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; div:first-child</code></td>
+                      <td></td>
+                      <td>Older title block: breadcrumb, h1 and p stacked</td>
+                    </tr>
+                    <tr>
+                      <td><code>&gt; div:last-child</code></td>
+                      <td></td>
+                      <td>
+                        Action buttons on the right (unless it is the first
+                        child or the title block after a nav)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>p</code></td>
+                      <td></td>
+                      <td>Gray secondary text</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>

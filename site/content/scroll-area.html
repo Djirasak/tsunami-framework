@@ -1,0 +1,286 @@
+<header class="page-header">
+            <div>
+              <h1>Scroll area</h1>
+              <p>
+                A scrolling region inside a fixed-height box, with a thin
+                scrollbar.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              Add <code>.scroll-area</code> to a box with a set
+              <code>height</code> or <code>max-height</code>. Overflowing
+              content scrolls inside the box, and the scroll does not spread to
+              the page. Add <code>tabindex="0"</code> for keyboard scrolling and
+              an <code>aria-label</code> for a name. For a frame, put it in a
+              <code>.card</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Usage">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <div
+                      class="scroll-area"
+                      tabindex="0"
+                      aria-label="Sync history"
+                      style="height: 12rem"
+                    >
+                      <ol class="timeline">
+                        <li>
+                          Stock sync #10
+                          <time datetime="2026-10-29T18:00">29 Oct 18:00</time>
+                        </li>
+                        <li>
+                          Stock sync #9
+                          <time datetime="2026-10-29T17:00">29 Oct 17:00</time>
+                        </li>
+                        <li>
+                          Stock sync #8
+                          <time datetime="2026-10-29T16:00">29 Oct 16:00</time>
+                        </li>
+                        <li>
+                          Stock sync #7
+                          <time datetime="2026-10-29T15:00">29 Oct 15:00</time>
+                        </li>
+                        <li>
+                          Stock sync #6
+                          <time datetime="2026-10-29T14:00">29 Oct 14:00</time>
+                        </li>
+                        <li>
+                          Stock sync #5
+                          <time datetime="2026-10-29T13:00">29 Oct 13:00</time>
+                        </li>
+                        <li>
+                          Stock sync #4
+                          <time datetime="2026-10-29T12:00">29 Oct 12:00</time>
+                        </li>
+                        <li>
+                          Stock sync #3
+                          <time datetime="2026-10-29T11:00">29 Oct 11:00</time>
+                        </li>
+                        <li>
+                          Stock sync #2
+                          <time datetime="2026-10-29T10:00">29 Oct 10:00</time>
+                        </li>
+                        <li>
+                          Stock sync #1
+                          <time datetime="2026-10-29T09:00">29 Oct 09:00</time>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;div class="scroll-area" tabindex="0" aria-label="Sync history" style="height: 12rem"&gt;
+    &lt;ol class="timeline"&gt;
+      &lt;li&gt;Stock sync #10 &lt;time datetime="2026-10-29T18:00"&gt;29 Oct 18:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #9 &lt;time datetime="2026-10-29T17:00"&gt;29 Oct 17:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #8 &lt;time datetime="2026-10-29T16:00"&gt;29 Oct 16:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #7 &lt;time datetime="2026-10-29T15:00"&gt;29 Oct 15:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #6 &lt;time datetime="2026-10-29T14:00"&gt;29 Oct 14:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #5 &lt;time datetime="2026-10-29T13:00"&gt;29 Oct 13:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #4 &lt;time datetime="2026-10-29T12:00"&gt;29 Oct 12:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #3 &lt;time datetime="2026-10-29T11:00"&gt;29 Oct 11:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #2 &lt;time datetime="2026-10-29T10:00"&gt;29 Oct 10:00&lt;/time&gt;&lt;/li&gt;
+      &lt;li&gt;Stock sync #1 &lt;time datetime="2026-10-29T09:00"&gt;29 Oct 09:00&lt;/time&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Horizontal scrolling</h2>
+            <p>
+              Content wider than the box, like a table with many columns,
+              scrolls sideways inside the box without overflowing the page.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Horizontal scrolling">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <div class="scroll-area" tabindex="0" aria-label="Products">
+                      <table class="table" style="min-width: 64rem">
+                        <thead>
+                          <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">SKU</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Sold</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>T-shirt</td>
+                            <td>TS-001</td>
+                            <td>120</td>
+                            <td>$24.00</td>
+                            <td>842</td>
+                          </tr>
+                          <tr>
+                            <td>Tote bag</td>
+                            <td>TB-014</td>
+                            <td>36</td>
+                            <td>$36.00</td>
+                            <td>215</td>
+                          </tr>
+                          <tr>
+                            <td>Cap</td>
+                            <td>CP-007</td>
+                            <td>0</td>
+                            <td>$18.00</td>
+                            <td>530</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;div class="scroll-area" tabindex="0" aria-label="Products"&gt;
+    &lt;table class="table" style="min-width: 64rem"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col"&gt;Product&lt;/th&gt;
+          &lt;th scope="col"&gt;SKU&lt;/th&gt;
+          &lt;th scope="col"&gt;Stock&lt;/th&gt;
+          &lt;th scope="col"&gt;Price&lt;/th&gt;
+          &lt;th scope="col"&gt;Sold&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;T-shirt&lt;/td&gt;&lt;td&gt;TS-001&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;td&gt;$24.00&lt;/td&gt;&lt;td&gt;842&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Tote bag&lt;/td&gt;&lt;td&gt;TB-014&lt;/td&gt;&lt;td&gt;36&lt;/td&gt;&lt;td&gt;$36.00&lt;/td&gt;&lt;td&gt;215&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Cap&lt;/td&gt;&lt;td&gt;CP-007&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;$18.00&lt;/td&gt;&lt;td&gt;530&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.scroll-area</code></td>
+                    <td></td>
+                    <td>
+                      Scrolls both ways with a thin, border-coloured scrollbar.
+                      The scroll does not spread to the page (<code
+                        >overscroll-behavior: contain</code
+                      >)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>height</code>, <code>max-height</code></td>
+                    <td>CSS length</td>
+                    <td>
+                      Required. Set it in page CSS or <code>style</code>. No
+                      default.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tabindex</code></td>
+                    <td><code>0</code></td>
+                    <td>
+                      Makes it focusable and scrollable with arrows, Page Up and
+                      Page Down
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>Text</td>
+                    <td>
+                      Name of the region for screen readers when it is focusable
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

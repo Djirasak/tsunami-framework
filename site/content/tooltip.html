@@ -1,0 +1,646 @@
+<header class="page-header">
+            <div>
+              <h1>Tooltip</h1>
+              <p>
+                One line of text on hover or keyboard focus, from one attribute.
+                No script needed.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>A tooltip is one attribute and needs no script</h2>
+            <p>
+              <code>data-<wbr />tooltip</code> shows its text above the element
+              on hover or keyboard focus. The text is plain text taken from the
+              attribute.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    data-tooltip="Add to collection"
+                  >
+                    Hover
+                  </button>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" data-tooltip="Add to collection"&gt;Hover&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>data-side puts it above, below, left or right</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="Above, the default"
+                      data-side="top"
+                    >
+                      Top
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="Below"
+                      data-side="bottom"
+                    >
+                      Bottom
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="Left"
+                      data-side="left"
+                    >
+                      Left
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="Right"
+                      data-side="right"
+                    >
+                      Right
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-tooltip="Above, the default" data-side="top"&gt;Top&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="Below" data-side="bottom"&gt;Bottom&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="Left" data-side="left"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="Right" data-side="right"&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              data-align lines it up with the start, the centre or the end
+            </h2>
+            <p>
+              On the left or right side, start is the top edge and end the
+              bottom edge.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="Lined up with the start"
+                      data-align="start"
+                    >
+                      Start
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="Centred, the default"
+                      data-align="center"
+                    >
+                      Center
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-tooltip="Lined up with the end"
+                      data-align="end"
+                    >
+                      End
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-tooltip="Lined up with the start" data-align="start"&gt;Start&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="Centred, the default" data-align="center"&gt;Center&lt;/button&gt;
+  &lt;button type="button" class="btn" data-tooltip="Lined up with the end" data-align="end"&gt;End&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              An icon button keeps its aria-label: the tooltip is not its name
+            </h2>
+            <p>
+              A screen reader does not read the tooltip, so the button is named
+              by <code>aria-<wbr />label</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="Copy"
+                      data-tooltip="Copy"
+                    >
+                      <i class="icon icon-copy" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      aria-label="Download"
+                      data-tooltip="Download"
+                    >
+                      <i class="icon icon-download" aria-hidden="true"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-size="icon"
+                      data-variant="danger"
+                      aria-label="Delete"
+                      data-tooltip="Delete"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="Copy" data-tooltip="Copy"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon" aria-label="Download" data-tooltip="Download"&gt;&lt;i class="icon icon-download" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;button type="button" class="btn" data-size="icon" data-variant="danger" aria-label="Delete" data-tooltip="Delete"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              It works on any element that can hold content: a badge, an icon, a
+              word
+            </h2>
+            <p>
+              An
+              <code>abbr</code> gets a dotted underline. Give an element that is
+              not focusable <code>tabindex=<wbr />"0"</code> when keyboard users
+              need the text too.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span
+                      class="badge"
+                      data-variant="ok"
+                      data-tooltip="Paid on Oct 3, 2026"
+                      >Paid</span
+                    >
+                    <span data-tooltip="Verified by 3D Secure"
+                      ><i class="icon icon-shield-check" aria-hidden="true"></i
+                    ></span>
+                    <abbr data-tooltip="Monthly recurring revenue" tabindex="0"
+                      >MRR</abbr
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="badge" data-variant="ok" data-tooltip="Paid on Oct 3, 2026"&gt;Paid&lt;/span&gt;
+  &lt;span data-tooltip="Verified by 3D Secure"&gt;&lt;i class="icon icon-shield-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;abbr data-tooltip="Monthly recurring revenue" tabindex="0"&gt;MRR&lt;/abbr&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>
+              A field cannot draw a tooltip itself, so the attribute goes on a
+              wrapper
+            </h2>
+            <p>
+              <code>input</code>, <code>select</code>, <code>textarea</code> and
+              <code>img</code> have no <code>::after</code>. The wrapper shows
+              the tooltip on hover and while the field inside it has keyboard
+              focus.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="field"
+                    data-tooltip="Letters and numbers only"
+                    data-align="start"
+                    style="max-width: 16rem"
+                  >
+                    <label for="tt-coupon">Coupon code</label>
+                    <input id="tt-coupon" type="text" placeholder="SALE2026" />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" data-tooltip="Letters and numbers only" data-align="start" style="max-width: 16rem"&gt;
+  &lt;label for="tt-coupon"&gt;Coupon code&lt;/label&gt;
+  &lt;input id="tt-coupon" type="text" placeholder="SALE2026"&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Long text stays on one line and is cut off at 320px</h2>
+            <p>
+              Text wider than 20rem (320px) ends in an ellipsis. Use a popover
+              for anything longer.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    data-tooltip="This payment was captured on the first attempt and settled the next business day"
+                    data-align="start"
+                  >
+                    Long text
+                  </button>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" data-tooltip="This payment was captured on the first attempt and settled the next business day" data-align="start"&gt;Long text&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>What a tooltip does not do</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="What a tooltip does not do"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Limit</th>
+                    <th scope="col">What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      It shows on hover and keyboard focus only; a touch screen
+                      has no hover.
+                    </td>
+                    <td>Never put information only in a tooltip.</td>
+                  </tr>
+                  <tr>
+                    <td>A screen reader does not read it.</td>
+                    <td>
+                      Name an icon button with <code>aria-<wbr />label</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      One line of plain text, cut off at 320px; no links,
+                      buttons or formatting.
+                    </td>
+                    <td>Use a popover.</td>
+                  </tr>
+                  <tr>
+                    <td>These cannot draw one.</td>
+                    <td>Put it on a wrapper.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      An element that already uses <code>::after</code> cannot
+                      have one.
+                    </td>
+                    <td>Put it on a wrapper.</td>
+                  </tr>
+                  <tr>
+                    <td>A scrolling area cuts it off at its edge.</td>
+                    <td>Choose a side that points into the area.</td>
+                  </tr>
+                  <tr>
+                    <td>Near the right edge it reaches past the window.</td>
+                    <td>
+                      Give that element
+                      <code>data-<wbr />align=<wbr />"end"</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>It never flips to another side.</td>
+                    <td>Choose them for where the element sits.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />tooltip</code>
+                    </td>
+                    <td>text</td>
+                    <td>
+                      The text, plain, one line. On any element that can hold
+                      content.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />side</code>
+                    </td>
+                    <td>
+                      none or <code>top</code> (default), <code>bottom</code>,
+                      <code>left</code>, <code>right</code>
+                    </td>
+                    <td>The side of the element the tooltip is on.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />align</code>
+                    </td>
+                    <td>
+                      none or <code>center</code> (default), <code>start</code>,
+                      <code>end</code>
+                    </td>
+                    <td>
+                      Above or below: left edge, centre, right edge. Left or
+                      right: top edge, centre, bottom edge.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>aria-<wbr />label</code>
+                    </td>
+                    <td>text</td>
+                    <td>Names an icon-only button; the tooltip does not.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>tabindex=<wbr />"0"</code>
+                    </td>
+                    <td>on a non-focusable element</td>
+                    <td>Lets keyboard users focus it and see the tooltip.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>abbr[<wbr />data-<wbr />tooltip]</code>
+                    </td>
+                    <td></td>
+                    <td>A word or abbreviation with a dotted underline.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

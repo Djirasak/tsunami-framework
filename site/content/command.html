@@ -1,0 +1,1303 @@
+<header class="page-header">
+            <div>
+              <h1>Command</h1>
+              <p>
+                A command menu: a search field over a list of items, with
+                groups, filters and keyboard control. Stand-alone or in a dialog
+                as a palette.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>A command menu with groups, a disabled item and shortcuts</h2>
+            <p>
+              A <code>div.command</code> with a <code>header</code> holding the
+              search field, and a <code>role=&quot;menu&quot;</code> list of
+              <code>role=&quot;group&quot;</code>s of
+              <code>role=&quot;menuitem&quot;</code>s. Type to filter; the arrow
+              keys move the highlight and Enter chooses.
+              <code>data-keywords</code> adds words the search matches.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="command" id="cmd-menu" aria-label="Command menu">
+                    <header>
+                      <i class="icon icon-search" aria-hidden="true"></i
+                      ><input
+                        type="text"
+                        id="cmd-menu-input"
+                        placeholder="Type a command or search..."
+                        autocomplete="off"
+                        autocorrect="off"
+                        spellcheck="false"
+                        aria-autocomplete="list"
+                        role="combobox"
+                        aria-expanded="true"
+                        aria-controls="cmd-menu-menu"
+                      />
+                    </header>
+                    <div
+                      role="menu"
+                      id="cmd-menu-menu"
+                      aria-orientation="vertical"
+                      data-empty="No results found."
+                    >
+                      <div role="group" aria-labelledby="cmd-menu-suggestions">
+                        <span role="heading" id="cmd-menu-suggestions"
+                          >Suggestions</span
+                        >
+                        <div
+                          role="menuitem"
+                          data-label="Calendar"
+                          data-keywords="date event schedule"
+                        >
+                          <i class="icon icon-calendar" aria-hidden="true"></i
+                          ><span>Calendar</span>
+                        </div>
+                        <div
+                          role="menuitem"
+                          data-label="Search emoji"
+                          data-keywords="emoji smile reaction"
+                        >
+                          <i class="icon icon-smile" aria-hidden="true"></i
+                          ><span>Search emoji</span>
+                        </div>
+                        <div role="menuitem" aria-disabled="true">
+                          <i class="icon icon-calculator" aria-hidden="true"></i
+                          ><span>Calculator</span>
+                        </div>
+                      </div>
+                      <hr role="separator" />
+                      <div role="group" aria-labelledby="cmd-menu-settings">
+                        <span role="heading" id="cmd-menu-settings"
+                          >Settings</span
+                        >
+                        <div
+                          role="menuitem"
+                          data-label="Profile"
+                          data-keywords="user account"
+                        >
+                          <i class="icon icon-user" aria-hidden="true"></i
+                          ><span>Profile</span><span data-shortcut>⌘P</span>
+                        </div>
+                        <div
+                          role="menuitem"
+                          data-label="Billing"
+                          data-keywords="invoice payment"
+                        >
+                          <i
+                            class="icon icon-credit-card"
+                            aria-hidden="true"
+                          ></i
+                          ><span>Billing</span><span data-shortcut>⌘B</span>
+                        </div>
+                        <div
+                          role="menuitem"
+                          data-label="Settings"
+                          data-keywords="config preferences"
+                        >
+                          <i class="icon icon-settings" aria-hidden="true"></i
+                          ><span>Settings</span><span data-shortcut>⌘S</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="command" id="cmd-menu" aria-label="Command menu"&gt;
+  &lt;header&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;input type="text" id="cmd-menu-input" placeholder="Type a command or search..." autocomplete="off" autocorrect="off" spellcheck="false" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-controls="cmd-menu-menu"&gt;&lt;/header&gt;
+  &lt;div role="menu" id="cmd-menu-menu" aria-orientation="vertical" data-empty="No results found."&gt;
+    &lt;div role="group" aria-labelledby="cmd-menu-suggestions"&gt;
+      &lt;span role="heading" id="cmd-menu-suggestions"&gt;Suggestions&lt;/span&gt;
+      &lt;div role="menuitem" data-label="Calendar" data-keywords="date event schedule"&gt;&lt;i class="icon icon-calendar" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Calendar&lt;/span&gt;&lt;/div&gt;
+      &lt;div role="menuitem" data-label="Search emoji" data-keywords="emoji smile reaction"&gt;&lt;i class="icon icon-smile" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Search emoji&lt;/span&gt;&lt;/div&gt;
+      &lt;div role="menuitem" aria-disabled="true"&gt;&lt;i class="icon icon-calculator" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Calculator&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr role="separator"&gt;
+    &lt;div role="group" aria-labelledby="cmd-menu-settings"&gt;
+      &lt;span role="heading" id="cmd-menu-settings"&gt;Settings&lt;/span&gt;
+      &lt;div role="menuitem" data-label="Profile" data-keywords="user account"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Profile&lt;/span&gt;&lt;span data-shortcut&gt;⌘P&lt;/span&gt;&lt;/div&gt;
+      &lt;div role="menuitem" data-label="Billing" data-keywords="invoice payment"&gt;&lt;i class="icon icon-credit-card" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Billing&lt;/span&gt;&lt;span data-shortcut&gt;⌘B&lt;/span&gt;&lt;/div&gt;
+      &lt;div role="menuitem" data-label="Settings" data-keywords="config preferences"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Settings&lt;/span&gt;&lt;span data-shortcut&gt;⌘S&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>In a dialog, as a command palette</h2>
+            <p>
+              Put the command in a
+              <code>&lt;dialog class=&quot;command-dialog&quot;&gt;</code>. A
+              button with <code>commandfor</code> and
+              <code>command=&quot;show-modal&quot;</code> opens it with the
+              field focused; choosing an item closes it, and so do Esc and a
+              click on the backdrop (<code>closedby=&quot;any&quot;</code>).
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="cmd-palette"
+                    command="show-modal"
+                  >
+                    Open
+                  </button>
+                  <dialog
+                    id="cmd-palette"
+                    class="command-dialog"
+                    aria-label="Command menu"
+                    closedby="any"
+                  >
+                    <div class="command">
+                      <header>
+                        <i class="icon icon-search" aria-hidden="true"></i
+                        ><input
+                          type="text"
+                          id="cmd-palette-input"
+                          placeholder="Type a command or search..."
+                          autocomplete="off"
+                          autocorrect="off"
+                          spellcheck="false"
+                          aria-autocomplete="list"
+                          role="combobox"
+                          aria-expanded="true"
+                          aria-controls="cmd-palette-menu"
+                        />
+                      </header>
+                      <div
+                        role="menu"
+                        id="cmd-palette-menu"
+                        aria-orientation="vertical"
+                        data-empty="No results found."
+                      >
+                        <div
+                          role="group"
+                          aria-labelledby="cmd-palette-suggestions"
+                        >
+                          <span role="heading" id="cmd-palette-suggestions"
+                            >Suggestions</span
+                          >
+                          <div
+                            role="menuitem"
+                            data-label="Calendar"
+                            data-keywords="date event schedule"
+                          >
+                            <i class="icon icon-calendar" aria-hidden="true"></i
+                            ><span>Calendar</span>
+                          </div>
+                          <div
+                            role="menuitem"
+                            data-label="Search emoji"
+                            data-keywords="emoji smile reaction"
+                          >
+                            <i class="icon icon-smile" aria-hidden="true"></i
+                            ><span>Search emoji</span>
+                          </div>
+                          <div role="menuitem" aria-disabled="true">
+                            <i
+                              class="icon icon-calculator"
+                              aria-hidden="true"
+                            ></i
+                            ><span>Calculator</span>
+                          </div>
+                        </div>
+                        <hr role="separator" />
+                        <div
+                          role="group"
+                          aria-labelledby="cmd-palette-settings"
+                        >
+                          <span role="heading" id="cmd-palette-settings"
+                            >Settings</span
+                          >
+                          <div
+                            role="menuitem"
+                            data-label="Profile"
+                            data-keywords="user account"
+                          >
+                            <i class="icon icon-user" aria-hidden="true"></i
+                            ><span>Profile</span><span data-shortcut>⌘P</span>
+                          </div>
+                          <div
+                            role="menuitem"
+                            data-label="Billing"
+                            data-keywords="invoice payment"
+                          >
+                            <i
+                              class="icon icon-credit-card"
+                              aria-hidden="true"
+                            ></i
+                            ><span>Billing</span><span data-shortcut>⌘B</span>
+                          </div>
+                          <div
+                            role="menuitem"
+                            data-label="Settings"
+                            data-keywords="config preferences"
+                          >
+                            <i class="icon icon-settings" aria-hidden="true"></i
+                            ><span>Settings</span><span data-shortcut>⌘S</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="cmd-palette" command="show-modal"&gt;Open&lt;/button&gt;
+&lt;dialog id="cmd-palette" class="command-dialog" aria-label="Command menu" closedby="any"&gt;
+  &lt;div class="command"&gt;
+    &lt;header&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;input type="text" id="cmd-palette-input" placeholder="Type a command or search..." autocomplete="off" autocorrect="off" spellcheck="false" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-controls="cmd-palette-menu"&gt;&lt;/header&gt;
+    &lt;div role="menu" id="cmd-palette-menu" aria-orientation="vertical" data-empty="No results found."&gt;
+      &lt;div role="group" aria-labelledby="cmd-palette-suggestions"&gt;
+        &lt;span role="heading" id="cmd-palette-suggestions"&gt;Suggestions&lt;/span&gt;
+        &lt;div role="menuitem" data-label="Calendar" data-keywords="date event schedule"&gt;&lt;i class="icon icon-calendar" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Calendar&lt;/span&gt;&lt;/div&gt;
+        &lt;div role="menuitem" data-label="Search emoji" data-keywords="emoji smile reaction"&gt;&lt;i class="icon icon-smile" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Search emoji&lt;/span&gt;&lt;/div&gt;
+        &lt;div role="menuitem" aria-disabled="true"&gt;&lt;i class="icon icon-calculator" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Calculator&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;hr role="separator"&gt;
+      &lt;div role="group" aria-labelledby="cmd-palette-settings"&gt;
+        &lt;span role="heading" id="cmd-palette-settings"&gt;Settings&lt;/span&gt;
+        &lt;div role="menuitem" data-label="Profile" data-keywords="user account"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Profile&lt;/span&gt;&lt;span data-shortcut&gt;⌘P&lt;/span&gt;&lt;/div&gt;
+        &lt;div role="menuitem" data-label="Billing" data-keywords="invoice payment"&gt;&lt;i class="icon icon-credit-card" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Billing&lt;/span&gt;&lt;span data-shortcut&gt;⌘B&lt;/span&gt;&lt;/div&gt;
+        &lt;div role="menuitem" data-label="Settings" data-keywords="config preferences"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Settings&lt;/span&gt;&lt;span data-shortcut&gt;⌘S&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Searching records, with filters</h2>
+            <p>
+              Groups with <code>data-results</code> show only once the field has
+              text. The filter buttons under the header count what they would
+              show; <code>/</code> lists the filters, and Backspace in the empty
+              field removes the chosen one. <code>data-limit</code> caps the
+              records and the <code>data-more</code> item shows more.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="command" id="cmd-records" aria-label="Search">
+                    <header>
+                      <i class="icon icon-search" aria-hidden="true"></i
+                      ><span
+                        class="badge"
+                        data-variant="outline"
+                        data-filter-badge
+                        hidden
+                        ><span data-name></span
+                        ><button type="button" aria-label="Remove filter">
+                          <i
+                            class="icon icon-x"
+                            aria-hidden="true"
+                          ></i></button></span
+                      ><input
+                        type="text"
+                        id="cmd-records-input"
+                        placeholder="Search orders and customers, or type / for filters..."
+                        autocomplete="off"
+                        autocorrect="off"
+                        spellcheck="false"
+                        aria-autocomplete="list"
+                        role="combobox"
+                        aria-expanded="true"
+                        aria-controls="cmd-records-menu"
+                      />
+                    </header>
+                    <div data-filters aria-label="Filters">
+                      <button
+                        type="button"
+                        class="btn"
+                        data-filter="orders"
+                        data-suggested
+                      >
+                        <i class="icon icon-shopping-bag" aria-hidden="true"></i
+                        ><span data-name>Orders</span><span data-count></span>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-filter="customers"
+                        data-suggested
+                      >
+                        <i class="icon icon-user" aria-hidden="true"></i
+                        ><span data-name>Customers</span
+                        ><span data-count></span>
+                      </button>
+                    </div>
+                    <div
+                      role="menu"
+                      id="cmd-records-menu"
+                      aria-orientation="vertical"
+                      data-empty="No results found."
+                      data-limit="3"
+                    >
+                      <div
+                        role="group"
+                        data-results
+                        data-filter="orders"
+                        aria-labelledby="cmd-records-orders"
+                      >
+                        <span role="heading" id="cmd-records-orders"
+                          >Orders</span
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="#1042"
+                          data-keywords="Emma Wilson"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>#1042</span
+                          ><span data-description>Emma Wilson, $72.18</span
+                          ><span class="badge" data-variant="warning"
+                            >Open</span
+                          ></a
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="#1041"
+                          data-keywords="Emma Wilson"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>#1041</span
+                          ><span data-description>Emma Wilson, $344.97</span
+                          ><span class="badge" data-variant="info"
+                            >Paid</span
+                          ></a
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="#1040"
+                          data-keywords="Liam Chen"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>#1040</span
+                          ><span data-description>Liam Chen, $59.99</span
+                          ><span class="badge" data-variant="info"
+                            >Paid</span
+                          ></a
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="#1039"
+                          data-keywords="Noah Davis"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>#1039</span
+                          ><span data-description>Noah Davis, $128.50</span
+                          ><span class="badge" data-variant="ok"
+                            >Shipped</span
+                          ></a
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="#1038"
+                          data-keywords="Olivia Brown"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>#1038</span
+                          ><span data-description>Olivia Brown, $19.00</span
+                          ><span class="badge" data-variant="info"
+                            >Paid</span
+                          ></a
+                        >
+                      </div>
+                      <div
+                        role="group"
+                        data-results
+                        data-filter="customers"
+                        aria-labelledby="cmd-records-customers"
+                      >
+                        <span role="heading" id="cmd-records-customers"
+                          >Customers</span
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="Emma Wilson"
+                          data-keywords="emma.wilson@example.com"
+                          ><i class="icon icon-user" aria-hidden="true"></i
+                          ><span>Emma Wilson</span
+                          ><span data-description
+                            >emma.wilson@example.com</span
+                          ></a
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="Liam Chen"
+                          data-keywords="liam.chen@example.com"
+                          ><i class="icon icon-user" aria-hidden="true"></i
+                          ><span>Liam Chen</span
+                          ><span data-description
+                            >liam.chen@example.com</span
+                          ></a
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="Noah Davis"
+                          data-keywords="noah.davis@example.com"
+                          ><i class="icon icon-user" aria-hidden="true"></i
+                          ><span>Noah Davis</span
+                          ><span data-description
+                            >noah.davis@example.com</span
+                          ></a
+                        >
+                      </div>
+                      <div
+                        role="group"
+                        data-filter-list
+                        aria-labelledby="cmd-records-filters"
+                      >
+                        <span role="heading" id="cmd-records-filters"
+                          >Filters</span
+                        >
+                        <div
+                          role="menuitem"
+                          data-filter="orders"
+                          data-label="Orders"
+                        >
+                          <i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>Orders</span>
+                        </div>
+                        <div
+                          role="menuitem"
+                          data-filter="customers"
+                          data-label="Customers"
+                        >
+                          <i class="icon icon-user" aria-hidden="true"></i
+                          ><span>Customers</span>
+                        </div>
+                      </div>
+                      <div role="group" aria-labelledby="cmd-records-pages">
+                        <span role="heading" id="cmd-records-pages">Pages</span>
+                        <a role="menuitem" href="/docs" data-label="Orders"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>Orders</span></a
+                        >
+                        <a role="menuitem" href="/docs" data-label="Customers"
+                          ><i class="icon icon-user" aria-hidden="true"></i
+                          ><span>Customers</span></a
+                        >
+                      </div>
+                      <div role="menuitem" data-more="20">
+                        <i class="icon icon-list-filter" aria-hidden="true"></i
+                        ><span>Show <span data-count></span> more results</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="command" id="cmd-records" aria-label="Search"&gt;
+  &lt;header&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;span class="badge" data-variant="outline" data-filter-badge hidden&gt;&lt;span data-name&gt;&lt;/span&gt;&lt;button type="button" aria-label="Remove filter"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;&lt;input type="text" id="cmd-records-input" placeholder="Search orders and customers, or type / for filters..." autocomplete="off" autocorrect="off" spellcheck="false" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-controls="cmd-records-menu"&gt;&lt;/header&gt;
+  &lt;div data-filters aria-label="Filters"&gt;
+    &lt;button type="button" class="btn" data-filter="orders" data-suggested&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span data-name&gt;Orders&lt;/span&gt;&lt;span data-count&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-filter="customers" data-suggested&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span data-name&gt;Customers&lt;/span&gt;&lt;span data-count&gt;&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="menu" id="cmd-records-menu" aria-orientation="vertical" data-empty="No results found." data-limit="3"&gt;
+    &lt;div role="group" data-results data-filter="orders" aria-labelledby="cmd-records-orders"&gt;
+      &lt;span role="heading" id="cmd-records-orders"&gt;Orders&lt;/span&gt;
+      &lt;a role="menuitem" href="#" data-label="#1042" data-keywords="Emma Wilson"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;#1042&lt;/span&gt;&lt;span data-description&gt;Emma Wilson, $72.18&lt;/span&gt;&lt;span class="badge" data-variant="warning"&gt;Open&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="#1041" data-keywords="Emma Wilson"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;#1041&lt;/span&gt;&lt;span data-description&gt;Emma Wilson, $344.97&lt;/span&gt;&lt;span class="badge" data-variant="info"&gt;Paid&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="#1040" data-keywords="Liam Chen"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;#1040&lt;/span&gt;&lt;span data-description&gt;Liam Chen, $59.99&lt;/span&gt;&lt;span class="badge" data-variant="info"&gt;Paid&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="#1039" data-keywords="Noah Davis"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;#1039&lt;/span&gt;&lt;span data-description&gt;Noah Davis, $128.50&lt;/span&gt;&lt;span class="badge" data-variant="ok"&gt;Shipped&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="#1038" data-keywords="Olivia Brown"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;#1038&lt;/span&gt;&lt;span data-description&gt;Olivia Brown, $19.00&lt;/span&gt;&lt;span class="badge" data-variant="info"&gt;Paid&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div role="group" data-results data-filter="customers" aria-labelledby="cmd-records-customers"&gt;
+      &lt;span role="heading" id="cmd-records-customers"&gt;Customers&lt;/span&gt;
+      &lt;a role="menuitem" href="#" data-label="Emma Wilson" data-keywords="emma.wilson@example.com"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Emma Wilson&lt;/span&gt;&lt;span data-description&gt;emma.wilson@example.com&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="Liam Chen" data-keywords="liam.chen@example.com"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Liam Chen&lt;/span&gt;&lt;span data-description&gt;liam.chen@example.com&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="Noah Davis" data-keywords="noah.davis@example.com"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Noah Davis&lt;/span&gt;&lt;span data-description&gt;noah.davis@example.com&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div role="group" data-filter-list aria-labelledby="cmd-records-filters"&gt;
+      &lt;span role="heading" id="cmd-records-filters"&gt;Filters&lt;/span&gt;
+      &lt;div role="menuitem" data-filter="orders" data-label="Orders"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/div&gt;
+      &lt;div role="menuitem" data-filter="customers" data-label="Customers"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div role="group" aria-labelledby="cmd-records-pages"&gt;
+      &lt;span role="heading" id="cmd-records-pages"&gt;Pages&lt;/span&gt;
+      &lt;a role="menuitem" href="#" data-label="Orders"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="Customers"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div role="menuitem" data-more="20"&gt;&lt;i class="icon icon-list-filter" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Show &lt;span data-count&gt;&lt;/span&gt; more results&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Tab filters, key hints and a group still loading</h2>
+            <p>
+              <code>data-hint</code> shows an item's keys while it is active.
+              Tab on an item with <code>data-tab-filter</code> chooses that
+              filter. A results group with
+              <code>aria-busy=&quot;true&quot;</code> shows none of its records
+              and the menu says Searching...; remove the attribute when the
+              records arrive. Type <code>emma</code> to see it.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="command" id="cmd-tab" aria-label="Search">
+                    <header>
+                      <i class="icon icon-search" aria-hidden="true"></i
+                      ><span
+                        class="badge"
+                        data-variant="outline"
+                        data-filter-badge
+                        hidden
+                        ><span data-name></span
+                        ><button type="button" aria-label="Remove filter">
+                          <i
+                            class="icon icon-x"
+                            aria-hidden="true"
+                          ></i></button></span
+                      ><input
+                        type="text"
+                        id="cmd-tab-input"
+                        placeholder="Search, or press Tab on a page to filter by it..."
+                        autocomplete="off"
+                        autocorrect="off"
+                        spellcheck="false"
+                        aria-autocomplete="list"
+                        role="combobox"
+                        aria-expanded="true"
+                        aria-controls="cmd-tab-menu"
+                      />
+                    </header>
+                    <div data-filters aria-label="Filters">
+                      <button
+                        type="button"
+                        class="btn"
+                        data-filter="orders"
+                        data-suggested
+                      >
+                        <i class="icon icon-shopping-bag" aria-hidden="true"></i
+                        ><span data-name>Orders</span><span data-count></span>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-filter="customers"
+                        data-suggested
+                      >
+                        <i class="icon icon-user" aria-hidden="true"></i
+                        ><span data-name>Customers</span
+                        ><span data-count></span>
+                      </button>
+                    </div>
+                    <div
+                      role="menu"
+                      id="cmd-tab-menu"
+                      aria-orientation="vertical"
+                      data-empty="No results found."
+                    >
+                      <div
+                        role="group"
+                        data-results
+                        data-filter="orders"
+                        aria-labelledby="cmd-tab-orders"
+                      >
+                        <span role="heading" id="cmd-tab-orders">Orders</span>
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="#1042"
+                          data-keywords="Emma Wilson"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>#1042</span
+                          ><span data-description>Emma Wilson, $72.18</span
+                          ><span data-hint
+                            ><kbd class="kbd">Enter</kbd> open</span
+                          ></a
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="#1041"
+                          data-keywords="Emma Wilson"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>#1041</span
+                          ><span data-description>Emma Wilson, $344.97</span
+                          ><span data-hint
+                            ><kbd class="kbd">Enter</kbd> open</span
+                          ></a
+                        >
+                      </div>
+                      <div
+                        role="group"
+                        data-results
+                        data-filter="customers"
+                        aria-busy="true"
+                        aria-labelledby="cmd-tab-customers"
+                      >
+                        <span role="heading" id="cmd-tab-customers"
+                          >Customers</span
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="Emma Wilson"
+                          data-keywords="emma.wilson@example.com"
+                          ><i class="icon icon-user" aria-hidden="true"></i
+                          ><span>Emma Wilson</span
+                          ><span data-description
+                            >emma.wilson@example.com</span
+                          ></a
+                        >
+                      </div>
+                      <div role="group" aria-labelledby="cmd-tab-pages">
+                        <span role="heading" id="cmd-tab-pages">Pages</span>
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="Orders"
+                          data-tab-filter="orders"
+                          ><i
+                            class="icon icon-shopping-bag"
+                            aria-hidden="true"
+                          ></i
+                          ><span>Orders</span
+                          ><span data-hint
+                            ><kbd class="kbd">Tab</kbd> search orders</span
+                          ></a
+                        >
+                        <a
+                          role="menuitem"
+                          href="/docs"
+                          data-label="Customers"
+                          data-tab-filter="customers"
+                          ><i class="icon icon-user" aria-hidden="true"></i
+                          ><span>Customers</span
+                          ><span data-hint
+                            ><kbd class="kbd">Tab</kbd> search customers</span
+                          ></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="command" id="cmd-tab" aria-label="Search"&gt;
+  &lt;header&gt;&lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;&lt;span class="badge" data-variant="outline" data-filter-badge hidden&gt;&lt;span data-name&gt;&lt;/span&gt;&lt;button type="button" aria-label="Remove filter"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;&lt;input type="text" id="cmd-tab-input" placeholder="Search, or press Tab on a page to filter by it..." autocomplete="off" autocorrect="off" spellcheck="false" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-controls="cmd-tab-menu"&gt;&lt;/header&gt;
+  &lt;div data-filters aria-label="Filters"&gt;
+    &lt;button type="button" class="btn" data-filter="orders" data-suggested&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span data-name&gt;Orders&lt;/span&gt;&lt;span data-count&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;button type="button" class="btn" data-filter="customers" data-suggested&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span data-name&gt;Customers&lt;/span&gt;&lt;span data-count&gt;&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="menu" id="cmd-tab-menu" aria-orientation="vertical" data-empty="No results found."&gt;
+    &lt;div role="group" data-results data-filter="orders" aria-labelledby="cmd-tab-orders"&gt;
+      &lt;span role="heading" id="cmd-tab-orders"&gt;Orders&lt;/span&gt;
+      &lt;a role="menuitem" href="#" data-label="#1042" data-keywords="Emma Wilson"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;#1042&lt;/span&gt;&lt;span data-description&gt;Emma Wilson, $72.18&lt;/span&gt;&lt;span data-hint&gt;&lt;kbd class="kbd"&gt;Enter&lt;/kbd&gt; open&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="#1041" data-keywords="Emma Wilson"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;#1041&lt;/span&gt;&lt;span data-description&gt;Emma Wilson, $344.97&lt;/span&gt;&lt;span data-hint&gt;&lt;kbd class="kbd"&gt;Enter&lt;/kbd&gt; open&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div role="group" data-results data-filter="customers" aria-busy="true" aria-labelledby="cmd-tab-customers"&gt;
+      &lt;span role="heading" id="cmd-tab-customers"&gt;Customers&lt;/span&gt;
+      &lt;a role="menuitem" href="#" data-label="Emma Wilson" data-keywords="emma.wilson@example.com"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Emma Wilson&lt;/span&gt;&lt;span data-description&gt;emma.wilson@example.com&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div role="group" aria-labelledby="cmd-tab-pages"&gt;
+      &lt;span role="heading" id="cmd-tab-pages"&gt;Pages&lt;/span&gt;
+      &lt;a role="menuitem" href="#" data-label="Orders" data-tab-filter="orders"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;span data-hint&gt;&lt;kbd class="kbd"&gt;Tab&lt;/kbd&gt; search orders&lt;/span&gt;&lt;/a&gt;
+      &lt;a role="menuitem" href="#" data-label="Customers" data-tab-filter="customers"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;span data-hint&gt;&lt;kbd class="kbd"&gt;Tab&lt;/kbd&gt; search customers&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Open it with a key</h2>
+            <p>
+              <code>data-hotkey</code> on the
+              <code>dialog.command-dialog</code> opens it from the keyboard, and
+              the same key closes it. Write the keys joined by <code>+</code>:
+              <code>mod</code> is Ctrl or Cmd, then <code>ctrl</code>,
+              <code>meta</code>, <code>alt</code> and <code>shift</code>, and
+              last the key, such as <code>mod+k</code>,
+              <code>ctrl+shift+p</code> or <code>/</code>. Separate several keys
+              with spaces. A key with no modifier is ignored while you type in a
+              field. Try Alt K here.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Open it with a key">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button
+                    type="button"
+                    class="btn"
+                    commandfor="cmd-hotkey"
+                    command="show-modal"
+                  >
+                    Open <kbd class="kbd">Alt K</kbd>
+                  </button>
+                  <dialog
+                    id="cmd-hotkey"
+                    class="command-dialog"
+                    aria-label="Command menu"
+                    closedby="any"
+                    data-hotkey="alt+k"
+                  >
+                    <div class="command">
+                      <header>
+                        <i class="icon icon-search" aria-hidden="true"></i>
+                        <input
+                          type="text"
+                          id="cmd-hotkey-input"
+                          placeholder="Type a command or search..."
+                          autocomplete="off"
+                          autocorrect="off"
+                          spellcheck="false"
+                          aria-autocomplete="list"
+                          role="combobox"
+                          aria-expanded="true"
+                          aria-controls="cmd-hotkey-menu"
+                        />
+                      </header>
+                      <div
+                        role="menu"
+                        id="cmd-hotkey-menu"
+                        aria-orientation="vertical"
+                        data-empty="No results found."
+                      >
+                        <div role="group" aria-labelledby="cmd-hotkey-go">
+                          <span role="heading" id="cmd-hotkey-go">Go to</span>
+                          <a role="menuitem" href="/docs" data-label="Orders"
+                            ><i
+                              class="icon icon-shopping-bag"
+                              aria-hidden="true"
+                            ></i
+                            ><span>Orders</span></a
+                          >
+                          <a role="menuitem" href="/docs" data-label="Customers"
+                            ><i class="icon icon-user" aria-hidden="true"></i
+                            ><span>Customers</span></a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </dialog>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" commandfor="cmd-hotkey" command="show-modal"&gt;Open &lt;kbd class="kbd"&gt;Alt K&lt;/kbd&gt;&lt;/button&gt;
+&lt;dialog id="cmd-hotkey" class="command-dialog" aria-label="Command menu" closedby="any" data-hotkey="alt+k"&gt;
+  &lt;div class="command"&gt;
+    &lt;header&gt;
+      &lt;i class="icon icon-search" aria-hidden="true"&gt;&lt;/i&gt;
+      &lt;input type="text" id="cmd-hotkey-input" placeholder="Type a command or search..." autocomplete="off" autocorrect="off" spellcheck="false" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-controls="cmd-hotkey-menu"&gt;
+    &lt;/header&gt;
+    &lt;div role="menu" id="cmd-hotkey-menu" aria-orientation="vertical" data-empty="No results found."&gt;
+      &lt;div role="group" aria-labelledby="cmd-hotkey-go"&gt;
+        &lt;span role="heading" id="cmd-hotkey-go"&gt;Go to&lt;/span&gt;
+        &lt;a role="menuitem" href="#" data-label="Orders"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/a&gt;
+        &lt;a role="menuitem" href="#" data-label="Customers"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>API</h2>
+            <p>
+              The command has no methods and sends no events of its own. Each
+              item is a link or a button: listen for its <code>click</code>.
+              Inside a <code>dialog.command-dialog</code>, choosing an item
+              closes the dialog, except a filter item and Show more. The script
+              starts every <code>.command</code> on the page, also one added
+              later.
+            </p>
+            <h3>Keyboard</h3>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Keyboard"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>↓</kbd> <kbd>↑</kbd></td>
+                    <td>
+                      Move to the next or the previous item. A disabled or
+                      hidden item is skipped.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Enter</kbd></td>
+                    <td>Chooses the active item, as a click on it does.</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>/</kbd></td>
+                    <td>
+                      Typed first in the field: lists the filters (the
+                      <code>data-filter-list</code> group).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Backspace</kbd></td>
+                    <td>In an empty field: removes the chosen filter.</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Tab</kbd></td>
+                    <td>
+                      On an item with <code>data-tab-filter</code>: chooses that
+                      filter and empties the field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Hotkey</kbd></td>
+                    <td>
+                      The <code>data-hotkey</code> of a command dialog: opens
+                      it, or closes it when it is open.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Esc</kbd></td>
+                    <td>
+                      In a <code>dialog.command-dialog</code>: closes the
+                      dialog. This is the dialog's own behaviour.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>class="command"</code></td>
+                    <td>on a <code>&lt;div&gt;</code></td>
+                    <td>
+                      The component: a <code>&lt;header&gt;</code> with the
+                      search <code>&lt;input&gt;</code>, an optional
+                      <code>data-filters</code> row and a
+                      <code>role="menu"</code> list.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>class="command-dialog"</code></td>
+                    <td>on a <code>&lt;dialog&gt;</code></td>
+                    <td>
+                      A palette: the dialog holds one <code>.command</code>.
+                      Choosing an item closes it, except a filter item and Show
+                      more.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>role="menuitem"</code></td>
+                    <td>
+                      on an <code>&lt;a&gt;</code>,
+                      <code>&lt;button&gt;</code> or <code>&lt;div&gt;</code>
+                    </td>
+                    <td>
+                      An item. Listen for its <code>click</code>; Enter on the
+                      active item clicks it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>role="group"</code></td>
+                    <td>with a <code>role="heading"</code> span</td>
+                    <td>
+                      A group of items. It is hidden while none of its items
+                      show.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>role="separator"</code></td>
+                    <td>an <code>&lt;hr&gt;</code></td>
+                    <td>
+                      A line between groups. Hidden while the field has text or
+                      a filter is chosen.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-label</code></td>
+                    <td>text on an item</td>
+                    <td>
+                      The name the search matches, for an item whose content is
+                      more than text. Default: the item's text.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-keywords</code></td>
+                    <td>words on an item</td>
+                    <td>
+                      Extra words the search matches without showing them.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-disabled="true"</code></td>
+                    <td>on an item</td>
+                    <td>
+                      The item is skipped by the keyboard and cannot be chosen.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-hidden</code></td>
+                    <td><code>true</code>, <code>false</code></td>
+                    <td>
+                      Set by the script on an item the search has filtered out.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-empty</code></td>
+                    <td>text on the menu</td>
+                    <td>
+                      The message when nothing matches. Default: No results
+                      found.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-description</code></td>
+                    <td>on a span in an item</td>
+                    <td>
+                      Muted text after the item's name, cut with an ellipsis
+                      when long.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-shortcut</code></td>
+                    <td>on a span in an item</td>
+                    <td>A shortcut at the end of the item, such as ⌘P.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-hint</code></td>
+                    <td>on a span in an item</td>
+                    <td>
+                      The item's keys, as <code>&lt;kbd&gt;</code> elements and
+                      what each does. It shows while the item is active.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-results</code></td>
+                    <td>on a group</td>
+                    <td>
+                      The group holds records. It shows while the field has
+                      text, or while its filter is chosen.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-filter</code></td>
+                    <td>
+                      a key, such as <code>orders</code>; on a results group, a
+                      filter button or a filter item
+                    </td>
+                    <td>
+                      Names the filter. Choosing it shows only the results
+                      groups with the same key. The command carries the chosen
+                      key as its own <code>data-filter</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-filters</code></td>
+                    <td>on a div after the header</td>
+                    <td>
+                      The row of filter buttons. Each button's
+                      <code>[data-count]</code> is filled with the number of
+                      records it would show.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-suggested</code></td>
+                    <td>on a filter button</td>
+                    <td>
+                      The button shows while the field is empty. Without it, a
+                      button shows only while it has a match.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-filter-list</code></td>
+                    <td>on a group</td>
+                    <td>
+                      The filters listed when the field starts with
+                      <code>/</code>. Choosing one chooses its
+                      <code>data-filter</code> and empties the field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-filter-badge</code></td>
+                    <td>on a badge in the header</td>
+                    <td>
+                      Names the chosen filter in its <code>[data-name]</code>.
+                      Its button removes the filter.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-limit</code></td>
+                    <td>a number on the menu</td>
+                    <td>The most records shown at once. Default: no limit.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-more</code></td>
+                    <td>a number on an item</td>
+                    <td>
+                      Show more: choosing it shows that many more records. Its
+                      <code>[data-count]</code> says how many.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-busy="true"</code></td>
+                    <td>on a results group</td>
+                    <td>
+                      The group's records are on their way and none show. The
+                      menu is then <code>aria-busy</code> too, set by the
+                      script, and says Searching... in place of the empty
+                      message.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-tab-filter</code></td>
+                    <td>a filter's key on an item</td>
+                    <td>
+                      Tab on the active item chooses that filter and empties the
+                      field.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-hotkey</code></td>
+                    <td>
+                      keys such as <code>mod+k</code>, on a
+                      <code>dialog.command-dialog</code>
+                    </td>
+                    <td>
+                      Opens the dialog from the keyboard; the same keys close
+                      it. <code>mod</code> is Ctrl or Cmd. Several keys are
+                      separated by spaces. Default: none.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-command-initialized</code></td>
+                    <td><code>true</code>, set by the script</td>
+                    <td>
+                      Marks a command the script has started. Before it, items
+                      still show a hover.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

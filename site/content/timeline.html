@@ -1,0 +1,853 @@
+<header class="page-header">
+            <div>
+              <h1>Timeline</h1>
+              <p>
+                A vertical list of events for an order or a job, built with
+                <code>&lt;ol&gt;</code> and <code>&lt;time&gt;</code>.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Usage</h2>
+            <p>
+              Each event is an <code>&lt;li&gt;</code>: text followed by a
+              <code>&lt;time&gt;</code>. Put the newest at the top.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Usage">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li>
+                      Payment captured
+                      <time datetime="2026-10-29T18:41"
+                        >Oct 29, 2026 18:41</time
+                      >
+                    </li>
+                    <li>
+                      Order #1042 placed
+                      <time datetime="2026-10-29T18:40"
+                        >Oct 29, 2026 18:40</time
+                      >
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li&gt;
+    Payment captured
+    &lt;time datetime="2026-10-29T18:41"&gt;Oct 29, 2026 18:41&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    Order #1042 placed
+    &lt;time datetime="2026-10-29T18:40"&gt;Oct 29, 2026 18:40&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>An event that opens to show details</h2>
+            <p>
+              Put a <code>&lt;details&gt;</code> in the event. The
+              <code>&lt;summary&gt;</code> is the heading (it gets its own
+              arrow) and a <code>&lt;dl&gt;</code> holds the details. Add
+              <code>open</code> to start it open.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="An event that opens to show details"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li>
+                      <details open>
+                        <summary>Refund issued</summary>
+                        <dl>
+                          <dt>Amount</dt>
+                          <dd>$52.00</dd>
+                          <dt>Reason</dt>
+                          <dd>Item arrived damaged</dd>
+                        </dl>
+                      </details>
+                      <time datetime="2026-10-28T10:05"
+                        >Oct 28, 2026 10:05</time
+                      >
+                    </li>
+                    <li>
+                      Delivered
+                      <time datetime="2026-10-26T16:36"
+                        >Oct 26, 2026 16:36</time
+                      >
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li&gt;
+    &lt;details open&gt;
+      &lt;summary&gt;Refund issued&lt;/summary&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;Amount&lt;/dt&gt;
+        &lt;dd&gt;$52.00&lt;/dd&gt;
+        &lt;dt&gt;Reason&lt;/dt&gt;
+        &lt;dd&gt;Item arrived damaged&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/details&gt;
+    &lt;time datetime="2026-10-28T10:05"&gt;Oct 28, 2026 10:05&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    Delivered
+    &lt;time datetime="2026-10-26T16:36"&gt;Oct 26, 2026 16:36&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Error events</h2>
+            <p>
+              <code>data-variant="danger"</code> turns the dot and text red. The
+              time stays grey. <code>data-variant="ok"</code> (green dot) works
+              the same way.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Error events">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li data-variant="danger">
+                      <details open>
+                        <summary>Subscription renewal payment failed</summary>
+                        <dl>
+                          <dt>Reason</dt>
+                          <dd>Card declined</dd>
+                        </dl>
+                      </details>
+                      <time datetime="2026-10-05T06:09">Oct 5, 2026 06:09</time>
+                    </li>
+                    <li data-variant="danger">
+                      Uploading tracking information failed
+                      <time datetime="2026-10-04T14:20">Oct 4, 2026 14:20</time>
+                    </li>
+                    <li>
+                      Status changed from Active to Past due by the system
+                      <time datetime="2026-10-04T06:09">Oct 4, 2026 06:09</time>
+                    </li>
+                    <li data-variant="ok">
+                      Payment captured
+                      <time datetime="2026-09-05T06:09">Sep 5, 2026 06:09</time>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li data-variant="danger"&gt;
+    &lt;details open&gt;
+      &lt;summary&gt;Subscription renewal payment failed&lt;/summary&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;Reason&lt;/dt&gt;
+        &lt;dd&gt;Card declined&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/details&gt;
+    &lt;time datetime="2026-10-05T06:09"&gt;Oct 5, 2026 06:09&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li data-variant="danger"&gt;
+    Uploading tracking information failed
+    &lt;time datetime="2026-10-04T14:20"&gt;Oct 4, 2026 14:20&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    Status changed from Active to Past due by the system
+    &lt;time datetime="2026-10-04T06:09"&gt;Oct 4, 2026 06:09&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li data-variant="ok"&gt;
+    Payment captured
+    &lt;time datetime="2026-09-05T06:09"&gt;Sep 5, 2026 06:09&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Steps of a job</h2>
+            <p>
+              An <code>.icon</code> or <code>.loader</code> placed first in an
+              event replaces the dot. Add <code>aria-busy="true"</code> to the
+              step in progress and <code>data-variant="pending"</code> to steps
+              not started yet (grey text, hollow dot).
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Steps of a job">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li data-variant="ok">
+                      <i class="icon icon-circle-check" aria-hidden="true"></i>
+                      Creating your account
+                    </li>
+                    <li aria-busy="true">
+                      <span
+                        class="loader"
+                        role="status"
+                        aria-label="In progress"
+                      ></span>
+                      Initializing your store
+                    </li>
+                    <li data-variant="pending">Importing products</li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li data-variant="ok"&gt;
+    &lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;
+    Creating your account
+  &lt;/li&gt;
+  &lt;li aria-busy="true"&gt;
+    &lt;span class="loader" role="status" aria-label="In progress"&gt;&lt;/span&gt;
+    Initializing your store
+  &lt;/li&gt;
+  &lt;li data-variant="pending"&gt;Importing products&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Steps played by a script</h2>
+            <p>
+              The page script changes the attributes itself. The running step
+              gets a <code>.loader</code>, which turns into a check icon when
+              done, then the next step starts. Timeline has no JS of its own.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Steps played by a script">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm">
+                    <ol class="timeline" id="tl-steps">
+                      <li data-variant="pending">Creating your account</li>
+                      <li data-variant="pending">Initializing your store</li>
+                      <li data-variant="pending">Importing products</li>
+                    </ol>
+                    <div>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-size="sm"
+                        id="tl-steps-play"
+                      >
+                        Play
+                      </button>
+                    </div>
+                  </div>
+                  <script type="module">
+                    const steps = [
+                      ...document.querySelectorAll("#tl-steps > li"),
+                    ];
+                    const play = document.getElementById("tl-steps-play");
+                    const spinner =
+                      '<span class="loader" role="status" aria-label="In progress"></span>';
+                    const check =
+                      '<i class="icon icon-circle-check" aria-hidden="true"></i>';
+                    const start = (step) => {
+                      step.removeAttribute("data-variant");
+                      step.setAttribute("aria-busy", "true");
+                      step.insertAdjacentHTML("afterbegin", spinner);
+                    };
+                    play.addEventListener("click", () => {
+                      play.disabled = true;
+                      for (const step of steps) {
+                        step.querySelector(".icon, .loader")?.remove();
+                        step.removeAttribute("aria-busy");
+                        step.dataset.variant = "pending";
+                      }
+                      let current = 0;
+                      start(steps[current]);
+                      const timer = setInterval(() => {
+                        const step = steps[current];
+                        step.removeAttribute("aria-busy");
+                        step.dataset.variant = "ok";
+                        step.querySelector(".loader").outerHTML = check;
+                        current += 1;
+                        if (steps[current]) return start(steps[current]);
+                        clearInterval(timer);
+                        play.disabled = false;
+                      }, 1500);
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-gap="sm"&gt;
+  &lt;ol class="timeline" id="tl-steps"&gt;
+    &lt;li data-variant="pending"&gt;Creating your account&lt;/li&gt;
+    &lt;li data-variant="pending"&gt;Initializing your store&lt;/li&gt;
+    &lt;li data-variant="pending"&gt;Importing products&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;div&gt;
+    &lt;button type="button" class="btn" data-size="sm" id="tl-steps-play"&gt;Play&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="module"&gt;
+  const steps = [...document.querySelectorAll("#tl-steps &gt; li")];
+  const play = document.getElementById("tl-steps-play");
+  const spinner = '&lt;span class="loader" role="status" aria-label="In progress"&gt;&lt;/span&gt;';
+  const check = '&lt;i class="icon icon-circle-check" aria-hidden="true"&gt;&lt;/i&gt;';
+  const start = (step) =&gt; {
+    step.removeAttribute("data-variant");
+    step.setAttribute("aria-busy", "true");
+    step.insertAdjacentHTML("afterbegin", spinner);
+  };
+  play.addEventListener("click", () =&gt; {
+    play.disabled = true;
+    for (const step of steps) {
+      step.querySelector(".icon, .loader")?.remove();
+      step.removeAttribute("aria-busy");
+      step.dataset.variant = "pending";
+    }
+    let current = 0;
+    start(steps[current]);
+    const timer = setInterval(() =&gt; {
+      const step = steps[current];
+      step.removeAttribute("aria-busy");
+      step.dataset.variant = "ok";
+      step.querySelector(".loader").outerHTML = check;
+      current += 1;
+      if (steps[current]) return start(steps[current]);
+      clearInterval(timer);
+      play.disabled = false;
+    }, 1500);
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A note with Edit and Delete</h2>
+            <p>
+              A staff note is an <code>&lt;article&gt;</code> in the event: an
+              <code>&lt;h4&gt;</code> author name, a <code>&lt;time&gt;</code>,
+              a <code>&lt;p&gt;</code> message and a
+              <code>&lt;footer&gt;</code> of buttons. Show the buttons only
+              while the note can still be edited.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A note with Edit and Delete">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline">
+                    <li>
+                      Order placed on hold
+                      <time datetime="2026-10-23T08:15"
+                        >Oct 23, 2026 08:15</time
+                      >
+                    </li>
+                    <li>
+                      <article>
+                        <h4>James Carter</h4>
+                        <time datetime="2026-10-23T08:10"
+                          >Oct 23, 2026 08:10</time
+                        >
+                        <p>
+                          The address looks wrong. Emailed the customer to
+                          confirm it before shipping.
+                        </p>
+                        <footer>
+                          <button type="button" class="btn" data-size="sm">
+                            Edit
+                          </button>
+                          <button
+                            type="button"
+                            class="btn"
+                            data-variant="danger"
+                            data-size="sm"
+                          >
+                            Delete
+                          </button>
+                        </footer>
+                      </article>
+                    </li>
+                    <li>
+                      Order placed
+                      <time datetime="2026-10-22T18:40"
+                        >Oct 22, 2026 18:40</time
+                      >
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline"&gt;
+  &lt;li&gt;
+    Order placed on hold
+    &lt;time datetime="2026-10-23T08:15"&gt;Oct 23, 2026 08:15&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;article&gt;
+      &lt;h4&gt;James Carter&lt;/h4&gt;
+      &lt;time datetime="2026-10-23T08:10"&gt;Oct 23, 2026 08:10&lt;/time&gt;
+      &lt;p&gt;The address looks wrong. Emailed the customer to confirm it before shipping.&lt;/p&gt;
+      &lt;footer&gt;
+        &lt;button type="button" class="btn" data-size="sm"&gt;Edit&lt;/button&gt;
+        &lt;button type="button" class="btn" data-variant="danger" data-size="sm"&gt;Delete&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    Order placed
+    &lt;time datetime="2026-10-22T18:40"&gt;Oct 22, 2026 18:40&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A form for adding a note</h2>
+            <p>
+              The first event is a <code>&lt;form&gt;</code> with a
+              <code>&lt;textarea&gt;</code> and a <code>&lt;footer&gt;</code> of
+              buttons plus a <code>&lt;small&gt;</code> hint. In the example,
+              the page script adds the new note below the form on Save. Cancel
+              is a <code>type="reset"</code> button.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A form for adding a note">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ol class="timeline" id="tl-notes">
+                    <li>
+                      <label for="tl-note">Add a note</label>
+                      <form id="tl-note-form">
+                        <textarea
+                          id="tl-note"
+                          name="note"
+                          placeholder="Add order note..."
+                          required
+                        ></textarea>
+                        <footer>
+                          <button
+                            type="submit"
+                            class="btn"
+                            data-variant="primary"
+                            data-size="sm"
+                          >
+                            Save
+                          </button>
+                          <button type="reset" class="btn" data-size="sm">
+                            Cancel
+                          </button>
+                          <small>Notes are editable for 5 minutes.</small>
+                        </footer>
+                      </form>
+                    </li>
+                    <li>
+                      Confirmation email sent
+                      <time datetime="2026-10-03T00:36">Oct 3, 2026 00:36</time>
+                    </li>
+                    <li>
+                      Fulfillment status changed from Unfulfilled to On hold
+                      <time datetime="2026-10-03T00:35">Oct 3, 2026 00:35</time>
+                    </li>
+                  </ol>
+                  <script type="module">
+                    const form = document.getElementById("tl-note-form");
+                    form.addEventListener("submit", (event) => {
+                      event.preventDefault();
+                      const now = new Date();
+                      const li = document.createElement("li");
+                      const article = document.createElement("article");
+                      const name = document.createElement("h4");
+                      const time = document.createElement("time");
+                      const text = document.createElement("p");
+                      name.textContent = "You";
+                      time.dateTime = now.toISOString();
+                      time.textContent = now.toLocaleString("en-US", {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      });
+                      text.textContent = form.elements.note.value;
+                      article.append(name, time, text);
+                      li.append(article);
+                      form.closest("li").after(li);
+                      form.reset();
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ol class="timeline" id="tl-notes"&gt;
+  &lt;li&gt;
+    &lt;label for="tl-note"&gt;Add a note&lt;/label&gt;
+    &lt;form id="tl-note-form"&gt;
+      &lt;textarea id="tl-note" name="note" placeholder="Add order note..." required&gt;&lt;/textarea&gt;
+      &lt;footer&gt;
+        &lt;button type="submit" class="btn" data-variant="primary" data-size="sm"&gt;Save&lt;/button&gt;
+        &lt;button type="reset" class="btn" data-size="sm"&gt;Cancel&lt;/button&gt;
+        &lt;small&gt;Notes are editable for 5 minutes.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/form&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    Confirmation email sent
+    &lt;time datetime="2026-10-03T00:36"&gt;Oct 3, 2026 00:36&lt;/time&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    Fulfillment status changed from Unfulfilled to On hold
+    &lt;time datetime="2026-10-03T00:35"&gt;Oct 3, 2026 00:35&lt;/time&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;script type="module"&gt;
+  const form = document.getElementById("tl-note-form");
+  form.addEventListener("submit", (event) =&gt; {
+    event.preventDefault();
+    const now = new Date();
+    const li = document.createElement("li");
+    const article = document.createElement("article");
+    const name = document.createElement("h4");
+    const time = document.createElement("time");
+    const text = document.createElement("p");
+    name.textContent = "You";
+    time.dateTime = now.toISOString();
+    time.textContent = now.toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+    text.textContent = form.elements.note.value;
+    article.append(name, time, text);
+    li.append(article);
+    form.closest("li").after(li);
+    form.reset();
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>ol.timeline</code></td>
+                    <td></td>
+                    <td>List of events, newest at the top</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; li</code></td>
+                    <td></td>
+                    <td>
+                      One event, with a dot and a line to the next event (except
+                      the last)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>li[data-variant]</code></td>
+                    <td>
+                      <code>ok</code>, <code>danger</code>,
+                      <code>pending</code>; none = default (grey dot)
+                    </td>
+                    <td>
+                      <code>ok</code>: green dot and leading icon.
+                      <code>danger</code>: red dot and text.
+                      <code>pending</code>: a step not started yet, with grey
+                      text and a hollow dot
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>li[aria-busy]</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      Tells screen readers this step is in progress (pair with
+                      <code>.loader</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>li &gt; .icon:first-child</code>,
+                      <code>li &gt; .loader:first-child</code>
+                    </td>
+                    <td></td>
+                    <td>An icon or loader placed first replaces the dot</td>
+                  </tr>
+                  <tr>
+                    <td><code>time</code></td>
+                    <td><code>datetime</code></td>
+                    <td>
+                      Time of the event, on its own line in small grey text
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>details &gt; summary</code></td>
+                    <td><code>open</code></td>
+                    <td>
+                      An event that opens to show details. The summary gets its
+                      own arrow
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>dl &gt; dt + dd</code></td>
+                    <td></td>
+                    <td>Name/value details in two columns inside a frame</td>
+                  </tr>
+                  <tr>
+                    <td><code>article</code></td>
+                    <td></td>
+                    <td>
+                      A note: <code>h4</code> author and <code>time</code> on
+                      one line, followed by <code>p</code> and
+                      <code>footer</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>footer</code></td>
+                    <td></td>
+                    <td>
+                      Button row of a note or form. A <code>small</code>
+                      inside it is a grey hint
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>form</code>, <code>textarea</code></td>
+                    <td></td>
+                    <td>
+                      Add-note form in an event; the textarea is full width
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

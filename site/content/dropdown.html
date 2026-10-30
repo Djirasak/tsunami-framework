@@ -1,0 +1,1101 @@
+<header class="page-header">
+            <div>
+              <h1>Dropdown</h1>
+              <p>
+                A menu of actions in a native popover, opened by its button with
+                no script.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>A menu of actions</h2>
+            <p>
+              The children of <code>.<wbr />dropdown</code> are
+              <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code>. Give each
+              button <code>popover<wbr />target</code> +
+              <code>popover<wbr />target<wbr />action=<wbr />"hide"</code> so a
+              click closes the menu; listen for the button's own
+              <code>click</code> to act. <code>&lt;hr&gt;</code> separates
+              groups.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button type="button" class="btn" popovertarget="dd-actions">
+                    Actions
+                    <i class="icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="dropdown" id="dd-actions" popover>
+                    <button
+                      type="button"
+                      popovertarget="dd-actions"
+                      popovertargetaction="hide"
+                    >
+                      <i class="icon icon-pencil" aria-hidden="true"></i>Edit
+                    </button>
+                    <button
+                      type="button"
+                      popovertarget="dd-actions"
+                      popovertargetaction="hide"
+                    >
+                      <i class="icon icon-copy" aria-hidden="true"></i>Duplicate
+                    </button>
+                    <a href="/docs"
+                      ><i class="icon icon-external-link" aria-hidden="true"></i
+                      >View in store</a
+                    >
+                    <hr />
+                    <button
+                      type="button"
+                      data-variant="danger"
+                      popovertarget="dd-actions"
+                      popovertargetaction="hide"
+                    >
+                      <i class="icon icon-trash-2" aria-hidden="true"></i>Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-actions"&gt;Actions &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;div class="dropdown" id="dd-actions" popover&gt;
+  &lt;button type="button" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;Edit&lt;/button&gt;
+  &lt;button type="button" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;Duplicate&lt;/button&gt;
+  &lt;a href="#"&gt;&lt;i class="icon icon-external-link" aria-hidden="true"&gt;&lt;/i&gt;View in store&lt;/a&gt;
+  &lt;hr&gt;
+  &lt;button type="button" data-variant="danger" popovertarget="dd-actions" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;Delete&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Alignment: start, center and end of the button</h2>
+            <p>
+              <code>data-<wbr />align</code> on the menu, default
+              <code>start</code>. The same attribute as the popover.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      popovertarget="dd-align-start"
+                    >
+                      Start
+                    </button>
+                    <div class="dropdown" id="dd-align-start" popover>
+                      <button
+                        type="button"
+                        popovertarget="dd-align-start"
+                        popovertargetaction="hide"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-align-start"
+                        popovertargetaction="hide"
+                      >
+                        Duplicate
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-align-start"
+                        popovertargetaction="hide"
+                      >
+                        Archive
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn"
+                      popovertarget="dd-align-center"
+                    >
+                      Center
+                    </button>
+                    <div
+                      class="dropdown"
+                      id="dd-align-center"
+                      popover
+                      data-align="center"
+                    >
+                      <button
+                        type="button"
+                        popovertarget="dd-align-center"
+                        popovertargetaction="hide"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-align-center"
+                        popovertargetaction="hide"
+                      >
+                        Duplicate
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-align-center"
+                        popovertargetaction="hide"
+                      >
+                        Archive
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn"
+                      popovertarget="dd-align-end"
+                    >
+                      End
+                    </button>
+                    <div
+                      class="dropdown"
+                      id="dd-align-end"
+                      popover
+                      data-align="end"
+                    >
+                      <button
+                        type="button"
+                        popovertarget="dd-align-end"
+                        popovertargetaction="hide"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-align-end"
+                        popovertargetaction="hide"
+                      >
+                        Duplicate
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-align-end"
+                        popovertargetaction="hide"
+                      >
+                        Archive
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-align-start"&gt;Start&lt;/button&gt;
+  &lt;div class="dropdown" id="dd-align-start" popover&gt;
+    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-start" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-align-center"&gt;Center&lt;/button&gt;
+  &lt;div class="dropdown" id="dd-align-center" popover data-align="center"&gt;
+    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-center" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-align-end"&gt;End&lt;/button&gt;
+  &lt;div class="dropdown" id="dd-align-end" popover data-align="end"&gt;
+    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-align-end" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Side: below, above, left and right of the button</h2>
+            <p>
+              <code>data-<wbr />side</code>, default <code>bottom</code>. A menu
+              that does not fit flips to the other side.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      popovertarget="dd-side-bottom"
+                    >
+                      Bottom
+                    </button>
+                    <div class="dropdown" id="dd-side-bottom" popover>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-bottom"
+                        popovertargetaction="hide"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-bottom"
+                        popovertargetaction="hide"
+                      >
+                        Duplicate
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-bottom"
+                        popovertargetaction="hide"
+                      >
+                        Archive
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn"
+                      popovertarget="dd-side-top"
+                    >
+                      Top
+                    </button>
+                    <div
+                      class="dropdown"
+                      id="dd-side-top"
+                      popover
+                      data-side="top"
+                    >
+                      <button
+                        type="button"
+                        popovertarget="dd-side-top"
+                        popovertargetaction="hide"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-top"
+                        popovertargetaction="hide"
+                      >
+                        Duplicate
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-top"
+                        popovertargetaction="hide"
+                      >
+                        Archive
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn"
+                      popovertarget="dd-side-left"
+                    >
+                      Left
+                    </button>
+                    <div
+                      class="dropdown"
+                      id="dd-side-left"
+                      popover
+                      data-side="left"
+                    >
+                      <button
+                        type="button"
+                        popovertarget="dd-side-left"
+                        popovertargetaction="hide"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-left"
+                        popovertargetaction="hide"
+                      >
+                        Duplicate
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-left"
+                        popovertargetaction="hide"
+                      >
+                        Archive
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn"
+                      popovertarget="dd-side-right"
+                    >
+                      Right
+                    </button>
+                    <div
+                      class="dropdown"
+                      id="dd-side-right"
+                      popover
+                      data-side="right"
+                    >
+                      <button
+                        type="button"
+                        popovertarget="dd-side-right"
+                        popovertargetaction="hide"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-right"
+                        popovertargetaction="hide"
+                      >
+                        Duplicate
+                      </button>
+                      <button
+                        type="button"
+                        popovertarget="dd-side-right"
+                        popovertargetaction="hide"
+                      >
+                        Archive
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-side-bottom"&gt;Bottom&lt;/button&gt;
+  &lt;div class="dropdown" id="dd-side-bottom" popover&gt;
+    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-bottom" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-side-top"&gt;Top&lt;/button&gt;
+  &lt;div class="dropdown" id="dd-side-top" popover data-side="top"&gt;
+    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-top" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-side-left"&gt;Left&lt;/button&gt;
+  &lt;div class="dropdown" id="dd-side-left" popover data-side="left"&gt;
+    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-left" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button type="button" class="btn" popovertarget="dd-side-right"&gt;Right&lt;/button&gt;
+  &lt;div class="dropdown" id="dd-side-right" popover data-side="right"&gt;
+    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;Edit&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;Duplicate&lt;/button&gt;
+    &lt;button type="button" popovertarget="dd-side-right" popovertargetaction="hide"&gt;Archive&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>From an icon button at the end of a row, aligned to its end</h2>
+            <p>
+              <code>data-<wbr />align=<wbr />"end"</code> keeps a menu from an
+              end-of-row button inside the page. An icon button needs an
+              <code>aria-<wbr />label</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="item" data-variant="outline">
+                    <section>
+                      <h3>Order #1042</h3>
+                      <p>$84.50 · Paid</p>
+                    </section>
+                    <aside>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="dd-row"
+                        aria-label="Order actions"
+                      >
+                        <i class="icon icon-ellipsis" aria-hidden="true"></i>
+                      </button>
+                      <div
+                        class="dropdown"
+                        id="dd-row"
+                        popover
+                        data-align="end"
+                      >
+                        <button
+                          type="button"
+                          popovertarget="dd-row"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-pencil" aria-hidden="true"></i
+                          >Edit
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="dd-row"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-copy" aria-hidden="true"></i
+                          >Duplicate
+                        </button>
+                        <button
+                          type="button"
+                          popovertarget="dd-row"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-printer" aria-hidden="true"></i
+                          >Print packing slip
+                        </button>
+                        <hr />
+                        <button
+                          type="button"
+                          data-variant="danger"
+                          popovertarget="dd-row"
+                          popovertargetaction="hide"
+                        >
+                          <i class="icon icon-trash-2" aria-hidden="true"></i
+                          >Delete
+                        </button>
+                      </div>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="item" data-variant="outline"&gt;
+  &lt;section&gt;&lt;h3&gt;Order #1042&lt;/h3&gt;&lt;p&gt;$84.50 · Paid&lt;/p&gt;&lt;/section&gt;
+  &lt;aside&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="dd-row" aria-label="Order actions"&gt;&lt;i class="icon icon-ellipsis" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;div class="dropdown" id="dd-row" popover data-align="end"&gt;
+      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-pencil" aria-hidden="true"&gt;&lt;/i&gt;Edit&lt;/button&gt;
+      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-copy" aria-hidden="true"&gt;&lt;/i&gt;Duplicate&lt;/button&gt;
+      &lt;button type="button" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-printer" aria-hidden="true"&gt;&lt;/i&gt;Print packing slip&lt;/button&gt;
+      &lt;hr&gt;
+      &lt;button type="button" data-variant="danger" popovertarget="dd-row" popovertargetaction="hide"&gt;&lt;i class="icon icon-trash-2" aria-hidden="true"&gt;&lt;/i&gt;Delete&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Headings, shortcuts and a disabled item</h2>
+            <p>
+              <code>&lt;h3&gt;</code> is a gray heading,
+              <code>&lt;kbd&gt;</code> sits at the end, and
+              <code>disabled</code> makes an item unclickable and skipped by
+              Tab. A link cannot be disabled: use
+              <code>aria-<wbr />disabled=<wbr />"true"</code> and remove its
+              <code>href</code>. The shortcut is only a label: wire the key
+              yourself.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button type="button" class="btn" popovertarget="dd-account">
+                    <i class="icon icon-user" aria-hidden="true"></i>Account
+                  </button>
+                  <div class="dropdown" id="dd-account" popover>
+                    <h3>jane@example.com</h3>
+                    <button
+                      type="button"
+                      popovertarget="dd-account"
+                      popovertargetaction="hide"
+                    >
+                      Profile<kbd>⇧⌘P</kbd>
+                    </button>
+                    <button
+                      type="button"
+                      popovertarget="dd-account"
+                      popovertargetaction="hide"
+                    >
+                      Billing<kbd>⌘B</kbd>
+                    </button>
+                    <button type="button" disabled>API keys</button>
+                    <hr />
+                    <button
+                      type="button"
+                      data-variant="danger"
+                      popovertarget="dd-account"
+                      popovertargetaction="hide"
+                    >
+                      Sign out<kbd>⇧⌘Q</kbd>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-account"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;Account&lt;/button&gt;
+&lt;div class="dropdown" id="dd-account" popover&gt;
+  &lt;h3&gt;jane@example.com&lt;/h3&gt;
+  &lt;button type="button" popovertarget="dd-account" popovertargetaction="hide"&gt;Profile&lt;kbd&gt;⇧⌘P&lt;/kbd&gt;&lt;/button&gt;
+  &lt;button type="button" popovertarget="dd-account" popovertargetaction="hide"&gt;Billing&lt;kbd&gt;⌘B&lt;/kbd&gt;&lt;/button&gt;
+  &lt;button type="button" disabled&gt;API keys&lt;/button&gt;
+  &lt;hr&gt;
+  &lt;button type="button" data-variant="danger" popovertarget="dd-account" popovertargetaction="hide"&gt;Sign out&lt;kbd&gt;⇧⌘Q&lt;/kbd&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Checkbox items: choose which columns to show</h2>
+            <p>
+              Use <code>&lt;input type=<wbr />"checkbox"&gt;</code> inside a
+              <code>&lt;label&gt;</code>. Native checkboxes: Space ticks the
+              focused one, the menu stays open, and the page listens for
+              <code>change</code> and reads <code>checked</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button type="button" class="btn" popovertarget="dd-columns">
+                    Columns
+                  </button>
+                  <div class="dropdown" id="dd-columns" popover>
+                    <h3>Show columns</h3>
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="columns"
+                        value="variants"
+                        checked
+                      />
+                      Variants</label
+                    >
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="columns"
+                        value="visibility"
+                        checked
+                      />
+                      Visibility</label
+                    >
+                    <label
+                      ><input type="checkbox" name="columns" value="ranking" />
+                      Ranking</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-columns"&gt;Columns&lt;/button&gt;
+&lt;div class="dropdown" id="dd-columns" popover&gt;
+  &lt;h3&gt;Show columns&lt;/h3&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="columns" value="variants" checked&gt; Variants&lt;/label&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="columns" value="visibility" checked&gt; Visibility&lt;/label&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="columns" value="ranking"&gt; Ranking&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Radio items: choose one</h2>
+            <p>
+              Use <code>&lt;input type=<wbr />"radio"&gt;</code> with the same
+              <code>name</code>. The arrow keys move the choice within the
+              group, as in any radio group.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <button type="button" class="btn" popovertarget="dd-sort">
+                    Sort by
+                  </button>
+                  <div class="dropdown" id="dd-sort" popover>
+                    <h3>Sort by</h3>
+                    <label
+                      ><input
+                        type="radio"
+                        name="dd-sort"
+                        value="newest"
+                        checked
+                      />
+                      Newest</label
+                    >
+                    <label
+                      ><input type="radio" name="dd-sort" value="oldest" />
+                      Oldest</label
+                    >
+                    <label
+                      ><input type="radio" name="dd-sort" value="total" /> Order
+                      total</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;button type="button" class="btn" popovertarget="dd-sort"&gt;Sort by&lt;/button&gt;
+&lt;div class="dropdown" id="dd-sort" popover&gt;
+  &lt;h3&gt;Sort by&lt;/h3&gt;
+  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="newest" checked&gt; Newest&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="oldest"&gt; Oldest&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="dd-sort" value="total"&gt; Order total&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>API</h2>
+            <h3>Methods (native)</h3>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Member</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>showPopover(<wbr />)</code>
+                    </td>
+                    <td>method</td>
+                    <td>Opens the menu.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>hidePopover(<wbr />)</code>
+                    </td>
+                    <td>method</td>
+                    <td>Closes the menu.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>togglePopover(<wbr />force?)</code>
+                    </td>
+                    <td>method</td>
+                    <td>Opens it when closed, closes it when open.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events (native)</h3>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>toggle</code></td>
+                    <td>
+                      <code>newState</code>: <code>"open"</code> /
+                      <code>"closed"</code>
+                    </td>
+                    <td>On the menu, after it opens or closes.</td>
+                  </tr>
+                  <tr>
+                    <td><code>click</code></td>
+                    <td>none</td>
+                    <td>On an item: do its action.</td>
+                  </tr>
+                  <tr>
+                    <td><code>change</code></td>
+                    <td>none</td>
+                    <td>
+                      On a checkbox or radio item: read <code>checked</code>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="API"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>Enter</kbd> / <kbd>Space</kbd></td>
+                    <td>
+                      On the button: opens or closes the menu. On an item:
+                      chooses it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Tab</kbd> / <kbd>Shift Tab</kbd></td>
+                    <td>
+                      Moves through the items; the menu comes right after its
+                      button in the focus order.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><kbd>↑</kbd> <kbd>↓</kbd></td>
+                    <td>In a radio group: moves the choice.</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>Esc</kbd></td>
+                    <td>Closes the menu and returns focus to the button.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              No script and no
+              <code>role="menu"</code>: items are plain buttons and links, so
+              Tab moves between them instead of the arrow keys.
+            </p>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code>class=<wbr />"dropdown"</code>
+                    </td>
+                    <td>on the menu</td>
+                    <td>The component: a bordered list at least 10rem wide.</td>
+                  </tr>
+                  <tr>
+                    <td><code>popover + id</code></td>
+                    <td><code>auto</code> (default)</td>
+                    <td>
+                      Closes on an outside click, Escape, or another menu.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>popover<wbr />target</code>
+                    </td>
+                    <td>the menu's id</td>
+                    <td>On the button; the menu is placed against it.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>popover<wbr />target<wbr />action</code>
+                    </td>
+                    <td>
+                      <code>hide</code> on an item,
+                      <code>toggle</code> (default) on the button
+                    </td>
+                    <td>On an item button: closes the menu on click.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />side</code>
+                    </td>
+                    <td>
+                      none or <code>bottom</code> (default), <code>top</code>,
+                      <code>left</code>, <code>right</code>
+                    </td>
+                    <td>
+                      The side of the button the menu opens on. Flips when it
+                      does not fit.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />align</code>
+                    </td>
+                    <td>
+                      none or <code>start</code> (default), <code>center</code>,
+                      <code>end</code>
+                    </td>
+                    <td>How the menu lines up with the button.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; button, &gt; a</code></td>
+                    <td>items</td>
+                    <td>Menu items. An icon before the text is gray.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; label &gt; input</code></td>
+                    <td>
+                      <code>type=<wbr />"checkbox"</code> or
+                      <code>type=<wbr />"radio"</code>
+                    </td>
+                    <td>A checkbox or radio item; the menu stays open.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; h2, &gt; h3, &gt; h4</code></td>
+                    <td>text</td>
+                    <td>A small gray group heading.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; hr</code></td>
+                    <td></td>
+                    <td>Separates groups.</td>
+                  </tr>
+                  <tr>
+                    <td><code>kbd</code></td>
+                    <td>inside an item</td>
+                    <td>A shortcut label at the end of the item.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>disabled, aria-<wbr />disabled</code>
+                    </td>
+                    <td>
+                      <code>disabled</code> on a button or input,
+                      <code>aria-<wbr />disabled=<wbr />"true"</code> on a link
+                    </td>
+                    <td>Grayed out; a disabled button is skipped by Tab.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>data-<wbr />variant</code>
+                    </td>
+                    <td><code>danger</code></td>
+                    <td>A destructive item, in red.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

@@ -1,0 +1,431 @@
+<header class="page-header">
+            <div>
+              <h1>Loader</h1>
+              <p>
+                A spinner for waiting. It takes the colour of the surrounding
+                text, so it fits buttons and text on its own. For grey blocks
+                that stand in for content, see
+                <a href="/docs/skeleton">Skeleton</a>
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Spinner</h2>
+            <p>
+              Add <code>role="status"</code> and an <code>aria-label</code> that
+              says what is loading.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <span
+                    class="loader"
+                    role="status"
+                    aria-label="Loading"
+                  ></span>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;span class="loader" role="status" aria-label="Loading"&gt;&lt;/span&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Spinner sizes: xs, sm, default and lg</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <span
+                      class="loader"
+                      data-size="xs"
+                      role="status"
+                      aria-label="Loading"
+                    ></span>
+                    <span
+                      class="loader"
+                      data-size="sm"
+                      role="status"
+                      aria-label="Loading"
+                    ></span>
+                    <span
+                      class="loader"
+                      role="status"
+                      aria-label="Loading"
+                    ></span>
+                    <span
+                      class="loader"
+                      data-size="lg"
+                      role="status"
+                      aria-label="Loading"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="loader" data-size="xs" role="status" aria-label="Loading"&gt;&lt;/span&gt;
+  &lt;span class="loader" data-size="sm" role="status" aria-label="Loading"&gt;&lt;/span&gt;
+  &lt;span class="loader" role="status" aria-label="Loading"&gt;&lt;/span&gt;
+  &lt;span class="loader" data-size="lg" role="status" aria-label="Loading"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Spinner in a button</h2>
+            <p>
+              A spinner in a button is decorative. Add
+              <code>aria-hidden="true"</code> and let the button text describe
+              the state.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="primary"
+                      disabled
+                    >
+                      <span
+                        class="loader"
+                        data-size="xs"
+                        aria-hidden="true"
+                      ></span
+                      >Saving…
+                    </button>
+                    <button type="button" class="btn" disabled>
+                      <span
+                        class="loader"
+                        data-size="xs"
+                        aria-hidden="true"
+                      ></span
+                      >Loading…
+                    </button>
+                    <button
+                      type="button"
+                      class="btn"
+                      data-variant="danger"
+                      disabled
+                    >
+                      <span
+                        class="loader"
+                        data-size="xs"
+                        aria-hidden="true"
+                      ></span
+                      >Deleting…
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;button type="button" class="btn" data-variant="primary" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;Saving…&lt;/button&gt;
+  &lt;button type="button" class="btn" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;Loading…&lt;/button&gt;
+  &lt;button type="button" class="btn" data-variant="danger" disabled&gt;&lt;span class="loader" data-size="xs" aria-hidden="true"&gt;&lt;/span&gt;Deleting…&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Spinner beside text</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <article class="item" data-variant="muted">
+                    <figure>
+                      <span
+                        class="loader"
+                        data-size="xs"
+                        role="status"
+                        aria-label="Processing"
+                      ></span>
+                    </figure>
+                    <section>
+                      <h3>Processing payment…</h3>
+                    </section>
+                    <aside>$39.00</aside>
+                  </article>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;article class="item" data-variant="muted"&gt;
+  &lt;figure&gt;&lt;span class="loader" data-size="xs" role="status" aria-label="Processing"&gt;&lt;/span&gt;&lt;/figure&gt;
+  &lt;section&gt;&lt;h3&gt;Processing payment…&lt;/h3&gt;&lt;/section&gt;
+  &lt;aside&gt;$39.00&lt;/aside&gt;
+&lt;/article&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Spinner while a card's content loads</h2>
+            <p>
+              Add <code>aria-busy="true"</code> to the loading region. If it
+              holds only a spinner, the spinner is centred in a box at least
+              128px tall.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="card">
+                    <header>
+                      <h2>Sales over time</h2>
+                    </header>
+                    <section aria-busy="true" style="min-height: 12rem">
+                      <span
+                        class="loader"
+                        role="status"
+                        aria-label="Loading sales"
+                      ></span>
+                    </section>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="card"&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Sales over time&lt;/h2&gt;
+  &lt;/header&gt;
+  &lt;section aria-busy="true" style="min-height: 12rem"&gt;
+    &lt;span class="loader" role="status" aria-label="Loading sales"&gt;&lt;/span&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.loader</code></td>
+                    <td></td>
+                    <td>
+                      16px spinner, 2px stroke in <code>currentColor</code> on a
+                      faint 20% track. Still spins (slower) with reduced motion.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>xs</code>, <code>sm</code>, <code>lg</code> (omit =
+                      16px)
+                    </td>
+                    <td>
+                      <code>xs</code> 12px (in buttons), <code>sm</code> 14px,
+                      <code>lg</code> 24px
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>role</code></td>
+                    <td><code>status</code></td>
+                    <td>
+                      On a standalone spinner, with an
+                      <code>aria-label</code> that names what is loading.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>Text</td>
+                    <td>
+                      The name screen readers announce, e.g. "Loading sales".
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-hidden</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      In a button or next to text that already states the
+                      status.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>[aria-busy="true"]</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                      On the loading container. If it holds only a
+                      <code>.loader</code>, it is centred, at least 128px tall
+                      and muted. Remove it once the content arrives.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

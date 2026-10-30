@@ -1,0 +1,297 @@
+<header class="page-header">
+            <div>
+              <h1>Flags</h1>
+              <p>Country flags at 4:3 from flag-icons, one class per flag.</p>
+            </div>
+          </header>
+          <div class="alert" data-variant="info" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <div>
+              <strong>Flags come from flag-icons</strong>
+              <p>
+                flag-icons 7.6.0 (<a
+                  href="https://github.com/lipis/flag-icons"
+                  rel="noopener"
+                  >github.com/lipis/flag-icons</a
+                >, MIT license). One SVG file per country in
+                <code>flags/</code>. The browser loads only the flags you use.
+              </p>
+            </div>
+          </div>
+          <section>
+            <h2>Flags with an accessible name</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Flags with an accessible name">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <span
+                      class="flag flag-th"
+                      role="img"
+                      aria-label="Thailand"
+                    ></span>
+                    <span
+                      class="flag flag-jp"
+                      role="img"
+                      aria-label="Japan"
+                    ></span>
+                    <span
+                      class="flag flag-us"
+                      role="img"
+                      aria-label="United States of America"
+                    ></span>
+                    <span
+                      class="flag flag-gb"
+                      role="img"
+                      aria-label="United Kingdom"
+                    ></span>
+                    <span
+                      class="flag flag-de"
+                      role="img"
+                      aria-label="Germany"
+                    ></span>
+                    <span
+                      class="flag flag-fr"
+                      role="img"
+                      aria-label="France"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;span class="flag flag-th" role="img" aria-label="Thailand"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-jp" role="img" aria-label="Japan"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-us" role="img" aria-label="United States of America"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-gb" role="img" aria-label="United Kingdom"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-de" role="img" aria-label="Germany"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-fr" role="img" aria-label="France"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Beside the country name</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Beside the country name">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <ul class="stack" data-gap="sm">
+                    <li>
+                      <span class="flag flag-th" aria-hidden="true"></span>
+                      Thailand
+                    </li>
+                    <li>
+                      <span class="flag flag-sg" aria-hidden="true"></span>
+                      Singapore
+                    </li>
+                    <li>
+                      <span class="flag flag-vn" aria-hidden="true"></span>
+                      Vietnam
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;ul class="stack" data-gap="sm"&gt;
+  &lt;li&gt;&lt;span class="flag flag-th" aria-hidden="true"&gt;&lt;/span&gt; Thailand&lt;/li&gt;
+  &lt;li&gt;&lt;span class="flag flag-sg" aria-hidden="true"&gt;&lt;/span&gt; Singapore&lt;/li&gt;
+  &lt;li&gt;&lt;span class="flag flag-vn" aria-hidden="true"&gt;&lt;/span&gt; Vietnam&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sizes: sm, default, lg and xl</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Sizes: sm, default, lg and xl">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row">
+                    <span
+                      class="flag flag-se"
+                      data-size="sm"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="flag flag-se" aria-hidden="true"></span>
+                    <span
+                      class="flag flag-se"
+                      data-size="lg"
+                      aria-hidden="true"
+                    ></span>
+                    <span
+                      class="flag flag-se"
+                      data-size="xl"
+                      aria-hidden="true"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row"&gt;
+  &lt;span class="flag flag-se" data-size="sm" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-se" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-se" data-size="lg" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="flag flag-se" data-size="xl" aria-hidden="true"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.flag</code></td>
+                    <td></td>
+                    <td>
+                      A 4:3 box, 16px tall, with a hairline edge so white flags
+                      show on a white background.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>.flag-{code}</code></td>
+                    <td>
+                      ISO 3166 code, e.g. <code>th</code>, <code>gb-eng</code>
+                    </td>
+                    <td>Picks the flag; see the list below.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td>
+                      <code>sm</code>, default, <code>lg</code>, <code>xl</code>
+                    </td>
+                    <td>Height 12, 16, 24 or 32px.</td>
+                  </tr>
+                  <tr>
+                    <td><code>role="img"</code> + <code>aria-label</code></td>
+                    <td>text</td>
+                    <td>For a flag on its own, so it has a name.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-hidden="true"</code></td>
+                    <td></td>
+                    <td>When the country name is next to it.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Every flag</h2>
+            <p>Search by code or name; click a flag to copy its HTML.</p>
+            <div class="input-group docs-narrow">
+              <span><i class="icon icon-search" aria-hidden="true"></i></span>
+              <input
+                id="flag-search"
+                type="search"
+                placeholder="Search flags"
+                aria-label="Search flags"
+                autocomplete="off"
+              />
+              <span id="flag-count" aria-live="polite"></span>
+            </div>
+            <div id="flag-grid" class="docs-icons"></div>
+          </section>
+          <script type="module" src="/docs/flags.js"></script>

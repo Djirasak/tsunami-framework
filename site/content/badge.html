@@ -1,0 +1,531 @@
+<header class="page-header">
+            <div>
+              <h1>Badge</h1>
+              <p>
+                A short status label with a light fill and dark text. Use it in
+                tables, card headers and next to page titles.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Variants</h2>
+            <p>
+              The default is neutral. Use <code>outline</code> for labels that
+              are not a status, such as a customer type.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <span class="badge">Draft</span>
+                    <span class="badge" data-variant="outline">Wholesale</span>
+                    <span class="badge" data-variant="info">Processing</span>
+                    <span class="badge" data-variant="ok">Paid</span>
+                    <span class="badge" data-variant="warning">Pending</span>
+                    <span class="badge" data-variant="danger">Refunded</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;span class="badge"&gt;Draft&lt;/span&gt;
+  &lt;span class="badge" data-variant="outline"&gt;Wholesale&lt;/span&gt;
+  &lt;span class="badge" data-variant="info"&gt;Processing&lt;/span&gt;
+  &lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;
+  &lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;
+  &lt;span class="badge" data-variant="danger"&gt;Refunded&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sizes: default and lg</h2>
+
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <span class="badge" data-variant="ok">Fulfilled</span>
+                    <span class="badge" data-variant="ok" data-size="lg"
+                      >Fulfilled</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;span class="badge" data-variant="ok"&gt;Fulfilled&lt;/span&gt;
+  &lt;span class="badge" data-variant="ok" data-size="lg"&gt;Fulfilled&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>With an icon</h2>
+            <p>The icon sits before the text and uses the same colour.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm">
+                    <span class="badge" data-variant="warning"
+                      ><i
+                        class="icon icon-triangle-alert"
+                        aria-hidden="true"
+                      ></i
+                      >Unfulfilled</span
+                    >
+                    <span class="badge" data-variant="ok"
+                      ><i class="icon icon-truck" aria-hidden="true"></i
+                      >Fulfilled</span
+                    >
+                    <span class="badge" data-variant="info"
+                      ><i class="icon icon-clock" aria-hidden="true"></i> On
+                      hold</span
+                    >
+                    <span class="badge" data-variant="danger"
+                      ><i class="icon icon-circle-x" aria-hidden="true"></i
+                      >Cancelled</span
+                    >
+                    <span class="badge" data-variant="outline"
+                      ><i class="icon icon-tag" aria-hidden="true"></i>
+                      Wholesale</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+  &lt;span class="badge" data-variant="warning"&gt;&lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;Unfulfilled&lt;/span&gt;
+  &lt;span class="badge" data-variant="ok"&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;Fulfilled&lt;/span&gt;
+  &lt;span class="badge" data-variant="info"&gt;&lt;i class="icon icon-clock" aria-hidden="true"&gt;&lt;/i&gt;On hold&lt;/span&gt;
+  &lt;span class="badge" data-variant="danger"&gt;&lt;i class="icon icon-circle-x" aria-hidden="true"&gt;&lt;/i&gt;Cancelled&lt;/span&gt;
+  &lt;span class="badge" data-variant="outline"&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;Wholesale&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Large with an icon, as a fulfillment card heading</h2>
+            <p>
+              A <code>data-size="lg"</code> badge replaces the heading of a card
+              grouped by status.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="card">
+                      <header class="page-header">
+                        <div>
+                          <span
+                            class="badge"
+                            data-variant="warning"
+                            data-size="lg"
+                            ><i
+                              class="icon icon-triangle-alert"
+                              aria-hidden="true"
+                            ></i
+                            >Unfulfilled</span
+                          >
+                        </div>
+                        <div>
+                          <button type="button" class="btn" data-size="sm">
+                            More actions
+                          </button>
+                        </div>
+                      </header>
+                      <section>
+                        <p>Magic Sheets bed sheet, Blue / Twin × 2</p>
+                      </section>
+                    </div>
+                    <div class="card">
+                      <header>
+                        <span class="badge" data-variant="ok" data-size="lg"
+                          ><i class="icon icon-truck" aria-hidden="true"></i
+                          >Fulfilled</span
+                        >
+                      </header>
+                      <section>
+                        <p>Magic Sheets bed sheet, Blue / King × 1</p>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="card"&gt;
+    &lt;header class="page-header"&gt;
+      &lt;div&gt;
+        &lt;span class="badge" data-variant="warning" data-size="lg"&gt;&lt;i class="icon icon-triangle-alert" aria-hidden="true"&gt;&lt;/i&gt;Unfulfilled&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;button type="button" class="btn" data-size="sm"&gt;More actions&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;p&gt;Magic Sheets bed sheet, Blue / Twin × 2&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+  &lt;div class="card"&gt;
+    &lt;header&gt;
+      &lt;span class="badge" data-variant="ok" data-size="lg"&gt;&lt;i class="icon icon-truck" aria-hidden="true"&gt;&lt;/i&gt;Fulfilled&lt;/span&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;p&gt;Magic Sheets bed sheet, Blue / King × 1&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Beside a page title, inside the h1</h2>
+            <p>
+              Put the badge inside the <code>&lt;h1&gt;</code>, after the title.
+              The badge keeps its own font size.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <header class="page-header">
+                    <div>
+                      <h1>
+                        Order #110963<span class="badge" data-variant="warning"
+                          >Open</span
+                        ><span class="badge">Partially fulfilled</span
+                        ><span class="badge" data-variant="info">Paid</span>
+                      </h1>
+                    </div>
+                  </header>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;header class="page-header"&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Order #110963&lt;span class="badge" data-variant="warning"&gt;Open&lt;/span&gt;&lt;span class="badge"&gt;Partially fulfilled&lt;/span&gt;&lt;span class="badge" data-variant="info"&gt;Paid&lt;/span&gt;&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Removable</h2>
+            <p>
+              Add a <code>&lt;button&gt;</code> at the end of the badge, with an
+              <code>aria-label</code>. The page removes the badge on click (this
+              example uses a short inline script).
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="stack"
+                    data-direction="row"
+                    data-gap="sm"
+                    id="badge-filters"
+                  >
+                    <span class="badge"
+                      >Gift card: Yes<button
+                        type="button"
+                        aria-label="Remove filter Gift card"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i></button
+                    ></span>
+                    <span class="badge" data-variant="outline"
+                      >Category: Furniture<button
+                        type="button"
+                        aria-label="Remove filter Category"
+                      >
+                        <i class="icon icon-x" aria-hidden="true"></i></button
+                    ></span>
+                  </div>
+                  <script>
+                    document
+                      .getElementById("badge-filters")
+                      .addEventListener("click", (e) => {
+                        e.target
+                          .closest(".badge > button")
+                          ?.parentElement.remove();
+                      });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="sm" id="badge-filters"&gt;
+  &lt;span class="badge"&gt;Gift card: Yes&lt;button type="button" aria-label="Remove filter Gift card"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;span class="badge" data-variant="outline"&gt;Category: Furniture&lt;button type="button" aria-label="Remove filter Category"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("badge-filters").addEventListener("click", (e) =&gt; {
+    e.target.closest(".badge &gt; button")?.parentElement.remove();
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.badge</code></td>
+                    <td></td>
+                    <td>Inline label, 20px tall, 12px text, neutral fill.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td>
+                      <code>outline</code>, <code>ok</code>,
+                      <code>warning</code>, <code>info</code>,
+                      <code>danger</code> (omit for neutral)
+                    </td>
+                    <td>
+                      <code>outline</code> has a 1px border and no fill, for
+                      labels that are not a status. The rest are status colours.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td><code>lg</code> (omit for the default 20px)</td>
+                    <td>
+                      <code>lg</code> is 28px tall with 14px text. Use it as a
+                      card heading.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; .icon</code></td>
+                    <td></td>
+                    <td>Icon before the text, sized to the text.</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; button</code></td>
+                    <td></td>
+                    <td>
+                      Remove button at the end of the badge. Set
+                      <code>type="button"</code> and an <code>aria-label</code>,
+                      with an <code>.icon-x</code> inside. The page removes the
+                      badge.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code
+                        >h1 &gt; .badge, h2 &gt; .badge, h3 &gt; .badge</code
+                      >
+                    </td>
+                    <td></td>
+                    <td>
+                      In a heading, the badge sits 8px from the title and is
+                      centred on the line.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
