@@ -1,0 +1,67 @@
+// Code editor: .code-editor is a box with one textarea per file. Behaviour in
+// js/code-editor.js, which swaps the textareas for Monaco (loaded by the page,
+// see the docs). Until it has, the textarea is the editor: a monospace field.
+// Height comes from the box (style="height: 12rem"). Monaco's own CSS is
+// unlayered and beats rules in a layer, so the few rules that restyle it use
+// !important: in a layer an important declaration wins over any normal
+// unlayered one, and nothing here needs a selector heavier than :where().
+@layer components {
+  :where(.code-editor) {
+    position: relative;
+    display: block;
+    height: 10rem;
+    min-height: 10rem;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+  }
+
+  :where(.code-editor:focus-within) {
+    border-color: var(--accent);
+  }
+
+  :where(.code-editor > textarea) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: var(--space-3);
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    tab-size: 2;
+    resize: none;
+    white-space: pre;
+    overflow: auto;
+  }
+
+  :where(.code-editor > textarea:focus-visible) {
+    outline: none;
+  }
+
+  // Monaco has started: the textareas stay in the form, out of sight.
+  :where(.code-editor[data-loaded] > textarea) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  :where(.code-editor-host) {
+    height: 100%;
+  }
+
+  // The box shows the focus; Monaco's own outline would double it.
+  :where(.code-editor .monaco-editor) {
+    outline: none !important;
+  }
+
+  :where(.code-editor .monaco-editor .margin) {
+    background: transparent !important;
+  }
+}
