@@ -20,7 +20,7 @@ export default function Shell({ slug }) {
         <button
           type="button"
           className="btn docs-search"
-          commandFor="docs-palette"
+          commandfor="docs-palette"
           command="show-modal"
         >
           <i className="icon icon-search" aria-hidden="true"></i>
@@ -90,8 +90,10 @@ export default function Shell({ slug }) {
             ))}
           </div>
         </header>
+        {/* tsunami.js upgrades this markup before React hydrates it. */}
         <main
           className="docs-main"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: html(slug) }}
         />
       </div>

@@ -7,6 +7,7 @@ export default function Page() {
   return (
     <div
       style={{ display: "contents" }}
+      suppressHydrationWarning
       dangerouslySetInnerHTML={{ __html: html("workspace-full") }}
     />
   );
