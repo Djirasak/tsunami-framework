@@ -20,9 +20,9 @@ export default function ExampleBar({ slug }) {
         background: "var(--surface)",
       }}
     >
-      <a className="btn" data-variant="ghost" data-size="sm" href="/docs">
+      <a className="btn" data-variant="ghost" data-size="sm" href="/">
         <i className="icon icon-arrow-left" aria-hidden="true"></i>
-        Docs
+        Home
       </a>
       <a
         className="btn"
