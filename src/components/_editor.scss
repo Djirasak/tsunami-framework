@@ -1,0 +1,169 @@
+// Editor: textarea.editor is a TinyMCE rich text editor once js/editor.js has
+// started it (TinyMCE is loaded by the page, see the docs). Until then the
+// textarea reserves the editor's height, so nothing jumps.
+//
+// TinyMCE's own CSS is unlayered and beats rules in a layer, so the few
+// rules that restyle its frame (.tox-tinymce) use !important: in a layer an
+// important declaration wins over any normal unlayered one, whatever its
+// specificity, and nothing here needs a selector heavier than :where().
+@layer components {
+  :where(textarea.editor) {
+    display: block;
+    width: 100%;
+    min-height: 200px;
+    padding: var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-base);
+    line-height: var(--leading);
+    resize: vertical;
+  }
+
+  // The editor has started: the textarea stays in the form but out of sight.
+  :where(textarea[data-editor-ready]) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  // The frame.
+  :where(.tox-tinymce) {
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--surface) !important;
+    font-family: var(--font-sans) !important;
+  }
+
+  // The toolbar: flat, one line under it, the page's colours.
+  :where(.tox-tinymce .tox-editor-header) {
+    border-bottom: 1px solid var(--line) !important;
+    background: var(--subtle) !important;
+    box-shadow: none !important;
+  }
+
+  :where(.tox-tinymce .tox-toolbar, .tox-tinymce .tox-toolbar__primary) {
+    background: transparent !important;
+  }
+
+  :where(.tox-tinymce .tox-toolbar__group) {
+    border-color: var(--line) !important;
+  }
+
+  :where(.tox-tinymce .tox-tbtn svg) {
+    fill: var(--fg) !important;
+  }
+
+  :where(.tox-tinymce .tox-tbtn--disabled svg) {
+    fill: var(--muted) !important;
+  }
+
+  :where(.tox-tinymce .tox-tbtn, .tox-tinymce .tox-tbtn__select-label) {
+    color: var(--fg) !important;
+  }
+
+  :where(.tox-tinymce .tox-tbtn) {
+    background: transparent !important;
+  }
+
+  :where(.tox-tinymce .tox-tbtn:hover, .tox-tinymce .tox-tbtn--enabled) {
+    background: var(--line) !important;
+  }
+
+  // The frame shows the focus; the inner outline would double it.
+  :where(.tox-tinymce .tox-edit-area::before) {
+    border-color: transparent !important;
+  }
+
+  :where(.tox-tinymce:focus-within) {
+    border-color: var(--accent) !important;
+  }
+
+  // Menus, dialogs and the link toolbar are built outside the frame, in a
+  // .tox-tinymce-aux layer at the end of the body: flat, bordered, the page's
+  // colours.
+  :where(.tox .tox-dialog, .tox .tox-menu, .tox .tox-pop__dialog) {
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius-lg) !important;
+    background: var(--surface) !important;
+    box-shadow: none !important;
+    color: var(--fg) !important;
+  }
+
+  :where(.tox .tox-dialog-wrap__backdrop) {
+    background: var(--overlay) !important;
+  }
+
+  :where(
+    .tox .tox-dialog__header,
+    .tox .tox-dialog__footer,
+    .tox .tox-dialog__body-nav-item,
+    .tox .tox-dialog__title,
+    .tox .tox-label,
+    .tox .tox-collection__item,
+    .tox .tox-collection__item-label
+  ) {
+    background: transparent !important;
+    color: var(--fg) !important;
+  }
+
+  :where(.tox .tox-dialog__body-nav-item--active) {
+    border-color: var(--accent) !important;
+  }
+
+  :where(
+    .tox .tox-textfield,
+    .tox .tox-selectfield select,
+    .tox .tox-listboxfield .tox-listbox--select
+  ) {
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--surface) !important;
+    color: var(--fg) !important;
+  }
+
+  :where(.tox .tox-textfield:focus, .tox .tox-selectfield select:focus) {
+    border-color: var(--accent) !important;
+  }
+
+  :where(.tox .tox-button) {
+    border: 1px solid var(--accent) !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--accent) !important;
+    box-shadow: none !important;
+    color: var(--on-accent) !important;
+  }
+
+  :where(.tox .tox-button--secondary, .tox .tox-button--naked) {
+    border-color: var(--line) !important;
+    background: var(--surface) !important;
+    color: var(--fg) !important;
+  }
+
+  :where(.tox .tox-collection__item--active, .tox .tox-collection__item:hover) {
+    background: var(--subtle) !important;
+  }
+
+  :where(
+    .tox .tox-collection__item-icon svg,
+    .tox .tox-dialog__header svg,
+    .tox .tox-dialog svg
+  ) {
+    fill: var(--fg) !important;
+  }
+
+  :where(textarea[data-editor-ready][aria-invalid="true"] + .tox-tinymce) {
+    border-color: var(--danger-fg) !important;
+  }
+
+  :where(textarea[data-editor-ready]:disabled + .tox-tinymce) {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
