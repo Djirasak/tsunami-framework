@@ -59,6 +59,11 @@
     height: 1.5rem;
   }
 
+  :where(:is(ul, ol).sortable) {
+    padding: 0;
+    list-style: none;
+  }
+
   // A list with no handle drags by its rows.
   :where(.sortable:not([data-disabled]) > :not(:has(.sortable-handle))) {
     cursor: grab;
