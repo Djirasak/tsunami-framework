@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/favicon.svg" width="72" height="72" alt="Tsunami logo">
+<img src="site/public/docs/favicon.svg" width="72" height="72" alt="Tsunami logo">
 
 # Tsunami 津波
 
@@ -69,12 +69,12 @@ Requires [Bun](https://bun.sh) `>=1.4.3`.
 bun install --frozen-lockfile
 bun run build      # dist/tsunami(.min).css + dist/tsunami(.min).js
 bun run dev        # sass --watch -> dist/tsunami.css
-bun run serve      # build, then docs at http://localhost:5477/docs/
+bun run docs       # build, then the docs app at http://localhost:5477/docs (needs `bun install` in site/ once)
 bun run lint       # eslint src/js
 bun run audit      # bun audit
 ```
 
-Docs are plain HTML in `docs/` with clean URLs (`/docs/btn`); there is no build step for them. Only `/docs`, `/dist`, `/fonts` and `/flags` are served, on `0.0.0.0`, so the docs open from `localhost` and from other devices on the same network.
+The docs are a Next.js app in `site/`, deployed to Cloudflare Workers with the OpenNext adapter. It is a separate package: its dependencies (`site/package.json`, `site/bun.lock`) never touch `dist/`. Each page is HTML in `site/content/<name>.html` (the inner HTML of `<main>`; edit that), its title and library scripts are in `site/content/pages.json`, and the sidebar and search come from `site/content/nav.json`. Pages are prerendered, with clean URLs (`/docs/btn`) and plain links (full page loads), so inline `<script>` blocks in the examples run as in a static page. `bun run docs` (in `site/`: `bun install --frozen-lockfile` first) builds `dist/`, copies `dist/`, `fonts/` and `flags/` into `site/public/`, and starts `next dev`. In `site/`, `bun run preview` runs the Workers build locally and `bun run deploy` deploys it; the `Deploy docs` workflow does that when a release is published (secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
 
 ## Structure
 
@@ -87,7 +87,7 @@ src/
   icons/_lucide.scss    icon name -> codepoint (generated)
   icons/_flags.scss     flag codes (generated)
   js/                   one ES module per behavior
-docs/                   docs site (plain HTML)
+site/                   docs site: Next.js on Cloudflare Workers (content/ = the pages as HTML)
 fonts/                  Google Sans + Lucide (woff2, licenses, CHECKSUMS.txt)
 flags/                  flag-icons 4x3 SVGs (MIT)
 vendor/tinymce/         TinyMCE 8 release files (the build joins them into dist/tinymce.min.js)
@@ -95,7 +95,7 @@ vendor/sortable/        SortableJS 1.15 (copied to dist/sortable.min.js)
 vendor/vanilla-calendar/ Vanilla Calendar Pro 3.4 (copied to dist/vanilla-calendar.min.js)
 vendor/chart/           Chart.js 4.5 (copied to dist/chart.min.js)
 vendor/monaco/          Monaco Editor 0.57, trimmed (copied to dist/monaco/)
-scripts/                build.ts, serve.ts, stamp-version.ts, build-vendor.ts, lucide.ts, flags.ts, tinymce.ts, monaco.ts
+scripts/                build.ts, stamp-version.ts, build-vendor.ts, lucide.ts, flags.ts, tinymce.ts, monaco.ts
 ```
 
 ## CSS variables

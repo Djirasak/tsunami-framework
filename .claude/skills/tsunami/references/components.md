@@ -1,6 +1,6 @@
 # Tsunami components
 
-This file gives one short example per component. The full page for each is `docs/<name>.html`, with every variant, the API, the events and the attributes. "Attrs" lists the attributes the component reads.
+This file gives one short example per component. The full page for each is `site/content/<name>.html`, with every variant, the API, the events and the attributes. "Attrs" lists the attributes the component reads.
 
 ## Foundations
 

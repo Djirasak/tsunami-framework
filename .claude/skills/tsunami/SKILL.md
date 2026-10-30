@@ -1,11 +1,11 @@
 ---
 name: tsunami
-description: Build pages and back-office UIs with the Tsunami CSS framework (津波) in this repo. Use when writing HTML that uses Tsunami classes or data-* attributes, adding or changing a component in src/, or writing a docs page in docs/.
+description: Build pages and back-office UIs with the Tsunami CSS framework (津波) in this repo. Use when writing HTML that uses Tsunami classes or data-* attributes, adding or changing a component in src/, or writing a docs page in site/content/.
 ---
 
 # Tsunami
 
-A small, quiet CSS framework: semantic HTML, a class per component, `data-*` for variants. Native elements first (`dialog`, `popover`, `details`, `button`); vanilla JS only where HTML can't do it. Every component and its markup: [references/components.md](references/components.md). Each one has a live page at `docs/<name>.html`, and that page is the source of truth.
+A small, quiet CSS framework: semantic HTML, a class per component, `data-*` for variants. Native elements first (`dialog`, `popover`, `details`, `button`); vanilla JS only where HTML can't do it. Every component and its markup: [references/components.md](references/components.md). Each one has a live page at `site/content/<name>.html`, and that page is the source of truth.
 
 ## Load
 
@@ -46,8 +46,8 @@ Dark values live in one `dark-tokens` mixin. Use `var(--…)` in your own CSS so
 - Quiet look: 1px `--line` borders, no shadows, no gradients. The accent is only for links, the primary button, focus and picked states. Heights are 36px by default (28 sm, 40 lg).
 - Motion uses the mixins in `_motion.scss` and stops under `prefers-reduced-motion`.
 - JS lives in `src/js/<name>.js`, imported in `src/js/index.js`. It uses data attributes, delegation and `window.tsunami.<name>`, with a header comment listing the options.
-- A new page `docs/<name>.html` needs Preview/Code tabs, sections for the API, events, attributes and accessibility, and a link in the sidebar of every docs page.
-- Check with `bun run build`, `bun run lint` and `bun fmt` (then `git checkout vendor`). `bun run serve` builds, serves and reloads. Make small commits, one per change.
+- A new page `site/content/<name>.html` needs Preview/Code tabs, sections for the API, events, attributes and accessibility, and entries in `site/content/pages.json` (title, library scripts) and `site/content/nav.json` (the sidebar and the search).
+- Check with `bun run build`, `bun run lint` and `bun fmt` (then `git checkout vendor`). `bun run docs` builds and serves the docs app. Make small commits, one per change.
 
 ## Don't
 
