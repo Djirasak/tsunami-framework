@@ -1,0 +1,15 @@
+// Chart: the box a Chart.js canvas fills. src/js/chart.js draws the chart.
+// The box is 16:9; another ratio is an inline aspect-ratio on the box.
+@layer components {
+  :where(.chart) {
+    position: relative;
+    width: 100%;
+    min-height: 10rem;
+    aspect-ratio: 16 / 9;
+  }
+
+  :where(.chart > canvas) {
+    display: block;
+    max-width: 100%;
+  }
+}
