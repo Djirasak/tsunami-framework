@@ -1,0 +1,218 @@
+<header class="page-header">
+            <div>
+              <h1>Description list</h1>
+              <p>
+                Label and value pairs for a detail page, such as an order or a
+                customer. A semantic dl in three layouts.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Stacked</h2>
+            <p>
+              The default. A muted label above each value. Wrap each label and value
+              in a div.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Stacked">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <dl class="desc">
+                    <div><dt>Order</dt><dd>#110963</dd></div>
+                    <div><dt>Customer</dt><dd>Emma Wilson</dd></div>
+                    <div><dt>Email</dt><dd>emma.wilson@example.com</dd></div>
+                    <div><dt>Shipping address</dt><dd>12 Harbour Street, Unit 4, Wellington 6011</dd></div>
+                    <div><dt>Coupon</dt><dd></dd></div>
+                    <div><dt>Note</dt><dd data-empty></dd></div>
+                  </dl>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;dl class=&quot;desc&quot;&gt;
+  &lt;div&gt;&lt;dt&gt;Order&lt;/dt&gt;&lt;dd&gt;#110963&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Customer&lt;/dt&gt;&lt;dd&gt;Emma Wilson&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Email&lt;/dt&gt;&lt;dd&gt;emma.wilson@example.com&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Shipping address&lt;/dt&gt;&lt;dd&gt;12 Harbour Street, Unit 4, Wellington 6011&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Coupon&lt;/dt&gt;&lt;dd&gt;&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Note&lt;/dt&gt;&lt;dd data-empty&gt;&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Inline</h2>
+            <p>
+              data-layout="inline" puts the label on the left. Under 40rem it stacks
+              again.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Inline">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <dl class="desc" data-layout="inline">
+                    <div><dt>Order</dt><dd>#110963</dd></div>
+                    <div><dt>Customer</dt><dd>Emma Wilson</dd></div>
+                    <div><dt>Email</dt><dd>emma.wilson@example.com</dd></div>
+                    <div><dt>Shipping address</dt><dd>12 Harbour Street, Unit 4, Wellington 6011</dd></div>
+                    <div><dt>Coupon</dt><dd></dd></div>
+                    <div><dt>Note</dt><dd data-empty></dd></div>
+                  </dl>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;dl class=&quot;desc&quot; data-layout=&quot;inline&quot;&gt;
+  &lt;div&gt;&lt;dt&gt;Order&lt;/dt&gt;&lt;dd&gt;#110963&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Customer&lt;/dt&gt;&lt;dd&gt;Emma Wilson&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Email&lt;/dt&gt;&lt;dd&gt;emma.wilson@example.com&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Shipping address&lt;/dt&gt;&lt;dd&gt;12 Harbour Street, Unit 4, Wellington 6011&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Coupon&lt;/dt&gt;&lt;dd&gt;&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Note&lt;/dt&gt;&lt;dd data-empty&gt;&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Grid</h2>
+            <p>
+              data-layout="grid" fills the width with as many columns as fit, at
+              least 14rem each.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Grid">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <dl class="desc" data-layout="grid">
+                    <div><dt>Order</dt><dd>#110963</dd></div>
+                    <div><dt>Customer</dt><dd>Emma Wilson</dd></div>
+                    <div><dt>Email</dt><dd>emma.wilson@example.com</dd></div>
+                    <div><dt>Shipping address</dt><dd>12 Harbour Street, Unit 4, Wellington 6011</dd></div>
+                    <div><dt>Coupon</dt><dd></dd></div>
+                    <div><dt>Note</dt><dd data-empty></dd></div>
+                  </dl>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;dl class=&quot;desc&quot; data-layout=&quot;grid&quot;&gt;
+  &lt;div&gt;&lt;dt&gt;Order&lt;/dt&gt;&lt;dd&gt;#110963&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Customer&lt;/dt&gt;&lt;dd&gt;Emma Wilson&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Email&lt;/dt&gt;&lt;dd&gt;emma.wilson@example.com&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Shipping address&lt;/dt&gt;&lt;dd&gt;12 Harbour Street, Unit 4, Wellington 6011&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Coupon&lt;/dt&gt;&lt;dd&gt;&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Note&lt;/dt&gt;&lt;dd data-empty&gt;&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Dividers</h2>
+            <p>
+              data-divided adds a line between rows. It works with every layout.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Dividers">
+                <button type="button" role="tab" id="ex4-tp" aria-selected="true" aria-controls="ex4-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex4-tc" aria-selected="false" aria-controls="ex4-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex4-p" aria-labelledby="ex4-tp" tabindex="0">
+                <div class="docs-preview">
+                  <dl class="desc" data-layout="inline" data-divided>
+                    <div><dt>Order</dt><dd>#110963</dd></div>
+                    <div><dt>Customer</dt><dd>Emma Wilson</dd></div>
+                    <div><dt>Email</dt><dd>emma.wilson@example.com</dd></div>
+                    <div><dt>Shipping address</dt><dd>12 Harbour Street, Unit 4, Wellington 6011</dd></div>
+                    <div><dt>Coupon</dt><dd></dd></div>
+                    <div><dt>Note</dt><dd data-empty></dd></div>
+                  </dl>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex4-c" aria-labelledby="ex4-tc" tabindex="0" hidden>
+                <pre><code>&lt;dl class=&quot;desc&quot; data-layout=&quot;inline&quot; data-divided&gt;
+  &lt;div&gt;&lt;dt&gt;Order&lt;/dt&gt;&lt;dd&gt;#110963&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Customer&lt;/dt&gt;&lt;dd&gt;Emma Wilson&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Email&lt;/dt&gt;&lt;dd&gt;emma.wilson@example.com&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Shipping address&lt;/dt&gt;&lt;dd&gt;12 Harbour Street, Unit 4, Wellington 6011&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Coupon&lt;/dt&gt;&lt;dd&gt;&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Note&lt;/dt&gt;&lt;dd data-empty&gt;&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Long values</h2>
+            <p>
+              Values wrap, even a string with no spaces.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Long values">
+                <button type="button" role="tab" id="ex5-tp" aria-selected="true" aria-controls="ex5-p">
+                  Preview
+                </button>
+                <button type="button" role="tab" id="ex5-tc" aria-selected="false" aria-controls="ex5-c" tabindex="-1">
+                  Code
+                </button>
+              </div>
+              <div role="tabpanel" id="ex5-p" aria-labelledby="ex5-tp" tabindex="0">
+                <div class="docs-preview">
+                  <dl class="desc" data-layout="inline">
+                    <div><dt>Tracking URL</dt><dd>https://tracking.example.com/parcels/9f8e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a3928</dd></div>
+                    <div><dt>Delivery note</dt><dd>Leave with the neighbour at number 14 if nobody answers, and ring the bell twice because it is quiet.</dd></div>
+                  </dl>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex5-c" aria-labelledby="ex5-tc" tabindex="0" hidden>
+                <pre><code>&lt;dl class=&quot;desc&quot; data-layout=&quot;inline&quot;&gt;
+  &lt;div&gt;&lt;dt&gt;Tracking URL&lt;/dt&gt;&lt;dd&gt;https://tracking.example.com/parcels/9f8e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a3928&lt;/dd&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;dt&gt;Delivery note&lt;/dt&gt;&lt;dd&gt;Leave with the neighbour at number 14 if nobody answers, and ring the bell twice because it is quiet.&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Behavior</h2>
+            <p>
+              Pure CSS, no script. An empty <code>dd</code> shows a muted dash.
+              A <code>dd</code> that holds only whitespace is not empty for
+              CSS, so mark it with <code>data-empty</code>.
+            </p>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead><tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr></thead>
+                <tbody>
+<tr><td><code>dl.<wbr />desc</code></td><td></td><td>The list. Each pair sits in a <code>div</code>.</td></tr>
+<tr><td><code>dt</code></td><td></td><td>Label, muted and small</td></tr>
+<tr><td><code>dd</code></td><td></td><td>Value. Long text wraps.</td></tr>
+<tr><td><code>data-layout</code></td><td><code>inline</code>, <code>grid</code> (default stacked)</td><td>Label on the left, or several columns</td></tr>
+<tr><td><code>data-divided</code></td><td>present / absent</td><td>Lines between rows</td></tr>
+<tr><td><code>dd[data-empty]</code></td><td>present / absent</td><td>Shows a dash for a dd with only whitespace</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
