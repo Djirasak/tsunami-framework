@@ -9,6 +9,7 @@ import "./slider.js";
 import "./image-field.js";
 import "./dropzone.js";
 import "./select.js";
+import "./autocomplete.js";
 import "./table.js";
 import "./tree.js";
 import "./journey.js";
