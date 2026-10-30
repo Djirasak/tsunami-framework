@@ -4,8 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "bun scripts/sync.ts --build",
-    "dev": "next dev --port 5477",
+    "dev": "bun scripts/dev.ts",
     "prebuild": "bun scripts/sync.ts --build",
     "build": "next build",
     "start": "next start",
