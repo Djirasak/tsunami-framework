@@ -14,8 +14,9 @@
               Monaco Editor 0.57.0 (MIT) is vendored in this repository in
               <code>vendor/monaco</code> and copied to
               <code>dist/monaco/vs</code>: the loader, the editor, its workers
-              and the languages CSS, SCSS, HTML, JavaScript and JSON (about 7
-              MB, loaded only by pages with an editor). Other languages and the
+              and the languages CSS, SCSS, HTML, JavaScript and JSON (7.4 MB
+              in the folder, of which a page loads about 40 KB at first and
+              about 6 MB when the first editor opens). Other languages and the
               TypeScript and JavaScript language service are not shipped, so
               JavaScript is coloured but has no completions or checks. Monaco is
               not part of <code>tsunami.min.js</code>: a page with an editor
@@ -24,7 +25,7 @@
               itself.
             </p>
             <pre><code>&lt;script src="../dist/monaco/vs/loader.js"&gt;&lt;/script&gt;
-&lt;script src="../dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
             <p>
               If a <code>.code-editor</code> is on a page and the loader is not,
               the script throws an error that says so. The loader defines the
