@@ -1,0 +1,9 @@
+TinyMCE 8.10.0 (released 2026-10-14), self-hosted build.
+Source: https://registry.npmjs.org/tinymce/-/tinymce-8.10.0.tgz
+integrity: sha512-/e+/B+VdbzO02hLzfr3EaoYKYdr3phC/yitG7I9vpi2NqYvtb04UxO/Ay4y9VPqDaQHyigdFnHv2zuTgF7mnZQ== (checked against the npm registry; sha1 5a18cb78a211123f988353cf095f77e9218267f7)
+Files: only the minified files listed in scripts/tinymce.ts (core, DOM model, silver theme, default icons,
+plugins autoresize code fullscreen image link lists media, oxide skins light and dark).
+Licence: GPL-2.0-or-later or the Tiny Self-Hosted License, see LICENSE.md. Use license_key "gpl".
+Update: unpack the new tarball in an empty directory, then run
+  bun scripts/tinymce.ts <unpacked>/package <version>
+and replace this file's version, date and checksums.
