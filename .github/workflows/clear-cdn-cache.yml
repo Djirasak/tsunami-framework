@@ -38,16 +38,38 @@ jobs:
           TAG: ${{ inputs.tag }}
           REPO: ${{ github.repository }}
         run: |
-          failed=0
-          for file in $(git ls-files dist); do
-            url="https://cdn.jsdelivr.net/gh/${REPO}@${TAG}/${file}"
+          base="${REPO}@${TAG}"
+          files=$(git ls-files dist)
+          total=$(echo "$files" | wc -l)
+          echo "Clearing $total files of $base"
+          echo
+          n=0; failed=0; retried=0
+          for file in $files; do
+            n=$((n + 1))
             ok=0
             for attempt in 1 2 3 4 5 6 7 8; do
-              curl -s -o /dev/null "https://purge.jsdelivr.net/gh/${REPO}@${TAG}/${file}"
-              code=$(curl -s -o /dev/null -w '%{http_code}' "$url")
+              purge=$(curl -s "https://purge.jsdelivr.net/gh/${base}/${file}" | jq -r '"purge " + (.status // "?")' 2>/dev/null || echo "purge ?")
+              code=$(curl -s -o /dev/null -w '%{http_code}' "https://cdn.jsdelivr.net/gh/${base}/${file}")
               if [ "$code" = 200 ]; then ok=1; break; fi
+              echo "  ... ${file}: HTTP ${code} (${purge}), try ${attempt} of 8"
               sleep 10
             done
-            if [ "$ok" = 0 ]; then echo "::error::$file still answers $code"; failed=1; fi
+            if [ "$ok" = 1 ]; then
+              [ "$attempt" -gt 1 ] && retried=$((retried + 1))
+              printf '✓ %3d/%d  %s  (try %d)\n' "$n" "$total" "$file" "$attempt"
+            else
+              printf '✗ %3d/%d  %s  HTTP %s\n' "$n" "$total" "$file" "$code"
+              echo "::error::${file} still answers HTTP ${code} after 8 tries"
+              failed=$((failed + 1))
+            fi
           done
-          exit $failed
+          echo
+          echo "$((total - failed)) of $total files answer 200 ($retried needed a retry, $failed failed)"
+          {
+            echo "### Clear CDN Cache for \`${TAG}\`"
+            echo
+            echo "- ${total} files in dist/"
+            echo "- $((total - failed)) answer 200, ${retried} needed a retry"
+            echo "- ${failed} failed"
+          } >> "$GITHUB_STEP_SUMMARY"
+          [ "$failed" = 0 ]
