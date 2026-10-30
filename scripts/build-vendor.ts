@@ -44,6 +44,6 @@ console.log("dist/sortable.min.js");
 // dist/vanilla-calendar.min.js.
 await Bun.write(
   `${root}dist/vanilla-calendar.min.js`,
-  Bun.file(`${root}vendor/vanilla-calendar/index.js`),
+  Bun.file(`${root}vendor/vanilla-calendar/vanilla-calendar.min.js`),
 );
 console.log("dist/vanilla-calendar.min.js");

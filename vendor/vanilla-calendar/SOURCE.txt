@@ -1,5 +1,5 @@
 Vanilla Calendar Pro 3.4.0 (released 2026-09-22), self-hosted build.
 Source: https://registry.npmjs.org/vanilla-calendar-pro/-/vanilla-calendar-pro-3.4.0.tgz
 integrity: sha512-HLWjzHOWvMIrjI77tXK5bYzp0s5TeBSrZC247STjcTAdWI7kqEwWT6Xvu20vqdwzF498H1Da8l4WpdgVIGtc1Q== (sha1 22f25f2a203498faacaf4ce5b3c4e15e8d8ac463), checked against the npm registry.
-Files: package/index.js (the UMD build, global VanillaCalendarPro) copied as is; package/LICENSE as LICENSE.txt (MIT). The library's own CSS is not used: src/components/_date-picker.scss styles its markup.
+Files: package/index.js (the UMD build, global VanillaCalendarPro) copied as is, named vanilla-calendar.min.js so the formatter leaves it alone; package/LICENSE as LICENSE.txt (MIT). The library's own CSS is not used: src/components/_date-picker.scss styles its markup.
 Update: unpack the new tarball in an empty directory, copy the two files again and edit this file.
