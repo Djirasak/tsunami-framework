@@ -502,7 +502,65 @@
             data-pagination-for="orders"
           ></nav>
         </footer>
+        <div
+          class="bulk-bar"
+          data-table="orders"
+          role="region"
+          aria-label="Selected orders"
+        >
+          <p aria-live="polite"><span data-bulk-count>0</span> selected</p>
+          <div>
+            <button type="button" class="btn" data-variant="secondary" data-bulk-action="archived">
+              <i class="icon icon-archive" aria-hidden="true"></i>Archive
+            </button>
+            <button type="button" class="btn" data-variant="secondary" data-bulk-action="marked as shipped">
+              <i class="icon icon-truck" aria-hidden="true"></i>Mark as shipped
+            </button>
+            <button
+              type="button"
+              class="btn"
+              data-variant="danger"
+              commandfor="delete-orders"
+              command="show-modal"
+            >
+              <i class="icon icon-trash-2" aria-hidden="true"></i>Delete
+            </button>
+          </div>
+          <button type="button" class="btn" data-variant="ghost" data-bulk-clear>
+            Clear
+          </button>
+        </div>
       </div>
     </main>
   </div>
+  <dialog
+    class="dialog"
+    id="delete-orders"
+    role="alertdialog"
+    aria-labelledby="delete-orders-title"
+    aria-describedby="delete-orders-desc"
+    closedby="any"
+  >
+    <header>
+      <h2 id="delete-orders-title">Delete the selected orders?</h2>
+      <p id="delete-orders-desc">
+        They are removed from the list for good. This cannot be undone.
+      </p>
+    </header>
+    <footer>
+      <button type="button" class="btn" commandfor="delete-orders" command="close">
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="btn"
+        data-variant="danger"
+        data-bulk-action="deleted"
+        commandfor="delete-orders"
+        command="close"
+      >
+        Delete
+      </button>
+    </footer>
+  </dialog>
 </div>
