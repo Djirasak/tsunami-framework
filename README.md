@@ -92,7 +92,7 @@ fonts/                  Google Sans + Lucide (woff2, licenses, CHECKSUMS.txt)
 flags/                  flag-icons 4x3 SVGs (MIT)
 vendor/tinymce/         TinyMCE 8 release files (the build joins them into dist/tinymce.min.js)
 vendor/sortable/        SortableJS 1.15 (copied to dist/sortable.min.js)
-scripts/                serve.ts, stamp-version.ts, build-vendor.ts, lucide.ts, flags.ts, tinymce.ts
+scripts/                build.ts, serve.ts, stamp-version.ts, build-vendor.ts, lucide.ts, flags.ts, tinymce.ts
 ```
 
 ## Tokens
