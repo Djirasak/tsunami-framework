@@ -58,6 +58,29 @@ const orders = [
   ["#1039", "Lucas Meyer", "Refunded", "danger", "$215.00"],
 ];
 
+const samples = [
+  {
+    slug: "dashboard",
+    title: "Dashboard",
+    text: "Stats, charts and recent orders.",
+  },
+  {
+    slug: "orders",
+    title: "Orders",
+    text: "A table with filters and bulk actions.",
+  },
+  {
+    slug: "settings",
+    title: "Settings",
+    text: "A multi-step form with validation.",
+  },
+  {
+    slug: "login",
+    title: "Sign in",
+    text: "Email, password and a one-time code.",
+  },
+];
+
 export default function Landing() {
   return (
     <>
@@ -205,25 +228,35 @@ export default function Landing() {
 
         <section className="landing-samples" aria-labelledby="samples">
           <h2 id="samples">Sample pages</h2>
-          <div className="empty">
-            <header>
-              <figure>
-                <i className="icon icon-layout-dashboard" aria-hidden="true"></i>
-              </figure>
-              <h3>Full-page samples are coming</h3>
-              <p>
-                Dashboards, tables, forms and settings screens built with
-                Tsunami. Until then every component has a live example in the
-                docs.
-              </p>
-            </header>
-            <footer>
-              <div>
-                <a className="btn" href="/docs">
-                  Browse the components
-                </a>
-              </div>
-            </footer>
+          <p className="landing-samples-lead">
+            Full pages built only from Tsunami components, nothing else. Open
+            one and read its HTML.
+          </p>
+          <div className="landing-samples-grid">
+            {samples.map((x) => (
+              <a className="landing-sample" href={`/examples/${x.slug}`} key={x.slug}>
+                <span className="landing-sample-shot">
+                  <img
+                    className="landing-shot-light"
+                    src={`/examples/${x.slug}-light.jpg`}
+                    alt=""
+                    width="640"
+                    height="400"
+                    loading="lazy"
+                  />
+                  <img
+                    className="landing-shot-dark"
+                    src={`/examples/${x.slug}-dark.jpg`}
+                    alt=""
+                    width="640"
+                    height="400"
+                    loading="lazy"
+                  />
+                </span>
+                <strong>{x.title}</strong>
+                <span>{x.text}</span>
+              </a>
+            ))}
           </div>
         </section>
       </main>
