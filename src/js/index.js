@@ -4,6 +4,7 @@ import "./pressed.js";
 import "./tabs.js";
 import "./sidebar.js";
 import "./save-bar.js";
+import "./toast.js";
 import "./slider.js";
 import "./image-field.js";
 import "./dropzone.js";
