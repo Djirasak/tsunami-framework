@@ -4,10 +4,36 @@
 // td[data-sort-value] overrides a cell's text). Fires cancelable tsunami:sort first.
 // Select: a checkbox in the first cell of each row; the one in thead selects all.
 // Rows get aria-selected, the header box goes indeterminate. Fires tsunami:select.
+// Pages: data-page-size="10" on the table shows that many rows at a time. A
+// nav.pagination[data-pagination-for="table-id"] is filled with buttons (without a
+// value it is the one in the same .card); [data-table-info] shows "1–10 of 42";
+// select[data-table-page-size="table-id"] changes the size. Sorting runs on every
+// row first, then the page is cut. The select-all box selects every row that
+// matches the filter, not only the visible page. Rows are never re-created: the
+// ones outside the page get `hidden`. Fires tsunami:tablechange on the table.
 
 const SORT_BUTTON = ".table th[aria-sort] > button";
 const ROW_BOX = '.table tbody tr > td:first-child > input[type="checkbox"]';
 const ALL_BOX = '.table thead tr > th:first-child > input[type="checkbox"]';
+
+const EMPTY = "[data-table-empty]";
+
+const rowsOf = (table) =>
+  [...table.tBodies].flatMap((b) =>
+    [...b.rows].filter((r) => !r.matches(EMPTY)),
+  );
+
+const states = new WeakMap();
+
+// Elements that belong to a table: attr="table-id", or attr with no value in the same card.
+function controls(table, selector, attr) {
+  const own = [...document.querySelectorAll(`${selector}[${attr}]`)];
+  const card = table.closest(".card");
+  return own.filter((el) => {
+    const id = el.getAttribute(attr);
+    return id ? id === table.id : card?.contains(el);
+  });
+}
 
 const cellValue = (row, i) => {
   const cell = row.cells[i];
@@ -63,7 +89,7 @@ function sort(table, columnIndex, direction = "ascending") {
       cell.setAttribute("aria-sort", cell === th ? direction : "none");
   }
   for (const body of table.tBodies) {
-    const rows = [...body.rows];
+    const rows = [...body.rows].filter((r) => !r.matches(EMPTY));
     const values = rows.map((r) => cellValue(r, columnIndex));
     const type = th?.dataset.sortType ?? detectType(values);
     const cmp = compareBy(type);
@@ -80,6 +106,11 @@ function sort(table, columnIndex, direction = "ascending") {
       });
     body.append(...order.map((o) => o.row));
   }
+  const state = states.get(table);
+  if (state) {
+    state.sort = { column: columnIndex, direction };
+    update(table);
+  }
   return true;
 }
 
@@ -93,12 +124,11 @@ document.addEventListener("click", (e) => {
   sort(table, th.cellIndex, next);
 });
 
-const rowBoxes = (table) =>
-  [...table.tBodies].flatMap((b) =>
-    [...b.rows]
-      .map((r) => r.cells[0]?.querySelector(':scope > input[type="checkbox"]'))
-      .filter(Boolean),
-  );
+const boxOf = (row) =>
+  row.cells[0]?.querySelector(':scope > input[type="checkbox"]');
+
+const rowBoxes = (table, rows = rowsOf(table)) =>
+  rows.map(boxOf).filter(Boolean);
 
 function selected(table) {
   return rowBoxes(table)
@@ -106,13 +136,16 @@ function selected(table) {
     .map((box) => box.closest("tr"));
 }
 
+// Rows the select-all box acts on: the ones matching the filter, on every page.
+const matching = (table) => states.get(table)?.matched ?? rowsOf(table);
+
 // Bring row aria-selected and the select-all box in line with the row boxes.
 function sync(table) {
-  const boxes = rowBoxes(table);
-  for (const box of boxes)
+  for (const box of rowBoxes(table))
     box.closest("tr").setAttribute("aria-selected", String(box.checked));
   const all = table.querySelector(ALL_BOX.replace(".table ", ":scope > "));
   if (all) {
+    const boxes = rowBoxes(table, matching(table));
     const n = boxes.filter((b) => b.checked).length;
     all.checked = n > 0 && n === boxes.length;
     all.indeterminate = n > 0 && n < boxes.length;
@@ -121,7 +154,7 @@ function sync(table) {
 
 function select(table, rows, checked = true) {
   for (const row of rows) {
-    const box = row.cells[0]?.querySelector(':scope > input[type="checkbox"]');
+    const box = boxOf(row);
     if (box) box.checked = checked;
   }
   sync(table);
@@ -143,19 +176,196 @@ document.addEventListener("change", (e) => {
   const box = all ?? e.target.closest(ROW_BOX);
   if (!box) return;
   const table = box.closest("table");
-  if (all) for (const b of rowBoxes(table)) b.checked = all.checked;
+  if (all)
+    for (const b of rowBoxes(table, matching(table))) b.checked = all.checked;
   sync(table);
   announce(table);
 });
 
-// Pick up rows that start checked (server-rendered selection).
-const syncAll = () => {
+// ---- Pages ----
+
+const pageSizeOf = (table) => {
+  const n = Number.parseInt(table.dataset.pageSize, 10);
+  return n > 0 ? n : 0;
+};
+
+// Page numbers to show: first, last, the current one and its neighbours; null is a gap.
+function pageList(page, pages) {
+  const keep = new Set([1, pages, page - 1, page, page + 1]);
+  const list = [];
+  let last = 0;
+  for (let n = 1; n <= pages; n++) {
+    if (!keep.has(n)) continue;
+    if (n - last > 1) list.push(n - last === 2 ? n - 1 : null);
+    list.push(n);
+    last = n;
+  }
+  return list;
+}
+
+function pageButton(label, page, props = {}) {
+  const li = document.createElement("li");
+  const button = document.createElement("button");
+  button.type = "button";
+  button.dataset.page = String(page);
+  Object.assign(button, props);
+  if (typeof label === "string") button.textContent = label;
+  else button.append(label);
+  li.append(button);
+  return li;
+}
+
+const chevron = (name) => {
+  const i = document.createElement("i");
+  i.className = `icon icon-${name}`;
+  i.setAttribute("aria-hidden", "true");
+  return i;
+};
+
+function renderPagination(table, state) {
+  const { page, pages } = state;
+  for (const nav of controls(table, ".pagination", "data-pagination-for")) {
+    nav.hidden = pages <= 1;
+    const ul = document.createElement("ul");
+    const prev = pageButton(chevron("chevron-left"), page - 1, {
+      disabled: page <= 1,
+    });
+    prev.firstChild.setAttribute("aria-label", "Previous page");
+    const next = pageButton(chevron("chevron-right"), page + 1, {
+      disabled: page >= pages,
+    });
+    next.firstChild.setAttribute("aria-label", "Next page");
+    ul.append(prev);
+    for (const n of pageList(page, pages)) {
+      if (n === null) {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.setAttribute("aria-hidden", "true");
+        span.append(chevron("ellipsis"));
+        li.append(span);
+        ul.append(li);
+        continue;
+      }
+      const li = pageButton(String(n), n);
+      if (n === page) li.firstChild.setAttribute("aria-current", "page");
+      ul.append(li);
+    }
+    ul.append(next);
+    nav.replaceChildren(ul);
+  }
+}
+
+function renderInfo(table, state) {
+  const { page, size, matched } = state;
+  const total = matched.length;
+  const from = total ? (size ? (page - 1) * size + 1 : 1) : 0;
+  const to = size ? Math.min(page * size, total) : total;
+  const text = total ? `${from}–${to} of ${total}` : "0 of 0";
+  for (const el of controls(table, "[data-table-info]", "data-table-info"))
+    el.textContent = text;
+}
+
+// ---- State and update ----
+
+function stateFor(table) {
+  let state = states.get(table);
+  if (!state) {
+    state = { page: 1, pages: 1, matched: [], sort: null };
+    states.set(table, state);
+    table.dataset.enhanced = "";
+  }
+  return state;
+}
+
+// Work out the matching rows and show the current page of them.
+function update(table, { page } = {}) {
+  const state = stateFor(table);
+  const rows = rowsOf(table);
+  const size = pageSizeOf(table);
+  state.matched = rows;
+  state.pages = size ? Math.max(1, Math.ceil(rows.length / size)) : 1;
+  if (page !== undefined) state.page = page;
+  state.page = Math.min(Math.max(1, state.page), state.pages);
+  const start = size ? (state.page - 1) * size : 0;
+  const end = size ? start + size : rows.length;
+  const shown = new Set(state.matched.slice(start, end));
+  for (const row of rows) row.hidden = !shown.has(row);
+  state.size = size;
+  renderPagination(table, state);
+  renderInfo(table, state);
+  for (const select of controls(table, "select", "data-table-page-size"))
+    if (size && select.value !== String(size)) select.value = String(size);
+  sync(table);
+  table.dispatchEvent(
+    new CustomEvent("tsunami:tablechange", {
+      bubbles: true,
+      detail: {
+        page: state.page,
+        pageSize: size,
+        total: rows.length,
+        filtered: state.matched.length,
+        sort: state.sort,
+        hidden: [],
+      },
+    }),
+  );
+}
+
+function setPage(table, n) {
+  update(table, { page: Number(n) });
+}
+
+// Re-read the rows after you add, remove or change them.
+function refresh(table) {
+  update(table);
+}
+
+document.addEventListener("click", (e) => {
+  const button = e.target.closest("[data-page]");
+  const nav = button?.closest(".pagination[data-pagination-for]");
+  if (!nav || button.disabled) return;
+  const id = nav.getAttribute("data-pagination-for");
+  const table = id
+    ? document.getElementById(id)
+    : nav.closest(".card")?.querySelector(".table");
+  if (table) setPage(table, button.dataset.page);
+});
+
+document.addEventListener("change", (e) => {
+  const select = e.target.closest("select[data-table-page-size]");
+  if (!select) return;
+  const id = select.getAttribute("data-table-page-size");
+  const table = id
+    ? document.getElementById(id)
+    : select.closest(".card")?.querySelector(".table");
+  if (!table) return;
+  table.dataset.pageSize = select.value;
+  update(table, { page: 1 });
+});
+
+const wanted = (table) =>
+  table.hasAttribute("data-page-size") ||
+  (table.id &&
+    document.querySelector(
+      `[data-pagination-for="${CSS.escape(table.id)}"], [data-table-page-size="${CSS.escape(table.id)}"]`,
+    ));
+
+// Pick up rows that start checked (server-rendered selection) and set up paged tables.
+const init = () => {
   for (const table of document.querySelectorAll(".table")) {
-    if (table.querySelector(ROW_BOX.replace(".table ", ""))) sync(table);
+    if (wanted(table)) update(table);
+    else if (table.querySelector(ROW_BOX.replace(".table ", ""))) sync(table);
   }
 };
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", syncAll);
-else syncAll();
+  document.addEventListener("DOMContentLoaded", init);
+else init();
 
-(window.tsunami ??= {}).table = { sort, select, selected, sync };
+(window.tsunami ??= {}).table = {
+  sort,
+  select,
+  selected,
+  sync,
+  refresh,
+  page: setPage,
+};

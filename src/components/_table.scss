@@ -1,6 +1,7 @@
 // Table: quiet header, row lines, tabular numbers.
 // Sortable headers (th[aria-sort] > button) and selectable rows (checkbox in the first cell)
-// are driven by src/js/table.js.
+// are driven by src/js/table.js, as are pages, filters and column visibility
+// (js adds data-enhanced; rows outside the page are hidden).
 @use "icon";
 @use "motion";
 
@@ -44,6 +45,16 @@
 
   :where(.table tbody tr) {
     transition: background-color motion.$base motion.$ease;
+  }
+
+  // A paged or filtered table: the last row in the DOM may be hidden, so rows
+  // draw a top line instead, except the first one that shows.
+  :where(.table[data-enhanced] tbody tr > *) {
+    border-bottom: 0;
+  }
+
+  :where(.table[data-enhanced] tbody tr:not([hidden]) ~ tr:not([hidden]) > *) {
+    border-top: 1px solid var(--line);
   }
 
   :where(.table tbody tr:hover) {

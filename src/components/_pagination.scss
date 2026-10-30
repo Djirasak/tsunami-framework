@@ -1,5 +1,6 @@
 // Pagination: <nav class="pagination" aria-label="..."><ul><li><a>..</a></li></ul></nav>.
 // Mark the current page with aria-current="page"; an ellipsis is a <span>.
+// Buttons work the same as links; js/table.js fills a nav[data-pagination-for] with buttons.
 // data-size="sm": compact square outlined pages, the current one filled.
 @layer components {
   :where(.pagination ul) {
@@ -16,7 +17,7 @@
     display: flex;
   }
 
-  :where(.pagination :is(a, li > span)) {
+  :where(.pagination :is(a, button, li > span)) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -33,7 +34,14 @@
     text-decoration: none;
   }
 
-  :where(.pagination a:hover) {
+  :where(.pagination button) {
+    background: none;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  :where(.pagination :is(a, button):hover) {
     background: var(--subtle);
     text-decoration: none;
   }
@@ -47,13 +55,18 @@
     color: var(--muted);
   }
 
-  :where(.pagination [aria-disabled="true"]) {
+  :where(.pagination :is([aria-disabled="true"], button:disabled)) {
     color: var(--muted);
     pointer-events: none;
   }
 
+  :where(.pagination button:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
   // Compact: small outlined squares, the current page filled.
-  :where(.pagination[data-size="sm"] :is(a, li > span)) {
+  :where(.pagination[data-size="sm"] :is(a, button, li > span)) {
     min-width: 1.75rem;
     height: 1.75rem;
     padding: 0 var(--space-1);
@@ -62,7 +75,7 @@
     font-size: var(--text-sm);
   }
 
-  :where(.pagination[data-size="sm"] a:hover) {
+  :where(.pagination[data-size="sm"] :is(a, button):hover) {
     background: var(--subtle);
   }
 
