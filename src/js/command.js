@@ -7,6 +7,8 @@
 // Filters: data-results groups, data-filter keys, a [data-filters] button row,
 // a data-filter-list group listed after "/", a header [data-filter-badge],
 // data-limit with a data-more item, aria-busy on a results group, data-tab-filter.
+// Hotkey: data-hotkey on a dialog.command-dialog opens it from the keyboard
+// ("mod+k", "ctrl+shift+p", "/"; several separated by spaces; mod is Ctrl or Cmd).
 // No methods or events: listen for the click on an item. See docs/command.html.
 const ITEM = '[role="menuitem"]';
 const limits = new WeakMap();
@@ -247,3 +249,41 @@ document.addEventListener(
   },
   true,
 );
+
+// Hotkeys: [data-hotkey] on a command dialog toggles it. A key without a
+// modifier is ignored while typing in a field.
+const typing = (el) =>
+  el?.matches?.("input, textarea, select, [contenteditable]") ?? false;
+
+function hotkeyMatches(e, combo) {
+  const parts = combo.toLowerCase().split("+");
+  const key = parts.pop() || "+";
+  const mods = new Set(parts);
+  if (e.key.toLowerCase() !== key) return false;
+  const mod = mods.has("mod");
+  if (mod && !(e.ctrlKey || e.metaKey)) return false;
+  return (
+    (mod || e.ctrlKey === mods.has("ctrl")) &&
+    (mod || e.metaKey === (mods.has("meta") || mods.has("cmd"))) &&
+    e.altKey === mods.has("alt") &&
+    (key === "?" || e.shiftKey === mods.has("shift"))
+  );
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.defaultPrevented || e.repeat) return;
+  for (const dialog of document.querySelectorAll(
+    "dialog.command-dialog[data-hotkey]",
+  )) {
+    const combos = dialog.dataset.hotkey.trim().split(/\s+/);
+    if (!combos.some((c) => hotkeyMatches(e, c))) continue;
+    const bare = !(e.ctrlKey || e.metaKey || e.altKey);
+    if (bare && typing(e.target)) continue;
+    const other = document.querySelector("dialog:modal");
+    if (other && other !== dialog) continue;
+    e.preventDefault();
+    if (dialog.open) dialog.close();
+    else dialog.showModal();
+    return;
+  }
+});
