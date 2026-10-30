@@ -1,0 +1,153 @@
+// Phone input: <div class="phone-input" data-country="TH" data-name="phone">
+// around an .input-group with an input[type=tel]. js/phone-input.js adds the
+// country button (flag + dial code) in front of the input and a searchable
+// country list in a popover. The list look is shared with Select.
+@use "icon";
+@use "motion";
+@use "input-group";
+@use "flag";
+
+@layer components {
+  :where(.phone-input) {
+    display: block;
+    position: relative;
+    min-width: 0;
+  }
+
+  // The country button sits flush in the left edge of the group.
+  :where(.phone-input .input-group > button) {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: var(--space-2);
+    height: 100%;
+    margin-left: calc(var(--space-3) * -1);
+    padding: 0 var(--space-2) 0 var(--space-3);
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    background: var(--subtle);
+    color: var(--fg);
+    font: inherit;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  :where(.phone-input .input-group > button)::after {
+    @include icon.glyph(chevron-down);
+    color: var(--muted);
+  }
+
+  :where(.phone-input .input-group > button:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  :where(.phone-input .input-group > button:disabled) {
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
+  :where(.phone-input .input-group[data-size="sm"] > button) {
+    margin-left: calc(var(--space-2) * -1);
+    padding-left: var(--space-2);
+  }
+
+  :where(.phone-input .input-group[data-size="lg"] > button) {
+    margin-left: calc(var(--space-4) * -1);
+    padding-left: var(--space-4);
+  }
+
+  // List: a popover placed under the group by the script.
+  :where(.phone-input > [popover]) {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+  }
+
+  :where(.phone-input > [popover]:popover-open) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include motion.pop(".phone-input > [popover]");
+
+  :where(.phone-input > [popover] > input) {
+    height: 2.25rem;
+    padding: 0 var(--space-3);
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    outline: 0;
+    background: none;
+    color: var(--fg);
+    font: inherit;
+    font-size: var(--text-base);
+  }
+
+  :where(.phone-input > [popover] > input)::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+
+  :where(.phone-input [role="listbox"]) {
+    max-height: 16rem;
+    padding: var(--space-1);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  :where(.phone-input [role="listbox"]:empty) {
+    display: none;
+  }
+
+  :where(.phone-input [role="option"]) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  :where(.phone-input [role="option"] > span:not(.flag)) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  :where(.phone-input [role="option"] > small) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.phone-input [role="option"])::after {
+    @include icon.glyph(check);
+    width: 1em;
+    color: var(--accent);
+    visibility: hidden;
+  }
+
+  :where(.phone-input [role="option"][aria-selected="true"])::after {
+    visibility: visible;
+  }
+
+  :where(.phone-input [role="option"][data-active]) {
+    background: var(--subtle);
+  }
+
+  :where(.phone-input > [popover] > p) {
+    padding: var(--space-2) var(--space-3);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.phone-input > [popover] > p[hidden]) {
+    display: none;
+  }
+}
