@@ -2,6 +2,8 @@
 // <div class="input-group color-field"><span><input type="color"></span><input type="text">.
 // The text field is what the form sends; color-field.js keeps the two in step.
 // data-empty (set by the script) hides the picker's swatch while the text is empty.
+// data-alpha adds opacity: the text may be #rgba, #rrggbbaa or rgba(), and an
+// input[type=range].slider in a last span sets it; the swatch fades with --alpha.
 @layer components {
   :where(.color-field input[type="color"]) {
     flex: none;
@@ -27,10 +29,12 @@
 
   :where(.color-field input[type="color"])::-webkit-color-swatch {
     border: 0;
+    opacity: var(--alpha, 1);
   }
 
   :where(.color-field input[type="color"])::-moz-color-swatch {
     border: 0;
+    opacity: var(--alpha, 1);
   }
 
   :where(.color-field[data-empty] input[type="color"])::-webkit-color-swatch {
@@ -43,5 +47,9 @@
 
   :where(.color-field input[type="text"]) {
     font-family: var(--font-mono);
+  }
+
+  :where(.color-field .slider) {
+    width: 5rem;
   }
 }
