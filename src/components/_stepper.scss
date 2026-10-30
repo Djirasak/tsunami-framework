@@ -1,0 +1,187 @@
+// Stepper: <div class="stepper"> with an <ol> of steps (a <button> each), then one <section> per step.
+// Step state is data-state="done|current|upcoming", set by js/stepper.js from the current step.
+// On the stepper: data-linear (no jumping ahead), data-validate (check a panel before Next).
+@use "icon";
+@use "motion";
+
+@layer components {
+  :where(.stepper) {
+    display: grid;
+    gap: var(--space-5);
+    min-width: 0;
+  }
+
+  :where(.stepper > ol) {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    counter-reset: step;
+    list-style: none;
+  }
+
+  // A rule above each step: filled once the step is done or current.
+  :where(.stepper > ol > li) {
+    min-width: 0;
+    border-top: 2px solid var(--line);
+    counter-increment: step;
+    transition: border-color motion.$base motion.$ease;
+  }
+
+  :where(.stepper > ol > li:has(> [data-state="done"], > [data-state="current"])) {
+    border-top-color: var(--accent);
+  }
+
+  :where(.stepper > ol > li > button) {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    width: 100%;
+    padding: var(--space-3) 0 0;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    text-align: start;
+    cursor: pointer;
+  }
+
+  :where(.stepper > ol > li > button[aria-disabled="true"]) {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // The marker: the step number, or a check once it is done.
+  :where(.stepper > ol > li > button)::before {
+    content: counter(step);
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    line-height: 1;
+    transition-property: background-color, border-color, color;
+    transition-duration: motion.$base;
+    transition-timing-function: motion.$ease;
+  }
+
+  :where(.stepper > ol > li > button[data-state="current"]) {
+    color: var(--fg);
+  }
+
+  :where(.stepper > ol > li > button[data-state="current"])::before {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :where(.stepper > ol > li > button[data-state="done"]) {
+    color: var(--fg);
+  }
+
+  :where(.stepper > ol > li > button[data-state="done"])::before {
+    @include icon.glyph(check);
+    border-color: var(--accent);
+    background: var(--surface);
+    color: var(--accent);
+  }
+
+  :where(.stepper > ol > li > button:not([aria-disabled="true"]):hover) {
+    color: var(--fg);
+  }
+
+  :where(.stepper > ol > li > button:focus-visible) {
+    outline-offset: 2px;
+  }
+
+  // Label, then an optional description.
+  :where(.stepper > ol > li > button > span) {
+    display: grid;
+    min-width: 0;
+  }
+
+  :where(.stepper > ol > li > button strong) {
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+
+  :where(.stepper > ol > li > button small) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.stepper > section) {
+    min-width: 0;
+  }
+
+  :where(.stepper > section:focus-visible, .stepper > section :is(h2, h3, h4):focus-visible) {
+    outline-offset: 4px;
+  }
+
+  // The Back / Next row: a footer in a panel, Next at the end.
+  :where(.stepper > section > footer) {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: flex-end;
+    margin-top: var(--space-5);
+  }
+
+  // data-orientation="vertical", or any stepper on a narrow screen: steps stack, a rule on the side.
+  :where(.stepper[data-orientation="vertical"] > ol) {
+    grid-auto-flow: row;
+    gap: 0;
+  }
+
+  :where(.stepper[data-orientation="vertical"] > ol > li) {
+    border-top: 0;
+    border-inline-start: 2px solid var(--line);
+    padding-inline-start: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+
+  :where(
+    .stepper[data-orientation="vertical"]
+      > ol
+      > li:has(> [data-state="done"], > [data-state="current"])
+  ) {
+    border-inline-start-color: var(--accent);
+  }
+
+  :where(.stepper[data-orientation="vertical"] > ol > li > button) {
+    padding-top: 0;
+  }
+
+  @media (width < 40rem) {
+    :where(.stepper > ol) {
+      grid-auto-flow: row;
+      gap: 0;
+    }
+
+    :where(.stepper > ol > li) {
+      border-top: 0;
+      border-inline-start: 2px solid var(--line);
+      padding-inline-start: var(--space-3);
+      padding-bottom: var(--space-3);
+    }
+
+    :where(.stepper > ol > li:has(> [data-state="done"], > [data-state="current"])) {
+      border-inline-start-color: var(--accent);
+    }
+
+    :where(.stepper > ol > li > button) {
+      padding-top: 0;
+    }
+
+    :where(.stepper > section > footer) {
+      flex-direction: column-reverse;
+    }
+  }
+}
