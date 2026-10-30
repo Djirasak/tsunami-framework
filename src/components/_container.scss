@@ -1,0 +1,28 @@
+// Container: centres a page's content and stops it from growing past a
+// readable width. Width by data-size: sm 36rem, md 48rem, lg 64rem (default),
+// xl 80rem. Padding on the sides keeps it off the screen edge; inside a
+// Workspace main, which already pads, it adds none.
+@layer components {
+  :where(.container) {
+    width: 100%;
+    max-width: 64rem;
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+  }
+
+  :where(.container[data-size="sm"]) {
+    max-width: 36rem;
+  }
+
+  :where(.container[data-size="md"]) {
+    max-width: 48rem;
+  }
+
+  :where(.container[data-size="xl"]) {
+    max-width: 80rem;
+  }
+
+  :where(.workspace > main > .container) {
+    padding-inline: 0;
+  }
+}
