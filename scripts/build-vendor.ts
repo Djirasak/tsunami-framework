@@ -1,4 +1,5 @@
-// Join the vendored TinyMCE files into one script: dist/tinymce.min.js.
+// Build the vendored scripts into dist/.
+// TinyMCE: join the vendored files into one script, dist/tinymce.min.js.
 // Core first, then icons, model, theme, plugins and skins, which register
 // themselves with the core, so the editor never loads anything else.
 import { mkdirSync } from "node:fs";
@@ -31,3 +32,10 @@ await Bun.write(`${root}dist/tinymce.min.js`, out);
 console.log(
   `dist/tinymce.min.js: ${files.length} files, ${(out.length / 1024).toFixed(0)} KB`,
 );
+
+// SortableJS ships as one minified file: copied as dist/sortable.min.js.
+await Bun.write(
+  `${root}dist/sortable.min.js`,
+  Bun.file(`${root}vendor/sortable/Sortable.min.js`),
+);
+console.log("dist/sortable.min.js");
