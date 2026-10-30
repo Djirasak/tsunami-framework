@@ -1,0 +1,139 @@
+<header class="page-header">
+            <div>
+              <h1>Filter bar and chips</h1>
+              <p>
+                A chip is a small pill with a label and a remove button. A filter bar is a wrapping row of chips with a Clear all button; removing a chip tells the page so it can filter again.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Filter bar</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Filter bar">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="filter-bar" role="group" aria-label="Active filters" id="fb1">
+                      <span class="chip" data-value="status:paid">Status: Paid<button type="button" aria-label="Remove Status: Paid"><i class="icon icon-x" aria-hidden="true"></i></button></span>
+                      <span class="chip" data-value="date:30d">Last 30 days<button type="button" aria-label="Remove Last 30 days"><i class="icon icon-x" aria-hidden="true"></i></button></span>
+                      <span class="chip" data-value="country:th">Country: Thailand<button type="button" aria-label="Remove Country: Thailand"><i class="icon icon-x" aria-hidden="true"></i></button></span>
+                      <button type="button" class="btn" data-variant="ghost" data-size="sm" data-clear>Clear all</button>
+                    </div>
+                    <small id="fb1-out" aria-live="polite">Remove a chip or clear all.</small>
+                    <script>
+                      document.getElementById("fb1").addEventListener("tsunami:filterchange", (e) => {
+                        document.getElementById("fb1-out").textContent = "Filters left: " + (e.detail.values.join(", ") || "none");
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="filter-bar" role="group" aria-label="Active filters" id="fb1"&gt;
+  &lt;span class="chip" data-value="status:paid"&gt;Status: Paid&lt;button type="button" aria-label="Remove Status: Paid"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;span class="chip" data-value="date:30d"&gt;Last 30 days&lt;button type="button" aria-label="Remove Last 30 days"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;span class="chip" data-value="country:th"&gt;Country: Thailand&lt;button type="button" aria-label="Remove Country: Thailand"&gt;&lt;i class="icon icon-x" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;&lt;/span&gt;
+  &lt;button type="button" class="btn" data-variant="ghost" data-size="sm" data-clear&gt;Clear all&lt;/button&gt;
+&lt;/div&gt;
+&lt;small id="fb1-out" aria-live="polite"&gt;Remove a chip or clear all.&lt;/small&gt;
+&lt;script&gt;
+  document.getElementById("fb1").addEventListener("tsunami:filterchange", (e) =&gt; {
+    document.getElementById("fb1-out").textContent = "Filters left: " + (e.detail.values.join(", ") || "none");
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Chips on their own</h2>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Chips on their own">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="filter-bar">
+                    <span class="chip">Draft</span>
+                    <span class="chip" data-variant="accent">Selected</span>
+                    <span class="chip" data-variant="muted">Add filter</span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;span class="chip"&gt;Draft&lt;/span&gt;
+&lt;span class="chip" data-variant="accent"&gt;Selected&lt;/span&gt;
+&lt;span class="chip" data-variant="muted"&gt;Add filter&lt;/span&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Behavior</h2>
+            <ul>
+              <li>A chip with a remove button is a <code>span.chip</code> with a <code>button</code> inside. The button needs an <code>aria-label</code> such as "Remove Status: Paid".</li>
+              <li>Removing a chip moves focus to the next chip, or the last one left, so the keyboard keeps its place.</li>
+              <li>The Clear all button (<code>data-clear</code>) is hidden when there are no chips.</li>
+              <li>Chips you add later work too. The script reads the page, so there is nothing to start.</li>
+              <li>Chips outside a <code>.filter-bar</code> are only styled. Handle their buttons yourself.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>API</h2>
+            <h3>Methods</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Methods">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Method</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>tsunami.filterBar.values(bar)</code></td><td>The <code>data-value</code> of each chip (its text when there is none).</td></tr>
+                  <tr><td><code>tsunami.filterBar.clear(bar)</code></td><td>Removes every chip and sends <code>tsunami:filterchange</code>.</td></tr>
+                  <tr><td><code>tsunami.filterBar.mount(root?)</code></td><td>Refreshes the Clear all button of each bar inside <code>root</code>.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Events">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Event</th><th scope="col">On</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>tsunami:chipremove</code></td><td>the chip, bubbles, cancelable</td><td>Sent before a chip is removed. <code>event.detail</code> is <code>{ value, label }</code>. Call <code>preventDefault()</code> to keep the chip.</td></tr>
+                  <tr><td><code>tsunami:filterchange</code></td><td>the <code>.filter-bar</code>, bubbles</td><td>Sent after a chip is removed or all are cleared. <code>event.detail.values</code> lists the chips left.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Keyboard">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Key</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><kbd>Tab</kbd></td><td>Moves between the remove buttons and Clear all.</td></tr>
+                  <tr><td><kbd>Enter</kbd> <kbd>Space</kbd></td><td>Removes the chip, or clears all.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>.chip</code></td><td>on a <code>span</code></td><td>The pill. Put the label first and an optional remove <code>button</code> last.</td></tr>
+                  <tr><td><code>data-variant</code></td><td><code>accent</code>, <code>muted</code></td><td>On a chip: an accent outline, or a dashed quiet one.</td></tr>
+                  <tr><td><code>data-value</code></td><td>text</td><td>On a chip: what <code>tsunami:chipremove</code> and <code>values()</code> report.</td></tr>
+                  <tr><td><code>.filter-bar</code></td><td>on a <code>div</code></td><td>A wrapping row of chips. Give it <code>role="group"</code> and an <code>aria-label</code>.</td></tr>
+                  <tr><td><code>data-clear</code></td><td>present</td><td>On a button in the bar: removes every chip.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
