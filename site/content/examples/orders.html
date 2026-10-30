@@ -563,4 +563,71 @@
       </button>
     </footer>
   </dialog>
+  <script>
+    const table = document.getElementById("orders"),
+      body = table.tBodies[0],
+      all = [...body.rows],
+      bar = document.getElementById("order-filters"),
+      status = document.querySelector("#status-filter select"),
+      dates = document.getElementById("date-filter"),
+      chip = (key, text) => {
+        bar.querySelector(`[data-value^="${key}:"]`)?.remove();
+        if (!text) return tsunami.filterBar.mount(bar);
+        const c = document.createElement("span");
+        c.className = "chip";
+        c.dataset.value = `${key}:${text}`;
+        c.innerHTML = `${text}<button type="button" aria-label="Remove ${text}"><i class="icon icon-x" aria-hidden="true"></i></button>`;
+        bar.insertBefore(c, bar.querySelector("[data-clear]"));
+        tsunami.filterBar.mount(bar);
+      },
+      apply = () => {
+        const [from, to = from] = dates.value.split(" to ");
+        const keep = all.filter(
+          (r) =>
+            (!status.value || r.dataset.status === status.value) &&
+            (!from || (r.dataset.date >= from && r.dataset.date <= to)),
+        );
+        body.replaceChildren(...keep, ...body.querySelectorAll("[data-table-empty]"));
+        const th = table.querySelector("th[aria-sort]:not([aria-sort=none])");
+        if (th) tsunami.table.sort(table, th.cellIndex, th.ariaSort);
+        tsunami.table.refresh(table);
+      };
+    status.addEventListener("change", () => {
+      const o = status.selectedOptions[0];
+      chip("status", status.value && `Status: ${o.textContent}`);
+      apply();
+    });
+    dates.addEventListener("change", () => {
+      chip("date", dates.value && `Date: ${dates.querySelector("button span").textContent}`);
+      apply();
+    });
+    bar.addEventListener("tsunami:filterchange", (e) => {
+      const has = (k) => e.detail.values.some((v) => v.startsWith(k + ":"));
+      if (!has("status") && status.value) {
+        status.value = "";
+        status.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      if (!has("date") && dates.value) dates.value = "";
+      apply();
+    });
+    document.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-bulk-action]");
+      if (!b) return;
+      const rows = tsunami.table.selected(table);
+      const n = rows.length;
+      if (b.dataset.bulkAction !== "marked as shipped")
+        for (const r of rows) all.splice(all.indexOf(r), 1);
+      else
+        for (const r of rows) {
+          r.dataset.status = "shipped";
+          r.querySelector(".badge").replaceWith(
+            Object.assign(document.createElement("span"), { className: "badge", textContent: "Shipped" }),
+          );
+          r.querySelector(".badge").dataset.variant = "info";
+        }
+      tsunami.table.select(table, rows, false);
+      apply();
+      tsunami.toast(`${n} order${n === 1 ? "" : "s"} ${b.dataset.bulkAction}`);
+    });
+  </script>
 </div>
