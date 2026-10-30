@@ -91,23 +91,24 @@ const setup = () => {
 // A line between the tooltip's body and its footer (the totals).
 const separator = {
   id: "tsunamiSeparator",
-  afterDraw(chart) {
+  afterTooltipDraw(chart) {
     const tip = chart.tooltip;
     if (!tip?.opacity || !tip.footer?.length || !chart.$total) return;
     const o = tip.options;
-    const font = window.Chart.helpers.toFont(o.footerFont);
+    const { toFont, toPadding } = window.Chart.helpers;
+    const font = toFont(o.footerFont);
+    const pad = toPadding(o.padding);
     const footer =
       tip.footer.length * font.lineHeight +
       (tip.footer.length - 1) * o.footerSpacing;
-    const y =
-      tip.y + tip.height - o.padding.bottom - footer - o.footerMarginTop / 2;
+    const y = tip.y + tip.height - pad.bottom - footer - o.footerMarginTop / 2;
     const c = chart.ctx;
     c.save();
     c.strokeStyle = o.borderColor;
     c.lineWidth = 1;
     c.beginPath();
-    c.moveTo(tip.x + o.padding.left, Math.round(y) + 0.5);
-    c.lineTo(tip.x + tip.width - o.padding.right, Math.round(y) + 0.5);
+    c.moveTo(tip.x + pad.left, Math.round(y) + 0.5);
+    c.lineTo(tip.x + tip.width - pad.right, Math.round(y) + 0.5);
     c.stroke();
     c.restore();
   },
@@ -133,50 +134,6 @@ function config(options) {
   const scales = {};
   const tick = { color: c.muted, padding: 8 };
 
-  const datasets = Object.entries(series).map(([field, spec], i) => {
-    const ds = {
-      label: spec.label ?? field,
-      data: rows.map((row) => row[field]),
-      _total: !!spec.total,
-    };
-    if (SLICES.includes(type)) {
-      ds.backgroundColor = rows.map((row, n) => colour(row, n));
-      ds.borderColor = c.surface;
-      ds.borderWidth = 2;
-    } else {
-      const own = colour(spec, i);
-      const kind = spec.type ?? type;
-      ds.type = spec.type;
-      ds.order = kind === "line" ? 0 : 1;
-      if (kind === "line" || kind === "radar") {
-        ds.borderColor = own;
-        ds.backgroundColor = spec.surface ? alpha(own, 0.15) : own;
-        ds.fill = !!spec.surface;
-        ds.borderWidth = 2;
-        ds.tension = 0.3;
-        ds.pointRadius = 0;
-        ds.pointHoverRadius = 4;
-        ds.pointHoverBackgroundColor = own;
-        ds.pointHoverBorderColor = c.surface;
-        ds.pointHoverBorderWidth = 2;
-      } else {
-        ds.backgroundColor = own;
-        ds.borderRadius = px(token("--radius-sm"));
-        ds.maxBarThickness = 48;
-      }
-    }
-    if (spec.axis && spec.axis !== "y") {
-      ds.yAxisID = spec.axis;
-      scales[spec.axis] ??= {
-        position: "right",
-        grid: { drawOnChartArea: false },
-        border: { display: false },
-        ticks: tick,
-      };
-    }
-    return merge(ds, spec.dataset);
-  });
-
   if (type === "radar" || type === "polarArea")
     scales.r = {
       grid: { color: c.line },
@@ -198,6 +155,50 @@ function config(options) {
       ticks: { ...tick, maxTicksLimit: 6 },
     };
   }
+
+  const datasets = Object.entries(series).map(([field, spec], i) => {
+    const ds = {
+      label: spec.label ?? field,
+      data: rows.map((row) => row[field]),
+      _total: !!spec.total,
+    };
+    if (SLICES.includes(type)) {
+      ds.backgroundColor = rows.map((row, n) => colour(row, n));
+      ds.borderColor = c.surface;
+      ds.borderWidth = 2;
+    } else {
+      const own = colour(spec, i);
+      const kind = spec.type ?? type;
+      ds.type = spec.type;
+      if (kind === "line" || kind === "radar") {
+        ds.borderColor = own;
+        ds.backgroundColor = spec.surface ? alpha(own, 0.15) : own;
+        ds.fill = !!spec.surface;
+        ds.borderWidth = 2;
+        ds.tension = 0.3;
+        ds.pointRadius = 0;
+        ds.pointHoverRadius = 4;
+        ds.pointHoverBackgroundColor = own;
+        ds.pointHoverBorderColor = c.surface;
+        ds.pointHoverBorderWidth = 2;
+      } else {
+        ds.backgroundColor = own;
+        ds.hoverBackgroundColor = own;
+        ds.borderRadius = px(token("--radius-sm"));
+        ds.maxBarThickness = 48;
+      }
+    }
+    if (spec.axis && spec.axis !== "y") {
+      ds.yAxisID = spec.axis;
+      scales[spec.axis] ??= {
+        position: "right",
+        grid: { drawOnChartArea: false },
+        border: { display: false },
+        ticks: tick,
+      };
+    }
+    return merge(ds, spec.dataset);
+  });
 
   const defaults = {
     responsive: true,
@@ -221,6 +222,10 @@ function config(options) {
           useBorderRadius: true,
           borderRadius: 2,
           padding: 16,
+          generateLabels: (chart) =>
+            window.Chart.defaults.plugins.legend.labels
+              .generateLabels(chart)
+              .map((item) => ({ ...item, lineDash: [] })),
         },
       },
       tooltip: {
@@ -239,6 +244,9 @@ function config(options) {
         boxWidth: 8,
         boxHeight: 8,
         boxPadding: 4,
+        titleFont: { family: token("--font-sans"), weight: "600" },
+        bodyFont: { family: token("--font-sans") },
+        footerFont: { family: token("--font-sans"), weight: "600" },
         footerMarginTop: 10,
         itemSort: (a, b) => a.dataset._total - b.dataset._total,
         filter: (item) => !item.dataset._total,
@@ -296,6 +304,12 @@ function draw(el, options, quiet) {
   const chart = new window.Chart(el, cfg);
   chart.$total = total;
   states.set(el, { chart, options });
+  // The canvas does not load a font by itself; draw again when it is there.
+  const family = chart.options.font.family;
+  if (!document.fonts.check(`1em ${family}`))
+    document.fonts
+      .load(`1em ${family}`)
+      .then(() => states.get(el)?.chart === chart && chart.update("none"));
   el.dataset.chartInitialized = "true";
   el.dispatchEvent(
     new CustomEvent("tsunami:chartready", { bubbles: true, detail: { chart } }),
