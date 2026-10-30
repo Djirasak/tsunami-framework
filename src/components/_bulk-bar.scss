@@ -1,0 +1,53 @@
+// Bulk bar: sticky bar for the rows selected in a table; js/bulk-bar.js sets
+// data-active and fills [data-bulk-count]. It keeps its space while idle
+// (visibility), so showing it never moves the page.
+@use "motion";
+
+@layer components {
+  :where(.bulk-bar) {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    transition: opacity motion.$base motion.$ease;
+  }
+
+  :where(.bulk-bar:not([data-active="true"])) {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  :where(.bulk-bar > p) {
+    margin: 0;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  :where(.bulk-bar > p > [data-bulk-count]) {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  :where(.bulk-bar > div) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  // Clear sits at the far end.
+  :where(.bulk-bar > [data-bulk-clear]) {
+    margin-left: auto;
+  }
+
+  @media (width < 40rem) {
+    :where(.bulk-bar) {
+      padding-inline: var(--space-4);
+    }
+  }
+}

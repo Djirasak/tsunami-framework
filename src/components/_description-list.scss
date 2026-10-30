@@ -1,0 +1,66 @@
+// Description list: <dl class="desc"> of <div><dt>label</dt><dd>value</dd></div>.
+// data-layout="inline|grid" (default stacked), data-divided for lines.
+@layer components {
+  :where(.desc) {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+  }
+
+  :where(.desc > div) {
+    min-width: 0;
+  }
+
+  :where(.desc dt) {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  :where(.desc dd) {
+    min-width: 0;
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  // Empty value: a muted dash.
+  :where(.desc dd:empty, .desc dd[data-empty])::before {
+    content: "\2014";
+    color: var(--muted);
+  }
+
+  // Inline: label on the left, value on the right.
+  :where(.desc[data-layout="inline"] > div) {
+    display: grid;
+    grid-template-columns: minmax(6rem, 10rem) minmax(0, 1fr);
+    align-items: baseline;
+    gap: var(--space-4);
+  }
+
+  // Grid: as many columns as the container fits.
+  :where(.desc[data-layout="grid"]) {
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: var(--space-4) var(--space-5);
+  }
+
+  // Lines between rows.
+  :where(.desc[data-divided]) {
+    gap: 0;
+  }
+
+  :where(.desc[data-divided] > div) {
+    padding-block: var(--space-3);
+    border-top: 1px solid var(--line);
+  }
+
+  :where(.desc[data-divided]:not([data-layout="grid"]) > div:first-child) {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  @media (width < 40rem) {
+    :where(.desc[data-layout="inline"] > div) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+    }
+  }
+}
