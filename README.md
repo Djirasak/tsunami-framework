@@ -25,8 +25,8 @@ Semantic HTML + `data-*` attributes. The core (`tsunami.min.css` and `tsunami.mi
 From jsDelivr (each release tag; replace the version):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.1/dist/tsunami.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.1/dist/tsunami.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.2/dist/tsunami.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.2/dist/tsunami.min.js"></script>
 ```
 
 Or self-hosted:
@@ -36,7 +36,7 @@ Or self-hosted:
 <script src="dist/tsunami.min.js"></script>
 ```
 
-Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed: the `Build dist` workflow rebuilds it on every push to `main` that changes the source, so a tag made after that carries the built files. Monaco (the code editor) loads from jsDelivr too: `@v0.1.1/dist/monaco/vs/loader.js`, before the Tsunami script.
+Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed: the `Build dist` workflow rebuilds it on every push to `main` that changes the source, so a tag made after that carries the built files. Monaco (the code editor) loads from jsDelivr too: `@v0.1.2/dist/monaco/vs/loader.js`, before the Tsunami script.
 
 ## Use
 
