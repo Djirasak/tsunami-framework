@@ -2,6 +2,7 @@
 // Sortable headers (th[aria-sort] > button) and selectable rows (checkbox in the first cell)
 // are driven by src/js/table.js, as are pages, filters and column visibility
 // (js adds data-enhanced; rows outside the page are hidden).
+// data-sticky keeps the header (and with "both" the first column) in view.
 @use "icon";
 @use "motion";
 
@@ -59,6 +60,50 @@
 
   :where(.table tbody tr:hover) {
     background: var(--subtle);
+  }
+
+  // Sticky header: stays at the top of its scroll container (a .scroll-area with a
+  // max-height, or the page). The line under it is a shadow because collapsed
+  // borders scroll away with the rows.
+  :where(.table[data-sticky] thead) {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  :where(.table[data-sticky] thead th) {
+    border-bottom: 0;
+    background: var(--surface);
+  }
+
+  :where(.table[data-sticky] thead tr:last-child > th) {
+    box-shadow: inset 0 -1px 0 var(--line);
+  }
+
+  // data-sticky="both": the first column stays at the left edge too.
+  :where(.table[data-sticky="both"] :is(th, td):first-child) {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--surface);
+    box-shadow: inset -1px 0 0 var(--line);
+  }
+
+  :where(.table[data-sticky="both"] thead tr:last-child > th:first-child) {
+    z-index: 3;
+    box-shadow:
+      inset -1px 0 0 var(--line),
+      inset 0 -1px 0 var(--line);
+  }
+
+  :where(.table[data-sticky="both"] tbody tr:hover > :first-child) {
+    background: var(--subtle);
+  }
+
+  :where(
+    .table[data-sticky="both"] tbody tr[aria-selected="true"] > :first-child
+  ) {
+    background: var(--neutral-bg);
   }
 
   // Filter row under the headers: a small input or select per column.
