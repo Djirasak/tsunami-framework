@@ -61,6 +61,28 @@
     background: var(--subtle);
   }
 
+  // Filter row under the headers: a small input or select per column.
+  :where(.table thead tr[data-filters] > *) {
+    padding-top: var(--space-1);
+    padding-bottom: var(--space-2);
+  }
+
+  :where(.table tr[data-filters] :is(input, select)) {
+    width: 100%;
+    min-width: 6rem;
+  }
+
+  // Nothing matches the filters.
+  :where(.table tbody tr[data-table-empty] > *) {
+    padding: var(--space-6) var(--space-3);
+    color: var(--muted);
+    text-align: center;
+  }
+
+  :where(.table tbody tr[data-table-empty]:hover) {
+    background: none;
+  }
+
   // Total row.
   :where(.table tfoot :is(th, td)) {
     border-top: 1px solid var(--line);

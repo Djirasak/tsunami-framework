@@ -11,6 +11,12 @@
 // row first, then the page is cut. The select-all box selects every row that
 // matches the filter, not only the visible page. Rows are never re-created: the
 // ones outside the page get `hidden`. Fires tsunami:tablechange on the table.
+// Filters: input[data-table-search="table-id"] keeps rows whose cells contain the text
+// (case-insensitive, 150 ms debounce); an input or select in a cell of
+// thead tr[data-filters] filters that column (input: contains, select: equals).
+// Any filter goes back to page 1. With no match, an empty row shows: a
+// tr[data-table-empty] in tbody, or a template[data-table-empty] (in the table or
+// with data-table-empty="table-id") whose content goes in one cell.
 
 const SORT_BUTTON = ".table th[aria-sort] > button";
 const ROW_BOX = '.table tbody tr > td:first-child > input[type="checkbox"]';
@@ -24,6 +30,25 @@ const rowsOf = (table) =>
   );
 
 const states = new WeakMap();
+const texts = new WeakMap();
+
+// Lower-case cell text of a row, cached until refresh().
+const rowTexts = (row) => {
+  let list = texts.get(row);
+  if (!list) {
+    list = [...row.cells].map((c) => c.textContent.trim().toLowerCase());
+    texts.set(row, list);
+  }
+  return list;
+};
+
+const debounce = (fn, ms) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), ms);
+  };
+};
 
 // Elements that belong to a table: attr="table-id", or attr with no value in the same card.
 function controls(table, selector, attr) {
@@ -270,11 +295,43 @@ function renderInfo(table, state) {
 function stateFor(table) {
   let state = states.get(table);
   if (!state) {
-    state = { page: 1, pages: 1, matched: [], sort: null };
+    state = {
+      page: 1,
+      pages: 1,
+      matched: [],
+      sort: null,
+      query: "",
+      columns: new Map(),
+      empty: null,
+    };
     states.set(table, state);
     table.dataset.enhanced = "";
   }
   return state;
+}
+
+const colSpan = (table) =>
+  [...(table.tHead?.rows[0]?.cells ?? [])].filter((c) => !c.hidden).length || 1;
+
+// The row shown when nothing matches; made once, kept as the last row of the first tbody.
+function emptyRow(table, state) {
+  if (state.empty) return state.empty;
+  let row = table.querySelector(`tbody > tr${EMPTY}`);
+  if (!row) {
+    const id = CSS.escape(table.id || "");
+    const tpl =
+      table.querySelector(`template${EMPTY}`) ??
+      (table.id &&
+        document.querySelector(`template[data-table-empty="${id}"]`));
+    row = document.createElement("tr");
+    row.setAttribute("data-table-empty", "");
+    const cell = row.insertCell();
+    if (tpl) cell.append(tpl.content.cloneNode(true));
+    else cell.textContent = "No results";
+    (table.tBodies[0] ?? table.createTBody()).append(row);
+  }
+  state.empty = row;
+  return row;
 }
 
 // Work out the matching rows and show the current page of them.
@@ -282,12 +339,23 @@ function update(table, { page } = {}) {
   const state = stateFor(table);
   const rows = rowsOf(table);
   const size = pageSizeOf(table);
-  state.matched = rows;
-  state.pages = size ? Math.max(1, Math.ceil(rows.length / size)) : 1;
+  const query = state.query.toLowerCase();
+  const filters = [...state.columns];
+  state.matched = rows.filter((row) => {
+    const cells = rowTexts(row);
+    if (query && !cells.some((t) => t.includes(query))) return false;
+    return filters.every(([i, f]) =>
+      f.exact ? cells[i] === f.value : (cells[i] ?? "").includes(f.value),
+    );
+  });
+  const empty = emptyRow(table, state);
+  empty.hidden = state.matched.length > 0;
+  empty.firstElementChild?.setAttribute("colspan", String(colSpan(table)));
+  state.pages = size ? Math.max(1, Math.ceil(state.matched.length / size)) : 1;
   if (page !== undefined) state.page = page;
   state.page = Math.min(Math.max(1, state.page), state.pages);
   const start = size ? (state.page - 1) * size : 0;
-  const end = size ? start + size : rows.length;
+  const end = size ? start + size : state.matched.length;
   const shown = new Set(state.matched.slice(start, end));
   for (const row of rows) row.hidden = !shown.has(row);
   state.size = size;
@@ -311,14 +379,54 @@ function update(table, { page } = {}) {
   );
 }
 
+// Show only rows containing the text (the global search); "" clears it.
+function filter(table, text = "") {
+  const state = stateFor(table);
+  state.query = String(text).trim();
+  if (table.id)
+    for (const input of document.querySelectorAll(
+      `[data-table-search="${CSS.escape(table.id)}"]`,
+    ))
+      if (input.value !== text) input.value = text;
+  update(table, { page: 1 });
+}
+
 function setPage(table, n) {
   update(table, { page: Number(n) });
 }
 
 // Re-read the rows after you add, remove or change them.
 function refresh(table) {
+  for (const row of rowsOf(table)) texts.delete(row);
   update(table);
 }
+
+// A column filter in thead tr[data-filters] changed.
+function columnFilter(field) {
+  const cell = field.closest("tr[data-filters] > *");
+  const table = cell?.closest("table");
+  if (!table) return;
+  const state = stateFor(table);
+  const value = field.value.trim().toLowerCase();
+  if (value)
+    state.columns.set(cell.cellIndex, {
+      value,
+      exact: field.tagName === "SELECT",
+    });
+  else state.columns.delete(cell.cellIndex);
+  update(table, { page: 1 });
+}
+
+const searchLater = debounce((input) => {
+  const table = document.getElementById(input.dataset.tableSearch);
+  if (table) filter(table, input.value);
+}, 150);
+const columnLater = debounce(columnFilter, 150);
+
+document.addEventListener("input", (e) => {
+  if (e.target.matches?.("input[data-table-search]")) searchLater(e.target);
+  else if (e.target.matches?.("tr[data-filters] input")) columnLater(e.target);
+});
 
 document.addEventListener("click", (e) => {
   const button = e.target.closest("[data-page]");
@@ -332,6 +440,7 @@ document.addEventListener("click", (e) => {
 });
 
 document.addEventListener("change", (e) => {
+  if (e.target.matches?.("tr[data-filters] select")) columnFilter(e.target);
   const select = e.target.closest("select[data-table-page-size]");
   if (!select) return;
   const id = select.getAttribute("data-table-page-size");
@@ -345,9 +454,12 @@ document.addEventListener("change", (e) => {
 
 const wanted = (table) =>
   table.hasAttribute("data-page-size") ||
+  table.querySelector("thead > tr[data-filters]") ||
   (table.id &&
     document.querySelector(
-      `[data-pagination-for="${CSS.escape(table.id)}"], [data-table-page-size="${CSS.escape(table.id)}"]`,
+      ["pagination-for", "table-page-size", "table-search"]
+        .map((a) => `[data-${a}="${CSS.escape(table.id)}"]`)
+        .join(","),
     ));
 
 // Pick up rows that start checked (server-rendered selection) and set up paged tables.
@@ -368,4 +480,5 @@ else init();
   sync,
   refresh,
   page: setPage,
+  filter,
 };
