@@ -286,7 +286,7 @@
                   <a
                     href="typography"
                     data-label="Typography"
-                    data-keywords="Foundations typography p data-variant small ul ol li dl dt dd blockquote pre code hr kbd"
+                    data-keywords="Foundations typography heading h1 h2 h3 h4 h5 h6 p data-variant small ul ol li dl dt dd blockquote pre code hr kbd"
                     aria-current="page"
                     ><i class="icon icon-type" aria-hidden="true"></i
                     ><span>Typography</span></a
@@ -673,6 +673,76 @@
   &lt;h5&gt;Heading 5&lt;/h5&gt;
   &lt;h6&gt;Heading 6&lt;/h6&gt;
 &lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Heading classes: h1 to h6 on any element</h2>
+            <p>
+              <code>class="h1"</code> to <code>class="h6"</code> give any
+              element the size and weight of that heading, without changing the
+              element. Use them when the page outline and the look differ: a
+              section title that is an <code>h2</code> but looks like an
+              <code>h4</code>, or a card title that is a <code>p</code> or a
+              <code>div</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Heading classes: h1 to h6 on any element"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1a-tp"
+                  aria-selected="true"
+                  aria-controls="ex1a-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1a-tc"
+                  aria-selected="false"
+                  aria-controls="ex1a-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1a-p"
+                aria-labelledby="ex1a-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <p class="h1">Class h1 on a paragraph</p>
+                    <p class="h2">Class h2 on a paragraph</p>
+                    <p class="h3">Class h3 on a paragraph</p>
+                    <p class="h4">Class h4 on a paragraph</p>
+                    <p class="h5">Class h5 on a paragraph</p>
+                    <p class="h6">Class h6 on a paragraph</p>
+                    <h2 class="h4">An h2 that looks like an h4</h2>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1a-c"
+                aria-labelledby="ex1a-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;p class="h1"&gt;Class h1 on a paragraph&lt;/p&gt;
+&lt;p class="h2"&gt;Class h2 on a paragraph&lt;/p&gt;
+&lt;p class="h3"&gt;Class h3 on a paragraph&lt;/p&gt;
+&lt;p class="h4"&gt;Class h4 on a paragraph&lt;/p&gt;
+&lt;p class="h5"&gt;Class h5 on a paragraph&lt;/p&gt;
+&lt;p class="h6"&gt;Class h6 on a paragraph&lt;/p&gt;
+&lt;h2 class="h4"&gt;An h2 that looks like an h4&lt;/h2&gt;</code></pre>
               </div>
             </div>
           </section>
