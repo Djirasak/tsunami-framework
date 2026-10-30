@@ -26,7 +26,7 @@ export default function Root({
         ))}
         <script src="/dist/tsunami.min.js"></script>
       </head>
-      <body>
+      <body suppressHydrationWarning /* extensions such as Grammarly add attributes */>
         {children}
         {docs && <DocsScript />}
       </body>

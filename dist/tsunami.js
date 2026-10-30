@@ -2961,6 +2961,156 @@ new MutationObserver((records) => {
     }
 }).observe(document.documentElement, { childList: true, subtree: true });
 
+// src/js/otp.js
+var OTP = ".otp";
+var keep = (el, text) => el.dataset.type === "text" ? text.replace(/[^a-z0-9]/gi, "") : text.replace(/\D/g, "");
+var boxes = (el) => [...el.querySelectorAll('input[type="text"]')];
+function sync6(el) {
+  const value = boxes(el).map((b) => b.value).join("");
+  const hidden = el.querySelector('input[type="hidden"]');
+  if (hidden)
+    hidden.value = value;
+  return value;
+}
+function spread(el, from, text) {
+  const all = boxes(el);
+  const chars = [...keep(el, text)];
+  chars.slice(0, all.length - from).forEach((c, i) => {
+    all[from + i].value = c;
+  });
+  const end = Math.min(from + chars.length, all.length - 1);
+  all[end].focus();
+  all[end].select();
+  const value = sync6(el);
+  if (value.length === all.length)
+    el.dispatchEvent(new CustomEvent("tsunami:otpcomplete", { bubbles: true, detail: { value } }));
+}
+function mount3(root = document) {
+  for (const el of root.querySelectorAll(OTP)) {
+    if (el.dataset.mounted)
+      continue;
+    el.dataset.mounted = "";
+    if (!boxes(el).length) {
+      const count = Number(el.dataset.length) || 6;
+      const mode = el.dataset.type === "text" ? "text" : "numeric";
+      for (let i = 1;i <= count; i++) {
+        const box = document.createElement("input");
+        box.type = "text";
+        box.inputMode = mode;
+        box.autocomplete = i === 1 ? "one-time-code" : "off";
+        box.setAttribute("aria-label", `Character ${i} of ${count}`);
+        if ("disabled" in el.dataset)
+          box.disabled = true;
+        el.append(box);
+      }
+    }
+    if (el.dataset.name && !el.querySelector('input[type="hidden"]')) {
+      const hidden = document.createElement("input");
+      hidden.type = "hidden";
+      hidden.name = el.dataset.name;
+      el.append(hidden);
+    }
+    sync6(el);
+  }
+}
+var box = (e) => e.target.closest?.(`${OTP} > input[type="text"]`);
+document.addEventListener("input", (e) => {
+  const b = box(e);
+  if (!b)
+    return;
+  const el = b.closest(OTP);
+  const at = boxes(el).indexOf(b);
+  const text = e.inputType === "insertText" && e.data ? e.data : b.value;
+  b.value = "";
+  if (keep(el, text))
+    spread(el, at, text);
+  else
+    sync6(el);
+});
+document.addEventListener("paste", (e) => {
+  const b = box(e);
+  if (!b)
+    return;
+  e.preventDefault();
+  const el = b.closest(OTP);
+  const text = e.clipboardData.getData("text");
+  const all = boxes(el);
+  const whole = keep(el, text).length >= all.length;
+  if (whole)
+    for (const x of all)
+      x.value = "";
+  spread(el, whole ? 0 : all.indexOf(b), text);
+});
+document.addEventListener("keydown", (e) => {
+  const b = box(e);
+  if (!b || e.ctrlKey || e.metaKey || e.altKey)
+    return;
+  const el = b.closest(OTP);
+  const all = boxes(el);
+  const at = all.indexOf(b);
+  const go = (i) => {
+    e.preventDefault();
+    all[Math.max(0, Math.min(all.length - 1, i))].focus();
+  };
+  if (e.key === "Backspace") {
+    if (b.value) {
+      b.value = "";
+      sync6(el);
+      e.preventDefault();
+    } else if (at > 0) {
+      all[at - 1].value = "";
+      sync6(el);
+      go(at - 1);
+    }
+  } else if (e.key === "ArrowLeft")
+    go(at - 1);
+  else if (e.key === "ArrowRight")
+    go(at + 1);
+  else if (e.key === "Home")
+    go(0);
+  else if (e.key === "End")
+    go(all.length - 1);
+});
+document.addEventListener("focusin", (e) => {
+  const b = box(e);
+  if (b)
+    b.select();
+});
+document.addEventListener("reset", (e) => setTimeout(() => {
+  for (const el of e.target.querySelectorAll(OTP)) {
+    for (const b of boxes(el))
+      b.value = "";
+    sync6(el);
+  }
+}));
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => mount3(), { once: true });
+else
+  mount3();
+new MutationObserver((records) => {
+  if (document.readyState === "loading")
+    return;
+  for (const r of records)
+    for (const n of r.addedNodes)
+      if (n.nodeType === 1 && (n.matches(OTP) || n.querySelector(OTP)))
+        return mount3();
+}).observe(document.documentElement, { childList: true, subtree: true });
+(window.tsunami ??= {}).otp = {
+  mount: mount3,
+  value: (el) => sync6(el),
+  set(el, text) {
+    for (const b of boxes(el))
+      b.value = "";
+    spread(el, 0, text);
+  },
+  clear(el) {
+    for (const b of boxes(el))
+      b.value = "";
+    sync6(el);
+    boxes(el)[0]?.focus();
+  }
+};
+
 // src/js/sortable.js
 var states3 = new WeakMap;
 var mounted2 = new Set;
@@ -2994,7 +3144,7 @@ function destroy3(el) {
     delete el[name];
   state.sortable.destroy();
 }
-function mount3(el, options = {}) {
+function mount4(el, options = {}) {
   if (!window.Sortable)
     throw new Error("A .sortable needs SortableJS: load dist/sortable.min.js with its own <script> before the Tsunami script.");
   destroy3(el);
@@ -3023,7 +3173,7 @@ var upgrade4 = (el) => {
   if (states3.has(el) || el.closest(".sortable-fallback"))
     return;
   try {
-    mount3(el);
+    mount4(el);
   } catch (error) {
     console.error(error.message, el);
   }
@@ -3124,11 +3274,11 @@ document.addEventListener("keydown", (e) => {
 });
 var ready2 = (el) => {
   if (!states3.has(el))
-    mount3(el);
+    mount4(el);
   return el;
 };
 (window.tsunami ??= {}).sortable = {
-  mount: mount3,
+  mount: mount4,
   get: (el) => states3.get(el)?.sortable ?? null,
   destroy: destroy3,
   toArray: (el) => ready2(el).toArray(),
@@ -3205,7 +3355,7 @@ function destroy4(root) {
   control.removeAttribute("aria-expanded");
   root.removeAttribute("data-date-picker-initialized");
 }
-function mount4(root, options = {}) {
+function mount5(root, options = {}) {
   if (!window.VanillaCalendarPro?.Calendar)
     throw new Error("A .date-picker needs Vanilla Calendar Pro: load dist/vanilla-calendar.min.js with its own <script> before the Tsunami script.");
   const { text, button, hidden, panel } = parts4(root);
@@ -3362,7 +3512,7 @@ var upgrade5 = (root) => {
   if (states4.has(root))
     return;
   try {
-    mount4(root);
+    mount5(root);
   } catch (error) {
     console.error(error.message, root);
   }
@@ -3464,7 +3614,7 @@ document.addEventListener("keydown", (e) => {
   state.quiet = false;
 }, true);
 (window.tsunami ??= {}).datePicker = {
-  mount: mount4,
+  mount: mount5,
   get: (el) => states4.get(el)?.calendar ?? null,
   destroy: destroy4
 };
@@ -4002,7 +4152,7 @@ function destroy6(box) {
   state.editor.dispose();
   state.host.remove();
 }
-function mount5(box, options = {}) {
+function mount6(box, options = {}) {
   load2();
   destroy6(box);
   const state = {
@@ -4022,7 +4172,7 @@ function mount5(box, options = {}) {
 }
 var upgrade6 = (box) => {
   if (!states6.has(box))
-    mount5(box);
+    mount6(box);
 };
 var all6 = (node) => node.querySelectorAll?.(ROOT4).forEach(upgrade6);
 if (document.readyState === "loading")
@@ -4067,7 +4217,7 @@ document.addEventListener("focusin", (e) => {
     states6.get(box)?.editor?.focus();
 });
 (window.tsunami ??= {}).codeEditor = {
-  mount: mount5,
+  mount: mount6,
   get: (box) => states6.get(box)?.editor ?? null,
   destroy: destroy6
 };
