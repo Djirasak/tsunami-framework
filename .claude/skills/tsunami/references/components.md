@@ -260,7 +260,67 @@ This file gives one short example per component. The full page for each is `site
 <div class="otp" role="group" aria-label="Verification code" data-name="code"></div>
 ```
 
-**Date picker** (`date-picker`): needs `dist/vanilla-calendar.min.js`. Attrs: `data-mode="range"`, `data-format="long|medium"`, `data-min`, `data-max`, `data-placeholder`, and `[data-presets]` buttons. API: `el.value`, `open()`, `close()`. Event: `change` with `{ value, dates }`.
+**Bulk action bar** (`bulk-bar`): shows while rows of a Data table are selected. Place after the table. Attrs: `data-table` (table id; default first `.table` in the parent), `[data-bulk-count]` (filled with the count), `[data-bulk-clear]` (unselects all), `data-active` (set by JS). Keeps its space while idle. API: `tsunami.bulkBar.update/clear`. Updates from the table's `tsunami:select`; no event of its own. Actions are plain buttons that read `tsunami.table.selected(table)`.
+
+```html
+<div class="bulk-bar" data-table="orders" role="region" aria-label="Selected orders"><p aria-live="polite"><span data-bulk-count>0</span> selected</p><div><button type="button" class="btn">Archive</button></div><button type="button" class="btn" data-variant="ghost" data-bulk-clear>Clear</button></div>
+```
+
+**Description list** (`desc`): `<dl class="desc">` of `<div><dt>label</dt><dd>value</dd></div>` pairs, pure CSS. Attrs: `data-layout="inline|grid"` (default stacked; inline stacks under 40rem), `data-divided` (lines between rows), `dd[data-empty]` or an empty `dd` shows a muted dash. Long values wrap.
+
+```html
+<dl class="desc" data-layout="inline" data-divided><div><dt>Customer</dt><dd>Emma Wilson</dd></div><div><dt>Coupon</dt><dd></dd></div></dl>
+```
+
+**Segmented control** (`segmented`): 2-4 exclusive options built on native radios, no JS. Attrs: `data-size="sm"` on the group; `disabled` on an input. Give the group `role="radiogroup"` and an `aria-label`. Events: native `change` from the radio.
+
+```html
+<div class="segmented" role="radiogroup" aria-label="Range"><label><input type="radio" name="r" checked><span>Day</span></label><label><input type="radio" name="r"><span>Week</span></label></div>
+```
+
+**Status dot** (`dot`): 8px dot plus label text. Attrs: `data-status="success|warning|danger|info"` (omit for neutral), `data-pulse` (soft ring, stops under reduced motion). Without a label add `role="img"` and an `aria-label`.
+
+```html
+<span class="dot" data-status="success" data-pulse>Online</span>
+```
+
+**Copy button** (`.btn[data-copy]`): copies text and shows a check for 1.5 s. Attrs: `data-copy="text"` or `data-copy-target="#id"` (value or text content), `data-copy-toast="msg"` (optional toast). Children `data-idle` hide and `data-done` show while the button has `data-copied`. API: `tsunami.copy(text)` returns a Promise<boolean>. Event: `tsunami:copy` with `detail.text`.
+
+```html
+<button class="btn" data-copy="ORD-1"><i class="icon icon-copy" data-idle aria-hidden="true"></i><i class="icon icon-check" data-done aria-hidden="true"></i></button>
+```
+
+**Chip / Filter bar** (`filter-bar`): small removable pills in a wrapping row. `.chip` (a `span` with a label and an optional `<button aria-label="Remove …">` holding `icon-x`), `data-variant="accent|muted"`, `data-value`. `.filter-bar` (`role="group"`) holds chips and an optional `[data-clear]` button ("Clear all", hidden when no chips are left). API: `tsunami.filterBar.values(bar)`, `clear(bar)`, `mount(root)`. Events: `tsunami:chipremove` on the chip (`{ value, label }`, cancelable) and `tsunami:filterchange` on the bar (`{ values }`).
+
+```html
+<div class="filter-bar" role="group" aria-label="Filters"><span class="chip" data-value="status:paid">Status: Paid<button type="button" aria-label="Remove Status: Paid"><i class="icon icon-x" aria-hidden="true"></i></button></span><button type="button" class="btn" data-variant="ghost" data-size="sm" data-clear>Clear all</button></div>
+```
+
+**Tag input** (`tag-input`): a box that looks like `.input` and holds chips. Attrs: `data-value="a,b"` (start tags), `data-max`, `data-name` (adds the hidden input, tags joined with commas), `data-disabled`, `aria-invalid`; give it `role="group"` and a label. API: `tsunami.tagInput.value(el)`, `set(el, list)`, `clear(el)`, `mount(root)`. Event: `tsunami:tagschange` with `{ value: [...] }`. Enter or comma adds, Backspace in the empty box removes the last, paste splits on comma and newline, duplicates are ignored.
+
+```html
+<div class="tag-input" role="group" aria-label="Labels" data-name="labels" data-value="design,billing"></div>
+```
+
+**Stepper** (`stepper`): a multi-step form. `.stepper` > `<ol>` of step `<button>`s (label in `<span><strong>`, optional `<small>`) + one `<section>` per step, in order; buttons `data-next` / `data-prev` in a panel. On `.stepper`: `data-linear` (no jumping ahead), `data-validate` (checks the current panel before moving on), `data-orientation="vertical"` (always vertical under 40rem). On a panel: `data-optional` (not validated). JS sets `data-state="done|current|upcoming"` and `aria-current="step"`. API: `tsunami.stepper.go(el, i)`, `next(el)`, `prev(el)`, `index(el)`. Events: `tsunami:stepchange` `{index, step, panel}`, `tsunami:stepcomplete` `{index}`.
+
+```html
+<div class="stepper" data-linear data-validate><ol><li><button type="button"><span><strong>Account</strong></span></button></li></ol><section><h3>Account</h3><footer><button class="btn" data-next>Next</button></footer></section></div>
+```
+
+**Phone input** (`phone-input`): `.phone-input` around an `.input-group` with `input[type=tel]`. JS adds a flag + dial code country button with a searchable list, and a hidden input with the joined number (`+66812345678`). It does not validate. Attrs: `data-country` (ISO, default US), `data-name`; `disabled`, `aria-invalid` on the tel input; `data-size` on the group. Typing `+` and a dial code switches the country. API: `tsunami.phoneInput.get(el)`, `.set(el, "+66…" | {country, number})`. Event: `tsunami:phonechange` `{ country, dial, number, value }`.
+
+```html
+<div class="phone-input" data-country="TH" data-name="phone"><div class="input-group"><input type="tel" aria-label="Phone"></div></div>
+```
+
+**Time picker** (`time-picker`): `.time-picker` (empty div; the script builds the segments). Attrs: `data-name` (hidden input a form sends, `HH:MM`/`HH:MM:SS`), `value` (start), `data-seconds`, `data-hour12`, `data-min`/`data-max` (HH:MM), `data-step` (minutes), `data-size="sm|lg"`, `aria-invalid`, `disabled`. Segments are `role="spinbutton"`: arrows wrap, digits type, Backspace empties, left/right/`:` move. API: `tsunami.timePicker.get/set/mount/destroy`; element `.value`. Event: `tsunami:timechange` `{ value }`. Fits in `.input-group` beside a Date picker.
+
+```html
+<div class="time-picker" data-name="start" value="09:30" aria-label="Start time"></div>
+```
+
+**Date picker** (`date-picker`): needs `dist/vanilla-calendar.min.js`. Attrs: `data-mode="range"`, `data-format="long|medium"`, `data-min`, `data-max`, `data-placeholder`, and `[data-presets]` buttons. API: `el.value`, `open()`, `close()`. Event: `change` with `{ value, dates }`. A preset button can name its dates: `data-preset="today|yesterday|tomorrow|last-7-days|last-30-days|last-90-days|this-week|this-month|last-month|this-year|last-year"`, worked out from today when the panel opens (a single picker takes only the first three). `.date-picker` also fits inside an `.input-group` (use `data-variant="ghost"` on its input).
 
 ```html
 <div class="date-picker">
