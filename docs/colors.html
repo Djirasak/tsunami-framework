@@ -606,8 +606,8 @@
             <div>
               <h1>Colors</h1>
               <p>
-                Semantic tokens are CSS custom properties that change value with
-                the theme. Components only refer to these tokens.
+                The colours are CSS variables that change value with the theme.
+                Components only use these variables.
               </p>
             </div>
           </header>
@@ -616,7 +616,7 @@
             <div>
               <strong>Light and dark columns are static</strong>
               <p>
-                Tokens live on <code>:root</code> only, and
+                The variables live on <code>:root</code> only, and
                 <code>data-theme</code> goes on <code>&lt;html&gt;</code>, not
                 on a child element. So the two swatch columns are drawn from the
                 hex values of both themes for comparison. Every Preview uses the
@@ -846,7 +846,7 @@
           <section>
             <h2>Lines and fields</h2>
             <p>
-              Form fields have no tokens of their own. They use
+              Form fields have no colour variables of their own. They use
               <code>--line</code> for the border, <code>--surface</code> for the
               fill and a 2px <code>--accent</code> focus ring, like every
               element.
@@ -907,8 +907,9 @@
           <section>
             <h2>Charts</h2>
             <p>
-              Tsunami has no chart palette tokens and no chart component. Full
-              charts are out of scope. For simple comparison bars, use
+              Tsunami has no chart colour variables of its own. A
+              <a href="chart">chart</a> takes the accent and the status
+              <code>-fg</code> colours in turn. For simple comparison bars, use
               <code>progress</code> with <code>--fg</code> and the status
               <code>-fg</code> colours.
             </p>
@@ -995,7 +996,7 @@
           <section>
             <h2>Sidebar</h2>
             <p>
-              The sidebar and subnav reuse the page tokens:
+              The sidebar and subnav reuse the page variables:
               <code>--subtle</code> for the fill and
               <code>--neutral-bg</code> for the current and hovered items.
             </p>
@@ -1260,17 +1261,17 @@
             </div>
           </section>
           <section>
-            <h2>Tokens</h2>
+            <h2>CSS variables</h2>
             <div
               class="card scroll-area"
               tabindex="0"
               role="region"
-              aria-label="Tokens"
+              aria-label="CSS variables"
             >
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Token</th>
+                    <th scope="col">Variable</th>
                     <th scope="col">Light / Dark</th>
                     <th scope="col">Used for</th>
                   </tr>

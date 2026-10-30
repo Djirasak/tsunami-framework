@@ -911,7 +911,7 @@ for (const legendAlign of ['start', 'center', 'end']) {
             <h2>Two lines: this year against last year</h2>
             <p>
               A <code>color</code> takes any CSS colour or
-              <code>var(--token)</code>. <code>dataset</code> goes straight to
+              <code>var(--ok-fg)</code>. <code>dataset</code> goes straight to
               Chart.js, here to draw the comparison dashed.
             </p>
             <div class="tabs" data-tabs>
@@ -1871,7 +1871,7 @@ document.addEventListener('click', (e) =&gt; {
                   </tr>
                   <tr>
                     <td><code>color</code></td>
-                    <td>any CSS colour, <code>var(--token)</code></td>
+                    <td>any CSS colour, <code>var(--ok-fg)</code></td>
                     <td>the palette in turn</td>
                     <td>
                       The palette is <code>--accent</code>,
@@ -1947,7 +1947,8 @@ document.addEventListener('click', (e) =&gt; {
             </ul>
             <p>
               A chart is destroyed by itself when its canvas leaves the page.
-              Colours are read from the tokens when a chart is drawn, so on
+              Colours are read from the CSS variables when a chart is drawn, so
+              on
               <code>tsunami:themechange</code> every chart is drawn again, with
               no animation. Under <code>prefers-reduced-motion</code> the
               animation is off.
