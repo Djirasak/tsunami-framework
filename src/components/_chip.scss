@@ -1,0 +1,71 @@
+// Chip: a small pill with a label and an optional remove button. A filter bar
+// is a wrapping row of chips plus a "Clear all" action.
+@layer components {
+  :where(.chip) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    height: 1.5rem;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--subtle);
+    color: var(--fg);
+    font-size: var(--text-sm);
+    line-height: 1;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  :where(.chip[data-variant="accent"]) {
+    border-color: var(--accent);
+    background: transparent;
+    color: var(--accent);
+  }
+
+  :where(.chip[data-variant="muted"]) {
+    border-style: dashed;
+    background: transparent;
+    color: var(--muted);
+  }
+
+  // Name and value: "Status" is quiet, "Paid" is the weight.
+  :where(.chip > b) {
+    font-weight: 500;
+  }
+
+  :where(.chip > button) {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    margin-inline: 0 calc(var(--space-1) * -1);
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  :where(.chip > button:hover) {
+    color: var(--fg);
+  }
+
+  :where(.chip > button > .icon) {
+    font-size: 0.75rem;
+    vertical-align: 0;
+  }
+
+  :where(.filter-bar) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  :where(.filter-bar > [data-clear]) {
+    margin-inline-start: var(--space-1);
+  }
+}

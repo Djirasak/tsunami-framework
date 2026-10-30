@@ -1,0 +1,56 @@
+// Tag input: looks like .input, holds chips and a text box; tag-input.js adds
+// and removes the tags and keeps the value in a hidden input.
+@layer components {
+  :where(.tag-input) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    width: 100%;
+    min-height: 2.25rem;
+    padding: calc(var(--space-1) - 1px) var(--space-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-base);
+    cursor: text;
+  }
+
+  :where(.tag-input:focus-within) {
+    border-color: var(--accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  :where(.tag-input[aria-invalid="true"]) {
+    border-color: var(--danger-fg);
+  }
+
+  :where(.tag-input > input[type="text"]) {
+    flex: 1 1 6rem;
+    min-width: 0;
+    height: 1.75rem;
+    padding: 0 var(--space-1);
+    border: 0;
+    outline: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+  }
+
+  :where(.tag-input > input::placeholder) {
+    color: var(--muted);
+    opacity: 1;
+  }
+
+  :where(.tag-input[data-disabled]) {
+    background: var(--subtle);
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
+  :where(.tag-input[data-disabled] > .chip > button) {
+    display: none;
+  }
+}
