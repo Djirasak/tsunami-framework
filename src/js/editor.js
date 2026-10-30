@@ -93,7 +93,7 @@ const DEFAULTS = {
   max_height: 800,
   body_class: "typography",
   content_style:
-    "html, body { background: var(--surface); } body { margin: 0.75rem; font-family: var(--font-sans); font-size: var(--text-base); outline: none; }",
+    "html, body { background: var(--surface); } body { margin: 0.75rem; font-family: var(--font-sans); font-size: var(--text-base); } html:focus-visible, body:focus-visible, body:focus { outline: none !important; }",
   // Safety.
   valid_elements: ELEMENTS,
   valid_styles: STYLES,
