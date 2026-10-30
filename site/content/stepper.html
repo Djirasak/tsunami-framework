@@ -1,0 +1,363 @@
+<header class="page-header">
+  <div>
+    <h1>Stepper</h1>
+    <p>A form spread over several panels, one step at a time, with a header that shows where you are.</p>
+  </div>
+</header>
+<section>
+  <h2>Linear with validation</h2>
+  <p>
+    The header is an <code>&lt;ol&gt;</code> of buttons. Each
+    <code>&lt;section&gt;</code> after it is the panel of the step in the same
+    position. With <code>data-linear</code> a user cannot jump ahead, and with
+    <code>data-validate</code> the fields of the current panel must pass before
+    Next moves on. The last Next fires <code>tsunami:stepcomplete</code>. The
+    last panel here is a review, filled from a <code>tsunami:stepchange</code>
+    listener.
+  </p>
+<div class="tabs" data-tabs>
+  <div role="tablist" aria-label="Linear with validation">
+    <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+    <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+  </div>
+  <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+    <div class="docs-preview">
+<div class="stepper" id="wiz" data-linear data-validate>
+  <ol>
+    <li><button type="button"><span><strong>Account</strong><small>Name and email</small></span></button></li>
+    <li><button type="button"><span><strong>Plan</strong><small>Pick one</small></span></button></li>
+    <li><button type="button"><span><strong>Review</strong><small>Check and finish</small></span></button></li>
+  </ol>
+  <section>
+    <h3>Create your account</h3>
+    <div class="stack" data-gap="sm">
+    <div class="field">
+      <label for="wz-name">Name *</label>
+      <input id="wz-name" name="wz-name" type="text" required autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="wz-email">Email *</label>
+      <input id="wz-email" name="wz-email" type="email" required autocomplete="email">
+      <small id="wz-email-h">We send the receipt here.</small>
+    </div>
+    </div>
+    <footer><button type="button" class="btn" data-variant="primary" data-next>Next</button></footer>
+  </section>
+  <section>
+    <h3>Choose a plan</h3>
+    <div class="field">
+      <label for="wz-plan">Plan *</label>
+      <select id="wz-plan" name="plan" required>
+        <option value="">Select a plan</option>
+        <option>Starter</option>
+        <option>Team</option>
+      </select>
+    </div>
+    <footer><button type="button" class="btn" data-prev>Back</button><button type="button" class="btn" data-variant="primary" data-next>Next</button></footer>
+  </section>
+  <section>
+    <h3>Review</h3>
+    <dl id="wz-review"></dl>
+    <footer><button type="button" class="btn" data-prev>Back</button><button type="button" class="btn" data-variant="primary" data-next>Finish</button></footer>
+  </section>
+  <p id="wz-log" role="status">Step 1 of 3.</p>
+</div>
+<script type="module">
+  const wiz = document.getElementById("wiz");
+  const log = document.getElementById("wz-log");
+  wiz.addEventListener("tsunami:stepchange", (e) => {
+    log.textContent = `Step ${e.detail.index + 1} of 3.`;
+    if (e.detail.index !== 2) return;
+    const review = document.getElementById("wz-review");
+    review.replaceChildren();
+    for (const id of ["wz-name", "wz-email", "wz-plan"]) {
+      const dt = document.createElement("dt");
+      dt.textContent = document.querySelector(`label[for="${id}"]`).textContent;
+      const dd = document.createElement("dd");
+      dd.textContent = document.getElementById(id).value;
+      review.append(dt, dd);
+    }
+  });
+  wiz.addEventListener("tsunami:stepcomplete", () => {
+    log.textContent = "Done. Nothing was sent: this is a demo.";
+  });
+</script>
+    </div>
+  </div>
+  <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+    <pre><code>&lt;div class=&quot;stepper&quot; id=&quot;wiz&quot; data-linear data-validate&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;Account&lt;/strong&gt;&lt;small&gt;Name and email&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;Plan&lt;/strong&gt;&lt;small&gt;Pick one&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;Review&lt;/strong&gt;&lt;small&gt;Check and finish&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;section&gt;
+    &lt;h3&gt;Create your account&lt;/h3&gt;
+    &lt;div class=&quot;stack&quot; data-gap=&quot;sm&quot;&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;label for=&quot;wz-name&quot;&gt;Name *&lt;/label&gt;
+      &lt;input id=&quot;wz-name&quot; name=&quot;wz-name&quot; type=&quot;text&quot; required autocomplete=&quot;name&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;label for=&quot;wz-email&quot;&gt;Email *&lt;/label&gt;
+      &lt;input id=&quot;wz-email&quot; name=&quot;wz-email&quot; type=&quot;email&quot; required autocomplete=&quot;email&quot;&gt;
+      &lt;small id=&quot;wz-email-h&quot;&gt;We send the receipt here.&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;primary&quot; data-next&gt;Next&lt;/button&gt;&lt;/footer&gt;
+  &lt;/section&gt;
+  &lt;section&gt;
+    &lt;h3&gt;Choose a plan&lt;/h3&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;label for=&quot;wz-plan&quot;&gt;Plan *&lt;/label&gt;
+      &lt;select id=&quot;wz-plan&quot; name=&quot;plan&quot; required&gt;
+        &lt;option value=&quot;&quot;&gt;Select a plan&lt;/option&gt;
+        &lt;option&gt;Starter&lt;/option&gt;
+        &lt;option&gt;Team&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-prev&gt;Back&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;primary&quot; data-next&gt;Next&lt;/button&gt;&lt;/footer&gt;
+  &lt;/section&gt;
+  &lt;section&gt;
+    &lt;h3&gt;Review&lt;/h3&gt;
+    &lt;dl id=&quot;wz-review&quot;&gt;&lt;/dl&gt;
+    &lt;footer&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-prev&gt;Back&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;primary&quot; data-next&gt;Finish&lt;/button&gt;&lt;/footer&gt;
+  &lt;/section&gt;
+  &lt;p id=&quot;wz-log&quot; role=&quot;status&quot;&gt;Step 1 of 3.&lt;/p&gt;
+&lt;/div&gt;
+&lt;script type=&quot;module&quot;&gt;
+  const wiz = document.getElementById(&quot;wiz&quot;);
+  const log = document.getElementById(&quot;wz-log&quot;);
+  wiz.addEventListener(&quot;tsunami:stepchange&quot;, (e) =&gt; {
+    log.textContent = `Step ${e.detail.index + 1} of 3.`;
+    if (e.detail.index !== 2) return;
+    const review = document.getElementById(&quot;wz-review&quot;);
+    review.replaceChildren();
+    for (const id of [&quot;wz-name&quot;, &quot;wz-email&quot;, &quot;wz-plan&quot;]) {
+      const dt = document.createElement(&quot;dt&quot;);
+      dt.textContent = document.querySelector(`label[for=&quot;${id}&quot;]`).textContent;
+      const dd = document.createElement(&quot;dd&quot;);
+      dd.textContent = document.getElementById(id).value;
+      review.append(dt, dd);
+    }
+  });
+  wiz.addEventListener(&quot;tsunami:stepcomplete&quot;, () =&gt; {
+    log.textContent = &quot;Done. Nothing was sent: this is a demo.&quot;;
+  });
+&lt;/script&gt;</code></pre>
+  </div>
+</div>
+</section>
+<section>
+  <h2>Vertical, with an optional step</h2>
+  <p>
+    <code>data-orientation="vertical"</code> stacks the steps (under 40rem they
+    always stack). A panel with <code>data-optional</code> is not validated, so
+    the user can move past it empty. Without <code>data-linear</code> the header
+    steps are free to click, but going forward still validates the current
+    panel.
+  </p>
+<div class="tabs" data-tabs>
+  <div role="tablist" aria-label="Vertical, with an optional step">
+    <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+    <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+  </div>
+  <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+    <div class="docs-preview">
+<div class="stepper" data-orientation="vertical" data-validate>
+  <ol>
+    <li><button type="button"><span><strong>Company</strong><small>Required</small></span></button></li>
+    <li><button type="button"><span><strong>Branding</strong><small>Optional</small></span></button></li>
+    <li><button type="button"><span><strong>Billing</strong></span></button></li>
+  </ol>
+  <section>
+    <h3>Company</h3>
+    <div class="field">
+      <label for="vs-co">Company name *</label>
+      <input id="vs-co" name="vs-co" type="text" required>
+    </div>
+    <footer><button type="button" class="btn" data-variant="primary" data-next>Next</button></footer>
+  </section>
+  <section data-optional>
+    <h3>Branding</h3>
+    <div class="field">
+      <label for="vs-site">Website</label>
+      <input id="vs-site" name="vs-site" type="url" >
+      <small id="vs-site-h">Skip this step if you like.</small>
+    </div>
+    <footer><button type="button" class="btn" data-prev>Back</button><button type="button" class="btn" data-variant="primary" data-next>Next</button></footer>
+  </section>
+  <section>
+    <h3>Billing</h3>
+    <div class="field">
+      <label for="vs-vat">VAT number *</label>
+      <input id="vs-vat" name="vs-vat" type="text" required>
+    </div>
+    <footer><button type="button" class="btn" data-prev>Back</button><button type="button" class="btn" data-variant="primary" data-next>Finish</button></footer>
+  </section>
+</div>
+    </div>
+  </div>
+  <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+    <pre><code>&lt;div class=&quot;stepper&quot; data-orientation=&quot;vertical&quot; data-validate&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;Company&lt;/strong&gt;&lt;small&gt;Required&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;Branding&lt;/strong&gt;&lt;small&gt;Optional&lt;/small&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;Billing&lt;/strong&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;section&gt;
+    &lt;h3&gt;Company&lt;/h3&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;label for=&quot;vs-co&quot;&gt;Company name *&lt;/label&gt;
+      &lt;input id=&quot;vs-co&quot; name=&quot;vs-co&quot; type=&quot;text&quot; required&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;primary&quot; data-next&gt;Next&lt;/button&gt;&lt;/footer&gt;
+  &lt;/section&gt;
+  &lt;section data-optional&gt;
+    &lt;h3&gt;Branding&lt;/h3&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;label for=&quot;vs-site&quot;&gt;Website&lt;/label&gt;
+      &lt;input id=&quot;vs-site&quot; name=&quot;vs-site&quot; type=&quot;url&quot; &gt;
+      &lt;small id=&quot;vs-site-h&quot;&gt;Skip this step if you like.&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-prev&gt;Back&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;primary&quot; data-next&gt;Next&lt;/button&gt;&lt;/footer&gt;
+  &lt;/section&gt;
+  &lt;section&gt;
+    &lt;h3&gt;Billing&lt;/h3&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;label for=&quot;vs-vat&quot;&gt;VAT number *&lt;/label&gt;
+      &lt;input id=&quot;vs-vat&quot; name=&quot;vs-vat&quot; type=&quot;text&quot; required&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-prev&gt;Back&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;primary&quot; data-next&gt;Finish&lt;/button&gt;&lt;/footer&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</div>
+</section>
+<section>
+  <h2>Free navigation and the API</h2>
+  <p>
+    With neither <code>data-linear</code> nor <code>data-validate</code> any
+    step can be opened from the header. Move it from script with
+    <code>tsunami.stepper</code>.
+  </p>
+<div class="tabs" data-tabs>
+  <div role="tablist" aria-label="Free navigation and the API">
+    <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">Preview</button>
+    <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">Code</button>
+  </div>
+  <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+    <div class="docs-preview">
+<div class="stepper" id="api-demo">
+  <ol>
+    <li><button type="button"><span><strong>One</strong></span></button></li>
+    <li><button type="button"><span><strong>Two</strong></span></button></li>
+    <li><button type="button"><span><strong>Three</strong></span></button></li>
+  </ol>
+  <section><h3>Step one</h3><p>Free navigation: click any step.</p></section>
+  <section><h3>Step two</h3><p>Nothing is validated here.</p></section>
+  <section><h3>Step three</h3><p>The last one.</p></section>
+</div>
+<div class="stack" data-direction="row" data-gap="sm">
+  <button type="button" class="btn" onclick="tsunami.stepper.prev('#api-demo')">prev</button>
+  <button type="button" class="btn" onclick="tsunami.stepper.next('#api-demo')">next</button>
+  <button type="button" class="btn" onclick="tsunami.stepper.go('#api-demo', 2)">go(2)</button>
+</div>
+    </div>
+  </div>
+  <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+    <pre><code>&lt;div class=&quot;stepper&quot; id=&quot;api-demo&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;One&lt;/strong&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;Two&lt;/strong&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot;&gt;&lt;span&gt;&lt;strong&gt;Three&lt;/strong&gt;&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;section&gt;&lt;h3&gt;Step one&lt;/h3&gt;&lt;p&gt;Free navigation: click any step.&lt;/p&gt;&lt;/section&gt;
+  &lt;section&gt;&lt;h3&gt;Step two&lt;/h3&gt;&lt;p&gt;Nothing is validated here.&lt;/p&gt;&lt;/section&gt;
+  &lt;section&gt;&lt;h3&gt;Step three&lt;/h3&gt;&lt;p&gt;The last one.&lt;/p&gt;&lt;/section&gt;
+&lt;/div&gt;
+&lt;div class=&quot;stack&quot; data-direction=&quot;row&quot; data-gap=&quot;sm&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn&quot; onclick=&quot;tsunami.stepper.prev(&#x27;#api-demo&#x27;)&quot;&gt;prev&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn&quot; onclick=&quot;tsunami.stepper.next(&#x27;#api-demo&#x27;)&quot;&gt;next&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn&quot; onclick=&quot;tsunami.stepper.go(&#x27;#api-demo&#x27;, 2)&quot;&gt;go(2)&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+</div>
+</section>
+<section>
+  <h2>Behavior</h2>
+  <p>
+    JS sets <code>data-state</code> (<code>done</code>, <code>current</code> or
+    <code>upcoming</code>) on each step button from the current step, and
+    <code>aria-current="step"</code> on the current one. It shows only the
+    current panel and gives each panel <code>role="group"</code>, labelled by
+    its step. The first step is current unless the markup marks another with
+    <code>data-state="current"</code>. Moving with a button or the API moves
+    focus to the panel heading, or to its first field when there is no heading.
+    Going back never validates. Pressing Enter in a field works as Next, unless
+    the panel has a submit button.
+  </p>
+</section>
+<section>
+  <h2>API</h2>
+  <p>
+    Lives in <code>js/stepper.js</code>. It uses event delegation, so steppers
+    added later work too. Each function takes the stepper or any element inside
+    it, or a selector.
+  </p>
+  <h3>Methods</h3>
+<div class="card scroll-area">
+<table class="table">
+<thead><tr><th scope="col">Function</th><th scope="col">Arguments</th><th scope="col">Description</th></tr></thead>
+<tbody>
+<tr><td><code>tsunami.stepper.go(el, index)</code></td><td><code>index</code>: number from 0</td><td>Opens a step. Going forward validates first (every panel on the way when linear). Returns <code>false</code> if blocked or out of range.</td></tr>
+<tr><td><code>tsunami.stepper.next(el)</code></td><td></td><td>Next step. On the last step it validates and fires <code>tsunami:stepcomplete</code>.</td></tr>
+<tr><td><code>tsunami.stepper.prev(el)</code></td><td></td><td>Previous step. Never validates.</td></tr>
+<tr><td><code>tsunami.stepper.index(el)</code></td><td></td><td>The current step number, from 0.</td></tr>
+</tbody>
+</table>
+</div>
+  <h3>Events</h3>
+  <p>Both fire on the stepper and bubble.</p>
+<div class="card scroll-area">
+<table class="table">
+<thead><tr><th scope="col">Event</th><th scope="col">Detail</th><th scope="col">Description</th></tr></thead>
+<tbody>
+<tr><td><code>tsunami:stepchange</code></td><td><code>{ index, step, panel }</code></td><td>After a step opens. <code>step</code> is its header <code>&lt;li&gt;</code>.</td></tr>
+<tr><td><code>tsunami:stepcomplete</code></td><td><code>{ index }</code></td><td>Next on the last step, once its fields are valid.</td></tr>
+</tbody>
+</table>
+</div>
+  <h3>Keyboard</h3>
+<div class="card scroll-area">
+<table class="table">
+<thead><tr><th scope="col">Key</th><th scope="col">Context</th><th scope="col">Description</th></tr></thead>
+<tbody>
+<tr><td><code>Tab</code> / <code>Shift+Tab</code></td><td>header</td><td>Steps are buttons. Disabled steps are skipped.</td></tr>
+<tr><td><code>Arrow keys</code></td><td>header</td><td>Move focus between enabled steps, wrapping. They do not open one.</td></tr>
+<tr><td><code>Home / End</code></td><td>header</td><td>Focus the first / last enabled step.</td></tr>
+<tr><td><code>Enter / Space</code></td><td>header</td><td>Open the focused step.</td></tr>
+<tr><td><code>Enter</code></td><td>field in a panel</td><td>Same as Next, unless the panel has a submit button.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section>
+  <h2>Attributes</h2>
+<div class="card scroll-area">
+<table class="table">
+<thead><tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr></thead>
+<tbody>
+<tr><td><code>.stepper</code></td><td><code>div</code></td><td>Wraps the <code>&lt;ol&gt;</code> and the panels</td></tr>
+<tr><td><code>&gt; ol &gt; li &gt; button</code></td><td><code>type=&quot;button&quot;</code></td><td>A step. Holds a <code>span</code> with <code>strong</code> (label) and an optional <code>small</code> (description).</td></tr>
+<tr><td><code>&gt; section</code></td><td>one per step, in order</td><td>A panel. Put a heading first and a <code>footer</code> with the buttons.</td></tr>
+<tr><td><code>data-state</code></td><td><code>done</code> · <code>current</code> · <code>upcoming</code></td><td>On a step button. Set by JS. In markup, <code>current</code> picks the first step.</td></tr>
+<tr><td><code>data-linear</code></td><td>present / absent</td><td>On the stepper: steps after the current one are disabled (<code>aria-disabled</code>).</td></tr>
+<tr><td><code>data-validate</code></td><td>present / absent</td><td>On the stepper: Next and forward jumps run <code>reportValidity()</code> on the current panel's fields.</td></tr>
+<tr><td><code>data-optional</code></td><td>present / absent</td><td>On a panel: not validated.</td></tr>
+<tr><td><code>data-orientation</code></td><td><code>vertical</code></td><td>On the stepper: stack the steps. Under 40rem it is always vertical.</td></tr>
+<tr><td><code>data-next</code> · <code>data-prev</code></td><td>on a button in a panel</td><td>Next (or finish on the last panel) and Back.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
