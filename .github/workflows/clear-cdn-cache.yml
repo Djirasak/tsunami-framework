@@ -3,10 +3,10 @@ name: Clear CDN Cache
 # jsDelivr reads a GitHub tag the first time a file is asked for. Now and then
 # that first read fails ("Failed to fetch version info") and jsDelivr keeps the
 # 404 for ten minutes, so a page that asks for dozens of files at once (the code
-# editor) can break for its first visitors. After a release this workflow asks
-# for every file in dist/ one at a time and, when one answers with an error,
-# purges it and asks again, so the cache holds good answers before anyone loads
-# the page.
+# editor) can break for its first visitors. After a release this workflow purges
+# every file in dist/ one at a time, asks for it, and when the answer is an
+# error purges and asks again, so the cache holds good answers before anyone
+# loads the page.
 
 on:
   release:
@@ -14,21 +14,21 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: Tag to warm, for example v0.1.2
+        description: Tag to clear, for example v0.1.2
         required: true
 
 permissions:
   contents: read
 
 jobs:
-  warm:
+  clear:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.release.tag_name || inputs.tag }}
           persist-credentials: false
-      - name: Ask jsDelivr for every file in dist/
+      - name: Purge, then ask jsDelivr for every file in dist/
         env:
           TAG: ${{ github.event.release.tag_name || inputs.tag }}
           REPO: ${{ github.repository }}
@@ -38,9 +38,9 @@ jobs:
             url="https://cdn.jsdelivr.net/gh/${REPO}@${TAG}/${file}"
             ok=0
             for attempt in 1 2 3 4 5 6 7 8; do
+              curl -s -o /dev/null "https://purge.jsdelivr.net/gh/${REPO}@${TAG}/${file}"
               code=$(curl -s -o /dev/null -w '%{http_code}' "$url")
               if [ "$code" = 200 ]; then ok=1; break; fi
-              curl -s -o /dev/null "https://purge.jsdelivr.net/gh/${REPO}@${TAG}/${file}"
               sleep 10
             done
             if [ "$ok" = 0 ]; then echo "::error::$file still answers $code"; failed=1; fi
