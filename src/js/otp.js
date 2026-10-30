@@ -135,7 +135,17 @@ document.addEventListener("reset", (e) =>
   }),
 );
 
-mount();
+// The script may run before the boxes are parsed; one added later is started too.
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => mount(), { once: true });
+else mount();
+new MutationObserver((records) => {
+  if (document.readyState === "loading") return;
+  for (const r of records)
+    for (const n of r.addedNodes)
+      if (n.nodeType === 1 && (n.matches(OTP) || n.querySelector(OTP)))
+        return mount();
+}).observe(document.documentElement, { childList: true, subtree: true });
 
 (window.tsunami ??= {}).otp = {
   mount,
