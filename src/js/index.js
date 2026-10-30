@@ -11,4 +11,5 @@ import "./table.js";
 import "./tree.js";
 import "./journey.js";
 import "./json-viewer.js";
+import "./editor.js";
 import "./command.js";
