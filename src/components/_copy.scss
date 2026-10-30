@@ -25,7 +25,9 @@
 
   :where(.code-block > .btn) {
     position: absolute;
-    top: var(--space-2);
+    // The middle of the button lines up with the middle of the first line:
+    // the pre's padding plus half a line (line-height 1.6), less half the button.
+    top: calc(var(--space-4) + 0.8 * var(--text-sm) - 0.875rem);
     right: var(--space-2);
   }
 
