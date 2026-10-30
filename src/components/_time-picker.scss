@@ -1,0 +1,96 @@
+// Time picker: .time-picker looks like .input and holds segments (hour,
+// minute, optional second and AM/PM) that src/js/time-picker.js builds. The
+// focused segment is filled with the accent. data-size="sm|lg" sets the height,
+// aria-invalid="true" and disabled work as on .input. Inside an .input-group it
+// loses its own border and sits after a divider.
+@layer components {
+  :where(.time-picker) {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    max-width: 100%;
+    min-width: 0;
+    height: 2.25rem;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--text-base);
+    font-variant-numeric: tabular-nums;
+    cursor: text;
+  }
+
+  :where(.time-picker:focus-within) {
+    border-color: var(--accent);
+  }
+
+  :where(.time-picker > input) {
+    width: 2ch;
+    min-width: 0;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    outline: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: center;
+    caret-color: transparent;
+    cursor: inherit;
+  }
+
+  :where(.time-picker > input[data-segment="p"]) {
+    width: 3ch;
+  }
+
+  :where(.time-picker > input:not([aria-valuenow])) {
+    color: var(--muted);
+  }
+
+  :where(.time-picker > input:focus) {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  :where(.time-picker > span) {
+    color: var(--muted);
+    white-space: pre;
+  }
+
+  :where(.time-picker[aria-invalid="true"]) {
+    border-color: var(--danger-fg);
+  }
+
+  :where(.time-picker[disabled]) {
+    background: var(--subtle);
+    color: var(--muted);
+    cursor: not-allowed;
+  }
+
+  :where(.time-picker[data-size="sm"]) {
+    height: 1.75rem;
+    padding: 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  :where(.time-picker[data-size="lg"]) {
+    height: 2.5rem;
+    padding: 0 var(--space-4);
+  }
+
+  // In an input group: no box of its own, a divider on its left.
+  :where(.input-group > .time-picker) {
+    flex: none;
+    height: 100%;
+    padding: 0 0 0 var(--space-3);
+    border-width: 0 0 0 1px;
+    border-radius: 0;
+    background: none;
+  }
+
+  :where(.input-group > .time-picker:focus-within) {
+    border-color: var(--line);
+  }
+}
