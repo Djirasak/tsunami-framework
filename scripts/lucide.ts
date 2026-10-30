@@ -2,7 +2,7 @@
 //   lucide-font-X.Y.Z.zip  -> <font-dir>  (lucide.woff2, codepoints.json)
 //   lucide-icons-X.Y.Z.zip -> <icons-dir> (per-icon .json with tags)
 // Usage: bun scripts/lucide.ts <font-dir> <icons-dir> <version>
-// Writes fonts/lucide.woff2, src/icons/_lucide.scss (name -> codepoint) and docs/icons.json (search index).
+// Writes fonts/lucide.woff2, src/icons/_lucide.scss (name -> codepoint) and site/public/docs/icons.json (search index).
 const [fontDir, iconsDir, version] = process.argv.slice(2);
 if (!fontDir || !iconsDir || !version)
   throw new Error(
@@ -49,7 +49,7 @@ ${entries.join("\n")}
 `,
 );
 await Bun.write(
-  `${root}docs/icons.json`,
+  `${root}site/public/docs/icons.json`,
   JSON.stringify({ version, icons: index }),
 );
 console.log(

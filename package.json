@@ -10,7 +10,7 @@
     "dev": "sass --watch --no-source-map src/index.scss dist/tsunami.css",
     "build": "bun scripts/build.ts",
     "lint": "eslint src/js",
-    "serve": "bun scripts/build.ts && bun scripts/serve.ts",
+    "docs": "cd site && bun run dev",
     "audit": "bun audit"
   },
   "devDependencies": {
