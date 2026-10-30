@@ -1,0 +1,10 @@
+.next/
+.open-next/
+node_modules/
+.dev.vars
+.wrangler/
+next-env.d.ts
+# copies made by scripts/sync.ts
+public/dist/
+public/fonts/
+public/flags/

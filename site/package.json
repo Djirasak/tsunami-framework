@@ -1,0 +1,24 @@
+{
+  "name": "tsunami-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "bun scripts/sync.ts --build",
+    "dev": "next dev --port 5477",
+    "prebuild": "bun scripts/sync.ts --build",
+    "build": "next build",
+    "start": "next start",
+    "preview": "bun run build && opennextjs-cloudflare build --skipNextBuild && opennextjs-cloudflare preview",
+    "deploy": "bun run build && opennextjs-cloudflare build --skipNextBuild && opennextjs-cloudflare deploy"
+  },
+  "dependencies": {
+    "@opennextjs/cloudflare": "1.20.13",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "wrangler": "4.152.0"
+  }
+}

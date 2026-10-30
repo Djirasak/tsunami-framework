@@ -2,3 +2,10 @@ node_modules/
 dist/
 .claude/worktrees/
 .claude/tmp/
+site/.next/
+site/.open-next/
+site/node_modules/
+site/.wrangler/
+site/public/dist/
+site/public/fonts/
+site/public/flags/
