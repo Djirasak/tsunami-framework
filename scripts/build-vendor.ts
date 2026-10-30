@@ -47,3 +47,10 @@ await Bun.write(
   Bun.file(`${root}vendor/vanilla-calendar/vanilla-calendar.min.js`),
 );
 console.log("dist/vanilla-calendar.min.js");
+
+// Chart.js ships as one minified UMD file: copied as dist/chart.min.js.
+await Bun.write(
+  `${root}dist/chart.min.js`,
+  Bun.file(`${root}vendor/chart/chart.min.js`),
+);
+console.log("dist/chart.min.js");

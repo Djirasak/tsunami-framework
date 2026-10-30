@@ -25,7 +25,12 @@ const steps: [string[], () => Promise<unknown>][] = [
     () => $`bun build src/js/index.js --minify --outfile dist/tsunami.min.js`,
   ],
   [
-    ["tinymce.min.js", "sortable.min.js", "vanilla-calendar.min.js"],
+    [
+      "tinymce.min.js",
+      "sortable.min.js",
+      "vanilla-calendar.min.js",
+      "chart.min.js",
+    ],
     () => $`bun scripts/build-vendor.ts`,
   ],
   [[], () => $`bun scripts/stamp-version.ts`],
