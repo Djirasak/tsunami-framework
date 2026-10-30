@@ -604,6 +604,114 @@
           </section>
 
           <section>
+            <h2>data-preset names a ready-made period</h2>
+            <p>
+              Instead of writing dates in <code>value</code>, give a preset
+              button a <code>data-preset</code> name. The script works out its
+              dates from today each time the panel opens, so the page needs no
+              server date. The names are <code>today</code>,
+              <code>yesterday</code>, <code>tomorrow</code>,
+              <code>last-7-days</code>, <code>last-30-days</code>,
+              <code>last-90-days</code>, <code>this-week</code> (from Monday),
+              <code>this-month</code>, <code>last-month</code>,
+              <code>this-year</code> and <code>last-year</code>. A single-date
+              picker takes only <code>today</code>, <code>yesterday</code> and
+              <code>tomorrow</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="data-preset names a ready-made period">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7b-tp"
+                  aria-selected="true"
+                  aria-controls="ex7b-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7b-tc"
+                  aria-selected="false"
+                  aria-controls="ex7b-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7b-p"
+                aria-labelledby="ex7b-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div
+                    class="date-picker"
+                    data-mode="range"
+                    data-format="medium"
+                    data-placeholder="Select a period"
+                    style="max-width: 18rem"
+                  >
+                    <button type="button" class="btn" aria-expanded="false">
+                      <span>Select a period</span
+                      ><i class="icon icon-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div data-popover aria-hidden="true">
+                      <div data-presets role="group" aria-label="Period">
+                        <button type="button" data-preset="today">Today</button>
+                        <button type="button" data-preset="yesterday">
+                          Yesterday
+                        </button>
+                        <button type="button" data-preset="last-7-days">
+                          Last 7 days
+                        </button>
+                        <button type="button" data-preset="last-30-days">
+                          Last 30 days
+                        </button>
+                        <button type="button" data-preset="this-month">
+                          This month
+                        </button>
+                        <button type="button" data-preset="last-month">
+                          Last month
+                        </button>
+                        <button type="button" data-preset="this-year">
+                          This year
+                        </button>
+                      </div>
+                    </div>
+                    <input type="hidden" name="period" />
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7b-c"
+                aria-labelledby="ex7b-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="date-picker" data-mode="range" data-format="medium" data-placeholder="Select a period" style="max-width: 18rem"&gt;
+  &lt;button type="button" class="btn" aria-expanded="false"&gt;&lt;span&gt;Select a period&lt;/span&gt;&lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;div data-popover aria-hidden="true"&gt;
+    &lt;div data-presets role="group" aria-label="Period"&gt;
+      &lt;button type="button" data-preset="today"&gt;Today&lt;/button&gt;
+      &lt;button type="button" data-preset="yesterday"&gt;Yesterday&lt;/button&gt;
+      &lt;button type="button" data-preset="last-7-days"&gt;Last 7 days&lt;/button&gt;
+      &lt;button type="button" data-preset="last-30-days"&gt;Last 30 days&lt;/button&gt;
+      &lt;button type="button" data-preset="this-month"&gt;This month&lt;/button&gt;
+      &lt;button type="button" data-preset="last-month"&gt;Last month&lt;/button&gt;
+      &lt;button type="button" data-preset="this-year"&gt;This year&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;input type="hidden" name="period"&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
             <h2>data-min and data-max limit the dates that can be chosen</h2>
             <p>
               Days outside the limits are dimmed and cannot be chosen. A typed
@@ -1543,6 +1651,20 @@
                     <td>
                       The dates the preset chooses, written as the starting
                       value is.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-preset</code></td>
+                    <td>a name, on a preset's button</td>
+                    <td>
+                      Works out the preset's <code>value</code> from today:
+                      <code>today</code>, <code>yesterday</code>,
+                      <code>tomorrow</code>, <code>last-7-days</code>,
+                      <code>last-30-days</code>, <code>last-90-days</code>,
+                      <code>this-week</code>, <code>this-month</code>,
+                      <code>last-month</code>, <code>this-year</code>,
+                      <code>last-year</code>. A single picker takes only the
+                      first three.
                     </td>
                   </tr>
                   <tr>
