@@ -1,0 +1,292 @@
+<header class="page-header">
+            <div>
+              <h1>Phone input</h1>
+              <p>
+                A phone number field with a country button that shows the flag
+                and dial code. The form sends the full international number.
+              </p>
+            </div>
+          </header>
+          <div class="alert" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <div>
+              <strong>It does not validate</strong>
+              <p>
+                It formats and joins the number. It does not check that the
+                number is valid for the country.
+              </p>
+            </div>
+          </div>
+          <section>
+            <h2>A country button and a number field</h2>
+            <p>Wrap an <code>.input-group</code> with an <code>input[type=tel]</code> in <code>.phone-input</code>. <code>data-country</code> sets the first country and <code>data-name</code> names the hidden input that holds the number the form sends.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A country button and a number field">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="field" style="max-width: 24rem">
+                    <label for="pi-basic">Phone</label>
+                    <div class="phone-input" data-country="TH" data-name="phone">
+                      <div class="input-group">
+                        <input type="tel" id="pi-basic" placeholder="81 234 5678" />
+                      </div>
+                    </div>
+                    <small>Pick a country, or type + and a dial code.</small>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="field" style="max-width: 24rem"&gt;
+  &lt;label for="pi-basic"&gt;Phone&lt;/label&gt;
+  &lt;div class="phone-input" data-country="TH" data-name="phone"&gt;
+    &lt;div class="input-group"&gt;
+      &lt;input type="tel" id="pi-basic" placeholder="81 234 5678" /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;small&gt;Pick a country, or type + and a dial code.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>A full number in the field picks the country</h2>
+            <p>A value that starts with <code>+</code> and a dial code sets the country and leaves the national part in the field. This works for a value set in the markup, for typing and for paste.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A full number in the field picks the country">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="field" style="max-width: 24rem">
+                    <label for="pi-full">Phone</label>
+                    <div class="phone-input" data-country="US" data-name="phone_full">
+                      <div class="input-group">
+                        <input type="tel" id="pi-full" value="+44 7700 900123" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="field" style="max-width: 24rem"&gt;
+  &lt;label for="pi-full"&gt;Phone&lt;/label&gt;
+  &lt;div class="phone-input" data-country="US" data-name="phone_full"&gt;
+    &lt;div class="input-group"&gt;
+      &lt;input type="tel" id="pi-full" value="+44 7700 900123" /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>The form sends the joined number</h2>
+            <p>Spaces, dashes and brackets are dropped. For countries that use a leading trunk <code>0</code> (such as Thailand and the UK) it is dropped too. <code>tsunami:phonechange</code> fires when the country or the number changes.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="The form sends the joined number">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">Preview</button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <form class="stack" data-gap="sm" style="max-width: 24rem" id="pi-form" oninput="document.getElementById('pi-result').textContent = new FormData(this).get('mobile') || '(empty)'">
+                    <div class="field">
+                      <label for="pi-mobile">Mobile</label>
+                      <div class="phone-input" data-country="TH" data-name="mobile">
+                        <div class="input-group">
+                          <input type="tel" id="pi-mobile" value="081-234-5678" />
+                        </div>
+                      </div>
+                    </div>
+                    <pre id="pi-result">+66812345678</pre>
+                  </form>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;form class="stack" data-gap="sm" style="max-width: 24rem" id="pi-form" oninput="document.getElementById('pi-result').textContent = new FormData(this).get('mobile') || '(empty)'"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="pi-mobile"&gt;Mobile&lt;/label&gt;
+    &lt;div class="phone-input" data-country="TH" data-name="mobile"&gt;
+      &lt;div class="input-group"&gt;
+        &lt;input type="tel" id="pi-mobile" value="081-234-5678" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;pre id="pi-result"&gt;+66812345678&lt;/pre&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Invalid, disabled and sizes</h2>
+            <p><code>aria-invalid=&quot;true&quot;</code> and <code>disabled</code> go on the <code>input[type=tel]</code>. <code>data-size</code> goes on the <code>.input-group</code>.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Invalid, disabled and sizes">
+                <button type="button" role="tab" id="ex4-tp" aria-selected="true" aria-controls="ex4-p">Preview</button>
+                <button type="button" role="tab" id="ex4-tc" aria-selected="false" aria-controls="ex4-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex4-p" aria-labelledby="ex4-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm" style="max-width: 24rem">
+                    <div class="field">
+                      <label for="pi-invalid">Invalid</label>
+                      <div class="phone-input" data-country="TH" data-name="invalid">
+                        <div class="input-group">
+                          <input type="tel" id="pi-invalid" value="12" aria-invalid="true" aria-describedby="pi-invalid-msg" />
+                        </div>
+                      </div>
+                      <small id="pi-invalid-msg">Enter the full number.</small>
+                    </div>
+                    <div class="field">
+                      <label for="pi-disabled">Disabled</label>
+                      <div class="phone-input" data-country="JP" data-name="disabled">
+                        <div class="input-group">
+                          <input type="tel" id="pi-disabled" value="90 1234 5678" disabled />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="pi-sm">Small</label>
+                      <div class="phone-input" data-country="DE" data-name="small">
+                        <div class="input-group" data-size="sm">
+                          <input type="tel" id="pi-sm" placeholder="151 2345 6789" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="pi-lg">Large</label>
+                      <div class="phone-input" data-country="FR" data-name="large">
+                        <div class="input-group" data-size="lg">
+                          <input type="tel" id="pi-lg" placeholder="6 12 34 56 78" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex4-c" aria-labelledby="ex4-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-gap="sm" style="max-width: 24rem"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="pi-invalid"&gt;Invalid&lt;/label&gt;
+    &lt;div class="phone-input" data-country="TH" data-name="invalid"&gt;
+      &lt;div class="input-group"&gt;
+        &lt;input type="tel" id="pi-invalid" value="12" aria-invalid="true" aria-describedby="pi-invalid-msg" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;small id="pi-invalid-msg"&gt;Enter the full number.&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="pi-disabled"&gt;Disabled&lt;/label&gt;
+    &lt;div class="phone-input" data-country="JP" data-name="disabled"&gt;
+      &lt;div class="input-group"&gt;
+        &lt;input type="tel" id="pi-disabled" value="90 1234 5678" disabled /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="pi-sm"&gt;Small&lt;/label&gt;
+    &lt;div class="phone-input" data-country="DE" data-name="small"&gt;
+      &lt;div class="input-group" data-size="sm"&gt;
+        &lt;input type="tel" id="pi-sm" placeholder="151 2345 6789" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="pi-lg"&gt;Large&lt;/label&gt;
+    &lt;div class="phone-input" data-country="FR" data-name="large"&gt;
+      &lt;div class="input-group" data-size="lg"&gt;
+        &lt;input type="tel" id="pi-lg" placeholder="6 12 34 56 78" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Behavior</h2>
+            <ul>
+              <li>The button opens a list of countries with a search box. Search by name, ISO code or dial code.</li>
+              <li>Country names come from <code>Intl.DisplayNames</code> in the page language (<code>html lang</code>). The list holds about 240 countries and adds about 8 KB to <code>tsunami.min.js</code>.</li>
+              <li>Typing <code>+</code> and a dial code switches the country as soon as a digit follows the code. The longest dial code wins, so <code>+1 242</code> is the Bahamas and <code>+1 415</code> is the US. For a number that shares the <code>+1</code> code, paste it whole or pick the country from the list.</li>
+              <li>The hidden input holds <code>+</code>, the dial code and the digits of the field, or an empty string while the field is empty. The visible text is never rewritten, except to remove a dial code you typed.</li>
+              <li>The trunk <code>0</code> is dropped only for a fixed list of countries where it is always a trunk prefix. For any other country the digits are joined as typed.</li>
+              <li>It does not validate. It does not check length, area codes or number type, so use your server or a library for that.</li>
+              <li>The field has <code>autocomplete="tel-national"</code> unless you set another value. A form reset puts back the first country and the original text.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>API</h2>
+            <p>
+              It starts every <code>.phone-input</code> on the page, also one added later.
+            </p>
+            <h3>Methods</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Methods">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Method</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>tsunami.phoneInput.get(el)</code></td><td>Returns <code>{ country, dial, number, value }</code> for a <code>.phone-input</code> or an element inside it.</td></tr>
+                  <tr><td><code>tsunami.phoneInput.set(el, v)</code></td><td>Sets the field. <code>v</code> is a string (<code>&quot;+66812345678&quot;</code>, or national digits for the current country) or <code>{ country, number }</code>. It fires the events below.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Events">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Event</th><th scope="col">On</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>tsunami:phonechange</code></td><td><code>.phone-input</code>, bubbles</td><td>The country or the number changed. <code>detail</code> is <code>{ country, dial, number, value }</code>: <code>country</code> is the ISO code (<code>&quot;TH&quot;</code>), <code>dial</code> is <code>&quot;+66&quot;</code>, <code>number</code> is the digits sent after it and <code>value</code> is the whole number (<code>&quot;+66812345678&quot;</code>, or <code>&quot;&quot;</code> when empty).</td></tr>
+                  <tr><td><code>input</code>, <code>change</code></td><td>the hidden input, bubbles</td><td>Sent when the country or number changes, so a form or the save bar hears it. Typing also sends the native events from the <code>input[type=tel]</code>.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Keyboard</h3>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Keyboard">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Key</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>ArrowDown</kbd></td><td>On the country button, opens the list and moves focus to the search box.</td></tr>
+                  <tr><td><kbd>ArrowDown</kbd>, <kbd>ArrowUp</kbd>, <kbd>Home</kbd>, <kbd>End</kbd></td><td>In the search box, move through the countries.</td></tr>
+                  <tr><td><kbd>Enter</kbd></td><td>Picks the highlighted country and returns to the number field.</td></tr>
+                  <tr><td><kbd>Esc</kbd></td><td>Closes the list.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Attribute</th><th scope="col">On</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>data-country</code></td><td><code>.phone-input</code></td><td>ISO 3166 code of the first country, such as <code>TH</code>. Default <code>US</code>. It follows the picked country.</td></tr>
+                  <tr><td><code>data-name</code></td><td><code>.phone-input</code></td><td>Name of the hidden input that holds the international number. Without it nothing is sent.</td></tr>
+                  <tr><td><code>disabled</code></td><td><code>input[type=tel]</code></td><td>Disables the number field, the country button and the hidden input.</td></tr>
+                  <tr><td><code>aria-invalid=&quot;true&quot;</code></td><td><code>input[type=tel]</code></td><td>Draws the danger border on the group.</td></tr>
+                  <tr><td><code>data-size=&quot;sm|lg&quot;</code></td><td><code>.input-group</code></td><td>Matches the input sizes.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Accessibility</h2>
+            <ul>
+              <li>The country button is named <code>Country: Thailand +66</code> and opens a listbox. The search box is a combobox that points to the highlighted option with <code>aria-activedescendant</code>.</li>
+              <li>Label the <code>input[type=tel]</code> with a <code>label</code>. Flags are decorative and hidden from assistive technology.</li>
+            </ul>
+          </section>
