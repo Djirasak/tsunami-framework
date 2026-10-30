@@ -1,0 +1,1603 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editor | Tsunami</title>
+    <link rel="stylesheet" href="../dist/tsunami.min.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="docs.css" />
+    <script src="../dist/tinymce.min.js"></script>
+    <script src="../dist/tsunami.min.js"></script>
+    <script type="module" src="docs.js"></script>
+  </head>
+  <body>
+    <div class="docs">
+      <aside class="sidebar" id="docs-nav" popover>
+        <a class="docs-brand" href="./"
+          ><svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" rx="7" />
+            <path
+              d="M5.5 21c3 0 5-2 6.5-5.2C14 11 17.2 7 22 7c3 0 4.8 2.2 4.8 4.5 0 2-1.6 3.5-3.5 3.5-1.8 0-3-1.3-3-2.9"
+            />
+            <path
+              d="M5.5 26c2.2-2.2 4.4-2.2 6.6 0s4.4 2.2 6.6 0 4.4-2.2 6.6 0"
+            /></svg
+          >Tsunami <span>津波</span></a
+        >
+        <button
+          type="button"
+          class="btn docs-search"
+          commandfor="docs-palette"
+          command="show-modal"
+        >
+          <i class="icon icon-search" aria-hidden="true"></i><span>Search</span
+          ><kbd>Ctrl K</kbd>
+        </button>
+        <nav aria-label="Docs">
+          <section>
+            <div role="group">
+              <ul>
+                <li>
+                  <a
+                    href="./"
+                    data-label="Overview"
+                    data-keywords="Get started index"
+                    ><i class="icon icon-house" aria-hidden="true"></i
+                    ><span>Overview</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div role="group" aria-labelledby="nav-actions">
+              <h3 id="nav-actions">Actions</h3>
+              <ul>
+                <li>
+                  <a
+                    href="btn"
+                    data-label="Button"
+                    data-keywords="Actions btn data-variant data-size aria-label icon aria-pressed disabled aria-disabled btn-group data-pressed dropdown"
+                    ><i
+                      class="icon icon-mouse-pointer-click"
+                      aria-hidden="true"
+                    ></i
+                    ><span>Button</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="command"
+                    data-label="Command"
+                    data-keywords="Actions command dialog command-dialog palette search menu data-label data-keywords data-results data-filter data-filters data-suggested data-filter-list data-filter-badge data-limit data-more data-hint data-description data-tab-filter data-shortcut aria-busy aria-disabled role menuitem"
+                    ><i class="icon icon-command" aria-hidden="true"></i
+                    ><span>Command</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="dropdown"
+                    data-label="Dropdown"
+                    data-keywords="Actions dropdown popover id button a label input h2 h3 h4 hr kbd"
+                    ><i class="icon icon-chevron-down" aria-hidden="true"></i
+                    ><span>Dropdown</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="theme-switcher"
+                    data-label="Theme switcher"
+                    data-keywords="Actions theme-switcher html data-theme data-theme-toggle aria-pressed aria-label data-theme-show tsunami-theme"
+                    ><i class="icon icon-sun-moon" aria-hidden="true"></i
+                    ><span>Theme switcher</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div role="group" aria-labelledby="nav-feedback">
+              <h3 id="nav-feedback">Feedback</h3>
+              <ul>
+                <li>
+                  <a
+                    href="alert"
+                    data-label="Alert"
+                    data-keywords="Feedback alert data-variant icon strong h2 h3 h4 p section footer role"
+                    ><i class="icon icon-triangle-alert" aria-hidden="true"></i
+                    ><span>Alert</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="badge"
+                    data-label="Badge"
+                    data-keywords="Feedback badge data-variant data-size icon button"
+                    ><i class="icon icon-badge" aria-hidden="true"></i
+                    ><span>Badge</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="empty"
+                    data-label="Empty state"
+                    data-keywords="Feedback empty header figure h3 p footer div a link"
+                    ><i class="icon icon-inbox" aria-hidden="true"></i
+                    ><span>Empty state</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="loader"
+                    data-label="Loader"
+                    data-keywords="Feedback loader data-size role aria-label aria-hidden aria-busy true"
+                    ><i class="icon icon-loader-circle" aria-hidden="true"></i
+                    ><span>Loader</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="progress"
+                    data-label="Progress"
+                    data-keywords="Feedback progress data-size span data-variant role aria-valuenow aria-valuemin aria-valuemax aria-valuetext aria-label aria-labelledby header ul li"
+                    ><i class="icon icon-gauge" aria-hidden="true"></i
+                    ><span>Progress</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="skeleton"
+                    data-label="Skeleton"
+                    data-keywords="Feedback skeleton data-variant aria-hidden aria-busy"
+                    ><i class="icon icon-square-dashed" aria-hidden="true"></i
+                    ><span>Skeleton</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div role="group" aria-labelledby="nav-forms">
+              <h3 id="nav-forms">Forms</h3>
+              <ul>
+                <li>
+                  <a
+                    href="editor"
+                    data-label="Editor"
+                    data-keywords="Forms editor textarea tinymce rich text toolbar data-toolbar data-min-height data-max-height data-menubar data-statusbar placeholder required readonly disabled aria-invalid"
+                    aria-current="page"
+                    ><i class="icon icon-type" aria-hidden="true"></i
+                    ><span>Editor</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="field"
+                    data-label="Field"
+                    data-keywords="Forms field aria-invalid disabled data-variant role data-gap"
+                    ><i
+                      class="icon icon-text-cursor-input"
+                      aria-hidden="true"
+                    ></i
+                    ><span>Field</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="image-field"
+                    data-label="Image field"
+                    data-keywords="Forms image-field data-fit data-empty data-change data-clear img input file checkbox"
+                    ><i class="icon icon-image" aria-hidden="true"></i
+                    ><span>Image field</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="input"
+                    data-label="Input"
+                    data-keywords="Forms input data-size data-variant type file placeholder aria-label aria-invalid disabled"
+                    ><i class="icon icon-text-cursor" aria-hidden="true"></i
+                    ><span>Input</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="input-group"
+                    data-label="Input group"
+                    data-keywords="Forms input-group data-size data-variant aria-invalid disabled aria-hidden"
+                    ><i
+                      class="icon icon-text-cursor-input"
+                      aria-hidden="true"
+                    ></i
+                    ><span>Input group</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="save-bar"
+                    data-label="Save bar"
+                    data-keywords="Forms save-bar data-form hidden data-warn-on-leave data-dirty role region aria-label a href data-save-bar-ignore"
+                    ><i class="icon icon-save" aria-hidden="true"></i
+                    ><span>Save bar</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="select"
+                    data-label="Select"
+                    data-keywords="Forms select div data-size data-placeholder data-search data-input data-tags data-url data-empty header code wrapper td tr multiple optgroup label option value selected disabled hidden data-label data-text data-avatar data-badge data-tag data-ready data-has-value role combobox"
+                    ><i class="icon icon-list-filter" aria-hidden="true"></i
+                    ><span>Select</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div role="group" aria-labelledby="nav-foundations">
+              <h3 id="nav-foundations">Foundations</h3>
+              <ul>
+                <li>
+                  <a
+                    href="colors"
+                    data-label="Colors"
+                    data-keywords="Foundations colors --bg --surface --subtle --fg --muted --line --accent --on-accent --ok-bg --ok-fg --warning-bg --warning-fg --danger-bg --danger-fg --info-bg --info-fg --neutral-bg --neutral-fg --overlay"
+                    ><i class="icon icon-palette" aria-hidden="true"></i
+                    ><span>Colors</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="icons"
+                    data-label="Icons"
+                    data-keywords="Foundations icons class data-size aria-hidden color include icon glyph name"
+                    ><i class="icon icon-shapes" aria-hidden="true"></i
+                    ><span>Icons</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="typography"
+                    data-label="Typography"
+                    data-keywords="Foundations typography p data-variant small ul ol li dl dt dd blockquote pre code hr kbd"
+                    ><i class="icon icon-type" aria-hidden="true"></i
+                    ><span>Typography</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div role="group" aria-labelledby="nav-layout">
+              <h3 id="nav-layout">Layout</h3>
+              <ul>
+                <li>
+                  <a
+                    href="accordion"
+                    data-label="Accordion"
+                    data-keywords="Layout accordion details name open aria-disabled summary not"
+                    ><i class="icon icon-list-collapse" aria-hidden="true"></i
+                    ><span>Accordion</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="card"
+                    data-label="Card"
+                    data-keywords="Layout card header h2 h3 p aside strong data-trend section div footer empty stat stat-group data-variant data-direction"
+                    ><i class="icon icon-square" aria-hidden="true"></i
+                    ><span>Card</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="item"
+                    data-label="Item"
+                    data-keywords="Layout item figure section h3 p aside data-variant data-size item-group hr"
+                    ><i class="icon icon-rows-3" aria-hidden="true"></i
+                    ><span>Item</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="journey"
+                    data-label="Journey"
+                    data-keywords="Layout journey data-orientation data-view ol li header ul button aria-pressed span small data data-outcomes svg"
+                    ><i class="icon icon-route" aria-hidden="true"></i
+                    ><span>Journey</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="json-viewer"
+                    data-label="JSON viewer"
+                    data-keywords="Layout json-viewer data-view data-collapsed textarea readonly aria-invalid details expand collapse value"
+                    ><i class="icon icon-braces" aria-hidden="true"></i
+                    ><span>JSON viewer</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="page-header"
+                    data-label="Page header"
+                    data-keywords="Layout page-header nav btn h1 hgroup div first-child last-child p"
+                    ><i class="icon icon-panel-top" aria-hidden="true"></i
+                    ><span>Page header</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="scroll-area"
+                    data-label="Scroll area"
+                    data-keywords="Layout scroll-area height code max-height tabindex aria-label"
+                    ><i class="icon icon-scroll" aria-hidden="true"></i
+                    ><span>Scroll area</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="stack"
+                    data-label="Stack"
+                    data-keywords="Layout stack data-direction data-gap"
+                    ><i class="icon icon-layers" aria-hidden="true"></i
+                    ><span>Stack</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="stat"
+                    data-label="Stat"
+                    data-keywords="Layout stat span first-child strong data-trend loader aria-busy aria-pressed data-reverse data-variant data-size stat-group data-even dl"
+                    ><i class="icon icon-chart-column" aria-hidden="true"></i
+                    ><span>Stat</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="table"
+                    data-label="Table"
+                    data-keywords="Layout table caption thead th tbody scope row tfoot data-align data-truncate td avatar img first-child aria-sort button data-sort-type data-sort-value tr aria-selected scroll-area"
+                    ><i class="icon icon-table" aria-hidden="true"></i
+                    ><span>Table</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="timeline"
+                    data-label="Timeline"
+                    data-keywords="Layout timeline ol li data-variant aria-busy time details summary dl dt dd article footer form code textarea"
+                    ><i class="icon icon-history" aria-hidden="true"></i
+                    ><span>Timeline</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="workspace"
+                    data-label="Workspace"
+                    data-keywords="Layout workspace data-panel header h1 popovertarget aside code main td tr popover id"
+                    ><i
+                      class="icon icon-layout-dashboard"
+                      aria-hidden="true"
+                    ></i
+                    ><span>Workspace</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div role="group" aria-labelledby="nav-media">
+              <h3 id="nav-media">Media</h3>
+              <ul>
+                <li>
+                  <a
+                    href="avatar"
+                    data-label="Avatar"
+                    data-keywords="Media avatar img span data-size data-variant data-count data-status avatar-group"
+                    ><i class="icon icon-circle-user" aria-hidden="true"></i
+                    ><span>Avatar</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="flags"
+                    data-label="Flags"
+                    data-keywords="Media flags flag data-size role aria-label aria-hidden"
+                    ><i class="icon icon-flag" aria-hidden="true"></i
+                    ><span>Flags</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div role="group" aria-labelledby="nav-navigation">
+              <h3 id="nav-navigation">Navigation</h3>
+              <ul>
+                <li>
+                  <a
+                    href="breadcrumb"
+                    data-label="Breadcrumb"
+                    data-keywords="Navigation breadcrumb ol li a aria-current"
+                    ><i class="icon icon-chevrons-right" aria-hidden="true"></i
+                    ><span>Breadcrumb</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="link"
+                    data-label="Link"
+                    data-keywords="Navigation link a data-variant data-weight icon"
+                    ><i class="icon icon-link" aria-hidden="true"></i
+                    ><span>Link</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="pagination"
+                    data-label="Pagination"
+                    data-keywords="Navigation pagination ul li a span aria-current aria-disabled data-size"
+                    ><i
+                      class="icon icon-chevrons-left-right"
+                      aria-hidden="true"
+                    ></i
+                    ><span>Pagination</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="sidebar"
+                    data-label="Sidebar"
+                    data-keywords="Navigation sidebar popover id data-collapsed nav header section footer role group h2 h3 ul li a badge hr aria-current"
+                    ><i class="icon icon-panel-left" aria-hidden="true"></i
+                    ><span>Sidebar</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="subnav"
+                    data-label="Subnav"
+                    data-keywords="Navigation subnav h2 ul li a aria-current sidebar data-collapsed true"
+                    ><i class="icon icon-menu" aria-hidden="true"></i
+                    ><span>Subnav</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="tabs"
+                    data-label="Tabs"
+                    data-keywords="Navigation tabs role tablist data-variant data-size aria-orientation tab aria-controls aria-selected disabled aria-disabled popovertarget data-close tabpanel"
+                    ><i
+                      class="icon icon-panel-top-dashed"
+                      aria-hidden="true"
+                    ></i
+                    ><span>Tabs</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="tree"
+                    data-label="Tree"
+                    data-keywords="Navigation tree ul li details summary open a span icon aria-current input type search p hidden"
+                    ><i class="icon icon-list-tree" aria-hidden="true"></i
+                    ><span>Tree</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div role="group" aria-labelledby="nav-overlays">
+              <h3 id="nav-overlays">Overlays</h3>
+              <ul>
+                <li>
+                  <a
+                    href="dialog"
+                    data-label="Dialog"
+                    data-keywords="Overlays dialog closedby commandfor command value autofocus header figure div footer"
+                    ><i class="icon icon-app-window" aria-hidden="true"></i
+                    ><span>Dialog</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="drawer"
+                    data-label="Drawer"
+                    data-keywords="Overlays drawer closedby commandfor command value header div footer"
+                    ><i class="icon icon-panel-right" aria-hidden="true"></i
+                    ><span>Drawer</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="popover"
+                    data-label="Popover"
+                    data-keywords="Overlays popover id header autofocus"
+                    ><i class="icon icon-message-square" aria-hidden="true"></i
+                    ><span>Popover</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="tooltip"
+                    data-label="Tooltip"
+                    data-keywords="Overlays tooltip"
+                    ><i
+                      class="icon icon-message-square-text"
+                      aria-hidden="true"
+                    ></i
+                    ><span>Tooltip</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+        </nav>
+      </aside>
+      <div class="docs-body">
+        <header class="docs-top">
+          <button
+            type="button"
+            class="btn sidebar-toggle"
+            data-variant="ghost"
+            data-size="icon"
+            popovertarget="docs-nav"
+            aria-label="Open menu"
+          >
+            <i class="icon icon-menu" aria-hidden="true"></i>
+          </button>
+          <span>JSON viewer</span>
+          <div class="theme-switcher" role="group" aria-label="Theme">
+            <button type="button" data-theme-toggle="light" aria-label="Light">
+              <i class="icon icon-sun" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-theme-toggle="dark" aria-label="Dark">
+              <i class="icon icon-moon" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              data-theme-toggle="system"
+              aria-label="System"
+            >
+              <i class="icon icon-monitor" aria-hidden="true"></i>
+            </button>
+          </div>
+        </header>
+        <main class="docs-main">
+          <header class="page-header">
+            <div>
+              <h1>Editor</h1>
+              <p>
+                A rich text editor on a textarea. It is TinyMCE, loaded by the
+                page, with a quiet toolbar and the page's theme.
+              </p>
+            </div>
+          </header>
+
+          <section>
+            <h2>The editor is TinyMCE</h2>
+            <p>
+              TinyMCE 8.10.0 is vendored in this repository as one file,
+              <code>dist/tinymce.min.js</code> (core, the silver theme, the DOM
+              model, the icons, the plugins autoresize, code, fullscreen, image,
+              link, lists and media, and the oxide skins, light and dark). It is
+              under the GPL (<code>license_key: "gpl"</code>), see
+              <code>vendor/tinymce/LICENSE.md</code>. It is not part of
+              <code>tsunami.min.js</code>: a page with an editor loads it with
+              its own <code>script</code> first. Pages without an editor do not
+              load it. Nothing else is fetched at run time.
+            </p>
+            <pre><code>&lt;script src="../dist/tinymce.min.js"&gt;&lt;/script&gt;
+&lt;script src="../dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+            <p>
+              If a <code>textarea.editor</code> is on a page and TinyMCE is not
+              loaded, the script throws an error that says so.
+            </p>
+          </section>
+
+          <section>
+            <h2>A textarea with the class editor</h2>
+            <p>
+              The textarea's text is the starting HTML. Without the script, or
+              before TinyMCE has started, the textarea is all there is, and it
+              already has the height of the editor.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A textarea with the class editor">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tp"
+                  aria-selected="true"
+                  aria-controls="ex1-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex1-tc"
+                  aria-selected="false"
+                  aria-controls="ex1-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-p"
+                aria-labelledby="ex1-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="ed-main">Description</label>
+                    <textarea class="editor" id="ed-main" name="description">
+<h2>Magic Sheets</h2>
+<p>Woven from <strong>long-staple cotton</strong> for a cool, crisp feel. See the <a href="#care">care guide</a> before the first wash.</p>
+<ul>
+<li>300 thread count</li>
+<li>Fits mattresses up to 40cm deep</li>
+</ul>
+  </textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="ed-main"&gt;Description&lt;/label&gt;
+  &lt;textarea class="editor" id="ed-main" name="description"&gt;
+&lt;h2&gt;Magic Sheets&lt;/h2&gt;
+&lt;p&gt;Woven from &lt;strong&gt;long-staple cotton&lt;/strong&gt; for a cool, crisp feel. See the &lt;a href="#care"&gt;care guide&lt;/a&gt; before the first wash.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;300 thread count&lt;/li&gt;
+&lt;li&gt;Fits mattresses up to 40cm deep&lt;/li&gt;
+&lt;/ul&gt;
+  &lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>The placeholder shows in an empty editor</h2>
+
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="The placeholder shows in an empty editor"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="ed-placeholder">Excerpt</label>
+                    <textarea
+                      class="editor"
+                      id="ed-placeholder"
+                      name="excerpt"
+                      placeholder="A sentence or two for the product listing"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="ed-placeholder"&gt;Excerpt&lt;/label&gt;
+  &lt;textarea class="editor" id="ed-placeholder" name="excerpt" placeholder="A sentence or two for the product listing"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>A form sends the HTML</h2>
+            <p>
+              The textarea always holds the editor's HTML, so a form sent by the
+              browser, <code>new FormData(form)</code> and
+              <code>textarea.value</code> all carry it. No call to save is
+              needed.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A form sends the HTML">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form class="stack" id="ed-form" method="dialog">
+                    <div class="field">
+                      <label for="ed-form-note">Note</label>
+                      <textarea class="editor" id="ed-form-note" name="note">
+<p>Ships in <strong>two parcels</strong>.</p></textarea>
+                    </div>
+                    <button type="submit" class="btn" data-variant="primary">
+                      Save
+                    </button>
+                    <pre id="ed-form-result">Nothing sent yet.</pre>
+                  </form>
+                  <script>
+                    {
+                      const form = document.getElementById("ed-form");
+                      form.addEventListener("submit", () => {
+                        document.getElementById("ed-form-result").textContent =
+                          new FormData(form).get("note");
+                      });
+                    }
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form class="stack" id="ed-form" method="dialog"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ed-form-note"&gt;Note&lt;/label&gt;
+    &lt;textarea class="editor" id="ed-form-note" name="note"&gt;&lt;p&gt;Ships in &lt;strong&gt;two parcels&lt;/strong&gt;.&lt;/p&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+  &lt;pre id="ed-form-result"&gt;Nothing sent yet.&lt;/pre&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  {
+    const form = document.getElementById("ed-form");
+    form.addEventListener("submit", () =&gt; {
+      document.getElementById("ed-form-result").textContent = new FormData(form).get("note");
+    });
+  }
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>The save bar sees edits, Reset puts the text back</h2>
+            <p>
+              Typing, a toolbar command, undo and redo make the textarea send a
+              bubbling <code>input</code> event, which is all the save bar
+              needs. Discard (a reset button) restores the text the page started
+              with.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="The save bar sees edits, Reset puts the text back"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <form id="ed-bar" method="dialog">
+                    <div class="field">
+                      <label for="ed-bar-text">Care instructions</label>
+                      <textarea class="editor" id="ed-bar-text" name="care">
+<p>Wash at <em>30 degrees</em>.</p></textarea>
+                    </div>
+                    <div
+                      class="save-bar"
+                      data-form="ed-bar"
+                      role="region"
+                      aria-label="Unsaved changes"
+                      hidden
+                    >
+                      <p>Unsaved changes</p>
+                      <div>
+                        <button
+                          type="reset"
+                          form="ed-bar"
+                          class="btn"
+                          data-variant="ghost"
+                        >
+                          Discard
+                        </button>
+                        <button
+                          type="submit"
+                          form="ed-bar"
+                          class="btn"
+                          data-variant="primary"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;form id="ed-bar" method="dialog"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ed-bar-text"&gt;Care instructions&lt;/label&gt;
+    &lt;textarea class="editor" id="ed-bar-text" name="care"&gt;&lt;p&gt;Wash at &lt;em&gt;30 degrees&lt;/em&gt;.&lt;/p&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div class="save-bar" data-form="ed-bar" role="region" aria-label="Unsaved changes" hidden&gt;
+    &lt;p&gt;Unsaved changes&lt;/p&gt;
+    &lt;div&gt;
+      &lt;button type="reset" form="ed-bar" class="btn" data-variant="ghost"&gt;Discard&lt;/button&gt;
+      &lt;button type="submit" form="ed-bar" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>A script reads and sets the HTML through the element</h2>
+            <p>
+              The element's <code>editor</code> property is the TinyMCE
+              instance, <code>null</code> until it has started.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="A script reads and sets the HTML through the element"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tp"
+                  aria-selected="true"
+                  aria-controls="ex5-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex5-tc"
+                  aria-selected="false"
+                  aria-controls="ex5-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-p"
+                aria-labelledby="ex5-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <textarea
+                      class="editor"
+                      id="ed-read"
+                      aria-label="Care instructions"
+                    >
+<p>Wash at <em>30 degrees</em>.</p></textarea>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button
+                        type="button"
+                        class="btn"
+                        id="ed-read-get"
+                        data-size="sm"
+                      >
+                        Read the HTML
+                      </button>
+                      <button
+                        type="button"
+                        class="btn"
+                        id="ed-set"
+                        data-size="sm"
+                      >
+                        Set the HTML
+                      </button>
+                    </div>
+                    <pre id="ed-read-result">Nothing read yet.</pre>
+                  </div>
+                  <script>
+                    {
+                      const area = document.getElementById("ed-read");
+                      document
+                        .getElementById("ed-read-get")
+                        .addEventListener("click", () => {
+                          document.getElementById(
+                            "ed-read-result",
+                          ).textContent = area.editor.getContent();
+                        });
+                      document
+                        .getElementById("ed-set")
+                        .addEventListener("click", () => {
+                          area.editor.setContent("<p>Do not tumble dry.</p>");
+                        });
+                    }
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex5-c"
+                aria-labelledby="ex5-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;textarea class="editor" id="ed-read" aria-label="Care instructions"&gt;&lt;p&gt;Wash at &lt;em&gt;30 degrees&lt;/em&gt;.&lt;/p&gt;&lt;/textarea&gt;
+  &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+    &lt;button type="button" class="btn" id="ed-read-get" data-size="sm"&gt;Read the HTML&lt;/button&gt;
+    &lt;button type="button" class="btn" id="ed-set" data-size="sm"&gt;Set the HTML&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;pre id="ed-read-result"&gt;Nothing read yet.&lt;/pre&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  {
+    const area = document.getElementById("ed-read");
+    document.getElementById("ed-read-get").addEventListener("click", () =&gt; {
+      document.getElementById("ed-read-result").textContent = area.editor.getContent();
+    });
+    document.getElementById("ed-set").addEventListener("click", () =&gt; {
+      area.editor.setContent("&lt;p&gt;Do not tumble dry.&lt;/p&gt;");
+    });
+  }
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Data attributes set the toolbar and the height</h2>
+            <p>
+              <code>data-toolbar="none"</code> hides the toolbar.
+              <code>data-menubar</code> and <code>data-statusbar</code> turn
+              those bars on.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Data attributes set the toolbar and the height"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="ed-data"
+                      >Short note, with a small toolbar</label
+                    >
+                    <textarea
+                      class="editor"
+                      id="ed-data"
+                      name="short_note"
+                      data-toolbar="bold italic underline | link"
+                      data-min-height="120"
+                      data-max-height="240"
+                    >
+<p>Gift wrapping on request.</p></textarea>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="ed-data"&gt;Short note, with a small toolbar&lt;/label&gt;
+  &lt;textarea class="editor" id="ed-data" name="short_note" data-toolbar="bold italic underline | link" data-min-height="120" data-max-height="240"&gt;&lt;p&gt;Gift wrapping on request.&lt;/p&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Other TinyMCE options go through mount()</h2>
+            <p>
+              <code>mount(el, options)</code> takes any TinyMCE option. They win
+              over the defaults and over the data attributes. The safety
+              settings below are defaults too, so an option can loosen them:
+              think before passing <code>valid_elements</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="Other TinyMCE options go through mount()"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tp"
+                  aria-selected="true"
+                  aria-controls="ex7-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex7-tc"
+                  aria-selected="false"
+                  aria-controls="ex7-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-p"
+                aria-labelledby="ex7-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field">
+                    <label for="ed-mount"
+                      >A textarea without the class, started by a script</label
+                    >
+                    <textarea id="ed-mount" name="mounted">
+<p>Started with <code>tsunami.editor.mount()</code>.</p></textarea>
+                  </div>
+                  <script>
+                    window.tsunami.editor.mount(
+                      document.getElementById("ed-mount"),
+                      {
+                        toolbar: "bold italic | bullist numlist",
+                        min_height: 120,
+                        max_height: 240,
+                      },
+                    );
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex7-c"
+                aria-labelledby="ex7-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field"&gt;
+  &lt;label for="ed-mount"&gt;A textarea without the class, started by a script&lt;/label&gt;
+  &lt;textarea id="ed-mount" name="mounted"&gt;&lt;p&gt;Started with &lt;code&gt;tsunami.editor.mount()&lt;/code&gt;.&lt;/p&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  window.tsunami.editor.mount(document.getElementById("ed-mount"), {
+    toolbar: "bold italic | bullist numlist",
+    min_height: 120,
+    max_height: 240,
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Read only, disabled and invalid</h2>
+            <p>
+              <code>readonly</code>, <code>disabled</code> (also from a disabled
+              <code>fieldset</code>) and <code>required</code> are read from the
+              textarea when the editor starts.
+              <code>aria-invalid=&quot;true&quot;</code> gives the frame the
+              danger colour. A required, empty editor stops the form and the
+              browser shows its message at the editor.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Read only, disabled and invalid">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tp"
+                  aria-selected="true"
+                  aria-controls="ex8-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex8-tc"
+                  aria-selected="false"
+                  aria-controls="ex8-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-p"
+                aria-labelledby="ex8-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack">
+                    <div class="field">
+                      <label for="ed-readonly">Terms, read only</label>
+                      <textarea
+                        class="editor"
+                        id="ed-readonly"
+                        name="terms"
+                        readonly
+                      >
+<p>Returns are accepted within <strong>30 days</strong>.</p></textarea>
+                    </div>
+                    <div class="field">
+                      <label for="ed-disabled">Notes, disabled</label>
+                      <textarea
+                        class="editor"
+                        id="ed-disabled"
+                        name="notes"
+                        disabled
+                      >
+<p>Not editable and not sent.</p></textarea>
+                    </div>
+                    <div class="field">
+                      <label for="ed-invalid">Summary, invalid</label>
+                      <textarea
+                        class="editor"
+                        id="ed-invalid"
+                        name="summary"
+                        aria-invalid="true"
+                        required
+                        data-min-height="120"
+                      ></textarea>
+                      <p>A summary is required.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex8-c"
+                aria-labelledby="ex8-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ed-readonly"&gt;Terms, read only&lt;/label&gt;
+    &lt;textarea class="editor" id="ed-readonly" name="terms" readonly&gt;&lt;p&gt;Returns are accepted within &lt;strong&gt;30 days&lt;/strong&gt;.&lt;/p&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ed-disabled"&gt;Notes, disabled&lt;/label&gt;
+    &lt;textarea class="editor" id="ed-disabled" name="notes" disabled&gt;&lt;p&gt;Not editable and not sent.&lt;/p&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="ed-invalid"&gt;Summary, invalid&lt;/label&gt;
+    &lt;textarea class="editor" id="ed-invalid" name="summary" aria-invalid="true" required data-min-height="120"&gt;&lt;/textarea&gt;
+    &lt;p&gt;A summary is required.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>What the editor allows</h2>
+            <p>
+              The HTML may be shown by other apps, so the editor does not
+              produce just anything. Pasted text, the textarea's text and the
+              source code dialog all pass the same filter.
+            </p>
+            <ul>
+              <li>
+                <strong>Elements:</strong>
+                <code
+                  >p br hr h1-h6 pre blockquote strong b em i u s strike code
+                  sub sup ul ol li span a img video audio</code
+                >. Anything else (<code>script</code>, <code>style</code>,
+                <code>iframe</code>, <code>object</code>, <code>embed</code>,
+                <code>form</code>, <code>svg</code>, ...) is removed.
+              </li>
+              <li>
+                <strong>Attributes:</strong>
+                <code>href title target rel</code> on links,
+                <code>src alt title width height</code> on images,
+                <code>src controls width height</code> on video and
+                <code>src controls</code> on audio. No <code>class</code>, no
+                <code>id</code>, no <code>on*</code> handler.
+              </li>
+              <li>
+                <strong>Styles:</strong> <code>text-align</code> and
+                <code>padding-left</code> / <code>padding-right</code> (the
+                alignment and indent buttons), and <code>width</code> /
+                <code>height</code> on images and video.
+              </li>
+              <li>
+                <strong>Addresses:</strong> <code>http</code>,
+                <code>https</code> and <code>mailto</code>, plus relative and
+                <code>#</code> addresses. A <code>javascript:</code>,
+                <code>data:</code> or other address is emptied. A link that
+                opens a new tab gets <code>rel="noopener"</code>. Pasted images
+                are not kept.
+              </li>
+              <li>
+                <strong>Media:</strong> the dialog takes the address of a video
+                (<code>mp4 webm ogv mov</code>) or audio file and writes a
+                <code>video</code> or <code>audio</code> element. Embed codes
+                and pages such as YouTube are refused, since they need an
+                <code>iframe</code>.
+              </li>
+            </ul>
+            <p>
+              The editor does not upload images. The image dialog takes an
+              address; an app that wants uploads passes TinyMCE's
+              <code>images_upload_handler</code> through <code>mount()</code>.
+            </p>
+          </section>
+
+          <section>
+            <h2>Look</h2>
+            <p>
+              The text being edited loads the Tsunami stylesheet and takes the
+              <code>typography</code> class, in the page's theme. The skin
+              follows the theme too: <code>oxide</code> in light and
+              <code>oxide-dark</code> in dark, and a
+              <code>tsunami:themechange</code> starts the editor again with the
+              other skin (the text stays; undo history does not). TinyMCE's CSS
+              is not in a layer and would beat Tsunami's, so the few rules that
+              recolour its frame, toolbar, menus and dialogs are
+              <code>!important</code> in the components layer and use only
+              tokens.
+            </p>
+          </section>
+
+          <section>
+            <h2>API</h2>
+            <p>The functions live on <code>window.tsunami.editor</code>.</p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Function</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.editor.mount(el, options?)</code></td>
+                    <td>
+                      Starts an editor on a textarea, with or without the class,
+                      and starts it again if it already has one.
+                      <code>options</code> are TinyMCE options.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.editor.get(el)</code></td>
+                    <td>
+                      The TinyMCE instance, or <code>null</code> before it has
+                      started.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.editor.destroy(el)</code></td>
+                    <td>
+                      Removes the editor and shows the textarea again with the
+                      text as it stands. Removing the textarea from the page
+                      does this itself.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>On the element</h3>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Member</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>el.editor</code></td>
+                    <td>
+                      The TinyMCE instance, <code>null</code> until it has
+                      started. It has TinyMCE's own methods:
+                      <code>getContent()</code>, <code>setContent(html)</code>,
+                      <code>save()</code>, <code>focus()</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-editor-ready</code></td>
+                    <td>
+                      Set on the textarea once the editor has started. The
+                      textarea is then kept out of sight, but it stays in the
+                      form.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>el.value</code></td>
+                    <td>
+                      The HTML, kept up to date as the text is edited. Setting
+                      it does not change the editor: call
+                      <code>setContent()</code>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Events</h3>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami:editorready</code></td>
+                    <td><code>{ editor }</code></td>
+                    <td>
+                      From the textarea, bubbling, when the editor has started
+                      (again after a theme change).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input</code></td>
+                    <td></td>
+                    <td>
+                      From the textarea, bubbling, after typing, a command, undo
+                      or redo. The save bar listens to it.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami:themechange</code></td>
+                    <td><code>{ theme }</code></td>
+                    <td>
+                      From the theme module; the editor starts again with the
+                      matching skin.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              A form's <code>reset</code> puts the text back to the textarea's
+              default. On start the editor takes its own tidy version of the
+              starting HTML as that default, so Reset and the save bar compare
+              the same text.
+            </p>
+            <h3>Passing options</h3>
+            <p>
+              The defaults are below. The data attributes come next and the
+              options given to <code>mount()</code> last.
+            </p>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Setting</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Toolbar</td>
+                    <td>
+                      Block style, bold, italic, underline, bullet list,
+                      numbered list, link, image, media, four alignments,
+                      outdent, indent, clear formatting, source code,
+                      fullscreen. It wraps on a narrow screen.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Plugins</td>
+                    <td>
+                      <code
+                        >image link fullscreen media autoresize lists code</code
+                      >. Only these are in <code>tinymce.min.js</code>; a button
+                      from another plugin needs that plugin added to the file.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Height</td>
+                    <td>From 200px to 800px, growing with the text.</td>
+                  </tr>
+                  <tr>
+                    <td>Menu bar, status bar, branding, promotion</td>
+                    <td>Off.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>textarea.editor</code></td>
+                    <td></td>
+                    <td>
+                      Starts an editor on the textarea, when the page loads or
+                      when it is added later.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td>text</td>
+                    <td>The HTML is sent with the form under this name.</td>
+                  </tr>
+                  <tr>
+                    <td><code>placeholder</code></td>
+                    <td>text</td>
+                    <td>Shown in an empty editor.</td>
+                  </tr>
+                  <tr>
+                    <td><code>required</code></td>
+                    <td>present</td>
+                    <td>An empty editor stops the form.</td>
+                  </tr>
+                  <tr>
+                    <td><code>readonly</code></td>
+                    <td>present</td>
+                    <td>The text cannot be changed.</td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td>present</td>
+                    <td>
+                      The editor is dimmed and not sent. A disabled
+                      <code>fieldset</code> counts.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-invalid</code></td>
+                    <td><code>true</code></td>
+                    <td>Draws the frame in the danger colour.</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-label</code></td>
+                    <td>text</td>
+                    <td>
+                      Names the editing area when there is no
+                      <code>label</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-toolbar</code></td>
+                    <td>toolbar string, or <code>none</code></td>
+                    <td>
+                      The buttons, as TinyMCE's <code>toolbar</code> option.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-min-height</code></td>
+                    <td>pixels</td>
+                    <td>The least height, default 200.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-max-height</code></td>
+                    <td>pixels</td>
+                    <td>The greatest height, default 800.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-menubar</code></td>
+                    <td>present or <code>false</code></td>
+                    <td>Shows TinyMCE's menu bar.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-statusbar</code></td>
+                    <td>present or <code>false</code></td>
+                    <td>Shows TinyMCE's status bar.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-editor-ready</code></td>
+                    <td>set by the script</td>
+                    <td>On the textarea once the editor has started.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
