@@ -69,12 +69,12 @@ Requires [Bun](https://bun.sh) `>=1.4.3`.
 bun install --frozen-lockfile
 bun run build      # dist/tsunami(.min).css + dist/tsunami(.min).js
 bun run dev        # sass --watch -> dist/tsunami.css
-bun run docs       # build, then the docs app at http://localhost:5477/docs (needs `bun install` in site/ once)
+bun run docs       # install site/ packages, build, then the docs app at http://localhost:5477/docs
 bun run lint       # eslint src/js
 bun run audit      # bun audit
 ```
 
-The docs are a Next.js app in `site/`, deployed to Cloudflare Workers with the OpenNext adapter. It is a separate package: its dependencies (`site/package.json`, `site/bun.lock`) never touch `dist/`. Each page is HTML in `site/content/<name>.html` (the inner HTML of `<main>`; edit that), its title and library scripts are in `site/content/pages.json`, and the sidebar and search come from `site/content/nav.json`. Pages are prerendered, with clean URLs (`/docs/btn`) and plain links (full page loads), so inline `<script>` blocks in the examples run as in a static page. `bun run docs` (in `site/`: `bun install --frozen-lockfile` first) builds `dist/`, copies `dist/`, `fonts/` and `flags/` into `site/public/`, and starts `next dev`. In `site/`, `bun run preview` runs the Workers build locally and `bun run deploy` deploys it; the `Deploy docs` workflow does that when a release is published (secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
+The docs are a Next.js app in `site/`, deployed to Cloudflare Workers with the OpenNext adapter. It is a separate package: its dependencies (`site/package.json`, `site/bun.lock`) never touch `dist/`. Each page is HTML in `site/content/<name>.html` (the inner HTML of `<main>`; edit that), its title and library scripts are in `site/content/pages.json`, and the sidebar and search come from `site/content/nav.json`. Pages are prerendered, with clean URLs (`/docs/btn`) and plain links (full page loads), so inline `<script>` blocks in the examples run as in a static page. `bun run docs` installs the `site/` packages, builds `dist/`, copies `dist/`, `fonts/` and `flags/` into `site/public/`, and starts `next dev`. In `site/`, `bun run preview` runs the Workers build locally and `bun run deploy` deploys it; the `Deploy docs` workflow does that when a release is published (secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
 
 ## Structure
 
