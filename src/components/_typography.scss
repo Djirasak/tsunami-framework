@@ -1,5 +1,6 @@
 // Typography: .typography gives long-form content its rhythm (base styles reset
 // margins). Paragraphs take data-variant="lead|muted"; <small> is small text.
+// .h1 to .h6 give any element the look of that heading, anywhere.
 // .kbd draws a keyboard key anywhere; inside .typography a bare <kbd> does too.
 @layer components {
   // Block rhythm: direct children are spaced; headings open a new part.
@@ -33,6 +34,32 @@
   }
 
   :where(.typography h6) {
+    color: var(--muted);
+  }
+
+  // Heading classes: the same sizes as the elements, after them so a class wins.
+  :where(.h1, .h2, .h3, .h4, .h5, .h6) {
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  :where(.h1) {
+    font-size: var(--text-xl);
+  }
+
+  :where(.h2) {
+    font-size: var(--text-lg);
+  }
+
+  :where(.h3, .h4) {
+    font-size: var(--text-base);
+  }
+
+  :where(.h5, .h6) {
+    font-size: var(--text-sm);
+  }
+
+  :where(.h6) {
     color: var(--muted);
   }
 
