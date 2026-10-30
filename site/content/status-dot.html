@@ -1,0 +1,108 @@
+<header class="page-header">
+            <div>
+              <h1>Status dot</h1>
+              <p>A small coloured dot with an optional label, for online state, health and sync status. It is quieter than a badge.</p>
+            </div>
+          </header>
+          <section>
+            <h2>Statuses</h2>
+            <p>Set <code>data-status</code>. Omit it for neutral.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <span class="dot" data-status="success">Online</span>
+                    <span class="dot" data-status="warning">Degraded</span>
+                    <span class="dot" data-status="danger">Offline</span>
+                    <span class="dot" data-status="info">Syncing</span>
+                    <span class="dot">Idle</span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="dot" data-status="success"&gt;Online&lt;/span&gt;
+  &lt;span class="dot" data-status="warning"&gt;Degraded&lt;/span&gt;
+  &lt;span class="dot" data-status="danger"&gt;Offline&lt;/span&gt;
+  &lt;span class="dot" data-status="info"&gt;Syncing&lt;/span&gt;
+  &lt;span class="dot"&gt;Idle&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Live</h2>
+            <p><code>data-pulse</code> adds a soft ring that repeats. It stops when the visitor prefers reduced motion, and the plain dot stays.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <span class="dot" data-status="success" data-pulse>Live</span>
+                    <span class="dot" data-status="danger" data-pulse>Recording</span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="dot" data-status="success" data-pulse&gt;Live&lt;/span&gt;
+  &lt;span class="dot" data-status="danger" data-pulse&gt;Recording&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>In a list</h2>
+            <p>The dot sits on the middle of the line and follows the text colour. Without a label, give it a name for screen readers.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">Preview</button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack">
+                    <p><span class="dot" data-status="success">Payments API</span></p>
+                    <p><span class="dot" data-status="warning">Webhook delivery</span></p>
+                    <p><span class="dot" data-status="danger" role="img" aria-label="Offline"></span></p>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack"&gt;
+  &lt;p&gt;&lt;span class="dot" data-status="success"&gt;Payments API&lt;/span&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;span class="dot" data-status="warning"&gt;Webhook delivery&lt;/span&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;span class="dot" data-status="danger" role="img" aria-label="Offline"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr><th scope="col">Attribute / element</th><th scope="col">Values</th><th scope="col">Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>.dot</code></td><td></td><td>Inline element: an 8px dot, then the label text if any.</td></tr>
+                  <tr><td><code>data-status</code></td><td><code>success</code>, <code>warning</code>, <code>danger</code>, <code>info</code> (omit for neutral)</td><td>Dot colour, from the semantic colour variables.</td></tr>
+                  <tr><td><code>data-pulse</code></td><td>boolean</td><td>Soft repeating ring for a live state.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Accessibility</h2>
+            <ul>
+              <li>Colour alone is not enough. Keep a text label, or put <code>role="img"</code> and an <code>aria-label</code> on a dot without one.</li>
+              <li>The pulse is decoration and stops under <code>prefers-reduced-motion</code>.</li>
+            </ul>
+          </section>
