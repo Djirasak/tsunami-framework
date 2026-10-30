@@ -39,3 +39,11 @@ await Bun.write(
   Bun.file(`${root}vendor/sortable/Sortable.min.js`),
 );
 console.log("dist/sortable.min.js");
+
+// Vanilla Calendar Pro ships as one minified UMD file: copied as
+// dist/vanilla-calendar.min.js.
+await Bun.write(
+  `${root}dist/vanilla-calendar.min.js`,
+  Bun.file(`${root}vendor/vanilla-calendar/index.js`),
+);
+console.log("dist/vanilla-calendar.min.js");
