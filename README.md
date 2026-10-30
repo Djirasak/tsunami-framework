@@ -22,12 +22,21 @@ Semantic HTML + `data-*` attributes. No runtime dependencies.
 
 ## Install
 
+From jsDelivr (each release tag; replace the version):
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.0/dist/tsunami.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v0.1.0/dist/tsunami.min.js"></script>
+```
+
+Or self-hosted:
+
 ```html
 <link rel="stylesheet" href="dist/tsunami.min.css" />
 <script src="dist/tsunami.min.js"></script>
 ```
 
-Keep `fonts/` next to `dist/` (font URLs are `../fonts/...`). Load the script as a plain `<script>` in `<head>` (not `type="module"`): it applies the saved theme before the first paint, so there is no flash.
+Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed: the `Build dist` workflow rebuilds it on every push to `main` that changes the source, so a tag made after that carries the built files. Monaco (the code editor) starts web workers, which only run from the page's own origin: host `dist/monaco/` yourself. Load the script as a plain `<script>` in `<head>` (not `type="module"`): it applies the saved theme before the first paint, so there is no flash.
 
 ## Use
 

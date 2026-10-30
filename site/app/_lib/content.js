@@ -11,7 +11,17 @@ const json = (name) => JSON.parse(readFileSync(join(dir, name), "utf8"));
 export const pages = json("pages.json");
 export const nav = json("nav.json");
 
-export const html = (slug) => readFileSync(join(dir, `${slug}.html`), "utf8");
+// The framework's version, from the root package.json: content writes it as
+// {{version}} (the CDN links in the install section).
+const version = JSON.parse(
+  readFileSync(join(process.cwd(), "..", "package.json"), "utf8"),
+).version;
+
+export const html = (slug) =>
+  readFileSync(join(dir, `${slug}.html`), "utf8").replaceAll(
+    "{{version}}",
+    version,
+  );
 
 // The date of the last commit that touched a page's HTML, for the sitemap.
 // Falls back to the page's file time when git is not available (for example

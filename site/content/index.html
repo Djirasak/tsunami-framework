@@ -69,13 +69,29 @@
           <section id="install">
             <h2>Install</h2>
             <p>
-              Add the files from <code>dist/</code>. Load the script in
+              Load the files from jsDelivr, which serves each release tag of
+              the GitHub repository. Load the script in
               <code>&lt;head&gt;</code> as a plain script, not
               <code>type="module"</code>: it then applies the saved theme before
               the first paint, so there is no flash and no inline script to add.
             </p>
-            <pre><code>&lt;link rel="stylesheet" href="dist/tsunami.min.css"&gt;
-&lt;script src="dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+            <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
+            <p>
+              The fonts and flags load from the same tag, next to
+              <code>dist/</code>. The libraries some components need come from
+              the same place, for example
+              <code>@v{{version}}/dist/chart.min.js</code>, loaded before the
+              Tsunami script. The code editor is the exception: Monaco starts
+              web workers, which a browser only runs from the page's own
+              origin, so host <code>dist/monaco/</code> yourself.
+            </p>
+            <p>
+              To host the files yourself, copy <code>dist/</code>,
+              <code>fonts/</code> and <code>flags/</code> side by side and link
+              <code>dist/tsunami.min.css</code> and
+              <code>dist/tsunami.min.js</code>.
+            </p>
           </section>
           <section>
             <h2>Example</h2>
