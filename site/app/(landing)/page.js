@@ -26,6 +26,24 @@ export const metadata = {
 
 const REPO = "https://github.com/Djirasak/tsunami-framework";
 
+// A flat wave band: `period` is one wave, 2400 / period of them fill the
+// viewBox, and half of the band is a whole number of waves, so the CSS slide
+// of -50% loops without a jump.
+function wave(period, amplitude, base) {
+  let d = `M0,${base}`;
+  for (let x = 0; x < 2400; x += period)
+    d += x === 0
+      ? ` Q${period / 4},${base - amplitude} ${period / 2},${base} T${period},${base}`
+      : ` T${x + period / 2},${base} T${x + period},${base}`;
+  return `${d} L2400,200 L0,200 Z`;
+}
+
+const waves = [
+  { name: "back", d: wave(600, 46, 90) },
+  { name: "mid", d: wave(400, 34, 120) },
+  { name: "front", d: wave(300, 22, 150) },
+];
+
 const features = [
   {
     icon: "layers",
@@ -92,6 +110,19 @@ export default function Landing() {
           </div>
         </nav>
       </header>
+
+      <div className="landing-sea" aria-hidden="true">
+        {waves.map((w) => (
+          <svg
+            key={w.name}
+            className={`wave wave-${w.name}`}
+            viewBox="0 0 2400 200"
+            preserveAspectRatio="none"
+          >
+            <path d={w.d} />
+          </svg>
+        ))}
+      </div>
 
       <main className="landing">
         <section className="landing-hero">

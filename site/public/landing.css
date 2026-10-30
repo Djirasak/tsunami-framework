@@ -4,6 +4,69 @@ body {
   background: var(--bg);
 }
 
+/* The sea behind the hero: three flat wave bands slide sideways at different
+   speeds. The front band is the page colour, so the waves seem to rise out of
+   the page and the band ends without an edge. */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.landing-header,
+.landing {
+  position: relative;
+  z-index: 1;
+}
+
+.landing-sea {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 30rem;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  max-width: none; /* the base style caps svg at its parent */
+  height: 14rem;
+  animation: wave-slide linear infinite;
+}
+
+.wave-back {
+  height: 16rem;
+  fill: color-mix(in srgb, var(--accent) 9%, transparent);
+  animation-duration: 48s;
+}
+
+.wave-mid {
+  height: 12rem;
+  fill: color-mix(in srgb, var(--accent) 14%, transparent);
+  animation-duration: 32s;
+  animation-direction: reverse;
+}
+
+.wave-front {
+  height: 8rem;
+  fill: var(--bg);
+  animation-duration: 22s;
+}
+
+@keyframes wave-slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave {
+    animation: none;
+  }
+}
+
 .landing-header {
   display: flex;
   align-items: center;
