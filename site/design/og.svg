@@ -18,7 +18,7 @@
     </g>
   </g>
   <text x="90" y="400" font-family="'Google Sans','Droid Sans Fallback',sans-serif" font-size="132" font-weight="600" fill="#f1f5f6" letter-spacing="-3">Tsunami <tspan fill="#6cc0d3" font-weight="400">津波</tspan></text>
-  <text x="94" y="478" font-family="'Google Sans','Droid Sans Fallback',sans-serif" font-size="44" font-weight="400" fill="#a9b9be">A quiet UI framework for back-office apps</text>
+  <text x="94" y="478" font-family="'Google Sans','Droid Sans Fallback',sans-serif" font-size="44" font-weight="400" fill="#a9b9be">A quiet UI framework</text>
   <text x="94" y="552" font-family="'Google Sans','Droid Sans Fallback',sans-serif" font-size="28" font-weight="400" fill="#6f8389">A core with no dependencies</text>
   <text x="1110" y="552" text-anchor="end" font-family="'Google Sans','Droid Sans Fallback',sans-serif" font-size="30" font-weight="500" fill="#6cc0d3">tsunami.zercoms.com</text>
 </svg>

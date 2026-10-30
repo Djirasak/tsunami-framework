@@ -5,7 +5,7 @@ description: Build pages and back-office UIs with Tsunami (津波), the quiet UI
 
 # Tsunami
 
-A quiet UI framework for back-office apps: semantic HTML, a class per component, `data-*` for variants. Native elements first (`dialog`, `popover`, `details`, `button`); vanilla JS only where HTML can't do it. Every component and its markup: [references/components.md](references/components.md). Each one has a live page at `site/content/<name>.html`, and that page is the source of truth.
+A quiet UI framework: semantic HTML, a class per component, `data-*` for variants. Native elements first (`dialog`, `popover`, `details`, `button`); vanilla JS only where HTML can't do it. Every component and its markup: [references/components.md](references/components.md). Each one has a live page at `site/content/<name>.html`, and that page is the source of truth.
 
 ## Load
 

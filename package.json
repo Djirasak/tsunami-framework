@@ -1,7 +1,7 @@
 {
   "name": "tsunami",
   "version": "0.1.4",
-  "description": "A quiet UI framework for back-office apps.",
+  "description": "A quiet UI framework.",
   "private": true,
   "type": "module",
   "engines": {

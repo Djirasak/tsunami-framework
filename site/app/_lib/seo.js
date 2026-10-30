@@ -4,12 +4,12 @@ import { pages } from "./content";
 
 export const SITE_URL = "https://tsunami.zercoms.com";
 export const SITE_NAME = "Tsunami";
-export const HOME_TITLE = "Tsunami – a quiet UI framework for back-office apps";
+export const HOME_TITLE = "Tsunami – a quiet UI framework";
 const IMAGE = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "Tsunami 津波, a quiet UI framework for back-office apps",
+  alt: "Tsunami 津波, a quiet UI framework",
 };
 
 export const pagePath = (slug) => (slug === "index" ? "/docs" : `/docs/${slug}`);
