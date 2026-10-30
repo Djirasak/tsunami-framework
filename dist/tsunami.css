@@ -7733,6 +7733,11 @@
     flex: 1 0 0;
     min-width: max-content;
   }
+  @media (width < 40rem) {
+    :where(.stat-group:not([data-even]) > .stat) {
+      flex-basis: 100%;
+    }
+  }
   :where(.card > .stat-group) {
     padding: 0;
   }
