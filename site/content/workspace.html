@@ -95,3 +95,422 @@
                     </aside>
                     <main>
                       <p>The work area</p>
+                    </main>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex1-c"
+                aria-labelledby="ex1-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="workspace"&gt;
+  &lt;header&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-panel" aria-label="Open the panel"&gt;
+      &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;a href="#" class="btn" data-size="icon" aria-label="Back to themes"&gt;
+      &lt;i class="icon icon-arrow-left" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/a&gt;
+    &lt;h1&gt;Summer theme&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-size="sm"&gt;Preview&lt;/button&gt;
+    &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;Save&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;aside id="ws-panel" popover aria-label="Sections"&gt;
+    &lt;nav class="subnav" aria-label="Sections"&gt;
+      &lt;a href="#" aria-current="page"&gt;Typography&lt;/a&gt;
+      &lt;a href="#"&gt;Navigation&lt;/a&gt;
+      &lt;a href="#"&gt;Homepage&lt;/a&gt;
+      &lt;a href="#"&gt;Footer&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+  &lt;main&gt;
+    &lt;p&gt;The work area&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A wide panel</h2>
+            <p>
+              The side panel is 20rem wide by default.
+              <code>data-panel="wide"</code> makes it 24rem, for panels with
+              forms or long lists.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A wide panel">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tp"
+                  aria-selected="true"
+                  aria-controls="ex2-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex2-tc"
+                  aria-selected="false"
+                  aria-controls="ex2-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-p"
+                aria-labelledby="ex2-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="workspace" data-panel="wide">
+                    <header>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-wide-panel"
+                        aria-label="Open the panel"
+                      >
+                        <i class="icon icon-panel-left" aria-hidden="true"></i>
+                      </button>
+                      <h1>Summer theme</h1>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="primary"
+                        data-size="sm"
+                      >
+                        Save
+                      </button>
+                    </header>
+                    <aside id="ws-wide-panel" popover aria-label="Settings">
+                      <p>A panel 24rem wide</p>
+                    </aside>
+                    <main>
+                      <p>The work area</p>
+                    </main>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex2-c"
+                aria-labelledby="ex2-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="workspace" data-panel="wide"&gt;
+  &lt;header&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-wide-panel" aria-label="Open the panel"&gt;
+      &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;h1&gt;Summer theme&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="primary" data-size="sm"&gt;Save&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;aside id="ws-wide-panel" popover aria-label="Settings"&gt;
+    &lt;p&gt;A panel 24rem wide&lt;/p&gt;
+  &lt;/aside&gt;
+  &lt;main&gt;
+    &lt;p&gt;The work area&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>An aside after the main is the end panel</h2>
+            <p>
+              An <code>&lt;aside&gt;</code> after the
+              <code>&lt;main&gt;</code> is the end panel. It is as wide as the
+              start panel, with its border on the other side. A workspace can
+              have a start panel, an end panel or both, such as a page list on
+              the left and a chat on the right.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="An aside after the main is the end panel"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tp"
+                  aria-selected="true"
+                  aria-controls="ex3-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex3-tc"
+                  aria-selected="false"
+                  aria-controls="ex3-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-p"
+                aria-labelledby="ex3-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="workspace">
+                    <header>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-end-start"
+                        aria-label="Open the pages"
+                      >
+                        <i class="icon icon-panel-left" aria-hidden="true"></i>
+                      </button>
+                      <h1>Summer campaign</h1>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-end-end"
+                        aria-label="Open the chat"
+                      >
+                        <i class="icon icon-panel-right" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <aside id="ws-end-start" popover aria-label="Pages">
+                      <p>The start panel</p>
+                    </aside>
+                    <main>
+                      <p>The work area</p>
+                    </main>
+                    <aside id="ws-end-end" popover aria-label="Chat">
+                      <p>The end panel</p>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex3-c"
+                aria-labelledby="ex3-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="workspace"&gt;
+  &lt;header&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-end-start" aria-label="Open the pages"&gt;
+      &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;h1&gt;Summer campaign&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-end-end" aria-label="Open the chat"&gt;
+      &lt;i class="icon icon-panel-right" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/header&gt;
+  &lt;aside id="ws-end-start" popover aria-label="Pages"&gt;
+    &lt;p&gt;The start panel&lt;/p&gt;
+  &lt;/aside&gt;
+  &lt;main&gt;
+    &lt;p&gt;The work area&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;aside id="ws-end-end" popover aria-label="Chat"&gt;
+    &lt;p&gt;The end panel&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Only an end panel</h2>
+            <p>
+              The start panel is optional: a <code>&lt;main&gt;</code> followed
+              by an <code>&lt;aside&gt;</code>, such as order details with a
+              customer panel on the right.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Only an end panel">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tp"
+                  aria-selected="true"
+                  aria-controls="ex4-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex4-tc"
+                  aria-selected="false"
+                  aria-controls="ex4-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-p"
+                aria-labelledby="ex4-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="workspace">
+                    <header>
+                      <h1>Order #1042</h1>
+                      <button
+                        type="button"
+                        class="btn"
+                        data-variant="ghost"
+                        data-size="icon"
+                        popovertarget="ws-only-end"
+                        aria-label="Open the customer"
+                      >
+                        <i class="icon icon-panel-right" aria-hidden="true"></i>
+                      </button>
+                    </header>
+                    <main>
+                      <p>3 items, total $148.00</p>
+                    </main>
+                    <aside id="ws-only-end" popover aria-label="Customer">
+                      <p>Emma Wilson · emma.wilson@example.com</p>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex4-c"
+                aria-labelledby="ex4-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="workspace"&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Order #1042&lt;/h1&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" popovertarget="ws-only-end" aria-label="Open the customer"&gt;
+      &lt;i class="icon icon-panel-right" aria-hidden="true"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;p&gt;3 items, total $148.00&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;aside id="ws-only-end" popover aria-label="Customer"&gt;
+    &lt;p&gt;Emma Wilson · emma.wilson@example.com&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Below 768px a button in the bar opens the panel</h2>
+            <p>
+              Give the side panel <code>popover</code> and an <code>id</code>. A
+              button in the top bar whose <code>popovertarget</code> points to
+              that id opens the panel over the work area. Press
+              <kbd>Esc</kbd> or click outside to close it. The end panel opens
+              from the right edge. From 768px up, panels are normal columns and
+              the <code>popovertarget</code> buttons in the top bar hide
+              themselves. No JS needed. Try narrowing the window on the examples
+              above or on the
+              <a href="/docs/workspace-full" target="_blank">full page</a>.
+            </p>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div
+              class="card scroll-area"
+              tabindex="0"
+              role="region"
+              aria-label="Attributes"
+            >
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.workspace</code></td>
+                    <td></td>
+                    <td>
+                      Full-window layout (<code>100dvh</code>). Use it as a
+                      direct child of <code>body</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-panel</code></td>
+                    <td><code>wide</code>; none = 20rem (default)</td>
+                    <td>Makes the side panel 24rem wide</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; header</code></td>
+                    <td></td>
+                    <td>
+                      Full-width top bar that lays out its children in a row
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>header &gt; h1</code></td>
+                    <td></td>
+                    <td>
+                      Task name. Pushes the buttons after it to the right.
+                      Truncated with … when too long
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>header [popovertarget]</code></td>
+                    <td>The panel's id</td>
+                    <td>
+                      Opens the panel on narrow screens. Hidden from 768px
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; aside</code> (before <code>main</code>)</td>
+                    <td></td>
+                    <td>
+                      Start panel with a border on the right. Scrolls on its own
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; main</code></td>
+                    <td></td>
+                    <td>Work area. Scrolls on its own</td>
+                  </tr>
+                  <tr>
+                    <td><code>&gt; main ~ aside</code></td>
+                    <td></td>
+                    <td>
+                      End panel with a border on the left. Opens from the right
+                      edge on narrow screens
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>aside[popover]</code>, <code>id</code></td>
+                    <td></td>
+                    <td>
+                      Below 768px the panel is hidden and opens as a popover
+                      over the work area (with a backdrop). From 768px it is a
+                      column. Add an <code>aria-label</code> to name the panel
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
