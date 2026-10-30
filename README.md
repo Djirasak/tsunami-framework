@@ -6,7 +6,7 @@
 
 A quiet UI framework for back-office apps.
 Semantic HTML + `data-*` attributes. The core (`tsunami.min.css` and `tsunami.min.js`) has no runtime dependencies; five components load a library of their own, only on the pages that use them: Editor (TinyMCE), Code editor (Monaco), Chart (Chart.js), Date picker (Vanilla Calendar Pro) and Sortable (SortableJS).
-53 component pages, Lucide icons and 270 country flags.
+54 component pages, Lucide icons and 270 country flags.
 
 </div>
 
@@ -62,7 +62,7 @@ The class names the component; `data-*` sets variant and size.
 | Foundations | Colors, Typography (`.typography`), Icons (Lucide)                                                                              |
 | Layout      | Stack, Card, Item, Page header, Stat, Chart, Sortable, Table, Timeline, Journey, JSON viewer, Accordion, Scroll area, Workspace |
 | Actions     | Button, Command, Dropdown, Theme switcher                                                                                       |
-| Forms       | Autocomplete, Code editor, Color field, Date picker, Dropzone, Editor, Field, Image field, Input, Input group, Select, Save bar |
+| Forms       | Autocomplete, Code editor, Color field, Date picker, Dropzone, Editor, Field, Image field, Input, Input group, One-time code, Select, Save bar |
 | Feedback    | Alert, Badge, Empty, Loader, Skeleton, Progress, Toast                                                                          |
 | Media       | Avatar, Flags                                                                                                                   |
 | Navigation  | Breadcrumb, Link, Pagination, Sidebar, Subnav, Tabs, Tree                                                                       |

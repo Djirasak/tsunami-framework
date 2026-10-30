@@ -254,6 +254,12 @@ This file gives one short example per component. The full page for each is `site
 </div>
 ```
 
+**One-time code** (`otp`): a row of one-character boxes for a verification code. Attrs: `data-length` (default 6), `data-type="text"` for letters too, `data-name` adds the hidden input the form sends, `data-size="sm"`, `data-disabled`, `aria-invalid`. API: `tsunami.otp.value(el)`, `set(el, text)`, `clear(el)`, `mount(root)`. Event: `tsunami:otpcomplete` with `{ value }`.
+
+```html
+<div class="otp" role="group" aria-label="Verification code" data-name="code"></div>
+```
+
 **Date picker** (`date-picker`): needs `dist/vanilla-calendar.min.js`. Attrs: `data-mode="range"`, `data-format="long|medium"`, `data-min`, `data-max`, `data-placeholder`, and `[data-presets]` buttons. API: `el.value`, `open()`, `close()`. Event: `change` with `{ value, dates }`.
 
 ```html
