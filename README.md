@@ -4,7 +4,7 @@
 
 # Tsunami 津波
 
-A small, quiet CSS framework for back-office UIs.
+A quiet UI framework for back-office apps.
 Semantic HTML + `data-*` attributes. No runtime dependencies.
 53 component pages, Lucide icons and 270 country flags.
 

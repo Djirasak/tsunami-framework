@@ -249,7 +249,7 @@
   },
   "index": {
     "title": "Overview",
-    "description": "Tsunami is a small CSS framework for back-office screens: semantic HTML and data attributes, 43 components, Lucide icons and flags, no dependencies.",
+    "description": "Tsunami is a quiet UI framework for back-office apps: semantic HTML, data attributes and a little vanilla JS, 53 components, no dependencies.",
     "libs": []
   },
   "field": {

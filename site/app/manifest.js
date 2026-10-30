@@ -3,7 +3,7 @@ export default function manifest() {
   return {
     name: "Tsunami",
     short_name: "Tsunami",
-    description: "A quiet CSS framework for back-office UIs.",
+    description: "A quiet UI framework for back-office apps.",
     start_url: "/docs",
     display: "browser",
     background_color: "#fcfcfc",
