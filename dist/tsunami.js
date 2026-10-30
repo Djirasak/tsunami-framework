@@ -1,4 +1,4 @@
-/* tsunami v0.1.2 */
+/* tsunami v0.1.3 */
 // src/js/theme.js
 var KEY = "tsunami-theme";
 var root = document.documentElement;
