@@ -1,4 +1,4 @@
-/* tsunami v0.2.0 */
+/* tsunami v1.0.1 */
 // src/js/theme.js
 var KEY = "tsunami-theme";
 var root = document.documentElement;
@@ -3632,7 +3632,8 @@ document.addEventListener("click", (e) => {
 });
 document.addEventListener("keydown", (e) => {
   const f = e.target.closest?.(".stepper > section input, .stepper > section select");
-  if (e.key === "Enter" && f && /^(?!checkbox|radio|submit|button)/.test(f.type)) {
+  const own = f?.closest(".tag-input, .phone-input, .time-picker, .select, .autocomplete, .date-picker");
+  if (e.key === "Enter" && f && !own && !e.defaultPrevented && /^(?!checkbox|radio|submit|button)/.test(f.type)) {
     const p = f.closest(".stepper > section");
     if (p.querySelector('[type="submit"]'))
       return;
@@ -5098,7 +5099,7 @@ function config(options) {
           useBorderRadius: true,
           borderRadius: 2,
           padding: 16,
-          generateLabels: (chart) => window.Chart.defaults.plugins.legend.labels.generateLabels(chart).map((item) => ({ ...item, lineDash: [] }))
+          generateLabels: (chart) => (window.Chart.overrides?.[chart.config.type]?.plugins?.legend?.labels?.generateLabels ?? window.Chart.defaults.plugins.legend.labels.generateLabels)(chart).map((item) => ({ ...item, lineDash: [] }))
         }
       },
       tooltip: {
