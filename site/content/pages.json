@@ -46,7 +46,7 @@
       "/dist/monaco/vs/loader.js"
     ]
   },
-  "btn": {
+  "button": {
     "title": "Button",
     "libs": []
   },
@@ -54,7 +54,7 @@
     "title": "Loader",
     "libs": []
   },
-  "empty": {
+  "empty-state": {
     "title": "Empty state",
     "libs": []
   },

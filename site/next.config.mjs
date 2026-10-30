@@ -8,6 +8,11 @@ export default {
   // The repo root has its own lockfile: keep Next.js inside site/.
   turbopack: { root: import.meta.dirname },
   async redirects() {
-    return [{ source: "/", destination: "/docs", permanent: false }];
+    return [
+      { source: "/", destination: "/docs", permanent: false },
+      // Old page names.
+      { source: "/docs/btn", destination: "/docs/button", permanent: true },
+      { source: "/docs/empty", destination: "/docs/empty-state", permanent: true },
+    ];
   },
 };

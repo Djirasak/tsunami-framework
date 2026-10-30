@@ -15,7 +15,7 @@
     "items": [
       {
         "label": "Button",
-        "href": "/docs/btn",
+        "href": "/docs/button",
         "icon": "mouse-pointer-click",
         "keywords": "Actions btn data-variant data-size aria-label icon aria-pressed disabled aria-disabled btn-group data-pressed dropdown"
       },
@@ -56,7 +56,7 @@
       },
       {
         "label": "Empty state",
-        "href": "/docs/empty",
+        "href": "/docs/empty-state",
         "icon": "inbox",
         "keywords": "Feedback empty header figure h3 p footer div a link"
       },

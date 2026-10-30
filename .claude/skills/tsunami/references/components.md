@@ -25,7 +25,7 @@ This file gives one short example per component. The full page for each is `site
 
 ## Actions
 
-**Button** (`btn`). Attrs: `data-variant="primary|secondary|ghost|danger"`, `data-size="sm|lg|xl|icon|icon-sm|icon-xs"`, `aria-pressed`. `.btn-group` joins buttons, and `[data-pressed="single|multiple"]` turns a group into toggles.
+**Button** (`button`). Attrs: `data-variant="primary|secondary|ghost|danger"`, `data-size="sm|lg|xl|icon|icon-sm|icon-xs"`, `aria-pressed`. `.btn-group` joins buttons, and `[data-pressed="single|multiple"]` turns a group into toggles.
 
 ```html
 <button type="button" class="btn">Cancel</button>
@@ -115,7 +115,7 @@ This file gives one short example per component. The full page for each is `site
 <span class="badge" data-variant="ok">Paid</span>
 ```
 
-**Empty state** (`empty`).
+**Empty state** (`empty-state`).
 
 ```html
 <section class="empty">
