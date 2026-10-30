@@ -36,12 +36,11 @@
               editors on this page do that. Monaco costs about 40 KB when the page
               loads and about 6 MB the first time a code editor opens, so a
               page that does not need it leaves it out and keeps the plain
-              dialog. Host <code>dist/monaco/</code> yourself (web workers only
-              run from the page's own origin) and load its loader after
-              TinyMCE and before the Tsunami script.
+              dialog. Load Monaco's loader after TinyMCE and before the Tsunami
+              script.
             </p>
             <pre><code>&lt;script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tinymce.min.js"&gt;&lt;/script&gt;
-&lt;script src="dist/monaco/vs/loader.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/monaco/vs/loader.js"&gt;&lt;/script&gt;
 &lt;script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js"&gt;&lt;/script&gt;</code></pre>
           </section>
 

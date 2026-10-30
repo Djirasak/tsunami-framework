@@ -82,9 +82,8 @@
               <code>dist/</code>. The libraries some components need come from
               the same place, for example
               <code>@v{{version}}/dist/chart.min.js</code>, loaded before the
-              Tsunami script. The code editor is the exception: Monaco starts
-              web workers, which a browser only runs from the page's own
-              origin, so host <code>dist/monaco/</code> yourself.
+              Tsunami script. That includes the code editor's
+              <code>dist/monaco/vs/loader.js</code>.
             </p>
             <p>
               To host the files yourself, copy <code>dist/</code>,

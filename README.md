@@ -36,7 +36,7 @@ Or self-hosted:
 <script src="dist/tsunami.min.js"></script>
 ```
 
-Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed: the `Build dist` workflow rebuilds it on every push to `main` that changes the source, so a tag made after that carries the built files. Monaco (the code editor) starts web workers, which only run from the page's own origin: host `dist/monaco/` yourself. Load the script as a plain `<script>` in `<head>` (not `type="module"`): it applies the saved theme before the first paint, so there is no flash.
+Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed: the `Build dist` workflow rebuilds it on every push to `main` that changes the source, so a tag made after that carries the built files. Monaco (the code editor) loads from jsDelivr too: `@v0.1.1/dist/monaco/vs/loader.js`, before the Tsunami script.
 
 ## Use
 
