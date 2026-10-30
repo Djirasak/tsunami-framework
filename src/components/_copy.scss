@@ -13,4 +13,19 @@
   :where(.btn[data-copied]) {
     color: var(--ok-fg);
   }
+
+  // Code block: the copy button sits in the top right corner of the pre.
+  :where(.code-block) {
+    position: relative;
+  }
+
+  :where(.code-block > pre) {
+    padding-right: 3rem;
+  }
+
+  :where(.code-block > .btn) {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+  }
 }
