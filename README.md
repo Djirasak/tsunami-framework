@@ -14,7 +14,7 @@ Semantic HTML + `data-*` attributes. No runtime dependencies.
 
 - **Native first.** `dialog`, `popover`, `details`, `button`. JS only where HTML can't do the job.
 - **Zero specificity.** Every selector sits in `@layer components` inside `:where()`, so your CSS always wins.
-- **Light / dark.** Tokens are CSS custom properties, so the theme switches at runtime with no flash.
+- **Light / dark.** Colours are CSS variables, so the theme switches at runtime with no flash.
 - **Thai + Latin.** Self-hosted Google Sans (OFL), tabular numbers in tables.
 - **Quiet look.** 1px borders, no shadows, no gradients. The accent marks links, the primary button, focus and picked states (such as a journey page).
 - **Comfortable sizes.** Buttons and inputs are 36px tall (28px small), with 6px corners.
@@ -81,7 +81,7 @@ Docs are plain HTML in `docs/` with clean URLs (`/docs/btn`); there is no build 
 ```
 src/
   index.scss            entry (layer order is declared in _tokens)
-  _tokens.scss          35 semantic tokens, light + dark
+  _tokens.scss          35 CSS variables, light + dark
   _base.scss            @font-face + element reset
   components/_*.scss    one partial per component
   icons/_lucide.scss    icon name -> codepoint (generated)
@@ -98,14 +98,14 @@ vendor/monaco/          Monaco Editor 0.57, trimmed (copied to dist/monaco/)
 scripts/                build.ts, serve.ts, stamp-version.ts, build-vendor.ts, lucide.ts, flags.ts, tinymce.ts, monaco.ts
 ```
 
-## Tokens
+## CSS variables
 
 ```
 bg  surface  subtle  fg  muted  line  accent  on-accent  overlay
 ok-bg/fg  danger-bg/fg  warning-bg/fg  info-bg/fg  neutral-bg/fg
 ```
 
-Components only reference these. Dark values live in one `dark-tokens` mixin.
+Components only reference these. Dark values live in one `dark-tokens` mixin (`_tokens.scss`).
 
 ## JavaScript
 
