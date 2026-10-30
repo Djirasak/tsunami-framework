@@ -932,6 +932,96 @@
             </div>
           </section>
           <section>
+            <h2>With opacity</h2>
+            <p>
+              Add <code>data-alpha</code> to accept an opacity. The text may
+              then be <code>#rgba</code>, <code>#rrggbbaa</code> or
+              <code>rgb()</code> / <code>rgba()</code>, and the slider in the
+              last <code>span</code> sets it. The picker shows the colour and
+              its swatch fades with the opacity. The text is written as
+              <code>#rrggbb</code>, or <code>#rrggbbaa</code> when the opacity
+              is below 100%. A browser's colour dialog has no opacity of its
+              own.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="With opacity">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tp"
+                  aria-selected="true"
+                  aria-controls="ex6-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex6-tc"
+                  aria-selected="false"
+                  aria-controls="ex6-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-p"
+                aria-labelledby="ex6-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="field" style="max-width: 24rem">
+                    <label for="cf-alpha">Overlay color</label>
+                    <div class="input-group color-field" data-alpha>
+                      <span
+                        ><input
+                          type="color"
+                          aria-label="Pick the overlay color"
+                      /></span>
+                      <input
+                        type="text"
+                        id="cf-alpha"
+                        name="overlay_color"
+                        value="#1a73e880"
+                      />
+                      <span
+                        ><input
+                          type="range"
+                          class="slider"
+                          min="0"
+                          max="100"
+                          aria-label="Opacity"
+                      /></span>
+                    </div>
+                    <small
+                      >Type #rgba, #rrggbbaa or rgba(26, 115, 232, 0.5), or use
+                      the opacity slider.</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex6-c"
+                aria-labelledby="ex6-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="field" style="max-width: 24rem"&gt;
+  &lt;label for="cf-alpha"&gt;Overlay color&lt;/label&gt;
+  &lt;div class="input-group color-field" data-alpha&gt;
+    &lt;span&gt;&lt;input type="color" aria-label="Pick the overlay color"&gt;&lt;/span&gt;
+    &lt;input type="text" id="cf-alpha" name="overlay_color" value="#1a73e880"&gt;
+    &lt;span&gt;&lt;input type="range" class="slider" min="0" max="100" aria-label="Opacity"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;small&gt;Type #rgba, #rrggbbaa or rgba(26, 115, 232, 0.5), or use the opacity slider.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>API</h2>
             <p>
               The colour field has no methods and sends no events of its own:
@@ -1052,6 +1142,29 @@
                       The colour a form sends. The picker shows it. Empty sends
                       no colour. Add <code>placeholder</code> to say what an
                       empty field means.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-alpha</code></td>
+                    <td>present or absent, on <code>.color-field</code></td>
+                    <td>
+                      Accepts an opacity: the text may be <code>#rgba</code>,
+                      <code>#rrggbbaa</code> or <code>rgb()</code> /
+                      <code>rgba()</code>. Without it only <code>#rgb</code> and
+                      <code>#rrggbb</code> are colours. The text is written as
+                      <code>#rrggbbaa</code> when the opacity is below 100%.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>input[type=range]</code></td>
+                    <td>
+                      class <code>slider</code>, in a last <code>span</code>,
+                      with <code>data-alpha</code>
+                    </td>
+                    <td>
+                      The opacity from 0 to 100. Give it an
+                      <code>aria-label</code>. Add
+                      <code>disabled</code> together with the other inputs.
                     </td>
                   </tr>
                   <tr>
