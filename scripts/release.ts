@@ -1,8 +1,9 @@
-// Prepare a release: bun run release <version | patch | minor | major> [--dry]
+// Prepare a release: bun scripts/release.ts <version | patch | minor | major> [--dry]
 // Sets the version in package.json, points the jsDelivr links in README.md at
 // the new tag, builds dist/, commits it all as "Release X.Y.Z" and prints the
 // release notes. It does not push or tag; the "Release" workflow runs this and
-// then tags, pushes and publishes (Actions > Release > Run workflow).
+// then tags, pushes and publishes (Actions > Release > Run workflow). Locally it
+// is only for a preview: bun scripts/release.ts patch --dry.
 // With --dry nothing is written; it only shows what would happen.
 // With --notes=<file> the release notes are also written to that file.
 import { $ } from "bun";
@@ -26,7 +27,7 @@ const pkg = await pkgFile.json();
 const old: string = pkg.version;
 
 function next(): string {
-  if (!input) return fail("Say the version: bun run release 0.1.3 (or patch, minor, major)");
+  if (!input) return fail("Say the version: bun scripts/release.ts 0.1.3 (or patch, minor, major)");
   const [major, minor, patch] = old.split(".").map(Number);
   if (input === "patch") return `${major}.${minor}.${patch + 1}`;
   if (input === "minor") return `${major}.${minor + 1}.0`;
