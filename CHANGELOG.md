@@ -10,6 +10,12 @@ Versions follow [semantic versioning](https://semver.org).
 
 - Docs: installing from npm is on the overview, the landing page and the README.
 
+### Fixed
+
+- Adding any element with a Tag input or an OTP input no longer starts every other one on the page again, which cleared the tags the user had typed and added a duplicate screen-reader status line.
+- A form with `data-validate` that fails the check no longer reaches your own `submit` handler (React `onSubmit`, Vue `@submit`, Svelte `onsubmit`): the check now runs first.
+- `import "@djirasak/tsunami-ui/css"` no longer fails to type-check in TypeScript 6 and 7.
+
 ## [1.2.0] - 2026-10-31
 
 ### Added
