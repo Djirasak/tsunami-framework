@@ -84,6 +84,20 @@ test.describe("Validation", () => {
     await expect.poll(() => page.evaluate(() => (window as unknown as { seen: number }).seen)).toBe(1);
   });
 
+  // The first error used to push the Send button down between mouse down and mouse
+  // up, so the click that caused the blur was lost and nothing was flagged.
+  test("the first click on Send is not lost when it blurs a field", async ({
+    page,
+  }) => {
+    const send = form(page).getByRole("button", { name: "Send" });
+    await page.getByLabel("Email").click();
+    const before = await send.boundingBox();
+    await send.click();
+    await expect(page.getByLabel("ZIP code")).toHaveAttribute("aria-invalid", "true");
+    const after = await send.boundingBox();
+    expect(Math.abs(after!.y - before!.y)).toBeLessThan(1);
+  });
+
   test("submitting with errors focuses the first invalid field", async ({
     page,
   }) => {
@@ -116,7 +130,8 @@ test.describe("Validation", () => {
         "aria-invalid",
         "true",
       );
-    await expect(form(page).locator("[data-error]:visible")).toHaveCount(0);
+    // The lines stay (empty, keeping their height); none holds a message.
+    await expect(form(page).locator("[data-error]:not(:empty)")).toHaveCount(0);
   });
 
   test("tsunami.validate.check and clear", async ({ page }) => {

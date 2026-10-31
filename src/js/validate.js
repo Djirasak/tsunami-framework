@@ -73,11 +73,20 @@ const formOf = (e) => {
   return f && e.target.matches?.(FIELD) ? f : null;
 };
 
+// Each field gets its (empty) error line now, and the CSS keeps its height, so the
+// first error does not push a Submit button away between mouse down and mouse up
+// (that click would be lost). A field a server already marked invalid counts as
+// touched, so fixing it clears the message as the user types.
+const prepare = (form) => {
+  form.noValidate = true;
+  for (const f of fieldsOf(form)) {
+    errorOf(f);
+    if (f.getAttribute("aria-invalid") === "true") touched.add(f);
+  }
+};
 const mount = (node) => {
-  if (node.matches?.("form[data-validate]")) node.noValidate = true;
-  node.querySelectorAll?.("form[data-validate]").forEach((f) => {
-    f.noValidate = true;
-  });
+  if (node.matches?.("form[data-validate]")) prepare(node);
+  node.querySelectorAll?.("form[data-validate]").forEach(prepare);
 };
 mount(document);
 if (document.readyState === "loading")
