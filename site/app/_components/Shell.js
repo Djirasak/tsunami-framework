@@ -73,6 +73,7 @@ export default function Shell({ slug }) {
             data-size="icon"
             popoverTarget="docs-nav"
             aria-label="Open menu"
+            suppressHydrationWarning /* sidebar.js adds aria-expanded before React hydrates */
           >
             <i className="icon icon-menu" aria-hidden="true"></i>
           </button>
