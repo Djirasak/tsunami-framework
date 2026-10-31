@@ -1,10 +1,54 @@
 {
-  "name": "tsunami",
+  "name": "@djirasak/tsunami-ui",
   "version": "1.1.2",
   "description": "A quiet UI framework.",
-  "private": true,
+  "keywords": [
+    "ui",
+    "css",
+    "framework",
+    "components",
+    "semantic-html",
+    "data-attributes",
+    "vanilla-js",
+    "dark-mode",
+    "accessibility"
+  ],
+  "homepage": "https://tsunami.zercoms.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Djirasak/tsunami-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Djirasak/tsunami-framework/issues"
+  },
   "license": "MIT",
   "type": "module",
+  "style": "./dist/tsunami.min.css",
+  "main": "./dist/tsunami.min.js",
+  "module": "./dist/tsunami.min.js",
+  "types": "./dist/tsunami.d.ts",
+  "sideEffects": true,
+  "exports": {
+    ".": {
+      "types": "./dist/tsunami.d.ts",
+      "default": "./dist/tsunami.min.js"
+    },
+    "./css": "./dist/tsunami.min.css",
+    "./js": "./dist/tsunami.min.js",
+    "./dist/*": "./dist/*",
+    "./fonts/*": "./fonts/*",
+    "./flags/*": "./flags/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "fonts",
+    "flags",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "bun": ">=1.4.3"
   },
@@ -19,7 +63,8 @@
     "test:e2e": "playwright test",
     "size": "bun scripts/size.ts",
     "docs": "cd site && bun install --frozen-lockfile && bun run dev",
-    "audit": "bun audit --audit-level=high"
+    "audit": "bun audit --audit-level=high",
+    "prepublishOnly": "bun run build && bun run check:types && bun run size"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
