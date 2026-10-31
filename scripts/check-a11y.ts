@@ -7,8 +7,7 @@
 //   --all            also report moderate and minor problems (default: serious
 //                    and critical only, which fail the check)
 // axe skips what Tsunami does not own or cannot get wrong: Monaco and TinyMCE draw
-// their own UI, a disabled control is exempt from contrast, and a command list
-// with no match has a menu without items.
+// their own UI, and a disabled control is exempt from contrast.
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "playwright";
@@ -26,7 +25,6 @@ const SKIP = [
   ".tox-tinymce",
   ".tox-tinymce-aux",
   ".dropzone:has(input:disabled)",
-  '.command [role="menu"]:not(:has([role="menuitem"]:not([aria-hidden="true"])))',
 ];
 
 const root = join(import.meta.dir, "..");
