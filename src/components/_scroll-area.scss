@@ -1,4 +1,4 @@
-// Scroll area: contained scrolling with a thin scrollbar. Add tabindex="0" for keyboard use.
+// Scroll area: contained scrolling with a thin scrollbar. scroll-area.js gives it tabindex="0" for keyboard use (set your own tabindex to override).
 @layer components {
   :where(.scroll-area) {
     // Positioned, so an absolutely placed child (such as [data-sr-only] text)

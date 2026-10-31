@@ -21,6 +21,7 @@ import "./color-field.js";
 import "./otp.js";
 import "./bulk-bar.js";
 import "./copy.js";
+import "./scroll-area.js";
 import "./filter-bar.js";
 import "./tag-input.js";
 import "./stepper.js";

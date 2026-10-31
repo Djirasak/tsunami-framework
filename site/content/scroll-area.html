@@ -13,8 +13,11 @@
               Add <code>.scroll-area</code> to a box with a set
               <code>height</code> or <code>max-height</code>. Overflowing
               content scrolls inside the box, and the scroll does not spread to
-              the page. Add <code>tabindex="0"</code> for keyboard scrolling and
-              an <code>aria-label</code> for a name. For a frame, put it in a
+              the page. The script gives it <code>tabindex="0"</code> if it has
+              none, so the keyboard can focus it and scroll it with the arrow
+              keys; set your own <code>tabindex</code> (for example
+              <code>-1</code>) to leave it alone. Add an
+              <code>aria-label</code> for a name. For a frame, put it in a
               <code>.card</code>.
             </p>
             <div class="tabs" data-tabs>
