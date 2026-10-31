@@ -64,7 +64,7 @@
     "size": "bun scripts/size.ts",
     "docs": "cd site && bun install --frozen-lockfile && bun run dev",
     "audit": "bun audit --audit-level=high",
-    "prepublishOnly": "bun run build && bun run check:types && bun run size"
+    "prepublishOnly": "bun scripts/check-publish.ts && bun run build && bun run check:types && bun run size"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
