@@ -6,6 +6,8 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-31
+
 ### Changed
 
 - Docs: the landing page shows an online store sales dashboard, and has sections for size, installing from the CDN with a copy button, how Tsunami compares with Pico, Bootstrap and Tailwind, accessibility, browser support and the licence.
@@ -130,7 +132,8 @@ First release. Semantic HTML and `data-*` attributes, with no runtime dependenci
 - `.h1` to `.h6` classes that give any element the look of a heading.
 - A Claude skill (`.claude/skills/tsunami`) that describes the classes and `data-*` attributes.
 
-[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/Djirasak/tsunami-framework/compare/v0.2.0...v1.0.1
 [0.2.0]: https://github.com/Djirasak/tsunami-framework/compare/v0.1.4...v0.2.0
