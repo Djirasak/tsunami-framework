@@ -137,7 +137,7 @@ Vanilla ES modules, event delegation on `document`, no init functions. CSS works
 
 ## Licenses
 
-- Code: personal project.
+- Code: MIT (`LICENSE`). Everything that is vendored keeps its own licence, listed below; all of them allow use under MIT.
 - Google Sans: SIL OFL 1.1 (`fonts/GoogleSans-OFL.txt`).
 - Lucide icons: ISC (`fonts/Lucide-LICENSE.txt`).
 - Flags: flag-icons, MIT (`flags/LICENSE.txt`).
