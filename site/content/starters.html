@@ -1,0 +1,217 @@
+<header class="page-header">
+            <div>
+              <h1>Starters</h1>
+              <p>
+                Three complete pages to copy: a plain page, an app with a
+                sidebar, and a sign-in form.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>How to use one</h2>
+            <p>
+              Copy the code into a file such as <code>index.html</code> and open
+              it in a browser. Each one loads Tsunami from the CDN at the
+              version of these docs, so it needs no build and no install. The
+              script goes in <code>&lt;head&gt;</code> as a plain
+              <code>&lt;script&gt;</code>, which is what lets it set the saved
+              theme before the first paint. To host the files yourself, see
+              <a href="/docs">the overview</a>.
+            </p>
+          </section>
+          <section>
+            <h2>A page</h2>
+            <p>
+              A <a href="/docs/container">container</a>, a
+              <a href="/docs/page-header">page header</a> and a
+              <a href="/docs/card">card</a>. Start here for a page without a
+              sidebar.
+            </p>
+            <div class="code-block">
+              <pre><code id="st-page">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;My page&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.css"&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="container stack" style="padding-block: var(--space-4)"&gt;
+    &lt;header class="page-header"&gt;
+      &lt;div&gt;
+        &lt;h1&gt;My page&lt;/h1&gt;
+        &lt;p&gt;A short description of what this page is for.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;article class="card"&gt;
+      &lt;section class="stack"&gt;
+        &lt;p&gt;Start here. Every component is a class, and a data attribute picks its variant.&lt;/p&gt;
+        &lt;div class="stack" data-direction="row" data-gap="sm"&gt;
+          &lt;button type="button" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+          &lt;button type="button" class="btn"&gt;Cancel&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#st-page" aria-label="Copy the code">
+                <i class="icon icon-copy" data-idle aria-hidden="true"></i>
+                <i class="icon icon-check" data-done aria-hidden="true"></i>
+              </button>
+            </div>
+          </section>
+          <section>
+            <h2>An app with a sidebar</h2>
+            <p>
+              A <a href="/docs/sidebar">sidebar</a> that collapses on a wide
+              screen and slides in as a drawer on a phone, with a theme
+              switcher in the header. Add links to the list and mark the
+              current one with <code>aria-current="page"</code>.
+            </p>
+            <div class="code-block">
+              <pre><code id="st-app">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;My app&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.css"&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;aside class="sidebar" id="app-nav" popover&gt;
+      &lt;nav aria-label="Main"&gt;
+        &lt;header&gt;
+          &lt;a href="/"&gt;
+            &lt;span class="avatar" data-size="sm"&gt;&lt;span&gt;MA&lt;/span&gt;&lt;/span&gt;
+            &lt;span&gt;My app&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/header&gt;
+        &lt;section&gt;
+          &lt;div role="group"&gt;
+            &lt;ul&gt;
+              &lt;li&gt;
+                &lt;a href="/" aria-current="page"&gt;
+                  &lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Overview&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href="/orders"&gt;
+                  &lt;i class="icon icon-receipt" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href="/customers"&gt;
+                  &lt;i class="icon icon-users" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+        &lt;footer&gt;
+          &lt;button type="button" class="btn" data-variant="ghost" data-size="icon"
+                  commandfor="app-nav" command="--toggle-collapsed"
+                  aria-label="Collapse or expand sidebar"&gt;
+            &lt;i class="icon icon-panel-left" aria-hidden="true"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/footer&gt;
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+
+    &lt;main class="container stack" style="padding-block: var(--space-4)"&gt;
+      &lt;header class="page-header"&gt;
+        &lt;button type="button" class="btn sidebar-toggle" data-variant="ghost" data-size="icon"
+                popovertarget="app-nav" aria-label="Open menu"&gt;
+          &lt;i class="icon icon-menu" aria-hidden="true"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;h1&gt;Overview&lt;/h1&gt;
+        &lt;div&gt;
+          &lt;div class="theme-switcher" role="group" aria-label="Theme"&gt;
+            &lt;button type="button" data-theme-toggle="light" aria-label="Light"&gt;&lt;i class="icon icon-sun" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;button type="button" data-theme-toggle="dark" aria-label="Dark"&gt;&lt;i class="icon icon-moon" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;button type="button" data-theme-toggle="system" aria-label="System"&gt;&lt;i class="icon icon-monitor" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+
+      &lt;article class="card"&gt;
+        &lt;section&gt;
+          &lt;p&gt;Your content goes here.&lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/article&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#st-app" aria-label="Copy the code">
+                <i class="icon icon-copy" data-idle aria-hidden="true"></i>
+                <i class="icon icon-check" data-done aria-hidden="true"></i>
+              </button>
+            </div>
+          </section>
+          <section>
+            <h2>A sign-in form</h2>
+            <p>
+              A centred card with a form that checks itself with
+              <a href="/docs/validation">Validation</a>: leave a field empty and
+              submit, and the error shows under it. Send the form to your own
+              server where the example has none.
+            </p>
+            <div class="code-block">
+              <pre><code id="st-signin">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Sign in&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.css"&gt;
+  &lt;script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="stack" style="min-height: 100vh; align-items: center; justify-content: center; padding: var(--space-4)"&gt;
+    &lt;article class="card" style="width: 100%; max-width: 24rem"&gt;
+      &lt;form data-validate&gt;
+        &lt;header&gt;
+          &lt;h1&gt;Sign in&lt;/h1&gt;
+          &lt;p&gt;Use your work email to continue.&lt;/p&gt;
+        &lt;/header&gt;
+        &lt;section class="stack"&gt;
+          &lt;div class="field"&gt;
+            &lt;label for="email"&gt;Email&lt;/label&gt;
+            &lt;input id="email" name="email" type="email" autocomplete="username" required
+                   data-message="Enter an email like name@example.com"&gt;
+          &lt;/div&gt;
+          &lt;div class="field"&gt;
+            &lt;label for="password"&gt;Password&lt;/label&gt;
+            &lt;input id="password" name="password" type="password" autocomplete="current-password" required
+                   data-message="Enter your password"&gt;
+          &lt;/div&gt;
+          &lt;button type="submit" class="btn" data-variant="primary"&gt;Continue&lt;/button&gt;
+        &lt;/section&gt;
+      &lt;/form&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#st-signin" aria-label="Copy the code">
+                <i class="icon icon-copy" data-idle aria-hidden="true"></i>
+                <i class="icon icon-check" data-done aria-hidden="true"></i>
+              </button>
+            </div>
+          </section>
+          <section>
+            <h2>Bigger starting points</h2>
+            <p>
+              Four full pages are built only from Tsunami, and each has a
+              Source button in its corner: the
+              <a href="/examples/dashboard">dashboard</a>, an
+              <a href="/examples/orders">orders list</a>, a
+              <a href="/examples/settings">settings form</a> and a
+              <a href="/examples/login">sign-in with a one-time code</a>.
+            </p>
+          </section>

@@ -373,5 +373,10 @@
     "title": "Theming",
     "description": "Match Tsunami to your brand by overriding its CSS variables: one accent colour, separate light and dark values, and the contrast pairs to check.",
     "libs": []
+  },
+  "starters": {
+    "title": "Starters",
+    "description": "Three complete pages to copy: a plain page, an app with a sidebar and a sign-in form. Each loads Tsunami from the CDN, with no build step.",
+    "libs": []
   }
 }

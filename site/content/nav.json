@@ -239,6 +239,12 @@
     "title": "Foundations",
     "items": [
       {
+        "label": "Starters",
+        "href": "/docs/starters",
+        "icon": "rocket",
+        "keywords": "Starters starter template boilerplate page app shell sidebar sign in login copy html quick start"
+      },
+      {
         "label": "Colors",
         "href": "/docs/colors",
         "icon": "palette",
