@@ -18,15 +18,20 @@ export const version = () =>
   JSON.parse(readFileSync(join(process.cwd(), "..", "package.json"), "utf8"))
     .version;
 
-// The version of a vendored library, from the first line of its SOURCE.txt in
-// vendor/: content writes it as {{vendor:chart}}, so a page never repeats a
-// version that the next update would leave behind.
+// The version of a vendored library, read from the file that records where it
+// came from: the first line of vendor/<name>/SOURCE.txt, or for the flags and
+// the icon font the line that names them. Content writes it as
+// {{vendor:chart}}, so a page never repeats a version that the next update
+// would leave behind.
+const SOURCES = {
+  flags: ["flags/SOURCE.txt", 0],
+  lucide: ["fonts/CHECKSUMS.txt", /lucide\.woff2/],
+};
 const vendorVersion = (name) => {
-  const first = readFileSync(
-    join(process.cwd(), "..", "vendor", name, "SOURCE.txt"),
-    "utf8",
-  ).split("\n")[0];
-  return first.match(/(\d+\.\d+\.\d+)/)?.[1] ?? "?";
+  const [file, line] = SOURCES[name] ?? [`vendor/${name}/SOURCE.txt`, 0];
+  const lines = readFileSync(join(process.cwd(), "..", file), "utf8").split("\n");
+  const text = typeof line === "number" ? lines[line] : lines.find((l) => line.test(l));
+  return text?.match(/(\d+\.\d+\.\d+)/)?.[1] ?? "?";
 };
 
 export const html = (slug) =>
