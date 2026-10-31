@@ -6,6 +6,14 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+### Changed
+
+- The backdrop behind a Dialog, Drawer, Command palette and the Sidebar drawer blurs the page as well as dimming it.
+
+### Fixed
+
+- A Dialog or Drawer no longer lines its header, body and footer up in a row while it fades out.
+
 ## [1.1.1] - 2026-10-31
 
 ### Changed
