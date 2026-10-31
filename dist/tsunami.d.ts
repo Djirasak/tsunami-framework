@@ -9,6 +9,10 @@ interface Window {
 interface HTMLElementEventMap extends TsunamiEventMap {}
 interface DocumentEventMap extends TsunamiEventMap {}
 
+// import "@djirasak/tsunami-ui/css" is a side-effect import of a stylesheet: without this
+// TypeScript 6 and 7 report TS2882 for it.
+declare module "@djirasak/tsunami-ui/css";
+
 // Types for filter-bar, chart, select, bulk-bar, date-picker, otp, validate,
 // table, journey and code-editor. Global script: merges into Tsunami and
 // TsunamiEventMap.

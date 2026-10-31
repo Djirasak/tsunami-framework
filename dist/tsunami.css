@@ -8740,6 +8740,10 @@
   :where(.field > small[data-error]:empty) {
     display: none;
   }
+  :where(form[data-validate] .field > small[data-error]:empty) {
+    display: block;
+    min-height: 1lh;
+  }
   :where(.field:has(> input:is([type=checkbox], [type=radio]))) {
     display: flex;
     align-items: flex-start;

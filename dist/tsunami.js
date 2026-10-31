@@ -3324,7 +3324,7 @@ function spread(el, from, text) {
 }
 function mount4(root = document) {
   for (const el of root.querySelectorAll(OTP)) {
-    if (el.dataset.mounted)
+    if ("mounted" in el.dataset)
       continue;
     el.dataset.mounted = "";
     if (!boxes(el).length) {
@@ -3737,7 +3737,7 @@ function start4(el) {
 }
 function mount6(root = document) {
   for (const el of root.querySelectorAll(TAGS)) {
-    if (el.dataset.mounted)
+    if ("mounted" in el.dataset)
       continue;
     el.dataset.mounted = "";
     if (!text(el)) {
@@ -4090,12 +4090,18 @@ var formOf2 = (e) => {
   const f = e.target.closest?.("form[data-validate]");
   return f && e.target.matches?.(FIELD4) ? f : null;
 };
+var prepare = (form) => {
+  form.noValidate = true;
+  for (const f of fieldsOf(form)) {
+    errorOf(f);
+    if (f.getAttribute("aria-invalid") === "true")
+      touched2.add(f);
+  }
+};
 var mount7 = (node) => {
   if (node.matches?.("form[data-validate]"))
-    node.noValidate = true;
-  node.querySelectorAll?.("form[data-validate]").forEach((f) => {
-    f.noValidate = true;
-  });
+    prepare(node);
+  node.querySelectorAll?.("form[data-validate]").forEach(prepare);
 };
 mount7(document);
 if (document.readyState === "loading")
@@ -4131,8 +4137,9 @@ document.addEventListener("submit", (e) => {
   if (!bad.length)
     return;
   e.preventDefault();
+  e.stopPropagation();
   bad[0].focus();
-});
+}, true);
 document.addEventListener("reset", (e) => {
   if (e.target.matches?.("form[data-validate]"))
     clear2(e.target);
