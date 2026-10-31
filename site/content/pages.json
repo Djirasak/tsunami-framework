@@ -358,5 +358,10 @@
     "title": "Responsive",
     "description": "How Tsunami adapts from a phone to a wide screen: three breakpoints written in each component, and no responsive utility classes.",
     "libs": []
+  },
+  "validation": {
+    "title": "Validation",
+    "description": "Show the browser's own validation as an error under each field, with aria-invalid and an alert, using one data-validate attribute on the form.",
+    "libs": []
   }
 }

@@ -156,6 +156,12 @@
         "keywords": "Forms field checkbox radio switch toggle slider range indeterminate label hint fieldset field-group aria-invalid disabled data-variant role data-gap"
       },
       {
+        "label": "Validation",
+        "href": "/docs/validation",
+        "icon": "circle-alert",
+        "keywords": "Forms validation form data-validate data-message data-error required pattern error aria-invalid novalidate user-invalid tsunami.validate"
+      },
+      {
         "label": "Filter bar",
         "href": "/docs/filter-bar",
         "icon": "list-filter",

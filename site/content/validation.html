@@ -1,0 +1,160 @@
+<header class="page-header">
+            <div>
+              <h1>Validation</h1>
+              <p>
+                Show the browser's own validation as an error under each field,
+                with the right ARIA, instead of the browser bubble.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>A form that checks itself</h2>
+            <p>
+              Add <code>data-validate</code> to a <code>form</code>. Write the
+              rules in HTML as usual: <code>required</code>,
+              <code>type="email"</code>, <code>pattern</code>,
+              <code>minlength</code>. Leave a field and it is checked; once
+              it shows an error it is checked again as you type. Submitting
+              checks every field and moves focus to the first one that fails.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A form that checks itself">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <form class="stack docs-narrow" data-validate>
+                    <div class="field">
+                      <label for="vd-email">Email</label>
+                      <input id="vd-email" name="email" type="email" required data-message="Enter an email like name@example.com" aria-describedby="vd-email-hint" />
+                      <small id="vd-email-hint">We never share it.</small>
+                    </div>
+                    <div class="field">
+                      <label for="vd-zip">ZIP code</label>
+                      <input id="vd-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" required data-message="Enter a 5 digit ZIP code" />
+                    </div>
+                    <div class="field">
+                      <input id="vd-terms" name="terms" type="checkbox" required data-message="Accept the terms to continue" />
+                      <label for="vd-terms">I accept the terms</label>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button type="submit" class="btn" data-variant="primary">Send</button>
+                      <button type="reset" class="btn">Reset</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;form class="stack" data-validate&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="vd-email"&gt;Email&lt;/label&gt;
+    &lt;input id="vd-email" name="email" type="email" required
+           data-message="Enter an email like name@example.com"
+           aria-describedby="vd-email-hint" /&gt;
+    &lt;small id="vd-email-hint"&gt;We never share it.&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="vd-zip"&gt;ZIP code&lt;/label&gt;
+    &lt;input id="vd-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" required
+           data-message="Enter a 5 digit ZIP code" /&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;input id="vd-terms" name="terms" type="checkbox" required
+           data-message="Accept the terms to continue" /&gt;
+    &lt;label for="vd-terms"&gt;I accept the terms&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn" data-variant="primary"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>What it does to a field</h2>
+            <ul>
+              <li>
+                Sets <code>aria-invalid="true"</code> on the field, so its
+                border turns danger, and removes it when the field is valid.
+              </li>
+              <li>
+                Puts the message in a <code>small</code> with
+                <code>data-error</code> inside the <code>.field</code> (it
+                makes one if there is none) and adds its id to the field's
+                <code>aria-describedby</code>, next to any hint you wrote.
+              </li>
+              <li>
+                Gives the message <code>role="alert"</code> while it shows, so
+                a screen reader reads it as soon as it appears.
+              </li>
+              <li>
+                Turns off the browser bubble with <code>novalidate</code>, and
+                clears every error when the form is reset.
+              </li>
+            </ul>
+            <p>
+              Without the script nothing is lost: the browser validates on
+              submit as usual, and a field the user has left invalid gets the
+              danger border from <code>:user-invalid</code>.
+            </p>
+          </section>
+          <section>
+            <h2>JavaScript</h2>
+            <p>
+              Fields added later are picked up. To check from your own code,
+              for example after a server reply, use the API below.
+            </p>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="API">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Call</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>tsunami.validate.check(el)</code></td>
+                    <td>
+                      Checks a form or one field, shows the errors and returns
+                      <code>true</code> when it is valid.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>tsunami.validate.clear(el)</code></td>
+                    <td>Removes the errors of a form or one field.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Attributes">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute</th>
+                    <th scope="col">On</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>data-validate</code></td>
+                    <td><code>form</code></td>
+                    <td>Turns on the checks above.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-message</code></td>
+                    <td>field</td>
+                    <td>The error text. Without it the browser's own text is used.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-error</code></td>
+                    <td><code>small</code></td>
+                    <td>Where the message goes. Optional: it is made for you.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
