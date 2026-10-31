@@ -3,7 +3,7 @@
             <h1>Tsunami <span>津波</span></h1>
             <p class="docs-lead">
               A quiet UI framework. Semantic HTML,
-              <code>data-*</code> attributes and a little vanilla JS, with 53
+              <code>data-*</code> attributes and a little vanilla JS, with {{components}}
               components, Lucide icons and country flags. The core has no
               runtime dependencies; a few components (editor, chart, date
               picker, drag and drop) load a library of their own.
@@ -95,162 +95,73 @@
           </section>
           <section>
             <h2>Example</h2>
+            <p>
+              One class names the component, and one attribute picks its
+              variant. The elements are plain HTML, so a button is a
+              <code>&lt;button&gt;</code> and a dialog is a
+              <code>&lt;dialog&gt;</code>.
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
-                <button
-                  type="button"
-                  role="tab"
-                  id="ex1-tp"
-                  aria-selected="true"
-                  aria-controls="ex1-p"
-                >
-                  Preview
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  id="ex1-tc"
-                  aria-selected="false"
-                  aria-controls="ex1-c"
-                  tabindex="-1"
-                >
-                  Code
-                </button>
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
               </div>
-              <div
-                role="tabpanel"
-                id="ex1-p"
-                aria-labelledby="ex1-tp"
-                tabindex="0"
-              >
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
                 <div class="docs-preview">
-                  <div class="stack">
-                    <dl class="stat">
-                      <div>
-                        <dt>Revenue</dt>
-                        <dd>$12,840</dd>
-                        <dd data-variant="ok">+12.4% from last month</dd>
-                      </div>
-                      <div>
-                        <dt>Orders</dt>
-                        <dd>1,284</dd>
-                        <dd>+3.1%</dd>
-                      </div>
-                      <div>
-                        <dt>Refunds</dt>
-                        <dd>18</dd>
-                        <dd data-variant="danger">+2 orders</dd>
-                      </div>
-                      <div>
-                        <dt>New customers</dt>
-                        <dd>342</dd>
-                        <dd>Flat</dd>
-                      </div>
-                    </dl>
-                    <div class="card">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Order</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Status</th>
-                            <th scope="col" data-align="end">Total</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>#1042</td>
-                            <td>Emma Wilson</td>
-                            <td>
-                              <span class="badge" data-variant="ok">Paid</span>
-                            </td>
-                            <td data-align="end">$129.00</td>
-                          </tr>
-                          <tr>
-                            <td>#1041</td>
-                            <td>James Carter</td>
-                            <td><span class="badge">Pending</span></td>
-                            <td data-align="end">$84.50</td>
-                          </tr>
-                          <tr>
-                            <td>#1040</td>
-                            <td>Olivia Brown</td>
-                            <td>
-                              <span class="badge" data-variant="danger"
-                                >Cancelled</span
-                              >
-                            </td>
-                            <td data-align="end">$246.00</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                  <div class="stack" data-gap="lg">
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <button type="button" class="btn">Cancel</button>
+                      <button type="button" class="btn" data-variant="primary">Save</button>
+                      <button type="button" class="btn" data-variant="danger">Delete</button>
+                    </div>
+                    <div class="stack" data-direction="row" data-gap="sm">
+                      <span class="badge" data-variant="ok">Paid</span>
+                      <span class="badge" data-variant="warning">Pending</span>
+                      <span class="badge" data-variant="danger">Cancelled</span>
+                    </div>
+                    <div class="field">
+                      <label for="home-email">Email</label>
+                      <input id="home-email" class="input" type="email" placeholder="you@example.com" />
+                      <small>Used for the receipt.</small>
+                    </div>
+                    <div>
+                      <button type="button" class="btn" commandfor="home-dialog" command="show-modal">Open dialog</button>
+                      <dialog id="home-dialog" aria-labelledby="home-dialog-title" closedby="any">
+                        <header>
+                          <h2 id="home-dialog-title">A native dialog</h2>
+                        </header>
+                        <section>
+                          <p>It opens with <code>command="show-modal"</code>, so Esc and focus work with no script.</p>
+                        </section>
+                        <footer>
+                          <button type="button" class="btn" commandfor="home-dialog" command="close">Close</button>
+                        </footer>
+                      </dialog>
                     </div>
                   </div>
                 </div>
               </div>
-              <div
-                role="tabpanel"
-                id="ex1-c"
-                aria-labelledby="ex1-tc"
-                tabindex="0"
-                hidden
-              >
-                <pre><code>&lt;div class="stack"&gt;
-&lt;dl class="stat"&gt;
-  &lt;div&gt;
-    &lt;dt&gt;Revenue&lt;/dt&gt;
-    &lt;dd&gt;$12,840&lt;/dd&gt;
-    &lt;dd data-variant="ok"&gt;+12.4% from last month&lt;/dd&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;dt&gt;Orders&lt;/dt&gt;
-    &lt;dd&gt;1,284&lt;/dd&gt;
-    &lt;dd&gt;+3.1%&lt;/dd&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;dt&gt;Refunds&lt;/dt&gt;
-    &lt;dd&gt;18&lt;/dd&gt;
-    &lt;dd data-variant="danger"&gt;+2 orders&lt;/dd&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;dt&gt;New customers&lt;/dt&gt;
-    &lt;dd&gt;342&lt;/dd&gt;
-    &lt;dd&gt;Flat&lt;/dd&gt;
-  &lt;/div&gt;
-&lt;/dl&gt;
-&lt;div class="card"&gt;
-&lt;table class="table"&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th scope="col"&gt;Order&lt;/th&gt;
-      &lt;th scope="col"&gt;Customer&lt;/th&gt;
-      &lt;th scope="col"&gt;Status&lt;/th&gt;
-      &lt;th scope="col" data-align="end"&gt;Total&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;#1042&lt;/td&gt;
-      &lt;td&gt;Emma Wilson&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;$129.00&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;#1041&lt;/td&gt;
-      &lt;td&gt;James Carter&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge"&gt;Pending&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;$84.50&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;#1040&lt;/td&gt;
-      &lt;td&gt;Olivia Brown&lt;/td&gt;
-      &lt;td&gt;&lt;span class="badge" data-variant="danger"&gt;Cancelled&lt;/span&gt;&lt;/td&gt;
-      &lt;td data-align="end"&gt;$246.00&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;button type="button" class="btn"&gt;Cancel&lt;/button&gt;
+&lt;button type="button" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+&lt;button type="button" class="btn" data-variant="danger"&gt;Delete&lt;/button&gt;
+
+&lt;span class="badge" data-variant="ok"&gt;Paid&lt;/span&gt;
+&lt;span class="badge" data-variant="warning"&gt;Pending&lt;/span&gt;
+&lt;span class="badge" data-variant="danger"&gt;Cancelled&lt;/span&gt;
+
+&lt;div class="field"&gt;
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input id="email" class="input" type="email" placeholder="you@example.com"&gt;
+  &lt;small&gt;Used for the receipt.&lt;/small&gt;
 &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+
+&lt;button type="button" class="btn" commandfor="my-dialog" command="show-modal"&gt;Open dialog&lt;/button&gt;
+&lt;dialog id="my-dialog" aria-labelledby="my-dialog-title" closedby="any"&gt;
+  &lt;header&gt;&lt;h2 id="my-dialog-title"&gt;A native dialog&lt;/h2&gt;&lt;/header&gt;
+  &lt;section&gt;&lt;p&gt;It opens with command="show-modal", so Esc and focus work with no script.&lt;/p&gt;&lt;/section&gt;
+  &lt;footer&gt;&lt;button type="button" class="btn" commandfor="my-dialog" command="close"&gt;Close&lt;/button&gt;&lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
               </div>
             </div>
           </section>

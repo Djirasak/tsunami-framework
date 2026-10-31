@@ -48,6 +48,7 @@ const vendorVersion = (name) => {
 export const html = (slug) =>
   readFileSync(join(dir, `${slug}.html`), "utf8")
     .replaceAll("{{version}}", version())
+    .replaceAll("{{components}}", String(componentCount()))
     .replace(/\{\{vendor:([a-z-]+)\}\}/g, (_, name) => vendorVersion(name));
 
 // The date of the last commit that touched a page's HTML, for the sitemap.
