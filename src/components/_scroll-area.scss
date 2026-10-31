@@ -1,6 +1,9 @@
 // Scroll area: contained scrolling with a thin scrollbar. Add tabindex="0" for keyboard use.
 @layer components {
   :where(.scroll-area) {
+    // Positioned, so an absolutely placed child (such as [data-sr-only] text)
+    // is clipped with the scroller instead of widening the page.
+    position: relative;
     overflow: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
