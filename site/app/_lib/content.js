@@ -18,11 +18,21 @@ export const version = () =>
   JSON.parse(readFileSync(join(process.cwd(), "..", "package.json"), "utf8"))
     .version;
 
+// The version of a vendored library, from the first line of its SOURCE.txt in
+// vendor/: content writes it as {{vendor:chart}}, so a page never repeats a
+// version that the next update would leave behind.
+const vendorVersion = (name) => {
+  const first = readFileSync(
+    join(process.cwd(), "..", "vendor", name, "SOURCE.txt"),
+    "utf8",
+  ).split("\n")[0];
+  return first.match(/(\d+\.\d+\.\d+)/)?.[1] ?? "?";
+};
+
 export const html = (slug) =>
-  readFileSync(join(dir, `${slug}.html`), "utf8").replaceAll(
-    "{{version}}",
-    version(),
-  );
+  readFileSync(join(dir, `${slug}.html`), "utf8")
+    .replaceAll("{{version}}", version())
+    .replace(/\{\{vendor:([a-z-]+)\}\}/g, (_, name) => vendorVersion(name));
 
 // The date of the last commit that touched a page's HTML, for the sitemap.
 // Falls back to the page's file time when git is not available (for example
