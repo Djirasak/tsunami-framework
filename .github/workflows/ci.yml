@@ -58,7 +58,17 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Install the browsers
         run: bunx playwright install --with-deps chromium firefox webkit
-      # Playwright starts the docs itself (bun run docs) and waits for it.
+      # One docs server for both steps below: the browser tests reuse it, and the
+      # accessibility scan needs it running after they finish.
+      - name: Start the docs
+        run: |
+          nohup bun run docs > docs.log 2>&1 &
+          for i in $(seq 1 90); do
+            curl -sf http://localhost:5477/docs > /dev/null && exit 0
+            sleep 2
+          done
+          cat docs.log
+          exit 1
       - name: Browser tests
         run: bun run test:e2e
       - name: Accessibility scan
@@ -68,5 +78,7 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: playwright-traces
-          path: test-results/
+          path: |
+            test-results/
+            docs.log
           retention-days: 7
