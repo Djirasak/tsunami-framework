@@ -87,7 +87,6 @@ const DEFAULTS = {
   statusbar: false,
   branding: false,
   promotion: false,
-  license_key: "gpl",
   plugins: "image link fullscreen media autoresize lists code",
   toolbar:
     "blocks | bold italic underline | bullist numlist link image media | alignleft aligncenter alignright alignjustify | outdent indent | removeformat | code fullscreen",
