@@ -5,8 +5,34 @@
 // its id) and brings it back on the next page load, and scrolls the
 // aria-current="page" item into view, so a long menu does not jump to the top
 // on every full page load.
+// Buttons that drive a sidebar keep aria-expanded in step: the collapse
+// buttons say whether it is expanded, the popover buttons whether it is open.
+const COLLAPSE_CMDS = ["--collapse", "--expand", "--toggle-collapsed"];
+const POPOVER_CMDS = ["toggle-popover", "show-popover", "hide-popover"];
+
+function controls(sidebar) {
+  if (!sidebar.id) return [];
+  const id = CSS.escape(sidebar.id);
+  return document.querySelectorAll(
+    `[popovertarget="${id}"], [commandfor="${id}"]`,
+  );
+}
+
+function sync(sidebar) {
+  const open = sidebar.matches(":popover-open");
+  const expanded = sidebar.dataset.collapsed !== "true";
+  for (const b of controls(sidebar)) {
+    const cmd = b.getAttribute("command");
+    if (cmd && COLLAPSE_CMDS.includes(cmd))
+      b.setAttribute("aria-expanded", String(expanded));
+    else if (b.hasAttribute("popovertarget") || POPOVER_CMDS.includes(cmd))
+      b.setAttribute("aria-expanded", String(open));
+  }
+}
+
 function set(sidebar, collapsed) {
   sidebar.dataset.collapsed = String(collapsed);
+  sync(sidebar);
 }
 
 const collapse = (sidebar) => set(sidebar, true);
@@ -28,11 +54,33 @@ document.addEventListener(
   true,
 );
 
+// An opened drawer takes focus, so Tab continues inside it. Esc and light
+// dismiss already hand focus back to the button that opened it.
+document.addEventListener(
+  "toggle",
+  (e) => {
+    const el = e.target;
+    if (!el.matches?.(".sidebar[popover]")) return;
+    sync(el);
+    if (e.newState !== "open") return;
+    const first = el.querySelector(
+      'a[href], button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])',
+    );
+    if (first) first.focus();
+    else {
+      if (!el.hasAttribute("tabindex")) el.tabIndex = -1;
+      el.focus();
+    }
+  },
+  true,
+);
+
 const KEEP = ".sidebar[data-keep-scroll]";
 const kept = new WeakSet();
 const key = (el) => `tsunami:sidebar:${el.id || "sidebar"}`;
 
 function mount(root = document) {
+  for (const el of root.querySelectorAll(".sidebar")) sync(el);
   for (const el of root.querySelectorAll(KEEP)) {
     if (kept.has(el)) continue;
     kept.add(el);
@@ -66,7 +114,7 @@ new MutationObserver((records) => {
   if (document.readyState === "loading") return;
   for (const r of records)
     for (const n of r.addedNodes)
-      if (n.nodeType === 1 && (n.matches(KEEP) || n.querySelector(KEEP)))
+      if (n.nodeType === 1 && (n.matches(".sidebar") || n.querySelector(".sidebar")))
         return mount();
 }).observe(document.documentElement, { childList: true, subtree: true });
 
