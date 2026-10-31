@@ -32,6 +32,11 @@ function filter(tree, query) {
   if (empty) empty.hidden = any;
 }
 
+// The "no match" line becomes a live region once the search field is in use.
+document.addEventListener("focusin", (e) => {
+  if (e.target.matches('.tree input[type="search"]'))
+    e.target.closest(".tree").querySelector(":scope > p")?.setAttribute("role", "status");
+});
 document.addEventListener("input", (e) => {
   if (e.target.matches('.tree input[type="search"]'))
     filter(e.target.closest(".tree"), e.target.value);
