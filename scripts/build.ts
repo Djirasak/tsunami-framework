@@ -34,6 +34,7 @@ const steps: [string[], () => Promise<unknown>][] = [
     ],
     () => $`bun scripts/build-vendor.ts`,
   ],
+  [["tsunami.d.ts"], () => $`bun scripts/types.ts`],
   [[], () => $`bun scripts/stamp-version.ts`],
 ];
 
