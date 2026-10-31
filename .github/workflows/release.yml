@@ -1,6 +1,6 @@
 name: Release
 
-# Run it from the Actions tab: pick patch, minor or major, or type a version.
+# Run it from the Actions tab and pick patch, minor or major.
 # It sets the version, builds dist/, commits "Release X.Y.Z", tags it, publishes
 # the GitHub release, then deploys the docs and warms jsDelivr for the new tag.
 # Everything happens in this one run, so a tag always carries the dist/ built
@@ -10,9 +10,14 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: patch, minor, major or a version like 0.2.0
+        description: "How big is this release? patch = fixes, minor = new things, major = breaking changes"
+        type: choice
         required: true
         default: patch
+        options:
+          - patch
+          - minor
+          - major
 
 permissions:
   contents: write
