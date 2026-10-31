@@ -86,6 +86,16 @@ $font-subsets: (
     }
   }
 
+  /* Text for screen readers only, such as a live region's message */
+  :where([data-sr-only]) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
   /* Links inside running text can't rely on colour alone */
   :is(p, li, dd) > a:not([class]) {
     text-decoration: underline;

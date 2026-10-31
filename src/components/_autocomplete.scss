@@ -17,16 +17,6 @@
     display: none;
   }
 
-  // The match count is for screen readers only.
-  :where([popover] > p[data-sr-only]) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
   :where(.autocomplete [role="option"] mark) {
     background: none;
     color: inherit;
