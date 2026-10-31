@@ -55,7 +55,7 @@ const who = await out("npm", "whoami");
 if (!who && !dry) fail("You are not logged in to npm: run npm login first.");
 
 console.log(`
-  ${bold(pkg.name!)} ${dim(onNpm ? `(${pkg.version} is on npm; rehearsal only)` : "")}
+  ${bold(pkg.name!)} ${dim(onNpm ? `(${pkg.version} is already on npm: the rehearsal ends with npm refusing it, which is expected)` : "")}
   version  ${green(pkg.version!)}  from tag ${tag}
   npm user ${who || dim("not logged in (dry run)")}
   mode     ${dry ? "dry run: nothing is uploaded" : bold("PUBLISH: this cannot be undone")}
