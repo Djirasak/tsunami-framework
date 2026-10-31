@@ -21,6 +21,31 @@ document.addEventListener("input", (e) => {
 });
 // The reset event fires before fields are restored.
 document.addEventListener("reset", (e) => setTimeout(() => syncAll(e.target)));
-syncAll();
+
+// The script may run before the sliders are parsed; later ones are started too.
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => syncAll(), {
+    once: true,
+  });
+else syncAll();
+new MutationObserver((records) => {
+  if (document.readyState === "loading") return;
+  for (const r of records) {
+    if (r.type === "attributes") {
+      if (r.target.matches(".slider")) sync(r.target);
+      continue;
+    }
+    for (const n of r.addedNodes) {
+      if (n.nodeType !== 1) continue;
+      if (n.matches(".slider")) sync(n);
+      for (const el of n.querySelectorAll(".slider")) sync(el);
+    }
+  }
+}).observe(document.documentElement, {
+  childList: true,
+  subtree: true,
+  attributes: true,
+  attributeFilter: ["min", "max", "value", "class"],
+});
 
 (window.tsunami ??= {}).slider = { sync };
