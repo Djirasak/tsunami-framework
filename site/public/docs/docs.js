@@ -81,6 +81,7 @@ for (const pre of document.querySelectorAll(
 )) {
   const code = pre.querySelector("code");
   if (!code) continue;
+  pre.tabIndex = 0; // a long line scrolls sideways: the keyboard must reach it
   code.innerHTML = (
     code.classList.contains("language-js")
       ? highlightJs
@@ -121,3 +122,32 @@ document.addEventListener("click", async (e) => {
     btn.setAttribute("aria-label", "Copy code");
   }, 1500);
 });
+
+// The package manager tabs (npm, pnpm, yarn, bun): the choice is kept, and every
+// such tab list on the page and on the next page follows it.
+{
+  const KEY = "tsunami-docs-pm";
+  const LISTS = '[role="tablist"][aria-label="Package manager"]';
+  const follow = (name) => {
+    for (const list of document.querySelectorAll(LISTS)) {
+      const tab = [...list.querySelectorAll('[role="tab"]')].find(
+        (t) => t.textContent.trim() === name,
+      );
+      if (tab && tab.getAttribute("aria-selected") !== "true")
+        window.tsunami?.tabs?.select(tab);
+    }
+  };
+  document.addEventListener("click", (e) => {
+    const tab = e.target.closest?.(`${LISTS} [role="tab"]`);
+    if (!tab) return;
+    const name = tab.textContent.trim();
+    try {
+      localStorage.setItem(KEY, name);
+    } catch {}
+    follow(name);
+  });
+  try {
+    const saved = localStorage.getItem(KEY);
+    if (saved) follow(saved);
+  } catch {}
+}
