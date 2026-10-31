@@ -1,5 +1,6 @@
 import LandingScript from "../_components/LandingScript";
 import { bundleSizes, componentCount, version } from "../_lib/content";
+import { highlightHtml } from "../_lib/highlight";
 import { HOME_TITLE, SITE_NAME } from "../_lib/seo";
 
 const description = `Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, ${componentCount()} components, and a core with no dependencies.`;
@@ -329,7 +330,7 @@ export default function Landing() {
           </p>
           <div className="code-block">
             <pre>
-              <code id="landing-cdn">{CDN}</code>
+              <code id="landing-cdn" dangerouslySetInnerHTML={{ __html: highlightHtml(CDN) }} />
             </pre>
             <button
               type="button"
@@ -348,7 +349,7 @@ export default function Landing() {
           <div className="landing-example">
             <div className="code-block">
               <pre>
-                <code id="landing-html">{EXAMPLE}</code>
+                <code id="landing-html" dangerouslySetInnerHTML={{ __html: highlightHtml(EXAMPLE) }} />
               </pre>
               <button
                 type="button"
