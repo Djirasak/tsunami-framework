@@ -86,6 +86,12 @@ $font-subsets: (
     }
   }
 
+  /* Links inside running text can't rely on colour alone */
+  :is(p, li, dd) > a:not([class]) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
   img,
   svg,
   video {
