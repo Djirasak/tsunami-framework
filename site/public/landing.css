@@ -157,6 +157,9 @@ body {
 /* The dashboard: a window of real components that floats up from the sea. */
 .landing-device {
   position: relative;
+  width: 100%;
+  max-width: 58rem;
+  justify-self: center;
   z-index: 3;
   margin-top: -11rem;
   border: 1px solid var(--line);
@@ -209,8 +212,41 @@ body {
   min-width: 0;
   overflow: hidden;
   display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   gap: var(--space-4);
   padding: var(--space-4);
+}
+
+.landing-device-main {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.landing-device-side {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.landing-device-side h3 {
+  font-size: var(--text-base);
+}
+
+.landing-channel {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.landing-channel strong {
+  float: right;
+  font-weight: 500;
 }
 
 .landing-device-note {
@@ -354,7 +390,11 @@ body {
     display: none;
   }
 
-  /* Stack the three stats: two and a half cells in a row look ragged. */
+  /* The channels go under the products, and the stats stack. */
+  .landing-device-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .landing-device dl.stat > * {
     flex-basis: 100%;
   }

@@ -50,11 +50,10 @@ const features = [
   },
 ];
 
-const orders = [
-  ["#1042", "Emma Wilson", "Paid", "ok", "$74.00"],
-  ["#1041", "Noah Brown", "Pending", "warning", "$129.50"],
-  ["#1040", "Mia Chen", "Shipped", "info", "$48.00"],
-  ["#1039", "Lucas Meyer", "Refunded", "danger", "$215.00"],
+const channels = [
+  ["Online store", 62],
+  ["Marketplace", 24],
+  ["Social", 14],
 ];
 
 const samples = [
@@ -90,7 +89,7 @@ export default function Landing() {
           津波
         </span>
 
-        <header className="landing-header">
+        <header className="landing-header" role="banner">
           <a href="/" className="landing-brand">
             <img src="/docs/favicon.svg" alt="" width="28" height="28" />
             <span>Tsunami</span>
@@ -131,7 +130,7 @@ export default function Landing() {
           </nav>
         </header>
 
-        <div className="landing-hero">
+        <section className="landing-hero" aria-label="Introduction">
           <span className="badge landing-rise" style={{ "--i": 0 }}>
             {componentCount()} components
           </span>
@@ -150,66 +149,107 @@ export default function Landing() {
               <i className="icon icon-arrow-right" aria-hidden="true"></i>
             </a>
           </div>
-        </div>
+        </section>
       </section>
 
       <main className="landing">
-        <div className="landing-device" aria-hidden="true">
+        <div className="landing-device" aria-hidden="true" inert>
           <div className="landing-device-bar">
             <i></i>
             <i></i>
             <i></i>
-            <span>tsunami.zercoms.com / orders</span>
+            <span>Harbor &amp; Mill / Sales</span>
           </div>
           <div className="landing-device-body">
-            <dl className="stat">
-              <div>
-                <dt>Revenue</dt>
-                <dd>$12,840</dd>
-                <dd data-variant="ok">+12.4% from last month</dd>
+            <div className="landing-device-main">
+              <dl className="stat">
+                <div>
+                  <dt>Today</dt>
+                  <dd>$4,280</dd>
+                  <dd data-variant="ok">+8.2% vs yesterday</dd>
+                </div>
+                <div>
+                  <dt>Orders</dt>
+                  <dd>64</dd>
+                  <dd>+5 since noon</dd>
+                </div>
+                <div>
+                  <dt>Conversion</dt>
+                  <dd>3.4%</dd>
+                  <dd data-variant="danger">-0.3 pt</dd>
+                </div>
+              </dl>
+              <div className="item-group">
+                <article className="item">
+                  <figure>
+                    <i className="icon icon-shirt" aria-hidden="true"></i>
+                  </figure>
+                  <section>
+                    <h3>Linen shirt</h3>
+                    <p>212 sold this week</p>
+                  </section>
+                  <aside>
+                    <span className="badge" data-variant="ok">
+                      In stock
+                    </span>
+                  </aside>
+                </article>
+                <article className="item">
+                  <figure>
+                    <i className="icon icon-shopping-bag" aria-hidden="true"></i>
+                  </figure>
+                  <section>
+                    <h3>Canvas tote</h3>
+                    <p>148 sold this week</p>
+                  </section>
+                  <aside>
+                    <span className="badge" data-variant="ok">
+                      In stock
+                    </span>
+                  </aside>
+                </article>
+                <article className="item">
+                  <figure>
+                    <i className="icon icon-coffee" aria-hidden="true"></i>
+                  </figure>
+                  <section>
+                    <h3>Ceramic mug</h3>
+                    <p>97 sold this week</p>
+                  </section>
+                  <aside>
+                    <span className="badge" data-variant="warning">
+                      3 left
+                    </span>
+                  </aside>
+                </article>
               </div>
-              <div>
-                <dt>Orders</dt>
-                <dd>1,284</dd>
-                <dd>+3.1%</dd>
-              </div>
-              <div>
-                <dt>Refunds</dt>
-                <dd>18</dd>
-                <dd data-variant="danger">+2 orders</dd>
-              </div>
-            </dl>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">Order</th>
-                  <th scope="col">Customer</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" data-align="end">
-                    Total
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders.map(([id, name, status, variant, total]) => (
-                  <tr key={id}>
-                    <th scope="row">{id}</th>
-                    <td>{name}</td>
-                    <td>
-                      <span className="badge" data-variant={variant}>
-                        {status}
-                      </span>
-                    </td>
-                    <td data-align="end">{total}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            </div>
+            <div className="landing-device-side">
+              <h3>Sales by channel</h3>
+              {channels.map(([name, pct]) => (
+                <div className="landing-channel" key={name}>
+                  <span>
+                    {name} <strong>{pct}%</strong>
+                  </span>
+                  <div
+                    className="progress"
+                    data-size="sm"
+                    role="progressbar"
+                    aria-label={name}
+                    aria-valuenow={pct}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <span style={{ width: `${pct}%` }}></span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="landing-device-note alert" data-variant="ok">
             <i className="icon icon-circle-check" aria-hidden="true"></i>
-            <strong>Payment captured</strong>
-            <p>$74.00 for order #1042</p>
+            <strong>New order #1043</strong>
+            <p>$74.00 from Chiang Mai</p>
           </div>
         </div>
 
