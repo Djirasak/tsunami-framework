@@ -330,6 +330,7 @@
 
   :where(.command-dialog)::backdrop {
     background: var(--overlay);
+    backdrop-filter: blur(4px);
   }
 
   :where(.command-dialog) {

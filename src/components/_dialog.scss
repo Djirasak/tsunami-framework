@@ -47,6 +47,7 @@
 
   :where(.dialog)::backdrop {
     background: var(--overlay);
+    backdrop-filter: blur(4px);
   }
 
   // Parts: direct children, or children of a <form method="dialog">.

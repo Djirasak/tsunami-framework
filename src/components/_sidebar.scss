@@ -231,6 +231,7 @@
 
   :where(.sidebar[popover])::backdrop {
     background: var(--overlay);
+    backdrop-filter: blur(4px);
   }
 
   // The drawer slides in from the left; its backdrop fades.
