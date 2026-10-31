@@ -174,7 +174,6 @@ function mount(root, options = {}) {
   panel.tabIndex = -1;
   control.setAttribute("aria-haspopup", "dialog");
   control.setAttribute("aria-controls", panel.id);
-  control.setAttribute("aria-expanded", "false");
   button?.setAttribute("aria-expanded", "false");
   if (text) {
     text.readOnly = Boolean(format);
@@ -279,7 +278,6 @@ function mount(root, options = {}) {
     open.add(root);
     panel.setAttribute("aria-hidden", "false");
     panel.showPopover();
-    control.setAttribute("aria-expanded", "true");
     button?.setAttribute("aria-expanded", "true");
   }
 
@@ -288,7 +286,6 @@ function mount(root, options = {}) {
     open.delete(root);
     panel.hidePopover();
     panel.setAttribute("aria-hidden", "true");
-    control.setAttribute("aria-expanded", "false");
     button?.setAttribute("aria-expanded", "false");
   }
 
