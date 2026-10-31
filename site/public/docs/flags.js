@@ -2,13 +2,14 @@
 const grid = document.getElementById("flag-grid");
 const input = document.getElementById("flag-search");
 const count = document.getElementById("flag-count");
+const status = document.getElementById("flag-status");
 const { flags } = await (await fetch("flags.json")).json();
 const attr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 
 grid.innerHTML = flags
   .map(
     ([code, name]) =>
-      `<button type="button" data-code="${code}" data-name="${attr(name.toLowerCase())}" title="${attr(name)}"><span class="flag flag-${code}" data-size="lg" aria-hidden="true"></span><code>${code}</code><span>${attr(name)}</span></button>`,
+      `<button type="button" data-code="${code}" data-name="${attr(name.toLowerCase())}" title="${attr(name)}"><span class="flag flag-${code}" data-size="lg" aria-hidden="true"></span><span>${attr(name)}</span><code>${code}</code></button>`,
   )
   .join("");
 
@@ -38,10 +39,11 @@ grid.addEventListener("click", async (e) => {
   } catch {
     return; // Clipboard blocked: nothing to copy to.
   }
+  // "Copied" shows on the flag that was clicked (see .docs-icons in docs.css).
   btn.dataset.copied = "";
-  count.textContent = `Copied flag-${btn.dataset.code}`;
+  status.textContent = `Copied flag-${btn.dataset.code}`;
   setTimeout(() => {
     delete btn.dataset.copied;
-    filter();
+    status.textContent = "";
   }, 1200);
 });

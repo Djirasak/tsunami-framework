@@ -2,6 +2,7 @@
 const grid = document.getElementById("icon-grid");
 const input = document.getElementById("icon-search");
 const count = document.getElementById("icon-count");
+const status = document.getElementById("icon-status");
 const { icons } = await (await fetch("icons.json")).json();
 const attr = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 
@@ -34,11 +35,12 @@ grid.addEventListener("click", async (e) => {
     await navigator.clipboard.writeText(
       `<i class="icon icon-${btn.dataset.name}" aria-hidden="true"></i>`,
     );
+    // "Copied" shows on the icon that was clicked (see .docs-icons in docs.css).
     btn.dataset.copied = "";
-    count.textContent = `Copied icon-${btn.dataset.name}`;
+    status.textContent = `Copied icon-${btn.dataset.name}`;
     setTimeout(() => {
       delete btn.dataset.copied;
-      filter();
+      status.textContent = "";
     }, 1200);
   } catch {
     // Clipboard blocked (e.g. insecure context): nothing to copy to.

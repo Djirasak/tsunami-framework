@@ -251,7 +251,9 @@
 }
 
 .docs-icons > button {
+  position: relative;
   display: grid;
+  align-content: start;
   justify-items: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-2);
@@ -267,13 +269,47 @@
   background: var(--subtle);
 }
 
+/* The tile that was clicked says so itself. */
 .docs-icons > [data-copied] {
-  border-color: var(--accent);
+  border-color: var(--ok-fg);
 }
 
-.docs-icons code {
+.docs-icons > [data-copied]::after {
+  content: "Copied";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: inherit;
+  background: var(--surface);
+  color: var(--ok-fg);
+  font-weight: 600;
+}
+
+/* The code or name under a tile is plain text, not a chip. The selector is
+   long enough to win over the tinted pill of inline code above. */
+.docs-main .docs-icons > button > code {
   max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: var(--text-sm);
   overflow-wrap: anywhere;
+}
+
+.docs-icons > button > span:not(.flag) {
+  color: var(--fg);
+}
+
+/* For screen readers only: the announcement of a copy. */
+.docs-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .docs-icons .icon {
