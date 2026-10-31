@@ -59,6 +59,7 @@
     "check:docs": "bun site/scripts/check-docs.ts",
     "check:a11y": "bun scripts/check-a11y.ts",
     "check:types": "tsc -p types/tsconfig.json",
+    "check:changelog": "bun scripts/check-changelog.ts",
     "test": "bun test scripts",
     "test:e2e": "playwright test",
     "size": "bun scripts/size.ts",
