@@ -1,0 +1,265 @@
+<header class="page-header">
+            <div>
+              <h1>Events</h1>
+              <p>
+                Every custom event Tsunami sends, in one place: what fires it,
+                where it fires and what <code>detail</code> holds.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Conventions</h2>
+            <p>
+              Every event is named <code>tsunami:&lt;thing&gt;</code> and fires
+              on the component's element. All of them bubble, so you can listen
+              once on <code>document</code> and read
+              <code>event.target</code> to see which component sent it. The
+              data is in <code>event.detail</code>.
+            </p>
+            <pre><code>document.addEventListener("tsunami:tagschange", (e) =&gt; {
+  console.log(e.target, e.detail.value); // the tag input, ["design", "billing"]
+});</code></pre>
+            <p>
+              Form controls also send the browser's own <code>input</code> and
+              <code>change</code>, so a plain form keeps working.
+            </p>
+          </section>
+          <section>
+            <h2>Cancelable events</h2>
+            <p>
+              Three events fire before the change and can be stopped with
+              <code>event.preventDefault()</code>:
+              <code>tsunami:chipremove</code>, <code>tsunami:sort</code> and
+              <code>tsunami:closetab</code>. Every other event fires after the
+              change and cannot be cancelled.
+            </p>
+            <pre><code>document.addEventListener("tsunami:closetab", (e) =&gt; {
+  if (hasUnsavedWork(e.detail.panel)) e.preventDefault(); // keep the tab
+});</code></pre>
+          </section>
+          <section>
+            <h2>All events</h2>
+            <p>Sorted by component. Each name links to the page that explains the component.</p>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="All events">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Component</th>
+                    <th scope="col">Event</th>
+                    <th scope="col">Fires on</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">When</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="/docs/autocomplete">Autocomplete</a></td>
+                    <td><code>tsunami:autocomplete</code></td>
+                    <td>the input</td>
+                    <td><code>{ value, item }</code></td>
+                    <td>The user picks a suggestion.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/button">Button</a></td>
+                    <td><code>tsunami:pressedchange</code></td>
+                    <td>the [data-pressed] group</td>
+                    <td><code>{ button, pressed }</code></td>
+                    <td>A toggle button in the group is clicked. <code>pressed</code> is the new state; in a single group it is always <code>true</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/chart">Chart</a></td>
+                    <td><code>tsunami:chartready</code></td>
+                    <td>the chart element</td>
+                    <td><code>{ chart }</code></td>
+                    <td>The Chart.js chart is created.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/code-editor">Code editor</a></td>
+                    <td><code>tsunami:codeeditorready</code></td>
+                    <td>the editor box</td>
+                    <td><code>{ editor }</code></td>
+                    <td>The Monaco editor has started.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/copy-button">Copy button</a></td>
+                    <td><code>tsunami:copy</code></td>
+                    <td>the button</td>
+                    <td><code>{ text }</code></td>
+                    <td>The text was copied.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/editor">Editor</a></td>
+                    <td><code>tsunami:editorready</code></td>
+                    <td>the editor element</td>
+                    <td><code>{ editor }</code></td>
+                    <td>The TinyMCE editor has started.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/filter-bar">Filter bar</a></td>
+                    <td><code>tsunami:chipremove</code></td>
+                    <td>the chip</td>
+                    <td><code>{ value, label }</code></td>
+                    <td>The user removes a chip. <strong>Cancelable</strong>: <code>preventDefault()</code> keeps the chip.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/filter-bar">Filter bar</a></td>
+                    <td><code>tsunami:filterchange</code></td>
+                    <td>the bar</td>
+                    <td><code>{ values }</code></td>
+                    <td>The chips changed. <code>values</code> lists the <code>data-value</code> of each chip left.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/journey">Journey</a></td>
+                    <td><code>tsunami:pick</code></td>
+                    <td>the clicked button</td>
+                    <td><code>{ step, value }</code></td>
+                    <td>The user picks an option in a step. <code>step</code> is the zero-based index.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/otp">OTP input</a></td>
+                    <td><code>tsunami:otpcomplete</code></td>
+                    <td>the OTP wrapper</td>
+                    <td><code>{ value }</code></td>
+                    <td>Every box is filled.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/phone-input">Phone input</a></td>
+                    <td><code>tsunami:phonechange</code></td>
+                    <td>the wrapper</td>
+                    <td><code>{ country, dial, number, value }</code></td>
+                    <td>The country or the number changed.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/save-bar">Save bar</a></td>
+                    <td><code>tsunami:dirty</code></td>
+                    <td>the form</td>
+                    <td><code>{ form, bars }</code></td>
+                    <td>The form went from saved to changed.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/save-bar">Save bar</a></td>
+                    <td><code>tsunami:clean</code></td>
+                    <td>the form</td>
+                    <td><code>{ form, bars }</code></td>
+                    <td>The form went back to its saved values.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/select">Select</a></td>
+                    <td><code>tsunami:select:open</code></td>
+                    <td>the select wrapper</td>
+                    <td>none</td>
+                    <td>The list opens.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/select">Select</a></td>
+                    <td><code>tsunami:select:close</code></td>
+                    <td>the select wrapper</td>
+                    <td>none</td>
+                    <td>The list closes.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/select">Select</a></td>
+                    <td><code>tsunami:select:change</code></td>
+                    <td>the select wrapper</td>
+                    <td><code>{ value, selected }</code></td>
+                    <td>The choice changed. <code>selected</code> is an array of <code>{ value, label }</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/sortable">Sortable</a></td>
+                    <td><code>tsunami:reorder</code></td>
+                    <td>the list</td>
+                    <td><code>{ item, id, oldIndex, newIndex }</code></td>
+                    <td>A row was dragged to a new place.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/stepper">Stepper</a></td>
+                    <td><code>tsunami:stepchange</code></td>
+                    <td>the stepper</td>
+                    <td><code>{ index, step, panel }</code></td>
+                    <td>The current step changed.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/stepper">Stepper</a></td>
+                    <td><code>tsunami:stepcomplete</code></td>
+                    <td>the stepper</td>
+                    <td><code>{ index }</code></td>
+                    <td>Next was used on the last step and its panel is valid.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/table">Table</a></td>
+                    <td><code>tsunami:sort</code></td>
+                    <td>the table</td>
+                    <td><code>{ column, direction, header }</code></td>
+                    <td>A sort is about to run. <strong>Cancelable</strong>: <code>preventDefault()</code> stops it.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/table">Table</a></td>
+                    <td><code>tsunami:select</code></td>
+                    <td>the table</td>
+                    <td><code>{ rows, count }</code></td>
+                    <td>The checked rows changed.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/table">Table</a></td>
+                    <td><code>tsunami:tablechange</code></td>
+                    <td>the table</td>
+                    <td><code>{ page, pageSize, total, filtered, sort, hidden }</code></td>
+                    <td>The page, filter, sort, page size or hidden columns changed.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/tabs">Tabs</a></td>
+                    <td><code>tsunami:closetab</code></td>
+                    <td>the tab</td>
+                    <td><code>{ tab, panel }</code></td>
+                    <td>The user closes a tab. <strong>Cancelable</strong>: <code>preventDefault()</code> keeps it.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/tag-input">Tag input</a></td>
+                    <td><code>tsunami:tagschange</code></td>
+                    <td>the tag input</td>
+                    <td><code>{ value }</code></td>
+                    <td>A tag was added or removed. <code>value</code> is an array of strings.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/theme-switcher">Theme switcher</a></td>
+                    <td><code>tsunami:themechange</code></td>
+                    <td><code>document</code></td>
+                    <td><code>{ theme, choice }</code></td>
+                    <td>The theme changed. <code>theme</code> is <code>light</code> or <code>dark</code>; <code>choice</code> may also be <code>system</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/time-picker">Time picker</a></td>
+                    <td><code>tsunami:timechange</code></td>
+                    <td>the time picker</td>
+                    <td><code>{ value }</code></td>
+                    <td>The time changed.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/toast">Toast</a></td>
+                    <td><code>tsunami:toast</code></td>
+                    <td>the toast</td>
+                    <td><code>{}</code></td>
+                    <td>A toast was shown.</td>
+                  </tr>
+                  <tr>
+                    <td><a href="/docs/toast">Toast</a></td>
+                    <td><code>tsunami:toastclose</code></td>
+                    <td>the toast</td>
+                    <td><code>{ reason }</code></td>
+                    <td>A toast starts to close. <code>reason</code> is <code>timeout</code>, <code>close</code>, <code>action</code> or <code>api</code>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>TypeScript</h2>
+            <p>
+              Each release has <code>dist/tsunami.d.ts</code>. Include it in
+              your <code>tsconfig.json</code> (or add
+              <code>/// &lt;reference path="tsunami.d.ts" /&gt;</code>) and
+              <code>addEventListener("tsunami:toastclose", ...)</code> gives
+              <code>detail</code> its type, and <code>window.tsunami</code>
+              is typed too.
+            </p>
+          </section>

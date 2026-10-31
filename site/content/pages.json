@@ -349,6 +349,11 @@
     "description": "How to call the tsunami object, listen for tsunami: events, wait for library components, and read the API section of a component page, with a table of every module.",
     "libs": []
   },
+  "events": {
+    "title": "Events",
+    "description": "Every tsunami: custom event in one table: where it fires, what detail holds and when, which can be cancelled, and how to listen once on document.",
+    "libs": []
+  },
   "container": {
     "title": "Container",
     "description": "Centres a page's content and limits its width, in four sizes, so a form or a dashboard does not stretch across a wide screen.",
