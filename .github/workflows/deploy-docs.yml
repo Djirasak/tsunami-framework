@@ -1,21 +1,9 @@
 name: Deploy Docs
 
-# The docs app builds dist/ itself, so a change to the framework or to the docs
-# is deployed straight from main. The Release workflow calls this one with the
-# new tag.
+# Run by hand from the Actions tab. The docs app builds dist/ itself. The
+# Release workflow also calls this one with the new tag.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "src/**"
-      - "vendor/**"
-      - "fonts/**"
-      - "flags/**"
-      - "scripts/build*.ts"
-      - "site/**"
-      - "package.json"
-      - "bun.lock"
   workflow_call:
     inputs:
       ref:
