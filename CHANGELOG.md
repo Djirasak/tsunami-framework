@@ -8,7 +8,7 @@ Versions follow [semantic versioning](https://semver.org).
 
 ### Added
 
-- A Scroll area that has no `tabindex` gets `tabindex="0"`, so the keyboard can focus it and scroll it (a table that scrolls sideways on a phone was out of reach). Set your own `tabindex` to leave it alone.
+- A Scroll area that has no `tabindex` gets `tabindex="0"`, and so does a code block that scrolls by itself (`.code-block > pre` and the `pre` in Typography): the keyboard can focus it and scroll it (a table that scrolls sideways on a phone was out of reach). Set your own `tabindex` to leave it alone.
 - Tabs can hold an inline `svg` in front of the label, such as a logo: it is sized to match the text.
 
 ### Changed
