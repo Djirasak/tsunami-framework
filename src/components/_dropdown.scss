@@ -1,6 +1,6 @@
 // Dropdown: [popover] list of buttons/links, opened by a popovertarget button.
 // Same data-side / data-align as the popover. Children: a, button, label (checkbox/radio),
-// h2-h4 headings, hr separators, kbd shortcuts. No JS: Tab moves through the items.
+// h2-h4 headings, hr separators, kbd shortcuts. Tab moves through the items; the optional dropdown.js adds arrow keys and aria-expanded.
 @use "popover";
 @use "motion";
 
