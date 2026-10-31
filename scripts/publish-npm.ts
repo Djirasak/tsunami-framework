@@ -3,8 +3,9 @@
 // out the tag, runs `npm publish --access public`, and goes back to your branch, even
 // if the publish fails. The package's prepublishOnly (scripts/check-publish.ts) builds
 // and checks it again at the tag. --dry rehearses with `npm publish --dry-run`;
-// --yes skips the question. npm may then hold the version until you approve it
-// (npmjs.com > the package > Staged Packages, or `npm stage approve`).
+// --yes skips the question. The version is live as soon as npm accepts it; the
+// npmjs.com page can show the old one for a few minutes (it is cached): `npm view
+// @djirasak/tsunami-ui version` tells the truth.
 import { $ } from "bun";
 import { createInterface } from "node:readline/promises";
 
@@ -88,5 +89,5 @@ if (code !== 0) fail(`npm publish failed (exit ${code}). You are back on ${branc
 console.log(
   dry
     ? `\n  ${green("✓")}  dry run passed, back on ${branch || back.slice(0, 7)}\n`
-    : `\n  ${green("✓")}  sent ${pkg.name}@${pkg.version} to npm, back on ${branch || back.slice(0, 7)}.\n  If npm holds it for approval: npmjs.com > the package > Staged Packages, or npm stage approve.\n`,
+    : `\n  ${green("✓")}  published ${pkg.name}@${pkg.version}, back on ${branch || back.slice(0, 7)}.\n  The npmjs.com page can lag a few minutes; check with: npm view ${pkg.name} version\n`,
 );
