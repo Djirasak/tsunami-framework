@@ -38,6 +38,10 @@ Or self-hosted:
 
 Keep `fonts/` and `flags/` next to `dist/` (their URLs are `../fonts/...` and `../flags/...`). `dist/` is committed only by the `Release` workflow, so every tag carries the files built for its version. Monaco (the code editor) loads from jsDelivr too: `@v0.1.2/dist/monaco/vs/loader.js`, before the Tsunami script.
 
+## Browser support
+
+Tsunami targets current evergreen browsers and uses modern CSS and HTML without fallbacks: cascade layers, `:has()`, native `popover`, `<dialog>`, the `commandfor` and `command` attributes, `color-mix()` and range media queries. The newest of these, `commandfor`, sets the floor: Chrome and Edge 135, Firefox 144 and Safari 26.2 or later. Check [caniuse.com](https://caniuse.com) before supporting anything older. Without JavaScript the native parts still work; the components that need a script do not.
+
 ## Use
 
 The class names the component; `data-*` sets variant and size.
