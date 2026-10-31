@@ -231,13 +231,10 @@ test.describe("Tag input", () => {
     await labels.getByRole("textbox").evaluate((el) => {
       const data = new DataTransfer();
       data.setData("text/plain", "alpha, beta\ngamma");
-      el.dispatchEvent(
-        new ClipboardEvent("paste", {
-          clipboardData: data,
-          bubbles: true,
-          cancelable: true,
-        }),
-      );
+      // Firefox and WebKit ignore clipboardData in the constructor: set it on the event.
+      const event = new ClipboardEvent("paste", { bubbles: true, cancelable: true });
+      Object.defineProperty(event, "clipboardData", { value: data });
+      el.dispatchEvent(event);
     });
     await expect(field(page, "labels")).toHaveValue(
       "design,billing,alpha,beta,gamma",
@@ -557,13 +554,10 @@ test.describe("OTP input", () => {
     await box(page, 1).evaluate((el) => {
       const data = new DataTransfer();
       data.setData("text/plain", "987654");
-      el.dispatchEvent(
-        new ClipboardEvent("paste", {
-          clipboardData: data,
-          bubbles: true,
-          cancelable: true,
-        }),
-      );
+      // Firefox and WebKit ignore clipboardData in the constructor: set it on the event.
+      const event = new ClipboardEvent("paste", { bubbles: true, cancelable: true });
+      Object.defineProperty(event, "clipboardData", { value: data });
+      el.dispatchEvent(event);
     });
     for (const [i, c] of [..."987654"].entries())
       await expect(box(page, i + 1)).toHaveValue(c);
