@@ -295,8 +295,3 @@
     padding-inline: var(--space-4);
   }
 }
-
-/* The line under a page's description that names the library it is built on. */
-.docs-main .page-header small {
-  color: var(--muted);
-}
