@@ -99,7 +99,7 @@ src/
 site/                   docs site: Next.js on Cloudflare Workers (content/ = the pages as HTML)
 fonts/                  Google Sans + Lucide (woff2, licenses, CHECKSUMS.txt)
 flags/                  flag-icons 4x3 SVGs (MIT)
-vendor/tinymce/         TinyMCE 8 release files (the build joins them into dist/tinymce.min.js)
+vendor/tinymce/         TinyMCE 6 release files (the build joins them into dist/tinymce.min.js)
 vendor/sortable/        SortableJS 1.15 (copied to dist/sortable.min.js)
 vendor/vanilla-calendar/ Vanilla Calendar Pro 3.4 (copied to dist/vanilla-calendar.min.js)
 vendor/chart/           Chart.js 4.5 (copied to dist/chart.min.js)
@@ -145,4 +145,4 @@ Vanilla ES modules, event delegation on `document`, no init functions. CSS works
 - Vanilla Calendar Pro (the date picker's calendar): MIT (`vendor/vanilla-calendar/LICENSE.txt`). Not part of `tsunami.min.js`; load `dist/vanilla-calendar.min.js` before it when a page has a `.date-picker`. Its own CSS is not shipped: `tsunami.css` draws the calendar.
 - Chart.js (the chart): MIT (`vendor/chart/LICENSE.txt`). Not part of `tsunami.min.js`; load `dist/chart.min.js` before it when a page has a chart.
 - Monaco Editor (the code editor): MIT (`vendor/monaco/LICENSE.txt`, `ThirdPartyNotices.txt`). Not part of `tsunami.min.js`; load `dist/monaco/vs/loader.js` before it when a page has a `.code-editor`, and load libraries that use `define` (Chart.js, Vanilla Calendar) before the loader.
-- TinyMCE (the editor): GPL-2.0-or-later or the Tiny Self-Hosted License (`vendor/tinymce/LICENSE.md`). It is not part of `tsunami.min.js`; load `dist/tinymce.min.js` (one file, nothing else to host) before the Tsunami script when a page has an editor.
+- TinyMCE (the editor): 6.8.6, MIT (`vendor/tinymce/LICENSE.txt`). 6.x is the last MIT line (7 and later are GPL) and has had no release since May 2025. It is not part of `tsunami.min.js`; load `dist/tinymce.min.js` (one file, nothing else to host) before the Tsunami script when a page has an editor.

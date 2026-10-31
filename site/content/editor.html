@@ -11,12 +11,14 @@
           <section>
             <h2>The editor is TinyMCE</h2>
             <p>
-              TinyMCE 8.10.0 is vendored in this repository as one file,
+              TinyMCE 6.8.6 is vendored in this repository as one file,
               <code>dist/tinymce.min.js</code> (core, the silver theme, the DOM
               model, the icons, the plugins autoresize, code, fullscreen, image,
               link, lists and media, and the oxide skins, light and dark). It is
-              under the GPL (<code>license_key: "gpl"</code>), see
-              <code>vendor/tinymce/LICENSE.md</code>. It is not part of
+              under the MIT licence, see
+              <code>vendor/tinymce/LICENSE.txt</code>. Version 6 is the last
+              MIT line (7 and later are GPL) and it gets no new releases, so
+              keep it for content you trust. It is not part of
               <code>tsunami.min.js</code>: a page with an editor loads it with
               its own <code>script</code> first. Pages without an editor do not
               load it. Nothing else is fetched at run time.
