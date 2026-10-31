@@ -10,6 +10,10 @@ Versions follow [semantic versioning](https://semver.org).
 
 - An npm package, `@djirasak/tsunami-ui`, with the script, the stylesheet, the TypeScript declarations, the fonts and the flags: `import "@djirasak/tsunami-ui/css"` and `import "@djirasak/tsunami-ui"`.
 
+### Fixed
+
+- A code block that scrolls sideways can be focused and scrolled with the keyboard.
+
 ## [1.1.2] - 2026-10-31
 
 ### Changed
