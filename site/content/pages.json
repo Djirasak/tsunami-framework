@@ -340,7 +340,9 @@
   "time-picker": {
     "title": "Time picker",
     "description": "A time field with separate hour, minute, second and AM or PM segments you type into or step with the arrow keys, sending HH:MM in a form.",
-    "libs": []
+    "libs": [
+      "/dist/vanilla-calendar.min.js"
+    ]
   },
   "javascript": {
     "title": "JavaScript",
