@@ -6,9 +6,15 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+### Added
+
+- A Scroll area that has no `tabindex` gets `tabindex="0"`, so the keyboard can focus it and scroll it (a table that scrolls sideways on a phone was out of reach). Set your own `tabindex` to leave it alone.
+- Tabs can hold an inline `svg` in front of the label, such as a logo: it is sized to match the text.
+
 ### Changed
 
-- Docs: installing from npm is on the overview, the landing page and the README.
+- Docs: installing from npm is on the overview, the landing page and the README, with tabs for npm, pnpm, yarn and bun that the docs remember between pages.
+- Docs: a new Frameworks integration page for React, Vue, Svelte, SvelteKit and Django, and a package manager example on the Tabs page that says when to use tabs and when a segmented control.
 
 ### Fixed
 
