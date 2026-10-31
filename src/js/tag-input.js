@@ -85,7 +85,7 @@ function start(el) {
 
 function mount(root = document) {
   for (const el of root.querySelectorAll(TAGS)) {
-    if (el.dataset.mounted) continue;
+    if ("mounted" in el.dataset) continue; // data-mounted="" is falsy: test for the key
     el.dataset.mounted = "";
     if (!text(el)) {
       const input = document.createElement("input");

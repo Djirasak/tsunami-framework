@@ -42,7 +42,7 @@ function spread(el, from, text) {
 
 function mount(root = document) {
   for (const el of root.querySelectorAll(OTP)) {
-    if (el.dataset.mounted) continue;
+    if ("mounted" in el.dataset) continue; // data-mounted="" is falsy: test for the key
     el.dataset.mounted = "";
     if (!boxes(el).length) {
       const count = Number(el.dataset.length) || 6;

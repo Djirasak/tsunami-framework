@@ -240,6 +240,29 @@ test.describe("Tag input", () => {
       "design,billing,alpha,beta,gamma",
     );
   });
+  // Adding any element with a .tag-input used to start every tag input on the page
+  // again: the guard was data-mounted="", an empty string, which is falsy.
+  test("adding another tag input leaves the typed tags alone", async ({
+    page,
+  }) => {
+    const errors = watchErrors(page);
+    const group = page.getByRole("group", { name: "Recipients" });
+    const box = group.getByRole("textbox");
+    await box.fill("kept@x.com");
+    await box.press("Enter");
+    await expect(group.locator(".chip")).toHaveCount(1);
+    await page.evaluate(() => {
+      const el = document.createElement("div");
+      el.className = "tag-input";
+      el.dataset.name = "later";
+      el.setAttribute("aria-label", "Later");
+      document.body.append(el);
+    });
+    await expect(page.locator('[aria-label="Later"] > input[type="text"]')).toHaveCount(1);
+    await expect(group.locator(".chip")).toHaveCount(1);
+    await expect(group.locator('[role="status"]')).toHaveCount(1);
+    errors.expectNone();
+  });
 });
 
 test.describe("Phone input", () => {
@@ -570,6 +593,22 @@ test.describe("OTP input", () => {
     await invite.getByRole("textbox").first().focus();
     await page.keyboard.type("ab1z");
     await expect(invite.locator('[name="invite"]')).toHaveValue("ab1z");
+  });
+
+  test("adding another OTP input leaves the typed digits alone", async ({
+    page,
+  }) => {
+    await box(page, 1).focus();
+    await page.keyboard.type("12");
+    await expect(box(page, 2)).toHaveValue("2");
+    await page.evaluate(() => {
+      const el = document.createElement("div");
+      el.className = "otp";
+      document.body.append(el);
+    });
+    await expect(page.locator(".otp").last().getByRole("textbox")).toHaveCount(6);
+    await expect(box(page, 1)).toHaveValue("1");
+    await expect(box(page, 2)).toHaveValue("2");
   });
 });
 
