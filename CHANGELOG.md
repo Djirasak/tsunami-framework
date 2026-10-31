@@ -15,6 +15,8 @@ Versions follow [semantic versioning](https://semver.org).
 - Adding any element with a Tag input or an OTP input no longer starts every other one on the page again, which cleared the tags the user had typed and added a duplicate screen-reader status line.
 - A form with `data-validate` that fails the check no longer reaches your own `submit` handler (React `onSubmit`, Vue `@submit`, Svelte `onsubmit`): the check now runs first.
 - `import "@djirasak/tsunami-ui/css"` no longer fails to type-check in TypeScript 6 and 7.
+- In a form with `data-validate`, the first error no longer pushes a Submit button away between mouse down and mouse up, which lost the click: each field keeps a line for its error. A field the server already marked `aria-invalid` clears its message as the user types.
+- The vendored scripts (Chart.js, TinyMCE, Monaco) no longer end with a `sourceMappingURL` comment for a map that is not shipped. A missing map was a 404 in the browser tools, and it made Django's `collectstatic` fail with `ManifestStaticFilesStorage`.
 
 ## [1.2.0] - 2026-10-31
 
