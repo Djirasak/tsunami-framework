@@ -63,6 +63,7 @@
     "test": "bun test scripts",
     "test:e2e": "playwright test",
     "size": "bun scripts/size.ts",
+    "publish:npm": "bun scripts/publish-npm.ts",
     "docs": "cd site && bun install --frozen-lockfile && bun run dev",
     "audit": "bun audit --audit-level=high",
     "prepublishOnly": "bun scripts/check-publish.ts && bun run build && bun run check:types && bun run size"
