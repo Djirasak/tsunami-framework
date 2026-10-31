@@ -15,9 +15,11 @@
     "check:docs": "bun site/scripts/check-docs.ts",
     "check:a11y": "bun scripts/check-a11y.ts",
     "check:types": "tsc -p types/tsconfig.json",
+    "test": "bun test scripts",
     "test:e2e": "playwright test",
+    "size": "bun scripts/size.ts",
     "docs": "cd site && bun install --frozen-lockfile && bun run dev",
-    "audit": "bun audit"
+    "audit": "bun audit --audit-level=high"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
