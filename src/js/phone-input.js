@@ -135,7 +135,12 @@ function build(root) {
   const dial = h("span");
   const btn = h(
     "button",
-    { type: "button", popovertarget: `${id}-pop`, "aria-haspopup": "listbox" },
+    {
+      type: "button",
+      popovertarget: `${id}-pop`,
+      "aria-haspopup": "listbox",
+      "aria-expanded": "false",
+    },
     fl,
     dial,
   );
@@ -256,7 +261,12 @@ const OPTION = `${ROOT} [role="option"]`;
 
 function toggled(e) {
   const root = e.target.matches?.(`${ROOT} > [popover]`) && ready(e.target);
-  if (!root || e.newState !== "open") return;
+  if (!root) return;
+  if (e.type === "toggle")
+    root
+      .querySelector("button[aria-haspopup]")
+      ?.setAttribute("aria-expanded", String(e.newState === "open"));
+  if (e.newState !== "open") return;
   if (e.type === "beforetoggle") return place(root);
   const { search } = S.get(root);
   search.value = "";
