@@ -1,5 +1,5 @@
 // Check the docs and the example pages for accessibility problems with axe-core,
-// in light and dark: bun run check:a11y
+// in light and dark, and on a phone: bun run check:a11y
 // It needs the docs running (bun run docs) and Chromium (bunx playwright install
 // chromium); set CHROMIUM_PATH to use a browser you already have.
 //   --url=<origin>   where the docs run (default http://localhost:5477)
@@ -59,11 +59,19 @@ try {
 const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_PATH || undefined,
 });
-for (const scheme of ["light", "dark"] as const) {
+// Light and dark on a wide screen, then light on a phone: a region that only
+// scrolls when the screen is narrow (a long code line) shows up there.
+const views = [
+  { scheme: "light", width: 1280 },
+  { scheme: "dark", width: 1280 },
+  { scheme: "light", width: 375 },
+] as const;
+for (const { scheme: colorScheme, width } of views) {
+  const scheme = width < 600 ? `${colorScheme}, ${width}px` : colorScheme;
   const page = await (
     await browser.newContext({
-      colorScheme: scheme,
-      viewport: { width: 1280, height: 900 },
+      colorScheme,
+      viewport: { width, height: 900 },
     })
   ).newPage();
   for (const path of paths) {
@@ -126,6 +134,6 @@ for (const [id, { impact, help, hits }] of found) {
 console.log(
   total
     ? `\n✗ ${total} problems on ${paths.length} pages`
-    : `\n✓ ${paths.length} pages, light and dark: no ${all ? "" : "serious or critical "}problems`,
+    : `\n✓ ${paths.length} pages, light, dark and phone width: no ${all ? "" : "serious or critical "}problems`,
 );
 process.exit(total ? 1 : 0);
