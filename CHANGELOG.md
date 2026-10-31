@@ -6,6 +6,11 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+### Changed
+
+- Docs: the landing page shows an online store sales dashboard, and has sections for size, installing from the CDN with a copy button, how Tsunami compares with Pico, Bootstrap and Tailwind, accessibility, browser support and the licence.
+- Docs: the overview example shows one class and one attribute, and the component count is worked out from the navigation.
+
 ## [1.1.0] - 2026-10-31
 
 ### Added
@@ -43,6 +48,8 @@ Versions follow [semantic versioning](https://semver.org).
 - Sliders set `--value` on load, including sliders added later.
 - The Image field inputs have labels.
 - Empty table headers carry screen-reader text.
+- A Scroll area keeps an absolutely placed child, such as screen-reader text in a table header, inside it instead of widening the page.
+- A code block with a long line scrolls sideways instead of widening the page.
 
 ## [1.0.1] - 2026-10-30
 
