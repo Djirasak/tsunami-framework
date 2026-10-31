@@ -12,6 +12,7 @@
     "dev": "sass --watch --no-source-map src/index.scss dist/tsunami.css",
     "build": "bun scripts/build.ts",
     "lint": "eslint src/js",
+    "check:docs": "bun site/scripts/check-docs.ts",
     "docs": "cd site && bun install --frozen-lockfile && bun run dev",
     "audit": "bun audit"
   },
