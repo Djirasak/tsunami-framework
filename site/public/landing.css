@@ -280,6 +280,65 @@ body {
   color: var(--muted);
 }
 
+/* --- Numbers, get started, comparison, trust --------------------------- */
+.landing-block {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.landing > *,
+.landing-block > *,
+.landing-example > * {
+  min-width: 0;
+}
+
+.landing-block h2 {
+  font-size: var(--text-xl);
+}
+
+.landing-block pre {
+  margin: 0;
+  padding: var(--space-4) 3rem var(--space-4) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--subtle);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  tab-size: 2;
+  overflow-x: auto;
+}
+
+.landing-lead-muted {
+  margin: 0;
+  color: var(--muted);
+}
+
+.landing-example {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.landing-grid-3,
+.landing-grid-2 {
+  margin-top: 0;
+  align-items: start;
+}
+
+.landing-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+}
+
+.landing-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+}
+
+.landing-grid h3 {
+  font-size: var(--text-lg);
+}
+
 .landing-samples {
   display: grid;
   gap: var(--space-4);
@@ -378,6 +437,10 @@ body {
 }
 
 @media (width < 48rem) {
+  .landing-example {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .landing-stage {
     min-height: 40rem;
   }

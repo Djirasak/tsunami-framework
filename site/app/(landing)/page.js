@@ -1,5 +1,5 @@
 import LandingScript from "../_components/LandingScript";
-import { componentCount, version } from "../_lib/content";
+import { bundleSizes, componentCount, version } from "../_lib/content";
 import { HOME_TITLE, SITE_NAME } from "../_lib/seo";
 
 const description = `Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, ${componentCount()} components, and a core with no dependencies.`;
@@ -50,6 +50,34 @@ const features = [
   },
 ];
 
+const CDN = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v${version()}/dist/tsunami.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v${version()}/dist/tsunami.min.js"></script>`;
+
+const EXAMPLE = `<article class="card">
+  <section>
+    <p>Ready to ship?</p>
+    <button class="btn" data-variant="primary">Deploy</button>
+  </section>
+</article>`;
+
+const comparisons = [
+  {
+    name: "Pico",
+    text: "Pico styles plain HTML with almost no classes, which suits a document or a small form. Tsunami keeps that idea and goes further into app UI: tables, dialogs, a command palette, a date picker, tabs.",
+    when: "you are building a content site or a few forms and want the least CSS.",
+  },
+  {
+    name: "Bootstrap",
+    text: "Bootstrap is the widely known choice, with a large ecosystem and themes. Its variants are class names like btn-primary, and its modal, dropdown and tooltip run on its JavaScript. Tsunami picks a variant with one attribute and uses native dialog and popover.",
+    when: "you want the ecosystem, ready-made themes or a team that already knows it.",
+  },
+  {
+    name: "Tailwind",
+    text: "Tailwind gives you utility classes and no components, so you design every button yourself. Tsunami gives you finished components and you restyle them with CSS variables. They mix: your utilities win, because Tsunami's rules have zero specificity.",
+    when: "you have a designer and a bespoke design system to build.",
+  },
+];
+
 const channels = [
   ["Online store", 62],
   ["Marketplace", 24],
@@ -80,6 +108,7 @@ const samples = [
 ];
 
 export default function Landing() {
+  const sizes = bundleSizes();
   return (
     <>
       <LandingScript />
@@ -265,6 +294,149 @@ export default function Landing() {
           ))}
         </section>
 
+        <section className="landing-block" aria-labelledby="numbers">
+          <h2 id="numbers">Light, and it shows</h2>
+          <dl className="stat">
+            <div>
+              <dt>JavaScript, gzip</dt>
+              <dd>{sizes.js}</dd>
+              <dd>every component</dd>
+            </div>
+            <div>
+              <dt>CSS, gzip</dt>
+              <dd>{sizes.css}</dd>
+              <dd>every component</dd>
+            </div>
+            <div>
+              <dt>Dependencies</dt>
+              <dd>0</dd>
+              <dd>in the core</dd>
+            </div>
+            <div>
+              <dt>Licence</dt>
+              <dd>MIT</dd>
+              <dd>free to use</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section className="landing-block" aria-labelledby="start">
+          <h2 id="start">Get started</h2>
+          <p className="landing-lead-muted">
+            Two tags from a CDN, and no build step. Put the script in{" "}
+            <code>&lt;head&gt;</code> as a plain script so the saved theme
+            applies before the first paint.
+          </p>
+          <div className="code-block">
+            <pre>
+              <code id="landing-cdn">{CDN}</code>
+            </pre>
+            <button
+              type="button"
+              className="btn"
+              data-variant="ghost"
+              data-size="icon-sm"
+              data-copy-target="#landing-cdn"
+              aria-label="Copy the code"
+              suppressHydrationWarning
+            >
+              <i className="icon icon-copy" data-idle="" aria-hidden="true"></i>
+              <i className="icon icon-check" data-done="" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p className="landing-lead-muted">Then write HTML:</p>
+          <div className="landing-example">
+            <div className="code-block">
+              <pre>
+                <code id="landing-html">{EXAMPLE}</code>
+              </pre>
+              <button
+                type="button"
+                className="btn"
+                data-variant="ghost"
+                data-size="icon-sm"
+                data-copy-target="#landing-html"
+                aria-label="Copy the code"
+                suppressHydrationWarning
+              >
+                <i className="icon icon-copy" data-idle="" aria-hidden="true"></i>
+                <i className="icon icon-check" data-done="" aria-hidden="true"></i>
+              </button>
+            </div>
+            <article className="card">
+              <section>
+                <p>Ready to ship?</p>
+                <button type="button" className="btn" data-variant="primary">
+                  Deploy
+                </button>
+              </section>
+            </article>
+          </div>
+        </section>
+
+        <section className="landing-block" aria-labelledby="why">
+          <h2 id="why">Why not Pico, Bootstrap or Tailwind?</h2>
+          <p className="landing-lead-muted">
+            They are good tools. Here is where Tsunami sits next to each, and
+            when to pick them instead.
+          </p>
+          <div className="landing-grid landing-grid-3">
+            {comparisons.map((c) => (
+              <article className="card" key={c.name}>
+                <section>
+                  <h3>{c.name}</h3>
+                  <p>{c.text}</p>
+                  <p>
+                    <strong>Pick {c.name} when</strong> {c.when}
+                  </p>
+                </section>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="landing-block" aria-labelledby="trust">
+          <h2 id="trust">Accessibility and browsers</h2>
+          <div className="landing-grid landing-grid-2">
+            <article className="card">
+              <section>
+                <h3>Accessibility</h3>
+                <p>
+                  Built on native elements (<code>dialog</code>,{" "}
+                  <code>popover</code>, <code>details</code>,{" "}
+                  <code>button</code>, <code>input</code>), which bring
+                  keyboard and focus behaviour with them. The interactive
+                  components add ARIA and arrow-key support on top, and motion
+                  stops when the reader asks for less of it.
+                </p>
+                <p>
+                  Every docs page is scanned with axe-core in light and dark
+                  with no serious or critical issues, text colours meet WCAG AA
+                  contrast, and a browser test suite covers keyboard use. It has
+                  not yet been tested by people who use screen readers.
+                </p>
+              </section>
+            </article>
+            <article className="card">
+              <section>
+                <h3>Browser support</h3>
+                <p>
+                  Current evergreen browsers: Chrome and Edge 135, Firefox 144,
+                  Safari 26.2 or later. Cascade layers, <code>:where()</code>,{" "}
+                  <code>:has()</code>, <code>popover</code> and{" "}
+                  <code>dialog</code> are all there; the newest piece,{" "}
+                  <code>commandfor</code>, sets that floor.
+                </p>
+                <p>
+                  Click outside to close a dialog (<code>closedby</code>) works
+                  in Chrome and Firefox. Safari does not have it yet, so a
+                  dialog there closes with Esc or its Close button.
+                </p>
+              </section>
+            </article>
+          </div>
+        </section>
+
         <section className="landing-samples" aria-labelledby="samples">
           <h2 id="samples">Sample pages</h2>
           <p className="landing-samples-lead">
@@ -304,9 +476,15 @@ export default function Landing() {
         <span>
           Tsunami 津波 <span className="landing-version">v{version()}</span>
         </span>
-        <a className="link" data-variant="muted" href={REPO}>
-          github.com/Djirasak/tsunami-framework
-        </a>
+        <span>
+          <a className="link" data-variant="muted" href={`${REPO}/blob/main/LICENSE`}>
+            MIT License
+          </a>
+          {" · "}
+          <a className="link" data-variant="muted" href={REPO}>
+            github.com/Djirasak/tsunami-framework
+          </a>
+        </span>
       </footer>
     </>
   );
