@@ -6,6 +6,10 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+### Changed
+
+- Docs: installing from npm is on the overview, the landing page and the README.
+
 ## [1.2.0] - 2026-10-31
 
 ### Added
