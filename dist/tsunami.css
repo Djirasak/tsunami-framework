@@ -1,4 +1,4 @@
-/* tsunami v1.0.1 */
+/* tsunami v1.1.0 */
 @charset "UTF-8";
 @layer tokens, base, components;
 @layer tokens {
@@ -10,7 +10,7 @@
     --fg: #12191d;
     --muted: #5f6e75;
     --line: #e3e8ea;
-    --accent: #2b7f93;
+    --accent: #276f81;
     --on-accent: #fff;
     --ok-bg: #e4f5ec;
     --ok-fg: #17724a;
@@ -169,6 +169,20 @@
   }
   a:hover {
     text-decoration: underline;
+  }
+  /* Text for screen readers only, such as a live region's message */
+  :where([data-sr-only]) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  /* Links inside running text can't rely on colour alone */
+  :is(p, li, dd, td) > a:not([class]) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
   }
   img,
   svg,
@@ -7401,6 +7415,7 @@
 }
 @layer components {
   :where(.scroll-area) {
+    position: relative;
     overflow: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
@@ -7435,6 +7450,9 @@
     outline-offset: 0;
   }
   :where(.input[aria-invalid=true], .field > input:not([type=checkbox], [type=radio], [type=range])[aria-invalid=true], .field > select[aria-invalid=true], .field > textarea[aria-invalid=true]) {
+    border-color: var(--danger-fg);
+  }
+  :where(.input:user-invalid, .field > input:not([type=checkbox], [type=radio], [type=range]):user-invalid, .field > select:user-invalid, .field > textarea:user-invalid) {
     border-color: var(--danger-fg);
   }
   :where(.input:disabled, .field > input:not([type=checkbox], [type=radio], [type=range]):disabled, .field > select:disabled, .field > textarea:disabled) {
@@ -8117,10 +8135,10 @@
     border-radius: var(--radius-lg);
     background: var(--surface);
   }
-  :where(.timeline article > h4) {
+  :where(.timeline article > :is(h3, h4, h5, h6)) {
     font-weight: 500;
   }
-  :where(.timeline article > :not(h4, time)) {
+  :where(.timeline article > :not(h3, h4, h5, h6, time)) {
     grid-column: 1/-1;
   }
   :where(.timeline footer) {
@@ -8716,8 +8734,11 @@
     color: var(--muted);
     font-size: var(--text-sm);
   }
-  :where(.field:has([aria-invalid=true]) small) {
+  :where(.field:has([aria-invalid=true], :user-invalid) small) {
     color: var(--danger-fg);
+  }
+  :where(.field > small[data-error]:empty) {
+    display: none;
   }
   :where(.field:has(> input:is([type=checkbox], [type=radio]))) {
     display: flex;
@@ -9339,6 +9360,7 @@
   }
   :where(.code-block > pre) {
     padding-right: 3rem;
+    overflow-x: auto;
   }
   :where(.code-block > .btn) {
     position: absolute;
@@ -12885,7 +12907,7 @@
   :where(.accordion summary:focus-visible) {
     outline-offset: -2px;
   }
-  :where(.accordion details[aria-disabled=true] > summary) {
+  :where(.accordion summary[aria-disabled=true]) {
     color: var(--muted);
     cursor: not-allowed;
     pointer-events: none;
@@ -13439,7 +13461,7 @@
   :where(.command [role=group]:not(:has([role=menuitem]:not([aria-hidden=true])))) {
     display: none;
   }
-  :where(.command [role=heading]) {
+  :where(.command [data-heading]) {
     display: flex;
     padding: calc(var(--space-1) * 1.5) var(--space-2);
     color: var(--muted);

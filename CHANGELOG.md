@@ -6,6 +6,8 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-31
+
 ### Added
 
 - Form validation: put `data-validate` on a form and errors show under each field.
@@ -121,7 +123,8 @@ First release. Semantic HTML and `data-*` attributes, with no runtime dependenci
 - `.h1` to `.h6` classes that give any element the look of a heading.
 - A Claude skill (`.claude/skills/tsunami`) that describes the classes and `data-*` attributes.
 
-[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/Djirasak/tsunami-framework/compare/v0.2.0...v1.0.1
 [0.2.0]: https://github.com/Djirasak/tsunami-framework/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/Djirasak/tsunami-framework/compare/v0.1.3...v0.1.4
