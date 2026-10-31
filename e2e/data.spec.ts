@@ -62,6 +62,28 @@ test.describe("Validation", () => {
     await expect(email).toHaveAttribute("aria-describedby", "vd-email-hint");
   });
 
+  // React, Vue and Svelte attach onsubmit to the form or its root; a form that
+  // failed the check must not reach it. Tsunami checks in the capture phase.
+  test("a form that fails the check never reaches the app's submit handler", async ({
+    page,
+  }) => {
+    await form(page).evaluate((f) => {
+      (window as unknown as { seen: number }).seen = 0;
+      f.addEventListener("submit", (e) => {
+        (window as unknown as { seen: number }).seen++;
+        e.preventDefault();
+      });
+    });
+    await form(page).getByRole("button", { name: "Send" }).click();
+    await expect(page.getByLabel("Email")).toBeFocused();
+    expect(await page.evaluate(() => (window as unknown as { seen: number }).seen)).toBe(0);
+    await page.getByLabel("Email").fill("a@b.co");
+    await page.getByLabel("ZIP code").fill("12345");
+    await page.getByLabel("I accept the terms").check();
+    await form(page).getByRole("button", { name: "Send" }).click();
+    await expect.poll(() => page.evaluate(() => (window as unknown as { seen: number }).seen)).toBe(1);
+  });
+
   test("submitting with errors focuses the first invalid field", async ({
     page,
   }) => {

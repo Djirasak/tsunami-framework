@@ -5,7 +5,8 @@
 // message sits in a small[data-error] (made if the .field has none) that is
 // linked with aria-describedby and announced as an alert. data-message on a
 // field replaces the browser's text. window.tsunami.validate.check(form or
-// field) returns true when it is valid; .clear(form or field) resets it.
+// field) returns true when it is valid; .clear(form or field) resets it. A form that
+// fails the check never reaches your own submit handlers.
 const FIELD = "input:not([type='hidden']), select, textarea";
 
 const fieldsOf = (form) => [...form.querySelectorAll(FIELD)];
@@ -111,8 +112,11 @@ document.addEventListener("submit", (e) => {
   });
   if (!bad.length) return;
   e.preventDefault();
+  // Stop it here: a framework's onsubmit (React, Vue, Svelte) sits on the form or
+  // its root and would otherwise run for a form that failed the check.
+  e.stopPropagation();
   bad[0].focus();
-});
+}, true); // capture: before any handler on the form
 
 document.addEventListener("reset", (e) => {
   if (e.target.matches?.("form[data-validate]")) clear(e.target);
