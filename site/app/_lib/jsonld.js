@@ -1,7 +1,7 @@
 // Structured data (schema.org JSON-LD) for a docs page: the site and the
 // source code on the home page, a breadcrumb trail and a TechArticle on the
 // other pages.
-import { nav, pages } from "./content";
+import { describe, nav, pages } from "./content";
 import { SITE_NAME, SITE_URL, pagePath } from "./seo";
 
 const REPO = "https://github.com/Djirasak/tsunami-framework";
@@ -9,7 +9,8 @@ const SITE_ID = `${SITE_URL}/docs#website`;
 const abs = (slug) => `${SITE_URL}${pagePath(slug)}`;
 
 export function jsonLd(slug) {
-  const { title, description } = pages[slug];
+  const { title } = pages[slug];
+  const description = describe(pages[slug].description);
   if (slug === "index") {
     return {
       "@context": "https://schema.org",

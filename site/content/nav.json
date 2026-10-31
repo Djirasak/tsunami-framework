@@ -164,6 +164,7 @@
       {
         "label": "Validation",
         "href": "/docs/validation",
+        "guide": true,
         "icon": "circle-alert",
         "keywords": "Forms validation form data-validate data-message data-error required pattern error aria-invalid novalidate user-invalid tsunami.validate"
       },
@@ -300,6 +301,7 @@
       {
         "label": "Responsive",
         "href": "/docs/responsive",
+        "guide": true,
         "icon": "smartphone",
         "keywords": "Layout responsive breakpoint media query mobile phone tablet width 24rem 40rem 48rem viewport adapt"
       },

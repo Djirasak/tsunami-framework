@@ -249,7 +249,7 @@
   },
   "index": {
     "title": "Overview",
-    "description": "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, 65 components, and a core with no dependencies.",
+    "description": "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, {{components}} components, and a core with no dependencies.",
     "libs": []
   },
   "field": {

@@ -1,6 +1,6 @@
 // Metadata shared by every page: the site-wide defaults for each root layout
 // and the per-page metadata built from pages.json.
-import { pages } from "./content";
+import { describe, pages } from "./content";
 
 export const SITE_URL = "https://tsunami.zercoms.com";
 export const SITE_NAME = "Tsunami";
@@ -71,7 +71,7 @@ export function pageMetadata(slug) {
   const { title, description, noindex } = pages[slug];
   return metadataFor({
     title,
-    description,
+    description: describe(description),
     noindex,
     home: slug === "index",
     path: pagePath(slug),

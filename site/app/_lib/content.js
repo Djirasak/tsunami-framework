@@ -11,6 +11,17 @@ const json = (name) => JSON.parse(readFileSync(join(dir, name), "utf8"));
 export const pages = json("pages.json");
 export const nav = json("nav.json");
 
+// How many components there are: the pages in the component groups of nav.json,
+// not the Foundations pages or the ones marked "guide" (Validation, Responsive).
+// Pages and the landing say it as {{components}} so the number cannot drift.
+export const componentCount = () =>
+  nav
+    .filter((group) => group.title && group.title !== "Foundations")
+    .flatMap((group) => group.items)
+    .filter((item) => !item.guide).length;
+export const describe = (text) =>
+  text.replaceAll("{{components}}", String(componentCount()));
+
 // The framework's version, from the root package.json: content writes it as
 // {{version}} (the badge and the CDN links). It is read on every call, so a
 // bump shows in `bun run docs` without a restart.
