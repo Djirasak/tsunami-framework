@@ -56,5 +56,5 @@ Dark values live in one `dark-tokens` mixin. Use `var(--…)` in your own CSS so
 - Don't wrap native elements in custom JS widgets when `dialog`, `popover`, `details` or `input` already do the job.
 - Don't call init functions, and don't load `tsunami.min.js` as `type="module"` or `defer`.
 - Don't fetch libraries from a CDN. Vendored libraries live in `vendor/` and are built into `dist/`.
-- Don't add npm dependencies. The four devDependencies are sass, eslint, @eslint/js and globals.
+- Don't add npm dependencies without a reason, and keep them to dev tooling: the framework itself ships with none.
 - Don't give icon-only buttons no name: add `aria-label`. Decorative icons get `aria-hidden="true"`.
