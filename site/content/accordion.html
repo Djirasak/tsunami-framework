@@ -162,9 +162,10 @@
           <section>
             <h2>A disabled item</h2>
             <p>
-              Add <code>aria-disabled="true"</code> to the
-              <code>&lt;details&gt;</code> and <code>tabindex="-1"</code> to the
-              <code>&lt;summary&gt;</code>. The item turns grey and cannot be
+              Add <code>aria-disabled="true"</code> and
+              <code>tabindex="-1"</code> to the
+              <code>&lt;summary&gt;</code>, so assistive tech announces the
+              control that is dimmed. The item turns grey and cannot be
               clicked or reached with Tab.
             </p>
             <div class="tabs" data-tabs>
@@ -201,8 +202,8 @@
                       <summary>Credit card</summary>
                       <p>Visa, Mastercard, JCB</p>
                     </details>
-                    <details name="pay" aria-disabled="true">
-                      <summary tabindex="-1">
+                    <details name="pay">
+                      <summary aria-disabled="true" tabindex="-1">
                         Cash on delivery (not available)
                       </summary>
                       <p>Not supported yet.</p>
@@ -222,8 +223,8 @@
     &lt;summary&gt;Credit card&lt;/summary&gt;
     &lt;p&gt;Visa, Mastercard, JCB&lt;/p&gt;
   &lt;/details&gt;
-  &lt;details name="pay" aria-disabled="true"&gt;
-    &lt;summary tabindex="-1"&gt;Cash on delivery (not available)&lt;/summary&gt;
+  &lt;details name="pay"&gt;
+    &lt;summary aria-disabled="true" tabindex="-1"&gt;Cash on delivery (not available)&lt;/summary&gt;
     &lt;p&gt;Not supported yet.&lt;/p&gt;
   &lt;/details&gt;
 &lt;/div&gt;</code></pre>
@@ -456,11 +457,12 @@
                     </td>
                   </tr>
                   <tr>
-                    <td><code>details[aria-disabled]</code></td>
+                    <td><code>summary[aria-disabled]</code></td>
                     <td><code>true</code></td>
                     <td>
-                      Disabled: the summary is grey and cannot be clicked. Also
-                      add <code>tabindex="-1"</code> to the summary.
+                      Disabled: the summary is grey and cannot be clicked. Set
+                      it on the summary together with
+                      <code>tabindex="-1"</code>.
                     </td>
                   </tr>
                   <tr>
