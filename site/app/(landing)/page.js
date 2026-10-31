@@ -329,7 +329,7 @@ export default function Landing() {
             applies before the first paint.
           </p>
           <div className="code-block">
-            <pre>
+            <pre suppressHydrationWarning>
               <code id="landing-cdn" dangerouslySetInnerHTML={{ __html: highlightHtml(CDN) }} />
             </pre>
             <button
@@ -348,7 +348,7 @@ export default function Landing() {
           <p className="landing-lead-muted">Then write HTML:</p>
           <div className="landing-example">
             <div className="code-block">
-              <pre>
+              <pre suppressHydrationWarning>
                 <code id="landing-html" dangerouslySetInnerHTML={{ __html: highlightHtml(EXAMPLE) }} />
               </pre>
               <button

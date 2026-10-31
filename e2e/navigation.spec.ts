@@ -544,4 +544,13 @@ test.describe("Copy button", () => {
     await expect(button).not.toHaveAttribute("data-copied", "");
     errors.expectNone();
   });
+
+  // A code block can scroll sideways, so the keyboard must be able to reach it.
+  test("a code block's pre can be focused with the keyboard", async ({ page }) => {
+    await open(page, "/docs/copy-button");
+    const pre = page.locator(".code-block > pre").first();
+    await expect(pre).toHaveAttribute("tabindex", "0");
+    await pre.focus();
+    await expect(pre).toBeFocused();
+  });
 });

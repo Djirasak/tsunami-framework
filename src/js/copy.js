@@ -7,6 +7,7 @@
 // live region announces "Copied" either way.
 // API: window.tsunami.copy(text) returns a Promise<boolean>.
 // Event (bubbles from the button): tsunami:copy, detail { text }.
+// A .code-block > pre gets tabindex="0" so a long line can be scrolled with the keyboard.
 const RESET = 1500;
 const timers = new WeakMap();
 let region;
@@ -83,5 +84,23 @@ document.addEventListener("click", async (e) => {
     new CustomEvent("tsunami:copy", { bubbles: true, detail: { text } }),
   );
 });
+
+// A code block that scrolls sideways must be reachable with the keyboard, or a long
+// line cannot be read without a mouse: make each .code-block > pre focusable.
+const PRE = ".code-block > pre";
+const focusable = (node) => {
+  const list = node.matches?.(PRE) ? [node] : [];
+  for (const pre of [...list, ...(node.querySelectorAll?.(PRE) ?? [])])
+    if (!pre.hasAttribute("tabindex")) pre.tabIndex = 0;
+};
+const startFocusable = () => {
+  focusable(document);
+  new MutationObserver((records) => {
+    for (const r of records) r.addedNodes.forEach(focusable);
+  }).observe(document.documentElement, { childList: true, subtree: true });
+};
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", startFocusable);
+else startFocusable();
 
 (window.tsunami ??= {}).copy = copy;
