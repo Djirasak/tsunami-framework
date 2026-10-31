@@ -70,3 +70,30 @@ jobs:
     uses: ./.github/workflows/clear-cdn-cache.yml
     with:
       tag: ${{ needs.release.outputs.tag }}
+
+  # Publishes the tag to npm. It stays off until the repository variable NPM_PUBLISH
+  # is "true": publish the first version by hand, add this repository and workflow
+  # as a Trusted Publisher on npmjs.com (package > Settings), then set the variable.
+  # No token is stored: npm trusts this workflow, and --provenance signs the build.
+  publish-npm:
+    if: vars.NPM_PUBLISH == 'true'
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.release.outputs.tag }}
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: Install
+        run: bun install --frozen-lockfile
+      # prepublishOnly builds dist/, checks the types and the size first.
+      - name: Publish
+        run: npm publish --provenance --access public
