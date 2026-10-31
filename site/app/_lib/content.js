@@ -3,6 +3,7 @@
 // inner HTML of <main>, the source to edit).
 import { execFileSync } from "node:child_process";
 import { readFileSync, statSync } from "node:fs";
+import { gzipSync } from "node:zlib";
 import { join } from "node:path";
 
 const dir = join(process.cwd(), "content");
@@ -21,6 +22,20 @@ export const componentCount = () =>
     .filter((item) => !item.guide).length;
 export const describe = (text) =>
   text.replaceAll("{{components}}", String(componentCount()));
+
+// The gzip size of dist/tsunami.min.js and .css, read from the copy in public/dist
+// (sync.ts puts it there before dev and build), so the landing quotes real numbers.
+export function bundleSizes() {
+  const kb = (file) => {
+    try {
+      const raw = readFileSync(join(process.cwd(), "public", "dist", file));
+      return `${Math.round(gzipSync(raw, { level: 9 }).length / 1024)} KB`;
+    } catch {
+      return "?";
+    }
+  };
+  return { js: kb("tsunami.min.js"), css: kb("tsunami.min.css") };
+}
 
 // The framework's version, from the root package.json: content writes it as
 // {{version}} (the badge and the CDN links). It is read on every call, so a
