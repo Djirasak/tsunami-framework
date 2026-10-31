@@ -11,3 +11,7 @@ interface Window {
 // The tsunami:* custom events, so addEventListener("tsunami:toastclose", e => e.detail.reason) is typed.
 interface HTMLElementEventMap extends TsunamiEventMap {}
 interface DocumentEventMap extends TsunamiEventMap {}
+
+// import "@djirasak/tsunami-ui/css" is a side-effect import of a stylesheet: without this
+// TypeScript 6 and 7 report TS2882 for it.
+declare module "@djirasak/tsunami-ui/css";
