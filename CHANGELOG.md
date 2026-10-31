@@ -6,6 +6,8 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-31
+
 ### Added
 
 - An npm package, `@djirasak/tsunami-ui`, with the script, the stylesheet, the TypeScript declarations, the fonts and the flags: `import "@djirasak/tsunami-ui/css"` and `import "@djirasak/tsunami-ui"`.
@@ -151,7 +153,8 @@ First release. Semantic HTML and `data-*` attributes, with no runtime dependenci
 - `.h1` to `.h6` classes that give any element the look of a heading.
 - A Claude skill (`.claude/skills/tsunami`) that describes the classes and `data-*` attributes.
 
-[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.2...HEAD
+[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.0.1...v1.1.0

@@ -1,4 +1,4 @@
-/* tsunami v1.1.2 */
+/* tsunami v1.2.0 */
 // src/js/theme.js
 var KEY = "tsunami-theme";
 var root = document.documentElement;
@@ -3575,6 +3575,24 @@ document.addEventListener("click", async (e) => {
     window.tsunami?.toast?.(label || "Copied");
   btn.dispatchEvent(new CustomEvent("tsunami:copy", { bubbles: true, detail: { text } }));
 });
+var PRE = ".code-block > pre";
+var focusable = (node) => {
+  const list = node.matches?.(PRE) ? [node] : [];
+  for (const pre of [...list, ...node.querySelectorAll?.(PRE) ?? []])
+    if (!pre.hasAttribute("tabindex"))
+      pre.tabIndex = 0;
+};
+var startFocusable = () => {
+  focusable(document);
+  new MutationObserver((records) => {
+    for (const r of records)
+      r.addedNodes.forEach(focusable);
+  }).observe(document.documentElement, { childList: true, subtree: true });
+};
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", startFocusable);
+else
+  startFocusable();
 (window.tsunami ??= {}).copy = copy;
 
 // src/js/filter-bar.js
