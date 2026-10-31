@@ -24,7 +24,7 @@
               </div>
               <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
                 <div class="docs-preview">
-                  <div class="stack" data-direction="row" data-gap="sm" style="--accent: #9a3f8f; --on-accent: #fff">
+                  <div class="stack" data-direction="row" data-gap="sm" style="--accent: light-dark(#9a3f8f, #d58bcc); --on-accent: light-dark(#fff, #1a0d18)">
                     <button type="button" class="btn" data-variant="primary">Save</button>
                     <a href="/docs/theming">A link</a>
                     <span class="badge">New</span>
@@ -37,8 +37,8 @@
 
 /* brand.css */
 :root {
-  --accent: #9a3f8f;
-  --on-accent: #fff;
+  --accent: light-dark(#9a3f8f, #d58bcc);
+  --on-accent: light-dark(#fff, #1a0d18);
 }</code></pre>
               </div>
             </div>
@@ -56,6 +56,12 @@
               Set the dark value for the two places Tsunami turns dark on: an
               explicit <code>data-theme="dark"</code>, and the system setting
               when no theme is chosen.
+            </p>
+            <p>
+              The short way is <code>light-dark()</code>, used in the first
+              example: it takes the light value, then the dark one, and
+              follows the theme. The long way below does the same with two
+              selectors.
             </p>
             <pre><code>:root {
   --accent: #9a3f8f;
