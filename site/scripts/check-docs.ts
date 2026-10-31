@@ -99,6 +99,17 @@ for (const file of htmlFiles(join(content, "examples"))) {
   if (!examples[slug]) fail(`examples/${slug}.html is not in examples.json`);
 }
 
+// The README states how many components there are. It must match nav.json (the
+// docs and the landing compute it, so the README is the only place to keep in step).
+const components = nav
+  .filter((g: any) => g.title && g.title !== "Foundations")
+  .flatMap((g: any) => g.items)
+  .filter((i: any) => !i.guide).length;
+const readme = readFileSync(join(content, "..", "..", "README.md"), "utf8");
+const said = readme.match(/\b(\d+) components\b/)?.[1];
+if (said !== String(components))
+  fail(`README.md says ${said ?? "no number of"} components, nav.json has ${components}`);
+
 const checked = htmlFiles(content).length + htmlFiles(join(content, "examples")).length;
 if (problems.length) {
   console.error(`\n${problems.length} problem(s) in the docs content:\n`);
