@@ -210,6 +210,8 @@ function start(el, state) {
         // A remount or a destroy may have happened while TinyMCE started.
         if (states.get(el) !== state) return editor.remove();
         state.editor = editor;
+        // TinyMCE hides the textarea from screen readers; keep it out of the tab order too.
+        el.tabIndex = -1;
         theme(editor);
         const plain = editor.editorCommands.commands.exec.mcecodeeditor;
         if (plain)
