@@ -1,0 +1,287 @@
+<header class="page-header">
+            <div>
+              <h1>Frameworks integration</h1>
+              <p>
+                Use Tsunami in React, Vue, Svelte and Django. There are no
+                wrapper components: the markup from these docs goes straight
+                into your templates.
+              </p>
+            </div>
+          </header>
+          <section id="load">
+            <h2>Load it once</h2>
+            <p>
+              Tsunami is a stylesheet and a script, not a component library, so there is nothing to wrap. Install it, import both files once, and write the markup from these docs in your templates. The script starts each component when it appears in the page, including markup your framework adds later.
+            </p>
+            <!-- Logos: simple-icons 16.36 (CC0). The names and marks belong to their owners. -->
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Package manager">
+                <button type="button" role="tab" id="pm-npm-t" aria-selected="true" aria-controls="pm-npm"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z"/></svg>npm</button>
+                <button type="button" role="tab" id="pm-pnpm-t" aria-selected="false" aria-controls="pm-pnpm" tabindex="-1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 0v7.5h7.5V0zm8.25 0v7.5h7.498V0zm8.25 0v7.5H24V0zM2 2h3.5v3.5H2zm8.25 0h3.498v3.5H10.25zm8.25 0H22v3.5h-3.5zM8.25 8.25v7.5h7.498v-7.5zm8.25 0v7.5H24v-7.5zm2 2H22v3.5h-3.5zM0 16.5V24h7.5v-7.5zm8.25 0V24h7.498v-7.5zm8.25 0V24H24v-7.5z"/></svg>pnpm</button>
+                <button type="button" role="tab" id="pm-yarn-t" aria-selected="false" aria-controls="pm-yarn" tabindex="-1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.375 0 0 5.375 0 12s5.375 12 12 12 12-5.375 12-12S18.625 0 12 0zm.768 4.105c.183 0 .363.053.525.157.125.083.287.185.755 1.154.31-.088.468-.042.551-.019.204.056.366.19.463.375.477.917.542 2.553.334 3.605-.241 1.232-.755 2.029-1.131 2.576.324.329.778.899 1.117 1.825.278.774.31 1.478.273 2.015a5.51 5.51 0 0 0 .602-.329c.593-.366 1.487-.917 2.553-.931.714-.009 1.269.445 1.353 1.103a1.23 1.23 0 0 1-.945 1.362c-.649.158-.95.278-1.821.843-1.232.797-2.539 1.242-3.012 1.39a1.686 1.686 0 0 1-.704.343c-.737.181-3.266.315-3.466.315h-.046c-.783 0-1.214-.241-1.45-.491-.658.329-1.51.19-2.122-.134a1.078 1.078 0 0 1-.58-1.153 1.243 1.243 0 0 1-.153-.195c-.162-.25-.528-.936-.454-1.946.056-.723.556-1.367.88-1.71a5.522 5.522 0 0 1 .408-2.256c.306-.727.885-1.348 1.32-1.737-.32-.537-.644-1.367-.329-2.21.227-.602.412-.936.82-1.08h-.005c.199-.074.389-.153.486-.259a3.418 3.418 0 0 1 2.298-1.103c.037-.093.079-.185.125-.283.31-.658.639-1.029 1.024-1.168a.94.94 0 0 1 .328-.06zm.006.7c-.507.016-1.001 1.519-1.001 1.519s-1.27-.204-2.266.871c-.199.218-.468.334-.746.44-.079.028-.176.023-.417.672-.371.991.625 2.094.625 2.094s-1.186.839-1.626 1.881c-.486 1.144-.338 2.261-.338 2.261s-.843.732-.899 1.487c-.051.663.139 1.2.343 1.515.227.343.51.176.51.176s-.561.653-.037.931c.477.25 1.283.394 1.71-.037.31-.31.371-1.001.486-1.283.028-.065.12.111.209.199.097.093.264.195.264.195s-.755.324-.445 1.066c.102.246.468.403 1.066.398.222-.005 2.664-.139 3.313-.296.375-.088.505-.283.505-.283s1.566-.431 2.998-1.357c.917-.598 1.293-.76 2.034-.936.612-.148.57-1.098-.241-1.084-.839.009-1.575.44-2.196.825-1.163.718-1.742.672-1.742.672l-.018-.032c-.079-.13.371-1.293-.134-2.678-.547-1.515-1.413-1.881-1.344-1.997.297-.5 1.038-1.297 1.334-2.78.176-.899.13-2.377-.269-3.151-.074-.144-.732.241-.732.241s-.616-1.371-.788-1.483a.271.271 0 0 0-.157-.046z"/></svg>yarn</button>
+                <button type="button" role="tab" id="pm-bun-t" aria-selected="false" aria-controls="pm-bun" tabindex="-1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22.596c6.628 0 12-4.338 12-9.688 0-3.318-2.057-6.248-5.219-7.986-1.286-.715-2.297-1.357-3.139-1.89C14.058 2.025 13.08 1.404 12 1.404c-1.097 0-2.334.785-3.966 1.821a49.92 49.92 0 0 1-2.816 1.697C2.057 6.66 0 9.59 0 12.908c0 5.35 5.372 9.687 12 9.687v.001ZM10.599 4.715c.334-.759.503-1.58.498-2.409 0-.145.202-.187.23-.029.658 2.783-.902 4.162-2.057 4.624-.124.048-.199-.121-.103-.209a5.763 5.763 0 0 0 1.432-1.977Zm2.058-.102a5.82 5.82 0 0 0-.782-2.306v-.016c-.069-.123.086-.263.185-.172 1.962 2.111 1.307 4.067.556 5.051-.082.103-.23-.003-.189-.126a5.85 5.85 0 0 0 .23-2.431Zm1.776-.561a5.727 5.727 0 0 0-1.612-1.806v-.014c-.112-.085-.024-.274.114-.218 2.595 1.087 2.774 3.18 2.459 4.407a.116.116 0 0 1-.049.071.11.11 0 0 1-.153-.026.122.122 0 0 1-.022-.083 5.891 5.891 0 0 0-.737-2.331Zm-5.087.561c-.617.546-1.282.76-2.063 1-.117 0-.195-.078-.156-.181 1.752-.909 2.376-1.649 2.999-2.778 0 0 .155-.118.188.085 0 .304-.349 1.329-.968 1.874Zm4.945 11.237a2.957 2.957 0 0 1-.937 1.553c-.346.346-.8.565-1.286.62a2.178 2.178 0 0 1-1.327-.62 2.955 2.955 0 0 1-.925-1.553.244.244 0 0 1 .064-.198.234.234 0 0 1 .193-.069h3.965a.226.226 0 0 1 .19.07c.05.053.073.125.063.197Zm-5.458-2.176a1.862 1.862 0 0 1-2.384-.245 1.98 1.98 0 0 1-.233-2.447c.207-.319.503-.566.848-.713a1.84 1.84 0 0 1 1.092-.11c.366.075.703.261.967.531a1.98 1.98 0 0 1 .408 2.114 1.931 1.931 0 0 1-.698.869v.001Zm8.495.005a1.86 1.86 0 0 1-2.381-.253 1.964 1.964 0 0 1-.547-1.366c0-.384.11-.76.32-1.079.207-.319.503-.567.849-.713a1.844 1.844 0 0 1 1.093-.108c.367.076.704.262.968.534a1.98 1.98 0 0 1 .4 2.117 1.932 1.932 0 0 1-.702.868Z"/></svg>bun</button>
+              </div>
+              <div role="tabpanel" id="pm-npm" aria-labelledby="pm-npm-t" tabindex="0">
+                <pre><code class="language-sh">npm install @djirasak/tsunami-ui</code></pre>
+              </div>
+              <div role="tabpanel" id="pm-pnpm" aria-labelledby="pm-pnpm-t" tabindex="0" hidden>
+                <pre><code class="language-sh">pnpm add @djirasak/tsunami-ui</code></pre>
+              </div>
+              <div role="tabpanel" id="pm-yarn" aria-labelledby="pm-yarn-t" tabindex="0" hidden>
+                <pre><code class="language-sh">yarn add @djirasak/tsunami-ui</code></pre>
+              </div>
+              <div role="tabpanel" id="pm-bun" aria-labelledby="pm-bun-t" tabindex="0" hidden>
+                <pre><code class="language-sh">bun add @djirasak/tsunami-ui</code></pre>
+              </div>
+            </div>
+            <pre><code class="language-js">import "@djirasak/tsunami-ui/css";
+import "@djirasak/tsunami-ui";</code></pre>
+            <p>
+              <strong>The theme can flash.</strong> A bundler loads the import as a module, after the first frame, so a reader who chose dark sees one light frame (measured in React, Vue and Svelte). Either put this one line in <code>&lt;head&gt;</code> of your <code>index.html</code>, before everything else, or load the script as a plain <code>&lt;script&gt;</code> there instead.
+            </p>
+            <pre><code class="language-html">&lt;script&gt;try{var t=localStorage.getItem("tsunami-theme");if(t==="dark"||t==="light")document.documentElement.dataset.theme=t}catch(e){}&lt;/script&gt;</code></pre>
+            <p>
+              The plain script: copy <code>dist/tsunami.min.js</code>, <code>dist/tsunami.min.css</code> and the <code>fonts/</code> and <code>flags/</code> folders from <code>node_modules/@djirasak/tsunami-ui</code> into your public folder, and load the script in <code>&lt;head&gt;</code>. Copy <code>fonts/</code> too: the stylesheet refers to <code>../fonts/</code>, and without it the font requests get your app's HTML page back.
+            </p>
+            <p>
+              <strong>TypeScript.</strong> Importing the package types <code>window.tsunami</code> and the <code>tsunami:*</code> events. If you load the plain script and import nothing, add <code>/// &lt;reference types="@djirasak/tsunami-ui" /&gt;</code> to a <code>.d.ts</code> file. In version 1.2.0, <code>import "@djirasak/tsunami-ui/css"</code> reports TS2882: add <code>declare module "@djirasak/tsunami-ui/css";</code> in a file of its own (later versions include it).
+            </p>
+          </section>
+          <section id="tested">
+            <h2>Tested with</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Tested versions">
+              <table class="table">
+                <thead><tr><th scope="col">Framework</th><th scope="col">Version</th><th scope="col">Tested in</th></tr></thead>
+                <tbody>
+                  <tr><td>React</td><td>19.3 with Vite 8, TypeScript 7</td><td>dev, production build, StrictMode</td></tr>
+                  <tr><td>Vue</td><td>3.5 with Vite 8, TypeScript 6</td><td>dev, production build, <code>v-if</code>, <code>v-show</code>, <code>KeepAlive</code>, <code>Transition</code></td></tr>
+                  <tr><td>Svelte</td><td>5.57 with Vite 8, and SvelteKit 3.1</td><td>dev, production build, server rendering</td></tr>
+                  <tr><td>Django</td><td>6.1 on Python 3.12, with HTMX</td><td>runserver, <code>collectstatic</code>, whitenoise</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Each was checked with a small app in Chromium: buttons and badges, a dialog opened by <code>commandfor</code>, tabs, a toast, a <code>data-validate</code> form, a tag input and a select that mount and unmount, the theme switcher, and listening to <code>tsunami:*</code> events. Other browsers, and the heavier components (chart, editors), were not part of these checks.
+            </p>
+          </section>
+          <section id="react">
+            <h2>React</h2>
+            <p>
+              Use <code>className</code> for the class and the <code>data-*</code> attributes as written. Buttons that open a dialog need the lowercase <code>commandfor</code> and <code>command</code>: React 19 warns about <code>commandFor</code>, and TypeScript does not know either name until you add them.
+            </p>
+            <pre><code class="language-js">// src/env.d.ts
+import "react";
+declare module "react" {
+  interface ButtonHTMLAttributes&lt;T&gt; {
+    commandfor?: string;
+    command?: string;
+  }
+}</code></pre>
+            <pre><code class="language-html">&lt;button type="button" className="btn" commandfor="dlg" command="show-modal"&gt;
+  Open
+&lt;/button&gt;</code></pre>
+            <p>
+              <strong>Events.</strong> JSX has no <code>onTsunami…</code> props. Listen in an effect, and remove the listener in its cleanup (StrictMode runs effects twice). Toasts are created by the script, so their events are heard on <code>document</code>.
+            </p>
+            <pre><code class="language-js">useEffect(() =&gt; {
+  const onClose = (e: DocumentEventMap["tsunami:toastclose"]) =&gt;
+    setReason(e.detail.reason);
+  document.addEventListener("tsunami:toastclose", onClose);
+  return () =&gt; document.removeEventListener("tsunami:toastclose", onClose);
+}, []);</code></pre>
+            <p>
+              <strong>A select you set from state.</strong> React sets the native value without a <code>change</code> event, so the styled Select keeps its old label. Tell it to repaint:
+            </p>
+            <pre><code class="language-js">const wrap = useRef&lt;HTMLDivElement&gt;(null);
+useEffect(() =&gt; {
+  window.tsunami.select.refresh(wrap.current!);
+}, [value, options]);</code></pre>
+            <p>
+              <strong>Replacing an enhanced element.</strong> If a conditional swaps one select for another at the same place, React reuses the node and the styled control keeps stale attributes. Give the changed part a <code>key</code>. The same goes for a tag input: it reads <code>data-value</code> once, when it appears, so use a <code>key</code> to start it again or <code>tsunami.tagInput.set(el, ["a", "b"])</code> to change it.
+            </p>
+            <p>
+              <strong>A <code>data-validate</code> form.</strong> Tsunami checks the form before your <code>onSubmit</code> runs and stops it when a field is invalid. In version 1.2.0 your handler ran first: start it with <code>if (!window.tsunami.validate.check(form)) return;</code>. Controlled inputs keep working next to it.
+            </p>
+          </section>
+          <section id="vue">
+            <h2>Vue</h2>
+            <p>
+              Attributes pass straight through to the DOM: <code>commandfor</code>, <code>command</code>, <code>closedby</code>, <code>popovertarget</code>, <code>inert</code> and every <code>data-*</code>. You need no <code>isCustomElement</code> setting. Leave <code>vueCompilerOptions.strictTemplates</code> off, or <code>vue-tsc</code> rejects those attributes.
+            </p>
+            <p>
+              <strong>Events.</strong> A template listener works on an element Vue renders, which is the target of the event or an ancestor of it. Annotate the argument yourself, because template handlers are untyped. Events from elements the script creates, such as a toast, are heard on <code>document</code>.
+            </p>
+            <pre><code class="language-html">&lt;div class="tag-input" data-name="labels" data-value="design,billing"
+     @tsunami:tagschange="onTags"&gt;&lt;/div&gt;</code></pre>
+            <pre><code class="language-js">function onTags(e: CustomEvent&lt;{ value: string[] }&gt;) {
+  tags.value = e.detail.value;
+}
+
+onMounted(() =&gt; document.addEventListener("tsunami:toastclose", onClose));
+onBeforeUnmount(() =&gt; document.removeEventListener("tsunami:toastclose", onClose));</code></pre>
+            <p>
+              <strong>A select you set from <code>v-model</code>.</strong> Repaint it after Vue has updated the DOM:
+            </p>
+            <pre><code class="language-js">await nextTick();
+window.tsunami.select.refresh(wrapperEl);</code></pre>
+            <p>
+              <code>v-if</code>, <code>v-show</code>, a changing <code>:key</code>, a reordered <code>v-for</code>, <code>&lt;Transition&gt;</code> and <code>&lt;KeepAlive&gt;</code> all leave one copy of each component. A tag input starts again from <code>data-value</code> when it is remounted, so bind <code>:data-value="tags.join(',')"</code> to keep what the reader typed, and use <code>tsunami.tagInput.set</code> to change it later. A <code>data-validate</code> form runs the check before <code>@submit</code> handlers; in version 1.2.0 call <code>window.tsunami.validate.check(form)</code> first.
+            </p>
+          </section>
+          <section id="svelte">
+            <h2>Svelte and SvelteKit</h2>
+            <p>
+              <code>commandfor</code> and <code>command</code> are accepted by Svelte 5's types, and <code>bind:value</code> keeps working next to a <code>data-validate</code> form.
+            </p>
+            <p>
+              <strong>Events.</strong> Use an event attribute with the colon name. Svelte warns about the colon, and TypeScript does not know the name until you add this file:
+            </p>
+            <pre><code class="language-js">// src/tsunami.d.ts
+type TsunamiHandlers = {
+  [K in keyof TsunamiEventMap as `on${K}`]?: (e: TsunamiEventMap[K]) =&gt; void;
+};
+declare module "svelte/elements" {
+  interface HTMLAttributes&lt;T&gt; extends TsunamiHandlers {}
+}
+export {};</code></pre>
+            <pre><code class="language-html">&lt;!-- svelte-ignore attribute_illegal_colon --&gt;
+&lt;div class="tag-input" data-name="labels" ontsunami:tagschange={onTags}&gt;&lt;/div&gt;</code></pre>
+            <p>
+              Events from elements the script creates, such as a toast, are heard with <code>document.addEventListener</code> in an <code>$effect</code>.
+            </p>
+            <p>
+              <strong>A select you bind.</strong> The styled Select is built when the element is inserted, before Svelte applies the bound value, and it is not repainted when the value changes later. Repaint it:
+            </p>
+            <pre><code class="language-js">let selWrap: HTMLElement;
+$effect(() =&gt; {
+  selVal; // run again when it changes
+  if (selWrap) window.tsunami.select.refresh(selWrap);
+});</code></pre>
+            <p>
+              Put <code>bind:this={selWrap}</code> on the element that holds the select. In a keyed <code>{#each}</code> reorder, a tag input keeps its tags in versions after 1.2.0; in 1.2.0 any element added to the page started every tag input again. A <code>data-validate</code> form runs its check before your <code>onsubmit</code>; in 1.2.0 start the handler with <code>if (!window.tsunami.validate.check(form)) return;</code>.
+            </p>
+            <p>
+              <strong>SvelteKit.</strong> Server rendering works, with no hydration warnings. Load the script in <code>src/app.html</code> before <code>%sveltekit.head%</code>, and import the CSS in <code>+layout.svelte</code>. The script has already started the components in the server-rendered markup when Svelte hydrates it, and hydration leaves them alone.
+            </p>
+            <pre><code class="language-html">&lt;!-- src/app.html --&gt;
+&lt;script src="%sveltekit.assets%/tsunami.min.js"&gt;&lt;/script&gt;
+%sveltekit.head%</code></pre>
+            <pre><code class="language-html">&lt;!-- src/routes/+layout.svelte --&gt;
+&lt;script&gt;
+  import "@djirasak/tsunami-ui/css";
+&lt;/script&gt;</code></pre>
+          </section>
+          <section id="django">
+            <h2>Django</h2>
+            <p>
+              Django renders the HTML on the server, which is how Tsunami is meant to be used: write the markup in a template and the script starts it in the browser. HTMX works with no extra code: a fragment that holds a select, a tag input, a date picker or a dialog starts as soon as it is swapped in, and repeated swaps leave no duplicates.
+            </p>
+            <p>
+              <strong>Serve the package from <code>static</code>.</strong> Point <code>STATICFILES_DIRS</code> at the package root, not at <code>dist/</code>: the stylesheet refers to <code>../fonts/</code> and <code>../flags/</code>, and with only <code>dist/</code> mapped the fonts and flags return 404.
+            </p>
+            <pre><code># settings.py
+STATICFILES_DIRS = [BASE_DIR / "npm/node_modules/@djirasak/tsunami-ui"]
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"</code></pre>
+            <pre><code class="language-html">{% load static %}
+&lt;link rel="stylesheet" href="{% static 'dist/tsunami.min.css' %}"&gt;
+{# only if a page has a .date-picker, and before tsunami: #}
+&lt;script src="{% static 'dist/vanilla-calendar.min.js' %}"&gt;&lt;/script&gt;
+&lt;script src="{% static 'dist/tsunami.min.js' %}"&gt;&lt;/script&gt;</code></pre>
+            <p>
+              Put the scripts in <code>&lt;head&gt;</code> in your base template, as plain scripts, so the saved theme applies before the first paint.
+            </p>
+            <p>
+              <strong>In production</strong> use <code>collectstatic</code> with whitenoise's hashed storage. With version 1.2.0 the vendored scripts end with a comment for a source map that is not in the package, and <code>ManifestStaticFilesStorage</code> stops on it. Restrict the post-processing to the stylesheets (versions after 1.2.0 have no such comments):
+            </p>
+            <pre><code># demo/storage.py
+from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
+from whitenoise.storage import CompressedManifestStaticFilesStorage
+
+class TsunamiStorage(CompressedManifestStaticFilesStorage):
+    patterns = tuple(p for p in ManifestStaticFilesStorage.patterns if p[0] == "*.css")</code></pre>
+            <p>
+              <strong>Forms.</strong> Render each Django field with Tsunami's markup: the <code>input</code> class on the control, <code>aria-invalid</code> and <code>aria-describedby</code> when the field has errors, and the errors in a <code>small</code> with <code>data-error</code>. One template tag and one include do it for every form:
+            </p>
+            <pre><code># templatetags/ts.py
+from django import forms as w
+from django import template
+from django.template.loader import render_to_string
+
+register = template.Library()
+
+@register.simple_tag
+def tsfield(bf):
+    widget = bf.field.widget
+    attrs = {}
+    if not isinstance(widget, (w.CheckboxInput, w.RadioSelect, w.FileInput, w.HiddenInput, w.Select)):
+        attrs["class"] = "input"
+    ids = []
+    if bf.help_text:
+        ids.append(f"{bf.auto_id}_hint")
+    if bf.errors:
+        attrs["aria-invalid"] = "true"
+        ids.append(f"{bf.auto_id}_error")
+    if ids:
+        attrs["aria-describedby"] = " ".join(ids)
+    return render_to_string("ts/field.html", {
+        "bf": bf,
+        "control": bf.as_widget(attrs=attrs),
+        "check": isinstance(widget, w.CheckboxInput),
+        "hint_id": f"{bf.auto_id}_hint",
+        "error_id": f"{bf.auto_id}_error",
+    })</code></pre>
+            <pre><code class="language-html">{# ts/field.html #}
+&lt;div class="field"&gt;
+  {% if check %}{{ control }}&lt;label for="{{ bf.id_for_label }}"&gt;{{ bf.label }}&lt;/label&gt;
+  {% else %}&lt;label for="{{ bf.id_for_label }}" id="{{ bf.auto_id }}_label"&gt;{{ bf.label }}&lt;/label&gt;{{ control }}{% endif %}
+  {% if bf.help_text %}&lt;small id="{{ hint_id }}"&gt;{{ bf.help_text }}&lt;/small&gt;{% endif %}
+  &lt;small data-error id="{{ error_id }}"{% if bf.errors %} role="alert"{% endif %}&gt;{% if bf.errors %}{{ bf.errors|join:" " }}{% endif %}&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+            <pre><code class="language-html">{% load ts %}
+&lt;form method="post" novalidate&gt;
+  {% csrf_token %}
+  {% for bf in form %}{% tsfield bf %}{% endfor %}
+  &lt;button type="submit" class="btn" data-variant="primary"&gt;Save&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <p>
+              Server-side errors show after a failed POST and the values are kept. To add client-side checking, put <code>data-validate</code> on the form: a valid form still posts, and an invalid one never leaves the page. Tsunami reuses the <code>small[data-error]</code> you rendered, so nothing is duplicated, and it clears a server error as the reader fixes the field. Keep Django's <code>novalidate</code> on a form that does not use <code>data-validate</code>, or the browser's own bubble blocks the submit.
+            </p>
+            <p>
+              <strong>Rich inputs.</strong> A Select, a Tag input and a Date picker are made of a few elements, so give each a small widget template that renders the markup from its docs page. The value reaches <code>request.POST</code> under the right name: a select as its option value, a tag input as <code>"design,billing"</code> and a date picker as an ISO date (<code>2026-12-08</code>), which Django's <code>DateField</code> accepts. Values from <code>form.initial</code> show as preselected. Django templates cannot read an attribute such as <code>data-max</code>, so flatten the attributes in the widget's <code>get_context</code>.
+            </p>
+            <p>
+              <strong>Messages as toasts.</strong> Render <code>messages</code> into a hidden list and turn each into a toast from a script file (an inline script is blocked by a strict content security policy):
+            </p>
+            <pre><code class="language-html">{% if messages %}
+&lt;div id="dj-messages" hidden&gt;
+  {% for m in messages %}&lt;p data-level="{{ m.level_tag }}"&gt;{{ m }}&lt;/p&gt;{% endfor %}
+&lt;/div&gt;
+&lt;script src="{% static 'demo/messages.js' %}"&gt;&lt;/script&gt;
+{% endif %}</code></pre>
+            <pre><code class="language-js">// demo/static/demo/messages.js
+var map = { success: "ok", error: "danger", warning: "warning", info: "info", debug: "neutral" };
+document.querySelectorAll("#dj-messages [data-level]").forEach(function (p) {
+  tsunami.toast({ variant: map[p.dataset.level] || "neutral", title: p.textContent });
+});</code></pre>
+            <p>
+              Tsunami itself needs no content security policy exceptions: with <code>script-src 'self'</code> and <code>style-src 'self'</code> the select, tag input, date picker, toast, dialog and table sorting ran with no violations.
+            </p>
+          </section>
+          <section id="gotchas">
+            <h2>Things to know in every framework</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Common gotchas">
+              <table class="table">
+                <thead><tr><th scope="col">If</th><th scope="col">Then</th></tr></thead>
+                <tbody>
+                  <tr><td>You set a Select's value from code or state</td><td>Call <code>tsunami.select.refresh(wrapper)</code> afterwards. The styled control repaints on a <code>change</code> event, and setting <code>value</code> fires none.</td></tr>
+                  <tr><td>You change a tag input's <code>data-value</code> later</td><td>It is read once, when the tag input appears. Use <code>tsunami.tagInput.set(el, [...])</code>, or remount it with a key.</td></tr>
+                  <tr><td>Your framework reuses a node that Tsunami built something around</td><td>Give that part a key, so a new element replaces it.</td></tr>
+                  <tr><td>You use <code>data-validate</code> and your own submit handler</td><td>Versions after 1.2.0 run the check first and stop an invalid form. In 1.2.0, call <code>tsunami.validate.check(form)</code> first.</td></tr>
+                  <tr><td>The first click on Submit seemed to do nothing</td><td>Fixed after 1.2.0: each field now keeps a line for its error. Before, the first error pushed the button away between mouse down and up.</td></tr>
+                  <tr><td>You see a flash of the light theme</td><td>The script ran too late. Put it in <code>&lt;head&gt;</code> as a plain script, or add the one-line theme script.</td></tr>
+                  <tr><td>Fonts or flags are missing</td><td>The stylesheet refers to <code>../fonts/</code> and <code>../flags/</code>: keep them next to <code>dist/</code>.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

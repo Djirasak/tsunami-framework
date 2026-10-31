@@ -378,5 +378,10 @@
     "title": "Starters",
     "description": "Three complete pages to copy: a plain page, an app with a sidebar and a sign-in form. Each loads Tsunami from the CDN, with no build step.",
     "libs": []
+  },
+  "frameworks": {
+    "title": "Frameworks integration",
+    "description": "Use Tsunami in React, Vue, Svelte, SvelteKit and Django: how to load it, listen to its events, set values from state, and the things that tripped up real test apps.",
+    "libs": []
   }
 }

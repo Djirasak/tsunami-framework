@@ -19,6 +19,161 @@
         "href": "/docs/events",
         "icon": "radio",
         "keywords": "Start events tsunami: custom event listen addEventListener detail bubbles cancelable preventDefault document typescript"
+      },
+      {
+        "label": "Frameworks integration",
+        "href": "/docs/frameworks",
+        "icon": "blocks",
+        "keywords": "Frameworks integration frameworks react vue svelte sveltekit django htmx laravel integration vite bundler npm install typescript commandfor events select refresh theme flash"
+      }
+    ]
+  },
+  {
+    "title": "Foundations",
+    "items": [
+      {
+        "label": "Starters",
+        "href": "/docs/starters",
+        "icon": "rocket",
+        "keywords": "Starters starter template boilerplate page app shell sidebar sign in login copy html quick start"
+      },
+      {
+        "label": "Colors",
+        "href": "/docs/colors",
+        "icon": "palette",
+        "keywords": "Foundations colors --bg --surface --subtle --fg --muted --line --accent --on-accent --ok-bg --ok-fg --warning-bg --warning-fg --danger-bg --danger-fg --info-bg --info-fg --neutral-bg --neutral-fg --overlay"
+      },
+      {
+        "label": "Theming",
+        "href": "/docs/theming",
+        "icon": "palette",
+        "keywords": "Theming theme brand customise customize override css variables accent on-accent dark light layer cascade custom color radius font spacing contrast"
+      },
+      {
+        "label": "Icons",
+        "href": "/docs/icons",
+        "icon": "shapes",
+        "keywords": "Foundations icons class data-size aria-hidden color include icon glyph name"
+      },
+      {
+        "label": "Typography",
+        "href": "/docs/typography",
+        "icon": "type",
+        "keywords": "Foundations typography heading h1 h2 h3 h4 h5 h6 p data-variant small ul ol li dl dt dd blockquote pre code hr kbd"
+      }
+    ]
+  },
+  {
+    "title": "Layout",
+    "items": [
+      {
+        "label": "Accordion",
+        "href": "/docs/accordion",
+        "icon": "list-collapse",
+        "keywords": "Layout accordion details name open aria-disabled summary not"
+      },
+      {
+        "label": "Card",
+        "href": "/docs/card",
+        "icon": "square",
+        "keywords": "Layout card header h2 h3 p aside strong data-trend section div footer empty stat stat-group data-variant data-direction"
+      },
+      {
+        "label": "Chart",
+        "href": "/docs/chart",
+        "icon": "chart-column",
+        "keywords": "Layout chart canvas aria-label tsunami.chart Chart.js type labelKey data series legend legendAlign tooltip options surface total axis line bar doughnut pie polarArea radar tsunami:chartready data-chart-initialized"
+      },
+      {
+        "label": "Container",
+        "href": "/docs/container",
+        "icon": "box",
+        "keywords": "Layout container width max-width center centre page wrapper gutter data-size sm md lg xl bootstrap"
+      },
+      {
+        "label": "Responsive",
+        "href": "/docs/responsive",
+        "guide": true,
+        "icon": "smartphone",
+        "keywords": "Layout responsive breakpoint media query mobile phone tablet width 24rem 40rem 48rem viewport adapt"
+      },
+      {
+        "label": "Description list",
+        "href": "/docs/description-list",
+        "icon": "list",
+        "keywords": "Layout description-list desc dl dt dd label value detail page data-layout inline grid data-divided data-empty"
+      },
+      {
+        "label": "Item",
+        "href": "/docs/item",
+        "icon": "rows-3",
+        "keywords": "Layout item figure section h3 p aside data-variant data-size item-group hr"
+      },
+      {
+        "label": "Journey",
+        "href": "/docs/journey",
+        "icon": "route",
+        "keywords": "Layout journey data-orientation data-view ol li header ul button aria-pressed span small data data-outcomes svg"
+      },
+      {
+        "label": "JSON viewer",
+        "href": "/docs/json-viewer",
+        "icon": "braces",
+        "keywords": "Layout json-viewer data-view data-collapsed textarea readonly aria-invalid details expand collapse value"
+      },
+      {
+        "label": "Page header",
+        "href": "/docs/page-header",
+        "icon": "panel-top",
+        "keywords": "Layout page-header nav btn h1 hgroup div first-child last-child p"
+      },
+      {
+        "label": "Scroll area",
+        "href": "/docs/scroll-area",
+        "icon": "scroll",
+        "keywords": "Layout scroll-area height code max-height tabindex aria-label"
+      },
+      {
+        "label": "Sortable",
+        "href": "/docs/sortable",
+        "icon": "arrow-down-up",
+        "keywords": "Layout sortable drag reorder sortable-handle data-id data-disabled data-options data-sortable-ignore SortableJS"
+      },
+      {
+        "label": "Stack",
+        "href": "/docs/stack",
+        "icon": "layers",
+        "keywords": "Layout stack data-direction data-gap"
+      },
+      {
+        "label": "Stat",
+        "href": "/docs/stat",
+        "icon": "chart-column",
+        "keywords": "Layout stat span first-child strong data-trend loader aria-busy aria-pressed data-reverse data-variant data-size stat-group data-even dl"
+      },
+      {
+        "label": "Stepper",
+        "href": "/docs/stepper",
+        "icon": "milestone",
+        "keywords": "Layout stepper wizard steps multi-step form progress next back validate data-linear data-validate data-optional data-next data-prev tsunami:stepchange tsunami:stepcomplete attributes events"
+      },
+      {
+        "label": "Table",
+        "href": "/docs/table",
+        "icon": "table",
+        "keywords": "Layout table caption thead th tbody scope row tfoot data-align data-truncate td avatar img first-child aria-sort button data-sort-type data-sort-value tr aria-selected scroll-area"
+      },
+      {
+        "label": "Timeline",
+        "href": "/docs/timeline",
+        "icon": "history",
+        "keywords": "Layout timeline ol li data-variant aria-busy time details summary dl dt dd article footer form code textarea"
+      },
+      {
+        "label": "Workspace",
+        "href": "/docs/workspace",
+        "icon": "layout-dashboard",
+        "keywords": "Layout workspace data-panel header h1 popovertarget aside code main td tr popover id"
       }
     ]
   },
@@ -233,155 +388,6 @@
         "href": "/docs/time-picker",
         "icon": "clock",
         "keywords": "Forms time-picker time hour minute seconds am pm 24 hour spinbutton segments input step min max attributes events"
-      }
-    ]
-  },
-  {
-    "title": "Foundations",
-    "items": [
-      {
-        "label": "Starters",
-        "href": "/docs/starters",
-        "icon": "rocket",
-        "keywords": "Starters starter template boilerplate page app shell sidebar sign in login copy html quick start"
-      },
-      {
-        "label": "Colors",
-        "href": "/docs/colors",
-        "icon": "palette",
-        "keywords": "Foundations colors --bg --surface --subtle --fg --muted --line --accent --on-accent --ok-bg --ok-fg --warning-bg --warning-fg --danger-bg --danger-fg --info-bg --info-fg --neutral-bg --neutral-fg --overlay"
-      },
-      {
-        "label": "Theming",
-        "href": "/docs/theming",
-        "icon": "palette",
-        "keywords": "Theming theme brand customise customize override css variables accent on-accent dark light layer cascade custom color radius font spacing contrast"
-      },
-      {
-        "label": "Icons",
-        "href": "/docs/icons",
-        "icon": "shapes",
-        "keywords": "Foundations icons class data-size aria-hidden color include icon glyph name"
-      },
-      {
-        "label": "Typography",
-        "href": "/docs/typography",
-        "icon": "type",
-        "keywords": "Foundations typography heading h1 h2 h3 h4 h5 h6 p data-variant small ul ol li dl dt dd blockquote pre code hr kbd"
-      }
-    ]
-  },
-  {
-    "title": "Layout",
-    "items": [
-      {
-        "label": "Accordion",
-        "href": "/docs/accordion",
-        "icon": "list-collapse",
-        "keywords": "Layout accordion details name open aria-disabled summary not"
-      },
-      {
-        "label": "Card",
-        "href": "/docs/card",
-        "icon": "square",
-        "keywords": "Layout card header h2 h3 p aside strong data-trend section div footer empty stat stat-group data-variant data-direction"
-      },
-      {
-        "label": "Chart",
-        "href": "/docs/chart",
-        "icon": "chart-column",
-        "keywords": "Layout chart canvas aria-label tsunami.chart Chart.js type labelKey data series legend legendAlign tooltip options surface total axis line bar doughnut pie polarArea radar tsunami:chartready data-chart-initialized"
-      },
-      {
-        "label": "Container",
-        "href": "/docs/container",
-        "icon": "box",
-        "keywords": "Layout container width max-width center centre page wrapper gutter data-size sm md lg xl bootstrap"
-      },
-      {
-        "label": "Responsive",
-        "href": "/docs/responsive",
-        "guide": true,
-        "icon": "smartphone",
-        "keywords": "Layout responsive breakpoint media query mobile phone tablet width 24rem 40rem 48rem viewport adapt"
-      },
-      {
-        "label": "Description list",
-        "href": "/docs/description-list",
-        "icon": "list",
-        "keywords": "Layout description-list desc dl dt dd label value detail page data-layout inline grid data-divided data-empty"
-      },
-      {
-        "label": "Item",
-        "href": "/docs/item",
-        "icon": "rows-3",
-        "keywords": "Layout item figure section h3 p aside data-variant data-size item-group hr"
-      },
-      {
-        "label": "Journey",
-        "href": "/docs/journey",
-        "icon": "route",
-        "keywords": "Layout journey data-orientation data-view ol li header ul button aria-pressed span small data data-outcomes svg"
-      },
-      {
-        "label": "JSON viewer",
-        "href": "/docs/json-viewer",
-        "icon": "braces",
-        "keywords": "Layout json-viewer data-view data-collapsed textarea readonly aria-invalid details expand collapse value"
-      },
-      {
-        "label": "Page header",
-        "href": "/docs/page-header",
-        "icon": "panel-top",
-        "keywords": "Layout page-header nav btn h1 hgroup div first-child last-child p"
-      },
-      {
-        "label": "Scroll area",
-        "href": "/docs/scroll-area",
-        "icon": "scroll",
-        "keywords": "Layout scroll-area height code max-height tabindex aria-label"
-      },
-      {
-        "label": "Sortable",
-        "href": "/docs/sortable",
-        "icon": "arrow-down-up",
-        "keywords": "Layout sortable drag reorder sortable-handle data-id data-disabled data-options data-sortable-ignore SortableJS"
-      },
-      {
-        "label": "Stack",
-        "href": "/docs/stack",
-        "icon": "layers",
-        "keywords": "Layout stack data-direction data-gap"
-      },
-      {
-        "label": "Stat",
-        "href": "/docs/stat",
-        "icon": "chart-column",
-        "keywords": "Layout stat span first-child strong data-trend loader aria-busy aria-pressed data-reverse data-variant data-size stat-group data-even dl"
-      },
-      {
-        "label": "Stepper",
-        "href": "/docs/stepper",
-        "icon": "milestone",
-        "keywords": "Layout stepper wizard steps multi-step form progress next back validate data-linear data-validate data-optional data-next data-prev tsunami:stepchange tsunami:stepcomplete attributes events"
-      },
-      {
-        "label": "Table",
-        "href": "/docs/table",
-        "icon": "table",
-        "keywords": "Layout table caption thead th tbody scope row tfoot data-align data-truncate td avatar img first-child aria-sort button data-sort-type data-sort-value tr aria-selected scroll-area"
-      },
-      {
-        "label": "Timeline",
-        "href": "/docs/timeline",
-        "icon": "history",
-        "keywords": "Layout timeline ol li data-variant aria-busy time details summary dl dt dd article footer form code textarea"
-      },
-      {
-        "label": "Workspace",
-        "href": "/docs/workspace",
-        "icon": "layout-dashboard",
-        "keywords": "Layout workspace data-panel header h1 popovertarget aside code main td tr popover id"
       }
     ]
   },
