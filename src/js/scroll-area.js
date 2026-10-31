@@ -1,8 +1,9 @@
 // Scroll area: a .scroll-area that has no tabindex gets tabindex="0", so a reader
 // who uses the keyboard can focus it and scroll it with the arrow keys. A box that
 // scrolls sideways on a phone (a table, a code sample) is unreachable without it.
-// Put your own tabindex on it (for example -1) and it is left alone.
-const BOX = ".scroll-area";
+// The same goes for the code that scrolls by itself: .code-block > pre and the pre
+// in .typography. Put your own tabindex on one (for example -1) and it is left alone.
+const BOX = ".scroll-area, .code-block > pre, .typography pre";
 
 const focusable = (node) => {
   const list = node.matches?.(BOX) ? [node] : [];
