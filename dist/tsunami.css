@@ -1,4 +1,4 @@
-/* tsunami v1.1.1 */
+/* tsunami v1.1.2 */
 @charset "UTF-8";
 @layer tokens, base, components;
 @layer tokens {
@@ -12367,6 +12367,7 @@
   }
   :where(.sidebar[popover])::backdrop {
     background: var(--overlay);
+    backdrop-filter: blur(4px);
   }
   @media (width < 48rem) {
     :where(.sidebar[popover]) {
@@ -12925,7 +12926,14 @@
     background: var(--surface);
     color: var(--fg);
   }
-  :where(.dialog[open], .dialog[open] > form) {
+  :where(.dialog) {
+    flex-direction: column;
+    min-height: 0;
+  }
+  :where(.dialog[open]) {
+    display: flex;
+  }
+  :where(.dialog > form) {
     display: flex;
     flex-direction: column;
     min-height: 0;
@@ -12941,6 +12949,7 @@
   }
   :where(.dialog)::backdrop {
     background: var(--overlay);
+    backdrop-filter: blur(4px);
   }
   :where(.dialog > :not(form), .dialog > form > *) {
     flex: none;
@@ -13092,9 +13101,11 @@
     background: var(--surface);
     color: var(--fg);
   }
+  :where(.drawer) {
+    flex-direction: column;
+  }
   :where(.drawer[open]) {
     display: flex;
-    flex-direction: column;
   }
   :where(.drawer[data-side=top]) {
     --drawer-from: 0 -100%;
@@ -13121,6 +13132,7 @@
   }
   :where(.drawer)::backdrop {
     background: var(--overlay);
+    backdrop-filter: blur(4px);
   }
   :where(.drawer > *) {
     flex: none;
@@ -13606,6 +13618,7 @@
   }
   :where(.command-dialog)::backdrop {
     background: var(--overlay);
+    backdrop-filter: blur(4px);
   }
   :where(.command-dialog) {
     transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), scale 0.1s cubic-bezier(0.4, 0, 0.2, 1), overlay 0.15s allow-discrete, display 0.15s allow-discrete;
