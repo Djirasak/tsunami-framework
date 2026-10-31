@@ -1,9 +1,10 @@
-TinyMCE 8.10.0 (released 2026-10-14), self-hosted build.
-Source: https://registry.npmjs.org/tinymce/-/tinymce-8.10.0.tgz
-integrity: sha512-/e+/B+VdbzO02hLzfr3EaoYKYdr3phC/yitG7I9vpi2NqYvtb04UxO/Ay4y9VPqDaQHyigdFnHv2zuTgF7mnZQ== (checked against the npm registry; sha1 5a18cb78a211123f988353cf095f77e9218267f7)
+TinyMCE 6.8.6 (released 2025-05-29), self-hosted build.
+Source: https://registry.npmjs.org/tinymce/-/tinymce-6.8.6.tgz
+integrity: sha512-++XYEs8lKWvZxDCjrr8Baiw7KiikraZ5JkLMg6EdnUVNKJui0IsrAADj5MsyUeFkcEryfn2jd3p09H7REvewyg== (checked against the npm registry; sha1 799e4f03eeb4399399dfdeb12ba17b3b91887adf)
 Files: only the minified files listed in scripts/tinymce.ts (core, DOM model, silver theme, default icons,
 plugins autoresize code fullscreen image link lists media, oxide skins light and dark).
-Licence: GPL-2.0-or-later or the Tiny Self-Hosted License, see LICENSE.md. Use license_key "gpl".
+Licence: MIT, see LICENSE.txt. This is the last MIT line: TinyMCE 7 and later are GPL-2.0-or-later (or a
+commercial licence). 6.8.6 is the last 6.x release on npm (no later releases or security fixes were found).
 Update: unpack the new tarball in an empty directory, then run
   bun scripts/tinymce.ts <unpacked>/package <version>
-and replace this file's version, date and checksums.
+and replace this file's version, date and checksums. Moving to 7 or later changes the licence.

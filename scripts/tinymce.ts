@@ -46,6 +46,11 @@ for (const file of keep) {
   });
   cpSync(`${dir}/${file}`, `${out}/${file}`);
 }
-cpSync(`${dir}/license.md`, `${out}/LICENSE.md`);
+// 6.x ships license.txt (MIT); 7 and later ship license.md (GPL).
+const licence = existsSync(`${dir}/license.txt`) ? "license.txt" : "license.md";
+cpSync(
+  `${dir}/${licence}`,
+  `${out}/${licence === "license.txt" ? "LICENSE.txt" : "LICENSE.md"}`,
+);
 cpSync(`${dir}/notices.txt`, `${out}/NOTICES.txt`);
 console.log(`${keep.length} files from TinyMCE ${version}`);

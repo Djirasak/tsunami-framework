@@ -23,7 +23,7 @@ const version =
   (await Bun.file(`${vendor}/SOURCE.txt`).text()).match(
     /TinyMCE ([\d.]+)/,
   )?.[1] ?? "?";
-let out = `/* TinyMCE ${version} bundle (core, silver theme, DOM model, icons, plugins, oxide skins). GPL-2.0-or-later or the Tiny Self-Hosted License: see vendor/tinymce/LICENSE.md. */\n`;
+let out = `/* TinyMCE ${version} bundle (core, silver theme, DOM model, icons, plugins, oxide skins). MIT: see vendor/tinymce/LICENSE.txt. */\n`;
 for (const file of files)
   out += `${await Bun.file(`${vendor}/${file}`).text()}\n;\n`;
 
