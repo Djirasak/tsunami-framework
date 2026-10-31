@@ -108,6 +108,8 @@ The docs are a Next.js app in `site/`, deployed to Cloudflare Workers with the O
 
 Describe what changed for users under `## [Unreleased]` in `CHANGELOG.md` as you work. The `Release` workflow (Actions > Release) stops if that section is empty; otherwise it renames it to the new version and date, opens a fresh `[Unreleased]`, fixes the compare links, and uses the same text as the GitHub release notes.
 
+Then publish it to npm from your machine: `bun run publish:npm`. It takes the newest release tag, asks before it uploads, checks out the tag, runs `npm publish --access public` and returns to your branch (`--dry` rehearses; name a tag to publish an older one, such as `bun run publish:npm v1.3.0`). You must be logged in (`npm login`, with two-factor on). npm may hold the version until you approve it: npmjs.com > the package > Staged Packages, or `npm stage approve`.
+
 ## Structure
 
 ```
