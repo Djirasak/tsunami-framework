@@ -174,7 +174,8 @@ function mount(root, options = {}) {
   panel.tabIndex = -1;
   control.setAttribute("aria-haspopup", "dialog");
   control.setAttribute("aria-controls", panel.id);
-  if (button) button.setAttribute("aria-expanded", "false");
+  control.setAttribute("aria-expanded", "false");
+  button?.setAttribute("aria-expanded", "false");
   if (text) {
     text.readOnly = Boolean(format);
     text.setAttribute("autocomplete", "off");
@@ -278,6 +279,7 @@ function mount(root, options = {}) {
     open.add(root);
     panel.setAttribute("aria-hidden", "false");
     panel.showPopover();
+    control.setAttribute("aria-expanded", "true");
     button?.setAttribute("aria-expanded", "true");
   }
 
@@ -286,6 +288,7 @@ function mount(root, options = {}) {
     open.delete(root);
     panel.hidePopover();
     panel.setAttribute("aria-hidden", "true");
+    control.setAttribute("aria-expanded", "false");
     button?.setAttribute("aria-expanded", "false");
   }
 
@@ -416,6 +419,15 @@ document.addEventListener("focusout", (e) => {
   // A null target is a calendar redraw or a click on the panel's padding.
   if (state && e.relatedTarget && !root.contains(e.relatedTarget))
     state.close();
+});
+
+// After Escape the field has focus but the panel is closed: ArrowDown reopens it.
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "ArrowDown" || e.defaultPrevented) return;
+  const [root, state] = stateOf(e.target);
+  if (!state || e.target !== state.control || open.has(root)) return;
+  e.preventDefault();
+  state.show();
 });
 
 // Escape closes the panel first and goes no further, so a dialog stays open.
