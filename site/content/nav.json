@@ -245,6 +245,12 @@
         "keywords": "Foundations colors --bg --surface --subtle --fg --muted --line --accent --on-accent --ok-bg --ok-fg --warning-bg --warning-fg --danger-bg --danger-fg --info-bg --info-fg --neutral-bg --neutral-fg --overlay"
       },
       {
+        "label": "Theming",
+        "href": "/docs/theming",
+        "icon": "palette",
+        "keywords": "Theming theme brand customise customize override css variables accent on-accent dark light layer cascade custom color radius font spacing contrast"
+      },
+      {
         "label": "Icons",
         "href": "/docs/icons",
         "icon": "shapes",

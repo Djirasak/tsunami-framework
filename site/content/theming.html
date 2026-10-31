@@ -1,0 +1,149 @@
+<header class="page-header">
+            <div>
+              <h1>Theming</h1>
+              <p>
+                Make Tsunami match your brand by overriding its CSS variables.
+                You write no selectors for components.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Override the variables</h2>
+            <p>
+              Every colour, size and font is a CSS variable (the full list is
+              on <a href="/docs/colors">Colors</a>). Tsunami declares them in
+              the lowest cascade layer, so a plain rule of yours wins without
+              <code>!important</code> or a more specific selector. Load your
+              CSS after <code>tsunami.min.css</code> and set the variables on
+              <code>:root</code>.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A brand colour">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="sm" style="--accent: #9a3f8f; --on-accent: #fff">
+                    <button type="button" class="btn" data-variant="primary">Save</button>
+                    <a href="/docs/theming">A link</a>
+                    <span class="badge">New</span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;link rel="stylesheet" href="tsunami.min.css"&gt;
+&lt;link rel="stylesheet" href="brand.css"&gt;
+
+/* brand.css */
+:root {
+  --accent: #9a3f8f;
+  --on-accent: #fff;
+}</code></pre>
+              </div>
+            </div>
+            <p>
+              <code>--accent</code> is the colour of links, the primary button
+              and the focus ring. <code>--on-accent</code> is the text on top
+              of it.
+            </p>
+          </section>
+          <section>
+            <h2>Light and dark need their own values</h2>
+            <p>
+              A rule on <code>:root</code> applies in both themes, so a colour
+              that works on a light page is usually too dark on a dark one.
+              Set the dark value for the two places Tsunami turns dark on: an
+              explicit <code>data-theme="dark"</code>, and the system setting
+              when no theme is chosen.
+            </p>
+            <pre><code>:root {
+  --accent: #9a3f8f;
+}
+
+:root[data-theme="dark"] {
+  --accent: #d58bcc;
+  --on-accent: #1a0d18;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --accent: #d58bcc;
+    --on-accent: #1a0d18;
+  }
+}</code></pre>
+          </section>
+          <section>
+            <h2>Keep the text readable</h2>
+            <p>
+              Check each pair you change. WCAG asks for a contrast ratio of at
+              least 4.5 to 1 for text.
+            </p>
+            <ul>
+              <li>
+                <code>--accent</code> on <code>--bg</code> and on
+                <code>--surface</code>, because it colours links.
+              </li>
+              <li>
+                <code>--on-accent</code> on <code>--accent</code>, the label of
+                the primary button.
+              </li>
+              <li>
+                <code>--muted</code> on <code>--bg</code> and on
+                <code>--subtle</code>, for hints.
+              </li>
+              <li>
+                Each status pair: <code>--ok-fg</code> on
+                <code>--ok-bg</code>, and the same for danger, warning, info
+                and neutral.
+              </li>
+            </ul>
+            <p>
+              In this repository, <code>bun run check:a11y</code> reports a
+              pair that fails, in light and dark, on every docs page.
+            </p>
+          </section>
+          <section>
+            <h2>Only part of a page</h2>
+            <p>
+              Variables follow the cascade, so set them on any element to theme
+              just its content: a card, a sidebar or an embedded widget. The
+              preview above does exactly that.
+            </p>
+          </section>
+          <section>
+            <h2>Type, shape and spacing</h2>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Other variables">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Variables</th>
+                    <th scope="col">Controls</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>--font-sans</code>, <code>--font-mono</code></td>
+                    <td>The text and code typefaces.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--text-sm</code>, <code>--text-base</code>, <code>--text-lg</code>, <code>--text-xl</code>, <code>--leading</code></td>
+                    <td>Font sizes and line height.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--radius-sm</code>, <code>--radius-md</code>, <code>--radius-lg</code></td>
+                    <td>Corner radius: set all three to <code>0</code> for a square look.</td>
+                  </tr>
+                  <tr>
+                    <td><code>--space-1</code> to <code>--space-6</code></td>
+                    <td>The spacing scale that gaps and padding use.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Do not add your own variables to Tsunami's set, and do not
+              restyle a component with its internal selectors: change the
+              variable, and every component follows.
+            </p>
+          </section>
