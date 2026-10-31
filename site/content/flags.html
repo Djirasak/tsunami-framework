@@ -15,7 +15,6 @@
 
             </div>
           </header>
-          </div>
           <section>
             <h2>Flags with an accessible name</h2>
             <div class="tabs" data-tabs>
@@ -279,7 +278,7 @@
           <section>
             <h2>Every flag</h2>
             <p>Search by code or name; click a flag to copy its HTML.</p>
-            <div class="input-group docs-narrow">
+            <div class="input-group">
               <span><i class="icon icon-search" aria-hidden="true"></i></span>
               <input
                 id="flag-search"
@@ -290,6 +289,7 @@
               />
               <span id="flag-count" aria-live="polite"></span>
             </div>
+            <p id="flag-status" class="docs-sr" role="status"></p>
             <div id="flag-grid" class="docs-icons"></div>
           </section>
           <script type="module" src="/docs/flags.js"></script>
