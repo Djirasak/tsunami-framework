@@ -1,4 +1,4 @@
-/* tsunami v1.2.0 */
+/* tsunami v1.3.0 */
 // src/js/theme.js
 var KEY = "tsunami-theme";
 var root = document.documentElement;
@@ -3575,14 +3575,17 @@ document.addEventListener("click", async (e) => {
     window.tsunami?.toast?.(label || "Copied");
   btn.dispatchEvent(new CustomEvent("tsunami:copy", { bubbles: true, detail: { text } }));
 });
-var PRE = ".code-block > pre";
+(window.tsunami ??= {}).copy = copy;
+
+// src/js/scroll-area.js
+var BOX = ".scroll-area, .code-block > pre, .typography pre";
 var focusable = (node) => {
-  const list = node.matches?.(PRE) ? [node] : [];
-  for (const pre of [...list, ...node.querySelectorAll?.(PRE) ?? []])
-    if (!pre.hasAttribute("tabindex"))
-      pre.tabIndex = 0;
+  const list = node.matches?.(BOX) ? [node] : [];
+  for (const el of [...list, ...node.querySelectorAll?.(BOX) ?? []])
+    if (!el.hasAttribute("tabindex"))
+      el.tabIndex = 0;
 };
-var startFocusable = () => {
+var start4 = () => {
   focusable(document);
   new MutationObserver((records) => {
     for (const r of records)
@@ -3590,10 +3593,9 @@ var startFocusable = () => {
   }).observe(document.documentElement, { childList: true, subtree: true });
 };
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", startFocusable);
+  document.addEventListener("DOMContentLoaded", start4);
 else
-  startFocusable();
-(window.tsunami ??= {}).copy = copy;
+  start4();
 
 // src/js/filter-bar.js
 var BAR2 = ".filter-bar";
@@ -3727,7 +3729,7 @@ function setDisabled(el) {
   const off = "disabled" in el.dataset;
   text(el).disabled = off;
 }
-function start4(el) {
+function start5(el) {
   const list = split(el.dataset.value ?? "");
   el._tags = [];
   for (const t of list)
@@ -3759,7 +3761,7 @@ function mount6(root = document) {
     el._status.setAttribute("data-sr-only", "");
     el.append(el._status);
     setDisabled(el);
-    start4(el);
+    start5(el);
   }
 }
 var field = (e) => e.target.closest?.(`${TAGS} > input[type="text"]`);
@@ -3815,7 +3817,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("reset", (e) => setTimeout(() => {
   for (const el of e.target.querySelectorAll(TAGS)) {
     text(el).value = "";
-    start4(el);
+    start5(el);
   }
 }));
 if (document.readyState === "loading")
@@ -4002,7 +4004,7 @@ function setup(node) {
     render3(s, Math.max(i, 0), false);
   }
 }
-function start5() {
+function start6() {
   setup(document.documentElement);
   new MutationObserver((records) => {
     for (const r of records) {
@@ -4014,9 +4016,9 @@ function start5() {
   }).observe(document.documentElement, { childList: true, subtree: true });
 }
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", start5, { once: true });
+  document.addEventListener("DOMContentLoaded", start6, { once: true });
 else
-  start5();
+  start6();
 (window.tsunami ??= {}).stepper = { go, next, prev, index };
 
 // src/js/validate.js
@@ -5930,7 +5932,7 @@ function refresh6(box, state) {
     ...state.options
   });
 }
-function start6(box, state) {
+function start7(box, state) {
   load2().then((monaco) => {
     if (states7.get(box) !== state)
       return;
@@ -6003,7 +6005,7 @@ function mount11(box, options = {}) {
     configurable: true,
     get: () => state.editor
   });
-  start6(box, state);
+  start7(box, state);
 }
 var upgrade8 = (box) => {
   if (!states7.has(box))

@@ -6,6 +6,8 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-31
+
 ### Added
 
 - A Scroll area that has no `tabindex` gets `tabindex="0"`, and so does a code block that scrolls by itself (`.code-block > pre` and the `pre` in Typography): the keyboard can focus it and scroll it (a table that scrolls sideways on a phone was out of reach). Set your own `tabindex` to leave it alone.
@@ -171,7 +173,8 @@ First release. Semantic HTML and `data-*` attributes, with no runtime dependenci
 - `.h1` to `.h6` classes that give any element the look of a heading.
 - A Claude skill (`.claude/skills/tsunami`) that describes the classes and `data-*` attributes.
 
-[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.0...v1.1.1

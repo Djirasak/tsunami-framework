@@ -1,4 +1,4 @@
-/* tsunami v1.2.0 */
+/* tsunami v1.3.0 */
 @charset "UTF-8";
 @layer tokens, base, components;
 @layer tokens {
@@ -12655,6 +12655,11 @@
     transition-property: color, background-color, border-color;
     transition-duration: 0.15s;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  :where(.tabs [role=tab] > svg) {
+    flex: none;
+    width: 1rem;
+    height: 1rem;
   }
   :where(.tabs [role=tab]:focus-visible) {
     outline-offset: -2px;
