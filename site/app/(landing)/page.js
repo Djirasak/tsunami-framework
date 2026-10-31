@@ -54,6 +54,11 @@ const features = [
 const CDN = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v${version()}/dist/tsunami.min.css">
 <script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v${version()}/dist/tsunami.min.js"></script>`;
 
+const NPM = `npm install @djirasak/tsunami-ui
+
+import "@djirasak/tsunami-ui/css";
+import "@djirasak/tsunami-ui";`;
+
 const EXAMPLE = `<article class="card">
   <section>
     <p>Ready to ship?</p>
@@ -338,6 +343,26 @@ export default function Landing() {
               data-variant="ghost"
               data-size="icon-sm"
               data-copy-target="#landing-cdn"
+              aria-label="Copy the code"
+              suppressHydrationWarning
+            >
+              <i className="icon icon-copy" data-idle="" aria-hidden="true"></i>
+              <i className="icon icon-check" data-done="" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p className="landing-lead-muted">
+            Or from npm, for an app with a bundler:
+          </p>
+          <div className="code-block">
+            <pre suppressHydrationWarning>
+              <code id="landing-npm">{NPM}</code>
+            </pre>
+            <button
+              type="button"
+              className="btn"
+              data-variant="ghost"
+              data-size="icon-sm"
+              data-copy-target="#landing-npm"
               aria-label="Copy the code"
               suppressHydrationWarning
             >

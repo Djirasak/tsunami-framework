@@ -87,6 +87,27 @@
               <code>dist/monaco/vs/loader.js</code>.
             </p>
             <p>
+              Or install it from npm, for an app with a bundler. The package
+              holds <code>dist/</code>, <code>fonts/</code> and
+              <code>flags/</code> side by side, and its TypeScript declarations
+              type <code>window.tsunami</code> and the
+              <code>tsunami:*</code> events once you import it.
+            </p>
+            <pre><code>npm install @djirasak/tsunami-ui
+
+import "@djirasak/tsunami-ui/css";
+import "@djirasak/tsunami-ui";</code></pre>
+            <p>
+              A bundler runs the script after the first paint, so people who
+              chose dark can see a flash. To avoid it, load
+              <code>node_modules/@djirasak/tsunami-ui/dist/tsunami.min.js</code>
+              as a plain <code>&lt;script&gt;</code> in
+              <code>&lt;head&gt;</code> instead. The libraries some components
+              need (chart, date picker, editor, code editor, drag and drop) are
+              files in <code>dist/</code> that you load with a
+              <code>&lt;script&gt;</code> before the Tsunami script.
+            </p>
+            <p>
               To host the files yourself, copy <code>dist/</code>,
               <code>fonts/</code> and <code>flags/</code> side by side and link
               <code>dist/tsunami.min.css</code> and
