@@ -3,7 +3,7 @@
 // It needs the docs running (bun run docs) and Chromium (bunx playwright install
 // chromium); set CHROMIUM_PATH to use a browser you already have.
 //   --url=<origin>   where the docs run (default http://localhost:5477)
-//   --page=<text>    only pages whose path contains the text
+//   --page=<text>    only pages whose path contains the text (end it with $ to match one page exactly, like --page=/$)
 //   --all            also report moderate and minor problems (default: serious
 //                    and critical only, which fail the check)
 // axe skips what Tsunami does not own or cannot get wrong: Monaco and TinyMCE draw
@@ -36,7 +36,10 @@ const paths = [
     s === "index" ? "/docs" : `/docs/${s}`,
   ),
   ...Object.keys(read("examples.json")).map((s) => `/examples/${s}`),
-].filter((p) => !only || p.includes(only));
+].filter(
+  (p) =>
+    !only || (only.endsWith("$") ? p === only.slice(0, -1) : p.includes(only)),
+);
 
 const axe = readFileSync(
   join(root, "node_modules", "axe-core", "axe.min.js"),
