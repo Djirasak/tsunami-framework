@@ -3,7 +3,8 @@
               <h1>Tree</h1>
               <p>
                 Nested folders and files. A folder is a <code>details</code>, so
-                no JS is needed.
+                no JS is needed, and JS adds the keyboard behaviour of a WAI-ARIA
+                tree.
               </p>
             </div>
           </header>
@@ -543,8 +544,12 @@
             <h2>API</h2>
             <p>
               Lives in <code>js/tree.js</code>. A tree without a search field
-              needs no JS. It fires no events of its own;
-              <code>details</code> fires the browser's <code>toggle</code>.
+              needs no JS for folders. JS sets <code>role="tree"</code>,
+              <code>group</code>, <code>treeitem</code> and
+              <code>aria-expanded</code> (kept in step with
+              <code>open</code>) and one roving <code>tabindex</code>. It fires
+              no events of its own; <code>details</code> fires the browser's
+              <code>toggle</code>.
             </p>
             <div class="card scroll-area">
               <table class="table">
@@ -575,11 +580,48 @@
                     <td>Calls <code>filter()</code> as you type</td>
                   </tr>
                   <tr>
-                    <td><code>Tab / Enter / Space</code></td>
+                    <td><code>Tab</code></td>
                     <td>keyboard</td>
                     <td>
-                      Native browser behaviour: move between folders and files,
-                      open and close folders, follow links
+                      One tab stop for the whole tree: the open file, else the
+                      first item
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>ArrowDown / ArrowUp</code></td>
+                    <td>keyboard</td>
+                    <td>
+                      Next or previous visible item. Items in closed folders or
+                      hidden by the search are skipped.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>ArrowRight</code></td>
+                    <td>keyboard</td>
+                    <td>
+                      Opens a closed folder; on an open folder, moves to its
+                      first item
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>ArrowLeft</code></td>
+                    <td>keyboard</td>
+                    <td>
+                      Closes an open folder; otherwise moves to the parent
+                      folder
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Home / End</code></td>
+                    <td>keyboard</td>
+                    <td>First or last visible item</td>
+                  </tr>
+                  <tr>
+                    <td><code>Enter / Space</code></td>
+                    <td>keyboard</td>
+                    <td>
+                      Toggles a folder (native <code>summary</code>); Enter
+                      follows a link
                     </td>
                   </tr>
                 </tbody>
