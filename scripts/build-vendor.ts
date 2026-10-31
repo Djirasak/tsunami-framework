@@ -61,3 +61,24 @@ console.log("dist/chart.min.js");
 rmSync(`${root}dist/monaco`, { recursive: true, force: true });
 cpSync(`${root}vendor/monaco/vs`, `${root}dist/monaco/vs`, { recursive: true });
 console.log("dist/monaco/vs");
+
+// The vendored scripts end with "//# sourceMappingURL=...", but the maps are not
+// shipped. A missing map is a 404 in the browser tools, and it stops Django's
+// ManifestStaticFilesStorage (collectstatic) from hashing the file: drop the lines.
+const MAP = /^\/\/# sourceMappingURL=.*$\n?/gm;
+let stripped = 0;
+for (const file of [
+  `${root}dist/chart.min.js`,
+  `${root}dist/tinymce.min.js`,
+  ...[...new Bun.Glob("**/*.js").scanSync(`${root}dist/monaco`)].map(
+    (f) => `${root}dist/monaco/${f}`,
+  ),
+]) {
+  const text = await Bun.file(file).text();
+  const clean = text.replace(MAP, "");
+  if (clean !== text) {
+    await Bun.write(file, clean);
+    stripped++;
+  }
+}
+console.log(`source map comments removed from ${stripped} file(s)`);
