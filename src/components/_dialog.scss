@@ -16,7 +16,18 @@
     color: var(--fg);
   }
 
-  :where(.dialog[open], .dialog[open] > form) {
+  // Only display waits for [open]: the direction stays while the box fades out,
+  // or the parts would line up in a row for the length of the close animation.
+  :where(.dialog) {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  :where(.dialog[open]) {
+    display: flex;
+  }
+
+  :where(.dialog > form) {
     display: flex;
     flex-direction: column;
     min-height: 0;

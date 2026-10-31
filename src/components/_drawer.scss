@@ -19,9 +19,13 @@
     color: var(--fg);
   }
 
+  // Only display waits for [open]: the direction stays while the panel slides out.
+  :where(.drawer) {
+    flex-direction: column;
+  }
+
   :where(.drawer[open]) {
     display: flex;
-    flex-direction: column;
   }
 
   :where(.drawer[data-side="top"]) {

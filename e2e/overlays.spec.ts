@@ -399,3 +399,22 @@ test.describe("Tooltip", () => {
     );
   });
 });
+
+// While a dialog or drawer fades out, [open] is already gone but the box is still
+// drawn. Its direction must not depend on [open], or the parts line up in a row
+// for the length of the close animation. Computed style is the same after it ends.
+test.describe("Closing keeps the column layout", () => {
+  for (const [path, id] of [
+    ["/docs/dialog", "dlg-note"],
+    ["/docs/drawer", "drw-filter"],
+  ] as const) {
+    test(`${id} stays a column when closed`, async ({ page }) => {
+      await open(page, path);
+      const direction = await page.evaluate(
+        (id) => getComputedStyle(document.getElementById(id)!).flexDirection,
+        id,
+      );
+      expect(direction).toBe("column");
+    });
+  }
+});
