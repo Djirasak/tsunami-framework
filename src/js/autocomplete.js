@@ -45,11 +45,13 @@ function build(root, source) {
   if (!input) return;
   const id = `autocomplete-${++uid}`;
   const list = h("div", { role: "listbox", id: `${id}-list` });
-  const pop = h("div", { popover: "manual" }, list);
+  const status = h("p", { role: "status", "data-sr-only": "" });
+  const pop = h("div", { popover: "manual" }, list, status);
   S.set(root, {
     input,
     list,
     pop,
+    status,
     datalist: input.list ?? root.querySelector("datalist"),
     link: input.getAttribute("list"),
     prev: attrs.map((k) => input.getAttribute(k)),
@@ -169,7 +171,11 @@ function show(root, items, q) {
       `${i.label} ${i.value} ${i.text}`.toLowerCase().includes(term),
     )
     .slice(0, limit(root));
-  if (!found.length) return close(root);
+  if (!found.length) {
+    close(root);
+    st.status.textContent = "No suggestions";
+    return;
+  }
   const frag = document.createDocumentFragment();
   found.forEach((i, n) => {
     const title = h("span");
@@ -188,6 +194,8 @@ function show(root, items, q) {
     frag.append(el);
   });
   st.list.replaceChildren(frag);
+  st.status.textContent =
+    found.length === 1 ? "1 suggestion" : `${found.length} suggestions`;
   activate(root, null);
   if (!opened(st)) st.pop.showPopover();
   st.input.setAttribute("aria-expanded", "true");
@@ -208,9 +216,12 @@ function close(root) {
 
 function activate(root, el) {
   const { list, input } = S.get(root);
-  list.querySelector("[data-active]")?.removeAttribute("data-active");
+  const prev = list.querySelector("[data-active]");
+  prev?.removeAttribute("data-active");
+  prev?.removeAttribute("aria-selected");
   if (el) {
     el.setAttribute("data-active", "");
+    el.setAttribute("aria-selected", "true");
     input.setAttribute("aria-activedescendant", el.id);
     el.scrollIntoView({ block: "nearest" });
   } else input.removeAttribute("aria-activedescendant");
