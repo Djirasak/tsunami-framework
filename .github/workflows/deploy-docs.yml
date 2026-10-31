@@ -45,6 +45,8 @@ jobs:
       - name: Install the docs app dependencies
         run: bun install --frozen-lockfile
         working-directory: site
+      - name: Check the docs content
+        run: bun run check:docs
       # Builds dist/ (root), copies it into public/, runs next build and the
       # OpenNext build, then wrangler deploy.
       - name: Build and deploy to Cloudflare Workers
