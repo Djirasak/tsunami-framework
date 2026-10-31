@@ -37,8 +37,15 @@ function render(el) {
   if (hidden) hidden.value = tags(el).join(",");
 }
 
+// A screen reader hears the count after each change, and when the limit stops an add.
+function say(el, text) {
+  if (el._status) el._status.textContent = text;
+}
+
 function change(el) {
   render(el);
+  const n = tags(el).length;
+  say(el, n === 0 ? "No tags" : n === 1 ? "1 tag" : `${n} tags`);
   el.dispatchEvent(
     new CustomEvent("tsunami:tagschange", {
       bubbles: true,
@@ -52,7 +59,10 @@ function add(el, list) {
   const max = Number(el.dataset.max) || Infinity;
   let added = false;
   for (const t of list) {
-    if (tags(el).length >= max) break;
+    if (tags(el).length >= max) {
+      say(el, `Limit of ${max} tags reached`);
+      break;
+    }
     if (tags(el).includes(t)) continue;
     tags(el).push(t);
     added = true;
@@ -90,6 +100,10 @@ function mount(root = document) {
       hidden.name = el.dataset.name;
       el.append(hidden);
     }
+    el._status = document.createElement("p");
+    el._status.setAttribute("role", "status");
+    el._status.setAttribute("data-sr-only", "");
+    el.append(el._status);
     setDisabled(el);
     start(el);
   }
