@@ -554,3 +554,24 @@ test.describe("Copy button", () => {
     await expect(pre).toBeFocused();
   });
 });
+
+test.describe("Scroll area", () => {
+  // A table that scrolls sideways on a phone must be reachable with the keyboard.
+  test("gets tabindex 0 unless the page sets its own", async ({ page }) => {
+    await open(page, "/docs/scroll-area");
+    const result = await page.evaluate(() => {
+      const make = (attrs: Record<string, string>) => {
+        const el = document.createElement("div");
+        el.className = "scroll-area";
+        for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+        document.body.append(el);
+        return el;
+      };
+      return [make({}), make({ tabindex: "-1" })];
+    });
+    void result;
+    await expect(page.locator(".scroll-area:not([tabindex])")).toHaveCount(0);
+    await expect(page.locator('body > .scroll-area[tabindex="0"]')).toHaveCount(1);
+    await expect(page.locator('body > .scroll-area[tabindex="-1"]')).toHaveCount(1);
+  });
+});
