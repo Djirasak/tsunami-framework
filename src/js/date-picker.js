@@ -427,6 +427,58 @@ document.addEventListener("keydown", (e) => {
   state.show();
 });
 
+// Home, End, PageUp and PageDown on a day, as in the WAI-ARIA date grid. The
+// library handles the arrow keys; these go to a computed date, which is shown
+// (the month is redrawn when it is not on screen) and focused.
+const shifted = (iso, key, shift, first) => {
+  const [y, m, d] = iso.split("-").map(Number);
+  const at = new Date(Date.UTC(y, m - 1, d));
+  const day = (at.getUTCDay() - first + 7) % 7; // days since the week began
+  if (key === "Home") at.setUTCDate(d - day);
+  else if (key === "End") at.setUTCDate(d - day + 6);
+  else {
+    const months = (shift ? 12 : 1) * (key === "PageUp" ? -1 : 1);
+    const last = new Date(Date.UTC(y, m - 1 + months + 1, 0)).getUTCDate();
+    at.setTime(Date.UTC(y, m - 1 + months, Math.min(d, last)));
+  }
+  return at.toISOString().slice(0, 10);
+};
+document.addEventListener("keydown", (e) => {
+  if (
+    e.defaultPrevented ||
+    e.altKey ||
+    e.ctrlKey ||
+    e.metaKey ||
+    !["Home", "End", "PageUp", "PageDown"].includes(e.key)
+  )
+    return;
+  const [root, state] = stateOf(e.target);
+  const btn = e.target.closest?.("[data-vc-date-btn]");
+  if (!state || !btn || !open.has(root) || !state.host.contains(btn)) return;
+  if (e.shiftKey && !e.key.startsWith("Page")) return;
+  e.preventDefault();
+  const cal = state.calendar;
+  const iso = shifted(
+    btn.closest("[data-vc-date]").dataset.vcDate,
+    e.key,
+    e.shiftKey,
+    cal.firstWeekday ?? 1,
+  );
+  const find = () =>
+    [...state.host.querySelectorAll(`[data-vc-date="${iso}"]`)].find(
+      (c) =>
+        c.dataset.vcDateMonth === "current" &&
+        !c.querySelector("button:disabled, [aria-disabled='true']"),
+    )?.firstElementChild;
+  let next = find();
+  if (!next) {
+    const [y, m] = iso.split("-").map(Number);
+    cal.set({ selectedYear: y, selectedMonth: m - 1 }, { dates: true, month: true, year: true });
+    next = find();
+  }
+  next?.focus();
+});
+
 // Escape closes the panel first and goes no further, so a dialog stays open.
 document.addEventListener(
   "keydown",
