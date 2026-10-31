@@ -963,8 +963,15 @@
                     </td>
                   </tr>
                   <tr>
-                    <td><kbd>↑</kbd> <kbd>↓</kbd></td>
-                    <td>In a radio group: moves the choice.</td>
+                    <td><kbd>↓</kbd> on the button</td>
+                    <td>Moves into an open menu, to its first item.</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>↑</kbd> <kbd>↓</kbd> <kbd>Home</kbd> <kbd>End</kbd></td>
+                    <td>
+                      Move between the items, and wrap around. In a radio
+                      group the arrows move the choice.
+                    </td>
                   </tr>
                   <tr>
                     <td><kbd>Esc</kbd></td>
@@ -974,9 +981,10 @@
               </table>
             </div>
             <p>
-              No script and no
-              <code>role="menu"</code>: items are plain buttons and links, so
-              Tab moves between them instead of the arrow keys.
+              There is no <code>role="menu"</code>: items are plain buttons and
+              links, so Tab works too. The Tsunami script keeps the button's
+              <code>aria-expanded</code> in step and adds the arrow keys; without
+              it the menu still opens and closes natively.
             </p>
           </section>
           <section>
