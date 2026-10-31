@@ -147,7 +147,7 @@
     color: var(--muted);
   }
 
-  // A note: <article> with h4, time, p and a footer of actions.
+  // A note: <article> with a heading (h3 to h6), time, p and a footer of actions.
   :where(.timeline article) {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -158,11 +158,11 @@
     background: var(--surface);
   }
 
-  :where(.timeline article > h4) {
+  :where(.timeline article > :is(h3, h4, h5, h6)) {
     font-weight: 500;
   }
 
-  :where(.timeline article > :not(h4, time)) {
+  :where(.timeline article > :not(h3, h4, h5, h6, time)) {
     grid-column: 1 / -1;
   }
 
