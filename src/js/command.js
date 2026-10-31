@@ -21,6 +21,7 @@ const off = (item) =>
   item.hasAttribute("disabled") ||
   item.getAttribute("aria-disabled") === "true";
 const hidden = (item) => item.getAttribute("aria-hidden") === "true";
+const statuses = new WeakMap();
 const items = (root) => all(root).filter((i) => !off(i) && !hidden(i));
 const active = (root) =>
   all(root).find((i) => i.classList.contains("active")) || null;
@@ -108,6 +109,19 @@ function refresh(root) {
     }
   }
   setActive(root, items(root)[0] || null);
+  // Tell a screen reader what the typed text found.
+  const status = statuses.get(root);
+  if (status) {
+    const n = items(root).length;
+    status.textContent =
+      !typed && chosen === ""
+        ? ""
+        : n === 0
+          ? list.dataset.empty || "No results"
+          : n === 1
+            ? "1 result"
+            : `${n} results`;
+  }
 }
 
 // Choose a filter ("" removes it): the badge names it, the field starts over.
@@ -135,6 +149,18 @@ function upgrade(root) {
   if (root.dataset.commandInitialized || !input(root) || !menu(root)) return;
   root.dataset.commandInitialized = "true";
   limits.set(root, step(root));
+  const box = input(root);
+  const list = menu(root);
+  // Give the field and the list a name when the markup has none.
+  if (!box.labels?.length && !box.hasAttribute("aria-label"))
+    box.setAttribute("aria-label", box.placeholder || "Search");
+  if (!list.hasAttribute("aria-label") && !list.hasAttribute("aria-labelledby"))
+    list.setAttribute("aria-label", "Results");
+  const status = document.createElement("p");
+  status.setAttribute("role", "status");
+  status.setAttribute("data-sr-only", "");
+  root.append(status);
+  statuses.set(root, status);
   refresh(root);
 }
 
