@@ -14,7 +14,7 @@ export default function Shell({ slug }) {
         dangerouslySetInnerHTML={{ __html: jsonLdText(slug) }}
       />
       <aside className="sidebar" id="docs-nav" popover="" data-keep-scroll>
-        <a className="docs-brand" href="/" aria-label="Tsunami, back to the home page">
+        <a className="docs-brand" href="/" aria-label="Tsunami 津波, home">
           <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true">
             <rect x="1" y="1" width="30" height="30" rx="7" />
             <path d="M5.5 21c3 0 5-2 6.5-5.2C14 11 17.2 7 22 7c3 0 4.8 2.2 4.8 4.5 0 2-1.6 3.5-3.5 3.5-1.8 0-3-1.3-3-2.9" />
