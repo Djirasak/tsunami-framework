@@ -7,6 +7,16 @@
               </p>
             </div>
           </header>
+          <div class="alert" data-variant="info" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <strong>Charts are Chart.js</strong>
+            <p>
+              Version {{vendor:chart}} of
+              <a href="https://www.chartjs.org/">Chart.js</a> (MIT licence), loaded only by a
+              page that has a chart.
+            </p>
+          </div>
+
 
           <section>
             <h2>A line chart takes rows and a series</h2>
@@ -1101,7 +1111,7 @@ document.addEventListener('click', (e) =&gt; {
             <h2>A page loads Chart.js itself, before the Tsunami script</h2>
             <p>
               The drawing is
-              <a href="https://www.chartjs.org">Chart.js</a> 4.5.1 (MIT
+              <a href="https://www.chartjs.org">Chart.js</a> {{vendor:chart}} (MIT
               licence). It is not in <code>tsunami.min.js</code>: a page that
               has a chart loads <code>dist/chart.min.js</code> with its own
               <code>&lt;script&gt;</code> first. A page with no chart does not

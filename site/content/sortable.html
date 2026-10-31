@@ -7,6 +7,16 @@
               </p>
             </div>
           </header>
+          <div class="alert" data-variant="info" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <strong>Dragging is SortableJS</strong>
+            <p>
+              Version {{vendor:sortable}} of
+              <a href="https://github.com/SortableJS/Sortable">SortableJS</a> (MIT licence), loaded only by a
+              page that has a sortable list.
+            </p>
+          </div>
+
 
           <section>
             <h2>A handle drags its row</h2>
@@ -150,7 +160,7 @@
             <p>
               The drag is
               <a href="https://github.com/SortableJS/Sortable">SortableJS</a>
-              1.15.7 (MIT licence). It is not in <code>tsunami.min.js</code>: a
+              {{vendor:sortable}} (MIT licence). It is not in <code>tsunami.min.js</code>: a
               page that has a <code>.sortable</code> loads
               <code>dist/sortable.min.js</code> with its own
               <code>&lt;script&gt;</code> first. A page with no sortable list
@@ -1863,7 +1873,7 @@
             </p>
             <p>
               <a href="https://github.com/SortableJS/Sortable">SortableJS</a>
-              1.15.7 is MIT licensed (<code>vendor/sortable/LICENSE.txt</code>).
+              {{vendor:sortable}} is MIT licensed (<code>vendor/sortable/LICENSE.txt</code>).
               It is a separate file, <code>dist/sortable.min.js</code>, not part
               of <code>tsunami.min.js</code>.
             </p>

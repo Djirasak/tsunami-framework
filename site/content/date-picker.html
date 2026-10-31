@@ -7,6 +7,16 @@
               </p>
             </div>
           </header>
+          <div class="alert" data-variant="info" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <strong>The calendar is Vanilla Calendar Pro</strong>
+            <p>
+              Version {{vendor:vanilla-calendar}} of
+              <a href="https://vanilla-calendar.pro/">Vanilla Calendar Pro</a> (MIT licence), loaded only by a
+              page that has a date picker.
+            </p>
+          </div>
+
           <section>
             <h2>A text field with an empty panel</h2>
             <p>
@@ -82,7 +92,7 @@
             <p>
               The calendar is
               <a href="https://vanilla-calendar.pro/">Vanilla Calendar Pro</a>
-              3.4.0 (MIT licence). It is not in <code>tsunami.min.js</code>: a
+              {{vendor:vanilla-calendar}} (MIT licence). It is not in <code>tsunami.min.js</code>: a
               page that has a <code>.date-picker</code> loads
               <code>dist/vanilla-calendar.min.js</code> with its own
               <code>&lt;script&gt;</code> first. A page with no date picker does
@@ -1535,7 +1545,7 @@
             </p>
             <p>
               <a href="https://vanilla-calendar.pro/">Vanilla Calendar Pro</a>
-              3.4.0 is MIT licensed
+              {{vendor:vanilla-calendar}} is MIT licensed
               (<code>vendor/vanilla-calendar/LICENSE.txt</code>). It is a
               separate file, <code>dist/vanilla-calendar.min.js</code>, not part
               of <code>tsunami.min.js</code>.

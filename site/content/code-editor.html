@@ -7,11 +7,21 @@
               </p>
             </div>
           </header>
+          <div class="alert" data-variant="info" role="note">
+            <i class="icon icon-info" aria-hidden="true"></i>
+            <strong>The code editor is Monaco</strong>
+            <p>
+              Version {{vendor:monaco}} of
+              <a href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a> (MIT licence), loaded only by a
+              page that has a code editor.
+            </p>
+          </div>
+
 
           <section>
             <h2>The editor is Monaco</h2>
             <p>
-              Monaco Editor 0.57.0 (MIT) is vendored in this repository in
+              Monaco Editor {{vendor:monaco}} (MIT) is vendored in this repository in
               <code>vendor/monaco</code> and copied to
               <code>dist/monaco/vs</code>: the loader, the editor, its workers
               and the languages CSS, SCSS, HTML, JavaScript and JSON (7.4 MB
