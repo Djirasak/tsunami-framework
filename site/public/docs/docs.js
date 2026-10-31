@@ -51,12 +51,43 @@ function highlight(src) {
   });
 }
 
+// JavaScript and shell blocks (code class language-js / language-sh), for the install lines.
+function highlightJs(src) {
+  return src.replace(
+    /(\/\/[^\n]*)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`[^`]*`)|\b(import|export|from|const|let|await|return|default)\b|([\s\S])/g,
+    (m, c, str, key) =>
+      c ? span("tok-c", c) : str ? span("tok-s", str) : key ? span("tok-t", key) : esc(m),
+  );
+}
+
+function highlightSh(src) {
+  return src
+    .split("\n")
+    .map((line) => {
+      if (/^\s*#/.test(line)) return span("tok-c", line);
+      const m = /^(\s*)(\S+)([\s\S]*)$/.exec(line);
+      if (!m) return esc(line);
+      const rest = m[3].replace(
+        /(\s)(--?[\w-]+)|(\S+|\s+)/g,
+        (x, w, flag, other) => (flag ? esc(w) + span("tok-a", flag) : esc(other ?? x)),
+      );
+      return esc(m[1]) + span("tok-t", m[2]) + rest;
+    })
+    .join("\n");
+}
+
 for (const pre of document.querySelectorAll(
   ".docs-main > section > pre, [role=tabpanel] > pre",
 )) {
   const code = pre.querySelector("code");
   if (!code) continue;
-  code.innerHTML = highlight(code.textContent);
+  code.innerHTML = (
+    code.classList.contains("language-js")
+      ? highlightJs
+      : code.classList.contains("language-sh")
+        ? highlightSh
+        : highlight
+  )(code.textContent);
   const box = document.createElement("div");
   box.className = "docs-code";
   pre.replaceWith(box);

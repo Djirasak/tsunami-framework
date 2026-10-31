@@ -21,3 +21,32 @@ export function highlightHtml(src) {
     },
   );
 }
+
+// JavaScript, just enough for an import line: comments, strings and a few keywords.
+export function highlightJs(src) {
+  return src.replace(
+    /(\/\/[^\n]*)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`[^`]*`)|\b(import|export|from|const|let|await|return|default)\b|([\s\S])/g,
+    (m, c, str, key) =>
+      c ? span("tok-c", c) : str ? span("tok-s", str) : key ? span("tok-t", key) : esc(m),
+  );
+}
+
+// A shell command: the command name, its flags and # comments.
+export function highlightSh(src) {
+  return src
+    .split("\n")
+    .map((line) => {
+      if (/^\s*#/.test(line)) return span("tok-c", line);
+      const m = /^(\s*)(\S+)([\s\S]*)$/.exec(line);
+      if (!m) return esc(line);
+      const rest = m[3].replace(
+        /(\s)(--?[\w-]+)|(\S+|\s+)/g,
+        (x, w, flag, other) => (flag ? esc(w) + span("tok-a", flag) : esc(other ?? x)),
+      );
+      return esc(m[1]) + span("tok-t", m[2]) + rest;
+    })
+    .join("\n");
+}
+
+export const highlightCode = (src, lang = "html") =>
+  lang === "js" ? highlightJs(src) : lang === "sh" ? highlightSh(src) : highlightHtml(src);
