@@ -44,6 +44,11 @@ $controls: ".input, .field > input:not([type='checkbox'], [type='radio'], [type=
     border-color: var(--danger-fg);
   }
 
+  // Without the script the browser still marks a field the user has left invalid.
+  :where(#{states(":user-invalid")}) {
+    border-color: var(--danger-fg);
+  }
+
   :where(#{states(":disabled")}) {
     background: var(--subtle);
     color: var(--muted);

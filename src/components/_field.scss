@@ -23,8 +23,13 @@ $check: "input:is([type='checkbox'], [type='radio'])";
     font-size: var(--text-sm);
   }
 
-  :where(.field:has([aria-invalid="true"]) small) {
+  :where(.field:has([aria-invalid="true"], :user-invalid) small) {
     color: var(--danger-fg);
+  }
+
+  // The error line made by validate.js stays out of the way until it has text.
+  :where(.field > small[data-error]:empty) {
+    display: none;
   }
 
   // Row: the box first, then its label (or a div with label + small).

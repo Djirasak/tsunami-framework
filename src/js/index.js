@@ -24,6 +24,7 @@ import "./copy.js";
 import "./filter-bar.js";
 import "./tag-input.js";
 import "./stepper.js";
+import "./validate.js";
 import "./phone-input.js";
 import "./time-picker.js";
 import "./sortable.js";
