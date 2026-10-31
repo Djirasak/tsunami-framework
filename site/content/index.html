@@ -254,3 +254,61 @@
               </div>
             </div>
           </section>
+          <section>
+            <h2>Libraries it loads</h2>
+            <p>
+              The core, <code>tsunami.min.js</code>, has no dependencies. Five
+              components use a library of their own. It is vendored in this
+              repository at a pinned version, served from
+              <code>dist/</code>, and loaded only by a page that has that
+              component.
+            </p>
+            <div class="card scroll-area" tabindex="0" role="region" aria-label="Libraries">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Library</th>
+                    <th scope="col">Version</th>
+                    <th scope="col">Licence</th>
+                    <th scope="col">Used by</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="https://www.chartjs.org/">Chart.js</a></td>
+                    <td>{{vendor:chart}}</td>
+                    <td>MIT</td>
+                    <td><a href="/docs/chart">Chart</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a></td>
+                    <td>{{vendor:monaco}}</td>
+                    <td>MIT</td>
+                    <td><a href="/docs/code-editor">Code editor</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://github.com/SortableJS/Sortable">SortableJS</a></td>
+                    <td>{{vendor:sortable}}</td>
+                    <td>MIT</td>
+                    <td><a href="/docs/sortable">Sortable</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://www.tiny.cloud/tinymce/">TinyMCE</a></td>
+                    <td>{{vendor:tinymce}}</td>
+                    <td>MIT (the last MIT line)</td>
+                    <td><a href="/docs/editor">Editor</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://vanilla-calendar.pro/">Vanilla Calendar Pro</a></td>
+                    <td>{{vendor:vanilla-calendar}}</td>
+                    <td>MIT</td>
+                    <td><a href="/docs/date-picker">Date picker</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The fonts and icons are vendored too: Google Sans (SIL OFL 1.1),
+              Lucide icons (ISC) and the country flags from flag-icons (MIT).
+            </p>
+          </section>
