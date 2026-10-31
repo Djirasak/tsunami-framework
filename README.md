@@ -29,6 +29,19 @@ From jsDelivr (each release tag; replace the version):
 <script src="https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v1.2.0/dist/tsunami.min.js"></script>
 ```
 
+From npm:
+
+```sh
+npm install @djirasak/tsunami-ui
+```
+
+```js
+import "@djirasak/tsunami-ui/css";
+import "@djirasak/tsunami-ui";
+```
+
+The package holds `dist/`, `fonts/` and `flags/` side by side, with the TypeScript declarations (`window.tsunami` and the `tsunami:*` events are typed once you import it). A bundler runs the script after the first paint, so people who chose dark can see a flash; to avoid it, load `node_modules/@djirasak/tsunami-ui/dist/tsunami.min.js` as a plain `<script>` in `<head>`. The libraries some components need (chart, date picker, editor, code editor, drag and drop) are files in `dist/` that you load with a `<script>` before the Tsunami script.
+
 Or self-hosted:
 
 ```html
