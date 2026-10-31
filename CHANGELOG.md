@@ -9,6 +9,7 @@ Versions follow [semantic versioning](https://semver.org).
 ### Changed
 
 - The backdrop behind a Dialog, Drawer, Command palette and the Sidebar drawer blurs the page as well as dimming it.
+- Docs: the code blocks on the landing page are coloured like the docs pages, and each code block is as tall as the result beside it.
 
 ### Fixed
 
