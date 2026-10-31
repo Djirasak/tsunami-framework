@@ -486,7 +486,7 @@
             <h2>A note with Edit and Delete</h2>
             <p>
               A staff note is an <code>&lt;article&gt;</code> in the event: an
-              <code>&lt;h4&gt;</code> author name, a <code>&lt;time&gt;</code>,
+              <code>&lt;h3&gt;</code> author name, a <code>&lt;time&gt;</code>,
               a <code>&lt;p&gt;</code> message and a
               <code>&lt;footer&gt;</code> of buttons. Show the buttons only
               while the note can still be edited.
@@ -529,7 +529,7 @@
                     </li>
                     <li>
                       <article>
-                        <h4>James Carter</h4>
+                        <h3>James Carter</h3>
                         <time datetime="2026-10-23T08:10"
                           >Oct 23, 2026 08:10</time
                         >
@@ -575,7 +575,7 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;article&gt;
-      &lt;h4&gt;James Carter&lt;/h4&gt;
+      &lt;h3&gt;James Carter&lt;/h3&gt;
       &lt;time datetime="2026-10-23T08:10"&gt;Oct 23, 2026 08:10&lt;/time&gt;
       &lt;p&gt;The address looks wrong. Emailed the customer to confirm it before shipping.&lt;/p&gt;
       &lt;footer&gt;
@@ -672,7 +672,7 @@
                       const now = new Date();
                       const li = document.createElement("li");
                       const article = document.createElement("article");
-                      const name = document.createElement("h4");
+                      const name = document.createElement("h3");
                       const time = document.createElement("time");
                       const text = document.createElement("p");
                       name.textContent = "You";
@@ -725,7 +725,7 @@
     const now = new Date();
     const li = document.createElement("li");
     const article = document.createElement("article");
-    const name = document.createElement("h4");
+    const name = document.createElement("h3");
     const time = document.createElement("time");
     const text = document.createElement("p");
     name.textContent = "You";
@@ -827,7 +827,7 @@
                     <td><code>article</code></td>
                     <td></td>
                     <td>
-                      A note: <code>h4</code> author and <code>time</code> on
+                      A note: <code>h3</code> author and <code>time</code> on
                       one line, followed by <code>p</code> and
                       <code>footer</code>
                     </td>
