@@ -21,6 +21,7 @@
 
   :where(.code-block > pre) {
     padding-right: 3rem;
+    overflow-x: auto;
   }
 
   :where(.code-block > .btn) {
