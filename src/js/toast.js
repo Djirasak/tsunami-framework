@@ -72,7 +72,13 @@ function finish(toast, reason) {
   if (!s || s.done) return;
   s.done = true;
   clearTimeout(s.timer);
+  const hadFocus = toast.contains(document.activeElement);
   toast.setAttribute("data-leaving", "");
+  if (hadFocus) {
+    const next = live().find((t) => t !== toast)?.querySelector("button");
+    const back = s.opener?.isConnected ? s.opener : null;
+    (next ?? back)?.focus();
+  }
   toast.dispatchEvent(
     new CustomEvent("tsunami:toastclose", {
       bubbles: true,
@@ -145,6 +151,7 @@ function toast(input = {}) {
     hover: false,
     focus: false,
     done: false,
+    opener: document.activeElement, // gets focus back if the toast had it when it closed
   };
   state.set(el, s);
 
