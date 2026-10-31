@@ -274,6 +274,12 @@
         "keywords": "Layout container width max-width center centre page wrapper gutter data-size sm md lg xl bootstrap"
       },
       {
+        "label": "Responsive",
+        "href": "/docs/responsive",
+        "icon": "smartphone",
+        "keywords": "Layout responsive breakpoint media query mobile phone tablet width 24rem 40rem 48rem viewport adapt"
+      },
+      {
         "label": "Description list",
         "href": "/docs/description-list",
         "icon": "list",

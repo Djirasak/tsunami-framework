@@ -1,0 +1,89 @@
+<header class="page-header">
+            <div>
+              <h1>Responsive</h1>
+              <p>
+                Tsunami has no responsive utility classes. Each component
+                adapts itself at one of three widths, so the same markup works
+                from a phone to a wide screen.
+              </p>
+            </div>
+          </header>
+          <section>
+            <h2>Breakpoints</h2>
+            <p>
+              CSS variables cannot be used inside a media query, so the widths
+              are plain <code>rem</code> values written in each component.
+              They scale with the reader's font size.
+            </p>
+            <div class="scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Width</th>
+                    <th scope="col">Query</th>
+                    <th scope="col">Meant for</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><code>24rem</code></th>
+                    <td><code>width &lt; 24rem</code></td>
+                    <td>The smallest phones, about 380px and below</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><code>40rem</code></th>
+                    <td><code>width &lt; 40rem</code></td>
+                    <td>Phones: components stack and fill the row</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><code>48rem</code></th>
+                    <td><code>width &gt;= 48rem</code></td>
+                    <td>Tablets and up: the sidebar sits beside the page</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section>
+            <h2>What changes</h2>
+            <ul>
+              <li>
+                <a href="/docs/workspace">Workspace</a>,
+                <a href="/docs/sidebar">Sidebar</a> and
+                <a href="/docs/subnav">Subnav</a>: below 48rem the side panel
+                becomes a popover that slides in.
+              </li>
+              <li>
+                <a href="/docs/stat">Stat</a>,
+                <a href="/docs/stepper">Stepper</a>,
+                <a href="/docs/tabs">Tabs</a> (vertical) and
+                <a href="/docs/description-list">Description list</a>: below
+                40rem they stack in one column.
+              </li>
+              <li>
+                <a href="/docs/toast">Toast</a> and
+                <a href="/docs/bulk-bar">Bulk action bar</a>: below 40rem they
+                use the full width.
+              </li>
+              <li>
+                <a href="/docs/otp">OTP input</a>: below 24rem the digits move
+                closer so six still fit.
+              </li>
+              <li>
+                <a href="/docs/container">Container</a>: limits the width on a
+                wide screen, with no change on a phone.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Your own layout</h2>
+            <p>
+              Write your own media queries with the same three widths, and
+              keep them inside <code>@layer</code> or after Tsunami so they
+              win. Wide tables and code scroll inside a
+              <a href="/docs/scroll-area">Scroll area</a> instead of widening
+              the page. Add
+              <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code>
+              to the page, or phones show it zoomed out.
+            </p>
+          </section>

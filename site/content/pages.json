@@ -353,5 +353,10 @@
     "title": "Container",
     "description": "Centres a page's content and limits its width, in four sizes, so a form or a dashboard does not stretch across a wide screen.",
     "libs": []
+  },
+  "responsive": {
+    "title": "Responsive",
+    "description": "How Tsunami adapts from a phone to a wide screen: three breakpoints written in each component, and no responsive utility classes.",
+    "libs": []
   }
 }
