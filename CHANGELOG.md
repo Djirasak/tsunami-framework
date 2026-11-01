@@ -6,6 +6,10 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+### Added
+
+- The selected pill in Tabs and the Segmented control slides to the next option, and so does the underline of the line tabs. A small script (`js/thumb.js`) measures the selected item; without it the selected item still shows, and switches at once. The slide is cut under `prefers-reduced-motion`.
+
 ## [1.3.0] - 2026-10-31
 
 ### Added

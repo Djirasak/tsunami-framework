@@ -9247,6 +9247,7 @@
 }
 @layer components {
   :where(.segmented) {
+    position: relative;
     display: inline-flex;
     gap: 2px;
     max-width: 100%;
@@ -9304,6 +9305,31 @@
     height: 1.5rem;
     padding: 0 var(--space-2);
     font-size: var(--text-sm);
+  }
+  :where(.segmented[data-thumb] > label) {
+    z-index: 1;
+  }
+  :where(.segmented[data-thumb] > label:has(> input:checked)) {
+    border-color: transparent;
+    background: none;
+  }
+  :where(.segmented[data-thumb])::after {
+    content: "";
+    position: absolute;
+    top: var(--thumb-y);
+    left: var(--thumb-x);
+    box-sizing: border-box;
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    pointer-events: none;
+  }
+  :where(.segmented[data-thumb=slide])::after {
+    transition-property: top, left, width, height;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 @layer components {
@@ -12627,6 +12653,7 @@
 }
 @layer components {
   :where(.tabs [role=tablist]) {
+    position: relative;
     display: inline-flex;
     gap: 2px;
     max-width: 100%;
@@ -12759,6 +12786,51 @@
       grid-row: auto;
       grid-column: 1;
     }
+  }
+  :where(.tabs [role=tablist][data-thumb] [role=tab]) {
+    position: relative;
+    z-index: 1;
+  }
+  :where(.tabs [role=tablist][data-thumb] [role=tab][aria-selected=true]) {
+    border-color: transparent;
+    background: none;
+  }
+  :where(.tabs [role=tablist][data-thumb])::after {
+    content: "";
+    position: absolute;
+    top: var(--thumb-y);
+    left: var(--thumb-x);
+    box-sizing: border-box;
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    pointer-events: none;
+  }
+  :where(.tabs [role=tablist][data-thumb=slide])::after {
+    transition-property: top, left, width, height;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  :where(.tabs [role=tablist][data-thumb][data-variant=line])::after {
+    top: calc(var(--thumb-y) + var(--thumb-h) - 2px);
+    height: 2px;
+    border: 0;
+    border-radius: 0;
+    background: var(--fg);
+  }
+  :where(.tabs [role=tablist][data-thumb][data-variant=line] [role=tab][aria-selected=true]) {
+    border-bottom-color: transparent;
+  }
+  :where(.tabs > [role=tablist][data-thumb][aria-orientation=vertical][data-variant=line])::after {
+    width: 2px;
+    height: var(--thumb-h);
+    top: var(--thumb-y);
+    background: var(--fg);
+  }
+  :where(.tabs > [role=tablist][data-thumb][aria-orientation=vertical][data-variant=line] [role=tab][aria-selected=true]) {
+    border-left-color: transparent;
   }
 }
 @layer components {

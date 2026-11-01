@@ -1,10 +1,13 @@
 // Segmented control: 2-4 exclusive options. <div class="segmented"> holding
 // <label><input type="radio" name="…"><span>Day</span></label> items.
-// No JS: the radios give keyboard and form values. data-size="sm" on the group.
+// No JS needed: the radios give keyboard and form values. js/thumb.js only adds
+// the sliding pill. data-size="sm" on the group.
 @use "motion";
 
 @layer components {
+  // Relative always: js/thumb.js measures the options from the group's corner.
   :where(.segmented) {
+    position: relative;
     display: inline-flex;
     gap: 2px;
     max-width: 100%;
@@ -71,5 +74,36 @@
     height: 1.5rem;
     padding: 0 var(--space-2);
     font-size: var(--text-sm);
+  }
+
+  // The thumb: the ::after of the group, placed by js/thumb.js on the checked
+  // label. Without the script the checked label keeps its own background.
+  :where(.segmented[data-thumb] > label) {
+    z-index: 1;
+  }
+
+  :where(.segmented[data-thumb] > label:has(> input:checked)) {
+    border-color: transparent;
+    background: none;
+  }
+
+  :where(.segmented[data-thumb])::after {
+    content: "";
+    position: absolute;
+    top: var(--thumb-y);
+    left: var(--thumb-x);
+    box-sizing: border-box;
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    pointer-events: none;
+  }
+
+  :where(.segmented[data-thumb="slide"])::after {
+    transition-property: top, left, width, height;
+    transition-duration: motion.$base;
+    transition-timing-function: motion.$ease;
   }
 }
