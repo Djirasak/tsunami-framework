@@ -1,7 +1,9 @@
 // Subnav: secondary section links beside the content, often next to a
 // collapsed .sidebar. <nav class="subnav"><h2>..</h2><ul><li><a>..</a></li></ul></nav>
 // (flat <a> children work too). Its parent becomes a row; the next sibling
-// fills it, padded. Below 48rem it stacks above the content.
+// fills it, padded. Below 48rem it stacks above the content. Several subnavs
+// can sit in a row before the content, with all but one hidden; a link with
+// aria-controls swaps them (js/subnav.js).
 @use "sidebar";
 
 @layer components {
@@ -20,28 +22,28 @@
     font-weight: 500;
   }
 
-  :where(:has(> .subnav + *)) {
+  :where(:has(> .subnav + :not(.subnav))) {
     display: flex;
     flex-direction: column;
   }
 
-  :where(.subnav + *) {
+  :where(.subnav + :not(.subnav)) {
     flex: 1;
     min-width: 0;
     padding: var(--space-5);
   }
 
-  :where(.subnav:has(+ *)) {
+  :where(.subnav:has(~ :not(.subnav))) {
     width: auto;
     border-bottom: 1px solid var(--line);
   }
 
   @media (width >= 48rem) {
-    :where(:has(> .subnav + *)) {
+    :where(:has(> .subnav + :not(.subnav))) {
       flex-direction: row;
     }
 
-    :where(.subnav:has(+ *)) {
+    :where(.subnav:has(~ :not(.subnav))) {
       width: 13rem;
       border-right: 1px solid var(--line);
       border-bottom: 0;

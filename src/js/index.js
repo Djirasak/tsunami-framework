@@ -2,6 +2,7 @@
 import "./theme.js";
 import "./pressed.js";
 import "./tabs.js";
+import "./subnav.js";
 import "./thumb.js";
 import "./dropdown.js";
 import "./sidebar.js";

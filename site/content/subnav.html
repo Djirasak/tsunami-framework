@@ -5,13 +5,18 @@
             </div>
           </header>
           <section>
-            <h2>Beside a sidebar that stays collapsed</h2>
+            <h2>Usage</h2>
             <p>
-              A settings page with many sections: the main sidebar collapses to
-              icons (<code>data-collapsed="true"</code>) and the subnav lists
-              the sections. The element after <code>.subnav</code> is the
-              content and gets padding. Below 48rem the subnav sits above the
-              content.
+              A subnav is a second menu beside the page content, for a page
+              with several sections such as settings. Put the
+              <code>nav.subnav</code> first and the content right after it: the
+              content gets the padding. Mark the open section with
+              <code>aria-current="page"</code>. Each link goes to its own page
+              as usual. Below 48rem the subnav sits above the content.
+            </p>
+            <p>
+              The example puts it beside a main sidebar that stays collapsed to
+              icons (<code>data-collapsed="true"</code>).
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -229,6 +234,99 @@
             </div>
           </section>
           <section>
+            <h2>Switching without loading a page</h2>
+            <p>
+              When all the sections are on one page (a prototype, or an app
+              that does not reload), the links can swap the menus and the
+              content for you. Set it up in three steps:
+            </p>
+            <ol>
+              <li>
+                Write one <code>nav.subnav</code> for each sidebar icon, with
+                an <code>id</code>. Add <code>hidden</code> to all but the
+                first.
+              </li>
+              <li>
+                On each sidebar link, set <code>aria-controls</code> to the
+                <code>id</code> of its subnav.
+              </li>
+              <li>
+                To change the content too, put one block of content for each
+                subnav link (hidden except the first) and set the link's
+                <code>aria-controls</code> to the block's <code>id</code>.
+              </li>
+            </ol>
+            <p>
+              A click shows the matching menu or block, hides the others and
+              moves <code>aria-current</code>. The link does not go to its
+              <code>href</code>. Try the icons in the sidebar.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Several subnavs">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div><aside class="sidebar" data-collapsed="true" style="height: 20rem"><nav aria-label="Main"><section><div role="group"><ul><li><a href="#"><i class="icon icon-house" aria-hidden="true"></i><span>Home</span></a></li><li><a href="#" aria-controls="sub-orders" aria-current="page"><i class="icon icon-shopping-bag" aria-hidden="true"></i><span>Orders</span></a></li><li><a href="#" aria-controls="sub-customers"><i class="icon icon-user" aria-hidden="true"></i><span>Customers</span></a></li><li><a href="#" aria-controls="sub-settings"><i class="icon icon-settings" aria-hidden="true"></i><span>Settings</span></a></li></ul></div></section></nav></aside><div><nav class="subnav" id="sub-orders" aria-label="Orders"><h2>Orders</h2><ul><li><a href="#" aria-controls="sec-orders-all-orders" aria-current="page"><i class="icon icon-shopping-bag" aria-hidden="true"></i><span>All orders</span></a></li><li><a href="#" aria-controls="sec-orders-drafts"><i class="icon icon-file-pen" aria-hidden="true"></i><span>Drafts</span></a></li><li><a href="#" aria-controls="sec-orders-returns"><i class="icon icon-undo-2" aria-hidden="true"></i><span>Returns</span></a></li></ul></nav><nav class="subnav" id="sub-customers" aria-label="Customers" hidden><h2>Customers</h2><ul><li><a href="#" aria-controls="sec-customers-all-customers" aria-current="page"><i class="icon icon-users" aria-hidden="true"></i><span>All customers</span></a></li><li><a href="#" aria-controls="sec-customers-segments"><i class="icon icon-tag" aria-hidden="true"></i><span>Segments</span></a></li></ul></nav><nav class="subnav" id="sub-settings" aria-label="Store settings" hidden><h2>Store settings</h2><ul><li><a href="#" aria-controls="sec-settings-general" aria-current="page"><i class="icon icon-sliders-horizontal" aria-hidden="true"></i><span>General</span></a></li><li><a href="#" aria-controls="sec-settings-payments"><i class="icon icon-credit-card" aria-hidden="true"></i><span>Payments</span></a></li><li><a href="#" aria-controls="sec-settings-users"><i class="icon icon-users" aria-hidden="true"></i><span>Users</span></a></li></ul></nav><div><header class="page-header" id="sec-orders-all-orders"><div><h1>All orders</h1><p>All orders, newest first.</p></div></header><header class="page-header" id="sec-orders-drafts" hidden><div><h1>Drafts</h1><p>Orders you started for a customer.</p></div></header><header class="page-header" id="sec-orders-returns" hidden><div><h1>Returns</h1><p>Items on their way back.</p></div></header><header class="page-header" id="sec-customers-all-customers" hidden><div><h1>All customers</h1><p>Everyone who has bought or signed up.</p></div></header><header class="page-header" id="sec-customers-segments" hidden><div><h1>Segments</h1><p>Saved groups, such as repeat buyers.</p></div></header><header class="page-header" id="sec-settings-general" hidden><div><h1>General</h1><p>Store name, contact email and time zone.</p></div></header><header class="page-header" id="sec-settings-payments" hidden><div><h1>Payments</h1><p>Payment providers and payout schedule.</p></div></header><header class="page-header" id="sec-settings-users" hidden><div><h1>Users</h1><p>Who can sign in and what each person can change.</p></div></header></div></div></div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div&gt;
+  &lt;aside class="sidebar" data-collapsed="true" style="height: 20rem"&gt;
+    &lt;nav aria-label="Main"&gt;
+      &lt;section&gt;
+        &lt;div role="group"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon icon-house" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Home&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" aria-controls="sub-orders" aria-current="page"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" aria-controls="sub-customers"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" aria-controls="sub-settings"&gt;&lt;i class="icon icon-settings" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Settings&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+  &lt;div&gt;
+    &lt;nav class="subnav" id="sub-orders" aria-label="Orders"&gt;
+      &lt;h2&gt;Orders&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#" aria-controls="sec-orders-all-orders" aria-current="page"&gt;&lt;i class="icon icon-shopping-bag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;All orders&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" aria-controls="sec-orders-drafts"&gt;&lt;i class="icon icon-file-pen" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Drafts&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" aria-controls="sec-orders-returns"&gt;&lt;i class="icon icon-undo-2" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Returns&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+    &lt;nav class="subnav" id="sub-customers" aria-label="Customers" hidden&gt;
+      &lt;h2&gt;Customers&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#" aria-controls="sec-customers-all-customers" aria-current="page"&gt;&lt;i class="icon icon-users" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;All customers&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" aria-controls="sec-customers-segments"&gt;&lt;i class="icon icon-tag" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Segments&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+    &lt;nav class="subnav" id="sub-settings" aria-label="Store settings" hidden&gt;
+      &lt;h2&gt;Store settings&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#" aria-controls="sec-settings-general" aria-current="page"&gt;&lt;i class="icon icon-sliders-horizontal" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;General&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" aria-controls="sec-settings-payments"&gt;&lt;i class="icon icon-credit-card" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Payments&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#" aria-controls="sec-settings-users"&gt;&lt;i class="icon icon-users" aria-hidden="true"&gt;&lt;/i&gt;&lt;span&gt;Users&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+    &lt;div&gt;
+      &lt;header class="page-header" id="sec-orders-all-orders"&gt;&lt;div&gt;&lt;h1&gt;All orders&lt;/h1&gt;&lt;p&gt;All orders, newest first.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+      &lt;header class="page-header" id="sec-orders-drafts" hidden&gt;&lt;div&gt;&lt;h1&gt;Drafts&lt;/h1&gt;&lt;p&gt;Orders you started for a customer.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+      &lt;header class="page-header" id="sec-orders-returns" hidden&gt;&lt;div&gt;&lt;h1&gt;Returns&lt;/h1&gt;&lt;p&gt;Items on their way back.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+      &lt;header class="page-header" id="sec-customers-all-customers" hidden&gt;&lt;div&gt;&lt;h1&gt;All customers&lt;/h1&gt;&lt;p&gt;Everyone who has bought or signed up.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+      &lt;header class="page-header" id="sec-customers-segments" hidden&gt;&lt;div&gt;&lt;h1&gt;Segments&lt;/h1&gt;&lt;p&gt;Saved groups, such as repeat buyers.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+      &lt;header class="page-header" id="sec-settings-general" hidden&gt;&lt;div&gt;&lt;h1&gt;General&lt;/h1&gt;&lt;p&gt;Store name, contact email and time zone.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+      &lt;header class="page-header" id="sec-settings-payments" hidden&gt;&lt;div&gt;&lt;h1&gt;Payments&lt;/h1&gt;&lt;p&gt;Payment providers and payout schedule.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+      &lt;header class="page-header" id="sec-settings-users" hidden&gt;&lt;div&gt;&lt;h1&gt;Users&lt;/h1&gt;&lt;p&gt;Who can sign in and what each person can change.&lt;/p&gt;&lt;/div&gt;&lt;/header&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>Attributes</h2>
 
             <div class="card scroll-area">
@@ -266,6 +364,16 @@
                     <td><code>aria-current</code></td>
                     <td><code>page</code></td>
                     <td>On <code>a</code>: the open section</td>
+                  </tr>
+                  <tr>
+                    <td><code>aria-controls</code></td>
+                    <td>an <code>id</code> on the page</td>
+                    <td>
+                      On a sidebar link: the <code>id</code> of the subnav to
+                      show. On a subnav link: the <code>id</code> of the
+                      content block to show. The others are hidden and the
+                      link does not follow its <code>href</code>.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>.subnav + *</code></td>

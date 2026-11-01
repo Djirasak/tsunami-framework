@@ -151,3 +151,19 @@ document.addEventListener("click", async (e) => {
     if (saved) follow(saved);
   } catch {}
 }
+
+// Links inside a preview point at "#" or "/docs" because the example has no
+// pages. Clicking one must not leave the docs. A link that controls something
+// (aria-controls) is the component's own business: js/subnav.js handles it.
+document.addEventListener("click", (e) => {
+  const a = e.target.closest?.(".docs-preview a[href]");
+  if (!a || a.hasAttribute("aria-controls")) return;
+  if (!["#", "/docs"].includes(a.getAttribute("href"))) return;
+  e.preventDefault();
+  const list = a.closest(".sidebar, .subnav") ?? a.closest("ul, ol");
+  const current = list?.querySelector('a[aria-current="page"]');
+  if (current && current !== a && !a.closest(".breadcrumb")) {
+    current.removeAttribute("aria-current");
+    a.setAttribute("aria-current", "page");
+  }
+});
