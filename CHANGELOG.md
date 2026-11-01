@@ -10,6 +10,13 @@ Versions follow [semantic versioning](https://semver.org).
 
 - The selected pill in Tabs and the Segmented control slides to the next option, and so does the underline of the line tabs. A small script (`js/thumb.js`) measures the selected item; without it the selected item still shows, and switches at once. The slide is cut under `prefers-reduced-motion`.
 
+### Changed
+
+- Docs: Installation is its own page, after the overview, with Starters and Frameworks integration next in the sidebar. Frameworks integration links to it instead of repeating the package manager tabs, and the overview no longer has an Example section.
+- Docs: each page on Starters has a Preview tab, which shows the page in a frame, next to the Code tab.
+- Docs: the rows-per-page select in the Table examples is the Tsunami select, like the other pages, not the browser's own.
+- Docs: a few swimmers float on the waves of the landing page and say silly things. A click on the hero makes them panic.
+
 ## [1.3.0] - 2026-10-31
 
 ### Added
