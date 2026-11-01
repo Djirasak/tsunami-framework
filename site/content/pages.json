@@ -252,6 +252,11 @@
     "description": "Tsunami is a quiet UI framework: semantic HTML, data attributes and a little vanilla JS, {{components}} components, and a core with no dependencies.",
     "libs": []
   },
+  "installation": {
+    "title": "Installation",
+    "description": "Install Tsunami from the jsDelivr CDN with two tags, from npm for a bundler, or host the dist, fonts and flags files yourself.",
+    "libs": []
+  },
   "field": {
     "title": "Field",
     "description": "Labels, inputs and hints, plus checkbox, radio, switch and slider rows. Layouts, required marks, error and disabled states, with the HTML for each.",

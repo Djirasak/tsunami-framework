@@ -9,6 +9,18 @@
         "keywords": "Get started index"
       },
       {
+        "label": "Installation",
+        "href": "/docs/installation",
+        "icon": "download",
+        "keywords": "Installation install cdn jsdelivr npm pnpm yarn bun bundler link script head self host dist fonts flags get started"
+      },
+      {
+        "label": "Starters",
+        "href": "/docs/starters",
+        "icon": "rocket",
+        "keywords": "Starters starter template boilerplate page app shell sidebar sign in login copy html quick start"
+      },
+      {
         "label": "JavaScript",
         "href": "/docs/javascript",
         "icon": "braces",
@@ -31,12 +43,6 @@
   {
     "title": "Foundations",
     "items": [
-      {
-        "label": "Starters",
-        "href": "/docs/starters",
-        "icon": "rocket",
-        "keywords": "Starters starter template boilerplate page app shell sidebar sign in login copy html quick start"
-      },
       {
         "label": "Colors",
         "href": "/docs/colors",
