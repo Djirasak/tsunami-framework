@@ -166,76 +166,6 @@ document.addEventListener("keydown", (e) => {
 });
 (window.tsunami ??= {}).tabs = { select, close };
 
-// src/js/thumb.js
-var GROUP = '.tabs [role="tablist"], .segmented';
-var selected = (group) => group.matches(".segmented") ? group.querySelector(":scope > label:has(> input:checked)") : [...group.querySelectorAll('[role="tab"][aria-selected="true"]')].find((t) => t.closest('[role="tablist"]') === group);
-var resizer = new ResizeObserver((entries) => {
-  for (const e of entries)
-    place(e.target);
-});
-function place(group) {
-  const item = selected(group);
-  if (!item || !item.offsetWidth) {
-    delete group.dataset.thumb;
-    return;
-  }
-  const s = group.style;
-  s.setProperty("--thumb-x", `${item.offsetLeft}px`);
-  s.setProperty("--thumb-y", `${item.offsetTop}px`);
-  s.setProperty("--thumb-w", `${item.offsetWidth}px`);
-  s.setProperty("--thumb-h", `${item.offsetHeight}px`);
-  if (!group.dataset.thumb) {
-    group.dataset.thumb = "set";
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      if (group.dataset.thumb === "set")
-        group.dataset.thumb = "slide";
-    }));
-  }
-}
-var groupOf = (node) => node.closest?.(GROUP);
-var scan = (node) => {
-  const list = node.matches?.(GROUP) ? [node] : [];
-  for (const g of [...list, ...node.querySelectorAll?.(GROUP) ?? []]) {
-    place(g);
-    resizer.observe(g);
-  }
-};
-var start = () => {
-  scan(document);
-  new MutationObserver((records) => {
-    for (const r of records) {
-      if (r.type === "attributes") {
-        const g = groupOf(r.target);
-        if (g)
-          place(g);
-      } else {
-        r.addedNodes.forEach((n) => {
-          scan(n);
-          if (n.nodeType === 1 && groupOf(n))
-            place(groupOf(n));
-        });
-        if (groupOf(r.target))
-          place(groupOf(r.target));
-      }
-    }
-  }).observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ["aria-selected"]
-  });
-  document.addEventListener("change", (e) => {
-    const g = e.target.closest?.(".segmented");
-    if (g)
-      place(g);
-  });
-  document.addEventListener("reset", (e) => setTimeout(() => e.target.querySelectorAll(".segmented").forEach(place)));
-};
-if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", start);
-else
-  start();
-
 // src/js/dropdown.js
 var PANEL = ".dropdown, .popover";
 var ITEM = "a[href], button:not(:disabled), input:not(:disabled)";
@@ -257,22 +187,22 @@ function upgrade(panel) {
   sync2(panel);
   panel.addEventListener("toggle", () => sync2(panel));
 }
-var scan2 = (node) => {
+var scan = (node) => {
   if (node.matches?.(PANEL))
     upgrade(node);
   node.querySelectorAll?.(PANEL).forEach(upgrade);
 };
-var start2 = () => {
-  scan2(document);
+var start = () => {
+  scan(document);
   new MutationObserver((records) => {
     for (const r of records)
-      r.addedNodes.forEach(scan2);
+      r.addedNodes.forEach(scan);
   }).observe(document.documentElement, { childList: true, subtree: true });
 };
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", start2);
+  document.addEventListener("DOMContentLoaded", start);
 else
-  start2();
+  start();
 document.addEventListener("keydown", (e) => {
   if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey)
     return;
@@ -536,7 +466,7 @@ function h(tag, attrs = {}, ...kids) {
 }
 var toasts = () => toaster ? [...toaster.querySelectorAll(":scope > .toast")] : [];
 var live = () => toasts().filter((t) => !t.hasAttribute("data-leaving"));
-function place2() {
+function place() {
   if (!toaster)
     return;
   const modals = document.querySelectorAll("dialog:modal");
@@ -680,7 +610,7 @@ function toast(input = {}) {
   });
   el.dismiss = () => finish(el, "api");
   root.append(el);
-  place2();
+  place();
   for (const t of live().slice(0, -MAX))
     finish(t, "api");
   schedule(el);
@@ -707,7 +637,7 @@ document.addEventListener("click", (e) => {
     variant: btn.dataset.toastVariant
   });
 });
-new MutationObserver(() => place2()).observe(document, {
+new MutationObserver(() => place()).observe(document, {
   subtree: true,
   attributes: true,
   attributeFilter: ["open"]
@@ -1119,7 +1049,7 @@ function activate(root, el) {
   el.setAttribute("data-active", "");
   el.scrollIntoView({ block: "nearest" });
 }
-function place3(root) {
+function place2(root) {
   const { pop, control } = S.get(root);
   const r = control.getBoundingClientRect();
   pop.style.minWidth = `${r.width}px`;
@@ -1145,7 +1075,7 @@ function open(el) {
   for (const f of [st.combo, st.input])
     f?.setAttribute("aria-expanded", "true");
   render(root);
-  place3(root);
+  place2(root);
   if (st.input)
     st.input.focus();
   if (root.dataset.url)
@@ -1256,7 +1186,7 @@ async function load(root, page) {
   if (root !== opened)
     return;
   render(root);
-  place3(root);
+  place2(root);
   if (more && list.scrollHeight - list.clientHeight - list.scrollTop < 50)
     load(root, page + 1);
 }
@@ -1278,12 +1208,12 @@ function refresh(el) {
   paint(root);
 }
 (window.tsunami ??= {}).select = { open, close: close2, value, refresh };
-var scan3 = () => document.querySelectorAll(ROOT).forEach(build);
-new MutationObserver(scan3).observe(document.documentElement, {
+var scan2 = () => document.querySelectorAll(ROOT).forEach(build);
+new MutationObserver(scan2).observe(document.documentElement, {
   childList: true,
   subtree: true
 });
-scan3();
+scan2();
 document.addEventListener("click", (e) => {
   const root = rootOf(e.target);
   const st = S.get(root);
@@ -1416,13 +1346,13 @@ document.addEventListener("reset", (e) => setTimeout(() => {
   for (const root of e.target.querySelectorAll(ROOT))
     paint(root);
 }));
-addEventListener("resize", () => opened && place3(opened));
+addEventListener("resize", () => opened && place2(opened));
 document.addEventListener("scroll", (e) => {
   if (!opened)
     return;
   const { list, page } = S.get(opened);
   if (e.target !== list)
-    return place3(opened);
+    return place2(opened);
   const near = list.scrollHeight - list.clientHeight - list.scrollTop < 50;
   if (near && list.hasAttribute("data-more") && !list.hasAttribute("aria-busy"))
     load(opened, page + 1);
@@ -1613,7 +1543,7 @@ function show(root, items, q) {
   if (!opened2(st))
     st.pop.showPopover();
   st.input.setAttribute("aria-expanded", "true");
-  place4(root);
+  place3(root);
 }
 function close3(root) {
   const st = S2.get(root);
@@ -1641,7 +1571,7 @@ function activate2(root, el) {
   } else
     input.removeAttribute("aria-activedescendant");
 }
-function place4(root) {
+function place3(root) {
   const { pop, input } = S2.get(root);
   const r = (input.closest(".input-group") ?? input).getBoundingClientRect();
   pop.style.minWidth = `${r.width}px`;
@@ -1665,12 +1595,12 @@ function pick(root, i) {
   st.picking = false;
 }
 (window.tsunami ??= {}).autocomplete = { mount: mount2, destroy };
-var scan4 = () => document.querySelectorAll(ROOT2).forEach((root) => build2(root));
-new MutationObserver(scan4).observe(document.documentElement, {
+var scan3 = () => document.querySelectorAll(ROOT2).forEach((root) => build2(root));
+new MutationObserver(scan3).observe(document.documentElement, {
   childList: true,
   subtree: true
 });
-scan4();
+scan3();
 document.addEventListener("input", (e) => {
   const st = stOf(e.target);
   if (st && !st.picking)
@@ -1746,7 +1676,7 @@ var replace = (skip) => {
   for (const root of document.querySelectorAll(ROOT2)) {
     const st = S2.get(root);
     if (st && opened2(st) && !st.list.contains(skip))
-      place4(root);
+      place3(root);
   }
 };
 addEventListener("resize", () => replace());
@@ -1869,7 +1799,7 @@ document.addEventListener("click", (e) => {
 });
 var boxOf = (row) => row.cells[0]?.querySelector(':scope > input[type="checkbox"]');
 var rowBoxes = (table, rows = rowsOf(table)) => rows.map(boxOf).filter(Boolean);
-function selected2(table) {
+function selected(table) {
   return rowBoxes(table).filter((box) => box.checked).map((box) => box.closest("tr"));
 }
 var matching = (table) => states.get(table)?.matched ?? rowsOf(table);
@@ -1894,7 +1824,7 @@ function select2(table, rows, checked = true) {
   announce2(table);
 }
 function announce2(table) {
-  const rows = selected2(table);
+  const rows = selected(table);
   table.dispatchEvent(new CustomEvent("tsunami:select", {
     bubbles: true,
     detail: { rows, count: rows.length }
@@ -2235,7 +2165,7 @@ else
 (window.tsunami ??= {}).table = {
   sort,
   select: select2,
-  selected: selected2,
+  selected,
   sync: sync5,
   refresh: refresh2,
   page: setPage,
@@ -2333,7 +2263,7 @@ var upgrade2 = (tree) => {
     return;
   refresh3(tree);
 };
-var scan5 = (node) => {
+var scan4 = (node) => {
   if (node.matches?.(".tree"))
     upgrade2(node);
   node.querySelectorAll?.(".tree").forEach(upgrade2);
@@ -2342,18 +2272,18 @@ var scan5 = (node) => {
     upgrade2(parent);
 };
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", () => scan5(document), {
+  document.addEventListener("DOMContentLoaded", () => scan4(document), {
     once: true
   });
 else
-  scan5(document);
+  scan4(document);
 new MutationObserver((list) => {
   if (document.readyState === "loading")
     return;
   for (const m of list)
     for (const n of m.addedNodes)
       if (n.nodeType === 1)
-        scan5(n);
+        scan4(n);
 }).observe(document.documentElement, { childList: true, subtree: true });
 document.addEventListener("toggle", (e) => {
   const d = e.target;
@@ -2869,7 +2799,7 @@ function source(editor) {
   document.body.append(dialog);
   dialog.showModal();
 }
-function start3(el, state) {
+function start2(el, state) {
   const tinymce = window.tinymce;
   const isDark = dark();
   const label = labelOf(el);
@@ -2936,14 +2866,14 @@ function mount3(el, options = {}) {
     configurable: true,
     get: () => state.editor
   });
-  start3(el, state);
+  start2(el, state);
 }
 var upgrade4 = (el) => {
   if (!states2.has(el))
     mount3(el);
 };
 var all2 = (root) => root.querySelectorAll?.("textarea.editor").forEach(upgrade4);
-var scan6 = () => {
+var scan5 = () => {
   if (document.readyState === "loading")
     document.addEventListener("DOMContentLoaded", () => all2(document), {
       once: true
@@ -2951,7 +2881,7 @@ var scan6 = () => {
   else
     all2(document);
 };
-scan6();
+scan5();
 new MutationObserver((list) => list.forEach((m) => {
   if (document.readyState === "loading")
     return;
@@ -3132,16 +3062,16 @@ function upgrade5(root) {
   statuses.set(root, status);
   refresh4(root);
 }
-var scan7 = (node) => {
+var scan6 = (node) => {
   if (node.matches?.(".command"))
     upgrade5(node);
   node.querySelectorAll?.(".command").forEach(upgrade5);
 };
-scan7(document);
+scan6(document);
 new MutationObserver((records) => {
   for (const r of records) {
     if (r.type === "childList")
-      r.addedNodes.forEach(scan7);
+      r.addedNodes.forEach(scan6);
     else {
       const root = r.target.closest?.(".command");
       if (root?.dataset.commandInitialized && r.target !== menu(root))
@@ -3561,7 +3491,7 @@ var init2 = (root) => {
   for (const bar of root.querySelectorAll(BAR))
     update3(bar);
 };
-var start4 = () => {
+var start3 = () => {
   init2(document);
   new MutationObserver((records) => {
     for (const r of records)
@@ -3571,9 +3501,9 @@ var start4 = () => {
   }).observe(document.body, { childList: true, subtree: true });
 };
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", start4);
+  document.addEventListener("DOMContentLoaded", start3);
 else
-  start4();
+  start3();
 (window.tsunami ??= {}).bulkBar = { update: update3, clear };
 
 // src/js/copy.js
@@ -3655,7 +3585,7 @@ var focusable = (node) => {
     if (!el.hasAttribute("tabindex"))
       el.tabIndex = 0;
 };
-var start5 = () => {
+var start4 = () => {
   focusable(document);
   new MutationObserver((records) => {
     for (const r of records)
@@ -3663,9 +3593,9 @@ var start5 = () => {
   }).observe(document.documentElement, { childList: true, subtree: true });
 };
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", start5);
+  document.addEventListener("DOMContentLoaded", start4);
 else
-  start5();
+  start4();
 
 // src/js/filter-bar.js
 var BAR2 = ".filter-bar";
@@ -3799,7 +3729,7 @@ function setDisabled(el) {
   const off = "disabled" in el.dataset;
   text(el).disabled = off;
 }
-function start6(el) {
+function start5(el) {
   const list = split(el.dataset.value ?? "");
   el._tags = [];
   for (const t of list)
@@ -3831,7 +3761,7 @@ function mount6(root = document) {
     el._status.setAttribute("data-sr-only", "");
     el.append(el._status);
     setDisabled(el);
-    start6(el);
+    start5(el);
   }
 }
 var field = (e) => e.target.closest?.(`${TAGS} > input[type="text"]`);
@@ -3887,7 +3817,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("reset", (e) => setTimeout(() => {
   for (const el of e.target.querySelectorAll(TAGS)) {
     text(el).value = "";
-    start6(el);
+    start5(el);
   }
 }));
 if (document.readyState === "loading")
@@ -4074,7 +4004,7 @@ function setup(node) {
     render3(s, Math.max(i, 0), false);
   }
 }
-function start7() {
+function start6() {
   setup(document.documentElement);
   new MutationObserver((records) => {
     for (const r of records) {
@@ -4086,9 +4016,9 @@ function start7() {
   }).observe(document.documentElement, { childList: true, subtree: true });
 }
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", start7, { once: true });
+  document.addEventListener("DOMContentLoaded", start6, { once: true });
 else
-  start7();
+  start6();
 (window.tsunami ??= {}).stepper = { go, next, prev, index };
 
 // src/js/validate.js
@@ -4403,7 +4333,7 @@ function activate3(root, el) {
   st.search.setAttribute("aria-activedescendant", el.id);
   el.scrollIntoView({ block: "nearest" });
 }
-function place5(root) {
+function place4(root) {
   const { pop } = S3.get(root);
   const r = root.querySelector(".input-group").getBoundingClientRect();
   const width = Math.min(320, innerWidth - 32);
@@ -4437,7 +4367,7 @@ function toggled(e) {
   if (e.newState !== "open")
     return;
   if (e.type === "beforetoggle")
-    return place5(root);
+    return place4(root);
   const { search } = S3.get(root);
   search.value = "";
   render4(root);
@@ -5001,7 +4931,7 @@ var upgrade6 = (el) => {
   }
 };
 var all4 = (root) => root.querySelectorAll?.(".sortable").forEach(upgrade6);
-var scan8 = () => {
+var scan7 = () => {
   if (document.readyState === "loading")
     document.addEventListener("DOMContentLoaded", () => all4(document), {
       once: true
@@ -5009,7 +4939,7 @@ var scan8 = () => {
   else
     all4(document);
 };
-scan8();
+scan7();
 new MutationObserver((list) => list.forEach((m) => {
   if (document.readyState === "loading")
     return;
@@ -5380,7 +5310,7 @@ var upgrade7 = (root) => {
   }
 };
 var all5 = (node) => node.querySelectorAll?.(ROOT5).forEach(upgrade7);
-var scan9 = () => {
+var scan8 = () => {
   if (document.readyState === "loading")
     document.addEventListener("DOMContentLoaded", () => all5(document), {
       once: true
@@ -5388,7 +5318,7 @@ var scan9 = () => {
   else
     all5(document);
 };
-scan9();
+scan8();
 new MutationObserver((list) => list.forEach((m) => {
   if (document.readyState === "loading")
     return;
@@ -6002,7 +5932,7 @@ function refresh6(box, state) {
     ...state.options
   });
 }
-function start8(box, state) {
+function start7(box, state) {
   load2().then((monaco) => {
     if (states7.get(box) !== state)
       return;
@@ -6075,7 +6005,7 @@ function mount11(box, options = {}) {
     configurable: true,
     get: () => state.editor
   });
-  start8(box, state);
+  start7(box, state);
 }
 var upgrade8 = (box) => {
   if (!states7.has(box))
