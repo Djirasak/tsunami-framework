@@ -1,4 +1,4 @@
-/* tsunami v1.3.0 */
+/* tsunami v1.4.0 */
 @charset "UTF-8";
 @layer tokens, base, components;
 @layer tokens {
@@ -9247,6 +9247,7 @@
 }
 @layer components {
   :where(.segmented) {
+    position: relative;
     display: inline-flex;
     gap: 2px;
     max-width: 100%;
@@ -9304,6 +9305,31 @@
     height: 1.5rem;
     padding: 0 var(--space-2);
     font-size: var(--text-sm);
+  }
+  :where(.segmented[data-thumb] > label) {
+    z-index: 1;
+  }
+  :where(.segmented[data-thumb] > label:has(> input:checked)) {
+    border-color: transparent;
+    background: none;
+  }
+  :where(.segmented[data-thumb])::after {
+    content: "";
+    position: absolute;
+    top: var(--thumb-y);
+    left: var(--thumb-x);
+    box-sizing: border-box;
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    pointer-events: none;
+  }
+  :where(.segmented[data-thumb=slide])::after {
+    transition-property: top, left, width, height;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 @layer components {
@@ -12198,6 +12224,131 @@
   }
 }
 @layer components {
+  :where(.indicator) {
+    --indicator-count: 1.125rem;
+    --indicator-dot: 0.625rem;
+    --indicator-font: 0.625rem;
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+  :where(.indicator[data-size=sm]) {
+    --indicator-count: 0.875rem;
+    --indicator-dot: 0.5rem;
+    --indicator-font: 0.5625rem;
+  }
+  :where(.indicator[data-size=lg]) {
+    --indicator-count: 1.375rem;
+    --indicator-dot: 0.875rem;
+    --indicator-font: 0.75rem;
+  }
+  :where(.indicator > [data-count]) {
+    position: absolute;
+    top: calc(var(--indicator-count) / -3);
+    right: calc(var(--indicator-count) / -3);
+    z-index: 2;
+    display: inline-grid;
+    place-items: center;
+    min-width: var(--indicator-count);
+    height: var(--indicator-count);
+    padding: 0 0.25rem;
+    border: 1px solid var(--bg);
+    border-radius: 999px;
+    background: var(--fg);
+    color: var(--bg);
+    font-size: var(--indicator-font);
+    font-weight: 500;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  :where(.indicator > [data-status]) {
+    position: absolute;
+    right: calc(var(--indicator-dot) / -5);
+    bottom: calc(var(--indicator-dot) / -5);
+    z-index: 2;
+    width: var(--indicator-dot);
+    height: var(--indicator-dot);
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    background: var(--indicator-color, var(--neutral-fg));
+  }
+  :where(.indicator > .loader) {
+    position: absolute;
+    right: calc(var(--indicator-dot) / -3);
+    bottom: calc(var(--indicator-dot) / -3);
+    z-index: 2;
+    box-sizing: border-box;
+    width: calc(var(--indicator-dot) * 1.6);
+    height: calc(var(--indicator-dot) * 1.6);
+    border-width: 2px;
+    background: var(--bg);
+    box-shadow: 0 0 0 2px var(--bg);
+  }
+  :where(.indicator > [data-status=ok]),
+  :where(.indicator > [data-count][data-variant=ok]) {
+    --indicator-color: var(--ok-fg);
+    background: var(--ok-fg);
+  }
+  :where(.indicator > [data-status=danger]),
+  :where(.indicator > [data-count][data-variant=danger]) {
+    --indicator-color: var(--danger-fg);
+    background: var(--danger-fg);
+  }
+  :where(.indicator > [data-status=warning]),
+  :where(.indicator > [data-count][data-variant=warning]) {
+    --indicator-color: var(--warning-fg);
+    background: var(--warning-fg);
+  }
+  :where(.indicator > [data-status=info]),
+  :where(.indicator > [data-count][data-variant=info]) {
+    --indicator-color: var(--info-fg);
+    background: var(--info-fg);
+  }
+  :where(.indicator > [data-status][data-pulse]) {
+    box-shadow: 0 0 0 0 var(--indicator-color, var(--neutral-fg));
+    animation: tsunami-indicator-pulse 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  @keyframes tsunami-indicator-pulse {
+    70%, 100% {
+      box-shadow: 0 0 0 calc(var(--indicator-dot) * 0.6) transparent;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :where(.indicator > [data-status][data-pulse]) {
+      animation: none;
+    }
+  }
+  :where(.indicator > [data-position^=top]) {
+    top: calc(var(--indicator-count) / -3);
+    bottom: auto;
+  }
+  :where(.indicator > [data-position^=bottom]) {
+    top: auto;
+    bottom: calc(var(--indicator-count) / -3);
+  }
+  :where(.indicator > [data-position$=left]) {
+    right: auto;
+    left: calc(var(--indicator-count) / -3);
+  }
+  :where(.indicator > [data-position$=right]) {
+    right: calc(var(--indicator-count) / -3);
+    left: auto;
+  }
+  :where(.indicator > [data-status][data-position^=top]) {
+    top: calc(var(--indicator-dot) / -5);
+  }
+  :where(.indicator > [data-status][data-position^=bottom]) {
+    bottom: calc(var(--indicator-dot) / -5);
+  }
+  :where(.indicator > [data-status][data-position$=left]) {
+    left: calc(var(--indicator-dot) / -5);
+  }
+  :where(.indicator > [data-status][data-position$=right]) {
+    right: calc(var(--indicator-dot) / -5);
+  }
+}
+@layer components {
   :where(.sidebar) {
     display: flex;
     flex-direction: column;
@@ -12495,24 +12646,24 @@
     font-size: var(--text-base);
     font-weight: 500;
   }
-  :where(:has(> .subnav + *)) {
+  :where(:has(> .subnav + :not(.subnav))) {
     display: flex;
     flex-direction: column;
   }
-  :where(.subnav + *) {
+  :where(.subnav + :not(.subnav)) {
     flex: 1;
     min-width: 0;
     padding: var(--space-5);
   }
-  :where(.subnav:has(+ *)) {
+  :where(.subnav:has(~ :not(.subnav))) {
     width: auto;
     border-bottom: 1px solid var(--line);
   }
   @media (width >= 48rem) {
-    :where(:has(> .subnav + *)) {
+    :where(:has(> .subnav + :not(.subnav))) {
       flex-direction: row;
     }
-    :where(.subnav:has(+ *)) {
+    :where(.subnav:has(~ :not(.subnav))) {
       width: 13rem;
       border-right: 1px solid var(--line);
       border-bottom: 0;
@@ -12627,6 +12778,7 @@
 }
 @layer components {
   :where(.tabs [role=tablist]) {
+    position: relative;
     display: inline-flex;
     gap: 2px;
     max-width: 100%;
@@ -12759,6 +12911,51 @@
       grid-row: auto;
       grid-column: 1;
     }
+  }
+  :where(.tabs [role=tablist][data-thumb] [role=tab]) {
+    position: relative;
+    z-index: 1;
+  }
+  :where(.tabs [role=tablist][data-thumb] [role=tab][aria-selected=true]) {
+    border-color: transparent;
+    background: none;
+  }
+  :where(.tabs [role=tablist][data-thumb])::after {
+    content: "";
+    position: absolute;
+    top: var(--thumb-y);
+    left: var(--thumb-x);
+    box-sizing: border-box;
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    pointer-events: none;
+  }
+  :where(.tabs [role=tablist][data-thumb=slide])::after {
+    transition-property: top, left, width, height;
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  :where(.tabs [role=tablist][data-thumb][data-variant=line])::after {
+    top: calc(var(--thumb-y) + var(--thumb-h) - 2px);
+    height: 2px;
+    border: 0;
+    border-radius: 0;
+    background: var(--fg);
+  }
+  :where(.tabs [role=tablist][data-thumb][data-variant=line] [role=tab][aria-selected=true]) {
+    border-bottom-color: transparent;
+  }
+  :where(.tabs > [role=tablist][data-thumb][aria-orientation=vertical][data-variant=line])::after {
+    width: 2px;
+    height: var(--thumb-h);
+    top: var(--thumb-y);
+    background: var(--fg);
+  }
+  :where(.tabs > [role=tablist][data-thumb][aria-orientation=vertical][data-variant=line] [role=tab][aria-selected=true]) {
+    border-left-color: transparent;
   }
 }
 @layer components {

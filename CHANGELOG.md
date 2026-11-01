@@ -6,6 +6,8 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-11-01
+
 ### Added
 
 - Indicator: a count (`data-count`), a status dot (`data-status`) or a spinner (`.loader`) on the corner of any element, such as a button, an icon or a card, inside `.indicator`. `data-size="sm"` or `"lg"` on the indicator sizes the marks, `data-pulse` on a dot adds a soft ring for "live", `data-position` moves one to another corner and `data-variant` colours a count. The Avatar keeps its own marks.
@@ -187,7 +189,8 @@ First release. Semantic HTML and `data-*` attributes, with no runtime dependenci
 - `.h1` to `.h6` classes that give any element the look of a heading.
 - A Claude skill (`.claude/skills/tsunami`) that describes the classes and `data-*` attributes.
 
-[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.1...v1.1.2
