@@ -1,0 +1,405 @@
+<header class="page-header">
+            <div>
+              <h1>Indicator</h1>
+              <p>A count, a status dot or a spinner on the corner of any element, such as a button, an icon or a card.</p>
+            </div>
+          </header>
+          <section>
+            <h2>A count</h2>
+            <p>Wrap the element in <code>.indicator</code> and add a <code>span</code> with <code>data-count</code> after it. It sits on the top right corner. Put the number in the element's <code>aria-label</code> too, because a screen reader reads the label of the button, not the count next to it.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Count">
+                <button type="button" role="tab" id="ex1-tp" aria-selected="true" aria-controls="ex1-p">Preview</button>
+                <button type="button" role="tab" id="ex1-tc" aria-selected="false" aria-controls="ex1-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex1-p" aria-labelledby="ex1-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <span class="indicator">
+                      <button type="button" class="btn" aria-label="Inbox, 3 unread">Inbox</button>
+                      <span data-count>3</span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Notifications, 12 new"><i class="icon icon-bell" aria-hidden="true"></i></button>
+                      <span data-count>12</span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cart, 99+ items"><i class="icon icon-shopping-cart" aria-hidden="true"></i></button>
+                      <span data-count>99+</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex1-c" aria-labelledby="ex1-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" aria-label="Inbox, 3 unread"&gt;Inbox&lt;/button&gt;
+    &lt;span data-count&gt;3&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Notifications, 12 new"&gt;&lt;i class="icon icon-bell" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-count&gt;12&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cart, 99+ items"&gt;&lt;i class="icon icon-shopping-cart" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-count&gt;99+&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A status dot</h2>
+            <p>Add a <code>span</code> with <code>data-status</code> (<code>ok</code>, <code>warning</code>, <code>danger</code> or <code>info</code>; neutral without a value). It sits on the bottom right corner. The dot is only colour, so give it <code>role="img"</code> and an <code>aria-label</code> that names the status.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Status dot">
+                <button type="button" role="tab" id="ex2-tp" aria-selected="true" aria-controls="ex2-p">Preview</button>
+                <button type="button" role="tab" id="ex2-tc" aria-selected="false" aria-controls="ex2-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex2-p" aria-labelledby="ex2-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <span class="indicator">
+                      <button type="button" class="btn" data-size="icon" aria-label="Messages"><i class="icon icon-mail" aria-hidden="true"></i></button>
+                      <span data-status="ok" role="img" aria-label="Online"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"><i class="icon icon-mail" aria-hidden="true"></i></button>
+                      <span data-status="warning" role="img" aria-label="Away"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"><i class="icon icon-mail" aria-hidden="true"></i></button>
+                      <span data-status="danger" role="img" aria-label="Offline"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"><i class="icon icon-mail" aria-hidden="true"></i></button>
+                      <span data-status role="img" aria-label="Unknown"></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex2-c" aria-labelledby="ex2-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-size="icon" aria-label="Messages"&gt;&lt;i class="icon icon-mail" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="ok" role="img" aria-label="Online"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"&gt;&lt;i class="icon icon-mail" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="warning" role="img" aria-label="Away"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"&gt;&lt;i class="icon icon-mail" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="danger" role="img" aria-label="Offline"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"&gt;&lt;i class="icon icon-mail" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status role="img" aria-label="Unknown"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Live</h2>
+            <p>
+              Add <code>data-pulse</code> to a dot for something that is
+              happening now: a ring spreads from the dot and fades. It stops
+              when the reader has asked for reduced motion, so name the state
+              in the <code>aria-label</code> as well, such as "Live now".
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Live">
+                <button type="button" role="tab" id="ex6-tp" aria-selected="true" aria-controls="ex6-p">Preview</button>
+                <button type="button" role="tab" id="ex6-tc" aria-selected="false" aria-controls="ex6-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex6-p" aria-labelledby="ex6-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Camera"><i class="icon icon-video" aria-hidden="true"></i></button>
+                      <span data-status="danger" data-pulse role="img" aria-label="Live now"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Microphone"><i class="icon icon-mic" aria-hidden="true"></i></button>
+                      <span data-status="ok" data-pulse role="img" aria-label="Connected"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Network"><i class="icon icon-wifi" aria-hidden="true"></i></button>
+                      <span data-status="warning" data-pulse role="img" aria-label="Reconnecting"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Broadcast"><i class="icon icon-radio" aria-hidden="true"></i></button>
+                      <span data-status="info" data-pulse role="img" aria-label="Receiving"></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex6-c" aria-labelledby="ex6-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Camera"&gt;&lt;i class="icon icon-video" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="danger" data-pulse role="img" aria-label="Live now"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Microphone"&gt;&lt;i class="icon icon-mic" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="ok" data-pulse role="img" aria-label="Connected"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Network"&gt;&lt;i class="icon icon-wifi" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="warning" data-pulse role="img" aria-label="Reconnecting"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Broadcast"&gt;&lt;i class="icon icon-radio" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="info" data-pulse role="img" aria-label="Receiving"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A loader</h2>
+            <p>
+              Put a <a href="/docs/loader">Loader</a> after the element to show
+              that it is working, such as a sync or a save. It sits on the
+              bottom right corner. Give it <code>role="status"</code> and an
+              <code>aria-label</code> that says what is happening.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Loader">
+                <button type="button" role="tab" id="ex5-tp" aria-selected="true" aria-controls="ex5-p">Preview</button>
+                <button type="button" role="tab" id="ex5-tc" aria-selected="false" aria-controls="ex5-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex5-p" aria-labelledby="ex5-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <span class="indicator">
+                      <button type="button" class="btn" data-size="icon" aria-label="Cloud sync"><i class="icon icon-cloud" aria-hidden="true"></i></button>
+                      <span class="loader" role="status" aria-label="Syncing"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cloud sync"><i class="icon icon-cloud" aria-hidden="true"></i></button>
+                      <span class="loader" role="status" aria-label="Syncing"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="primary" data-size="icon" aria-label="Cloud sync"><i class="icon icon-cloud" aria-hidden="true"></i></button>
+                      <span class="loader" role="status" aria-label="Syncing"></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex5-c" aria-labelledby="ex5-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-size="icon" aria-label="Cloud sync"&gt;&lt;i class="icon icon-cloud" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span class="loader" role="status" aria-label="Syncing"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cloud sync"&gt;&lt;i class="icon icon-cloud" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span class="loader" role="status" aria-label="Syncing"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="primary" data-size="icon" aria-label="Cloud sync"&gt;&lt;i class="icon icon-cloud" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span class="loader" role="status" aria-label="Syncing"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Sizes</h2>
+            <p>
+              Set <code>data-size</code> on <code>.indicator</code>:
+              <code>sm</code> or <code>lg</code> make the count and the dot
+              smaller or larger. Without it they are medium.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Sizes">
+                <button type="button" role="tab" id="ex4-tp" aria-selected="true" aria-controls="ex4-p">Preview</button>
+                <button type="button" role="tab" id="ex4-tc" aria-selected="false" aria-controls="ex4-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex4-p" aria-labelledby="ex4-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <span class="indicator" data-size="sm">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Notifications, 4 new"><i class="icon icon-bell" aria-hidden="true"></i></button>
+                      <span data-count>4</span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Notifications, 4 new"><i class="icon icon-bell" aria-hidden="true"></i></button>
+                      <span data-count>4</span>
+                    </span>
+                    <span class="indicator" data-size="lg">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Notifications, 4 new"><i class="icon icon-bell" aria-hidden="true"></i></button>
+                      <span data-count>4</span>
+                    </span>
+                    <span class="indicator" data-size="sm">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"><i class="icon icon-mail" aria-hidden="true"></i></button>
+                      <span data-status="ok" role="img" aria-label="Online"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"><i class="icon icon-mail" aria-hidden="true"></i></button>
+                      <span data-status="ok" role="img" aria-label="Online"></span>
+                    </span>
+                    <span class="indicator" data-size="lg">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"><i class="icon icon-mail" aria-hidden="true"></i></button>
+                      <span data-status="ok" role="img" aria-label="Online"></span>
+                    </span>
+                    <span class="indicator" data-size="sm">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cloud sync"><i class="icon icon-cloud" aria-hidden="true"></i></button>
+                      <span class="loader" role="status" aria-label="Syncing"></span>
+                    </span>
+                    <span class="indicator">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cloud sync"><i class="icon icon-cloud" aria-hidden="true"></i></button>
+                      <span class="loader" role="status" aria-label="Syncing"></span>
+                    </span>
+                    <span class="indicator" data-size="lg">
+                      <button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cloud sync"><i class="icon icon-cloud" aria-hidden="true"></i></button>
+                      <span class="loader" role="status" aria-label="Syncing"></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex4-c" aria-labelledby="ex4-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="indicator" data-size="sm"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Notifications, 4 new"&gt;&lt;i class="icon icon-bell" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-count&gt;4&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Notifications, 4 new"&gt;&lt;i class="icon icon-bell" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-count&gt;4&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator" data-size="lg"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Notifications, 4 new"&gt;&lt;i class="icon icon-bell" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-count&gt;4&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator" data-size="sm"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"&gt;&lt;i class="icon icon-mail" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="ok" role="img" aria-label="Online"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"&gt;&lt;i class="icon icon-mail" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="ok" role="img" aria-label="Online"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator" data-size="lg"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Messages"&gt;&lt;i class="icon icon-mail" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span data-status="ok" role="img" aria-label="Online"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator" data-size="sm"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cloud sync"&gt;&lt;i class="icon icon-cloud" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span class="loader" role="status" aria-label="Syncing"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cloud sync"&gt;&lt;i class="icon icon-cloud" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span class="loader" role="status" aria-label="Syncing"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator" data-size="lg"&gt;
+    &lt;button type="button" class="btn" data-variant="ghost" data-size="icon" aria-label="Cloud sync"&gt;&lt;i class="icon icon-cloud" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;span class="loader" role="status" aria-label="Syncing"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Colour and position</h2>
+            <p>Put <code>data-position</code> on the mark to move it to <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code> or <code>bottom-right</code>. A count takes <code>data-variant</code> for the colour of a status. For a person's photo or initials, the <a href="/docs/avatar">Avatar</a> has its own count and dot.</p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Position">
+                <button type="button" role="tab" id="ex3-tp" aria-selected="true" aria-controls="ex3-p">Preview</button>
+                <button type="button" role="tab" id="ex3-tc" aria-selected="false" aria-controls="ex3-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="ex3-p" aria-labelledby="ex3-tp" tabindex="0">
+                <div class="docs-preview">
+                  <div class="stack" data-direction="row" data-gap="lg">
+                    <div class="indicator">
+                      <div class="card" style="padding: var(--space-4)">Order #1043</div>
+                      <span data-count data-variant="danger" data-position="top-left">2</span>
+                    </div>
+                    <div class="indicator">
+                      <div class="card" style="padding: var(--space-4)">Order #1044</div>
+                      <span data-status="ok" data-position="top-right" role="img" aria-label="Paid"></span>
+                    </div>
+                    <div class="indicator">
+                      <div class="card" style="padding: var(--space-4)">Order #1045</div>
+                      <span data-count data-variant="info" data-position="bottom-left">New</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" id="ex3-c" aria-labelledby="ex3-tc" tabindex="0" hidden>
+                <pre><code>&lt;div class="stack" data-direction="row" data-gap="lg"&gt;
+  &lt;span class="indicator"&gt;
+    &lt;div class="card" style="padding: var(--space-4)"&gt;Order #1043&lt;/div&gt;
+    &lt;span data-count data-variant="danger" data-position="top-left"&gt;2&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;div class="card" style="padding: var(--space-4)"&gt;Order #1044&lt;/div&gt;
+    &lt;span data-status="ok" data-position="top-right" role="img" aria-label="Paid"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="indicator"&gt;
+    &lt;div class="card" style="padding: var(--space-4)"&gt;Order #1045&lt;/div&gt;
+    &lt;span data-count data-variant="info" data-position="bottom-left"&gt;New&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Attributes</h2>
+
+            <div class="card scroll-area">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute / element</th>
+                    <th scope="col">Values</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>.indicator</code></td>
+                    <td><code>span</code></td>
+                    <td>Wraps the element and the mark. The mark is positioned on its corner.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-size</code></td>
+                    <td><code>sm</code> <code>lg</code></td>
+                    <td>On <code>.indicator</code>: the size of the count and the dot</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-count</code></td>
+                    <td>on a child <code>span</code></td>
+                    <td>A number or short text on the top right corner</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-status</code></td>
+                    <td><code>ok</code> <code>warning</code> <code>danger</code> <code>info</code></td>
+                    <td>A dot on the bottom right corner. Neutral when empty. Add <code>role="img"</code> and an <code>aria-label</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-pulse</code></td>
+                    <td>on a dot</td>
+                    <td>A soft ring that spreads from the dot, for "live". Off under reduced motion.</td>
+                  </tr>
+                  <tr>
+                    <td><code>.loader</code></td>
+                    <td>on a child <code>span</code></td>
+                    <td>A spinner on the bottom right corner. Add <code>role="status"</code> and an <code>aria-label</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-variant</code></td>
+                    <td><code>ok</code> <code>warning</code> <code>danger</code> <code>info</code></td>
+                    <td>On a count: its colour</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-position</code></td>
+                    <td><code>top-left</code> <code>top-right</code> <code>bottom-left</code> <code>bottom-right</code></td>
+                    <td>On the mark: which corner it sits on</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>

@@ -9,6 +9,11 @@
     "description": "A short status label with a light fill and dark text, for tables, card headers and page titles. Tones, sizes, icons and dots, with HTML for each.",
     "libs": []
   },
+  "indicator": {
+    "title": "Indicator",
+    "description": "A count, a status dot or a spinner on the corner of any element, such as a button, an icon or a card. Sizes, positions and accessible names, with the HTML for each.",
+    "libs": []
+  },
   "item": {
     "title": "Item",
     "description": "One row made of a figure (icon, image or avatar), a section with title and description, and an aside for buttons or trailing info. Examples and markup.",

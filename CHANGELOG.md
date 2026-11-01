@@ -8,6 +8,7 @@ Versions follow [semantic versioning](https://semver.org).
 
 ### Added
 
+- Indicator: a count (`data-count`), a status dot (`data-status`) or a spinner (`.loader`) on the corner of any element, such as a button, an icon or a card, inside `.indicator`. `data-size="sm"` or `"lg"` on the indicator sizes the marks, `data-pulse` on a dot adds a soft ring for "live", `data-position` moves one to another corner and `data-variant` colours a count. The Avatar keeps its own marks.
 - Subnav: put several `.subnav` menus in a row before the content and hide all but one. A sidebar link with `aria-controls="the-subnav-id"` shows that menu, hides the others and opens its current section, and a link in a subnav with `aria-controls` does the same for blocks of content. `aria-current` moves with the click, and such a link does not follow its `href`.
 - The selected pill in Tabs and the Segmented control slides to the next option, and so does the underline of the line tabs. A small script (`js/thumb.js`) measures the selected item; without it the selected item still shows, and switches at once. The slide is cut under `prefers-reduced-motion`.
 

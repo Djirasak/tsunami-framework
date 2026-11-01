@@ -1,0 +1,148 @@
+// Indicator: a count, a status dot or a spinner on the corner of any element.
+// <span class="indicator"><button class="btn">Inbox</button><span data-count>3</span></span>
+// <span class="indicator"><i class="icon icon-bell"></i><span data-status="danger" role="img" aria-label="Offline"></span></span>
+// <span class="indicator"><button class="btn">Sync</button><span class="loader" role="status" aria-label="Syncing"></span></span>
+// A count sits on the top right; a dot and a .loader on the bottom right.
+// data-size="sm" or "lg" on .indicator makes the marks smaller or larger.
+// data-position on the mark moves it: top-left, top-right, bottom-left or
+// bottom-right. A count takes data-variant (ok, danger, warning, info). The dot
+// takes data-status (ok, danger, warning, info), and is neutral without one;
+// data-pulse adds a soft ring for "live". A dot has no text, so give it
+// role="img" and an aria-label. For a person's
+// avatar, .avatar has its own marks.
+@use "motion";
+
+@layer components {
+  :where(.indicator) {
+    --indicator-count: 1.125rem;
+    --indicator-dot: 0.625rem;
+    --indicator-font: 0.625rem;
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  :where(.indicator[data-size="sm"]) {
+    --indicator-count: 0.875rem;
+    --indicator-dot: 0.5rem;
+    --indicator-font: 0.5625rem;
+  }
+
+  :where(.indicator[data-size="lg"]) {
+    --indicator-count: 1.375rem;
+    --indicator-dot: 0.875rem;
+    --indicator-font: 0.75rem;
+  }
+
+  :where(.indicator > [data-count]) {
+    position: absolute;
+    top: calc(var(--indicator-count) / -3);
+    right: calc(var(--indicator-count) / -3);
+    z-index: 2;
+    display: inline-grid;
+    place-items: center;
+    min-width: var(--indicator-count);
+    height: var(--indicator-count);
+    padding: 0 0.25rem;
+    border: 1px solid var(--bg);
+    border-radius: 999px;
+    background: var(--fg);
+    color: var(--bg);
+    font-size: var(--indicator-font);
+    font-weight: 500;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :where(.indicator > [data-status]) {
+    position: absolute;
+    right: calc(var(--indicator-dot) / -5);
+    bottom: calc(var(--indicator-dot) / -5);
+    z-index: 2;
+    width: var(--indicator-dot);
+    height: var(--indicator-dot);
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    background: var(--indicator-color, var(--neutral-fg));
+  }
+
+  // A spinner on the corner, for something that is working: syncing, saving.
+  :where(.indicator > .loader) {
+    position: absolute;
+    right: calc(var(--indicator-dot) / -3);
+    bottom: calc(var(--indicator-dot) / -3);
+    z-index: 2;
+    box-sizing: border-box;
+    width: calc(var(--indicator-dot) * 1.6);
+    height: calc(var(--indicator-dot) * 1.6);
+    border-width: 2px;
+    background: var(--bg);
+    box-shadow: 0 0 0 2px var(--bg);
+  }
+
+  @each $v in ok, danger, warning, info {
+    :where(.indicator > [data-status="#{$v}"]),
+    :where(.indicator > [data-count][data-variant="#{$v}"]) {
+      --indicator-color: var(--#{$v}-fg);
+      background: var(--#{$v}-fg);
+    }
+  }
+
+  // Live: a ring spreads from the dot and fades. It stops under reduced motion.
+  :where(.indicator > [data-status][data-pulse]) {
+    box-shadow: 0 0 0 0 var(--indicator-color, var(--neutral-fg));
+    animation: tsunami-indicator-pulse 1.6s motion.$ease infinite;
+  }
+
+  @keyframes tsunami-indicator-pulse {
+    70%,
+    100% {
+      box-shadow: 0 0 0 calc(var(--indicator-dot) * 0.6) transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.indicator > [data-status][data-pulse]) {
+      animation: none;
+    }
+  }
+
+  // Moved to another corner. The count and the dot sit differently on a
+  // corner, so each has its own offsets.
+  :where(.indicator > [data-position^="top"]) {
+    top: calc(var(--indicator-count) / -3);
+    bottom: auto;
+  }
+
+  :where(.indicator > [data-position^="bottom"]) {
+    top: auto;
+    bottom: calc(var(--indicator-count) / -3);
+  }
+
+  :where(.indicator > [data-position$="left"]) {
+    right: auto;
+    left: calc(var(--indicator-count) / -3);
+  }
+
+  :where(.indicator > [data-position$="right"]) {
+    right: calc(var(--indicator-count) / -3);
+    left: auto;
+  }
+
+  :where(.indicator > [data-status][data-position^="top"]) {
+    top: calc(var(--indicator-dot) / -5);
+  }
+
+  :where(.indicator > [data-status][data-position^="bottom"]) {
+    bottom: calc(var(--indicator-dot) / -5);
+  }
+
+  :where(.indicator > [data-status][data-position$="left"]) {
+    left: calc(var(--indicator-dot) / -5);
+  }
+
+  :where(.indicator > [data-status][data-position$="right"]) {
+    right: calc(var(--indicator-dot) / -5);
+  }
+}

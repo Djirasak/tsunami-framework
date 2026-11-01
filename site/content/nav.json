@@ -246,6 +246,12 @@
         "keywords": "Feedback empty header figure h3 p footer div a link"
       },
       {
+        "label": "Indicator",
+        "href": "/docs/indicator",
+        "icon": "circle-dot",
+        "keywords": "Feedback indicator count dot badge corner notification unread status data-count data-status data-position overlay"
+      },
+      {
         "label": "Loader",
         "href": "/docs/loader",
         "icon": "loader-circle",
