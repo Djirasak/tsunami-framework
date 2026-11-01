@@ -21,6 +21,12 @@
         "keywords": "Starters starter template boilerplate page app shell sidebar sign in login copy html quick start"
       },
       {
+        "label": "Frameworks integration",
+        "href": "/docs/frameworks",
+        "icon": "blocks",
+        "keywords": "Frameworks integration frameworks react vue svelte sveltekit django htmx laravel integration vite bundler npm install typescript commandfor events select refresh theme flash"
+      },
+      {
         "label": "JavaScript",
         "href": "/docs/javascript",
         "icon": "braces",
@@ -31,12 +37,6 @@
         "href": "/docs/events",
         "icon": "radio",
         "keywords": "Start events tsunami: custom event listen addEventListener detail bubbles cancelable preventDefault document typescript"
-      },
-      {
-        "label": "Frameworks integration",
-        "href": "/docs/frameworks",
-        "icon": "blocks",
-        "keywords": "Frameworks integration frameworks react vue svelte sveltekit django htmx laravel integration vite bundler npm install typescript commandfor events select refresh theme flash"
       }
     ]
   },
