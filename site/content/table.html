@@ -759,8 +759,8 @@
               <code>data-pagination-for="table-id"</code> is filled with buttons
               (with no value, the one in the same card is used).
               <code>data-table-info</code> shows the range and a
-              <code>select</code> with <code>data-table-page-size</code> changes
-              the size. Rows are hidden, never re-created, so it stays quick up
+              <code>select</code> with <code>data-table-page-size</code>, inside a
+              <a href="/docs/select">select wrapper</a>, changes the size. Rows are hidden, never re-created, so it stays quick up
               to a couple of thousand rows.
             </p>
             <div class="tabs" data-tabs>
@@ -1105,16 +1105,13 @@
                     </div>
                     <footer>
                       <p data-table-info="pg-demo" aria-live="polite"></p>
-                      <select
-                        class="select"
-                        data-size="sm"
-                        aria-label="Rows per page"
-                        data-table-page-size="pg-demo"
-                      >
-                        <option>5</option>
-                        <option>10</option>
-                        <option>25</option>
-                      </select>
+                      <div class="select" data-size="sm" style="width: 5rem">
+                        <select aria-label="Rows per page" data-table-page-size="pg-demo">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>25</option>
+                        </select>
+                      </div>
                       <nav
                         class="pagination"
                         data-size="sm"
@@ -1156,7 +1153,9 @@
   &lt;/div&gt;
   &lt;footer&gt;
     &lt;p data-table-info="pg-demo" aria-live="polite"&gt;&lt;/p&gt;
-    &lt;select class="select" data-size="sm" aria-label="Rows per page" data-table-page-size="pg-demo"&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;10&lt;/option&gt;&lt;option&gt;25&lt;/option&gt;&lt;/select&gt;
+    &lt;div class="select" data-size="sm" style="width: 5rem"&gt;
+      &lt;select aria-label="Rows per page" data-table-page-size="pg-demo"&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;10&lt;/option&gt;&lt;option&gt;25&lt;/option&gt;&lt;/select&gt;
+    &lt;/div&gt;
     &lt;nav class="pagination" data-size="sm" aria-label="Product pages" data-pagination-for="pg-demo"&gt;&lt;/nav&gt;
   &lt;/footer&gt;
 &lt;/div&gt;</code></pre>
@@ -3248,16 +3247,13 @@
                     </div>
                     <footer>
                       <p id="orders-selected" aria-live="polite">0 selected</p>
-                      <select
-                        class="select"
-                        data-size="sm"
-                        aria-label="Rows per page"
-                        data-table-page-size="orders-demo"
-                      >
-                        <option>10</option>
-                        <option>20</option>
-                        <option>40</option>
-                      </select>
+                      <div class="select" data-size="sm" style="width: 5rem">
+                        <select aria-label="Rows per page" data-table-page-size="orders-demo">
+                            <option>10</option>
+                            <option>20</option>
+                            <option>40</option>
+                        </select>
+                      </div>
                       <nav
                         class="pagination"
                         data-size="sm"
@@ -3327,7 +3323,9 @@
   &lt;/div&gt;
   &lt;footer&gt;
     &lt;p id="orders-selected" aria-live="polite"&gt;0 selected&lt;/p&gt;
-    &lt;select class="select" data-size="sm" aria-label="Rows per page" data-table-page-size="orders-demo"&gt;&lt;option&gt;10&lt;/option&gt;&lt;option&gt;20&lt;/option&gt;&lt;option&gt;40&lt;/option&gt;&lt;/select&gt;
+    &lt;div class="select" data-size="sm" style="width: 5rem"&gt;
+      &lt;select aria-label="Rows per page" data-table-page-size="orders-demo"&gt;&lt;option&gt;10&lt;/option&gt;&lt;option&gt;20&lt;/option&gt;&lt;option&gt;40&lt;/option&gt;&lt;/select&gt;
+    &lt;/div&gt;
     &lt;nav class="pagination" data-size="sm" aria-label="Order pages" data-pagination-for="orders-demo"&gt;&lt;/nav&gt;
   &lt;/footer&gt;
 &lt;/div&gt;
