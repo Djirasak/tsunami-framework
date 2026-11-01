@@ -27,8 +27,45 @@
               <a href="/docs/card">card</a>. Start here for a page without a
               sidebar.
             </p>
-            <div class="code-block">
-              <pre><code id="st-page">&lt;!doctype html&gt;
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A page">
+                <button type="button" role="tab" id="st-page-tp" aria-selected="true" aria-controls="st-page-p">Preview</button>
+                <button type="button" role="tab" id="st-page-tc" aria-selected="false" aria-controls="st-page-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="st-page-p" aria-labelledby="st-page-tp" tabindex="0">
+                <iframe class="docs-frame" title="Preview: A page" loading="lazy" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;My page&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.css&quot;&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class=&quot;container stack&quot; style=&quot;padding-block: var(--space-4)&quot;&gt;
+    &lt;header class=&quot;page-header&quot;&gt;
+      &lt;div&gt;
+        &lt;h1&gt;My page&lt;/h1&gt;
+        &lt;p&gt;A short description of what this page is for.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;article class=&quot;card&quot;&gt;
+      &lt;section class=&quot;stack&quot;&gt;
+        &lt;p&gt;Start here. Every component is a class, and a data attribute picks its variant.&lt;/p&gt;
+        &lt;div class=&quot;stack&quot; data-direction=&quot;row&quot; data-gap=&quot;sm&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;primary&quot;&gt;Save&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn&quot;&gt;Cancel&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+              </div>
+              <div role="tabpanel" id="st-page-c" aria-labelledby="st-page-tc" tabindex="0" hidden>
+            <pre><code>&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
@@ -58,10 +95,7 @@
   &lt;/main&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-              <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#st-page" aria-label="Copy the code">
-                <i class="icon icon-copy" data-idle aria-hidden="true"></i>
-                <i class="icon icon-check" data-done aria-hidden="true"></i>
-              </button>
+              </div>
             </div>
           </section>
           <section>
@@ -72,8 +106,90 @@
               switcher in the header. Add links to the list and mark the
               current one with <code>aria-current="page"</code>.
             </p>
-            <div class="code-block">
-              <pre><code id="st-app">&lt;!doctype html&gt;
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="An app with a sidebar">
+                <button type="button" role="tab" id="st-app-tp" aria-selected="true" aria-controls="st-app-p">Preview</button>
+                <button type="button" role="tab" id="st-app-tc" aria-selected="false" aria-controls="st-app-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="st-app-p" aria-labelledby="st-app-tp" tabindex="0">
+                <iframe class="docs-frame" title="Preview: An app with a sidebar" loading="lazy" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;My app&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.css&quot;&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;aside class=&quot;sidebar&quot; id=&quot;app-nav&quot; popover&gt;
+      &lt;nav aria-label=&quot;Main&quot;&gt;
+        &lt;header&gt;
+          &lt;a href=&quot;/&quot;&gt;
+            &lt;span class=&quot;avatar&quot; data-size=&quot;sm&quot;&gt;&lt;span&gt;MA&lt;/span&gt;&lt;/span&gt;
+            &lt;span&gt;My app&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/header&gt;
+        &lt;section&gt;
+          &lt;div role=&quot;group&quot;&gt;
+            &lt;ul&gt;
+              &lt;li&gt;
+                &lt;a href=&quot;/&quot; aria-current=&quot;page&quot;&gt;
+                  &lt;i class=&quot;icon icon-house&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;Overview&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href=&quot;/orders&quot;&gt;
+                  &lt;i class=&quot;icon icon-receipt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;Orders&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;a href=&quot;/customers&quot;&gt;
+                  &lt;i class=&quot;icon icon-users&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;Customers&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+        &lt;footer&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;ghost&quot; data-size=&quot;icon&quot;
+                  commandfor=&quot;app-nav&quot; command=&quot;--toggle-collapsed&quot;
+                  aria-label=&quot;Collapse or expand sidebar&quot;&gt;
+            &lt;i class=&quot;icon icon-panel-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/footer&gt;
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+
+    &lt;main class=&quot;container stack&quot; style=&quot;padding-block: var(--space-4)&quot;&gt;
+      &lt;header class=&quot;page-header&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn sidebar-toggle&quot; data-variant=&quot;ghost&quot; data-size=&quot;icon&quot;
+                popovertarget=&quot;app-nav&quot; aria-label=&quot;Open menu&quot;&gt;
+          &lt;i class=&quot;icon icon-menu&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;h1&gt;Overview&lt;/h1&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;theme-switcher&quot; role=&quot;group&quot; aria-label=&quot;Theme&quot;&gt;
+            &lt;button type=&quot;button&quot; data-theme-toggle=&quot;light&quot; aria-label=&quot;Light&quot;&gt;&lt;i class=&quot;icon icon-sun&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-theme-toggle=&quot;dark&quot; aria-label=&quot;Dark&quot;&gt;&lt;i class=&quot;icon icon-moon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-theme-toggle=&quot;system&quot; aria-label=&quot;System&quot;&gt;&lt;i class=&quot;icon icon-monitor&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+
+      &lt;article class=&quot;card&quot;&gt;
+        &lt;section&gt;
+          &lt;p&gt;Your content goes here.&lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/article&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+              </div>
+              <div role="tabpanel" id="st-app-c" aria-labelledby="st-app-tc" tabindex="0" hidden>
+            <pre><code>&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
@@ -148,10 +264,7 @@
   &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-              <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#st-app" aria-label="Copy the code">
-                <i class="icon icon-copy" data-idle aria-hidden="true"></i>
-                <i class="icon icon-check" data-done aria-hidden="true"></i>
-              </button>
+              </div>
             </div>
           </section>
           <section>
@@ -162,8 +275,50 @@
               submit, and the error shows under it. Send the form to your own
               server where the example has none.
             </p>
-            <div class="code-block">
-              <pre><code id="st-signin">&lt;!doctype html&gt;
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="A sign-in form">
+                <button type="button" role="tab" id="st-signin-tp" aria-selected="true" aria-controls="st-signin-p">Preview</button>
+                <button type="button" role="tab" id="st-signin-tc" aria-selected="false" aria-controls="st-signin-c" tabindex="-1">Code</button>
+              </div>
+              <div role="tabpanel" id="st-signin-p" aria-labelledby="st-signin-tp" tabindex="0">
+                <iframe class="docs-frame" title="Preview: A sign-in form" loading="lazy" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Sign in&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.css&quot;&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/gh/Djirasak/tsunami-framework@v{{version}}/dist/tsunami.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class=&quot;stack&quot; style=&quot;min-height: 100vh; align-items: center; justify-content: center; padding: var(--space-4)&quot;&gt;
+    &lt;article class=&quot;card&quot; style=&quot;width: 100%; max-width: 24rem&quot;&gt;
+      &lt;form data-validate&gt;
+        &lt;header&gt;
+          &lt;h1&gt;Sign in&lt;/h1&gt;
+          &lt;p&gt;Use your work email to continue.&lt;/p&gt;
+        &lt;/header&gt;
+        &lt;section class=&quot;stack&quot;&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+            &lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot; autocomplete=&quot;username&quot; required
+                   data-message=&quot;Enter an email like name@example.com&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;field&quot;&gt;
+            &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+            &lt;input id=&quot;password&quot; name=&quot;password&quot; type=&quot;password&quot; autocomplete=&quot;current-password&quot; required
+                   data-message=&quot;Enter your password&quot;&gt;
+          &lt;/div&gt;
+          &lt;button type=&quot;submit&quot; class=&quot;btn&quot; data-variant=&quot;primary&quot;&gt;Continue&lt;/button&gt;
+        &lt;/section&gt;
+      &lt;/form&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+              </div>
+              <div role="tabpanel" id="st-signin-c" aria-labelledby="st-signin-tc" tabindex="0" hidden>
+            <pre><code>&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8"&gt;
@@ -198,10 +353,7 @@
   &lt;/main&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-              <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" data-copy-target="#st-signin" aria-label="Copy the code">
-                <i class="icon icon-copy" data-idle aria-hidden="true"></i>
-                <i class="icon icon-check" data-done aria-hidden="true"></i>
-              </button>
+              </div>
             </div>
           </section>
           <section>

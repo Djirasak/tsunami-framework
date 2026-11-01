@@ -331,3 +331,13 @@
     padding-inline: var(--space-4);
   }
 }
+
+/* A starter's preview: the whole page in a frame, so its own head and script run. */
+.docs-frame {
+  display: block;
+  width: 100%;
+  height: 30rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
