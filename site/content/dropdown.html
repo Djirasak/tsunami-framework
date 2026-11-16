@@ -101,6 +101,141 @@
             </div>
           </section>
           <section>
+  <h2>An action that needs POST, such as logout</h2>
+  <p>
+    Logout, delete and other actions that change data are a POST with a CSRF
+    token in Django, Rails and Laravel. Put a
+    <code>&lt;form&gt;</code> in the menu around the button: the form takes no
+    space, and its <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and
+    <code>&lt;label&gt;</code> look and move with the arrow keys like the other
+    items. Leave <code>popover<wbr />target</code> off a submit button: the
+    browser ignores it on a button that has a form. The page leaves on submit,
+    and when a script handles the submit instead,
+    <code>dropdown.js</code> closes the menu.
+  </p>
+  <div class="tabs" data-tabs>
+    <div role="tablist" aria-label="Example">
+      <button
+        type="button"
+        role="tab"
+        id="ex8-tp"
+        aria-selected="true"
+        aria-controls="ex8-p"
+      >
+        Preview
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="ex8-tc"
+        aria-selected="false"
+        aria-controls="ex8-c"
+        tabindex="-1"
+      >
+        Code
+      </button>
+    </div>
+    <div role="tabpanel" id="ex8-p" aria-labelledby="ex8-tp" tabindex="0">
+      <div class="docs-preview">
+        <button type="button" class="btn" popovertarget="dd-logout">
+          User <i class="icon icon-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="dropdown" id="dd-logout" popover>
+          <a href="/docs"
+            ><i class="icon icon-user" aria-hidden="true"></i>Profile</a
+          >
+          <hr />
+          <form method="dialog">
+            <button type="submit" data-variant="danger">
+              <i class="icon icon-log-out" aria-hidden="true"></i>Log out
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      role="tabpanel"
+      id="ex8-c"
+      aria-labelledby="ex8-tc"
+      tabindex="0"
+      hidden
+    >
+      <pre><code>&lt;button type="button" class="btn" popovertarget="dd-logout"&gt;User &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;div class="dropdown" id="dd-logout" popover&gt;
+  &lt;a href="/profile/"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;Profile&lt;/a&gt;
+  &lt;hr&gt;
+  &lt;form method="post" action="/logout/"&gt;
+    {% csrf_token %}
+    &lt;button type="submit" data-variant="danger"&gt;&lt;i class="icon icon-log-out" aria-hidden="true"&gt;&lt;/i&gt;Log out&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </div>
+  <p>
+    When the form cannot be inside the menu, such as a form your template
+    already renders elsewhere, put it after the menu and point the button at it
+    with
+    <code>form=<wbr />"id"</code>, standard HTML. Use the nested form when the
+    menu owns the action, and <code>form=</code> when several buttons share one
+    form.
+  </p>
+  <div class="tabs" data-tabs>
+    <div role="tablist" aria-label="Example">
+      <button
+        type="button"
+        role="tab"
+        id="ex9-tp"
+        aria-selected="true"
+        aria-controls="ex9-p"
+      >
+        Preview
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="ex9-tc"
+        aria-selected="false"
+        aria-controls="ex9-c"
+        tabindex="-1"
+      >
+        Code
+      </button>
+    </div>
+    <div role="tabpanel" id="ex9-p" aria-labelledby="ex9-tp" tabindex="0">
+      <div class="docs-preview">
+        <button type="button" class="btn" popovertarget="dd-logout-out">
+          User <i class="icon icon-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="dropdown" id="dd-logout-out" popover>
+          <a href="/docs"
+            ><i class="icon icon-user" aria-hidden="true"></i>Profile</a
+          >
+          <hr />
+          <button type="submit" form="dd-logout-form" data-variant="danger">
+            <i class="icon icon-log-out" aria-hidden="true"></i>Log out
+          </button>
+        </div>
+        <form method="dialog" id="dd-logout-form" hidden></form>
+      </div>
+    </div>
+    <div
+      role="tabpanel"
+      id="ex9-c"
+      aria-labelledby="ex9-tc"
+      tabindex="0"
+      hidden
+    >
+      <pre><code>&lt;button type="button" class="btn" popovertarget="dd-logout"&gt;User &lt;i class="icon icon-chevron-down" aria-hidden="true"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;div class="dropdown" id="dd-logout" popover&gt;
+  &lt;a href="/profile/"&gt;&lt;i class="icon icon-user" aria-hidden="true"&gt;&lt;/i&gt;Profile&lt;/a&gt;
+  &lt;hr&gt;
+  &lt;button type="submit" form="logout-form" data-variant="danger"&gt;&lt;i class="icon icon-log-out" aria-hidden="true"&gt;&lt;/i&gt;Log out&lt;/button&gt;
+&lt;/div&gt;
+&lt;form method="post" action="/logout/" id="logout-form" hidden&gt;{% csrf_token %}&lt;/form&gt;</code></pre>
+    </div>
+  </div>
+</section>
+<section>
             <h2>Alignment: start, center and end of the button</h2>
             <p>
               <code>data-<wbr />align</code> on the menu, default
