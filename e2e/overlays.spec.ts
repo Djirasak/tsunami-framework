@@ -264,13 +264,9 @@ test.describe("Dropdown with a form", () => {
     await expect(panel(page)).toBeVisible();
     const form = panel(page).locator("form");
     await expect(form).toHaveCSS("display", "contents");
-    const [a, b] = [
-      await profile(page).boundingBox(),
-      await logout(page).boundingBox(),
-    ];
-    expect(b!.width).toBe(a!.width);
-    expect(b!.x).toBe(a!.x);
-    expect(b!.height).toBe(a!.height);
+    // Layout boxes, not boundingBox(): the menu scales in as it opens.
+    const box = (el: HTMLElement) => [el.offsetLeft, el.offsetWidth, el.offsetHeight];
+    expect(await logout(page).evaluate(box)).toEqual(await profile(page).evaluate(box));
     await expect(logout(page)).toHaveCSS("white-space", "nowrap");
     await expect(logout(page)).toHaveCSS("display", "flex");
     const idle = await logout(page).evaluate(
