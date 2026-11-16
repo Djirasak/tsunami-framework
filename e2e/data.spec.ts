@@ -273,6 +273,84 @@ test.describe("Table", () => {
   });
 });
 
+test.describe("Table words", () => {
+  test.beforeEach(async ({ page }) => open(page, "/docs/table"));
+
+  const nav = (page: Page) => page.getByRole("navigation", { name: "Product pages" });
+  const info = (page: Page) => page.locator('[data-table-info="pg-demo"]');
+  // Re-render the demo table, as a page change or a filter would.
+  const refresh = (page: Page) =>
+    page.evaluate(() =>
+      window.tsunami.table.refresh(document.getElementById("pg-demo") as HTMLTableElement),
+    );
+
+  test("English by default", async ({ page }) => {
+    await expect(info(page)).toHaveText("1–5 of 25");
+    await expect(nav(page).getByRole("button", { name: "Previous page" })).toBeDisabled();
+    await expect(nav(page).getByRole("button", { name: "Next page" })).toBeEnabled();
+  });
+
+  test("Thai when <html lang> is th, on the next render", async ({ page }) => {
+    await page.evaluate(() => (document.documentElement.lang = "th"));
+    await nav(page).getByRole("button", { name: "Next page" }).click();
+    await expect(info(page)).toHaveText("6–10 จาก 25");
+    await expect(nav(page).getByRole("button", { name: "หน้าก่อนหน้า" })).toBeEnabled();
+    await expect(nav(page).getByRole("button", { name: "หน้าถัดไป" })).toBeEnabled();
+  });
+
+  test("the nearest [lang] ancestor wins, and th-TH falls back to th", async ({ page }) => {
+    await page.evaluate(() => {
+      document.getElementById("pg-demo")!.closest(".docs-preview")!.setAttribute("lang", "th-TH");
+    });
+    await refresh(page);
+    await expect(info(page)).toHaveText("1–5 จาก 25");
+    await expect(nav(page).getByRole("button", { name: "หน้าถัดไป" })).toBeEnabled();
+    // Outside that element the page is still English.
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  });
+
+  test("attributes on the nav and the info set the words", async ({ page }) => {
+    await page.evaluate(() => {
+      const nav = document.querySelector('[data-pagination-for="pg-demo"]') as HTMLElement;
+      nav.dataset.labelPrev = "Back";
+      nav.dataset.labelNext = "Forward";
+      const info = document.querySelector('[data-table-info="pg-demo"]') as HTMLElement;
+      info.dataset.format = "Rows {from} to {to}, {total} in all";
+    });
+    await refresh(page);
+    await expect(info(page)).toHaveText("Rows 1 to 5, 25 in all");
+    await expect(nav(page).getByRole("button", { name: "Back" })).toBeDisabled();
+    await expect(nav(page).getByRole("button", { name: "Forward" })).toBeEnabled();
+  });
+
+  test("messages.set adds a language", async ({ page }) => {
+    await page.evaluate(() => {
+      window.tsunami.messages.set("fr", { "table.range": "{from}–{to} sur {total}" });
+      document.documentElement.lang = "fr-CA";
+    });
+    await refresh(page);
+    await expect(info(page)).toHaveText("1–5 sur 25");
+    // A word French lacks stays English.
+    await expect(nav(page).getByRole("button", { name: "Next page" })).toBeEnabled();
+  });
+  test("the built-in empty row follows the language", async ({ page }) => {
+    await page.evaluate(() => {
+      const box = document.createElement("div");
+      box.innerHTML = `<input type="search" aria-label="Find" data-table-search="e2e-empty">
+        <table class="table" id="e2e-empty"><thead><tr><th>Name</th></tr></thead>
+        <tbody><tr><td>Zoe</td></tr></tbody></table>`;
+      document.querySelector("main")!.append(box);
+    });
+    const search = page.getByRole("searchbox", { name: "Find" });
+    const empty = page.locator("#e2e-empty tr[data-table-empty]");
+    await search.fill("nothing like this");
+    await expect(empty).toHaveText("No results");
+    await page.evaluate(() => (document.documentElement.lang = "th"));
+    await search.fill("still nothing");
+    await expect(empty).toHaveText("ไม่พบผลลัพธ์");
+  });
+});
+
 test.describe("Filter bar", () => {
   test.beforeEach(async ({ page }) => open(page, "/docs/filter-bar"));
 
