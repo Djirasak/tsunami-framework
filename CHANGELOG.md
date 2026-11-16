@@ -13,6 +13,7 @@ Versions follow [semantic versioning](https://semver.org).
 
 ### Fixed
 
+- Dropdown: a `<form>` in the menu, such as a logout form that POSTs with a CSRF token, takes no space, and its `<button>`, `<a>` and `<label>` look and behave like the other items: layout, hover and focus, disabled, `data-variant="danger"` and the arrow keys. Before, a button inside a form showed as a plain browser button. Submitting a form from a dropdown's button closes the menu with `dropdown.js`, because the browser ignores `popovertarget` on a submit button that has a form. The docs show the nested form and a button with `form="id"` pointing at a form outside the menu.
 - Charts draw in the colour the browser resolves, so a token or a series `color` may use `light-dark()`, `color-mix()` or `oklch()` as well as a hex value or `var()`. Before, such a colour reached the canvas as text, and the chart drew in black with no error. A `light-dark()` colour changes with the theme. A colour that cannot be resolved now logs a warning that names it, and the chart uses the accent.
 
 ## [1.4.0] - 2026-11-01
