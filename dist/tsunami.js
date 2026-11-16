@@ -1,4 +1,74 @@
-/* tsunami v1.4.0 */
+/* tsunami v1.5.0 */
+// src/js/i18n.js
+var catalogs = {
+  en: {
+    "pagination.prev": "Previous page",
+    "pagination.next": "Next page",
+    "table.range": "{from}–{to} of {total}",
+    "table.rangeEmpty": "0 of {total}",
+    "table.empty": "No results",
+    "datePicker.label": "Choose a date",
+    "datePicker.labelRange": "Choose dates",
+    "datePicker.to": " to ",
+    "datePicker.application": "Calendar",
+    "datePicker.navigation": "Calendar Navigation",
+    "datePicker.arrowPrev.month": "Previous month",
+    "datePicker.arrowNext.month": "Next month",
+    "datePicker.arrowPrev.year": "Previous list of years",
+    "datePicker.arrowNext.year": "Next list of years",
+    "datePicker.arrowPrev.week": "Previous week",
+    "datePicker.arrowNext.week": "Next week",
+    "datePicker.month": "Select month, current selected month:",
+    "datePicker.months": "List of months",
+    "datePicker.year": "Select year, current selected year:",
+    "datePicker.years": "List of years",
+    "datePicker.week": "Days of the week",
+    "datePicker.dates": "Dates in the current month"
+  },
+  th: {
+    "pagination.prev": "หน้าก่อนหน้า",
+    "pagination.next": "หน้าถัดไป",
+    "table.range": "{from}–{to} จาก {total}",
+    "table.rangeEmpty": "0 จาก {total}",
+    "table.empty": "ไม่พบผลลัพธ์",
+    "datePicker.label": "เลือกวันที่",
+    "datePicker.labelRange": "เลือกช่วงวันที่",
+    "datePicker.to": " ถึง ",
+    "datePicker.application": "ปฏิทิน",
+    "datePicker.navigation": "แถบนำทางปฏิทิน",
+    "datePicker.arrowPrev.month": "เดือนก่อนหน้า",
+    "datePicker.arrowNext.month": "เดือนถัดไป",
+    "datePicker.arrowPrev.year": "ช่วงปีก่อนหน้า",
+    "datePicker.arrowNext.year": "ช่วงปีถัดไป",
+    "datePicker.arrowPrev.week": "สัปดาห์ก่อนหน้า",
+    "datePicker.arrowNext.week": "สัปดาห์ถัดไป",
+    "datePicker.month": "เลือกเดือน เดือนที่เลือกอยู่:",
+    "datePicker.months": "รายการเดือน",
+    "datePicker.year": "เลือกปี ปีที่เลือกอยู่:",
+    "datePicker.years": "รายการปี",
+    "datePicker.week": "วันในสัปดาห์",
+    "datePicker.dates": "วันที่ในเดือนนี้"
+  }
+};
+var langOf = (el) => (el?.closest?.("[lang]")?.lang || document.documentElement.lang || "en").toLowerCase();
+var fill = (text, vars = {}) => text.replace(/\{(\w+)\}/g, (m, k) => (k in vars) ? String(vars[k]) : m);
+function say(language, key, vars) {
+  const lang = String(language).toLowerCase();
+  const text = catalogs[lang]?.[key] ?? catalogs[lang.split("-")[0]]?.[key] ?? catalogs.en[key] ?? key;
+  return fill(text, vars);
+}
+var t = (el, key, vars) => say(langOf(el), key, vars);
+(window.tsunami ??= {}).messages = {
+  get(lang) {
+    const key = String(lang).toLowerCase();
+    return { ...catalogs.en, ...catalogs[key.split("-")[0]], ...catalogs[key] };
+  },
+  set(lang, words) {
+    const key = String(lang).toLowerCase();
+    catalogs[key] = { ...catalogs[key], ...words };
+  }
+};
+
 // src/js/theme.js
 var KEY = "tsunami-theme";
 var root = document.documentElement;
@@ -339,6 +409,11 @@ document.addEventListener("keydown", (e) => {
   const to = e.key === "Home" ? 0 : e.key === "End" ? all.length - 1 : (at + (e.key === "ArrowDown" ? 1 : -1) + all.length) % all.length;
   all[to].focus();
 });
+document.addEventListener("submit", (e) => {
+  const panel = e.submitter?.closest(".dropdown");
+  if (panel?.matches(":popover-open"))
+    panel.hidePopover();
+}, true);
 
 // src/js/sidebar.js
 var COLLAPSE_CMDS = ["--collapse", "--expand", "--toggle-collapsed"];
@@ -737,7 +812,7 @@ document.addEventListener("visibilitychange", () => {
     schedule(t);
 });
 document.addEventListener("click", (e) => {
-  const btn = e.target.closest?.("[data-toast]");
+  const btn = e.target.closest?.("[data-toast]:not(template)");
   if (!btn || btn.disabled)
     return;
   const message = btn.dataset.toast;
@@ -748,6 +823,38 @@ document.addEventListener("click", (e) => {
     variant: btn.dataset.toastVariant
   });
 });
+var TEMPLATE = "template[data-toast]";
+function mount2(root = document) {
+  const list = root.matches?.(TEMPLATE) ? [root] : [...root.querySelectorAll(TEMPLATE)];
+  for (const t of list) {
+    if (!t.isConnected)
+      continue;
+    t.remove();
+    const d = t.dataset;
+    const message = t.content.textContent.replace(/\s+/g, " ").trim() || d.toast;
+    const title = d.toastTitle;
+    const ms = d.toastDuration ? Number(d.toastDuration) : NaN;
+    toast({
+      title: title || message,
+      text: title ? message : undefined,
+      variant: d.toastVariant || undefined,
+      duration: Number.isFinite(ms) ? ms : undefined,
+      id: d.toastId || undefined
+    });
+  }
+}
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => mount2(), { once: true });
+else
+  mount2();
+new MutationObserver((records) => {
+  if (document.readyState === "loading")
+    return;
+  for (const r of records)
+    for (const n of r.addedNodes)
+      if (n.nodeType === 1 && (n.matches(TEMPLATE) || n.querySelector(TEMPLATE)))
+        mount2(n);
+}).observe(document.documentElement, { childList: true, subtree: true });
 new MutationObserver(() => place2()).observe(document, {
   subtree: true,
   attributes: true,
@@ -1072,10 +1179,14 @@ function render(root) {
   const { sel, list, q } = st;
   const term = q.toLowerCase();
   let n = 0;
+  const ph = root.dataset.placeholder;
+  const blank = ph === undefined ? null : sel.querySelector('option[value=""]');
   const option = (o, parent) => {
     if (o.hidden)
       return;
-    const text = label(o);
+    if (o === blank && (sel.required || st.multi || term))
+      return;
+    const text = o === blank ? ph || label(o) : label(o);
     const hay = `${text} ${o.dataset.text ?? ""}`.toLowerCase();
     if (term && !hay.includes(term))
       return;
@@ -1086,6 +1197,8 @@ function render(root) {
     });
     if (o.disabled)
       el.setAttribute("aria-disabled", "true");
+    if (o === blank)
+      el.setAttribute("data-placeholder", "");
     const av = o.dataset.avatar;
     if (av) {
       const a = h2("span", { class: "avatar", "data-size": "sm" });
@@ -1552,7 +1665,7 @@ function destroy(root) {
   S2.delete(root);
   off.add(root);
 }
-function mount2(root, opts = {}) {
+function mount3(root, opts = {}) {
   destroy(root);
   off.delete(root);
   build2(root, opts.source);
@@ -1705,7 +1818,7 @@ function pick(root, i) {
   }));
   st.picking = false;
 }
-(window.tsunami ??= {}).autocomplete = { mount: mount2, destroy };
+(window.tsunami ??= {}).autocomplete = { mount: mount3, destroy };
 var scan4 = () => document.querySelectorAll(ROOT2).forEach((root) => build2(root));
 new MutationObserver(scan4).observe(document.documentElement, {
   childList: true,
@@ -1998,11 +2111,11 @@ function renderPagination(table, state) {
     const prev = pageButton(chevron("chevron-left"), page - 1, {
       disabled: page <= 1
     });
-    prev.firstChild.setAttribute("aria-label", "Previous page");
+    prev.firstChild.setAttribute("aria-label", nav.dataset.labelPrev ?? t(nav, "pagination.prev"));
     const next = pageButton(chevron("chevron-right"), page + 1, {
       disabled: page >= pages
     });
-    next.firstChild.setAttribute("aria-label", "Next page");
+    next.firstChild.setAttribute("aria-label", nav.dataset.labelNext ?? t(nav, "pagination.next"));
     ul.append(prev);
     for (const n of pageList(page, pages)) {
       if (n === null) {
@@ -2028,9 +2141,11 @@ function renderInfo(table, state) {
   const total = matched.length;
   const from = total ? size ? (page - 1) * size + 1 : 1 : 0;
   const to = size ? Math.min(page * size, total) : total;
-  const text = total ? `${from}–${to} of ${total}` : "0 of 0";
-  for (const el of controls2(table, "[data-table-info]", "data-table-info"))
-    el.textContent = text;
+  const vars = { from, to, total };
+  for (const el of controls2(table, "[data-table-info]", "data-table-info")) {
+    const format = total ? el.dataset.format : el.dataset.formatEmpty;
+    el.textContent = format ? fill(format, vars) : t(el, total ? "table.range" : "table.rangeEmpty", vars);
+  }
 }
 function stateFor(table) {
   let state = states.get(table);
@@ -2142,7 +2257,7 @@ function emptyRow(table, state) {
     if (tpl)
       cell.append(tpl.content.cloneNode(true));
     else
-      cell.textContent = "No results";
+      state.emptyText = cell;
     (table.tBodies[0] ?? table.createTBody()).append(row);
   }
   state.empty = row;
@@ -2162,6 +2277,8 @@ function update2(table, { page } = {}) {
   });
   const empty = emptyRow(table, state);
   empty.hidden = state.matched.length > 0;
+  if (state.emptyText)
+    state.emptyText.textContent = t(table, "table.empty");
   empty.firstElementChild?.setAttribute("colspan", String(colSpan(table)));
   state.pages = size ? Math.max(1, Math.ceil(state.matched.length / size)) : 1;
   if (page !== undefined)
@@ -2966,7 +3083,7 @@ function destroy2(el) {
   delete el.dataset.editorReady;
   state.editor?.remove();
 }
-function mount3(el, options = {}) {
+function mount4(el, options = {}) {
   if (!window.tinymce)
     throw new Error("A textarea.editor needs TinyMCE: load dist/tinymce.min.js with its own <script> before the Tsunami script.");
   destroy2(el);
@@ -2981,7 +3098,7 @@ function mount3(el, options = {}) {
 }
 var upgrade4 = (el) => {
   if (!states2.has(el))
-    mount3(el);
+    mount4(el);
 };
 var all2 = (root) => root.querySelectorAll?.("textarea.editor").forEach(upgrade4);
 var scan6 = () => {
@@ -3011,7 +3128,7 @@ document.addEventListener("tsunami:themechange", () => {
     if (!state.editor)
       continue;
     state.editor.save();
-    mount3(el, state.options);
+    mount4(el, state.options);
   }
 });
 document.addEventListener("submit", (e) => {
@@ -3043,7 +3160,7 @@ document.addEventListener("focusin", (e) => {
     states2.get(e.target)?.editor?.focus();
 });
 (window.tsunami ??= {}).editor = {
-  mount: mount3,
+  mount: mount4,
   get: (el) => states2.get(el)?.editor ?? null,
   destroy: destroy2
 };
@@ -3433,7 +3550,7 @@ function spread(el, from, text) {
   if (value.length === all.length)
     el.dispatchEvent(new CustomEvent("tsunami:otpcomplete", { bubbles: true, detail: { value } }));
 }
-function mount4(root = document) {
+function mount5(root = document) {
   for (const el of root.querySelectorAll(OTP)) {
     if ("mounted" in el.dataset)
       continue;
@@ -3532,19 +3649,19 @@ document.addEventListener("reset", (e) => setTimeout(() => {
   }
 }));
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", () => mount4(), { once: true });
+  document.addEventListener("DOMContentLoaded", () => mount5(), { once: true });
 else
-  mount4();
+  mount5();
 new MutationObserver((records) => {
   if (document.readyState === "loading")
     return;
   for (const r of records)
     for (const n of r.addedNodes)
       if (n.nodeType === 1 && (n.matches(OTP) || n.querySelector(OTP)))
-        return mount4();
+        return mount5();
 }).observe(document.documentElement, { childList: true, subtree: true });
 (window.tsunami ??= {}).otp = {
-  mount: mount4,
+  mount: mount5,
   value: (el) => sync8(el),
   set(el, text) {
     for (const b of boxes(el))
@@ -3752,24 +3869,24 @@ document.addEventListener("click", (e) => {
   } else
     remove(bar, btn.parentElement);
 });
-function mount5(root = document) {
+function mount6(root = document) {
   for (const bar of root.querySelectorAll(BAR2))
     refresh5(bar);
 }
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", () => mount5(), { once: true });
+  document.addEventListener("DOMContentLoaded", () => mount6(), { once: true });
 else
-  mount5();
+  mount6();
 new MutationObserver((records) => {
   if (document.readyState === "loading")
     return;
   for (const r of records)
     for (const n of r.addedNodes)
       if (n.nodeType === 1 && (n.matches(BAR2) || n.querySelector(BAR2)))
-        return mount5();
+        return mount6();
 }).observe(document.documentElement, { childList: true, subtree: true });
 (window.tsunami ??= {}).filterBar = {
-  mount: mount5,
+  mount: mount6,
   values: (bar) => values(bar),
   clear(bar) {
     for (const c of chips(bar))
@@ -3806,14 +3923,14 @@ function render2(el) {
   if (hidden)
     hidden.value = tags(el).join(",");
 }
-function say(el, text) {
+function say2(el, text) {
   if (el._status)
     el._status.textContent = text;
 }
 function change(el) {
   render2(el);
   const n = tags(el).length;
-  say(el, n === 0 ? "No tags" : n === 1 ? "1 tag" : `${n} tags`);
+  say2(el, n === 0 ? "No tags" : n === 1 ? "1 tag" : `${n} tags`);
   el.dispatchEvent(new CustomEvent("tsunami:tagschange", {
     bubbles: true,
     detail: { value: [...tags(el)] }
@@ -3824,7 +3941,7 @@ function add(el, list) {
   let added = false;
   for (const t of list) {
     if (tags(el).length >= max) {
-      say(el, `Limit of ${max} tags reached`);
+      say2(el, `Limit of ${max} tags reached`);
       break;
     }
     if (tags(el).includes(t))
@@ -3848,7 +3965,7 @@ function start6(el) {
       el._tags.push(t);
   render2(el);
 }
-function mount6(root = document) {
+function mount7(root = document) {
   for (const el of root.querySelectorAll(TAGS)) {
     if ("mounted" in el.dataset)
       continue;
@@ -3932,19 +4049,19 @@ document.addEventListener("reset", (e) => setTimeout(() => {
   }
 }));
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", () => mount6(), { once: true });
+  document.addEventListener("DOMContentLoaded", () => mount7(), { once: true });
 else
-  mount6();
+  mount7();
 new MutationObserver((records) => {
   if (document.readyState === "loading")
     return;
   for (const r of records)
     for (const n of r.addedNodes)
       if (n.nodeType === 1 && (n.matches(TAGS) || n.querySelector(TAGS)))
-        return mount6();
+        return mount7();
 }).observe(document.documentElement, { childList: true, subtree: true });
 (window.tsunami ??= {}).tagInput = {
-  mount: mount6,
+  mount: mount7,
   value: (el) => [...tags(el)],
   set(el, list) {
     el._tags = [];
@@ -4211,17 +4328,17 @@ var prepare = (form) => {
       touched2.add(f);
   }
 };
-var mount7 = (node) => {
+var mount8 = (node) => {
   if (node.matches?.("form[data-validate]"))
     prepare(node);
   node.querySelectorAll?.("form[data-validate]").forEach(prepare);
 };
-mount7(document);
+mount8(document);
 if (document.readyState === "loading")
-  document.addEventListener("DOMContentLoaded", () => mount7(document));
+  document.addEventListener("DOMContentLoaded", () => mount8(document));
 new MutationObserver((records) => {
   for (const r of records)
-    r.addedNodes.forEach(mount7);
+    r.addedNodes.forEach(mount8);
 }).observe(document.documentElement, { childList: true, subtree: true });
 document.addEventListener("focusout", (e) => {
   if (!formOf2(e))
@@ -4614,7 +4731,7 @@ function parse3(text) {
   return t[0] < 24 && t[1] < 60 && t[2] < 60 ? t : null;
 }
 var seconds = (t) => t[0] * 3600 + t[1] * 60 + t[2];
-function mount8(root) {
+function mount9(root) {
   if (states3.has(root))
     return;
   const withSeconds = root.hasAttribute("data-seconds");
@@ -4719,7 +4836,7 @@ function time(state) {
   const h = hour12 ? f.h % 12 + (f.p ? 12 : 0) : f.h;
   return [h, f.m, withSeconds ? f.s : 0];
 }
-function fill(state) {
+function fill2(state) {
   const { f, hour12, keys } = state;
   if (keys.every((k) => f[k] === null))
     return;
@@ -4789,14 +4906,14 @@ function bump(state, key, dir) {
     }
     f[key] = v;
   }
-  fill(state);
+  fill2(state);
   state.buf = "";
   clamp(state);
   write2(state);
 }
 function set4(state, key, v) {
   state.f[key] = v;
-  fill(state);
+  fill2(state);
   state.buf = "";
   write2(state);
 }
@@ -4806,7 +4923,7 @@ function type(state, key, digit) {
   const n = Math.min(max, Math.max(min, Number(buf)));
   const done = buf.length === 2 || Number(buf) * 10 > max;
   state.f[key] = n;
-  fill(state);
+  fill2(state);
   write2(state);
   state.buf = done ? "" : buf;
   state.bufKey = key;
@@ -4937,9 +5054,9 @@ document.addEventListener("reset", (e) => {
 });
 var mountAll = (scope = document) => {
   if (scope.matches?.(ROOT4))
-    mount8(scope);
+    mount9(scope);
   for (const root of scope.querySelectorAll(ROOT4))
-    mount8(root);
+    mount9(root);
 };
 if (document.readyState === "loading")
   document.addEventListener("DOMContentLoaded", () => mountAll());
@@ -4964,7 +5081,7 @@ new MutationObserver((records) => {
   attributeFilter: ["disabled"]
 });
 (window.tsunami ??= {}).timePicker = {
-  mount: mount8,
+  mount: mount9,
   destroy: destroy3,
   get: (el) => states3.get(el)?.last ?? null,
   set: (el, value) => {
@@ -5007,7 +5124,7 @@ function destroy4(el) {
     delete el[name];
   state.sortable.destroy();
 }
-function mount9(el, options = {}) {
+function mount10(el, options = {}) {
   if (!window.Sortable)
     throw new Error("A .sortable needs SortableJS: load dist/sortable.min.js with its own <script> before the Tsunami script.");
   destroy4(el);
@@ -5036,7 +5153,7 @@ var upgrade6 = (el) => {
   if (states4.has(el) || el.closest(".sortable-fallback"))
     return;
   try {
-    mount9(el);
+    mount10(el);
   } catch (error) {
     console.error(error.message, el);
   }
@@ -5137,11 +5254,11 @@ document.addEventListener("keydown", (e) => {
 });
 var ready3 = (el) => {
   if (!states4.has(el))
-    mount9(el);
+    mount10(el);
   return el;
 };
 (window.tsunami ??= {}).sortable = {
-  mount: mount9,
+  mount: mount10,
   get: (el) => states4.get(el)?.sortable ?? null,
   destroy: destroy4,
   toArray: (el) => ready3(el).toArray(),
@@ -5161,20 +5278,43 @@ var mounted3 = new Set;
 var open3 = new Set;
 var MEMBERS2 = ["value", "open", "close", "calendar"];
 var uid6 = 0;
-var formats = {
-  long: new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC"
-  }),
-  medium: new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC"
-  })
+var FORMATS = {
+  long: { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" },
+  medium: { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }
 };
+var formatters = new Map;
+function localeOf(root, options) {
+  for (const tag of [options.locale, root.dataset.locale, langOf(root)]) {
+    if (typeof tag !== "string" || !tag)
+      continue;
+    try {
+      new Intl.DateTimeFormat(tag);
+      return tag;
+    } catch {}
+  }
+  return "en";
+}
+function formatter(locale, name) {
+  if (!FORMATS[name])
+    return null;
+  const key = `${locale}|${name}`;
+  if (!formatters.has(key))
+    formatters.set(key, new Intl.DateTimeFormat(locale, FORMATS[name]));
+  return formatters.get(key);
+}
+function yearsOf(locale) {
+  const f = new Intl.DateTimeFormat(locale, { year: "numeric", timeZone: "UTC" });
+  if (f.resolvedOptions().calendar === "gregory")
+    return null;
+  return (y) => f.formatToParts(new Date(Date.UTC(y, 6, 1))).find((p) => p.type === "year")?.value ?? String(y);
+}
+var LABELS = ["application", "navigation", "month", "months", "year", "years", "week", "dates"];
+function labelsOf(lang) {
+  const labels = Object.fromEntries(LABELS.map((k) => [k, say(lang, `datePicker.${k}`)]));
+  for (const side of ["arrowPrev", "arrowNext"])
+    labels[side] = Object.fromEntries(["month", "year", "week"].map((k) => [k, say(lang, `datePicker.${side}.${k}`)]));
+  return labels;
+}
 var isDate = (text) => {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(text))
     return false;
@@ -5235,6 +5375,7 @@ function destroy5(root) {
   open3.delete(root);
   for (const name of MEMBERS2)
     delete root[name];
+  state.observer?.disconnect();
   state.calendar.destroy();
   state.host.remove();
   const { panel, control } = state;
@@ -5250,7 +5391,7 @@ function destroy5(root) {
   control.removeAttribute("aria-expanded");
   root.removeAttribute("data-date-picker-initialized");
 }
-function mount10(root, options = {}) {
+function mount11(root, options = {}) {
   if (!window.VanillaCalendarPro?.Calendar)
     throw new Error("A .date-picker needs Vanilla Calendar Pro: load dist/vanilla-calendar.min.js with its own <script> before the Tsunami script.");
   const { text, button, hidden, panel } = parts4(root);
@@ -5261,7 +5402,10 @@ function mount10(root, options = {}) {
   const control = text ?? button;
   const range = root.dataset.mode === "range";
   const count = range ? 2 : 1;
-  const format = formats[root.dataset.format] ?? null;
+  const locale = localeOf(root, options);
+  const format = formatter(locale, root.dataset.format);
+  const years = yearsOf(locale);
+  const labels = labelsOf(locale);
   const carrier = hidden ?? text;
   let dates = [];
   let months = 0;
@@ -5276,7 +5420,7 @@ function mount10(root, options = {}) {
   panel.id ||= `date-picker-${++uid6}`;
   panel.setAttribute("popover", "manual");
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", range ? "Choose dates" : "Choose a date");
+  panel.setAttribute("aria-label", root.dataset.label || say(locale, range ? "datePicker.labelRange" : "datePicker.label"));
   panel.setAttribute("aria-hidden", "true");
   panel.tabIndex = -1;
   control.setAttribute("aria-haspopup", "dialog");
@@ -5293,7 +5437,7 @@ function mount10(root, options = {}) {
       return format ? format.format(date) : d;
     });
     if (text) {
-      text.value = shown.join(TO);
+      text.value = shown.join(format ? say(locale, "datePicker.to") : TO);
       text.removeAttribute("aria-invalid");
     }
     if (span)
@@ -5312,6 +5456,30 @@ function mount10(root, options = {}) {
       preset.setAttribute("aria-pressed", String(preset.value === value()));
     }
   }
+  function relabel() {
+    const cal = state.calendar;
+    if (!years || !cal)
+      return;
+    const put = (el, text, label) => {
+      if (el.textContent !== text)
+        el.textContent = text;
+      if (el.ariaLabel !== label)
+        el.ariaLabel = label;
+    };
+    for (const el of state.host.querySelectorAll("[data-vc-years-year]")) {
+      const shown = years(Number(el.dataset.vcYearsYear));
+      put(el, shown, shown);
+    }
+    for (const el of state.host.querySelectorAll('[data-vc="year"]')) {
+      const y = el.dataset.vcYear;
+      const shown = years(Number(y));
+      put(el, shown, `${cal.labels.year} ${shown}`);
+      const column = el.closest('[data-vc="column"]');
+      const label = column?.ariaLabel;
+      if (label?.endsWith(` ${y}`))
+        column.ariaLabel = `${label.slice(0, -y.length)}${shown}`;
+    }
+  }
   function sync() {
     const first = dates[0];
     state.calendar.set({
@@ -5321,6 +5489,7 @@ function mount10(root, options = {}) {
         selectedYear: Number(first.slice(0, 4))
       } : {}
     });
+    relabel();
   }
   function commit(next) {
     const before = value();
@@ -5350,6 +5519,13 @@ function mount10(root, options = {}) {
       ...root.dataset.min ? { dateMin: root.dataset.min } : {},
       ...root.dataset.max ? { dateMax: root.dataset.max } : {},
       ...options,
+      locale: typeof options.locale === "object" ? options.locale : locale,
+      labels: {
+        ...labels,
+        ...options.labels,
+        arrowPrev: { ...labels.arrowPrev, ...options.labels?.arrowPrev },
+        arrowNext: { ...labels.arrowNext, ...options.labels?.arrowNext }
+      },
       onClickDate(self, event) {
         options.onClickDate?.(self, event);
         const picked = self.context.selectedDates.filter(Boolean).sort();
@@ -5391,6 +5567,10 @@ function mount10(root, options = {}) {
   states5.set(root, state);
   mounted3.add(root);
   build();
+  if (years) {
+    state.observer = new MutationObserver(relabel);
+    state.observer.observe(state.host, { childList: true, subtree: true });
+  }
   const start = parse4(hidden?.value || text?.value || "", count);
   if (start) {
     dates = start;
@@ -5415,7 +5595,7 @@ var upgrade7 = (root) => {
   if (states5.has(root))
     return;
   try {
-    mount10(root);
+    mount11(root);
   } catch (error) {
     console.error(error.message, root);
   }
@@ -5562,7 +5742,7 @@ document.addEventListener("keydown", (e) => {
   state.quiet = false;
 }, true);
 (window.tsunami ??= {}).datePicker = {
-  mount: mount10,
+  mount: mount11,
   get: (el) => states5.get(el)?.calendar ?? null,
   destroy: destroy5
 };
@@ -5587,21 +5767,47 @@ function merge(base, extra) {
     base[key] = isObject(value) && isObject(base[key]) ? merge(base[key], value) : value;
   return base;
 }
-var resolve2 = (color) => String(color).replace(/var\(\s*(--[\w-]+)\s*\)/g, (_, name) => token(name));
-var ctx2d = document.createElement("canvas").getContext("2d");
-function alpha(color, a) {
-  ctx2d.fillStyle = "#000";
-  ctx2d.fillStyle = color;
-  const c = ctx2d.fillStyle;
-  if (c.startsWith("#")) {
-    const n = parseInt(c.slice(1), 16);
-    return `rgba(${n >> 16}, ${n >> 8 & 255}, ${n & 255}, ${a})`;
+var SENTINEL = "rgb(1, 2, 3)";
+var DEFAULT_ACCENT = { light: "#276f81", dark: "#6cc0d3" };
+var pixel = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+var probe = null;
+function probed(value) {
+  if (!probe) {
+    const wrap = document.createElement("span");
+    wrap.hidden = true;
+    wrap.style.color = SENTINEL;
+    probe = wrap.appendChild(document.createElement("span"));
+    root3.append(wrap);
+    queueMicrotask(() => {
+      wrap.remove();
+      probe = null;
+    });
   }
-  return c.replace(/rgba?\(([^)]+)\)/, (_, v) => {
-    const [r, g, b] = v.split(",");
-    return `rgba(${r}, ${g}, ${b}, ${a})`;
-  });
+  probe.style.color = "";
+  probe.style.color = value;
+  const out = getComputedStyle(probe).color;
+  return probe.style.color && out !== SENTINEL ? out : null;
 }
+function rgba(color) {
+  const m = /^rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\)$/.exec(color);
+  if (m)
+    return `rgba(${m[1]}, ${m[2]}, ${m[3]}, ${m[4] ?? 1})`;
+  pixel.clearRect(0, 0, 1, 1);
+  pixel.fillStyle = color;
+  pixel.fillRect(0, 0, 1, 1);
+  const [r, g, b, a] = pixel.getImageData(0, 0, 1, 1).data;
+  return `rgba(${r}, ${g}, ${b}, ${Math.round(a / 255 * 1000) / 1000})`;
+}
+function paint3(value, name) {
+  const out = String(value ?? "").trim() && probed(String(value));
+  if (out)
+    return rgba(out);
+  console.warn(`Tsunami chart: the colour ${name ?? JSON.stringify(String(value ?? ""))} cannot be resolved; the chart uses --accent instead.`);
+  const scheme = getComputedStyle(root3).colorScheme;
+  return rgba(probed("var(--accent)") ?? DEFAULT_ACCENT[/dark/.test(scheme) && !/light/.test(scheme) ? "dark" : "light"]);
+}
+var colorToken = (name) => paint3(`var(${name})`, `${name} (${JSON.stringify(token(name))})`);
+var alpha = (color, a) => color.replace(/,\s*[\d.]+\)$/, `, ${a})`);
 var px = (value) => value.endsWith("rem") ? parseFloat(value) * parseFloat(getComputedStyle(root3).fontSize) : parseFloat(value);
 var ready4 = false;
 var setup2 = () => {
@@ -5638,9 +5844,9 @@ function config(options) {
   const key = options.labelKey ?? "label";
   const rows = options.data ?? [];
   const radial = RADIAL.includes(type);
-  const c = Object.fromEntries(["fg", "muted", "line", "surface"].map((n) => [n, token(`--${n}`)]));
+  const c = Object.fromEntries(["fg", "muted", "line", "surface"].map((n) => [n, colorToken(`--${n}`)]));
   const series = options.series ?? Object.fromEntries(Object.keys(rows[0] ?? {}).filter((k) => k !== key && k !== "color").map((k) => [k, {}]));
-  const colour = (spec, i) => resolve2(spec.color ?? token(PALETTE[i % PALETTE.length]));
+  const colour = (spec, i) => spec.color ? paint3(spec.color) : colorToken(PALETTE[i % PALETTE.length]);
   const scales = {};
   const tick = { color: c.muted, padding: 8 };
   if (type === "radar" || type === "polarArea")
@@ -5862,15 +6068,15 @@ var mounted4 = new Set;
 var loading = null;
 var root4 = document.documentElement;
 var token2 = (name) => getComputedStyle(root4).getPropertyValue(name).trim();
-var pixel = document.createElement("canvas").getContext("2d", {
+var pixel2 = document.createElement("canvas").getContext("2d", {
   willReadFrequently: true
 });
 function rgb(css) {
-  pixel.clearRect(0, 0, 1, 1);
-  pixel.fillStyle = "#000";
-  pixel.fillStyle = css;
-  pixel.fillRect(0, 0, 1, 1);
-  return [...pixel.getImageData(0, 0, 1, 1).data];
+  pixel2.clearRect(0, 0, 1, 1);
+  pixel2.fillStyle = "#000";
+  pixel2.fillStyle = css;
+  pixel2.fillRect(0, 0, 1, 1);
+  return [...pixel2.getImageData(0, 0, 1, 1).data];
 }
 var hex = (css, alpha = 255) => `#${[...rgb(css).slice(0, 3), alpha].map((n) => n.toString(16).padStart(2, "0")).join("")}`;
 var themeName = () => window.tsunami.theme.get() === "dark" ? "tsunami-dark" : "tsunami-light";
@@ -6100,7 +6306,7 @@ function destroy7(box) {
   state.editor.dispose();
   state.host.remove();
 }
-function mount11(box, options = {}) {
+function mount12(box, options = {}) {
   load2();
   destroy7(box);
   const state = {
@@ -6120,7 +6326,7 @@ function mount11(box, options = {}) {
 }
 var upgrade8 = (box) => {
   if (!states7.has(box))
-    mount11(box);
+    mount12(box);
 };
 var all6 = (node) => node.querySelectorAll?.(ROOT6).forEach(upgrade8);
 if (document.readyState === "loading")
@@ -6165,7 +6371,7 @@ document.addEventListener("focusin", (e) => {
     states7.get(box)?.editor?.focus();
 });
 (window.tsunami ??= {}).codeEditor = {
-  mount: mount11,
+  mount: mount12,
   get: (box) => states7.get(box)?.editor ?? null,
   destroy: destroy7
 };

@@ -6,6 +6,8 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-11-16
+
 ### Added
 
 - Words follow the page language. The Table's range text ("1–20 of 58"), the labels of its pagination arrows and its built-in "No results" row use the language of the nearest `lang` attribute, else `<html lang>`, else English; `th-TH` uses Thai. English and Thai are built in, and `tsunami.messages.set(lang, words)` adds or changes words for any language. In the markup, `data-label-prev` and `data-label-next` on the nav and `data-format` / `data-format-empty` on `[data-table-info]` (`{from}`, `{to}`, `{total}`) set them. With `lang="en"` or no `lang`, the text is the same as before.
@@ -201,7 +203,8 @@ First release. Semantic HTML and `data-*` attributes, with no runtime dependenci
 - `.h1` to `.h6` classes that give any element the look of a heading.
 - A Claude skill (`.claude/skills/tsunami`) that describes the classes and `data-*` attributes.
 
-[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/Djirasak/tsunami-framework/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/Djirasak/tsunami-framework/compare/v1.1.2...v1.2.0

@@ -13,11 +13,13 @@ interface DocumentEventMap extends TsunamiEventMap {}
 // TypeScript 6 and 7 report TS2882 for it.
 declare module "@djirasak/tsunami-ui/css";
 
-// Types for filter-bar, chart, select, bulk-bar, date-picker, otp, validate,
-// table, journey and code-editor. Global script: merges into Tsunami and
+// Types for messages, filter-bar, chart, select, bulk-bar, date-picker, otp,
+// validate, table, journey and code-editor. Global script: merges into Tsunami and
 // TsunamiEventMap.
 
 interface Tsunami {
+  /** Messages: the words the scripts write into the page, per language (follows the nearest [lang]). */
+  messages: TsunamiMessages;
   /** Filter bar: chips with remove buttons and a "Clear all" button. */
   filterBar: TsunamiFilterBar;
   /** Chart: a canvas becomes a Chart.js chart (Chart.js is loaded separately). */
@@ -38,6 +40,21 @@ interface Tsunami {
   journey: TsunamiJourney;
   /** Code editor: a Monaco Editor in place of textareas (Monaco is loaded separately). */
   codeEditor: TsunamiCodeEditor;
+}
+
+// ---- messages ----
+
+/**
+ * Words keyed by name, such as "pagination.prev", "pagination.next", "table.range"
+ * ("{from}–{to} of {total}"), "table.rangeEmpty" ("0 of {total}") and "table.empty".
+ */
+type TsunamiWords = Record<string, string>;
+
+interface TsunamiMessages {
+  /** The words for a language (such as "th" or "th-TH"): the region's, then the language's, then English. */
+  get(lang: string): TsunamiWords;
+  /** Adds or changes words for a language; the others are kept. */
+  set(lang: string, words: TsunamiWords): void;
 }
 
 // ---- filter-bar ----
@@ -156,6 +173,14 @@ interface TsunamiDatePickerElement extends HTMLElement {
 
 /** Any Vanilla Calendar Pro option, such as firstWeekday or disableWeekdays. */
 interface TsunamiDatePickerOptions {
+  /**
+   * Language and calendar of the names, the written date and the years, such as
+   * "th" or "th-TH-u-ca-buddhist". Wins over data-locale and the page's lang;
+   * the value stays Gregorian YYYY-MM-DD. An object is passed to the library as is.
+   */
+  locale?: string | Record<string, any>;
+  /** The library's own words (aria-labels), laid over the ones in tsunami.messages. */
+  labels?: Record<string, any>;
   [option: string]: any;
 }
 
