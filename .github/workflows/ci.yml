@@ -173,6 +173,9 @@ jobs:
     runs-on: ubuntu-26.04
     needs: [check, e2e, a11y]
     if: ${{ !cancelled() }}
+    permissions:
+      contents: read
+      pull-requests: write # the summary comment on the pull request
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -191,3 +194,32 @@ jobs:
           CHECK: ${{ needs.check.result }}
           E2E: ${{ needs.e2e.result }}
           A11Y: ${{ needs.a11y.result }}
+      # The same summary as a comment on the pull request, one comment per pull
+      # request that each run updates. A pull request from a fork gets a read-only
+      # token, so it has the summary on the run page only.
+      - name: Comment on the pull request
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          CHECK: ${{ needs.check.result }}
+          E2E: ${{ needs.e2e.result }}
+          A11Y: ${{ needs.a11y.result }}
+        run: |
+          marker="<!-- ci-summary -->"
+          {
+            echo "$marker"
+            GITHUB_STEP_SUMMARY= bun scripts/ci-summary.ts reports
+            echo "[CI run]($RUN) for ${SHA:0:7}"
+          } > comment.md
+          id=$(gh api --paginate "repos/$REPO/issues/$PR/comments" \
+            --jq ".[] | select(.user.login == \"github-actions[bot]\" and (.body | startswith(\"$marker\"))) | .id" | tail -n 1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$id" -F body=@comment.md > /dev/null
+          else
+            gh api "repos/$REPO/issues/$PR/comments" -F body=@comment.md > /dev/null
+          fi
