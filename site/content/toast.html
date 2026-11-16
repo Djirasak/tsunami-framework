@@ -506,6 +506,50 @@ toast.parentElement.dataset.position = "top-end";
             </div>
           </section>
           <section>
+            <h2>From the server</h2>
+            <p>
+              A message sent with the page, such as Django messages, Rails flash
+              or Laravel session flash, goes in a
+              <code>&lt;template data-toast&gt;</code>. On load, the script shows
+              its text as a toast and removes the template, so it shows once. A
+              template added to the page later shows too. Without JS the
+              template renders nothing.
+            </p>
+            <p>
+              It takes <code>data-toast-variant</code>,
+              <code>data-toast-title</code> (the text becomes the second line),
+              <code>data-toast-duration</code> and <code>data-toast-id</code>.
+              The text is read as plain text, so a message the server escaped
+              stays text. Several templates show in page order.
+            </p>
+            <h3>Django</h3>
+            <pre><code>{% for message in messages %}
+  &lt;template data-toast data-toast-variant="{{ message.tags }}"&gt;{{ message }}&lt;/template&gt;
+{% endfor %}
+
+# settings.py: name the tags after the toast variants
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: "ok",
+    messages.ERROR: "danger",
+    messages.DEBUG: "neutral",
+}</code></pre>
+            <h3>Rails</h3>
+            <pre><code>&lt;% flash.each do |type, message| %&gt;
+  &lt;template data-toast data-toast-variant="&lt;%= type == "alert" ? "danger" : "ok" %&gt;"&gt;&lt;%= message %&gt;&lt;/template&gt;
+&lt;% end %&gt;</code></pre>
+            <h3>Laravel</h3>
+            <pre><code>@if (session('status'))
+  &lt;template data-toast data-toast-variant="ok"&gt;{{ session('status') }}&lt;/template&gt;
+@endif
+
+{{-- With a title: the message becomes the second line --}}
+&lt;template data-toast data-toast-title="Payment failed" data-toast-variant="danger"&gt;
+  The card was declined.
+&lt;/template&gt;</code></pre>
+          </section>
+          <section>
             <h2>After a save</h2>
             <p>
               Pair it with the <a href="/docs/save-bar">save bar</a>: save, mark the
@@ -890,20 +934,41 @@ toast.parentElement.dataset.position = "top-end";
                     <td><code>data-toast</code></td>
                     <td>message</td>
                     <td>
-                      On a button: shows a toast with this message on click.
+                      On a button: shows a toast with this message on click. On
+                      a <code>&lt;template&gt;</code>: shows the template's text
+                      as a toast on load, or when it is added, then removes the
+                      template.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-toast-title</code></td>
                     <td>string</td>
                     <td>
-                      Makes <code>data-toast</code> the text and this the title.
+                      Makes <code>data-toast</code>, or the template's text, the
+                      text and this the title.
                     </td>
                   </tr>
                   <tr>
                     <td><code>data-toast-variant</code></td>
                     <td>as <code>data-variant</code></td>
                     <td>Variant of the declarative toast.</td>
+                  </tr>
+                  <tr>
+                    <td><code>data-toast-duration</code></td>
+                    <td>ms</td>
+                    <td>
+                      On a <code>&lt;template data-toast&gt;</code>: as the
+                      <code>duration</code> option. <code>0</code> stays.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-toast-id</code></td>
+                    <td>string</td>
+                    <td>
+                      On a <code>&lt;template data-toast&gt;</code>: as the
+                      <code>id</code> option, so a toast with the same id is
+                      replaced.
+                    </td>
                   </tr>
                   <tr>
                     <td><code>data-leaving</code></td>
