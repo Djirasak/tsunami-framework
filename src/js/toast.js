@@ -14,6 +14,10 @@
 // At most 3 toasts show; the oldest leaves first.
 // Declarative: <button data-toast="Message" data-toast-title="Saved"
 // data-toast-variant="ok"> shows a toast on click.
+// From the server: <template data-toast data-toast-variant="ok">Signed in</template>
+// shows its text as a toast on load, or when it is added later, then the
+// template is removed so it shows once. It also takes data-toast-title (the
+// text becomes the second line), data-toast-duration and data-toast-id.
 // Position: data-position on .toaster (bottom-end, top-end, bottom-center, top-center).
 // Events (bubble from the toast): tsunami:toast on show and tsunami:toastclose
 // on dismiss, detail { reason: "timeout" | "close" | "action" | "api" }.
@@ -219,7 +223,7 @@ document.addEventListener("visibilitychange", () => {
 });
 
 document.addEventListener("click", (e) => {
-  const btn = e.target.closest?.("[data-toast]");
+  const btn = e.target.closest?.("[data-toast]:not(template)");
   if (!btn || btn.disabled) return;
   const message = btn.dataset.toast;
   const title = btn.dataset.toastTitle;
@@ -229,6 +233,42 @@ document.addEventListener("click", (e) => {
     variant: btn.dataset.toastVariant,
   });
 });
+
+// Server-rendered toasts. The text is read as plain text, never as HTML.
+const TEMPLATE = "template[data-toast]";
+function mount(root = document) {
+  const list = root.matches?.(TEMPLATE)
+    ? [root]
+    : [...root.querySelectorAll(TEMPLATE)];
+  for (const t of list) {
+    if (!t.isConnected) continue; // already shown by an earlier record
+    t.remove();
+    const d = t.dataset;
+    const message =
+      t.content.textContent.replace(/\s+/g, " ").trim() || d.toast;
+    const title = d.toastTitle;
+    const ms = d.toastDuration ? Number(d.toastDuration) : NaN;
+    toast({
+      title: title || message,
+      text: title ? message : undefined,
+      variant: d.toastVariant || undefined,
+      duration: Number.isFinite(ms) ? ms : undefined,
+      id: d.toastId || undefined,
+    });
+  }
+}
+
+// The script may run before the body is parsed; a template added later shows too.
+if (document.readyState === "loading")
+  document.addEventListener("DOMContentLoaded", () => mount(), { once: true });
+else mount();
+new MutationObserver((records) => {
+  if (document.readyState === "loading") return;
+  for (const r of records)
+    for (const n of r.addedNodes)
+      if (n.nodeType === 1 && (n.matches(TEMPLATE) || n.querySelector(TEMPLATE)))
+        mount(n);
+}).observe(document.documentElement, { childList: true, subtree: true });
 
 // Follow modal dialogs as they open and close.
 new MutationObserver(() => place()).observe(document, {
