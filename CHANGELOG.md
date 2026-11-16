@@ -6,6 +6,10 @@ Versions follow [semantic versioning](https://semver.org).
 
 ## [Unreleased]
 
+### Added
+
+- Words follow the page language. The Table's range text ("1–20 of 58"), the labels of its pagination arrows and its built-in "No results" row use the language of the nearest `lang` attribute, else `<html lang>`, else English; `th-TH` uses Thai. English and Thai are built in, and `tsunami.messages.set(lang, words)` adds or changes words for any language. In the markup, `data-label-prev` and `data-label-next` on the nav and `data-format` / `data-format-empty` on `[data-table-info]` (`{from}`, `{to}`, `{total}`) set them. With `lang="en"` or no `lang`, the text is the same as before.
+
 ## [1.4.0] - 2026-11-01
 
 ### Added

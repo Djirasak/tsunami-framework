@@ -48,6 +48,31 @@ tsunami.otp.clear(otp);        // empties them and focuses the first</code></pre
   const chart = tsunami.chart.get(e.target); // the Chart.js instance
 });</code></pre>
           </section>
+          <section id="language">
+            <h2>Language</h2>
+            <p>
+              The words a script writes into the page, such as the range under
+              a table and the labels of its page buttons, follow the language
+              of the element: the nearest <code>lang</code> attribute, else
+              <code>&lt;html lang&gt;</code>, else English. A region uses its
+              language (<code>th-TH</code> uses <code>th</code>), and a word a
+              language lacks stays English. English and Thai are built in. Add
+              or change words with <code>tsunami.messages.set</code>; the next
+              render uses them.
+            </p>
+            <pre><code class="language-js">tsunami.messages.set("fr", {
+  "pagination.prev": "Page précédente",
+  "pagination.next": "Page suivante",
+  "table.range": "{from}–{to} sur {total}",
+  "table.rangeEmpty": "0 sur {total}",
+  "table.empty": "Aucun résultat",
+});
+tsunami.messages.get("th"); // the Thai words, English where Thai has none</code></pre>
+            <p>
+              So far the Table and its pagination use these words. A component
+              page lists the attributes that set its words in the markup.
+            </p>
+          </section>
           <section>
             <h2>Events</h2>
             <p>
@@ -114,6 +139,12 @@ form.addEventListener("tsunami:tagschange", (e) =&gt; {
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td><code>tsunami.messages</code></td>
+                    <td><a href="#language">Language</a></td>
+                    <td><code>get, set</code></td>
+                    <td>—</td>
+                  </tr>
                   <tr>
                     <td><code>tsunami.theme</code></td>
                     <td><a href="/docs/theme-switcher">Theme switcher</a></td>
