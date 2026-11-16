@@ -1,4 +1,5 @@
 // tsunami behaviors: one ES module import per behavior.
+import "./i18n.js";
 import "./theme.js";
 import "./pressed.js";
 import "./tabs.js";

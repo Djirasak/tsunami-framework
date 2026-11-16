@@ -763,6 +763,19 @@
               <a href="/docs/select">select wrapper</a>, changes the size. Rows are hidden, never re-created, so it stays quick up
               to a couple of thousand rows.
             </p>
+            <p>
+              The range text, the labels of the arrow buttons and the built-in
+              empty row follow the language of the page: the nearest
+              <code>lang</code> attribute, else <code>&lt;html lang&gt;</code>,
+              else English. English and Thai are built in, and
+              <code>th-TH</code> uses Thai. To set the words in the markup, put
+              <code>data-label-prev</code> and <code>data-label-next</code> on
+              the nav, and <code>data-format="{from}–{to} of {total}"</code> on
+              the info. When no row matches, the info uses
+              <code>data-format-empty</code>, or <code>0 of {total}</code> in
+              the page language. Other languages are added from
+              <a href="/docs/javascript#language">JavaScript</a>.
+            </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Pages">
                 <button
@@ -3488,7 +3501,22 @@
                     <tr>
                       <td><code>[data-table-info]</code></td>
                       <td>Table id</td>
-                      <td>Shows the range, such as <code>1–10 of 42</code></td>
+                      <td>Shows the range, such as <code>1–10 of 42</code>, in the page language</td>
+                    </tr>
+                    <tr>
+                      <td><code>data-format</code></td>
+                      <td>text with <code>{from}</code> <code>{to}</code> <code>{total}</code></td>
+                      <td>On <code>[data-table-info]</code>: the range text, such as <code>{from}–{to} จาก {total}</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>data-format-empty</code></td>
+                      <td>text with <code>{total}</code></td>
+                      <td>On <code>[data-table-info]</code>: the text when no row matches (default <code>0 of {total}</code>)</td>
+                    </tr>
+                    <tr>
+                      <td><code>data-label-prev</code>, <code>data-label-next</code></td>
+                      <td>text</td>
+                      <td>On <code>nav[data-pagination-for]</code>: the <code>aria-label</code> of the arrow buttons (default "Previous page" and "Next page" in the page language)</td>
                     </tr>
                     <tr>
                       <td><code>select[data-table-page-size]</code></td>

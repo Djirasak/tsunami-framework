@@ -20,7 +20,11 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  reporter: process.env.CI ? [["github"], ["list"]] : "list",
+  // On CI the JSON report feeds the run summary (scripts/ci-summary.ts), which
+  // lists the failing tests, so the "github" reporter's notices would repeat it.
+  reporter: process.env.CI
+    ? [["list"], ["json", { outputFile: "playwright-report/results.json" }]]
+    : "list",
   use: { baseURL, trace: "retain-on-failure" },
   projects: [
     { name: "chromium", use: chromium },

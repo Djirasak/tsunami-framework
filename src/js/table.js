@@ -21,6 +21,11 @@
 // (value = column index; written from the header texts when it has none). An
 // unchecked column gets `hidden` on every th and td. With an id on the table and
 // data-table-remember, the choice is kept in localStorage.
+// Words: the range text, the arrow labels and the empty row follow the language
+// of the page (js/i18n.js). data-label-prev and data-label-next on the nav, and
+// data-format / data-format-empty on [data-table-info] ({from}, {to}, {total}),
+// set them in the markup.
+import { fill, t } from "./i18n.js";
 
 const SORT_BUTTON = ".table th[aria-sort] > button";
 const ROW_BOX = '.table tbody tr > td:first-child > input[type="checkbox"]';
@@ -259,11 +264,17 @@ function renderPagination(table, state) {
     const prev = pageButton(chevron("chevron-left"), page - 1, {
       disabled: page <= 1,
     });
-    prev.firstChild.setAttribute("aria-label", "Previous page");
+    prev.firstChild.setAttribute(
+      "aria-label",
+      nav.dataset.labelPrev ?? t(nav, "pagination.prev"),
+    );
     const next = pageButton(chevron("chevron-right"), page + 1, {
       disabled: page >= pages,
     });
-    next.firstChild.setAttribute("aria-label", "Next page");
+    next.firstChild.setAttribute(
+      "aria-label",
+      nav.dataset.labelNext ?? t(nav, "pagination.next"),
+    );
     ul.append(prev);
     for (const n of pageList(page, pages)) {
       if (n === null) {
@@ -289,9 +300,13 @@ function renderInfo(table, state) {
   const total = matched.length;
   const from = total ? (size ? (page - 1) * size + 1 : 1) : 0;
   const to = size ? Math.min(page * size, total) : total;
-  const text = total ? `${from}–${to} of ${total}` : "0 of 0";
-  for (const el of controls(table, "[data-table-info]", "data-table-info"))
-    el.textContent = text;
+  const vars = { from, to, total };
+  for (const el of controls(table, "[data-table-info]", "data-table-info")) {
+    const format = total ? el.dataset.format : el.dataset.formatEmpty;
+    el.textContent = format
+      ? fill(format, vars)
+      : t(el, total ? "table.range" : "table.rangeEmpty", vars);
+  }
 }
 
 // ---- State and update ----
@@ -422,7 +437,8 @@ function emptyRow(table, state) {
     row.setAttribute("data-table-empty", "");
     const cell = row.insertCell();
     if (tpl) cell.append(tpl.content.cloneNode(true));
-    else cell.textContent = "No results";
+    // The built-in text: update() writes it, so it follows a change of lang.
+    else state.emptyText = cell;
     (table.tBodies[0] ?? table.createTBody()).append(row);
   }
   state.empty = row;
@@ -445,6 +461,7 @@ function update(table, { page } = {}) {
   });
   const empty = emptyRow(table, state);
   empty.hidden = state.matched.length > 0;
+  if (state.emptyText) state.emptyText.textContent = t(table, "table.empty");
   empty.firstElementChild?.setAttribute("colspan", String(colSpan(table)));
   state.pages = size ? Math.max(1, Math.ceil(state.matched.length / size)) : 1;
   if (page !== undefined) state.page = page;
