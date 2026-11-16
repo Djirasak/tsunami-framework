@@ -20,9 +20,10 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  // On CI the JSON report feeds the job summary (scripts/e2e-summary.ts).
+  // On CI the JSON report feeds the run summary (scripts/ci-summary.ts), which
+  // lists the failing tests, so the "github" reporter's notices would repeat it.
   reporter: process.env.CI
-    ? [["github"], ["list"], ["json", { outputFile: "playwright-report/results.json" }]]
+    ? [["list"], ["json", { outputFile: "playwright-report/results.json" }]]
     : "list",
   use: { baseURL, trace: "retain-on-failure" },
   projects: [
