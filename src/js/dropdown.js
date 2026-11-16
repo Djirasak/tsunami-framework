@@ -1,7 +1,8 @@
 // Dropdown and popover keyboard and ARIA: a button with popovertarget gets
 // aria-expanded and aria-controls that follow the panel, ArrowDown on the button
 // moves into an open dropdown, and Up, Down, Home and End move between a
-// dropdown's items. Escape and light dismiss are native.
+// dropdown's items. Escape and light dismiss are native. A form submitted from a
+// dropdown's button closes it: a submit button with a form ignores popovertarget.
 const PANEL = ".dropdown, .popover";
 const ITEM = "a[href], button:not(:disabled), input:not(:disabled)";
 
@@ -69,3 +70,12 @@ document.addEventListener("keydown", (e) => {
         : (at + (e.key === "ArrowDown" ? 1 : -1) + all.length) % all.length;
   all[to].focus();
 });
+
+document.addEventListener(
+  "submit",
+  (e) => {
+    const panel = e.submitter?.closest(".dropdown");
+    if (panel?.matches(":popover-open")) panel.hidePopover();
+  },
+  true,
+);
