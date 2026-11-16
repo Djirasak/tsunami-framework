@@ -246,6 +246,90 @@ test.describe("Dropdown", () => {
   });
 });
 
+// A POST action in a dropdown: a form around the button, or a button with form="id".
+test.describe("Dropdown with a form", () => {
+  const trigger = (page: Page) =>
+    page.locator('[popovertarget="dd-logout"]').first();
+  const panel = (page: Page) => page.locator("#dd-logout");
+  const profile = (page: Page) =>
+    panel(page).getByRole("link", { name: "Profile" });
+  const logout = (page: Page) =>
+    panel(page).getByRole("button", { name: "Log out" });
+
+  test("the button in the form is styled like the other items", async ({
+    page,
+  }) => {
+    await open(page, "/docs/dropdown");
+    await trigger(page).click();
+    await expect(panel(page)).toBeVisible();
+    const form = panel(page).locator("form");
+    await expect(form).toHaveCSS("display", "contents");
+    const [a, b] = [
+      await profile(page).boundingBox(),
+      await logout(page).boundingBox(),
+    ];
+    expect(b!.width).toBe(a!.width);
+    expect(b!.x).toBe(a!.x);
+    expect(b!.height).toBe(a!.height);
+    await expect(logout(page)).toHaveCSS("white-space", "nowrap");
+    await expect(logout(page)).toHaveCSS("display", "flex");
+    const idle = await logout(page).evaluate(
+      (el) => getComputedStyle(el).backgroundColor,
+    );
+    await logout(page).hover();
+    await expect(logout(page)).not.toHaveCSS("background-color", idle);
+  });
+
+  test("arrows, Home and End move through the form's button", async ({
+    page,
+  }) => {
+    await open(page, "/docs/dropdown");
+    await trigger(page).focus();
+    await page.keyboard.press("Enter");
+    await expect(panel(page)).toBeVisible();
+    await page.keyboard.press("ArrowDown");
+    await expect(profile(page)).toBeFocused();
+    await page.keyboard.press("ArrowDown");
+    await expect(logout(page)).toBeFocused();
+    await page.keyboard.press("ArrowDown");
+    await expect(profile(page)).toBeFocused(); // wraps
+    await page.keyboard.press("ArrowUp");
+    await expect(logout(page)).toBeFocused();
+    await page.keyboard.press("Home");
+    await expect(profile(page)).toBeFocused();
+    await page.keyboard.press("End");
+    await expect(logout(page)).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(panel(page)).toBeHidden();
+    await expect(trigger(page)).toBeFocused();
+  });
+
+  for (const [id, label] of [
+    ["dd-logout", "a form inside the menu"],
+    ["dd-logout-out", "a form outside the menu, through form="],
+  ]) {
+    test(`submitting ${label} sends the form and closes the menu`, async ({
+      page,
+    }) => {
+      await open(page, "/docs/dropdown");
+      const menu = page.locator(`#${id}`);
+      await page.evaluate(() => {
+        document.addEventListener("submit", (e) => {
+          (window as any).submitted =
+            (e.target as HTMLFormElement).id || "nested";
+        });
+      });
+      await page.locator(`[popovertarget="${id}"]`).first().click();
+      await expect(menu).toBeVisible();
+      await menu.getByRole("button", { name: "Log out" }).click();
+      await expect(menu).toBeHidden();
+      expect(await page.evaluate(() => (window as any).submitted)).toBe(
+        id === "dd-logout" ? "nested" : "dd-logout-form",
+      );
+    });
+  }
+});
+
 test.describe("Command", () => {
   const palette = (page: Page) => page.getByRole("dialog", { name: "Command menu" });
   const openPalette = async (page: Page) => {
