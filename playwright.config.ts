@@ -20,7 +20,10 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  reporter: process.env.CI ? [["github"], ["list"]] : "list",
+  // On CI the JSON report feeds the job summary (scripts/e2e-summary.ts).
+  reporter: process.env.CI
+    ? [["github"], ["list"], ["json", { outputFile: "playwright-report/results.json" }]]
+    : "list",
   use: { baseURL, trace: "retain-on-failure" },
   projects: [
     { name: "chromium", use: chromium },

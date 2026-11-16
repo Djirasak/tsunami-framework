@@ -8,7 +8,7 @@
 //                    and critical only, which fail the check)
 // axe skips what Tsunami does not own or cannot get wrong: Monaco and TinyMCE draw
 // their own UI, and a disabled control is exempt from contrast.
-import { readFileSync } from "node:fs";
+import { appendFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "playwright";
 
@@ -136,4 +136,27 @@ console.log(
     ? `\n✗ ${total} problems on ${paths.length} pages`
     : `\n✓ ${paths.length} pages, light, dark and phone width: no ${all ? "" : "serious or critical "}problems`,
 );
+// On GitHub Actions the result also goes to the job summary.
+const summary = process.env.GITHUB_STEP_SUMMARY;
+if (summary) {
+  const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\|/g, "\\|");
+  const lines = [
+    `### ${total ? "❌" : "✅"} Accessibility`,
+    "",
+    `**${paths.length}** pages × ${views.length} views (light, dark, phone) · ` +
+      (total ? `**${total}** problems` : `no ${all ? "" : "serious or critical "}problems`),
+    "",
+  ];
+  if (total) {
+    lines.push("| Impact | Rule | Problems | Pages |", "|---|---|---:|---|");
+    for (const [id, { impact, help, hits }] of found) {
+      const pages = [...new Set(hits.map((h) => h.path))];
+      lines.push(
+        `| ${impact === "critical" ? "🔴" : "🟠"} ${impact} | \`${id}\`: ${esc(help)} | ${hits.length} | ${pages.slice(0, 3).map((p) => `\`${p}\``).join(", ")}${pages.length > 3 ? ` +${pages.length - 3}` : ""} |`,
+      );
+    }
+    lines.push("");
+  }
+  appendFileSync(summary, `${lines.join("\n")}\n`);
+}
 process.exit(total ? 1 : 0);
