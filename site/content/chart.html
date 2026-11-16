@@ -972,6 +972,107 @@ tsunami.chart('#ch-wide', {
             </div>
           </section>
           <section>
+            <h2>Colours that follow the theme</h2>
+            <p>
+              A colour token, or a series <code>color</code>, may be any colour
+              the browser resolves: <code>light-dark()</code>,
+              <code>color-mix()</code> and <code>oklch()</code> as well as a hex
+              value or <code>var()</code>. The chart reads the colour for the
+              theme in effect and draws again when the theme changes, so
+              <code>:root { --accent: light-dark(#276f81, #6cc0d3); }</code>
+              colours the charts as it colours the buttons. A colour that cannot
+              be resolved logs a warning and the chart uses the accent.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Colours that follow the theme">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tp"
+                  aria-selected="true"
+                  aria-controls="ex11-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex11-tc"
+                  aria-selected="false"
+                  aria-controls="ex11-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-p"
+                aria-labelledby="ex11-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="chart">
+                    <canvas
+                      id="ch-theme"
+                      aria-label="Orders and refunds by quarter, coloured per theme"
+                    ></canvas>
+                  </div>
+                  <script>
+                    tsunami.chart("#ch-theme", {
+                      type: "bar",
+                      legend: true,
+                      data: [
+                        { label: "Q1", orders: 320, refunds: 40 },
+                        { label: "Q2", orders: 410, refunds: 52 },
+                        { label: "Q3", orders: 380, refunds: 35 },
+                        { label: "Q4", orders: 460, refunds: 48 },
+                      ],
+                      series: {
+                        orders: {
+                          label: "Orders",
+                          color: "light-dark(#6a3fa0, #c3a2ef)",
+                        },
+                        refunds: {
+                          label: "Refunds",
+                          color: "color-mix(in oklch, var(--danger-fg), var(--muted))",
+                        },
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex11-c"
+                aria-labelledby="ex11-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="chart"&gt;&lt;canvas id="ch-theme" aria-label="Orders and refunds by quarter, coloured per theme"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+tsunami.chart('#ch-theme', {
+  type: 'bar',
+  legend: true,
+  data: [
+    { label: 'Q1', orders: 320, refunds: 40 },
+    { label: 'Q2', orders: 410, refunds: 52 },
+    { label: 'Q3', orders: 380, refunds: 35 },
+    { label: 'Q4', orders: 460, refunds: 48 },
+  ],
+  series: {
+    orders: { label: 'Orders', color: 'light-dark(#6a3fa0, #c3a2ef)' },
+    refunds: {
+      label: 'Refunds',
+      color: 'color-mix(in oklch, var(--danger-fg), var(--muted))',
+    },
+  },
+});
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
             <h2>Calling it again redraws the chart</h2>
             <p>
               A second call on the same canvas replaces the data and returns a
@@ -1273,13 +1374,17 @@ document.addEventListener('click', (e) =&gt; {
                   </tr>
                   <tr>
                     <td><code>color</code></td>
-                    <td>any CSS colour, <code>var(--ok-fg)</code></td>
+                    <td>
+                      any CSS colour, <code>var(--ok-fg)</code>,
+                      <code>light-dark()</code>
+                    </td>
                     <td>the palette in turn</td>
                     <td>
                       The palette is <code>--accent</code>,
                       <code>--info-fg</code>, <code>--ok-fg</code>,
                       <code>--warning-fg</code>, <code>--danger-fg</code>. A
-                      <code>var()</code> is resolved from the computed style.
+                      colour is resolved by the browser, so tokens and
+                      <code>light-dark()</code> follow the theme.
                     </td>
                   </tr>
                   <tr>
@@ -1349,7 +1454,8 @@ document.addEventListener('click', (e) =&gt; {
             </ul>
             <p>
               A chart is destroyed by itself when its canvas leaves the page.
-              Colours are read from the CSS variables when a chart is drawn, so
+              Colours are read from the CSS variables when a chart is drawn, as
+              the browser resolves them (<code>light-dark()</code> included), so
               on
               <code>tsunami:themechange</code> every chart is drawn again, with
               no animation. Under <code>prefers-reduced-motion</code> the

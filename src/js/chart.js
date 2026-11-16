@@ -8,7 +8,8 @@
 //   data        an array of rows, one object per point or slice
 //   series      { key: { label, color, type, axis, surface, total, dataset } }
 //               label: name in the legend and tooltip (default the key)
-//               color: any CSS colour or var(--token) (default: the palette)
+//               color: any CSS colour, var(--token) or light-dark() (default:
+//               the palette)
 //               type: draws this series as another chart type
 //               axis: a scale id such as "y1" puts the series on a second axis
 //               surface: true fills a flat translucent area under a line
@@ -22,7 +23,10 @@
 //   options     any Chart.js options, merged over the defaults at any depth
 // Pie, doughnut and polarArea take one series; each row is a slice and may
 // carry its own `color`. Colours are read from the tokens when the chart is
-// drawn, and every chart is drawn again on tsunami:themechange.
+// drawn, as the browser resolves them (so a token may use light-dark(),
+// color-mix() or oklch()), and every chart is drawn again on
+// tsunami:themechange. A colour that cannot be resolved logs a warning and
+// falls back to the accent.
 // The canvas gets data-chart-initialized="true" and a bubbling
 // tsunami:chartready (detail { chart }). A chart is destroyed when its canvas
 // leaves the page. Animation is off under prefers-reduced-motion.
@@ -52,27 +56,71 @@ function merge(base, extra) {
   return base;
 }
 
-// var(--token) becomes the token's value; the canvas cannot read custom
-// properties.
-const resolve = (color) =>
-  String(color).replace(/var\(\s*(--[\w-]+)\s*\)/g, (_, name) => token(name));
-
-// The same colour with an alpha. The 2D context turns any CSS colour into
-// "#rrggbb" or "rgba(...)".
-const ctx2d = document.createElement("canvas").getContext("2d");
-function alpha(color, a) {
-  ctx2d.fillStyle = "#000";
-  ctx2d.fillStyle = color;
-  const c = ctx2d.fillStyle;
-  if (c.startsWith("#")) {
-    const n = parseInt(c.slice(1), 16);
-    return `rgba(${n >> 16}, ${(n >> 8) & 255}, ${n & 255}, ${a})`;
+// Any CSS colour, var(--token), light-dark(), color-mix() or oklch() among
+// them, becomes the colour the browser resolves, as "rgba(r, g, b, a)". The
+// canvas cannot read custom properties and ignores colours it cannot parse,
+// so the value is set as `color` on a hidden probe under <html> (it inherits
+// the theme's color-scheme) and its computed colour is turned into sRGB that
+// Chart.js can parse too. A probe that cannot resolve the value inherits
+// SENTINEL from its wrapper; the chart then uses the accent, or the default
+// accent when --accent itself cannot be resolved.
+const SENTINEL = "rgb(1, 2, 3)";
+const DEFAULT_ACCENT = { light: "#276f81", dark: "#6cc0d3" };
+const pixel = document
+  .createElement("canvas")
+  .getContext("2d", { willReadFrequently: true });
+let probe = null;
+function probed(value) {
+  if (!probe) {
+    const wrap = document.createElement("span");
+    wrap.hidden = true;
+    wrap.style.color = SENTINEL;
+    probe = wrap.appendChild(document.createElement("span"));
+    root.append(wrap);
+    // One probe for all the colours of a draw.
+    queueMicrotask(() => {
+      wrap.remove();
+      probe = null;
+    });
   }
-  return c.replace(/rgba?\(([^)]+)\)/, (_, v) => {
-    const [r, g, b] = v.split(",");
-    return `rgba(${r}, ${g}, ${b}, ${a})`;
-  });
+  probe.style.color = "";
+  probe.style.color = value;
+  const out = getComputedStyle(probe).color;
+  return probe.style.color && out !== SENTINEL ? out : null;
 }
+// "rgb(r, g, b)" and "rgba(r, g, b, a)" are read as they are; any other
+// computed form (oklch(), color(srgb ...)) is painted on a pixel and read back.
+function rgba(color) {
+  const m = /^rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\)$/.exec(
+    color,
+  );
+  if (m) return `rgba(${m[1]}, ${m[2]}, ${m[3]}, ${m[4] ?? 1})`;
+  pixel.clearRect(0, 0, 1, 1);
+  pixel.fillStyle = color;
+  pixel.fillRect(0, 0, 1, 1);
+  const [r, g, b, a] = pixel.getImageData(0, 0, 1, 1).data;
+  return `rgba(${r}, ${g}, ${b}, ${Math.round((a / 255) * 1000) / 1000})`;
+}
+function paint(value, name) {
+  const out = String(value ?? "").trim() && probed(String(value));
+  if (out) return rgba(out);
+  console.warn(
+    `Tsunami chart: the colour ${name ?? JSON.stringify(String(value ?? ""))} cannot be resolved; the chart uses --accent instead.`,
+  );
+  const scheme = getComputedStyle(root).colorScheme;
+  return rgba(
+    probed("var(--accent)") ??
+      DEFAULT_ACCENT[
+        /dark/.test(scheme) && !/light/.test(scheme) ? "dark" : "light"
+      ],
+  );
+}
+// A token's colour, e.g. colorToken("--accent").
+const colorToken = (name) =>
+  paint(`var(${name})`, `${name} (${JSON.stringify(token(name))})`);
+
+// The same colour with an alpha; `color` is already "rgba(...)".
+const alpha = (color, a) => color.replace(/,\s*[\d.]+\)$/, `, ${a})`);
 
 const px = (value) =>
   value.endsWith("rem")
@@ -120,7 +168,7 @@ function config(options) {
   const rows = options.data ?? [];
   const radial = RADIAL.includes(type);
   const c = Object.fromEntries(
-    ["fg", "muted", "line", "surface"].map((n) => [n, token(`--${n}`)]),
+    ["fg", "muted", "line", "surface"].map((n) => [n, colorToken(`--${n}`)]),
   );
   const series =
     options.series ??
@@ -130,7 +178,7 @@ function config(options) {
         .map((k) => [k, {}]),
     );
   const colour = (spec, i) =>
-    resolve(spec.color ?? token(PALETTE[i % PALETTE.length]));
+    spec.color ? paint(spec.color) : colorToken(PALETTE[i % PALETTE.length]);
   const scales = {};
   const tick = { color: c.muted, padding: 8 };
 

@@ -721,6 +721,103 @@ test.describe("Chart", () => {
     );
     expect(ready).toEqual({ type: "bar", labels: 2 });
   });
+
+  // Draw a bar chart on a new canvas and read the colour in the middle of each
+  // bar, as "r,g,b".
+  const drawBars = (page: Page, series: Record<string, unknown>) =>
+    page.evaluate((series) => {
+      document.getElementById("e2e-colours")?.remove();
+      const wrap = document.createElement("div");
+      wrap.className = "chart";
+      wrap.id = "e2e-colours";
+      wrap.style.height = "200px";
+      wrap.innerHTML = '<canvas aria-label="Colours"></canvas>';
+      document.body.append(wrap);
+      window.tsunami.chart(wrap.firstElementChild as HTMLCanvasElement, {
+        data: [
+          { label: "A", a: 4, b: 4, c: 4 },
+          { label: "B", a: 6, b: 6, c: 6 },
+        ],
+        series,
+        options: { animation: false },
+      });
+    }, series);
+  const barColours = (page: Page) =>
+    page.evaluate(() => {
+      const canvas = document.querySelector<HTMLCanvasElement>(
+        "#e2e-colours canvas",
+      )!;
+      const chart = window.tsunami.chart.get(canvas) as any;
+      const ctx = canvas.getContext("2d")!;
+      const ratio = canvas.width / canvas.clientWidth;
+      return chart.data.datasets.map((_: unknown, i: number) => {
+        const bar = chart.getDatasetMeta(i).data[1];
+        const [r, g, b] = ctx.getImageData(
+          Math.round(bar.x * ratio),
+          Math.round(((bar.y + bar.base) / 2) * ratio),
+          1,
+          1,
+        ).data;
+        return `${r},${g},${b}`;
+      });
+    });
+
+  test("a light-dark() accent follows the theme", async ({ page }) => {
+    const errors = watchErrors(page);
+    await open(page, "/docs/chart");
+    await page.evaluate(() => {
+      window.tsunami.theme.set("light");
+      const style = document.createElement("style");
+      style.textContent = ":root { --accent: light-dark(#cc3300, #00aa66); }";
+      document.head.append(style);
+    });
+    await drawBars(page, { a: {} });
+    expect(await barColours(page)).toEqual(["204,51,0"]);
+    // tsunami:themechange draws the chart again with the dark colour.
+    await page.evaluate(() => window.tsunami.theme.set("dark"));
+    expect(await barColours(page)).toEqual(["0,170,102"]);
+    errors.expectNone();
+  });
+
+  test("series colours resolve from any CSS colour", async ({ page }) => {
+    const errors = watchErrors(page);
+    await open(page, "/docs/chart");
+    await page.evaluate(() => window.tsunami.theme.set("light"));
+    await drawBars(page, {
+      a: { color: "light-dark(#112233, #445566)" },
+      b: { color: "color-mix(in srgb, #ff0000 50%, #0000ff)" },
+      c: { color: "oklch(0.7 0 0)" },
+    });
+    const [a, b, c] = await barColours(page);
+    expect(a).toBe("17,34,51");
+    expect(b).toMatch(/^12[78],0,12[78]$/);
+    // oklch() as the browser's own canvas paints it.
+    const grey = await page.evaluate(() => {
+      const ctx = document.createElement("canvas").getContext("2d")!;
+      ctx.fillStyle = "oklch(0.7 0 0)";
+      ctx.fillRect(0, 0, 1, 1);
+      return [...ctx.getImageData(0, 0, 1, 1).data.slice(0, 3)];
+    });
+    c.split(",").forEach((v, i) =>
+      expect(Math.abs(Number(v) - grey[i])).toBeLessThanOrEqual(1),
+    );
+    errors.expectNone();
+  });
+
+  test("a colour that cannot be resolved warns and uses the accent", async ({
+    page,
+  }) => {
+    await open(page, "/docs/chart");
+    const warnings: string[] = [];
+    page.on("console", (m) => {
+      if (m.type() === "warning") warnings.push(m.text());
+    });
+    await page.evaluate(() => window.tsunami.theme.set("light"));
+    await drawBars(page, { a: { color: "var(--no-such-token)" } });
+    // The default light accent, #276f81.
+    expect(await barColours(page)).toEqual(["39,111,129"]);
+    expect(warnings.join("\n")).toContain("var(--no-such-token)");
+  });
 });
 
 test.describe("JSON viewer", () => {
