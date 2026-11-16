@@ -116,6 +116,79 @@ test.describe("Select", () => {
       )
       .toEqual(["bedding", "lighting"]);
   });
+
+  // A framework's empty option (<option value="">---------</option>) with data-placeholder.
+  const listed = (page: Page) =>
+    page.locator('[role="listbox"]:visible [role="option"]').allTextContents();
+
+  test("data-placeholder leaves the empty option out of a required select", async ({ page }) => {
+    const combo = page.getByRole("combobox", { name: "Type (required)" });
+    await expect(combo).toContainText("Select a type");
+    await combo.click();
+    await expect.poll(() => listed(page)).toEqual(["Type A", "Type B"]);
+    await expect(field(page, "kind")).toHaveValue("");
+  });
+
+  test("the keyboard never lands on the left-out option", async ({ page }) => {
+    const combo = page.getByRole("combobox", { name: "Type (required)" });
+    await combo.focus();
+    await page.keyboard.press("ArrowDown");
+    await expect(combo).toHaveAttribute("aria-expanded", "true");
+    await page.keyboard.press("End");
+    await page.keyboard.press("Enter");
+    await expect(field(page, "kind")).toHaveValue("b");
+    await combo.press("ArrowDown");
+    await page.keyboard.press("Home");
+    await page.keyboard.press("Enter");
+    await expect(field(page, "kind")).toHaveValue("a");
+    await combo.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("Enter");
+    await expect(field(page, "kind")).not.toHaveValue("");
+  });
+
+  test("an optional select lists the empty option as a muted placeholder row that clears it", async ({
+    page,
+  }) => {
+    const combo = page.getByRole("combobox", { name: "Supplier (optional)" });
+    await combo.click();
+    await expect.poll(() => listed(page)).toEqual(["No supplier", "North Farm", "River Mill"]);
+    await page.getByRole("option", { name: "North Farm" }).click();
+    await expect(field(page, "supplier")).toHaveValue("1");
+    await combo.click();
+    const blank = page.getByRole("option", { name: "No supplier" });
+    await expect(blank).toHaveAttribute("data-placeholder", "");
+    await blank.click();
+    await expect(field(page, "supplier")).toHaveValue("");
+    await expect(combo).toContainText("No supplier");
+    await expect(page.locator('.select:has([name="supplier"])')).not.toHaveAttribute(
+      "data-has-value",
+    );
+  });
+
+  test("without data-placeholder the empty option is listed as before", async ({ page }) => {
+    await page
+      .locator('.select:has([name="kind"])')
+      .evaluate((el) => el.removeAttribute("data-placeholder"));
+    await page.getByRole("combobox", { name: "Type (required)" }).click();
+    await expect.poll(() => listed(page)).toEqual(["---------", "Type A", "Type B"]);
+  });
+
+  test("a multiple select with data-placeholder leaves the empty option out", async ({ page }) => {
+    await page.evaluate(() => {
+      const div = document.createElement("div");
+      div.className = "select";
+      div.dataset.placeholder = "Pick colours";
+      div.innerHTML = `<select name="colours" multiple aria-label="Colours">
+        <option value="">---------</option><option value="r">Red</option><option value="g">Green</option>
+      </select>`;
+      document.querySelector("main")!.append(div);
+    });
+    const box = page.getByRole("combobox", { name: "Colours" });
+    await box.click();
+    await expect.poll(() => listed(page)).toEqual(["Red", "Green"]);
+  });
 });
 
 test.describe("Autocomplete", () => {
