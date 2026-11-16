@@ -30,6 +30,18 @@
 // around it. API: window.tsunami.datePicker = { mount(el, options?), get(el),
 // destroy(el) }; options are any other Vanilla Calendar Pro options, such as
 // firstWeekday or disableWeekdays.
+// Language: month and weekday names, the written date of data-format, the
+// years in the calendar and the words (js/i18n.js, datePicker.* keys) follow
+// options.locale, else data-locale on .date-picker (such as
+// th-TH-u-ca-buddhist), else the nearest [lang], else English. Thai counts
+// years in the Buddhist era, as Intl does, so lang="th" shows "15 พ.ย. 2569";
+// the header and the year list are rewritten to match, while data-vc-year,
+// the hidden input, value, the change event, data-min/max and presets stay
+// Gregorian YYYY-MM-DD. A typeable field (no data-format) stays YYYY-MM-DD.
+// data-label on .date-picker sets the panel's aria-label; options.labels
+// replaces the library's own words.
+
+import { langOf, say } from "./i18n.js";
 
 const ROOT = ".date-picker";
 const TO = " to ";
@@ -39,20 +51,56 @@ const open = new Set(); // roots whose panel is open
 const MEMBERS = ["value", "open", "close", "calendar"];
 let uid = 0;
 
-const formats = {
-  long: new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  }),
-  medium: new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  }),
+const FORMATS = {
+  long: { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" },
+  medium: { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" },
 };
+const formatters = new Map(); // "locale|format" -> Intl.DateTimeFormat
+
+// The language and calendar of a picker: options.locale (a tag), data-locale,
+// the nearest [lang] ancestor, <html lang>, then "en". A tag Intl refuses is
+// skipped, so a typo falls back instead of breaking the picker.
+function localeOf(root, options) {
+  for (const tag of [options.locale, root.dataset.locale, langOf(root)]) {
+    if (typeof tag !== "string" || !tag) continue;
+    try {
+      new Intl.DateTimeFormat(tag);
+      return tag;
+    } catch {
+      // not a locale Intl knows; try the next one
+    }
+  }
+  return "en";
+}
+
+function formatter(locale, name) {
+  if (!FORMATS[name]) return null;
+  const key = `${locale}|${name}`;
+  if (!formatters.has(key))
+    formatters.set(key, new Intl.DateTimeFormat(locale, FORMATS[name]));
+  return formatters.get(key);
+}
+
+// The year as the locale writes it ("2569" in th, a Buddhist-era year), or
+// null when the locale counts years as the Gregorian calendar does.
+function yearsOf(locale) {
+  const f = new Intl.DateTimeFormat(locale, { year: "numeric", timeZone: "UTC" });
+  if (f.resolvedOptions().calendar === "gregory") return null;
+  return (y) =>
+    f.formatToParts(new Date(Date.UTC(y, 6, 1))).find((p) => p.type === "year")
+      ?.value ?? String(y);
+}
+
+// The library's own aria-labels, in the picker's language (js/i18n.js).
+const LABELS = ["application", "navigation", "month", "months", "year", "years", "week", "dates"];
+function labelsOf(lang) {
+  const labels = Object.fromEntries(LABELS.map((k) => [k, say(lang, `datePicker.${k}`)]));
+  for (const side of ["arrowPrev", "arrowNext"])
+    labels[side] = Object.fromEntries(
+      ["month", "year", "week"].map((k) => [k, say(lang, `datePicker.${side}.${k}`)]),
+    );
+  return labels;
+}
 
 const isDate = (text) => {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) return false;
@@ -121,6 +169,7 @@ function destroy(root) {
   mounted.delete(root);
   open.delete(root);
   for (const name of MEMBERS) delete root[name];
+  state.observer?.disconnect();
   state.calendar.destroy();
   state.host.remove();
   const { panel, control } = state;
@@ -153,7 +202,10 @@ function mount(root, options = {}) {
   const control = text ?? button;
   const range = root.dataset.mode === "range";
   const count = range ? 2 : 1;
-  const format = formats[root.dataset.format] ?? null;
+  const locale = localeOf(root, options);
+  const format = formatter(locale, root.dataset.format);
+  const years = yearsOf(locale);
+  const labels = labelsOf(locale);
   const carrier = hidden ?? text;
   let dates = [];
   let months = 0; // months the calendar shows side by side, 0 until built
@@ -169,7 +221,11 @@ function mount(root, options = {}) {
   panel.id ||= `date-picker-${++uid}`;
   panel.setAttribute("popover", "manual");
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", range ? "Choose dates" : "Choose a date");
+  panel.setAttribute(
+    "aria-label",
+    root.dataset.label ||
+      say(locale, range ? "datePicker.labelRange" : "datePicker.label"),
+  );
   panel.setAttribute("aria-hidden", "true");
   panel.tabIndex = -1;
   control.setAttribute("aria-haspopup", "dialog");
@@ -190,7 +246,8 @@ function mount(root, options = {}) {
       return format ? format.format(date) : d;
     });
     if (text) {
-      text.value = shown.join(TO);
+      // A written range is not typed back, so its "to" follows the language.
+      text.value = shown.join(format ? say(locale, "datePicker.to") : TO);
       text.removeAttribute("aria-invalid");
     }
     if (span)
@@ -210,6 +267,31 @@ function mount(root, options = {}) {
     }
   }
 
+  // The library writes Gregorian years in the header and the year list; a
+  // locale with another calendar (th: Buddhist era) gets its own years in the
+  // text and the aria-labels. data-vc-year and the values stay Gregorian.
+  function relabel() {
+    const cal = state.calendar;
+    if (!years || !cal) return;
+    const put = (el, text, label) => {
+      if (el.textContent !== text) el.textContent = text;
+      if (el.ariaLabel !== label) el.ariaLabel = label;
+    };
+    for (const el of state.host.querySelectorAll("[data-vc-years-year]")) {
+      const shown = years(Number(el.dataset.vcYearsYear));
+      put(el, shown, shown);
+    }
+    for (const el of state.host.querySelectorAll('[data-vc="year"]')) {
+      const y = el.dataset.vcYear;
+      const shown = years(Number(y));
+      put(el, shown, `${cal.labels.year} ${shown}`);
+      const column = el.closest('[data-vc="column"]');
+      const label = column?.ariaLabel;
+      if (label?.endsWith(` ${y}`))
+        column.ariaLabel = `${label.slice(0, -y.length)}${shown}`;
+    }
+  }
+
   function sync() {
     const first = dates[0];
     state.calendar.set({
@@ -221,6 +303,7 @@ function mount(root, options = {}) {
           }
         : {}),
     });
+    relabel();
   }
 
   function commit(next) {
@@ -253,6 +336,14 @@ function mount(root, options = {}) {
       ...(root.dataset.min ? { dateMin: root.dataset.min } : {}),
       ...(root.dataset.max ? { dateMax: root.dataset.max } : {}),
       ...options,
+      // A locale object from options goes to the library as it is.
+      locale: typeof options.locale === "object" ? options.locale : locale,
+      labels: {
+        ...labels,
+        ...options.labels,
+        arrowPrev: { ...labels.arrowPrev, ...options.labels?.arrowPrev },
+        arrowNext: { ...labels.arrowNext, ...options.labels?.arrowNext },
+      },
       onClickDate(self, event) {
         options.onClickDate?.(self, event);
         const picked = self.context.selectedDates.filter(Boolean).sort();
@@ -293,6 +384,12 @@ function mount(root, options = {}) {
   states.set(root, state);
   mounted.add(root);
   build();
+  // The library redraws the header and the year list on its own (arrows,
+  // keys, a pick in the lists): put the locale's years back after each redraw.
+  if (years) {
+    state.observer = new MutationObserver(relabel);
+    state.observer.observe(state.host, { childList: true, subtree: true });
+  }
 
   const start = parse(hidden?.value || text?.value || "", count);
   if (start) {
