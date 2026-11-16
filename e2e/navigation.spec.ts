@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import { open, watchErrors } from "./helpers";
 
 test.describe("Tabs", () => {
@@ -518,6 +518,106 @@ test.describe("Toast", () => {
     await page.keyboard.press("Enter");
     await expect(toast).toHaveCount(0);
     await expect(opener).toBeFocused();
+  });
+
+  // A server-rendered page (Django messages, Rails flash) with the script in <head>
+  // or at the end of <body>, so both start paths run.
+  const flashPage = (body: string, scriptAtEnd = false) => {
+    const script = '<script src="/dist/tsunami.min.js"></script>';
+    return `<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/dist/tsunami.min.css">${scriptAtEnd ? "" : script}</head>
+<body><main><h1>Orders</h1></main>${body}${scriptAtEnd ? script : ""}</body></html>`;
+  };
+  const serve = async (page: Page, html: string) => {
+    await page.route("**/e2e/flash", (route) =>
+      route.fulfill({ contentType: "text/html", body: html }),
+    );
+    await page.goto("/e2e/flash");
+    await page.waitForFunction(() => typeof window.tsunami === "object");
+  };
+
+  for (const scriptAtEnd of [false, true]) {
+    test(`a <template data-toast> in the page shows on load, in order (script ${scriptAtEnd ? "at the end of body" : "in head"})`, async ({
+      page,
+    }) => {
+      const errors = watchErrors(page);
+      await serve(
+        page,
+        flashPage(
+          `<template data-toast data-toast-variant="ok">
+            Signed in
+          </template>
+          <template data-toast data-toast-variant="info">Your plan renews &lt;b&gt;soon&lt;/b&gt;</template>`,
+          scriptAtEnd,
+        ),
+      );
+      const toasts = page.locator(".toaster > .toast");
+      await expect(toasts).toHaveCount(2);
+      await expect(toasts.nth(0)).toHaveAttribute("data-variant", "ok");
+      await expect(toasts.nth(0).locator("strong")).toHaveText("Signed in");
+      // Server-escaped text stays text.
+      await expect(toasts.nth(1).locator("strong")).toHaveText("Your plan renews <b>soon</b>");
+      await expect(page.locator("template[data-toast]")).toHaveCount(0);
+      errors.expectNone();
+    });
+  }
+
+  test("a <template data-toast> with a title shows the text as the second line, and danger stays as an alert", async ({
+    page,
+  }) => {
+    await serve(
+      page,
+      flashPage(
+        `<template data-toast data-toast-title="Payment failed" data-toast-variant="danger">The card was declined.</template>`,
+      ),
+    );
+    const toast = page.getByRole("alert").filter({ hasText: "Payment failed" });
+    await expect(toast.locator("strong")).toHaveText("Payment failed");
+    await expect(toast.locator("p")).toHaveText("The card was declined.");
+    await page.waitForTimeout(5500);
+    await expect(toast).toBeVisible();
+  });
+
+  test("a <template data-toast> added later shows once, with its duration and id", async ({
+    page,
+  }) => {
+    await serve(page, flashPage(""));
+    const shown = await page.evaluate(async () => {
+      let count = 0;
+      document.addEventListener("tsunami:toast", () => count++);
+      const add = () => {
+        const t = document.createElement("template");
+        t.dataset.toast = "";
+        t.dataset.toastId = "saved";
+        t.dataset.toastDuration = "0";
+        t.innerHTML = "Saved";
+        document.body.appendChild(t);
+      };
+      add();
+      await new Promise((r) => setTimeout(r, 50));
+      // Moving nodes around does not show it again.
+      document.body.append(document.createElement("div"));
+      await new Promise((r) => setTimeout(r, 50));
+      return count;
+    });
+    expect(shown).toBe(1);
+    const toast = page.getByRole("status").filter({ hasText: "Saved" });
+    await expect(toast).toHaveCount(1);
+    await expect(toast).toHaveAttribute("data-toast-id", "saved");
+    await expect(page.locator("template[data-toast]")).toHaveCount(0);
+    await page.waitForTimeout(5500);
+    await expect(toast).toBeVisible();
+    // Several at once keep the limit of 3.
+    await page.evaluate(() => {
+      for (const n of [1, 2, 3, 4]) {
+        const t = document.createElement("template");
+        t.setAttribute("data-toast", "");
+        t.innerHTML = `Message ${n}`;
+        document.body.append(t);
+      }
+    });
+    await expect(page.locator(".toaster > .toast:not([data-leaving])")).toHaveCount(3);
+    await expect(page.locator(".toaster > .toast:not([data-leaving])").last()).toHaveText(/Message 4/);
   });
 });
 
