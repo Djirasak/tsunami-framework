@@ -522,6 +522,126 @@ test.describe("Date picker", () => {
   });
 });
 
+test.describe("Date picker: language and calendar", () => {
+  test.beforeEach(async ({ page }) => open(page, "/docs/date-picker"));
+
+  const thai = (page: Page) => page.locator("#dp-thai-picker");
+  const cell = (root: Locator, iso: string) =>
+    root.locator(`[data-vc-date="${iso}"] button`);
+
+  test('lang="th": Thai names and Buddhist-era years, the value stays ISO', async ({
+    page,
+  }) => {
+    const errors = watchErrors(page);
+    const picker = thai(page);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(picker.locator("#dp-thai")).toHaveValue("15 พ.ย. 2569");
+    await picker.locator("#dp-thai").click();
+    const panel = page.getByRole("dialog", { name: "เลือกวันที่" });
+    await expect(panel).toBeVisible();
+    const year = picker.locator('[data-vc="year"]');
+    await expect(year).toHaveText("2569");
+    await expect(year).toHaveAttribute("data-vc-year", "2026");
+    await expect(year).toHaveAttribute("aria-label", /2569$/);
+    await expect(picker.locator('[data-vc="month"]')).toHaveText("พฤศจิกายน");
+    await expect(picker.locator('[data-vc-arrow="prev"]')).toHaveAttribute(
+      "aria-label",
+      "เดือนก่อนหน้า",
+    );
+    await cell(picker, "2026-11-20").click();
+    await expect(picker.locator("#dp-thai")).toHaveValue("20 พ.ย. 2569");
+    await expect(picker.locator('[name="delivery"]')).toHaveValue("2026-11-20");
+    expect(await picker.evaluate((el: any) => el.value)).toBe("2026-11-20");
+    errors.expectNone();
+  });
+
+  test("the year list shows Buddhist-era years and picks the Gregorian one", async ({
+    page,
+  }) => {
+    const picker = thai(page);
+    await picker.locator("#dp-thai").click();
+    await picker.locator('[data-vc="year"]').click();
+    const next = picker.locator('[data-vc-years-year="2027"]');
+    await expect(next).toHaveText("2570");
+    await next.click();
+    await expect(picker.locator('[data-vc="year"]')).toHaveText("2570");
+    await cell(picker, "2027-11-03").click();
+    await expect(picker.locator('[name="delivery"]')).toHaveValue("2027-11-03");
+  });
+
+  test("PageDown and an arrow redraw keep the Buddhist-era year", async ({ page }) => {
+    const picker = thai(page);
+    await picker.locator("#dp-thai").click();
+    await cell(picker, "2026-11-15").focus();
+    await page.keyboard.press("PageDown");
+    await page.keyboard.press("PageDown");
+    await expect(cell(picker, "2027-01-15")).toBeFocused();
+    await expect(picker.locator('[data-vc="year"]')).toHaveText("2570");
+    await picker.locator('[data-vc-arrow="prev"]').click();
+    await expect(picker.locator('[data-vc="year"]')).toHaveText("2569");
+    await page.keyboard.press("Escape");
+    await expect(picker.locator('[name="delivery"]')).toHaveValue("2026-11-15");
+  });
+
+  test("a Thai range shows both dates in Thai and sends ISO", async ({ page }) => {
+    const picker = page.locator("#dp-thai-range-picker");
+    const input = picker.locator("#dp-thai-range");
+    await expect(input).toHaveValue("1 พฤศจิกายน 2569 ถึง 30 พฤศจิกายน 2569");
+    await input.click();
+    await expect(page.getByRole("dialog", { name: "เลือกช่วงวันที่" })).toBeVisible();
+    await cell(picker, "2026-11-03").first().click();
+    await cell(picker, "2026-11-07").first().click();
+    await expect(input).toHaveValue("3 พฤศจิกายน 2569 ถึง 7 พฤศจิกายน 2569");
+    await expect(picker.locator('[name="period"]')).toHaveValue(
+      "2026-11-03 to 2026-11-07",
+    );
+  });
+
+  // A picker added to the page: data-locale and mount({ locale }) choose the
+  // language over lang, and an unknown tag falls back to English.
+  const add = (page: Page, attrs: string, format = "medium") =>
+    page.evaluate(([attrs, format]) => {
+      document.getElementById("dp-added")?.remove();
+      const box = document.createElement("div");
+      box.id = "dp-added";
+      box.innerHTML = `<div class="date-picker" data-format="${format}" ${attrs}><input class="input" type="text" aria-label="Added"><input type="hidden" name="added" value="2026-11-15"><div data-popover aria-hidden="true"></div></div>`;
+      document.querySelector("main")!.append(box);
+    }, [attrs, format]);
+  const added = (page: Page) => page.locator("#dp-added .date-picker");
+
+  test("data-locale wins over lang", async ({ page }) => {
+    await add(page, 'lang="th" data-locale="en-US"');
+    await expect(added(page).getByRole("textbox")).toHaveValue("Nov 15, 2026");
+    await add(page, 'data-locale="th-TH-u-ca-buddhist" data-label="วันนัด"');
+    await expect(added(page).getByRole("textbox")).toHaveValue("15 พ.ย. 2569");
+    await added(page).getByRole("textbox").click();
+    await expect(page.getByRole("dialog", { name: "วันนัด" })).toBeVisible();
+    await expect(added(page).locator('[data-vc="year"]')).toHaveText("2569");
+  });
+
+  test("mount({ locale }) wins over both, and a bad tag falls back", async ({
+    page,
+  }) => {
+    const errors = watchErrors(page);
+    await add(page, 'lang="en" data-locale="en-US"');
+    await expect(added(page)).toHaveAttribute("data-date-picker-initialized", "true");
+    await added(page).evaluate((el) => window.tsunami.datePicker.mount(el, { locale: "th" }));
+    await expect(added(page).getByRole("textbox")).toHaveValue("15 พ.ย. 2569");
+    await add(page, 'data-locale="not a tag"');
+    await expect(added(page).getByRole("textbox")).toHaveValue("Nov 15, 2026");
+    errors.expectNone();
+  });
+
+  test('lang="en" output is unchanged', async ({ page }) => {
+    await add(page, "", "long");
+    await expect(added(page).getByRole("textbox")).toHaveValue("November 15, 2026");
+    await added(page).getByRole("textbox").click();
+    await expect(page.getByRole("dialog", { name: "Choose a date" })).toBeVisible();
+    await expect(added(page).locator('[data-vc="year"]')).toHaveText("2026");
+    await expect(added(page).locator('[data-vc="month"]')).toHaveText("November");
+  });
+});
+
 test.describe("OTP input", () => {
   test.beforeEach(async ({ page }) => open(page, "/docs/otp"));
 
