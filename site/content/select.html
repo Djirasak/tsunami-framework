@@ -114,7 +114,8 @@
               button and the list, and selects the matching option in the
               original select, so the form submits as usual. Without the script
               you get the native select. A hidden <code>value=""</code> option
-              is the text shown before anything is chosen.
+              is the text shown before anything is chosen, or set
+              <code>data-<wbr />placeholder</code> as in the next section.
             </p>
             <div class="tabs" data-tabs>
               <div role="tablist" aria-label="Example">
@@ -168,6 +169,96 @@
     &lt;option value="light"&gt;Light&lt;/option&gt;
     &lt;option value="dark"&gt;Dark&lt;/option&gt;
     &lt;option value="system"&gt;System&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>A select from a framework form, with an empty option</h2>
+            <p>
+              Django, Rails and Laravel put an empty option first, such as
+              <code>&lt;option value=""&gt;---------&lt;/option&gt;</code>. With
+              <code>data-<wbr />placeholder</code> on the wrapper it needs no
+              <code>hidden</code>: the control shows the placeholder, and the
+              list leaves out the <code>---------</code> row. When the select
+              is not <code>required</code>, the list starts with a muted row
+              with the placeholder text instead, so the field can be cleared. A
+              multiple select never lists it. The native select keeps the
+              option, so a form reset returns to it and the form submits
+              <code>""</code> as before. Without
+              <code>data-<wbr />placeholder</code> the empty option is listed
+              as it is.
+            </p>
+            <div class="tabs" data-tabs>
+              <div role="tablist" aria-label="Example">
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex14-tp"
+                  aria-selected="true"
+                  aria-controls="ex14-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex14-tc"
+                  aria-selected="false"
+                  aria-controls="ex14-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex14-p"
+                aria-labelledby="ex14-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" data-gap="sm" style="width: 220px">
+                    <div class="select" data-placeholder="Select a type">
+                      <select name="kind" required aria-label="Type (required)">
+                        <option value="">---------</option>
+                        <option value="a">Type A</option>
+                        <option value="b">Type B</option>
+                      </select>
+                    </div>
+                    <div class="select" data-placeholder="No supplier">
+                      <select name="supplier" aria-label="Supplier (optional)">
+                        <option value="">---------</option>
+                        <option value="1">North Farm</option>
+                        <option value="2">River Mill</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex14-c"
+                aria-labelledby="ex14-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;!-- Required: the list has Type A and Type B only --&gt;
+&lt;div class="select" data-placeholder="Select a type"&gt;
+  &lt;select name="kind" required aria-label="Type"&gt;
+    &lt;option value=""&gt;---------&lt;/option&gt;
+    &lt;option value="a"&gt;Type A&lt;/option&gt;
+    &lt;option value="b"&gt;Type B&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+
+&lt;!-- Optional: a muted "No supplier" row clears the field --&gt;
+&lt;div class="select" data-placeholder="No supplier"&gt;
+  &lt;select name="supplier" aria-label="Supplier"&gt;
+    &lt;option value=""&gt;---------&lt;/option&gt;
+    &lt;option value="1"&gt;North Farm&lt;/option&gt;
+    &lt;option value="2"&gt;River Mill&lt;/option&gt;
   &lt;/select&gt;
 &lt;/div&gt;</code></pre>
               </div>
@@ -1441,7 +1532,10 @@
                     </td>
                     <td>
                       Text shown before anything is chosen. Also the text
-                      field's placeholder.
+                      field's placeholder. With it, the first
+                      <code>value=""</code> option is the placeholder: left
+                      out of the list of a required or multiple select, a
+                      muted row with this text in any other.
                     </td>
                   </tr>
                   <tr>
