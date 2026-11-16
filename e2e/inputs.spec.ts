@@ -116,6 +116,145 @@ test.describe("Select", () => {
       )
       .toEqual(["bedding", "lighting"]);
   });
+
+  // A framework's empty option (<option value="">---------</option>) with data-placeholder.
+  const listed = (page: Page) =>
+    page.locator('[role="listbox"]:visible [role="option"]').allTextContents();
+
+  test("data-placeholder leaves the empty option out of a required select", async ({ page }) => {
+    const combo = page.getByRole("combobox", { name: "Type (required)" });
+    await expect(combo).toContainText("Select a type");
+    await combo.click();
+    await expect.poll(() => listed(page)).toEqual(["Type A", "Type B"]);
+    await expect(field(page, "kind")).toHaveValue("");
+  });
+
+  test("the keyboard never lands on the left-out option", async ({ page }) => {
+    const combo = page.getByRole("combobox", { name: "Type (required)" });
+    await combo.focus();
+    await page.keyboard.press("ArrowDown");
+    await expect(combo).toHaveAttribute("aria-expanded", "true");
+    await page.keyboard.press("End");
+    await page.keyboard.press("Enter");
+    await expect(field(page, "kind")).toHaveValue("b");
+    await combo.press("ArrowDown");
+    await page.keyboard.press("Home");
+    await page.keyboard.press("Enter");
+    await expect(field(page, "kind")).toHaveValue("a");
+    await combo.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("Enter");
+    await expect(field(page, "kind")).not.toHaveValue("");
+  });
+
+  test("an optional select lists the empty option as a muted placeholder row that clears it", async ({
+    page,
+  }) => {
+    const combo = page.getByRole("combobox", { name: "Supplier (optional)" });
+    await combo.click();
+    await expect.poll(() => listed(page)).toEqual(["No supplier", "North Farm", "River Mill"]);
+    await page.getByRole("option", { name: "North Farm" }).click();
+    await expect(field(page, "supplier")).toHaveValue("1");
+    await combo.click();
+    const blank = page.getByRole("option", { name: "No supplier" });
+    await expect(blank).toHaveAttribute("data-placeholder", "");
+    await blank.click();
+    await expect(field(page, "supplier")).toHaveValue("");
+    await expect(combo).toContainText("No supplier");
+    await expect(page.locator('.select:has([name="supplier"])')).not.toHaveAttribute(
+      "data-has-value",
+    );
+  });
+
+  test("without data-placeholder the empty option is listed as before", async ({ page }) => {
+    await page
+      .locator('.select:has([name="kind"])')
+      .evaluate((el) => el.removeAttribute("data-placeholder"));
+    await page.getByRole("combobox", { name: "Type (required)" }).click();
+    await expect.poll(() => listed(page)).toEqual(["---------", "Type A", "Type B"]);
+  });
+
+  // A select with a framework's empty option, added to the page with the given wrapper attributes.
+  async function addSelect(page: Page, name: string, attrs: Record<string, string>, required: boolean) {
+    await page.evaluate(
+      ({ name, attrs, required }) => {
+        const div = document.createElement("div");
+        div.className = "select";
+        for (const [k, v] of Object.entries(attrs)) div.setAttribute(k, v);
+        div.innerHTML = `<select name="${name}" aria-label="${name}"${required ? " required" : ""}>
+          <option value="">---------</option><option value="r">Red</option><option value="g">Green</option>
+        </select>`;
+        document.querySelector("main")!.append(div);
+      },
+      { name, attrs, required },
+    );
+    return page.getByRole("combobox", { name, exact: true });
+  }
+
+  for (const [kind, attrs] of [
+    ["data-search", { "data-search": "Search colours" }],
+    ["data-input", { "data-input": "" }],
+  ] as const) {
+    test(`${kind}: the empty option is left out when required and a placeholder row otherwise`, async ({
+      page,
+    }) => {
+      const req = await addSelect(page, "req", { ...attrs, "data-placeholder": "Pick one" }, true);
+      await req.click();
+      await expect.poll(() => listed(page)).toEqual(["Red", "Green"]);
+      await page.keyboard.press("Escape");
+
+      const opt = await addSelect(page, "opt", { ...attrs, "data-placeholder": "Pick one" }, false);
+      await opt.click();
+      await expect.poll(() => listed(page)).toEqual(["Pick one", "Red", "Green"]);
+      await page.keyboard.type("gr");
+      await expect.poll(() => listed(page)).toEqual(["Green"]); // no placeholder row while searching
+      await page.keyboard.press("Enter");
+      await expect(field(page, "opt")).toHaveValue("g");
+    });
+  }
+
+  test("data-url: the empty option stays out of the list after the results load", async ({ page }) => {
+    await page.route("**/remote-colours.json*", (route) =>
+      route.fulfill({
+        json: { results: [{ id: "r", text: "Red" }, { id: "g", text: "Green" }, { id: "b", text: "Blue" }] },
+      }),
+    );
+    const req = await addSelect(
+      page,
+      "remote-req",
+      { "data-url": "/remote-colours.json", "data-placeholder": "Pick one" },
+      true,
+    );
+    await req.click();
+    await expect.poll(() => listed(page)).toEqual(["Red", "Green", "Blue"]);
+    await page.keyboard.press("Escape");
+
+    const opt = await addSelect(
+      page,
+      "remote-opt",
+      { "data-url": "/remote-colours.json", "data-placeholder": "Pick one" },
+      false,
+    );
+    await opt.click();
+    await expect.poll(() => listed(page)).toEqual(["Pick one", "Red", "Green", "Blue"]);
+    await expect(field(page, "remote-opt")).toHaveValue("");
+  });
+
+  test("a multiple select with data-placeholder leaves the empty option out", async ({ page }) => {
+    await page.evaluate(() => {
+      const div = document.createElement("div");
+      div.className = "select";
+      div.dataset.placeholder = "Pick colours";
+      div.innerHTML = `<select name="colours" multiple aria-label="Colours">
+        <option value="">---------</option><option value="r">Red</option><option value="g">Green</option>
+      </select>`;
+      document.querySelector("main")!.append(div);
+    });
+    const box = page.getByRole("combobox", { name: "Colours" });
+    await box.click();
+    await expect.poll(() => listed(page)).toEqual(["Red", "Green"]);
+  });
 });
 
 test.describe("Autocomplete", () => {
