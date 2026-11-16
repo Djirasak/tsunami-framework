@@ -254,6 +254,15 @@ $list: ":is(.select, .autocomplete)";
     background: var(--subtle);
   }
 
+  // The empty option of a select with data-placeholder: muted, never checked.
+  :where(#{$list} [role="option"][data-placeholder]) {
+    color: var(--muted);
+  }
+
+  :where(#{$list} [role="option"][data-placeholder])::after {
+    visibility: hidden;
+  }
+
   :where(#{$list} [role="option"][aria-disabled="true"]) {
     opacity: 0.5;
     cursor: not-allowed;

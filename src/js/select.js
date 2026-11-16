@@ -5,6 +5,10 @@
 // select is shown.
 // Wrapper options: data-placeholder, data-size, data-search, data-input,
 // data-tags, data-url (JSON lookup), data-empty. See demo/select.html.
+// With data-placeholder, the first value="" option (such as Django's
+// "---------") is the placeholder: a required or multiple select leaves it out
+// of the list, any other select lists it as a muted row with the placeholder
+// text, to clear the field. The native select keeps the option either way.
 const ROOT = ".select:not(select)";
 const MSG = {
   empty: "No results",
@@ -140,9 +144,13 @@ function render(root) {
   const { sel, list, q } = st;
   const term = q.toLowerCase();
   let n = 0;
+  const ph = root.dataset.placeholder;
+  const blank =
+    ph === undefined ? null : sel.querySelector('option[value=""]');
   const option = (o, parent) => {
     if (o.hidden) return;
-    const text = label(o);
+    if (o === blank && (sel.required || st.multi || term)) return;
+    const text = o === blank ? ph || label(o) : label(o);
     const hay = `${text} ${o.dataset.text ?? ""}`.toLowerCase();
     if (term && !hay.includes(term)) return;
     const el = h("div", {
@@ -151,6 +159,7 @@ function render(root) {
       "aria-selected": String(o.selected),
     });
     if (o.disabled) el.setAttribute("aria-disabled", "true");
+    if (o === blank) el.setAttribute("data-placeholder", "");
     const av = o.dataset.avatar;
     if (av) {
       const a = h("span", { class: "avatar", "data-size": "sm" });
