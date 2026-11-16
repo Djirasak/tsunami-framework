@@ -10,6 +10,10 @@ Versions follow [semantic versioning](https://semver.org).
 
 - Words follow the page language. The Table's range text ("1–20 of 58"), the labels of its pagination arrows and its built-in "No results" row use the language of the nearest `lang` attribute, else `<html lang>`, else English; `th-TH` uses Thai. English and Thai are built in, and `tsunami.messages.set(lang, words)` adds or changes words for any language. In the markup, `data-label-prev` and `data-label-next` on the nav and `data-format` / `data-format-empty` on `[data-table-info]` (`{from}`, `{to}`, `{total}`) set them. With `lang="en"` or no `lang`, the text is the same as before.
 
+### Fixed
+
+- Charts draw in the colour the browser resolves, so a token or a series `color` may use `light-dark()`, `color-mix()` or `oklch()` as well as a hex value or `var()`. Before, such a colour reached the canvas as text, and the chart drew in black with no error. A `light-dark()` colour changes with the theme. A colour that cannot be resolved now logs a warning that names it, and the chart uses the accent.
+
 ## [1.4.0] - 2026-11-01
 
 ### Added
