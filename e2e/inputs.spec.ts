@@ -175,6 +175,72 @@ test.describe("Select", () => {
     await expect.poll(() => listed(page)).toEqual(["---------", "Type A", "Type B"]);
   });
 
+  // A select with a framework's empty option, added to the page with the given wrapper attributes.
+  async function addSelect(page: Page, name: string, attrs: Record<string, string>, required: boolean) {
+    await page.evaluate(
+      ({ name, attrs, required }) => {
+        const div = document.createElement("div");
+        div.className = "select";
+        for (const [k, v] of Object.entries(attrs)) div.setAttribute(k, v);
+        div.innerHTML = `<select name="${name}" aria-label="${name}"${required ? " required" : ""}>
+          <option value="">---------</option><option value="r">Red</option><option value="g">Green</option>
+        </select>`;
+        document.querySelector("main")!.append(div);
+      },
+      { name, attrs, required },
+    );
+    return page.getByRole("combobox", { name, exact: true });
+  }
+
+  for (const [kind, attrs] of [
+    ["data-search", { "data-search": "Search colours" }],
+    ["data-input", { "data-input": "" }],
+  ] as const) {
+    test(`${kind}: the empty option is left out when required and a placeholder row otherwise`, async ({
+      page,
+    }) => {
+      const req = await addSelect(page, "req", { ...attrs, "data-placeholder": "Pick one" }, true);
+      await req.click();
+      await expect.poll(() => listed(page)).toEqual(["Red", "Green"]);
+      await page.keyboard.press("Escape");
+
+      const opt = await addSelect(page, "opt", { ...attrs, "data-placeholder": "Pick one" }, false);
+      await opt.click();
+      await expect.poll(() => listed(page)).toEqual(["Pick one", "Red", "Green"]);
+      await page.keyboard.type("gr");
+      await expect.poll(() => listed(page)).toEqual(["Green"]); // no placeholder row while searching
+      await page.keyboard.press("Enter");
+      await expect(field(page, "opt")).toHaveValue("g");
+    });
+  }
+
+  test("data-url: the empty option stays out of the list after the results load", async ({ page }) => {
+    await page.route("**/remote-colours.json*", (route) =>
+      route.fulfill({
+        json: { results: [{ id: "r", text: "Red" }, { id: "g", text: "Green" }, { id: "b", text: "Blue" }] },
+      }),
+    );
+    const req = await addSelect(
+      page,
+      "remote-req",
+      { "data-url": "/remote-colours.json", "data-placeholder": "Pick one" },
+      true,
+    );
+    await req.click();
+    await expect.poll(() => listed(page)).toEqual(["Red", "Green", "Blue"]);
+    await page.keyboard.press("Escape");
+
+    const opt = await addSelect(
+      page,
+      "remote-opt",
+      { "data-url": "/remote-colours.json", "data-placeholder": "Pick one" },
+      false,
+    );
+    await opt.click();
+    await expect.poll(() => listed(page)).toEqual(["Pick one", "Red", "Green", "Blue"]);
+    await expect(field(page, "remote-opt")).toHaveValue("");
+  });
+
   test("a multiple select with data-placeholder leaves the empty option out", async ({ page }) => {
     await page.evaluate(() => {
       const div = document.createElement("div");
