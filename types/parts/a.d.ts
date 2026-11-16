@@ -158,6 +158,14 @@ interface TsunamiDatePickerElement extends HTMLElement {
 
 /** Any Vanilla Calendar Pro option, such as firstWeekday or disableWeekdays. */
 interface TsunamiDatePickerOptions {
+  /**
+   * Language and calendar of the names, the written date and the years, such as
+   * "th" or "th-TH-u-ca-buddhist". Wins over data-locale and the page's lang;
+   * the value stays Gregorian YYYY-MM-DD. An object is passed to the library as is.
+   */
+  locale?: string | Record<string, any>;
+  /** The library's own words (aria-labels), laid over the ones in tsunami.messages. */
+  labels?: Record<string, any>;
   [option: string]: any;
 }
 

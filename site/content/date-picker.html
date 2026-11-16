@@ -1357,11 +1357,147 @@
           </section>
 
           <section>
+            <h2>The language and the calendar follow the page</h2>
+            <p>
+              Month and weekday names, the written date of
+              <code>data-format</code>, the years in the calendar and the
+              panel's label follow the language of the page: the nearest
+              <code>lang</code> attribute, else <code>&lt;html lang&gt;</code>,
+              else English. <code>data-locale</code> on
+              <code>.date-picker</code> sets another one, such as
+              <code>th-TH-u-ca-buddhist</code>. Thai counts years in the
+              Buddhist era by default, as <code>Intl</code> does, so
+              <code>lang="th"</code> alone shows <q>15 พ.ย. 2569</q>.
+            </p>
+            <p>
+              Only the display changes. The hidden input, <code>value</code>,
+              the <code>change</code> event, <code>data-min</code>,
+              <code>data-max</code> and presets stay
+              <code>YYYY-MM-DD</code> in the Gregorian calendar: choosing
+              20 พ.ย. 2569 sends <code>2026-11-20</code>. A text field without
+              <code>data-format</code> is typed, so it keeps showing and
+              taking <code>YYYY-MM-DD</code>; use <code>data-format</code> for
+              a written date in the page language.
+            </p>
+            <div class="tabs" data-tabs>
+              <div
+                role="tablist"
+                aria-label="The language and the calendar follow the page"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex14-tp"
+                  aria-selected="true"
+                  aria-controls="ex14-p"
+                >
+                  Preview
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  id="ex14-tc"
+                  aria-selected="false"
+                  aria-controls="ex14-c"
+                  tabindex="-1"
+                >
+                  Code
+                </button>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex14-p"
+                aria-labelledby="ex14-tp"
+                tabindex="0"
+              >
+                <div class="docs-preview">
+                  <div class="stack" lang="th" style="max-width: 20rem">
+                    <div class="field">
+                      <label for="dp-thai">วันส่งของ</label>
+                      <div
+                        class="date-picker"
+                        id="dp-thai-picker"
+                        data-format="medium"
+                      >
+                        <input
+                          class="input"
+                          type="text"
+                          id="dp-thai"
+                          value="2026-11-15"
+                        />
+                        <input type="hidden" name="delivery" value="2026-11-15" />
+                        <div data-popover aria-hidden="true"></div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="dp-thai-range">ช่วงวันที่</label>
+                      <div
+                        class="date-picker"
+                        id="dp-thai-range-picker"
+                        data-mode="range"
+                        data-format="long"
+                      >
+                        <input class="input" type="text" id="dp-thai-range" />
+                        <input
+                          type="hidden"
+                          name="period"
+                          value="2026-11-01 to 2026-11-30"
+                        />
+                        <div data-popover aria-hidden="true"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                role="tabpanel"
+                id="ex14-c"
+                aria-labelledby="ex14-tc"
+                tabindex="0"
+                hidden
+              >
+                <pre><code>&lt;div class="stack" lang="th" style="max-width: 20rem"&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="dp-thai"&gt;วันส่งของ&lt;/label&gt;
+    &lt;div class="date-picker" data-format="medium"&gt;
+      &lt;input class="input" type="text" id="dp-thai" value="2026-11-15"&gt;
+      &lt;input type="hidden" name="delivery" value="2026-11-15"&gt;
+      &lt;div data-popover aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="field"&gt;
+    &lt;label for="dp-thai-range"&gt;ช่วงวันที่&lt;/label&gt;
+    &lt;div class="date-picker" data-mode="range" data-format="long"&gt;
+      &lt;input class="input" type="text" id="dp-thai-range"&gt;
+      &lt;input type="hidden" name="period" value="2026-11-01 to 2026-11-30"&gt;
+      &lt;div data-popover aria-hidden="true"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            <p>
+              The words Tsunami writes (the panel's label, <q>Choose a
+              date</q> or <q>Choose dates</q>, and the library's labels such
+              as <q>Previous month</q>) come in English and Thai and follow
+              the same language, <code>data-locale</code> included.
+              <code>data-label</code> on <code>.date-picker</code> sets the
+              panel's label in the markup, and other languages are added
+              from <a href="/docs/javascript#language">JavaScript</a> under
+              the <code>datePicker.</code> keys.
+            </p>
+          </section>
+
+          <section>
             <h2>Other library options go through mount()</h2>
             <p>
               Pass any option of Vanilla Calendar Pro when starting the date
               picker by hand. The options are laid over the ones the attributes
               set. <code>mount()</code> starts it again if it already has one.
+              For the language, prefer <code>data-locale</code>: a
+              <code>locale</code> passed here wins over it and is used the same
+              way, for the field and the years too, and <code>labels</code>
+              replaces the library's words one by one.
             </p>
             <pre><code>tsunami.datePicker.mount(document.getElementById("delivery-date"), {
   firstWeekday: 0,
@@ -1648,6 +1784,26 @@
                       With a button: the text the button shows while no date is
                       chosen. With dates it shows them, a range as
                       <q>start → end</q>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-locale</code></td>
+                    <td>a language tag, on <code>.date-picker</code></td>
+                    <td>
+                      The language and calendar of the names, the written date
+                      and the years, such as <code>th</code> or
+                      <code>th-TH-u-ca-buddhist</code>. Without it, the nearest
+                      <code>lang</code>. The value stays
+                      <code>YYYY-MM-DD</code>.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>data-label</code></td>
+                    <td>text, on <code>.date-picker</code></td>
+                    <td>
+                      The panel's <code>aria-label</code>. Default <q>Choose a
+                      date</q>, or <q>Choose dates</q> for a range, in the
+                      picker's language.
                     </td>
                   </tr>
                   <tr>

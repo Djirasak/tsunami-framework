@@ -69,8 +69,13 @@ tsunami.otp.clear(otp);        // empties them and focuses the first</code></pre
 });
 tsunami.messages.get("th"); // the Thai words, English where Thai has none</code></pre>
             <p>
-              So far the Table and its pagination use these words. A component
-              page lists the attributes that set its words in the markup.
+              So far the Table, its pagination and the Date picker use these
+              words; <code>tsunami.messages.get("en")</code> lists every key. A
+              date picker reads its words when it starts (its
+              <code>data-locale</code>, if any, chooses the language), so set
+              them before the Tsunami script runs, or call
+              <code>tsunami.datePicker.mount()</code> again. A component page
+              lists the attributes that set its words in the markup.
             </p>
           </section>
           <section>

@@ -9,6 +9,7 @@ Versions follow [semantic versioning](https://semver.org).
 ### Added
 
 - Words follow the page language. The Table's range text ("1–20 of 58"), the labels of its pagination arrows and its built-in "No results" row use the language of the nearest `lang` attribute, else `<html lang>`, else English; `th-TH` uses Thai. English and Thai are built in, and `tsunami.messages.set(lang, words)` adds or changes words for any language. In the markup, `data-label-prev` and `data-label-next` on the nav and `data-format` / `data-format-empty` on `[data-table-info]` (`{from}`, `{to}`, `{total}`) set them. With `lang="en"` or no `lang`, the text is the same as before.
+- Date picker: language and calendar follow the page. Month and weekday names, the written date of `data-format="long|medium"` (a range too) and the panel's label use the nearest `lang`, else `<html lang>`, else English; `data-locale` on `.date-picker` (such as `th-TH-u-ca-buddhist`) or `locale` in `mount()` sets another one. Thai uses the Buddhist era, as `Intl` does, so `lang="th"` shows "15 พ.ย. 2569", and the calendar's header and year list show 2569. The value stays Gregorian `YYYY-MM-DD` everywhere: the hidden input, `value`, the `change` event, `data-min`/`data-max`, presets and a typed field. `data-label` sets the panel's label, and the library's own aria-labels come in English and Thai (`datePicker.*` keys in `tsunami.messages`). A page in another English region, such as `lang="en-GB"`, now writes its dates that way ("15 Nov 2026"); `lang="en"` or no `lang` is the same as before.
 
 ### Fixed
 
